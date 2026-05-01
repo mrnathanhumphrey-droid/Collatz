@@ -1,0 +1,27 @@
+# Compiled / cached
+__pycache__/
+*.pyc
+*.pyo
+*.exe
+
+# Generated data (regeneratable from generate.py)
+data/*.parquet
+data/*.csv
+
+# Stan output CSVs (regeneratable from fit.py; big)
+fits/*/
+
+# Experiments output (regeneratable from scripts in experiments/)
+experiments_output/
+
+# Stan compile outputs
+*.hpp
+model
+!model.stan
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
