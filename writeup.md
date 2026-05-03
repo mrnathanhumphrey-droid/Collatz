@@ -6,7 +6,7 @@
 
 For odd integers n ∈ [3, 2²⁵], stratified by residue class mod 64:
 
-1. **Slope universality.** The mean of the total stopping time σ(n) is described by σ(n) ≈ α(r) + 10.43·ln(n) where r = n mod 64. The slope **does not vary across residue classes**: τ_β at noise floor at every N tested (2²⁰ through 2²⁵). The pooled empirical slope converges from below to the heuristic 3/(ln 4 − ln 3) = 10.4282 monotonically with N (gap = 0.056 at 2²⁰, 0.009 at 2²⁵).
+1. **Slope universality.** The mean of the total stopping time σ(n) is described by σ(n) ≈ α(r) + 10.43·ln(n) where r = n mod 64. **We cannot reject τ_β = 0 at any tested N (2²⁰ through 2²⁵):** the moment-of-moments estimator τ_β² = max(0, observed² − SE²) hits its zero floor by construction at every sample size, indicating between-class slope variation is below the per-class sampling-SE noise floor. The pooled empirical slope μ_β increases with N (gap from 10.4282 = 0.056 at 2²⁰ to 0.009 at 2²⁵), but the convergence rate is not characterized; the Stan posterior at N=2²⁵ gives μ_β = 10.4475, on the *opposite* side of the heuristic from OLS, so the truth lies somewhere in [10.42, 10.45] with finite-size bias still visible.
 
 2. **Tail-shape universality.** Generalized Pareto fits to per-class upper-residual tails give ξ → 0 as N grows (−0.083 at 2²⁰, −0.028 at 2²⁵). The apparent sub-exponential "cliff drop" in CCDFs is a finite-N truncation artifact; the limiting tail is exponential.
 
@@ -75,11 +75,30 @@ The N-scaling sweep makes this stronger:
 | 2²⁴ | 8,388,607 | 262,144 | 10.4044 | 0.110 | 0.120 | 0 |
 | 2²⁵ | 16,777,215 | 524,288 | 10.4191 | 0.086 | 0.087 | 0 |
 
-The naive class-β SD tracks the per-class sampling SE almost exactly at every N. The moment-corrected τ_β² = max(0, observed² − SE²) is **identically zero** at every sample size tested: there is no detectable between-class slope variation above the noise floor at any N.
+The naive class-β SD tracks the per-class sampling SE almost exactly at every N. The moment-of-moments estimator τ_β² = max(0, observed² − SE²) hits **its zero floor by construction** at every sample size tested: once observed variance falls below SE noise, the estimator returns exactly zero. **The defensible claim is that we cannot reject τ_β = 0** at any tested N. This is consistent with no between-class slope variation but does not establish it.
 
-The pooled OLS slope μ_β → 10.4282 monotonically with N from below; rate is slow (∼N^{−1/2}-ish on the residual 10.4282 − μ_β) but unambiguous.
+### Convergence of pooled μ_β to the heuristic is non-monotone
 
-**Statement of result.** The single-slope heuristic σ(n) ≈ 10.4282·ln(n) is empirically asymptotically exact for the mean of σ over odd starting points. No residue class mod 64 has a detectably different slope at any sample size up to 2²⁵.
+Streaming OLS at larger N (sigma cache built per N, no parquet, memory-bounded) extends the table:
+
+| N | log₂(N) | μ_β | gap from 10.4282 |
+|---|---|---|---|
+| 2²⁵ | 25 | 10.4191 | +0.0091 |
+| 2²⁶ | 26 | 10.4192 | +0.0090 |
+| 2²⁷ | 27 | 10.4293 | −0.0011 (crossed) |
+| 2²⁸ | 28 | 10.4298 | −0.0016 |
+| 2²⁹ | 29 | 10.4252 | +0.0030 |
+| 2³⁰ | 30 | 10.4236 | +0.0045 |
+| 2³¹ | 31 | 10.4213 | +0.0069 |
+| 2³² | 32 | 10.4187 | +0.0095 |
+
+μ_β approaches the heuristic from below for N ≤ 2²⁶, jumps above between 2²⁶ and 2²⁷ by 0.010 (the largest single doubling step), peaks slightly above the heuristic at 2²⁸, then drifts back below and re-opens the gap to ≈ +0.010 by 2³². The amplitude of the oscillation does not visibly damp by 2³². The crossing of 10.4282 happens around N ≈ 2²⁷.
+
+A diagnostic on the same data localizes the structure further. Restricting OLS to odd n in [2^j, 2^(j+1)] gives a per-octave local slope μ_β,local in [10.49, 10.89] across j ∈ {17, …, 26}, peaking at j ≈ 21–22 (10.88, 10.89) and decreasing on both sides. Empirically, the trajectory measure on v = ν₂(3m+1) under Syracuse iteration has E[v] ≈ 1.99 (slightly below the i.i.d. Geom(½) value of 2). Substituting into the random-walk heuristic K(u) = (1+u)/(u·log 2 − log 3) gives K ≈ 10.55, accounting for the systematic ≈ 0.13 baseline by which every measured local slope sits above 10.4282. Residual variation in μ_β,local across octaves (≈ 0.30 at the j ≈ 22 peak) is not explained by E[v] alone and is not pursued further here; ruling out the obvious mechanisms (record-σ outliers, MGF deviations at higher moments, step-to-step v correlations affecting mean drift) showed they do not account for it.
+
+Top-K outlier exclusion at N = 2²⁷: dropping the top 10 σ values (including σ = 949 at n = 63,728,127) shifts μ_β by 0.0001; top 100 by 0.0005; top 1,000 by 0.003. The 0.010 jump between 2²⁶ and 2²⁷ is therefore not a few-record-leverage effect; it is a bulk-tail phenomenon distributed across thousands of moderate σ values entering as the dataset doubles.
+
+**Statement of result.** The single-slope heuristic σ(n) ≈ 10.4282·ln(n) is consistent with the data on odd starting points. The pooled estimator μ_β is empirically oscillatory in N rather than monotonically convergent; over the tested range N ∈ [2²⁰, 2³²] the gap |μ_β − 10.4282| sits in [0, 0.056], with the crossing of 10.4282 near N ≈ 2²⁷ and a residual oscillation of amplitude ≈ 0.01 not visibly damping by 2³². No residue class mod 64 has a detectably different slope at any sample size up to 2²⁵.
 
 ## Result 2: tail-shape universality
 
@@ -163,6 +182,40 @@ Mechanistically this makes sense: a_final controls the "remaining log-distance t
 
 **Final theorem statement.** For odd n in residue class r mod 2^k (k ∈ {6, 7, 8, 9}), the distribution of σ(n) | r is parameterized entirely by a_final(r), the terminal value of the deterministic Collatz prefix. The number of distinguishable distributions among 2^(k−1) odd classes is exactly k — one for each a_final ∈ {3¹, 3², ..., 3^k}. The complexity of the residue-class structure is logarithmic in k, not linear.
 
+### α_det predicts mean first-passage time and matches Tao (5.15) at the per-class level
+
+α_det was constructed as a closed-form prediction for the σ-intercept. It also predicts an *independent* trajectory functional with no recalibration: the per-class mean first-passage time below an arbitrary threshold f(N).
+
+For odd n, define s(n; f) as the number of Collatz steps before the orbit first attains a value ≤ f(N), and let s_mean(r; f) be the mean of s(·; f) over n ≡ r mod 2^k. Five observables tested: σ (full descent to 1, equivalent to f(N) = 1) and first-passage to f(N) ∈ {N^(2/3), √N · log N, √N, √N / log N}. Four modular resolutions: k ∈ {8, 10, 12, 14}. Two data scales: N ∈ {2²⁵, 2²⁷}.
+
+For every (observable, k, N) cell, the regression `s_mean(r) ~ a + slope · α_det(r)` (with α_det built at K_h = 3/log(4/3) ≈ 10.4282) gives:
+
+| measure | range across all 40 cells |
+|---|---|
+| Spearman ρ between α_det and s_mean | ≥ 0.99 in every cell, exactly 1.0 at k=8 |
+| **slope at K_h, raw mean** | **[0.9936, 1.0012]** — within 0.5% of 1 in every cell |
+| slope at K_h, 1%-trimmed mean | [0.9808, 0.9944] |
+
+**The slope is unity at the textbook K with no fit calibration.** The closed-form prediction
+> s_mean(r; f) ≈ α_det(r) + K_h · log(N / f(N))
+holds across modular resolutions, data scales, and threshold choices.
+
+The right-hand side `K_h · log(N/f(N))` is the leading term in Tao's (5.15) inequality, which controls the mean trajectory `T_x(N) = log(N/x)/log(4/3) + O(log^0.6 x)` for almost all N (Tao 2022). Our result is the per-residue-class realization: the same leading term plus a per-class structural offset α_det(r).
+
+**Offset gap from Tao's leading term `K_h · log(N/f(N))`:**
+
+| observable | typical raw-mean gap | typical 1%-trim gap |
+|---|---|---|
+| σ | −2.4 | −4.6 |
+| s @ N^(2/3) | +3.0 | +1.4 |
+| s @ √N · log N | +3.0 | +1.4 |
+| s @ √N | +2.2 | +0.3 |
+| s @ √N / log N | +0.4 to +1.2 | −0.9 |
+
+Gaps are stable to ≤ 0.06 across k = 8 → 14 and to ≤ 0.05 across N = 2²⁵ → 2²⁷ for σ; comparable for the rest. The correction is structural, not a finite-N or finite-k artifact. With light trimming (top 1% per class), the gap at √N drops to sub-percent of the Tao prediction across every (k, N) cell, since the trimming explicitly removes the right-tail contribution Tao's exceptional-set theorem allows for.
+
+**What this adds to the structural claim.** α_det was *constructed* to predict σ-intercepts. It also predicts mean first-passage time at four arbitrary thresholds with slope=1 at the textbook K. Two independent trajectory functionals, one closed-form formula, no recalibration. The structural decomposition is not a fit-by-design parameterization of σ; it captures the per-class mean trajectory dynamics that Tao 2022's framework treats asymptotically.
+
 ## Combined statement
 
 For odd n ∈ [3, 2²⁷], stratified by residue class mod 2^k for k ∈ {6, 7, 8, 9}:
@@ -212,38 +265,44 @@ separating the initial halvings v₂(n) (deterministic) from the odd-block dynam
 - They report formal out-of-sample predictive metrics (log score, Wasserstein); the universality claims here are statements about parameter recovery, not predictive accuracy on held-out n.
 - They build a mechanistic generative model with explicit odd-block dynamics; this work characterizes the per-class distribution structurally without an explicit generator.
 
-**Net positioning.** The structural decomposition theorem here — that the residue-class structure of σ has *logarithmic* complexity in modular resolution, with conditional distributions parameterized by a_final ∈ {3^j} — is genuinely new relative to Bonacorsi & Bordoni. Their work is excellent on the predictive-modeling axis; this work is sharper on the structural axis. Both could appear together in a coherent research program: their NB-GLM combined with this prefix-determined parameterization yields a substantially more parsimonious model than mod-8 random effects, with the random effects replaced by a closed-form function of a_final(r mod 2^k).
+**Net positioning.** The structural decomposition here is a *sharpening of Terras 1976 Lemma 4* (which gives the asymptotic identity S_k ≈ S_0 · 3^d(k) / 2^k) by tracking the symbolic prefix to its termination at a·m + c with a odd, retaining c_final, and making a_final available as a closed-form covariate. Relative to Bonacorsi & Bordoni's mod-8 hierarchical NB-GLM, this furnishes their random effect with explicit algebraic structure: the u_{n mod 8} effect they fit is, up to a constant, log(a_final(n mod 8)) at k=3. Their NB-GLM is the predictive engine; the prefix decomposition supplies the closed-form covariate that grounds the random effect in the symbolic Collatz prefix. The two pieces fit together: a hierarchical NB-GLM with the random effect on n mod 8 replaced by a fixed effect on a_final(n mod 2^k) for chosen k yields a parameter-parsimonious version of their model.
 
-### Direct head-to-head: predictive comparison on B&B's setup
+### Bayesian replication in the B&B framework: Pathfinder VI at N=10⁷
 
-To verify that the structural finding has direct predictive consequences, we replicate their setup at N=10⁷ with NB GLM and 50K-observation held-out test, comparing five specifications:
+To make this concrete we replicate their setup at N=10⁷ in Stan: NB2-GLM with log link, priors β ~ N(0,5), φ ~ LogN(log 5, 1), σ_u ~ HN(0,2). Inference via cmdstanpy 1.3.0 Pathfinder (Zhang, Carpenter, Gelman, Vehtari, JMLR 2022), 4 paths × 1000 importance-resampled draws, on a 500K-observation training subsample with a 50K held-out test set.
 
-| Model | # params | Test log_score | W₁ distance |
-|---|---|---|---|
-| M0 baseline (log n only) | 3 | −274,139.0 | 3.040 |
-| M1 B&B-style: + factor(n mod 8) | 10 | −273,352.3 | 3.071 |
-| M2 B&B-extended: + factor(n mod 64) | 66 | −272,496.5 | 3.230 |
-| **M3 ours: + factor(a_final at k=3)** | **6** | **−273,352.3** | 3.136 |
-| **M4 ours: + factor(a_final at k=6)** | **9** | **−272,496.3** | 3.310 |
-| B&B reported best (NB2-GLM) | — | −272,911.95 | 3.199 |
+**Caveat upfront — this is Pathfinder VI, not HMC.** Production HMC on this scale of model + data hit a Stan 2.36 unified-mode multi-chain lockup that pinned all threads at full CPU with zero sampling progress (a sync issue with `num_chains=N` in shared-thread-pool process, distinct from the well-known reduce_sum grainsize pathology). Pathfinder converged cleanly. The known limitation: Pathfinder is a quasi-Newton variational approximation that systematically underestimates posterior dispersion in non-Gaussian hierarchical regions, and so collapses σ_u in any spec with a hierarchical random effect. Absolute log-score numbers for hierarchical specs (B1, B4) below are therefore lower than HMC would produce on the same data; fixed-effect specs (B0, B2, B3) are not subject to this bias. **HMC validation at production scale is the natural next step on Bonacorsi's side**, and is the cleanest way to confirm the absolute numbers below.
 
-**Two predictive wins:**
+| Spec | description | # params | log score | σ_u |
+|---|---|---|---|---|
+| B0 | log(n) only | 3 | −274,150.3 | — |
+| B1 | + RE on (n mod 8) ← B&B's setup | 12 | −274,138.4 | 0.003 (Pathfinder-collapsed) |
+| B2 | + FE on a_final at k=3 | 6 | −273,288.4 | — |
+| **B3** | **+ FE on a_final at k=6** | **9** | **−272,435.3** | — |
+| B4 | B3 + RE on (n mod 8) | 18 | −272,438.4 | 0.009 (Pathfinder-collapsed) |
+| B&B reported (HMC, full data) | NB2-GLM with mod-8 RE | — | −272,911.95 | (HMC posterior, larger) |
 
-1. **M3 matches M1 to within 0.1 nats** on 50,000 held-out observations, using **40% fewer parameters** (6 vs 10). Replacing 4 mod-8 fixed effects with 3 a_final levels is lossless predictively.
+**What the table says, structurally:**
 
-2. **M4 essentially matches M2 with 7× parameter reduction** (9 vs 66). Same log score to within 0.2 nats out of 272,496. Replacing 32 mod-64 fixed effects with 6 a_final levels is lossless predictively. **And M4 beats B&B's reported best NB-GLM by 415 nats** at the same data scale and test split size with comparable parameter count.
+1. **B2 vs B1 — same modular resolution, different parameterization.** B1 estimates a hierarchical mod-8 random effect (the B&B setup); B2 supplies the closed-form covariate a_final at k=3, which is the algebraic identity of that random effect. Pathfinder gives B2 a +850-nat margin over B1, but the relevant comparison is structural: a closed-form covariate replacing an estimated random effect at the same modular resolution, with comparable predictive content. Under HMC the absolute numbers will tighten.
 
-The structural decomposition therefore translates from elegant theorem into operational parsimony: the apparent residue-class structure that motivates fitting many random effects is itself low-dimensional, indexed by a_final ∈ {3^j : 1 ≤ j ≤ k}.
+2. **B3 vs B&B reported — finer modular resolution under HMC.** B3 (a_final at k=6, fixed effects, no σ_u, robust to the Pathfinder caveat) scores −272,435.3 with 9 parameters. B&B's reported NB2-GLM at the same data scale scores −272,911.95. The 477-nat gap is suggestive — finer modular resolution captures more structure than mod 8 — but it is not a head-to-head conclusion; the cleanest version is HMC on B3 at full N=10⁷, which Bonacorsi can run directly.
 
-(W₁ distance for our fixed-effect MLE specifications is slightly worse than B&B's reported W₁ — most likely because their hierarchical posterior predictive integrates over class-effect uncertainty, producing more disperse predictives that better match the empirical tail; our fixed-effect predictives are more concentrated. A hierarchical prior on the a_final coefficients would close this gap with no architectural complication, and is a natural extension if W₁ is the operational metric of interest.)
+3. **B4 vs B3 — does a_final exhaust the residue-class signal?** Adding mod-8 RE on top of a_final (B4) adds a Pathfinder σ_u of 0.009 and doesn't move the log score. Suggestive that mod-8 carries no residual information once a_final is in the model, but again not load-bearing under Pathfinder; HMC is the test.
+
+**The contribution.** Bonacorsi-Bordoni's mod-8 random effect is observing real structure. The prefix decomposition supplies the algebraic identity behind it, and extends cleanly to arbitrary modular resolution k. As a covariate in their NB2-GLM framework, a_final(n mod 2^k) replaces the random effect with a fixed effect on k discrete levels — *logarithmic* parameter count in the modular resolution rather than linear. The joint model is what's interesting: their predictive engine + this closed-form covariate, validated under HMC at production scale.
+
+**A companion analysis** examines the qx+1 generalization (q ∈ {5, 7, 9, 11}) and is reported separately. The 3x+1 results above are the contribution to the Bonacorsi-Bordoni framework.
 
 ## Limitations and what remains open
 
-- **Resolution.** Verified at k ∈ {6, 7, 8, 9}, i.e., modular resolutions from mod 64 through mod 512 (covering 32 to 256 odd classes). Higher k (k=10, k=12, etc.) might still in principle reveal residual structure, but the trend across the four resolutions tested is unambiguous: residuals scale with sampling noise at every k, with no signal emerging at finer grids. The k=10 hierarchical Stan fit failed for posterior-geometry reasons rather than any signal-vs-noise reasons.
-- **Range.** N ≤ 2²⁷ ≈ 1.3 × 10⁸. The asymptotic claims (μ_β → 10.4282, ξ → 0) extrapolate from a clean monotone trend across N ∈ {2²⁰, 2²², 2²³, 2²⁴, 2²⁵, 2²⁷}; not proved.
-- **Stochastic remainder S(n) characterization.** We've shown S(n) has class-universal first two moments and tail shape; we haven't characterized its full distribution. Likely has further structure relating to higher 2-adic conditions, but mod 64 doesn't resolve it.
-- **The prefix algebra terminates at a_final ∈ {3, 9, 27, 81, 243, 729}.** These are all powers of 3, reflecting the multiplicative structure of the Syracuse map. Their distribution across residues might itself have number-theoretic structure worth describing — but this is a property of Collatz, not of σ.
-- **Trajectory-measure characterization for v=4/v=10 spikes.** The empirical observation is real and quantified; the exact density of {m : ν₂(3m+1) = k} along Syracuse iterate distributions is elementary number theory but wasn't worked out here.
+- **Resolution.** Verified at k ∈ {4, 5, 6, 7, 8, 9, 10, 11, 12}, i.e., modular resolutions from mod 16 through mod 4096 (covering 8 to 2048 odd classes). The noise-floor ratio sits in [0.90, 0.99] across k ∈ {5, …, 12}; at k=4 it is 0.70 (residuals smaller than per-class SE — prefix prediction over-explains at coarse resolution). At every k tested, the number of distinct a_final levels equals k exactly. Higher k might in principle reveal residual structure but the trend across the nine resolutions tested is unambiguous: residuals scale with sampling noise at every k. The k=10 hierarchical Stan fit failed for posterior-geometry reasons; the OLS analog (per-class α via ordinary regression, compared to α_det) does not share that issue and confirms the result through k=12.
+- **Range.** N ≤ 2³² ≈ 4.3 × 10⁹. The pooled OLS slope μ_β oscillates around the heuristic 10.4282 over the tested range with amplitude ≈ 0.01 and is not visibly damping at 2³² (see Result 1). The crossing of 10.4282 happens near N ≈ 2²⁷. Stronger asymptotic claims would require N well beyond 2³² and are not made here.
+- **Stochastic remainder S(n) characterization.** We've shown S(n) has class-universal first two moments and tail shape; we haven't characterized its full distribution. Two empirical features are flagged for completeness:
+  - *Trajectory measure on v deviates from Geom(½).* At N_start = 10⁸ Syracuse trajectories, the pooled v = ν₂(3m+1) distribution has spikes at v=4 and v=10 (ratio ≈ 1.23 above Geom(½) prediction) and graded sags at v ∈ {6, 7, 8, 9} and {11, 12, 13, 14}. The pattern does not extend cleanly to v=16 onward (ratio 0.88, not a spike), so it is not a simple every-six-v phenomenon. The deviation has E[v] ≈ 1.99 (vs Geom(½)'s 2) and Var(v) ≈ 1.88 (vs 2). This characterizes a piece of S(n)'s fine structure but does not change Result 1 or 3.
+  - *Neighbor coincidence.* Among consecutive odd m within a fixed residue class mod 2¹⁰, the rate of σ(2¹⁰m + r) = σ(2¹⁰(m+1) + r) is empirically ≈ 25% — a non-trivial constraint on S(n)'s pairwise distribution that the prefix decomposition predicts up to the post-prefix offset a_final but does not itself explain.
+- **The prefix algebra terminates at a_final ∈ {3, 9, 27, 81, 243, 729}** (at k = 6, with one additional power of 3 added per increment of k). These are all powers of 3, reflecting the multiplicative structure of the Syracuse map. Their distribution across residues might itself have number-theoretic structure worth describing — but this is a property of Collatz, not of σ.
+- **qx+1 generalization (q ∈ {5, 7, 9, 11}).** Reported separately. Empirical Cramér-rate match at q=5 is to 0.01% precision; the load-bearing trajectory-measure assumption (v ~ Geom(½) in the unconditional measure) is verified empirically across q ∈ {3, 5, 7, 9, 11} to 0.5% on Var(v) and to 0.18–0.31% on the MGF E[(2/q)^v] at the relevant Cramér tilt point. The 3x+1 trajectory-measure deviations described above do not propagate to the qx+1 derivation at the relevant moment.
 
 ## Reproduction
 

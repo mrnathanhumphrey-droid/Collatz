@@ -1,0 +1,46 @@
+08:17:18 - cmdstanpy - INFO - Add C++ toolchain to $PATH: C:\Users\Nate\.cmdstan\RTools40
+[load]  data/stage3_input_N33554432_k6_uniform.parquet
+        1,600,000 rows, 5 cols
+[data]  N=1,600,000  K=32  grainsize=1562
+[fit]   4 chains x (500+500) iter, 4 thr/chain
+[stan]  compiling model.stan ...
+08:17:18 - cmdstanpy - INFO - compiling stan file C:\Collatz\model.stan to exe file C:\Collatz\model.exe
+08:17:27 - cmdstanpy - INFO - compiled model executable: C:\Collatz\model.exe
+[stan]  compile done in 9.3s
+08:17:30 - cmdstanpy - INFO - CmdStan start processing
+08:17:30 - cmdstanpy - INFO - CmdStan start processing
+09:18:48 - cmdstanpy - INFO - CmdStan done processing
+09:18:48 - cmdstanpy - WARNING - Non-fatal error during sampling:
+Exception: Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+	Exception: Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+	Exception: Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+	Exception: Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+	Exception: Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+	Exception: Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+	Exception: Exception: normal_lpdf: Location parameter[1] is -inf, but must be finite! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+	Exception: Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in 'model.stan', line 24, column 4 to column 42) (in 'model.stan', line 70, column 2 to line 71, column 59)
+Consider re-running with show_console=True if the above output is unclear!
+09:18:48 - cmdstanpy - WARNING - Some chains may have failed to converge.
+	Chain 1 had 1 divergent transitions (0.2%)
+	Chain 2 had 1 divergent transitions (0.2%)
+	Use the "diagnose()" method on the CmdStanMCMC object to see further information.
+[fit]   sampling done in 3681.1s
+Checking sampler transitions treedepth.
+Treedepth satisfactory for all transitions.
+
+Checking sampler transitions for divergences.
+2 of 500 (0.40%) transitions ended with a divergence.
+These divergent transitions indicate that HMC is not fully able to explore the posterior distribution.
+Try increasing adapt delta closer to 1.
+If this doesn't remove all divergences, try to reparameterize the model.
+
+Checking E-BFMI - sampler transitions HMC potential energy.
+E-BFMI satisfactory.
+
+Rank-normalized split effective sample size satisfactory for all parameters.
+
+Rank-normalized split R-hat values satisfactory for all parameters.
+
+Processing complete.
+
+[save]  CSVs -> C:\Collatz\fits\k6_uniform_full

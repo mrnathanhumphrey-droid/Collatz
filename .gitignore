@@ -25,3 +25,22 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Large binaries / external data (regeneratable or external)
+*.blend
+*.blend1
+*.parquet
+*.png
+*.svg
+references/*.pdf
+references/*.txt
+references.zip
+outputs/
+visualization/viz_outputs/
+visualization/__pycache__/
+visualization/*.log
+visualization/*.csv
+visualization/*.npz
+visualization/snapshots/
+inverse_tree/__pycache__/
+inverse_tree/*.csv
