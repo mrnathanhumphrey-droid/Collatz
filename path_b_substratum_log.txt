@@ -1,0 +1,42 @@
+============================================================================
+Path B sub-stratum extension: per-j W_j via (residue, sub-stratum) MAP
+============================================================================
+
+--- Diagnostic sanity checks ---
+  Drift E_π[X] = -0.28768207  (target: log(3/4) = -0.28768207)
+  Discrepancy: +0.00e+00
+
+--- Per-j W_j extraction with sub-stratum conditioning ---
+State count: 32 odd residues, boundary residue = 21 (idx 10)
+j_inner truncation: 12 (covers ≥ 0.999756 of mass)
+K_h conversion: 1/log(4/3) = 3.4761 step-units per nat
+
+  j    m_j     L_j     target_state   ⟨overshoot⟩(nats)   W_j_pred (steps)     W_j_emp
+------------------------------------------------------------------------------------------
+    2      5   23.34           r=5, *      0.9938 ± 0.0040      +3.455 ± 0.014       +7.156
+    4     85   20.51  r=21, j_inner=2      1.9464 ± 0.0220      +6.766 ± 0.076       -4.755
+    5    341   19.12  r=21, j_inner=4      2.4910 ± 0.0475      +8.659 ± 0.165       +4.590
+
+--- Per-sub-stratum overshoot breakdown ---
+L = log(2^36) - log(85) = 20.511 nats
+Conditional on end state (r=21, j_inner=k) for k = 0..11
+
+   j_inner  corresp m_j     count   ⟨overshoot⟩(nats)   W_j_pred (steps)
+  ----------------------------------------------------------------------
+         0          m_3     7,785      1.2856 ± 0.0091      +4.469
+         1       (none)     4,950      1.6197 ± 0.0143      +5.630
+         2          m_4     3,154      1.9394 ± 0.0212      +6.742
+         3       (none)     1,853      2.2821 ± 0.0321      +7.933
+         4          m_5     1,085      2.5463 ± 0.0475      +8.851
+         5       (none)       585      2.9434 ± 0.0743     +10.231
+         6          m_6       351      3.2744 ± 0.1022     +11.382
+         7       (none)       183      3.6648 ± 0.1545     +12.739
+         8          m_7        94      3.9620 ± 0.2498     +13.772
+         9       (none)        56      5.1827 ± 0.3193     +18.015
+
+============================================================================
+Verdict
+============================================================================
+(4) FRAMEWORK GAP: per-j W_j off by >11.52
+    Sub-stratum extension at residue level does not capture lattice landing.
+    Per-j variation requires integer-level info beyond residue chain.

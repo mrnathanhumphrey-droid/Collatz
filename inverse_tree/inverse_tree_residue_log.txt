@@ -1,0 +1,114 @@
+[load] tree_d50.parquet -- 379,600 nodes, 20 columns, 0.01s
+[load] depth range: 0..50
+[load] schema: ['n', 'depth', 'parent', 'child_left', 'child_right', 'r_6', 'ell_6', 'a_final_6', 'c_final_6', 'alpha_det_6', 'r_8', 'ell_8', 'a_final_8', 'c_final_8', 'alpha_det_8', 'r_10', 'ell_10', 'a_final_10', 'c_final_10', 'alpha_det_10']
+
+[empirical] deepest layer d=50 has 79,255 nodes
+
+=== Step 1+3: Residue density across depths (testing stationarity) ===
+
+For each (depth d, modulus k), compute chi^2/n_total relative to UNIFORM
+and KL divergence relative to the closed-form transition-matrix eigenvector.
+
+[closed-form] Building transition matrices and leading eigenvectors:
+  k= 5 (mod    32): lambda_max=1.263763 (= exp(0.2341)), build+eig 0.00s
+  k= 6 (mod    64): lambda_max=1.263763 (= exp(0.2341)), build+eig 0.00s
+  k= 8 (mod   256): lambda_max=1.263763 (= exp(0.2341)), build+eig 0.02s
+  k=10 (mod  1024): lambda_max=1.263763 (= exp(0.2341)), build+eig 0.56s
+  k=11 (mod  2048): lambda_max=1.263763 (= exp(0.2341)), build+eig 2.11s
+
+[empirical at depths] chi^2/n vs uniform AND KL vs closed-form prediction:
+  depth  k  n_total  chi2/n_unif   KL_vs_pred
+     25  5      227       3.5178     0.843930
+     25  6      227       5.1294     1.391663
+     25  8      227      10.5309     1.012908
+     25 10      227      22.3102     1.700781
+     25 11      227      33.4586     1.899396
+     30  5      732       3.3434     1.454694
+     30  6      732       4.8219     1.763481
+     30  8      732       9.4765     2.618663
+     30 10      732      18.9784     1.901392
+     30 11      732      26.5195     2.008993
+     35  5     2365       3.3046     2.148292
+     35  6     2365       4.7398     2.183183
+     35  8     2365       9.4786     1.908557
+     35 10     2365      17.9089     2.057424
+     35 11     2365      24.3655     1.927324
+     40  5     7628       3.3045     2.272301
+     40  6     7628       4.8009     2.425124
+     40  8     7628       9.4477     2.042536
+     40 10     7628      17.6005     2.063547
+     40 11     7628      23.8647     2.409028
+     45  5    24561       3.3209     2.480816
+     45  6    24561       4.7922     1.858656
+     45  8    24561       9.4052     2.580088
+     45 10    24561      17.6030     2.993796
+     45 11    24561      24.0468     3.201484
+     50  5    79255       3.3008     2.268950
+     50  6    79255       4.7705     1.821949
+     50  8    79255       9.3668     2.884230
+     50 10    79255      17.5965     3.348927
+     50 11    79255      23.8855     3.470646
+
+=== Step 4: Compare to forward-orbit trajectory measure spikes ===
+
+From agent2_findings.md (3x+1 trajectory measure on iterates m at q=3):
+  m mod 32:
+    Over: 5 (1.232x), 17 (1.082x), 29 (1.081x), 23 (1.052x), 7 (1.051x),
+          15 (1.045x), 27 (1.040x), 11 (0.996x), 9 (0.981x), 3 (0.981x)
+    Under: 21 (0.887x), 19 (0.890x), 25 (0.896x), 13 (0.911x), 1 (0.930x), 31 (0.946x)
+  m mod 2048: 341 (1.237x)
+
+[mod 32 odd residues only]
+  Inverse-tree closed-form predicted ratio (vs uniform-on-odd-residues):
+     r  fwd_orbit   inv_pred       diff
+     1     0.9300     0.4364    -0.4936
+     3     0.9810     1.6545    +0.6735
+     5     1.2320     1.6545    +0.4225
+     7     1.0510     0.1151    -0.9359
+     9     0.9810     0.1151    -0.8659
+    11     0.9960     0.4364    -0.5596
+    13     0.9110     1.6545    +0.7435
+    15     1.0450     0.1151    -0.9299
+    17     1.0820     1.6545    +0.5725
+    19     0.8900     0.4364    -0.4536
+    21     0.8870     6.2727    +5.3857
+    23     1.0520     0.4364    -0.6156
+    25     0.8960     0.4364    -0.4596
+    27     1.0400     0.1151    -0.9249
+    29     1.0810     0.4364    -0.6446
+    31     0.9460     0.0304    -0.9156
+
+[mod 32 odd residues] Inverse-tree EMPIRICAL at d=50 vs forward-orbit ratio:
+     r  fwd_orbit    inv_emp   inv_pred
+     1     0.9300     0.4450     0.4364
+     3     0.9810     1.6536     1.6545
+     5     1.2320     1.6372     1.6545
+     7     1.0510     0.1120     0.1151
+     9     0.9810     0.1033     0.1151
+    11     0.9960     0.4633     0.4364
+    13     0.9110     1.6806     1.6545
+    15     1.0450     0.1110     0.1151
+    17     1.0820     1.6352     1.6545
+    19     0.8900     0.4363     0.4364
+    21     0.8870     6.2398     6.2727
+    23     1.0520     0.4421     0.4364
+    25     0.8960     0.4518     0.4364
+    27     1.0400     0.1139     0.1151
+    29     1.0810     0.4344     0.4364
+    31     0.9460     0.0405     0.0304
+
+[Pearson correlations across 16 odd residues mod 32]
+  inv_predicted vs forward_orbit:  r = -0.1991
+  inv_empirical vs forward_orbit:  r = -0.2036
+  inv_predicted vs inv_empirical:  r = +1.0000
+
+[mod 2048, residue 341 (the 'v=10 spike' from forward trajectory)]
+  Forward-orbit trajectory ratio: 1.237x
+  Inverse-tree closed-form pred:  25.9931x
+  Inverse-tree empirical (d=50):  27.5538x
+  (Note: empirical at d=50 has only 79,255 nodes; mod 2048 sub-cells small)
+
+[wrote] inverse_tree_residue.csv (30 rows)
+[wrote] inverse_tree_mod32_compare.csv (16 rows)
+[wrote] inverse_tree_eigvec_mod32.csv (32 rows)
+[wrote] inverse_tree_residue_log.txt

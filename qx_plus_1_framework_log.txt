@@ -1,0 +1,76 @@
+==============================================================================
+qx+1 bridge equation framework — systematic pass for q in {3, 5, 7, 9}
+==============================================================================
+
+============================================================
+[q=3] loading q_main_q3_N1000000.parquet
+  total odd n: 500,000; converged-to-1: 500,000 (100.0000%)
+
+  === Constant 2 analog: K_h(q) — slope of sigma vs log(n) on converged orbits ===
+  Pooled OLS:  sigma = +4.4456 + 10.3900*log(n)
+  Empirical mean odd_steps=45.99, even_steps=91.61
+  Implied E*[v]_conv = even/odd = 1.9918
+  Implied step drift mu* = E*[v]*log(2) - log(q) = +0.2820 (POSITIVE means descending)
+  Closed-form prediction K_h(q;conv) = (1+E*[v]) / (E*[v]*log(2) - log(q)) = 10.6102
+  vs empirical pooled slope                                                = 10.3900
+  Match: gap = -0.2202 (-2.08%)
+  Per-class slope (k=6, 32 classes ≥50 obs): median=10.3594, std=0.3899, range=[9.697, 11.156]
+  Per-class intercept: median=4.3754, std=12.5980
+
+  === Constant 1 analog: per-class intercept structure ===
+  Slope consistency CV = std/|mean| = 0.0375
+  Intercept range: 48.0031 (variation across classes)
+  --> Slopes are q-universal across classes; class structure lives in intercepts (CONST-1 analog HOLDS)
+
+============================================================
+[q=5] loading q_main_q5_N100000000.parquet
+  total odd n: 50,000,000; converged-to-1: 32,785 (0.0656%)
+
+  === Constant 2 analog: K_h(q) — slope of sigma vs log(n) on converged orbits ===
+  Pooled OLS:  sigma = -52.6628 + 12.9393*log(n)
+  Empirical mean odd_steps=42.59, even_steps=123.30
+  Implied E*[v]_conv = even/odd = 2.8948
+  Implied step drift mu* = E*[v]*log(2) - log(q) = +0.3971 (POSITIVE means descending)
+  Closed-form prediction K_h(q;conv) = (1+E*[v]) / (E*[v]*log(2) - log(q)) = 9.8090
+  vs empirical pooled slope                                                = 12.9393
+  Match: gap = +3.1304 (+31.91%)
+  Per-class slope (k=6, 32 classes ≥50 obs): median=12.8608, std=3.0111, range=[-1.427, 16.189]
+  Per-class intercept: median=-33.6533, std=63.9460
+
+  === Constant 1 analog: per-class intercept structure ===
+  Slope consistency CV = std/|mean| = 0.2447
+  Intercept range: 369.8532 (variation across classes)
+  --> Slopes vary ~24.5% across classes; CONST-1 analog less clean
+
+============================================================
+[q=7] loading q_main_q7_N100000000.parquet
+  total odd n: 50,000,000; converged-to-1: 258 (0.0005%)
+
+  === Constant 2 analog: K_h(q) — slope of sigma vs log(n) on converged orbits ===
+  Pooled OLS:  sigma = -6.0544 + 3.2890*log(n)
+  Empirical mean odd_steps=5.91, even_steps=38.93
+  Implied E*[v]_conv = even/odd = 6.5862
+  Implied step drift mu* = E*[v]*log(2) - log(q) = +2.6193 (POSITIVE means descending)
+  Closed-form prediction K_h(q;conv) = (1+E*[v]) / (E*[v]*log(2) - log(q)) = 2.8963
+  vs empirical pooled slope                                                = 3.2890
+  Match: gap = +0.3928 (+13.56%)
+  Per-class slope (k=6, 1 classes ≥50 obs): median=2.7379, std=0.0000, range=[2.738, 2.738]
+  Per-class intercept: median=-4.0441, std=0.0000
+
+============================================================
+[q=9] loading q_main_q9_N100000000.parquet
+  total odd n: 50,000,000; converged-to-1: 104 (0.0002%)
+  WARNING: too few converged orbits for slope fit; skipping
+
+==============================================================================
+Cross-q summary
+==============================================================================
+
+  q     n_conv   sigma_mean   E*[v]_conv    K_h(q;conv)   pooled_slope        gap
+  3     500000       137.60       1.9918        10.6102        10.3900    -0.2202
+  5      32785       165.90       2.8948         9.8090        12.9393    +3.1304
+  7        258        44.84       6.5862         2.8963         3.2890    +0.3928
+
+[Cramer multiplier check (cross-reference, already shipped)]
+  Universal C ~= 5/2 confirmed for q in {5, 7, 9}, R^2 >= 0.99 (findings.md 2026-05-01 late)
+  This is the q-universal piece of the convergence-rate slope.
