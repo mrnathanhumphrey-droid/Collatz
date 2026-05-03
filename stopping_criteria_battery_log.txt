@@ -1,0 +1,55 @@
+==============================================================================
+Stopping criteria battery — Collatz q=3, N=2^32, 200K orbits
+==============================================================================
+
+[walk] 200,000 orbits, max_value=2^62 = 4.61e+18
+[walk] done in 2.5s
+[walk] 200,000 / 200,000 orbits reached 1
+
+=== Step 1: Per-criterion firing rates ===
+  criterion                    fired  fire_rate       mean         sd       p50       p95
+  sigma_to_1                  200000   100.000%     224.53      74.31       218       357
+  sigma_prime                 200000   100.000%      17.39      16.60        13        51
+  sigma_pow2_L10                7932     3.966%     172.30      62.23       162       288
+  sigma_logdrop_1             200000   100.000%      20.19      21.21        12        61
+  sigma_logdrop_2             200000   100.000%      30.27      26.82        21        84
+  sigma_logdrop_4             200000   100.000%      51.12      35.65        42       120
+  sigma_logdrop_8             200000   100.000%      92.63      48.27        82       185
+  sigma_res_0mod3              66780    33.390%       0.00       0.00         0         0
+  sigma_res_1mod8             200000   100.000%       8.99      10.69         6        30
+  sigma_res_5mod8             200000   100.000%       6.98       8.10         4        23
+  sigma_res_0mod5             199998    99.999%      11.86      15.50         6        43
+
+=== Step 4: Cross-criterion correlations (on orbits where ALL criteria fired) ===
+  2,681 orbits where every criterion fired
+
+  Pearson correlation matrix:
+                            sigma_to_1 sigma_prime sigma_pow2_ sigma_logdr sigma_logdr sigma_logdr sigma_logdr sigma_res_0 sigma_res_1 sigma_res_5 sigma_res_0
+  sigma_to_1                   +1.0000     -0.0224     +0.9999     +0.3443     +0.4118     +0.5512     +0.7608        +nan     -0.0801     +0.2407     -0.0287
+  sigma_prime                  -0.0224     +1.0000     -0.0225     -0.0507     -0.0328     -0.0249     -0.0218        +nan     -0.0064     -0.0311     -0.0753
+  sigma_pow2_L10               +0.9999     -0.0225     +1.0000     +0.3438     +0.4114     +0.5507     +0.7599        +nan     -0.0801     +0.2404     -0.0290
+  sigma_logdrop_1              +0.3443     -0.0507     +0.3438     +1.0000     +0.8208     +0.6076     +0.4582        +nan     -0.1012     +0.6330     +0.0320
+  sigma_logdrop_2              +0.4118     -0.0328     +0.4114     +0.8208     +1.0000     +0.7384     +0.5437        +nan     -0.1176     +0.5349     +0.0030
+  sigma_logdrop_4              +0.5512     -0.0249     +0.5507     +0.6076     +0.7384     +1.0000     +0.7336        +nan     -0.1322     +0.4149     +0.0015
+  sigma_logdrop_8              +0.7608     -0.0218     +0.7599     +0.4582     +0.5437     +0.7336     +1.0000        +nan     -0.0973     +0.3169     -0.0208
+  sigma_res_0mod3                 +nan        +nan        +nan        +nan        +nan        +nan        +nan        +nan        +nan        +nan        +nan
+  sigma_res_1mod8              -0.0801     -0.0064     -0.0801     -0.1012     -0.1176     -0.1322     -0.0973        +nan     +1.0000     -0.2925     +0.1104
+  sigma_res_5mod8              +0.2407     -0.0311     +0.2404     +0.6330     +0.5349     +0.4149     +0.3169        +nan     -0.2925     +1.0000     -0.0071
+  sigma_res_0mod5              -0.0287     -0.0753     -0.0290     +0.0320     +0.0030     +0.0015     -0.0208        +nan     +0.1104     -0.0071     +1.0000
+
+=== Step 3: Per-σ_to_1-band stratification ===
+  Bands by σ_to_1 quartile, plus q5 = top 5%
+  Band thresholds (σ_to_1): q25=169, q50=218, q75=270, q95=357
+
+  ratio = mean(σ_criterion / σ_to_1) per band; lower = criterion fires earlier
+  criterion                  q1 (low)        q2        q3   q4 (hi)  q5 (95+)
+  sigma_prime                  0.1331    0.0898    0.0714    0.0537    0.0427
+  sigma_pow2_L10               0.9208    0.9472    0.9581    0.9677    0.9746
+  sigma_logdrop_1              0.1015    0.0922    0.0849    0.0868    0.0939
+  sigma_logdrop_2              0.1485    0.1369    0.1272    0.1324    0.1447
+  sigma_logdrop_4              0.2452    0.2295    0.2152    0.2266    0.2503
+  sigma_logdrop_8              0.4399    0.4154    0.3898    0.4126    0.4562
+  sigma_res_0mod3              0.0000    0.0000    0.0000    0.0000    0.0000
+  sigma_res_1mod8              0.0756    0.0467    0.0358    0.0262    0.0201
+  sigma_res_5mod8              0.0375    0.0338    0.0300    0.0276    0.0262
+  sigma_res_0mod5              0.0902    0.0604    0.0485    0.0375    0.0303

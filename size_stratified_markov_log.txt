@@ -1,0 +1,136 @@
+==============================================================================
+Size-stratified Markov framework (Result 54 candidate)
+State = (r mod 32, b) with b = floor(log_2 m), B=64
+==============================================================================
+
+Step 1: walking 1,500,000 orbits at N=2^32, B=64
+        state space size = 16*64 = 1024
+        n_chunks = 12 (parallel accumulators)
+  seed 1/3: ok=500,000, transitions=37,476,846, elapsed=1.8s
+  seed 2/3: ok=500,000, transitions=37,484,947, elapsed=1.9s
+  seed 3/3: ok=500,000, transitions=37,521,333, elapsed=2.0s
+
+  walk: 2.0s, n_orbits ok = 1,500,000, total transitions = 112,483,126
+
+Step 2: row-normalize K (sub-stochastic, m=1 absorbs)
+  states with outgoing visits: 700 / 1024
+  states with any flow:        701 / 1024
+  row-sum stats over states with visits>0:
+    min=1.000000, max=1.000000, mean=1.000000
+  visit-weighted mean row-sum (survival rate per step) = 1.000000
+  (Result 50 reported empirical asymptotic survival ~ 0.94)
+
+Step 3: leading right eigenpair of K (Perron-Frobenius)
+  keeping 629 states with visits or inflows >= 50
+  computing leading right eigenpair of K^T (= left of K = QSD)
+  Top eigenvalues: 0.956585+0.000000j, 0.946167+0.000000j, 0.926633+0.000000j
+  lambda_PF = 0.956585
+  spectral gap = 0.0109
+
+Step 4: marginalize v_PF over log-size bins to residue
+
+Step 5: D_predicted vs D_avg
+
+    r     pi_32     D_avg    D_pred      diff
+    1   0.06348    1.6091    1.3761   -0.2330
+    3   0.06241    1.2364    0.9151   -0.3213
+    5   0.06299    1.8639    1.5588   -0.3051
+    7   0.06241    0.7375    1.1063   +0.3688
+    9   0.06225    0.6958    0.9581   +0.2623
+   11   0.06278    0.6575    0.9240   +0.2664
+   13   0.06250    0.5573    0.6767   +0.1194
+   15   0.06229    1.0578    1.0910   +0.0332
+   17   0.06324    1.1320    1.0816   -0.0503
+   19   0.06241    0.6275    0.6815   +0.0540
+   21   0.06250    0.9307    0.6333   -0.2974
+   23   0.06241    1.3981    1.1085   -0.2895
+   25   0.06176    0.5440    0.7000   +0.1560
+   27   0.06180    0.8017    1.1451   +0.3434
+   29   0.06299    1.3538    1.1600   -0.1938
+   31   0.06180    0.7666    0.8682   +0.1015
+
+  Total |D_pred - D_avg| = 3.3958
+  MAD per residue = 0.2122
+  Pearson rho = 0.8033
+  Spearman rho = 0.7206
+
+==============================================================================
+Step 6: joint structure of v_PF(r, b)
+==============================================================================
+
+  Marginal P(b) (log-size distribution under QSD):
+    b      P(b)  hist
+    0   0.04341  ########
+    2   0.04565  #########
+    3   0.03552  #######
+    4   0.05492  ##########
+    5   0.07551  ###############
+    6   0.08200  ################
+    7   0.12084  ########################
+    8   0.19188  ######################################
+    9   0.10353  ####################
+   10   0.08756  #################
+   11   0.07584  ###############
+   12   0.02318  ####
+   13   0.01699  ###
+   14   0.01242  ##
+   15   0.00880  #
+   16   0.00616  #
+   17   0.00431  
+   18   0.00318  
+   19   0.00228  
+   20   0.00167  
+   21   0.00121  
+   22   0.00088  
+   23   0.00064  
+   24   0.00046  
+   25   0.00034  
+   26   0.00024  
+   27   0.00017  
+   28   0.00012  
+
+  Test factorization v_PF(r,b) ?= f(r) * g(b):
+  RMS residual relative to ||v_PF|| = 0.7870
+  (NOT separable at 5% threshold)
+
+  P(b | r=21) and P(b | r=5) — peak log-size bins:
+  r=5: top bins = b=2(0.404), b=8(0.184), b=11(0.168), b=6(0.059), b=5(0.054)
+  r=21: top bins = b=5(0.474), b=9(0.118), b=11(0.073), b=12(0.064), b=10(0.064)
+
+==============================================================================
+Step 7: sigma-band <-> log-size bin correspondence
+==============================================================================
+
+  Orbit-start log_2(n) distribution by band:
+    band  b=25  b=27  b=29  b=31
+    0-25   0.007   0.030   0.124   0.508
+   25-50   0.008   0.032   0.127   0.496
+   50-75   0.008   0.032   0.125   0.490
+   75-95   0.008   0.032   0.126   0.504
+  95-100   0.006   0.027   0.120   0.519
+
+  (Note: orbit visits MANY size bins during evolution; start-size
+   binning here is only diagnostic. v_PF lives on visit-weighted bins.)
+
+==============================================================================
+Saving outputs
+==============================================================================
+  [wrote] size_stratified_kernel.npz, size_stratified_keep_idx.npy
+  [wrote] size_stratified_eigvec.csv
+  [wrote] size_stratified_residue_marginal.csv
+
+==============================================================================
+VERDICT
+==============================================================================
+  Total |D_pred - D_avg| = 3.3958
+  Pearson rho = 0.8033
+  Spearman rho = 0.7206
+  lambda_PF = 0.9566 (vs empirical 0.94 per-step survival)
+
+  Reference points:
+    Cylinder QSD (R51, all 25 cells):   total dev 5.39 - 7.71
+    Inverse-tree (R52, all 4 schemes):  total dev 13.2 - 27
+    Renewal kernel exit (R53):          total dev 5.04, rho 0.58
+    Trivial null (D_full this dataset): total dev 4.72
+
+  Outcome: (alpha) — size-stratified Markov reproduces D_avg.

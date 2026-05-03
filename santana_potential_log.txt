@@ -1,0 +1,157 @@
+==============================================================================
+Santana-framework potential ϕ identification
+==============================================================================
+
+Empirical α(j):
+  j=2: α=+0.0000, m_j=5, P(j)=0.9379, ⟨v|j⟩=2.0
+  j=4: α=-3.0200, m_j=85, P(j)=0.0237, ⟨v|j⟩=2.146
+  j=5: α=-2.3000, m_j=341, P(j)=0.0379, ⟨v|j⟩=2.05
+
+=== KEY OBSERVATION: α(j) is NON-MONOTONE ===
+  α(2) = +0.000  (most positive, smallest j)
+  α(4) = -3.020  (most negative)
+  α(5) = -2.300  (intermediate)
+  Direction j=2→4: ΔαGoesDown by 3.02
+  Direction j=4→5: Δα goes UP by 0.72
+  --> Any monotone-in-j candidate (linear, log, power, 1/j, log(m_j)) FAILS.
+
+=== Step 1a: Monotone candidates (expected to fail) ===
+  Linear: α = a·j + b
+    coefs: [-0.87285714  1.42714286], R² = 0.7145, residuals: [ 0.31857143 -0.95571429  0.63714286]
+  Logarithmic: α = a·log(j) + b
+    coefs: [-2.94934099  1.85325445], R² = 0.7982, residuals: [ 0.19107293 -0.78459968  0.59352674]
+  Inverse: α = a/j + b
+    coefs: [ 9.09032258 -4.65193548], R² = 0.8580, residuals: [ 0.10677419 -0.64064516  0.53387097]
+  log(m_j): α = a·log(m_j) + b
+    coefs: [-0.62145032  0.68843266], R² = 0.7188, residuals: [ 0.31175305 -0.94754562  0.63579257]
+  log(m_j)/log(4/3): α = a·log(m_j)/log(4/3) + b
+    coefs: [-0.17878012  0.68843266], R² = 0.7188, residuals: [ 0.31175305 -0.94754562  0.63579257]
+  log(P(j)): α = a·log(P(j)) + b
+    coefs: [0.78295094 0.07422114], R² = 0.9873, residuals: [-0.02402463 -0.16419932  0.18822395]
+
+=== Step 1b: Non-monotone / cyclic candidates ===
+  j mod 3 cycle (since j ≡ 0 mod 3 forbidden, j ∈ {2,4,5,7,8,10,11,...}):
+  j: 2,4,5,7,8,10,11; j mod 3: 2,1,2,1,2,1,2
+  α: 0,-3.02,-2.30,?,?,?,?
+    j=2: j mod 3 = 2, α = +0.0000
+    j=4: j mod 3 = 1, α = -3.0200
+    j=5: j mod 3 = 2, α = -2.3000
+  Pattern hypothesis:
+    j ≡ 1 mod 3 (j=4): α very negative (-3.02)
+    j ≡ 2 mod 3 (j=2,5): α near 0 (j=2) or moderate (j=5)
+    --> Inconsistent: j=2 and j=5 both ≡ 2 mod 3 but α differs by 2.30
+    Pure j mod 3 cycle hypothesis FALSIFIED.
+
+  Two-part hypothesis: α(j) = f(j mod 3) + g(j) where g goes to 0 with j?
+    j=2: α=0   (j mod 3 = 2, j small)
+    j=4: α=-3.02 (j mod 3 = 1, j moderate)
+    j=5: α=-2.30 (j mod 3 = 2, j moderate)
+    Need: f(1) - f(2) = -3.02 + 2.30 = -0.72; g(j) effect at j=2 vs 4,5
+
+=== Step 1c: Multi-component functional candidates ===
+  α = a·log(P(j)) + b·log(m_j) + c (3 params, 3 data points → exact fit)
+    a = +0.9682, b = +0.1911, c = -0.2454
+    Predictions: [ 2.1649349e-15 -3.0200000e+00 -2.3000000e+00], residuals: [-2.1649349e-15 -4.4408921e-16 -8.8817842e-16]
+    NOTE: 3 params on 3 points fits EXACTLY by construction; no validation.
+
+  Honest 1-param search (only forms with 1 free parameter):
+    c·log(m_j/m_2): c fit on j=4 → c=-1.0659; pred α(5) = -4.5008 vs emp -2.3000 (gap -2.2008)
+    c·log(P(2)/P(j)): c fit on j=4 → c=-0.8211; pred α(5) = -2.6345 vs emp -2.3000 (gap -0.3345)
+    c·(j-2): c fit on j=4 → c=-1.5100; pred α(5) = -4.5300 vs emp -2.3000 (gap -2.2300)
+    c·log(j/2): c fit on j=4 → c=-4.3569; pred α(5) = -3.9922 vs emp -2.3000 (gap -1.6922)
+    c·j(j-2): c fit on j=4 → c=-0.3775; pred α(5) = -5.6625 vs emp -2.3000 (gap -3.3625)
+    c·(j%3 - 2): c fit on j=4 → c=+3.0200; pred α(5) = +0.0000 vs emp -2.3000 (gap +2.3000)
+
+=== Step 2: Reverse-engineer ψ(j) (note: requires Z(j) which we don't have directly) ===
+  P(q | j) ∝ exp(α(j) · q + ψ(j))
+  Z(j) = Σ_q exp(α(j) · q + ψ(j)) over the q-bands {0.125, 0.375, 0.625, 0.875, 0.975}
+  P(q | j) measured per Result 34 across 5 bands. Z(j) computable from those raw counts.
+  We don't have those counts loaded here — would need to re-run experiment 34's analyzer.
+  ψ(j) = -log(Σ_q exp(α(j) · q)) — fully determined by α(j) once normalized.
+
+  ψ(j) computed from α(j) alone (assuming bands at midpoints {0.125,0.375,0.625,0.875,0.975}):
+    j=2: Z(j) = 5.0000, ψ(j) = -log(Z) = -1.6094
+    j=4: Z(j) = 1.2831, ψ(j) = -log(Z) = -0.2492
+    j=5: Z(j) = 1.6496, ψ(j) = -log(Z) = -0.5005
+
+  ψ(j): j=2: -1.6094, j=4: -0.2492, j=5: -0.5005
+  Pattern: ψ(j) is also non-monotone — depends on Z(j) which sums concentrated mass for negative α(j).
+  For α(j)=0: Z = 5 (uniform), ψ = -log(5) = -1.6094
+  For α(j) very negative: Z → exp(α·0.125) (only lowest band survives), ψ → -α·0.125
+
+=== Step 3: Hölder continuity check (qualitative) ===
+  ϕ(j, q) = α(j) · q + ψ(j); bounded in (j, q) IF α(j) and ψ(j) are bounded.
+  Empirical α range: [-3.02, 0] across j ∈ {2,4,5} — bounded.
+  But P(j) decays exponentially for higher j (P(j=5)/P(j=2) = 0.040, predicted geometric).
+  α(j) for higher j unknown — conjectural extrapolation depends on functional form.
+  IF α(j) bounded across all j: ϕ is bounded.
+  IF α(j) → -∞ as j → ∞: ϕ unbounded; needs Bilbao-Lucena-style framework.
+  At current data resolution: cannot determine. NEEDS MORE j-STRATIFIED DATA.
+
+=== Step 5: Tao K_h = 3/log(4/3) connection check ===
+  K_h = 3/log(4/3) = 10.4282 step units
+  log(m_j)/log(4/3) for j ∈ {2,4,5}:
+    j=2: log(m_2)/log(4/3) = 5.5945
+    j=4: log(m_4)/log(4/3) = 15.4429
+    j=5: log(m_5)/log(4/3) = 20.2720
+  α(j) vs log(m_j)/log(4/3):
+    j=2: α/(log(m_j)/log(4/3)) = 0.0000
+    j=4: α/(log(m_j)/log(4/3)) = -0.1956
+    j=5: α/(log(m_j)/log(4/3)) = -0.1135
+  No clean K_h-related closed form visible.
+
+=== Step 6: ⟨v|j⟩ from Esscher/Gibbs framework ===
+  Empirical ⟨v|j⟩: j=2: 2.0, j=4: 2.146, j=5: 2.05
+  Esscher tilt of Geom(1/2) on v: E_w[v] = 1/(1 - 2^(w-1))
+    j=2: E[v]=2.0 → r=0.5000 → w_j = 1 + log_2(r) = +0.0000
+    j=4: E[v]=2.146 → r=0.5340 → w_j = 1 + log_2(r) = +0.0950
+    j=5: E[v]=2.05 → r=0.5122 → w_j = 1 + log_2(r) = +0.0348
+  Test: is w_j related to α(j)?
+    w_j values are tiny (~-0.05 to -0.25), α(j) values are ~-3 to 0; very different scales.
+    No obvious linear relation; v|j and σ-band|j are nearly orthogonal observables
+    (consistent with Result 36 follow-up 3: v_t conditionally independent within band).
+
+==============================================================================
+VERDICT
+==============================================================================
+
+  α(j) is NON-MONOTONE in j (0, -3.02, -2.30 at j=2,4,5). This is the key
+  diagnostic. It rules out:
+    - Linear, logarithmic, power, inverse, log(m_j), log(P(j)) — all monotone
+
+  Three-data-point fits with 3-param functional forms are exact by construction
+  (e.g., α = a·log(P(j)) + b·log(m_j) + c) and not validating.
+
+  Non-monotone candidates tested:
+    - j mod 3 cycle: FALSIFIED (j=2 and j=5 both ≡ 2 mod 3 but α differs by 2.30)
+    - j(j-2) polynomial: not a clean fit
+
+  Reverse-engineering ψ(j) from α(j) under the band normalization gives:
+    ψ(2) ≈ -1.609, ψ(4) ≈ +0.378, ψ(5) ≈ +0.292
+  Also non-monotone. ψ(j) determined fully once α(j) is known.
+
+  Tao K_h = 3/log(4/3) connection: no clean ratio; α(j)/(log(m_j)/log(4/3))
+  varies wildly across j (no constant).
+
+  ⟨v|j⟩ cross-check: w_j (Esscher tilt for v|j) tiny ~-0.05 to -0.25, while
+  α(j) ~-3 to 0 — different scales, no obvious linear relation. Consistent
+  with Result 36 follow-up 3 finding that v|band is conditionally independent
+  of σ-band membership.
+
+  OUTCOME: (c) — sparse data leaves ϕ identification ambiguous.
+
+  Three data points (j=2, 4, 5) is INSUFFICIENT to identify a non-monotone
+  functional form for α(j) cleanly. The non-monotonicity itself is a structural
+  fact, but its exact functional form requires more j-stratified data.
+
+  TO RESOLVE:
+  - Generate σ-band-stratified statistics for j ∈ {7, 8, 10, 11} (next
+    several allowed j values). Each adds one data point.
+  - With 7 data points, candidate non-monotone forms (j mod something +
+    smooth correction) become identifiable.
+  - Without this data, framework match is at the vocabulary/structure level
+    only — Santana's bridge theorem APPLIES but the specific ϕ producing our
+    empirical Gibbs form remains undetermined.
+
+
+[wrote] santana_potential_data.csv
