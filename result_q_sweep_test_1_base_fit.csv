@@ -1,0 +1,6 @@
+q,n_eps_points,b_q_fit,log_b_q,fit_method
+3,5,3.135964,1.142937,"OLS over n in [1, 2, 3, 4, 5]"
+5,3,0.531771,-0.631541,"OLS over n in [1, 2, 3]"
+7,3,0.396793,-0.924340,"OLS over n in [1, 2, 3]"
+11,2,,,no S_inf
+13,2,,,no S_inf

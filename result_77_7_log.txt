@@ -4,8 +4,10 @@ R77.7 — Extend exact eps_n to k=7; refresh Pade analysis (m+n <= 5)
 
 Stage 1: rebuild exact eps_1..eps_7 (with cache)
 ------------------------------------------------------------------------------
-  k =  1 (    2 states):  build 0.0s   solve 0.0s   eps_1 ~ +2.0000000000e-01
-  k =  2 (    6 states):  build 0.0s   solve 0.0s   eps_2 ~ +9.5238095238e-03
-  k =  3 (   18 states):  build 0.0s   solve 0.0s   eps_3 ~ -5.0919863259e-03
-  k =  4 (   54 states):  build 0.0s   solve 0.1s   eps_4 ~ -2.4522582483e-03
-  k =  5 (  162 states):  build 0.0s   solve 5.3s   eps_5 ~ -1.1517469151e-03
+  [partial cache] have eps_[1, 2, 3, 4, 5, 6] from C:\Collatz\experiments_output\result_77_7_eps_exact_through_k7.json
+    eps_1 ~ +2.0000000000e-01  (cached)
+    eps_2 ~ +9.5238095238e-03  (cached)
+    eps_3 ~ -5.0919863259e-03  (cached)
+    eps_4 ~ -2.4522582483e-03  (cached)
+    eps_5 ~ -1.1517469151e-03  (cached)
+    eps_6 ~ -4.9790566522e-04  (cached)
