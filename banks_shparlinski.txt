@@ -1,0 +1,1206 @@
+                                         BOUNDS ON SHORT CHARACTER SUMS AND L-FUNCTIONS
+                                                  FOR CHARACTERS WITH A SMOOTH MODULUS
+
+                                            WILLIAM D. BANKS AND IGOR E. SHPARLINSKI
+
+                                         A  . We combine a classical idea of Postnikov (1956) with the method
+
+arXiv:1605.07553v2 [math.NT] 2 Sep 2016  of Korobov (1974) for estimating double Weyl sums, deriving new bounds on
+                                         short character sums when the modulus q has a small core p|q p. Using this
+                                         estimate, we improve certain bounds of Gallagher (1972) and Iwaniec (1974)
+
+                                         for the corresponding L-functions. In turn, this allows us to improve the error
+
+                                         term in the asymptotic formula for primes in short arithmetic progressions
+
+                                         modulo a power of a fixed prime. As yet another application of our bounds,
+
+                                         we substantially extend the region free of Siegel zeros.
+
+                                         MSC Numbers: 11L40; 11L26, 11M06, 11M20.
+
+                                         Keywords: Character sums, exponential sums, short interval,
+                                         smooth numbers, Dirichlet L-function.
+
+                                            1. I
+
+                                         1.1. Background. The core (or kernel) of a positive integer q is the product q7
+                                         over the prime divisors p of q, that is,
+
+                                                                                            
+                                                                                      q7 " p.
+
+                                                                                                                       p|q
+
+                                         Given a modulus q with a small core q7, a nonprincipal character  modulo q,
+                                         and integers M and N  1, we study the character sum SpM, Nq defined by
+
+                                            SpM, N q "                                                      Mÿ`N    pnq.
+
+                                                                                                            n"M `1
+
+                                         In the case of a prime power modulus q " p, where q7 " p is prime and  is a
+                                         large integer, it has been known since the work of Postnikov [11, 12] that these
+
+                                         sums satisfy bounds that are superior to those which can be established for
+
+                                         arbitrary moduli (in full generality, the Burgess bound still gives the strongest
+
+                                         known results; see, e.g., Iwaniec and Kowalski [8, Theorem 12.6]). Further
+
+                                         advances and modifications have been achieved by Gallagher [4] along with
+
+                                         applications to L-functions and to the distribution of primes in progressions
+                                         modulo p. Iwaniec [7] has extended those results to moduli q with a small
+
+                                         core q7. Both Gallagher [4] and Iwaniec [7] also give estimates for Dirichlet
+                                         L-functions Lps, q (where s "  ` it P C with  " s and t " s) when
+
+                                         Date: September 10, 2018.
+                                                                                                         1
+2                    W. D. BANKS AND I. E. SHPARLINSKI
+
+ is close to one and  is a primitive character modulo q; their estimates are
+uniform in the parameters q and t, where q " p (in [4]) or q has a small core
+(in [7]). Further results in this direction have been obtained by Chang [2].
+
+1.2. Outline of results. Here we combine the method of Postnikov [11, 12]
+with a different approach to estimating exponential sums with polynomials
+which is due to Korobov [9]. This allows us to improve known bounds on
+character sums and Dirichlet polynomials, which in turn leads to new bounds
+on Dirichlet L-functions and their zero-free regions. In particular, we improve
+some of the main results of Gallagher [4] and Iwaniec [7] and substantially ex-
+tend the region free of Siegel zeros. See Sections 2 and 3 below for a precise
+description of our results and techniques.
+
+   Furthermore, as an application of our results on Dirichlet L-functions, in
+Section 3.3 we give a new asymptotic formula for the number of primes in
+arithmetic progressions relative to a large prime power modulus, including
+the case in which primes are taken from a short interval. We do not improve
+the Linnik exponent on the least prime in an arithmetic progression of this
+type (see [2, 7] for the latest results in this direction) since we are unable to
+exploit the specific form of the bound (3.2) below to strengthen existing zero
+density estimates. Nevertheless, it is likely that Theorem 3.2 will find many
+other interesting applications.
+
+                     2. B
+
+2.1. New bounds on short character sums. For a given prime p, let vp be the
+standard p-adic valuation; in other words, if n  0 and vppnq " , then  is the
+largest integer for which p | n. In this paper, we show that there are absolute,
+effectively computable constants 0, 0  0 with the following property. For
+any modulus q satisfying
+
+             mintvppqqu  0.7    with  " maxtvppqqu  0,              (2.1)
+              p|q                                       p|q
+
+the bound
+
+             SpM, N q  AN 1´0{2          pM, N P Z, N  q70q         (2.2)
+
+holds, where  is determined via the relation N " q, and A is an absolute and
+
+effective constant.
+
+   In earlier versions of this result, the bounds have been of the somewhat
+
+weaker form
+
+             SpM,    Nq    exp  `     `  log  q2  N 1´0{p2  log  q  (2.3)
+                                 ap1
+
+with an absolute constant a (see, e.g., [8, Theorem 12.16]). One advantage
+of (2.2) over (2.3) is the absence of log  in the denominator of the "savings"
+term in the exponent of N. A more crucial advantage, however, is that our
+            CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS             3
+
+bound (2.2) has an absolute constant A instead of the superexponential function
+
+of  that appears in (2.3); this ultimately accounts for our improvement of the
+
+exponent 3{4 in (2.5) down to 2{3 in (2.4) below.
+
+We note that the recent work of Chang [2] extends the class of moduli q to
+
+which the method of Postnikov [11, 12] applies, but provides weaker bounds
+
+than ours.
+
+Milic´evic´ [10] also uses the method of Postnikov [11,12]. However, the main
+
+goal of [10] is to estimate L-functions Lps, q in the different extreme case in
+
+which s " 1{2, as opposed to the case s " 1 (or more generally,  close to one)
+
+which is the case considered here. It turns out that for applications to Lp1{2, q
+
+the strength of the bound of the character sums is more important than its
+
+range. Thus, Milic´evic´ [10] works in a different regime of long character sums,
+
+whereas we are mainly interested in short sums that are decisive for estimating
+
+Lps, q when  is close to one.
+
+To give a brief comparison of the strengths of our bound (2.2), which stems
+
+from our approach via double sums, and of (2.3), which is based on standard
+
+Weyl sums, we note that (2.2) is nontrivial for
+
+                             N      exp  `      qq2{3`                     (2.4)
+                                          plog
+
+whereas (2.3) requires that
+
+                             N      exp  `      q  q3{4`    .              (2.5)
+                                          plog
+
+   Our approach to (2.2) relies on an idea of Korobov [9] coupled with the use
+of Vinogradov's mean value theorem in the explicit form given by Ford [3].
+Specifically, we employ a precise bound on the quantity Nk,dpP q defined as the
+number of solutions to the system of equations
+
+            y1r ` ¨ ¨ ¨ ykr " z1r ` ¨ ¨ ¨ ` zkr p1  r  d, 1  yr, zr  P q.  (2.6)
+
+It is worth remarking that later improvements of Vinogradov's mean value
+theorem due to Wooley [15­17], and more recently, to Bourgain, Demeter and
+Guth [1] (the latter providing a bound that is essentially optimal with respect
+to P ), are not suitable for our purposes as they contain implicit constants that
+depend on k and d, whereas our methods require that k and d be permitted to
+grow with P .
+
+   Bearing in mind potential applications to L-functions (some of which are
+given below) we establish the following generalization of the bound (2.2). For
+a given polynomial Gpxq with real coefficients, let
+
+            SpM, N ; Gq "                Mÿ`N      pnqepGpnqq,
+
+                                         n"M `1
+
+where eptq " e2it for all t P R.
+4         W. D. BANKS AND I. E. SHPARLINSKI
+
+   For given functions U and V , the notations U ! V , V " U and U " OpV q are
+all equivalent to the statement that the inequality |U|  c|V | holds with some
+constant c  0. Throughout the paper, we indicate explicitly the parameters
+on which the implied constants may depend.
+
+T         2.1. For any real number C  0 there are effectively computable constants
+
+0, 0  0 that depend only on C and have the following property. For any modulus q
+
+satisfying (2.1) and any primitive character  modulo q, the bound
+
+                     SpM, N ; Gq ! N 1´0{2                               (2.7)
+
+holds uniformly for all M, N P Z and G P Rrxs subject to the conditions
+
+          q  N  q7 0     and     deg G  C,                               (2.8)
+
+where  " plog qq{ log N and implied constant in (2.7) is effective and depends only
+on C.
+
+   As an application of Theorem 2.1, we also study Dirichlet polynomials of
+
+the form                 Mÿ`N
+
+          TpM, N ; tq "          pnqnit        pt P Rq.
+
+                         n"M `1
+
+Approximating TpM, N ; tq by sums SpM, N ; Gq with appropriately chosen
+
+polynomials G, we derive the following bound.
+
+T         2.2. For any real number C  0 there are effectively computable constants
+
+0, 0  0 that depend only on C and have the following property. For any modulus q
+
+satisfying (2.1) and any primitive character  modulo q, the bound
+
+                     TpM, N ; tq ! N 1´0{2                               (2.9)
+
+holds uniformly for all M, N P Z and t P R subject to the conditions
+
+          2N  M  N,  q  N  q7 0                and  |t|  qC,             (2.10)
+
+where  " plog qq{ log N and implied constant in (2.9) is effective and depends only
+on C.
+
+   Theorem 2.2 improves [4, Lemma 5] in the special case that |t| is bounded
+by a fixed power of the modulus of the character . For larger values of |t|,
+our approach incorporating ideas of Korobov (Lemma 4.2) breaks down; in
+this case, the method of Gallagher (which relies only on general estimates of
+Vinogradov [13, 14]) yields the best known result.
+
+                                         3. A
+
+3.1. Bounds on L-functions. As in [4,7], we can apply our bound on the sums
+TpM, N; tq to estimate the size of L-functions inside the critical strip.
+   CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS                               5
+
+T  3.1.  Fix  C    0  and    P  p0,  1  q.  There  is  an  effectively  computable  constant
+                                     2
+
+0  0 that depends only on C and has the following property. Let q be a modulus
+
+satisfying (2.1) and  a primitive character modulo q. If the inequalities   1 ´ 
+
+and |t|  qC hold, then for s "  ` it we have
+
+   |Lps,  q|     ´1       ``             log q7, 3{2, 2{3plog q1{3(,
+                      exp O max
+
+where  " log qp|t| ` 3q, and the implied constant depends only on C.
+
+   To illustrate the strength of the bound, we note that with the specific choice
+
+                                "          1
+                                     1{2plog q3{4 ,
+
+as considered by Iwaniec [7], our Theorem 3.1 yields the bound
+                          |Lps, q|  qo7p1q exp`O`1{4plog q´9{8
+
+for   1 ´  provided that |t| is polynomially bounded in terms of q, where
+
+op1q is a function that tends to zero as q Ñ 8. In particular, this improves the
+
+bound of [7, Theorem 1], i.e.,
+                                 |Lps, q|  qo7p1q exp`1001{4,
+
+under the same condition on t (however, the Iwaniec bound also holds for all
+larger values of t). It is important to note that for all known applications to
+the distribution of primes, only values of s "  ` it with t growing as a small
+power of q (typically, |t|  q) play an important ro^le; see Section 3.3 where we
+give one application of this type.
+
+   Taking  somewhat smaller, namely
+
+                                   "    plog q2{3
+                                           2{3
+
+(in other words, taking values of s that lie even closer to the edge of the critical
+
+strip), Theorem 3.1 yields the bound
+
+                      |Lps, q|  qo7p1qplog qqOp1q
+
+for   1 ´  provided that |t| is polynomially bounded in terms of q.
+   Choosing  even smaller, namely
+
+                                "          1
+                                     2{3plog q1{3 ,
+
+we obtain the following attractive bound
+
+                   Lps, q ! qo7p1qplog qq2{3plog log qq1{3                          (3.1)
+
+for   1 ´  provided that |t| is polynomially bounded in terms of q. In
+particular, the bound (3.1) applies to Lp1, q and is therefore of special interest
+6  W. D. BANKS AND I. E. SHPARLINSKI
+
+as it presently unknown whether the estimate
+
+        Lp1, q " oplog qq
+
+holds for general moduli q (although the bound Lp1, q ! log log q is implied
+by the GRH); for the strongest unconditional upper bounds on |Lp1, q|, see
+Granville and Soundararajan [5].
+
+   We conclude this subsection with the remark that, in our setting, one can
+define  more simply as  " log q. In Theorem 3.1 and in the above examples,
+we have used the definition  " log qp|t|`3q solely for the purpose of comparing
+our results to those of [7, Theorem 1].
+
+3.2. The zero-free region. We now apply our new bounds on L-functions to
+extend the zero-free region on low-lying zeros. Note that we formulate the
+results of this section only for primitive characters  modulo q satisfying (2.1);
+for other characters, our results can be formulated in terms of the conductor
+of .
+
+T  3.2. For every C  0, there is an effectively computable constant 0  0 that
+
+depends only on C and has the following property. Let q be a modulus satisfying (2.1).
+
+There is a constant A  0, which depends only on C and q7, such that if
+
+     "              A   log                   qq1{3 ,                   (3.2)
+        plog qq2{3plog
+
+then there exists at most one primitive character(  modulo q such that Lps, q has a
+zero in the region s P C :   1 ´ , |t|  qC . If such a character exists, then it is
+a real character, and the zero is unique, real and simple.
+
+   It is worth mentioning that, under the same conditions as in Theorem 3.2,
+the result of Iwaniec [7, Theorem 2] yields a similar bound with plog qp|t| `
+3qq3{4plog log qp|t|`3qq3{4 in the denominator of  instead of plog qq2{3plog log qq1{3,
+but without any restriction on |t|. Of course, for applications to exceptional
+characters this restriction on |t| is irrelevant, and thus Theorem 3.2 eliminates
+a substantial part of the real interval r0, 1s where a Siegel zero might possibly
+occur.
+
+C  3.3. Let q be a modulus satisfying (2.1). There is a constant A  0, which
+
+depends only on q7, with the following property. Let  be given by (3.2). Then there
+exists at most one primitive real character  modulo q such that Lp, q has a zero in
+
+the region 1    1 ´ , which in this case is then a simple zero.
+
+   We remark that, in the most interesting case in which q " p is a power of
+a fixed prime p, the condition (2.1) is satisfied automatically once   0, and
+            CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS                         7
+
+thus Theorem 3.2 yields the following statement for all characters modulo an
+odd prime power q " p.
+
+C           3.4. Let q " p with p an odd prime and  P N. For every C  0, there
+
+is a constant A  0, which depends only on C and p, with the following property. Let
+
+ be given by (3.2). For any character (modulo q, the function Lps, q has no zero in
+the region s P C :   1 ´ , |t|  qC .
+
+3.3. Primes in arithmetic progressions and short intervals. As usual we use
+
+ to denote the von Mangoldt function, which is given by
+
+                       #
+
+                        log r        if n is a power of the prime r,
+            pnq "
+                       0             if n is not a prime power,
+
+and we set                                   ÿ
+
+                          px; q, aq "                   pnq.
+
+                                                 nx
+                                             n"a mod q
+
+The asymptotic formula in Theorem 3.5 below has a smaller error term than
+
+that which appears in any other asymptotic formula of this type. As in [4, 7]
+
+our result depends on density estimates for the zeros of Dirichlet L-functions.
+
+More specifically, let Nqp, T q be the total number of zeros s "  ` it for all
+L-functions modulo q that occur in the rectangle     1, |t|  T . In order
+
+to state a general result suitable for further advances, we assume that for some
+
+constant b  1 the uniform bound
+
+                          Nqp, T q ! pqT qbp1´qOp1q                         (3.3)
+
+holds, where as before  " log qp|t| ` 3q. By a result of Huxley [6] we can take
+b " 12{5 in (3.3); see also [8, Equation (18.13)].
+
+T         3.5. Suppose (3.3) holds with some constant b  1. Fix an odd prime p and
+
+a real number   0. There is a constant c0  0, which depends only on b,  and p,
+such that the following holds. For any modulus q " p with  P N, any integer a
+
+coprime to p, and any positive real numbers x and h for which
+
+                          qx1´1{b`  h  x  q1{,
+
+we have
+
+   px  `  h; q, aq  ´  px; q, aq  "    h  `  Oph expp´c0plog xq1{3plog log  xq´1{3qq,
+                                     pqq
+
+where  is the Euler totient function.
+
+   In particular, using the value b " 12{5 we see that Theorem 3.5 can be ap-
+plied throughout the range qA  x  h  qx7{12`.
+8                           W. D. BANKS AND I. E. SHPARLINSKI
+
+   Our proof of Theorem 3.5 closely follows that of Gallagher [4, Theorem 2],
+however we apply Corollary 3.4 at an appropriate place. We remark that the re-
+sults of Gallagher [4] and Iwaniec [7] imply only a weaker form of Theorem 3.5
+with the error term Oph expp´c0plog xq1{4plog log xq3{4qq.
+
+                                        4. P
+
+4.1. Notation. For a real number t  0, ttu denotes the greatest integer not
+exceeding t, and rts denotes the least integer that is not less than t.
+
+   Throughout the paper, we use the symbols O, !, " and -- along with their
+standard meanings; any constants or functions implied by these symbols are
+absolute unless specified otherwise.
+
+4.2. Polynomial representation of characters. Following Gallagher [4], for an
+
+integer d  1 we use Fd to denote the polynomial approximation to logp1 ` xq
+
+given by
+
+                            Fdpxq    "  ÿd          xr  .        (4.1)
+                                           p´1qr´1  r
+
+                                        r"1
+
+According to [7, Lemma 2] (which extends [4, Lemma 2]) we have the following
+
+statement.
+
+L     4.1. Let  be a primitive character modulo q. Let d be an integer such that
+
+q2 | qd7 , and put               #
+                                   2
+                                        if 4 | q,
+                            "           otherwise.
+                                   1
+
+Then p1 `  q7xq " epf pxqq, where f is a polynomial of the form
+
+                            f pxq " q´1m ¨ Fdp q7xq
+
+with an integer m for which gcdpm, qq " 1, and r | m for every integer r P r1, ds
+coprime to q.
+
+4.3. Bounds of exponential sums. Suppose d  2, and gpxq " 1x ` ¨ ¨ ¨ ` dxd
+with each r P R. Suppose further that each r has a rational approximation
+
+of the form
+
+   r  "   ar  `     r    ,  ar P Z,  br P N,  gcdpar, brq " 1,   |r|  1.
+          br        br2
+
+Let S denote the double exponential sum
+
+                                            ÿP                   (4.2)
+                                     S " epgpyzqq.
+
+                                             y,z"1
+       CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS                            9
+
+The next result is due to Korobov [9, Lemma 3]; it provides a bound on S in
+terms of Nk,dpP q (the number of solutions to (2.6)) and a product involving the
+denominators of the coefficients of g.
+
+L      4.2. For any natural number k, the sum (4.2) admits the upper bound
+
+       |S|2k2  `64k2 logp3Qqd{2 W P 2kp2k´1qNk,dpP q,
+
+where
+
+   Q " maxtbr : 1  r  du    and                  d        P r, P rbr´1{2 ` br1{2( .
+                                          W " min
+
+                                                  r"1
+
+   We also use the following weakened and simplified version of a result of
+Ford [3, Theorem 3].
+
+L      4.3. For every integer d  129 there is an integer k P r2d2, 4d2s such that
+
+       Nk,dpP q  d3d3 P 2k´0.499d2                     pP  1q.
+
+       5. P
+
+5.1. Simple character sums: Proof of Theorem 2.1. Let 0 and  be positive
+constants such that
+
+       0  e200,   1{200 and 0  2.                                           (5.1)
+
+Put d0 " 2. Since  " maxp|qtvppqqu, the condition q2 | qd70 of Lemma 4.1 is
+
+clearly met. Also, the parameter  lies in r1, {0s since
+             ÿ                               ÿ
+       log q " vppqq log p   log p "  log q7,
+
+                p|q                          p|q
+
+whereas by (2.8) we have
+                                        log N  0 log q7.
+
+Put s " t{u. Since {  0  2, it follows that
+
+             1  {           {    ´        1    s    {,                      (5.2)
+             2
+
+and thus s -- {. Using (5.1) and (5.2) we deduce that
+
+       log   200 and 2  s  {200.                                            (5.3)
+
+Finally, we record the simple inequality
+
+                     t  et{1250              pt  0q.                        (5.4)
+
+   Let N be the set of integers coprime to q in the interval rM ` 1, M ` Ns.
+
+Then,
+
+       SpM, N ; Gq " q´7 2sV ` Opq37sq,                                     (5.5)
+10                 W. D. BANKS AND I. E. SHPARLINSKI
+
+where                          ÿqs7 ÿ
+
+                   V"                     pn ` qs7 yzqepHnpyzqq
+
+                            y,z"1 nPN
+
+and Hn is the polynomial given by
+
+                                 Hnpxq " Gpn ` q7sxqq.
+
+For every n P N , let n be an integer such that nn " 1 mod q. Using the multi-
+plicativity of , we have
+
+                   ÿ                      ÿqs7
+                   V " pnq p1 ` q7snyzqepHnpyzqq.
+
+                   nPN                 y,z"1
+
+Applying Lemma 4.1 (noting that s  2 and thus  q7 | q7s) we see that
+
+                            ÿ             ÿqs7
+                   V " pnq epfnpyzq ` Hnpyzqq,                                               (5.6)
+
+                            nPN           y,z"1
+
+where fn is a polynomial of the form
+
+                            fnpxq " q´1m ¨ Fd0pqs7 nxq
+
+with some integer m such that gcdpm, qq " 1 and r | m for any integer r P r1, d0s
+coprime to q. To apply Lemma 4.2, we need to control the denominators of the
+coefficients of fn ` Hn for each n P N .
+
+   Using (4.1) we see that the r-th coefficient of fn is the rational number
+
+                            r " p´1qr´1q7rsq´1mnrr´1.
+
+Write
+
+    r  "  ar ,     ar P Z,          br P N,          gcdpar, brq " 1            p1  r  d0q.
+          br
+
+Since r | m for every integer r P r1, d0s coprime to q, and gcdpmn, qq " 1, it
+
+follows that br is the numerator of the rational number
+                                                
+                                    qq7´rs                  pvpprq
+
+                                                p|gcdpr,qq
+
+when the latter is expressed in reduced form (in particular, br is composed
+solely of primes that divide q). Consequently,
+
+                   vppbrq " maxt0, vppqq ´ rs ` vpprqu
+
+for every prime p dividing q.
+
+    Let us denote                   X             \         X             \
+                                                d0                     2
+                            L    "     3  log        "         3  log        .
+                                       2                       2
+
+As the inequality vpprq  L holds for every positive integer r  d0, we have
+
+          maxt0, vppqq ´ rsu  vppbrq  maxt0, vppqq ´ rs ` L u                                (5.7)
+         CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS                             11
+
+for any prime p | q.
+
+Now put                         Z            ^Z            ^
+
+                      d " max vppqq ` L "  ` L .                            (5.8)
+                           p|q       s                  s
+
+Note that d  200 since {s  200 by (5.3); in particular, we are able to apply
+
+Lemma 4.3 below with this choice of d.
+
+For any integer r  d, it follows from (5.7) that br " 1; in other words, r P Z.
+
+Therefore, defining
+
+                      gnpxq " q´1m ¨ Fdpqs7 nxq pn P N q,
+
+the polynomial fn ´ gn lies in Zrxs for every n P N ; therefore, in view of (5.6)
+
+we have                                 ÿq7s
+
+                                ÿ
+                           V " pnq ephnpyzqq,                               (5.9)
+
+                                nPN     y,z"1
+
+where
+
+                           hnpxq " gnpxq ` Hnpxq.
+
+   Suppose that  is initially chosen to be small enough, depending on C, so
+that C  p3q´1. In view of (5.2), the second inequality in (2.8) implies
+
+                                   deg G  {p3sq.                            (5.10)
+
+We now use approximations with denominators br " 1 for the initial t{p3squ
+coefficients of hn (i.e., for 1  r  {p3sq) and with the denominators br " br
+considered above for remaining coefficients of hn (i.e., for r  {p3sq), which
+by (5.10) are the same as the coefficients of gnpxq.
+
+   Put
+
+Q " maxtbr : 1  r  du              and         d           q7rs, q7rsbr´1{2 ` b1r{2( ,
+                                        W " min
+
+                                                   r"1
+
+Applying Lemma 4.2 with P " qs7 we derive the bound                         (5.11)
+          yÿ ,zq7s"1 ephnpyzqq2k2  `64k2 logp3Qqd{2 W q72skp2k´1qNk,dpq7sq
+
+with any natural number k. Using (5.7) we have that
+
+                      qq7´rs  br  qq´7 rs`L        p1  r  dq.               (5.12)
+                                                                            (5.13)
+In particular, Q  qq7L , which implies (since q  q7 )
+
+                                logp3Qq  2 log q7.
+
+Next, note that the hypothesis (2.1) immediately yields the bound
+                      ÿ                       ÿ
+         log q " vppqq log p  0.7 log p " 0.7 log q7,
+
+                      p|q                     p|q
+12                                W. D. BANKS AND I. E. SHPARLINSKI
+
+hence q " q7µ with some µ P r0.7, 1s. To estimate W , we use (5.12) to derive the
+
+bound                                        $
+
+      min  q7rs,  q7rsbr´1{2   `  br1{2(     &'''''q27rqsp7µ´rs`L q{2      if r  {p3sq;
+                                             %'''''q2r7qsp73rs´µq{2        if {p3sq  r  µ{p2sq;
+                                                                           if µ{p2sq  r  {s;
+                                                                           if {s  r  d.
+
+To simplify the notation, let  " {s for the moment. Using the preceding
+
+bound, we have                    ´                   ¯                ´              ¯     
+       
+W             q7rs                 2q7pµ´rs`L q{2                       2qp73rs´µq{2             qr7s  2dq7 ,
+
+      r{3 {3rµ{2                                         µ{2r                            rd
+
+where
+
+             ÿ                   ÿ        µ ´ rs ` L ` ÿ 3rs ´ µ ` ÿ rs.
+       " rs `
+                                                  2                           2
+           r{3             {3rµ{2                                µ{2r                       rd
+
+We write                ^                                   ^                       
+
+      "    s  `     µ      µ   ´     `    Op1q     ´  µ          ´     µ   `  Op1q     ` OpL q
+                     2      2     3                    2                2
+                        ^                                                                              (5.14)
+                           µ      2
+      " s ` µ               2  ´  3       ` Op ` L q
+
+(recall our convention that all implied constants are absolute), with
+
+" ÿ r´1                    ÿ      r` 3          ÿ     r`       ÿ       r
+
+      r{3         2                       2                  rd
+                     1{3~r^µµ{22          ^µ{22r¸`
+      1 ^ 2       ´                  ´                   3  ~          ^ µ 2¸       `    1  `d2  ´  2  `  Opdq.
+                                                              2 ´
+      23 4 2                                 3           4                 2             2
+
+Since d "  ` Op1q and thus d2 ´ 2 " Opq, we derive that
+                                             ^       µ2 
+                                          "    5  ´         2  `       Opq.
+
+                                                64
+
+Inserting this result into (5.14), recalling that  " {s and µ P r0.7, 1s, and
+
+using (5.8), it follows that
+              ^                                   ^              
+                5       µ2        2µ      2     O           L
+           "         `        ´              `           `                 0.49sd2  `  Opsd log dq.
+                  64 3s                                     s
+
+Therefore, if  is small enough initially (depending on the absolute implied
+constant in the preceding bound), then we have
+
+                                               0.495sd2,
+
+and thus
+
+                                             W  2dp0.495sd2 .                                          (5.15)
+            CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS             13
+
+Now, combining the bounds (5.11), (5.13) and (5.15), and using Lemma 4.3 to
+bound Nk,dpq7sq, we deduce that
+
+                                   yÿ ,zq7s"1 ephnpyzqq2k2  AqB7
+
+holds with             A " `128k2 log q7d{2 2dd3d3
+
+and
+                                      B " 4sk2 ´ 0.004sd2
+
+for some integer k P r2d2, 4d2s.
+   Since k P r2d2, 4d2s we clearly have A  dcd5p log q7qd{2 with some absolute
+
+(effective) constant c  0. As  log q7  0, using (5.4) and taking into account
+the definition (5.8), which implies that   2sd, it follows that
+
+                             p log q7qd{2  q07.0004d  q70.0008sd2 .
+
+Putting everything together, we find that
+                          yÿ ,zq7s"1 ephnpyzqq2k2  dcd3q47sk2´0.0032sd2 .
+
+Raise both sides to the power 1{p2k2q. Since k P r2d2, 4d2s we have
+
+            dcd3{p2k2q  dc{p8dq ! 1      and  sd2{p2k2q  s{p32d2q;
+
+consequently,
+                                 ÿq7s ephnpyzqq ! q27s´0.0001s{d2 .
+
+                                                y,z"1
+
+Finally, using (5.2) and (5.3) we see that
+
+               s   --     s   "      s3  --  p{q3  "          --     µ
+               d2      p{sq2         2         2           3         3 ,
+
+and therefore  ÿq7s
+
+                      epgnpyzqq      !  q2s´0µ{3   " q72sN ´0{2
+                                          7
+
+               y,z"1
+
+with some absolute constant 0  0.
+
+Inserting the previous bound into (5.9) we derive that
+
+                              V ! q72sN 1´0{2
+
+and combining this result with (5.5) we obtain that
+
+                       SpM, N ; Gq ! N 1´0{2 ` q37s.                       (5.16)
+14                          W. D. BANKS AND I. E. SHPARLINSKI
+
+The second term on the right side of (5.16) is negligible (indeed, using (5.2) we
+have q7s  N {µ, hence q37s  N 5, which is insignificant compared to N 1´0{2 if
+one makes suitable initial choices of the absolute constants 0, 0 and ). This
+
+completes the proof.
+
+5.2. Dirichlet polynomials: Proof of Theorem 2.2. We continue to use the
+notation of §5.1. We denote  " r{p3sqs. For any real number x, we have the
+estimate
+
+                            p1 ` xqit " eptGpxqq p1 ` Op|t||x|qq ,
+
+where Gpxq " p2q´1F´1pxq in the notation of (4.1) (note that Gpxq is a poly-
+
+nomial of degree  ´ 1 with real coefficients). Hence, for all n P rM ` 1, M ` Ns
+
+and y, z P r1, q7ss we have
+
+    `   `  q7syzit  "  nitp1  `  qs7 y z{nqit  "  niteptGpqs7 yz{nqq  `  OpN ´|t|q73sq.
+     n
+
+Here we have used the fact that M -- N. Using this estimate and following the
+proof of Theorem 2.1, in place of (5.5) we derive that
+
+                    TpM, N ; tq " q7´2sVr ` Opq73s ` N 1´|t|q37s q,
+
+where                            ÿqs7
+
+                       ÿ
+           Vr " pnqnit                  p1 ` qs7nyzqeptGpq7syz{nqq.
+
+                       nPN       y,z"1
+
+Since deg G  {p3sq, at this point the proof parallels that of Theorem 2.1,
+
+leading to the bound
+
+                    TpM, N ; tq ! N 1´0{2 ` q37s ` N 1´ |t|q73s                          (5.17)
+
+in place of (5.16). As before, the term q37s in (5.17) does not exceed N 5 and can
+thus be disregarded if one makes suitable initial choices of 0, 0 and .
+
+   To finish the proof, it remains to bound the last term in (5.17). Let  be such
+that N " |t| ` 3. Since  " r{p3sqs, it follows that 3s   ` 3s, and by (5.2)
+we have   {p3sq  {p3q; therefore,
+
+                               N 1´ |t|q73s ! N 1´{p3q` q7 `3s.
+We have q37s  N 5 as before, and by (2.1) it follows that q7  N 2. We get that
+
+                               N 1´ |t|q73s ! N 1´{p3q` `2`3.
+
+Inserting this bound into (5.17), the theorem is a consequence of the inequality
+
+                              pp3q´1 ´ 2q ´ 0{2 ´ 3,
+
+which follows from the last inequality in (2.10) (which implies,   C ` op1q)
+assuming that  and 0 are sufficiently small in terms of C.
+         CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS                               15
+
+   6. P                         L-
+
+6.1. Bounds on L-functions and zero-free regions: Proof of Theorem 3.1. We
+begin with a general statement involving two parameters  and Y .
+
+L  6.1. For any real number C  0 there are effectively computable constants
+
+0, 0, c0  0 that depend only on C and have the following property. Let q be a
+
+modulus satisfying (2.1) and  a primitive character modulo q. If Y and  satisfy
+
+         Y  q70 and 0    0plog Y q2{2 ´ c0plog q{ log Y,                            (6.1)
+
+where  " log qp|t| ` 3q, and the inequalities   1 ´  and |t|  qC hold, then for
+
+s "  ` it we have
+                                       |Lps, q|  ´1Y .
+
+Proof. Fix C  0, and let 0, 0  0 have the property described in Theorem 2.2.
+
+Let q be a modulus satisfying (2.1) and  a primitive character modulo q. By
+
+Theorem 2.2 and partial summation, the bound           pN  q70 q                    (6.2)
+                          ÿ
+                                 pnqn´s ! N 1´´0{2
+
+                                   N n2N
+
+holds, where  " plog qq{ log N and the implied constant depends only on C.
+
+   Put Z " e2. Arguing as in the proof of [7, Lemma 8], the bound
+                                 ÿ pnqn´s  1
+                                                                                    (6.3)
+
+                                nZ
+
+holds since      1  .  On the other hand, let Y  and   be real numbers such that
+                 2
+
+satisfy (6.1) with some constant c0  0 that depends only C. Assuming that
+
+  1 ´ , the bounds (6.1) and (6.2) imply                         pN  Y q.
+                ÿ
+                       pnqn´s ! N ´0{2  Y ´0{2  ´c0
+
+         N n2N
+
+Hence, if c0 is sufficiently large in terms of C, then for   1 ´  we have
+                                pnqn´s  p3q´1
+                         ÿ                             pN  Y q,
+
+                         N n2N
+
+which by a standard splitting argument yields the bound
+    ÿ pnqn´s  1 `  ÿ pnqn´s  1 ` ÿ n´1  2 ` ´1pY  ´ 1q.
+   nZ                       nY                   nY
+
+Combining  this  bound   with   (6.3),  and  assuming  that      1  ,  it  follows  that
+                                                                 3
+
+                                |Lps, q|  ´1Y 
+
+provided that   1 ´ .
+16                         W. D. BANKS AND I. E. SHPARLINSKI
+
+   We now turn to the proof of Theorem 3.1. Let the notation be as in Lemma 6.1.
+The first inequality in (6.1) is
+
+                           log Y  0 log q7.                                 (6.4)
+
+If Y also satisfies the inequality
+
+                           log Y  p2c0{0q1{32{3plog q1{3,                   (6.5)
+
+then it follows that
+
+          0plog Y q2{2 ´ c0plog q{ log Y  0.50plog Y q2{2;
+
+hence the second inequality in (6.1) is satisfied provided that the lower bound
+
+                           log Y  21{20´1{21{2                              (6.6)
+
+also holds. Consequently, defining Y by the equation
+                         log Y " A max log q7, 1{2, 2{3plog q1{3(
+
+with a suitably large absolute constant A  0 (depending only on 0, 0, c0), we
+see that the inequalities (6.4), (6.5) and (6.6) all hold, hence the condition (6.1)
+is met. Applying Lemma 6.1 we obtain the stated bound.
+
+6.2. The zero-free region: Proof of Theorem 3.2. We start with a technical
+result contained in Iwaniec [7], which we present in a generic form suitable for
+further applications.
+
+L   6.2.  Let q   be a fixed modulus.  Let   P  p0,  1  q,  T    1 and M    e be numbers
+                                                     2
+
+that can depend on q. Put           "  ,
+                                          400 log M
+                                                                            (6.7)
+
+and suppose that
+
+                            logp5 log 3qq  3 logp2.5q.                      (6.8)
+
+Suppose that |Lps, q|  M for all pri(mitive characters  modulo q and all s in the
+region s P C :   1 ´ , |t|  3T . There is at most one primitive character (
+modulo q such that Lps, q has a zero in the region s P C :   1 ´ , |t|  T .
+If such a character exists, then it is a real character, and the zero is unique, real and
+simple.
+
+Proof. The first part of the proof of [7, Lemma 11] shows that Lps, q  0
+
+throughout the region                                            if 2  0,
+                     #                                           if 2 " 0,
+                       ts P C :   1 ´ , |t|  T u
+
+               "
+                       ts P C :   1 ´ , {4  |t|  T u
+CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS                      17
+
+provided that
+
+6 logp5 log    3qq  `  16  logpM {5q  `  8  logp2M {5q           151 ,
+                                         
+
+and this inequality is a consequence of (6.8) and the fact that
+
+                    24   log M  "   3        1
+                                   50       15 .
+
+The second part of the proof of [7, Lemma 11] then shows that if Lps, q " 0
+for some s in the region ts P C :   1 ´ , |t|  {4u, then the zero is unique,
+real and simple provided that
+
+               8 logp5 log 3qq ` 16 logpM{5q          1                 (6.9)
+                                                         ,
+                                                      15
+
+and this inequality is a consequence of (6.8) and the fact that
+
+                    16 log M "     1            1
+                                                   .
+                                   25 15
+
+Finally, [7, Lemma 12] shows that there is at most one nonprincipal character
+ modulo q for which Lps, q has a real zero   1 ´ , provided that
+
+               2 logp5 log 3qq ` 12 logpM{5q          2
+                                                         ,
+                                                      15
+
+which is consequence of (6.9). The result now follows.
+
+Turning now to the proof of Theorem 3.2, we note that with the choice
+
+                             "  plog log qq2{3
+                                  plog qq2{3
+
+Theorem 3.1 shows that |Lps, q|  M for all prim(itive characters  modulo q
+and all s in the region s P C :   1 ´ , |t|  3qC , where
+
+                             M " plog qqB
+
+for some constant B that depends only on C and q7. Using (6.7) to define , we
+obtain (3.2) with A " 1{p400Bq. Taking B larger (and A smaller) if necessary,
+we can guarantee that M  e and that the condition (6.8) is met. Applying
+Lemma 6.2, we obtain the statement of Theorem 3.2.
+
+6.3. The zero-free region: Proof of Corollary 3.4. To prove Corollary 3.4 we
+consider only those moduli q of the form q " p, where p is a fixed odd prime
+and  P N; note that q7 " p for all such moduli. Let 0, A and  be the numbers
+supplied by Theorem 3.2 with the constant C  0; we can clearly assume that
+0  2.
+
+   With p fixed, there are only finitely many primitive characters  of conductor
+p with   0. Consequently, after replacing A with a smaller number (which
+18        W. D. BANKS AND I. E. SHPARLINSKI
+
+depends only on C and p), we can guara(ntee that Lps, q does not vanish in the
+region R " s P C :   1 ´ , |t|  qC for any such primitive character.
+
+   Given an arbitrary character  modulo q " p, let q° " p° be its conductor.
+Since gcdpn, qq " 1 if and only if gcdpn, q°q " 1, we see that  is primitive when
+viewed as a character modulo q°.
+
+   If °  0, Lps, q does not vanish in R by our choice of A. In particular, this
+
+holds true if  is a real character. Indeed, if  is real, then  is either the principal
+character modulo p or the Legendre symbol modulo p, since pZ{pZq^ is cyclic
+
+for odd p and therefore admits only two real characters.
+   If °  0 and  is not real, then Lps, q  0 in R by Theorem 3.2.
+
+6.4. Primes in arithmetic progressions: Proof of Theorem 3.5. As in the proof
+
+of [4, Theorem 2] we define T by the equation pqT qb " x1´. Since x  q1{ we
+
+have                                                  1´
+                                                       b
+          T " q´1xp1´q{b  qC         with  C       "      ´  1;
+
+we can assume  is small enough so that C  0. Moreover, since q  x1{b´ we
+
+see that
+
+          T " q´1x1{b´{b  xp1´1{bq  2
+
+if x is large, which we can assume.
+
+    Since log q -- log x holds with implied constants that depend only on b and ,
+
+an application of Corollary 3.4 shows that there is a constant a  0 depending
+
+only on b,  and p such that Nqp, T q " 0 for all   , where
+
+            "                        a                                     (6.10)
+                         plog xq2{3plog log xq1{3 .
+
+    Using (3.3) together with the "trivial" bound (see [8, Theorem 5.24])
+
+                         Nqp, T q ! qT ,
+
+the first double sum in [4, Equation (16)] is bounded by the following precise
+version of [4, Equation (17)]:
+
+          1´
+
+              x´1Nqp, T qplog xq d ` x´1Nqp0, T q
+
+          0
+
+                         1´
+
+          ! plog xqOp1q              ppqT qbx´1q1´ d ` qT x´1plog xqOp1q
+
+                         0
+
+                         1´
+
+          " plog xqOp1q              x´p1´q d ` xp1´q{b´1plog xqOp1q
+
+                         0
+
+          ! x´plog xqOp1q ` xp1´q{b´1plog xqOp1q,
+
+where the symbol ! indicates that the implied constant may depend on .
+             CHARACTER SUMS AND L-FUNCTIONS MODULO PRIME POWERS                      19
+
+   Since b  1 implies that p1 ´ q{b ´ 1  0, using (6.10) we see that the first
+term in the preceding bound dominates, and so we obtain that
+
+      1´
+
+        x´1Nqp, T q log xd ` x´1Nqp0, T q ! expp´c0plog xq1{3plog log xq´1{3q
+
+     0
+
+holds with any fixed c0  a. We also use [4, Equation (18)] to bound the
+
+second double sum in [4, Equation (16)]. Putting everything together, we have
+
+px        `  h; q,  aq  ´  px; q,  aq  ´   h
+                                          pqq
+                                                                                     (6.11)
+               h                                                 x
+          !  pqq        expp´c0plog xq1{3plog log xq´1{3q  `  T  pqq  plog  xqOp1q.
+
+Since                              x " qx1´1{b`{b  hx{b´
+                                   T
+
+and {b ´   0, the first term in the bound of (6.11) dominates, and the result
+
+follows.
+
+                                          7. C
+
+Our results can be extended to more general classes of moduli. For example,
+
+suppose that q " rs with coprime positive integers r and s, and instead of (2.1)
+
+we have
+
+             mintvppsqu  0.7                   with  " maxtvppsqu  0.
+              p|s                                                      p|s
+
+For any primitive character  modulo q, we write
+
+             SpM, N q "    rÿ´1                ÿ     pk ` rmq ` Oprq.
+
+                           k"0 pM ´kq{rmpM `N ´kq{r
+
+Defining °pmq " pk ` rmq, we see that ° is a primitive character modulo s,
+hence Theorem 2.1 applies to the inner sum over m. Consequently, if r is not
+too large (say, r " N op1q), then we obtain a result of roughly the same strength
+as Theorem 2.1. This applies to the other results of this paper as well.
+
+                                           R
+
+[1] J. Bourgain, C. Demeter and L. Guth, "Proof of the main conjecture in Vinogradov's mean
+     value theorem for degrees higher than three." Ann. Math., (to appear).
+
+[2] M.-C. Chang, "Short character sums for composite moduli." J. d'Analyse Math. 2 (2014),
+     1­33.
+
+[3] K. Ford, "Vinogradov's integral and bounds for the Riemann zeta function." Proc. London
+     Math. Soc. (3) 85 (2002), 565­633.
+
+[4] P. X. Gallagher, "Primes in progressions to prime-power modulus." Invent. Math. 16
+     (1972), 191­201.
+
+[5] A. Granville and K. Soundararajan, "Upper bounds for |Lp1, q|." Q. J. Math. 53 (2002),
+     265­284.
+
+[6] M. N. Huxley, "Large values of Dirichlet polynomials. III." Acta Arith. 26 (1974), 435­444.
+20            W. D. BANKS AND I. E. SHPARLINSKI
+
+ [7] H. Iwaniec, "On zeros of Dirichlet's L series." Invent. Math. 23 (1974), 97­104.
+ [8] H. Iwaniec and E. Kowalski, Analytic number theory. Amer. Math. Soc., Providence, RI,
+
+      2004.
+ [9] N. M. Korobov, "The distribution of digits in periodic fractions." Math. USSR-Sb. 18 (1974),
+
+      659­676.
+[10] D. Milic´evic´, "Sub-Weyl subconvexity for Dirichlet L-functions to powerful moduli."
+
+      Compos. Math. 152 (2016), 825­875.
+[11] A. G. Postnikov, "On the sum of characters with respect to a modulus equal to a power of
+
+      a prime number." Izv. Akad. Nauk SSSR. Ser. Mat. 19 (1955), 11­16 (in Russian).
+[12] A. G. Postnikov, "On Dirichlet L-series with the character modulus equal to the power of
+
+      a prime number." J. Indian Math. Soc. 20 (1956), 217­226.
+[13] I. M. Vinogradov, "The upper bound of the modulus of a trigonometric sum." Izv. Akad.
+
+      Nauk SSSR. Ser. Mat. 14 (1950), 199­214 (in Russian).
+[14] I. M. Vinogradov, "General theorems on the upper bound of the modulus of a trigono-
+
+      metric sum." Izv. Akad. Nauk SSSR. Ser. Mat. 15 (1951), 109­130 (in Russian).
+[15] T. D. Wooley, "Vinogradov's mean value theorem via efficient congruencing." Ann. Math.
+
+      175 (2012), 1575­1627.
+[16] T. D. Wooley, "Vinogradov's mean value theorem via efficient congruencing, II." Duke
+
+      Math. J. 162 (2013), 673­730.
+[17] T. D. Wooley, "Multigrade efficient congruencing and Vinogradov's mean value theo-
+
+      rem." Proc. London Math. Soc. 111 (2015), 519­560.
+
+    D     M   ,U                          M       ,C  MO, USA.
+
+    E-mail address: bankswd@missouri.edu
+
+    D     PM      ,U                              N S W , S , NSW ,
+
+A      .
+
+    E-mail address: igor.shparlinski@unsw.edu.au
+

@@ -1,0 +1,1449 @@
+arXiv:1205.4687v5 [math.NT] 4 Sep 2014           COMPUTING DIRICHLET CHARACTER SUMS TO A
+                                                                        POWER-FULL MODULUS
+
+                                                                                             GHAITH A. HIARY
+
+                                                     Abstract. The Postnikov character formula is used to express large portions
+                                                     of a Dirichlet character sum in terms of quadratic exponential sums. The
+                                                     quadratic sums are then computed using an analytic algorithm previously de-
+                                                     rived by the author. This leads to a power-saving if the modulus is smooth
+                                                     enough. As an application, a fast, and potentially practical, method to com-
+                                                     pute Dirichlet L-functions with complexity exponent 1/3 for smooth enough
+                                                     moduli is derived.
+
+                                                                                  1. Introduction
+
+                                           Fast algorithms for numerically evaluating L-functions at individual points have
+                                        generated some interest recently. The asymptotic power-savings achieved by such
+                                        algorithms have shed light on the basic nature of L-functions. Also, given the wider
+                                        availability of more powerful computers, there is better hope to reach regimes where
+                                        such algorithms become practical, even if they are quite involved. One of these
+                                        algorithms has already been used to compute the Riemann zeta function in small
+                                        neighborhoods of many large values and to examine the zero distributions there,
+                                        see [H4, Bob] for examples of resulting data. The fast algorithms for computing
+                                        L-functions at individual points can in some cases be combined with amortized-
+                                        complexity (or average cost) methods, such as [H3], to enable large-scale numerical
+                                        studies at very large height and level, and in windows of considerable size, which is
+                                        useful for testing random matrix theory predictions for L-functions.
+
+                                           New algorithms for computing the Riemann zeta function (s) at individual
+                                        points were derived in [H1, H2]. One algorithm is capable of numerically evaluating
+                                        (1/2 + it) for t > 1 with an error bounded by O(t-) using t1/3+o(1) bit opera-
+                                        tions. Another, faster, algorithm requires t4/13+o(1) bit operations and t4/13+o(1)
+                                        bits of storage. There are interesting analogies between these algorithms, which rely
+                                        on fast computation of exponential sums, and methods for proving subconvexity
+                                        estimates for zeta, meaning bounds of the form µ(1/2)  1/4 - , for some  > 0,
+                                        where µ(1/2) is the infimum of all the numbers  such that (1/2 + it) = O(|t|).
+                                        For example, both the t1/3+o(1) algorithm and the Weyl-Hardy-Littlewood method
+                                        (which yields the bound µ(1/2)  1/6; see [T, 5.3]) start by subdividing the
+                                        "main sum" of zeta in a similar way. In both cases, the main difficulty is reduced
+                                        to understanding quadratic exponential sums K-j 0k<K kj e2ik+2ik2 , where
+
+                                            2010 Mathematics Subject Classification. Primary 11M06, 11Y16, 11L03; Secondary 11L40.
+                                            Key words and phrases. Character sums, exponential sums, Dirichlet L-functions, algorithms.
+                                            Support by the Leverhulme Trust, and the National Science Foundation under agreements No.
+                                        DMS-0757627 (FRG grant) and DMS-0635607 (while at the Institute for Advanced Study).
+
+                                                                                                                     1
+2  G.A. HIARY
+
+,   [0, 1). But unlike the Weyl-Hardy-Littlewood method, which detects can-
+
+cellation in the quadratic sum due to the linear argument  solely, the iterative
+
+algorithm for computing quadratic sums, which will play an essential role in this
+
+paper, relies in a crucial way on controlling the length of the sum via the quadratic
+
+argument . This algorithm, which is derived in [H1], repeatedly applies van der
+
+Corput methods, together with an intervention to normalize  and  suitably, and
+
+in a process reminiscent of the method of exponent pairs of van der Corput and
+
+Phillips (see [T, 5.20]). The effect is to shorten the length of the exponential sum
+
+with each iteration by a factor of 1/2 or better so that the algorithm finishes using
+
+O(log K) iterations.
+   Van der Corput methods were also the inspiration behind the t4/13+o(1) algo-
+
+rithm, that time leading to cubic sums K-j 0k<K kj e2ik+2ik2+2ik3 , where
+the situation was much more complicated (even though the range of  happened to
+be very restricted in application). The t4/13+o(1) algorithm relies, in addition, on
+
+a fast Fourier transform (FFT) precomputation, which resembles the precomputa-
+tion in Scho¨nhage's method [S] for computing zeta in t3/8+o(1) time. In light of
+
+the similarities pointed so far between fast algorithms and subconvexity estimates
+
+for zeta, it might be of interest to try to understand the complexity exponent 4/13
+
+in the subconvexity context.
+
+   In the GL2 setting, Vishe has derived an algorithm in [V1] that permits the
+accurate computation of L(1/2 + it, f~), where f~ is a fixed modular cusp form (so
+big-O constants depend on f~), holomorphic or Maass, of weight k for a congruence
+subgroup of SL2(Z), using O(1 + t7/8+ ) operations, where t > 0 and  is any
+fixed positive real. The method employed in [V1] is described as geometric, and is
+
+closely related to subconvexity estimates for GL2 L-functions. It ultimately uses
+a direct precomputation (not involving the FFT) to obtain its power-savings. The
+method relies on an integral representation of L(s, f~), and has the useful feature
+
+that only the first few coefficients of the cusp form are needed for computing the
+
+corresponding L-function. Vishe has also derived an algorithm in [V2] for com-
+puting the central value L(1/2, f~1 × ), where  is a character mod q and f~1 is a
+fixed cusp form of weight k for the full modular group, with complexity as good as
+q5/6+o(1) when q is highly composite. His method is closely related to recent work
+of Venkatesh on subconvexity estimates for L(1/2, f~1 × ).
+
+   The goal of this article is to extend the investigations in [H1, H2] to the so-
+
+called q-aspect. We derive a potentially practical algorithm for computing L(s, ),
+where  is a character mod q, with an error bounded by O(q-(|s| + 1)-) us-
+ing q1/3+o(1)(|s| + 1)1/3+o(1) operations when q is smooth enough, where smooth
+
+enough means that the radical of q is small enough compared with q, or q is power-
+
+full. Specifically, we prove the following upper bound on the number of operations
+
+required for computing L(s, ). (Our computational model is detailed in §2, includ-
+
+ing the meaning of operation and how to input the character  to the algorithm.)
+
+Theorem 1.1. There are absolute constants A1, . . . , A5, 1, 2, and 3, such that
+for any real number , any complex number s with 1/2  s  1, any positive
+integer q = p1a1 · · · phah (where pj are distinct primes), and any given character
+ mod q, the value of the Dirichlet L-function L(s, ) can be computed to within
+± q-(|s| + 1)- using  A1 p1a1/3 · · · phah/3(|s| + 1)1/3 ( + 1)1 log1 (q(|s| + 1))
+COMPUTING CHARACTER SUMS                                                                         3
+
+operations on numbers of  A2 ( + 1)4 log4(q(|s| + 1)) bits, provided a precompu-
+tation, that depends on q only, costing  A3 (p1 + · · · + ph) log2 q operations on
+numbers of  A4 log q bits, and requiring  A5 (p1 +· · ·+ph) log3 q bits of storage,
+is performed.
+
+   The precomputation in Theorem 1.1 comes directly from lemma 4.1, which fur-
+nishes a procedure for computing individual values of  to within ± in poly-log
+time (in q and 1/) using precomputed values. Theorem 1.1 assumes that the fac-
+torization of q is given, but this is not essential since there are algorithms with
+provable complexity for factoring q at a cost that is subsumed by the overall cost
+of our algorithm (e.g. Lehman's method; see [CP]). The condition 1/2  s  1
+in the theorem is not essential, and is inserted partly to simplify dealing with the
+L-functions associated with imprimitive characters; see the discussion preceding the
+proof of Theorem 1.1 in §5. The upper bound O(log4(q(|s| + 1))) for the number
+of bits is generous, and is to simplify various proofs; it comes directly from The-
+orem 4.4, and all that is required otherwise is O(log(q(|s| + 1))) bit arithmetic.
+The algorithm can be modified easily so that arithmetic is wholly performed using
+O(log(q(|s| + 1))) bits, which is what one should do in a practical version. The
+algorithm applies uniformly in q and s, and represents the first power-saving in the
+q-aspect over previous algorithms (which consume  q1/2+o(1) time) for any class
+of Dirichlet L-functions.
+
+   Part of the story of the algorithm in Theorem 1.1 is the general analogy between
+the t-aspect and the depth aspect (highly power-full moduli such as q = pa, a  )
+in the theory of character sums and Dirichlet L-functions. Indeed, the power-full
+structure of the modulus will play an important role in the algorithm. We note,
+though, that it is not necessary for the exponent a to be large in order for the
+algorithm to perform its best. The running time q1/3+o(1)(|s| + 1)1/3+o(1) is still
+achieved if simply q = pa and 3 | a (for example, if q = p3), and, more generally, if
+the exponents of the prime factors of q are divisible by 3. The algorithm does not
+provide new savings when q is square-free (e.g. if  is a real primitive character)
+since a direct application of it in this case requires about q(|s| + 1)1/3+o(1) time.
+
+   Our algorithm is related to proofs of subconvexity estimates for L(1/2 + it, ),
+which further strengthens the apparent connection between algorithms and sub-
+convexity estimates for L-functions. Indeed, one of the essential steps in deriv-
+ing the algorithm is a specialization of the Postnikov character formula, stated
+in lemma 4.2, where we exploit the power-full structure of the modulus q. Post-
+nikov's formula was employed by Barban, Linnik, and Tshudakov in [BLT] to study
+the same familyof Dirichlet L-functions tackled here. They proved the estimate
+
+   nN (n)  N q1/6(log q)1/2, where q = pn, p  3 is any fixed prime, n > n0,
+N  q2/3, and  mod q is a non-principal character1, from which the estimate
+|L(1/2 + it, )|  (|t| + 1)q1/6(log q)3/2 was deduced.
+
+   The connection between algorithms and subconvexity estimates is somewhat
+puzzling, especially since, a priori, there is no compelling reason for it to exist.
+Fast algorithms work because they are able to express the L-function using fewer
+
+1It was mentioned in [BLT, lemma 6] that the estimate                    
+                                                       nN (n)  N q1/6(log q)1/2 would
+
+still hold for N > q2/3 since it would be a consequence of the P´olya-Vinogradov inequality. But
+
+this seems to miss an extra factor of (log q)1/2, which in turn impacts the bound for |L(1/2 + it, )
+
+by an extra factor of (log q)1/2. Nevertheless, we stated the bounds here the same as in [BLT].
+4                                   G.A. HIARY
+
+"terms" (whose sizes matter on a logarithmic scale only), whereas subconvexity esti-
+
+mates rely on detecting cancellation among terms, and involve certain critical steps
+
+that are too crude for computation, or for which there is no simple computational
+
+analogue, such as elementary applications of the Cauchy-Schwarz inequality. Also,
+
+despite the parallels between the t1/3+o(1) algorithm and, both, the Weyl-Hardy-
+
+Littlewood method and the method of exponent pairs, the t1/3+o(1) algorithm still
+
+does not yield the bound µ(1/2)  1/6. This is because the algorithm does not
+guarantee any cancellation should occur in the quadratic sum as it repeatedly ap-
+
+plies van der Corput methods to it. The only way the algorithm could sense (or
+
+roughly distinguish) the size of the quadratic sum is via the total number of itera-
+
+tions that it uses in the computation. But this number is only poly-log in the length
+
+of the sum, and, therefore, variations in it do not affect the power-savings. Fur-
+
+thermore, consider that the main difficulty in improving the t4/13+o(1) algorithm
+
+is not that certain terms are getting too large, but that a certain FFT precompu-
+
+tation, for which there is no clear analogue when bounding µ(1/2), becomes too
+expensive.
+
+   We note that the algorithm for computing L(s, ), which is stated in Theo-
+
+rem 1.1, actually relies on a character sum estimate, namely the Po´lya-Vinogradov
+
+inequality, to obtain an upper bound for | nM (n)n-s|. This reduces the com-
+putation of L(s, ) to computing a main sum n<M (n)n-s, where M is cho-
+sen according to the desired precision; see (5.5). However, our use of the Po´lya-
+
+Vinogradov inequality is not essential because, as the discussion in §5 shows, the
+
+Po´lya-Vinogradov inequality can be replaced at a small loss by the trivial estimate
+
+| n<N (n)| < q. In general, the available character sum estimates help us to
+obtain a shorter main sum for L(1/2 + it, ), but not short enough to improve the
+
+algorithmic power-savings. It might be worth mentioning, however, that there are
+
+examples of algorithms that achieve their saving by directly using a character sum
+
+estimate to obtain a relatively short main sum when (s) is large enough. For in-
+
+stance, the algorithm of Booker [Boo], which can certify the output of Buchmann's
+
+Qco(nddit)ioinnatliamlgeo|rdit|1h/m4+fo rifcothmepouutitnpgutthoef  class number  of a quadratic number field
+                                                                    Buchmann's    algorithm is correct (as ex-
+
+pected), and in time |d|1/2+ otherwise, directly uses Burgess' theorem (see [GL])
+
+to obtain a bound on the truncation error in a smoothed approximate functional
+
+equation for L(1, ). This bound is then shown to suffice considering that the class
+
+number needs to be computed to within half an integer only.
+
+   In the remainder of the introduction, we overview the structure of the paper.
+
+In §2, we discuss our underlying computational model. In §3, we provide back-
+
+ground material on some previous methods, which will help place the algorithmic
+
+improvements obtained here into context. We also provide a sketch of our method
+
+for computing the character sums
+
+(1.1)                     S(K) :=                                   (k) ,
+
+                                         0k<K
+
+which is the main step towards the algorithm for L(s, ). Notice that, while S(K)
+                                                                                        
+and  L(s, ) are directly  related,  for  example                    via  L(s, )   =  s  1  S(x)x-s-1  dx,
+
+(s) > 0, it is not immediate (or necessary) that savings achieved in computing
+
+S(K) must translate to savings in computing L(s, ). In our case, though, the
+
+method for computing S(K) generalizes naturally to L(s, ). In §4, we state
+COMPUTING CHARACTER SUMS  5
+
+and prove several needed results, starting with the simpler case of S(K). Then,
+as an application, we prove in §5 the complexity of the algorithm for L(s, ) in
+Theorem 1.1. Last, in §6, we remark on the general modulus case.
+
+                         2. Computational model and notation
+
+   We now specify our computational model. Real numbers are represented using
+a fixed point system in base-2. So when we write that operations are performed
+using B-bit arithmetic, it means that real numbers are represented using B bits
+to the left of the radix point (integer bits), and B bits to the right of the radix
+point (fraction bits), together with a sign bit (specifying whether the number is
+positive or negative). The position of the radix point is fixed. This system can
+accommodate integers easily by removing the fraction bits entirely, and requiring
+an extra bit (flag) to tell whether the number is an integer. An integer can be
+coerced into a real number by padding it with all zero fraction bits then flipping
+the integer flag, and vice versa. We can represent a real number x using a B-bit
+fixed system if log |x|/ log 2 < B, otherwise an overflow problem could occur. Notice
+that, if there is no overflow, then x can be represented with a round-off error of
+±2-B. Similarly, to represent an integer m exactly, we need log |m|/ log 2 < B. Our
+theorems and lemmas will always request a large enough value of B to guarantee no
+overflow ever occurs. So, when we write that it suffices to use B-bit arithmetic in a
+certain algorithm, it implicitly means that log M/ log 2 < B, where M is the largest
+number that ever occurs in the algorithm (regardless of the order of operations).
+In our algorithm, the number M depends on s and q only. It will be implicitly
+tracked during the derivations, and will manifestly satisfy a bound of the form
+0  log M < A~0(( + 1) log(q(|s| + 1)))4 for some absolute constant A~0, which is
+generous.
+
+   Our basic real operations are addition, multiplication, division by a non zero
+number, the cosine and the sine, exponentiation, and taking the logarithm of a
+positive number. We take for granted that there are algorithms to perform each of
+these operations in the B-bit fixed point system using  A~1B~1 bit operations and
+ A~2B~2 bits of storage, where A~1, A~2, ~1, and ~2, are absolute numbers, and such
+that if no overflow occurs then the final output of the operation is correct to within
+±2-B+F , where F is an absolute number. Let C be an upper bound on the total
+number of basic real operations consumed by a given algorithm. Then, an upper
+bound for the round-off error accumulated during a full run of the algorithm is
+CM2-B+F . So, if the final output is requested with an error tolerance   (0, e-1),
+then it suffices to ensure that CM2-B+F < , or (log M + log C + log(1/))/ log 2 +
+F < B, which is one way to determine upper bounds for the required number of
+bits in our algorithms.
+
+   We make a similar assumption about the existence of algorithms to perform the
+basic integer operations: Addition, multiplication, and checking equality of two
+integers, such that operations can be performed exactly in the fixed point system,
+provided there is no overflow problem. (Division of integers is carried out using
+real numbers.) We assume that the elements of the ring Z/paZ are modelled by (or
+identified with) the set of numbers {0, . . . , pa - 1}, in the obvious way. The basic
+ring operations are addition, multiplication, and checking equality of two elements.
+Determining the multiplicative inverse, if it exists, of an element in Z/paZ can be
+6  G.A. HIARY
+
+done via the Euclidean algorithm, which is fast. Ring operations are performed
+exactly using integer arithmetic in our system and by reducing modulo pa.
+
+   Our algorithms will sometimes request to perform a precomputation, and to
+store the output in main memory for later retrieval. We assume that any randomly-
+chosen precomputed value can be quickly retrieved from main memory in roughly
+the same amount of time. This is usually a realistic assumption in core memory
+areas, and is one feature of the Random Access Machine model in complexity
+analysis, as mentioned in [LMO] for example. (This assumption is actually not
+essential for Theorem 1.1, but this is not important.) For the sake of definiteness,
+let us suppose that if a precomputation results in T numbers say, where each
+number is represented using a B-bit fixed point system, then the cost of retrieving
+a precomputed number is uniformly bounded by  A~3(B + log T )~3 bit operations,
+where A~3 and ~3 are absolute constants.
+
+   The computational complexity of the algorithms here is measured by the number
+of integer, real, and ring operations (or simply, operations) consumed. This in turn
+can be routinely bounded in terms of bit operations since all the numbers that
+occur in Theorem 1.1 can be expressed using a poly-log number of bits in q and
+|s|. We will specify what it means for a character  to be "given" as an input to
+algorithms at the beginning of §4. When we write: "L(s, ) can be computed to
+within ± q-(|s|+1)-," it means that, given s and , we can find a number L~(s, )
+such that L(s, ) - L~(s, ) = ei00 for some unknowns 0  R and -q-(|s| +
+1)-  0  q-(|s| + 1)-. So, in particular, |L(s, ) - L~(s, )|  q-(|s| + 1)-.
+
+   Last, we remark that in practice one typically uses a floating point system for
+representing numbers, not a fixed point system. This said, the asymptotic power-
+savings of our algorithms are independent of which system is used. The reason
+we prefer a fixed point system in the exposition is to make it fairly simple to
+determine the number of bits needed to perform basic operations. Also, in practice,
+it is worthwhile to minimize the use of expensive multi-precision arithmetic by
+carefully using Taylor expansions, precomputations, suitable orders of operations,
+and various standard tricks.
+
+Notation. We have been using asymptotic notation. For completeness, let us define
+it explicitly. Following [D, p. xiii], we write f2(x) = O(f3(x)), or equivalently
+f2(x)  f3(x), when there is an absolute constant C1 such that |f2(x)|  C1f3(x)
+for all values of x under consideration. In this paper, the "values of x under
+consideration" is always a set of the form x  C2, where C2 is an absolute constant.
+We write f2(x) = o(f3(x)) when lim f2(x)/f3(x) = 0, where the limit is always
+taken as x   in this paper. When we write O~(.) or o~(1), it means the implied
+constants depend on ~. So, for example, when we write O~(.), it mean that C1
+and C2 depend on ~. If no dependence is indicated, then the implied constants
+are absolute (but for more emphasis, we will frequently state this explicitly). We
+will often refer to poly-log factor in some (positive) parameters x1, . . . , xr, which
+means a factor of the form A(log(x1 + 3) + · · · + log(xr + 3)), where A and  are
+absolute constants.
+
+                            3. Background and the basic idea
+
+   In [BF, Theorem 1], Bombieri and Friedlander prove, for a fairly large class
+of L-functions, that it is not possible to approximate a fixed L-function L(s) =
+                          COMPUTING CHARACTER SUMS                                                7
+
+       cnn-s  (so  big-O  constants  will  depend  on   L),  in  a  window   T        (s)      2T
+n=1
+and just to the left of the critical line, with an error O(T -0), 0 > 0, using
+
+a single Dirichlet polynomial n<x cn(x)n-s, |c1(x)| > 1/2, cn(x)  no(1), of
+length much shorter than the "analytic conductor" of L(s). Note that the analytic
+
+conductor terminology usually appears in connection with subconvexity estimates,
+
+but it also arises naturally in connection with algorithms for L-functions, such as
+
+those in [R1]. Following [IK], the analytic conductor of (s) can be defined as
+
+|s| + 3, and the analytic conductor of L(s, ) can be defined as q(|s + a| + 3), where
+
+a := (1-(-1))/2. The precise definition is not important to the asymptotic results
+
+discussed here, and the reader may refer to [IK] for the definition for a general type
+
+of L-function.
+
+The result of Bombieri and Friedlander assures, for example, that L( + it, ),
+
+ < 1/2, T  t  2T , can not be approximated well by a single Dirichlet polynomial
+
+of length T 1-o(1). However, as remarked in [BF], the behavior in a fixed strip to the
+
+right of the critical line is quite different: On the Lindelo¨f hypothesis, L(s) can be
+
+approximated there with an error o(1) using arbitrarily short Dirichlet polynomials.
+
+Therefore, if we define µ~L(), 0    1 say, as the infimum of all the numbers 
+such that L( + it) can always be approximated in T  t  2T with an error o(1)
+
+using a Dirichlet polynomial n<x cn(x)n-s of length x = O(T ), then it is clear
+that µ~L() and µL() are qualitatively different. For example, µL() is continuous,
+whereas µ~L() is not (assuming the Lindelo¨f hypothesis for L(s)).
+
+If the restriction on the number of Dirichlet polynomials is removed, then one
+
+can do better. For example, it is possible to approximate many L-functions with an
+
+error o(1) using two Dirichlet polynomials, each of length roughly the square-root of
+
+the analytic conductor. A general method for doing so is the smoothed approximate
+
+functional equation, which we will discuss shortly in more detail. But, first, we
+
+remark that in all known algorithms where the square-root barrier is broken, one
+
+had to ultimately abandon the framework of Dirichlet polynomials. For instance,
+
+the algorithms in [H2] rely on approximations via low-degree exponential sums, and
+
+so does the algorithm of Theorem 1.1; see also [S, V1, V2].
+
+While Theorem 1.1 never uses the smoothed approximate functional equation,
+
+it is still useful to discuss such a general method here since it supplies formulas for
+
+computing many L-functions, including L(s, ). Formula (3.1) below is actually
+
+a specialization of a smoothed approximate functional equation formula in [R1],
+
+valid for a Dirichlet series with arbitrary coefficients provided the series possesses a
+
+meromorphic continuation and a functional equation, and satisfies very mild growth
+
+conditions (so no Euler-product is required). See [R2] for a C++ implementation.
+
+Specifically, Rubinstein [R1] provides two formulas for L(s, ), for the even and
+
+odd cases, which can be combined straightforwardly as follows: Assume  mod q is
+
+a primitive character, and let a := (1 - (-1))/2, then
+
+(3.1)
+
+q      s+a      s+a                                     s  +  a  ,  n22
+                  2                                        2           q
+        2            L(s, )-s = a (n)G
+
+                                           n=1
+
+                                     +       1   ()                 1     -  s  +  a  ,  n2    ,
+                                           a+1  iaq1/2                       2           2q
+                                                             (n)G
+
+                                                        n=1
+8                             G.A. HIARY
+
+where G is a smoothing function, expressed in terms of the incomplete Gamma
+function (z, w),
+
+           G(z, w) := w-z(z, w) =              e-wxxz-1 dx ,
+
+(3.2)                                                                 (w) > 0 ,
+
+                                          1
+
+ () is the usual Gauss sum,
+
+(3.3)                                          q
+
+                               () := (n)e2in/q ,
+
+                                             n=1
+
+and  is a certain complex parameter, with a simple dependence on s, chosen
+to cancel out the exponential decay in ((s + a)/2) as |(s)|  ; see [R1] for
+
+details. Although the series in (3.1) are infinite, the weights G(z, w) decay expo-
+
+nentially fast when (w)  1. For a given , the series (3.1) can be truncated after
+q1/2+o(1)(|s| + 1)1/2+o(1) terms with a truncation error ±q-(|s| + 1)-. Once
+truncated, the series can be evaluated term by term to give a numerical approxi-
+mation of L(s, ) accurate to within ±2q-(|s| + 1)- say. Therefore, the number
+of terms needed is roughly equal to the square-root of the analytic conductor of
+
+L(s, ). Notice that formula (3.1) involves the evaluation of the Gauss sum  (),
+
+which requires summing an additional q terms when done in a straightforward way.
+Also, a direct application of (3.1) requires computing roughly the first "square-root
+
+of the analytic conductor" Dirichlet coefficients.
+
+   In the case of S(K), where  is primitive, one can use the multiplicativity of
+, together with a suitable choice of a smoothing function, to always (regardless
+of K) express S(K) as a sum involving q1/2+o(1) terms multiplied by  (); see
+§6. If K is smaller than q1/2, however, then such a series does not lead to a faster
+computation since it is longer than the original sum. In Theorem 4.4, we provide
+
+a different method for computing S(K), which leads to asymptotic speed-ups if
+q is smooth enough (and which, in turn, is the main ingredient in the proof of
+Theorem 1.1).
+
+   We sketch Theorem 4.4. Let  mod q be any character, where q = pa11 · · · phah
+( need not be primitive). Theorem 4.4 assures that S(K) can be computed to
+within ± in about p1a1/3 · · · phah/3 time, up to a poly-log factor in q and 1/.
+This running-time improves on q1/2 for many choices of the aj, or roughly when
+
+(3.4)                  pjaj /3-aj /2q1                     paj j/2-aj /3 ,
+
+           aj {1,2,4}                          aj {1,2,4}
+
+for  some  1 > 0. Notice      that aj/3   -aja=j1/2p=j  ,  1/2 if aj  = 1, and it vanishes if
+aj    {2,  4}, so the l.h.s.   is simply                    which is  the square-root of the
+
+square-free part of q. The behavior of the algorithm of Theorem 4.4 as q  
+
+is very well-controlled, in the sense that power-savings are obtained regardless of
+
+whether q   through some of the aj's or some of the pj's or any combination
+thereof. For example, if q = p3a, then the method requires about pa = q1/3 time
+
+(even if p = 5 say). As another example, if q = p1p23a, then the time requirement
+is about p1p2a, which represents a power-saving beyond q1/2 when pa2  p1q2 for
+some 2 > 0. Roughly speaking, if the aj are large, or if the pj are large but with
+
+exponents nearly divisible by 3, then the running time is about q1/3+o(1).
+                COMPUTING CHARACTER SUMS                                     9
+
+   Since our methods exploit the power-full structure of the modulus (via the Post-
+
+nikov character formula), it is not surprising that aj = 1, which corresponds to the
+prime modulus case, appears as an exceptional case in (3.4), meaning it is a case
+where we do not improve on q1/2. But the appearance of aj = 2 and aj = 4 as ex-
+ceptional cases is somewhat surprising. The reason we do not obtain a power-saving
+beyond q1/2 when aj = 4, for example, is because we encounter cubic exponential
+sums with possibly large cubic coefficients. There is no general algorithm to com-
+
+pute such sums faster than required by a straightforward evaluation except for the
+
+algorithm of [H2], which is suitable for sums with small cubic coefficients.
+   We illustrate the basic idea of Theorem 4.4 in the situation q = pa and simplifying
+
+to a character sum. For further simplicity, assume K is a multiple of pa/3. So,
+
+(3.5)  S(K) =                (l)                            (1 + klpa/3) ,
+
+                0<l<pa/3          0k<K/pa/3
+                   (l,p)=1
+
+where (m, n) denotes the greatest common divisor of m and n, and l is determined
+by the relation ll  1 mod pa. The particular choice of the exponent a/3 in (3.5)
+is so that the inner sum there can be expressed as a quadratic exponential sum via a
+specialization of the Postnikov character formula in lemma 4.2. Once expressed this
+way, the inner sums can be computed to within ± in poly-log time (in q and 1/)
+using the algorithm in [H1, Theorem 1.1]; see Theorem 4.3 here. If the exponent
+a/3 in (3.5) is decreased any further, then, in general, the Postnikov character
+formula yields cubic and higher degree exponential sums. In Theorem 4.4, this idea
+is generalized to quadratic sums twisted by .
+
+                             4. Computing S(K)
+
+   Let q = p1a1 · · · phah . (We assume the prime factorization of q is given to us, but
+factoring q does not cause a complexity issue in any case; for example, Lehman's
+
+method, see [CP], can be used to factor q in q1/3+o(1) time, and with no storage
+
+space requirement.) Let  be a character mod q. We first discuss how  should be
+
+"given" as an input to the algorithms. To facilitate computation, the following way
+
+is convenient.
+
+   Recall that every character  mod q can be expressed as a product of characters
+j mod pjaj , 1  j  h. Assume, at first, that all the pj's are odd, or if pj = 2 for
+some j then aj < 3. Then the theory of primitive roots applies, and we require  to
+
+be presented to the algorithm as an h-tuple of roots of unity (1, . . . , h) whose en-
+tries satisfy jmj = 1, where mj := (pjaj ) = pjaj-1(pj - 1), together with an h-tuple
+of primitive roots (g1 mod pa11, . . . , gh mod pahh). Given such tuples, the algorithm
+defines j(gj) := j, for 1  j  h, which determines  uniquely. If pj = 2 and
+aj  3 for some j (so j is a character mod 2aj ), then the entries corresponding to
+pj in the above tuples are omitted, and we require an additional 2-tuple (1 , 2 )
+                             =gr1ouapnd(Z(/22 a)2Za)-2
+whose entries satisfy (1 )2                             =   1. The reason    for this modification
+is that, taking a = aj, the                             is  not cyclic if a   3, and so there is
+
+no primitive root. Therefore, we rely on the well-known group decomposition of
+(Z/2aZ) to express the odd residue classes in the form (-1)v15v2 mod 2a, where
+
+v1 and v2 are integers that are uniquely determined modulo 2 and modulo 2a-2,
+respectively. Last, given the 2-tuple (1 , 2 ), the algorithms define j(-1) := 1
+and j(5) := 2 .
+10                      G.A. HIARY
+
+   With  thus presented, we supply a fast procedure for computing  at individual
+points. Note that, in general, the problem of determining the value of  mod q at an
+individual point is a hard discrete log problem. There are known sub-exponential
+time algorithms for solving it but their running times are only conjectural: see [O1]
+for a survey of such algorithms. Fortunately, in our case, we can exploit the power-
+full structure of the modulus, which makes the problem computationally simple.
+
+Lemma 4.1. There are absolute constants 4, 5, and 6 such that for any positive
+integer q = p1a1 · · · pahh (where pj are distinct primes), any given Dirichlet character
+ mod q, any positive  < e-1, and any integer 0  c < q, the value of (c) can be
+computed to within ± using O(log4(q/)) operations on numbers of O(log(q/))
+bits, provided a precomputation, that depends on q only, costing O((p1 + · · · +
+ph) log5 q) operations, and requiring O((p1 + · · · + ph) log6 q) bits of storage, is
+performed. Big-O constants are absolute.
+
+Proof. It suffices to show how to compute each character j mod pjaj occurring in
+the decomposition  = 1 · · · h. This is because there are only h  log q such
+
+characters, and so the cost of computing (c) is the same as j(c) except for an
+additional multiplicative factor of log q, which falls within the target complexity of
+
+the lemma. In turn, to compute j(c), it suffices to solve the discrete log problem
+gjx  c mod pjaj , because then j(c) can be computed via the formula j(c) = jx,
+which is fast since j is supplied to the algorithm via the presentation of . So the
+difficult part of computing j(c) is to solve for x, which we do next. (If p divides
+
+c then j(c) = 0; as this condition can be checked quickly by a single division, we
+may assume that gcd(pj, c) = 1 from now on.)
+
+   Let us first deal with the odd pj case. Recall that gj is the primitive root
+associated with j mod pjaj , and is supplied to algorithm via the presentation of
+. To avoid notational clutter, let p = pj, a = aj, and g = gj. In order to solve
+gx  c mod pa, it suffices to find integers l1 and l2 such that (gp-1)l1  cp-1 mod pa
+and (gpa-1 )l2  cpa-1 mod pa. This is because, given l1 and l2, one can find integers
+
+r and s via the Euclidean algorithm (which is computationally fast) such that
+r(p - 1) + spa-1 = 1, and so x = r(p - 1)l1 + spa-1l2 is a solution. Therefore,
+the discrete log problem mod pa can be reduced to two discrete log problems in
+the (cyclic) subgroups of (Z/paZ) of order pa-1 and p - 1 (which are generated
+by gp-1 and gpa-1 , respectively). Furthermore, the problem in the subgroup of
+order pa-1 can be reduced to a - 1 discrete log problems in the subgroup of order
+
+p using a straightforward recursive procedure described [Pom] by Pomerance. For
+
+the convenience of the reader, let us sketch that procedure here. We may assume
+
+a  2, otherwise the problem is either trivial or is already in the subgroup of order
+p. We want to solve (gp-1)l1  cp-1 mod pa. Since l1 can be expressed in the form
+l1 = b0 + · · · + ba-2 pa-2, 0  br < p, it suffices to determine the integers br (which
+
+are the base-p digits of l1). To this end, suppose b0, . . . , br-1 are known, and let
+
+(4.1)                   r  cp-1(gp-1)-b0-···-br-1pr-1 mod pa
+                             g(p-1)(brpr +···+ba-2pa-2) mod pa .
+
+Then,  visibly,  r  is  (p - 1)pr­power.  So,  letting  r   pa-r-2   mod pa,  we  deduce
+
+                                                                  r
+that r is a (p - 1)pa-2­power, and thus r is in the subgroup of order p, which is
+generated by g  g(p-1)pa-2 mod pa. Therefore, the solution of (g)x  r mod pa,
+            COMPUTING CHARACTER SUMS                             11
+
+which is a discrete-log problem in the subgroup of order p, satisfies x  br mod p,
+because, by definition, g(p-1)pa-1y  1 mod pa for any y  Z, and so
+
+(4.2)  r    pa-r-2    g(p-1)(brpr +···+ba-2pa-2)pa-r-2  mod  pa
+
+              r
+
+           (g(p-1)pa-2 )br  (g)br mod pa ,
+
+Moreover, x determines br uniquely since, by hypothesis, 0  br < p. As for b0,
+which is needed to initialize the procedure, it is found simply by solving (g)x 
+c(p-1)pa-2 mod pa, which is again a discrete log problem in the subgroup of order p
+(to which c(p-1)pa-2 mod pa belongs). We note that quantities like r, r, g, and
+c(p-1)pa-2 mod pa can always be computed using repeated squaring mod pa, which
+
+is fast.
+   In summary, to find l1 it suffices to work with the generator g of the subgroup
+
+of order p. One then tabulates its powers: g, . . . , (g)p mod pa, by sequentially
+multiplying by g modulo pa. It is important that this precomputation does not
+depend on c, but only on pa (it is even independent of the character), and so the
+
+table need not be created anew for each different c. The cost of creating the table
+is about p operations and p space (up to a poly-log factor in pa). Once done, the
+
+value of l1 can be determined from the precomputed values using a-1 repetitions of
+procedure we have described, where each repetition involves a table look-up, which
+can be done in poly-log time in pa, and hence in q (assuming a random access
+
+memory model).
+   As for l2, it suffices to work with the generator g  gpa-1 mod pa of the subgroup
+
+of order p - 1. As before, one tabulates its powers g, . . . , (g)p-1 mod pa, so then
+
+l2 can be determined by a direct table look-up. The overall cost of this is again
+about p time and p space.
+
+   It remains to show how to compute individual values of j mod 2a, where a  3.
+(The cases a  {1, 2} do not represent any computational difficulty.) The main
+task here is to solve for v1 and v2 such that (-1)v15v2  c mod 2a. The index v1 is
+simple to compute: it is either 0 or 1 according to whether c is 1 or -1 modulo 4.
+
+As for v2, it can be computed via a recursive procedure similar to the case of odd
+p (one works in the cyclic subgroup generated by 5, which has order 2a-2). Last,
+j (c) = (1 )v1 (2 )v2 .
+
+   The next needed ingredient is the Postnikov character formula, which was de-
+
+rived by Postnikov to obtain upper bounds on character sums. It was later re-
+
+proved by Gallagher [Ga]. (See [I] and [IK] for other formulations.) The for-
+mula shows that the values of a Dirichlet character ~ mod pa along the arith-
+metic progression {1, 1 + pb, 1 + 2pb, 1 + 3pb, . . .}, with b  1, are of the form
+~(1 + pbx) = exp(2if (x)), where f (x) is a polynomial with rational coefficients
+
+that depends on ~, p, a, and b only. Lemma 4.2 below, which is a specialization of
+
+lemma 2 in [Ga], shows that b can be arranged so that f (x) is of degree at most 2.
+
+Lemma 4.2. Let ~ mod pa be a Dirichlet character, and let b := a/3. If p is
+an odd prime, then there exists an integer L, depending on ~, p, a, and b only (so
+independent of x), such that
+
+(4.3)       ~(1 + pbx) = exp  4i L x  -  2i L x2        ,
+                               pa-b       pa-2b
+12                       G.A. HIARY
+
+for all x  Z. If p = 2 and a > 3, then there exists an integer L1, depending on ~
+and b only (so independent of x), such that
+
+       ~(1 + 2bx) = exp             2i L1   x  -  i L1 x2  ,
+                                      2a-b         2a-2b
+
+for all x  Z. And if p = 2 and a  3, then there exist absolute constants -1 
+L2, L3  2 such that ~(1 + 2bx) = (-1)(L2x+L3x2)/2 for all x  Z.
+
+Remark. We distinguish the conclusion of the lemma for odd p when a  {1, 2, 4},
+where we have ~(1 + pbk) = e2iLk/pa-b if a  {2, 4}, and ~(1 + pbk) = 1 if a = 1,
+
+which is trivial.
+
+Proof. Let H be the kernel of the reduction homomorphism (Z/paZ)  Z/pbZ .
+So, H is a subgroup in (Z/paZ) consisting of the residue classes congruent to
+1 mod pb, and H has size |H| = pa-b. Using our model for Z/paZ, the elements of
+H are identified with the set of integers {1 + pbx | 0  x < pa-b}.
+
+   Assuming p > 2, we construct a character  of H which generates the full
+
+character group of H, including the character ~|H , such that  is given explicitly
+by a quadratic exponential. To this end, define the polynomial f (x) := 2x - x2.
+
+Then, for all x, y  Z, we have
+
+       f (pbx + pby + p2bx y) = 2pbx + 2pby + 2p2bx y - p2bx2 - p2by2
+
+(4.4)                    - 2p2bx y - 2p3bx2 y - 2p3bx y2 - p4bx2y2
+
+                          f (pbx) + f (pby) mod pa ,
+
+where we made use of the relation p3b  0 mod pa, which holds due to our choice
+b = a/3. Consider the following function  : H  C defined by
+
+       (1 + pbx) := exp  2if (pbx)  = exp         4i x  -  2i x2  .
+                              pa                  pa-b     pa-2b
+
+Notice this definition is independent of the model for Z/paZ as it yields the same
+result if 1 + pbx is replaced by 1 + pbx + pak for all k  Z. Now, by the congruence
+
+relation (4.4), we have
+
+(4.5)  ((1 + pbx) (1 + pby)) = (1 + pbx) (1 + pby) ,
+
+and this equality holds for all x, y,  Z. Therefore,  is multiplicative ( respects
+
+the group operation in H). Moreover,  is not identically zero, because (1) = 1.
+Hence,  must be a character of H. By a direct calculation, f (pb)  0 mod pb,
+or, equivalently, f (pb)/pb is an integer. Moreover, since b > 0 and p > 2, we have
+f (pb) = 2pb - p2b  0 mod pb+1, and so f (pb)/pb is relatively prime to p. This
+immediately implies that the values (1 + pb)u = e2iu(f(pb)/pb)/pa-b , 0  u < pa-b,
+are all distinct. In particular,  has order pa-b, which is the same as the order of
+
+H. Therefore, the powers of  span the full character group of H.
+   But ~|H is a character of H. Hence, there is an integer L such that ~|H  L.
+
+To find L, note that ~(1 + pb) = exp(2iB/pa-b) for some integer B depending on
+
+~, p, and b only. (In our application, B can be determined quickly using lemma 4.1.)
+So, L can be computed by simply solving the congruence L f (pb)/pb  B mod pa-b,
+
+which yields
+
+(4.6)                    L  B 2 - pb mod pa-b .
+                  COMPUTING CHARACTER SUMS                                       13
+
+   It remains to consider the case when the modulus is 2a. If a > 3, then the
+
+same derivation as in the odd prime case applies except one uses the polynomial
+f1(x) = x - x2/2 instead of f (x), which gives
+
+(4.7)             L1  B 1 - 2b-1 mod 2a-b .
+
+(Notice f1(x) consists of the first two terms in the Taylor expansion of log(1 + x)).
+If a  3, then the previous proof does not go through because b = 1 and so the
+condition f1(pb)  0 mod pb+1 fails. Nevertheless, if a  3, then we can find integers
+L2 and L3 such that ~(1+2bx) = (-1)(L2x+L3x2)/2. Specifically, if ~ is the principal
+character, which is the sole character if a = 1, then take L2 = L3 = 0. So, we may
+assume ~ is not principal. If a = 2, then there is a single non-principal character,
+
+for which we take L2 = 2, L3 = 0. And if a = 3, then take L2 = 1, L3 = -1 or
+L2 = 2, L3 = 0, or L2 = 1, L3 = 1, according to whether ~(3) = 1 and ~(5) = -1,
+or ~(3) = -1 and ~(5) = 1, or ~(3) = -1 and ~(5) = -1, respectively. The validity
+
+of these choices of L2 and L3 can be verified by inspection.
+
+   The last needed ingredient is the following algorithm for computing quadratic
+exponential sums (Theorem 1.1 in [H1]).
+
+Theorem 4.3. There are absolute constants A6, A7, A8, 7, and 8 such that for
+any positive  < e-1, any integer K > 0, any integer j  0, any ,   [0, 1), and
+with  := (K, j, ) = (j + 1) log(K/), the value of the function
+
+                   1                    kj e2ik+2ik2 ,
+                  Kj
+                                0k<K
+
+can be computed to within ± A6 7 using  A7 8 arithmetic operations on num-
+bers of  A8 2 bits.
+
+   By combining lemma 4.1, lemma 4.2, and Theorem 4.3, we obtain the following
+algorithm for computing theta sums twisted by a character . This algorithm is
+how the power-savings in computing L(s, ) will be achieved in Theorem 1.1 later.
+
+Theorem 4.4. There are absolute constants A9, . . . , A12, 9, . . . , 11, such that
+for any positive integer q = p1a1 · · · pahh (where pj are distinct primes), any given
+character  mod q, any positive  < e-1, any integer K > 0, any integer v, and
+any integer j  0, and with 1 := 1(K, q, v, ) = (j + 1) log(qK(|v| + 1)/), the
+function
+
+(4.8)     S(K, v, j; , )        :=   1        kj (v + k) e2ik+2ik2 ,
+                                    Kj
+                                        0k<K
+
+can be computed to within ± using  A9 p1a1/3 · · · phah/3 19 operations on num-
+bers of   A10 12                                                      q
+ A11 (p1  +···+   bits, provided a precomputation, that depends   on  ··  only,  costing
+                  ph) log10 q operations, and requiring  A12 (p1  +·      + ph)  log11 q
+
+bits of storage, is performed.
+
+Remark. The precomputation requirement comes directly from lemma 4.1. The
+constants 10 and 11 are the same as 5 and 6 in lemma 4.1, respectively.
+
+Proof. Since  has period q, we have (n) = (n~), where n~ := n - n/q. As n~ can
+be computed in poly-log time (in q and n), and as 0  n~ < q, then we only need to
+know how to compute (n) for 0  n < q. By lemma 4.1, once a precomputation
+14                                     G.A. HIARY
+
+costing O((p1+· · ·+ph) (log q)5 ) operations and requiring O((p1+· · ·+ph) (log q)6 )
+
+bits of storage is performed, the value of (n) for any 0  n < q can be computed
+to within ±/(2K) using O(log4(qK/)) operations on numbers of O(log(qK/))
+
+bits using the precomputed values. Since such a precomputation is permitted by
+
+the theorem, we may assume from now on that (n) can be computed to within
+±/(2K) for any 0  n < K + v in  14 + log(|v| + 1)  14+1 time.
+
+   Let us first prove the lemma in the simpler situation v, j, ,  = 0; i.e. for S(K).
+To this end, define C := Cq = p1a1/3 · · · phah/3 and Kl := Kl,C = (K - l)/C.
+Then, split the range of summation in S(K) into arithmetic progressions
+
+(4.9)          S(K) =                     (l)         (1 + l C k) .
+
+                                 0l<C          0k<Kl
+                                 (l,q)=1
+
+Now,  = 1 · · · h, where j mod paj j . So (1+lCk) = 1(1+lCk) · · · h(1+lCk).
+
+Applying lemma 4.2 to each j(1+lCk) separately, with ~ = j, a = aj, b = aj/3,
+and x = lCk/pb (note that x is an integer since, by definition, pb divides C), we can
+
+express each j(1 + lCk) as a quadratic exponential in k. Each such application
+of lemma 4.2 involves two steps. First, one determines the integer 0  B < pa-b
+satisfying ~(1 + pb) = exp(2iB/pa-b), which is straightforward since ~(1 + pb)
+
+can be computed using the already precomputed look-up tables from lemma 4.1.
+Second, one solves the congruence (4.6) or (4.7) for L, which can be done fast via
+
+the Euclidean algorithm. Put together, the inner sum in (4.9) can be expressed in
+
+the form
+
+               (1 + l C k) =                    1(1 + l C k) · · · h(1 + l C k)
+
+(4.10)  0k<Kl                       0k<Kl
+
+                                 =              e2i1k+2i1k2 ,
+
+                                    0k<Kl
+
+where 1, 1  [0, 1) are constants, depending on , C, and l only (so independent
+of k), whose values can be determined quickly by solving at most h congruences
+like (4.6) and (4.7). By Theorem 4.3, the exponential sum on the r.h.s. of (4.10)
+can each be computed to within ±/(2C) in poly-log time (in K and C/). Since
+there are at most C such sums to be computed, the lemma follows for S(K).
+
+   We extend the previous method to the generalized sum S(K, v, j; , ). To
+begin, define the coefficients dl,r := dl,r,j,C,K via the binomial expansion
+
+(4.11)         K-j(l + Ck)j =: dl,r(k/Kl)r .
+
+                                                rj
+
+So dl,r are explicitly given by
+
+(4.12)         dl,r =               j     lj-r  Cr (Kl)r  .
+                                    r           Kj
+                        COMPUTING CHARACTER SUMS  15
+
+Then, lemma 4.2 yields
+
+(4.13)
+S(K, v, j; , )
+
+=             (l + v) e2il+2il2         K-j(l + C k)j (1 + l + v C k)e2i(+2l)Ck+2iC2k2
+
+     0l<C                        0k<Kl
+   (l+v,q)=1
+
+=             (l + v) e2il+2il2        dl,r           kr e2i((+2l)C+2)k+2i(C2+2)k2 ,
+                                      (Kl)r
+   0l<C                          0rj         0k<Kl
+
+   (l+v,q)=1
+
+where 2, 2  [0, 1) are constants, depending on , C, and l + v only (so indepen-
+dent of k), whose values can be computed quickly by solving  h congruences like
+
+(4.6) and (4.7).
+
+   We digress briefly to discuss how to compute dl,r. There are several ways for
+doing this; the following suffices for the current exposition. For each r, one pre-
+
+computes the factorials r!, (j - r)!, and j!, exactly, by sequential multiplication
+
+of integers. Since r  j, this can be done using  j operations on integers of
+ (j + 1) log(j + 1)  (j + 1)2 bits2 and requiring  (j + 1)2 bits of storage,
+
+which is allowed by the theorem. The binomial coefficient can then be computed
+
+to within ±/(4C(j + 1)) in the form j!/(r!(j - r)!) which requires three operations
+on numbers of  (j + 1)2 bits using the precomputed values of the factorial. Also,
+each of lj-r, Cr, (Kl)r, and Kj, can be computed exactly using  j operations on
+numbers of O((j + 1) log(qK)) bits.
+
+   To conclude, then, define ~ := (K, j, /q) = (j + 1) log(qK/). Theorem 4.3
+
+ensures that each quadratic sum in (4.13) (the inner-most sums in the last line) can
+be computed to within ±/(4C(j+1)) using O(~8 ) operations on numbers of O(~2)
+
+bits (since, by assumption, j  K). Since there are  C(j + 1) such sums, and
+
+since the precomputed look-up tables required by lemma 4.1 are already available, so
+each (l + v) can be computed to within ±/(4C(j + 1)) using O(14+1) operations,
+then, on noting ~  1, we see that the overall cost of computing S(K, v, j; , )
+to within ± is O(C(1 + 14+1 + 18+1)) operations. The theorem follows.
+
+                5. Application: computing L(s, )
+
+   We would like the starting point in this section to be an unsmoothed approximate
+functional equation for L(s, ) (i.e. a "Riemann-Siegel" type formula). This is
+because unsmoothed formulae make it far simpler to apply subdivisions to the
+main sum, as we will do. On the downside, unsmoothed formulae of length square-
+root of the analytic conductor are quite complicated to derive. One might appeal
+to the main theorem in [Da], for example, which provides an unsmoothed formula,
+but which does not apply when s is small, and the explicit asymptotic constants
+in its remainder term have not been worked out explicitly. Fortunately, given
+Theorem 4.4, we can circumvent these difficulties easily, at least for the purpose
+
+    2This step (and similar ones involving binomial coefficients) requiring (j + 1) log(j + 1) 
+(j + 1)2  12 bits, is essentially the reason why this theorem is stated with the upper bounds
+O(12) on the number of bits (and Theorem 4.3 ([H1, Theorem 1.1]) was stated with the upper
+bound O(2) on the number of bits). Otherwise, all that is required is  j + log(qK/)-bit
+
+arithmetic (and  j + log(K/)-bit arithmetic, respectively). It is plain that one can prove this
+
+is in fact all is required.
+16                           G.A. HIARY
+
+of the theoretical derivation. The reason is that, Theorem 4.4 will yield the same
+
+power-saving for computing L(s, ) even if one starts with a main sum of length
+qd(|s| + 1)d, where d is any fixed number, because it will be applied locally,
+
+to blocks in the main sum, and it depends on the block-length and the required
+
+precision in a poly-log way only.
+   To this end, let  mod q be a non-principal character, where q = p1a1 · · · phah . We
+
+first consider the case when  is primitive. As before, let a := (1 - (-1))/2, so a
+is 0 or 1 according to whether  is even or odd. Define
+
+(5.1)              (s, ) :=  q     s  s+a          L(s, ) ,
+
+                                   2      2
+
+and (s, ) := (s, ) = (s, ). We have the following functional equation
+
+(5.2)              (1   -    s, )  =  iaq1/2  (s,  )  .
+                                       ()
+
+Therefore, we may restrict our computations of L(s, ) to the half-plane (s) 
+
+1/2 since values of L(s, ) elsewhere can be recovered routinely by the functional
+
+equation. Here, the Gauss sum  () can be computed to within ± by Theorem 4.4,
+which consumes about p1a1/3 · · · phah/3 time, up to a poly-log factor (in q and 1/).
+While the functional equation is valid for primitive  only, it will be apparent that
+
+our use of it is not essential, provided we restrict the computations to the half
+
+plane (s) > 0, where 0 > 0 is fixed. Alternatively, one can use the expression
+for L(s, ) in terms of L(s, 1), where 1 is the primitive character inducing ,
+to enable the functional equation for L(s, 1) to be used instead. However, for
+simplicity, we will assume 1/2  (s)  1, say, from now on.
+
+   We use the Po´lya-Vinogradov inequality to reduce the computation of L(s, ) to
+computing a main sum n<M (n)n-s, where M is chosen according to the desired
+precision. Specifically, if  mod q is primitive then | N1n<N2 (n)| < q1/2 log q,
+and if  mod q is induced by the primitive character 1 mod q1, then on combining
+the estimates (see [D, Chap. 23]) | N1n<N2 (n)| < 2(q/q1)(q1)1/2 log(q1) and
+2(q/q1)  d(q/q1)  2(q/q1)1/2, where (r) is the number of distinct prime factors
+of r, we obtain
+
+(5.3)  |           (n)| < 2(q/q1)1/2(q1)1/2 log(q1)  2q1/2 log q .
+
+          N1 n<N2
+
+Therefore, by applying partial summation to nM (n)n-s, we arrive at
+
+(5.4)              L(s, ) =           (n)       +  R  ,
+                                       ns
+                                1n<M
+
+where              |R|       2q1/2 log q  (|s|  +  1) .
+(5.5)                        (s)M (s)
+
+For example, if M  (6q log q)1/(s), then the main sum in (5.4) approximates
+L(1/2, ) to within ±q-1/2. As another example, if q > 900 say, then we can ensure
+|R|  q-(|s| + 1)- by taking M  qd(|s| + 1)d, d = ( + 1)/(s). Notice that, if
+
+the desired bound on R is reduced by a multiplicative factor of 1, then d changes
+to d - log(1)/((s) log(q(|s| + 1))), and so d grows very slowly (logarithmically) as
+we tighten the bound on R.
+             COMPUTING CHARACTER SUMS         17
+
+   We conclude that to prove Theorem 1.1 it suffices to compute the main sum
+in (5.4) with a suitable M . Before presenting the proof, we take a brief detour
+to emphasize the following. While the proof will yield the asymptotic complexity
+claimed in the theorem even when the length of the main sum is M  q100(|s|+1)100,
+say, it is better in practice to start with a shorter main sum such as the one provided
+by a "Riemann-Siegel" type formula for L(s, ) with explicit asymptotic constants
+in the remainder term. On the other hand, if the available implementation of the
+algorithm of Theorem 4.4 is well-optimized, and supposing, for instance, that one
+wishes to compute L(1/2, ), or perhaps only the low-lying zeros of L(1/2 + it, ),
+to within ±q-1/2 (so that choosing M  (q(|s| + 1))3 suffices), then this issue might
+have a relatively little impact on the overall running time because, as mentioned
+before, the dependence of Theorem 4.4 on the length of the block and the desired
+precision is only poly-log. Therefore, in the proof of Theorem 1.1, we prefer to
+retain the simplicity and uniformity provided by (5.4), as well as its indifference to
+whether the character is primitive or not.
+
+Proof of Theorem 1.1. Our goal is to prove an upper bound on the number of oper-
+ations required to compute L(s, ) to within ±q-(|s|+1)-, where  is a character
+mod q, and q has prime factorization q = pa11 · · · phah. The character  should be
+presented to the algorithm as we detailed in §4. Notice that the presentation of 
+includes the factorization of q. We assume, for convenience, that q(|s| + 1)  103.
+
+   In (5.4), we choose M = qd(|s| + 1)d where d = ( + 2)/(s). This choice of
+M ensures, via estimate (5.5), the assumption q(|s| + 1)  103, and the hypothesis
+1/2  (s)  1 in the statement of the theorem, that |R|  0.1 q-(|s|+1)-. Next,
+
+we use lemma 4.1, and the periodicity of , to enable the evaluation of (n) to within
+±0.1 q-(|s| + 1)-/M for any 0  n < M using O(( + d + 1)4 log4 (q(|s| + 1)))
+
+operations on numbers of O(( + d + 1) log(q(|s| + 1))) bits. The lemma requires
+
+precomputing look-up tables, which is done only once throughout this proof. The
+precomputation costs O((p1 + · · · + ph) log5 q) operations, and requires O((p1 +
+· · · + ph) log6 q) bits of storage, which is permitted by the theorem.
+
+   Next, let M1 = M1,q,s := p1a1/3 · · · phah/3 (1 + |s|)1/3, and divide the main
+sum into an initial sum and a "bulk sum"
+
+             (n)          (n)           (n)
+(5.6)        ns =         ns +          ns .
+
+       1n<M        1n<M1        M1 n<M
+
+By appealing to lemma 4.1 to compute individual values of , we see that the initial
+sum can be evaluated directly, to within ±0.1 q-(|s| + 1)-, using O(M1 ( + d +
+1) log(q(|s|+1))) operations, which falls within our target complexity. So it remains
+
+to deal with the "bulk sum", which is where the power-savings will be achieved.
+18                                       G.A. HIARY
+
+We perform the following dyadic subdivision 3 of the "bulk sum"
+
+(5.7)                                    (n)  =         (n)     ,
+                                          ns             ns
+                               M1 n<M            II nI
+
+where I is the set of consecutive subintervals I that partition [M1, M ). Each
+subinterval in I is of the form I = [N, 2N ), N  [M1, M ), except possibly the
+last subinterval, which is of the form [N, M ). In explicit terms, if we define d0 :=
+log(M/M1)/ log 2, then I = {[2rM1, 2r+1M1), 0  r < d0}  {[2d0M1, M )}. Note
+that
+
+(5.8)                  |I |    log(M/M1)  +   1    10 d log(q(|s|  + 1)) .
+                                   log 2
+
+Therefore, if one plans on computing each inner sum in (5.7) separately, as we
+
+will do, then computing the full sum will multiply the cost by an extra factor of
+
+10 d log(q(|s| + 1)) only, which can be absorbed by our target complexity. Given
+this, it suffices to show how to compute each of the sums nI (n)n-s.
+
+   For each subinterval I = [N, 2N ) (except possibly the last one, which, in any
+case, is dealt with similarly), we define K := KN,s = N/(|s| + 1)1/3. We let
+V := VN,K(I) = {N, . . . , N + N/KK}, so V is a set of equidistant points in
+[N, 2N ) separated by distance K. Therefore, we have:
+
+          (n)       =          (n) e-s log n
+           ns
+(5.9) nI               N n<2N
+
+                    =           (v + k) e-s log(v+k) +             (v + k) e-s log(v+k) ,
+
+                       vV 0k<K                          0k<K 
+
+where the length of the second (tail) sum in (5.9) satisfies 0  K < K. Now, by
+definition, N/K  (|s| + 1)1/3, and in particular |V| = N/K + 1  (|s| + 1)1/3 + 1.
+
+So, to prove the theorem, it suffices to show that each inner sum in (5.9) (as well
+as the tail sum, which is handled similarly) can be computed in p1a1/3 · · · phah/3
+times poly-log time. This will be accomplished via Theorem 4.4 as follows. We
+apply the expansion log(1 + x) = x - x2/2 + x3/3 - · · · to log(1 + k/v), to obtain
+
+                    (v + k) e-s log(v+k) = e-s log v        (v + k) e-s log(1+k/v)
+
+              0k<K                                    0k<K
+
+(5.10)                                   = e-s log v                   e-s(  k  -   k2  +   k3  -··· )
+                                                                             v     2v2     3v3
+                                                            (v  +  k)                                   .
+
+                                                      0k<K
+
+By our choice of K, and the facts v  N and N  M1, it follows that |k/v| 
+(|s|+1)-1/3, and so the cubic and higher terms in s log(1+k/v) = sk/v-s(k/v)2/2+
+
+    3The following subdivision scheme is more efficient in practice than a dyadic subdivision (by a
+
+constant factor) because it yields larger blocks to feed into Theorem 4.4 later: Let v~0 = M1, and
+sequentially define K~ r := min{v~r/(|s| + 1)1/3, M - v~r}, v~r+1 := v~r + K~ r, to obtain
+
+                               (n)n-s =                 (v~r + k)(v~r + k)-s ,
+
+                    M1 n<M               0r<R~ 0k<K~ r
+
+where R~ := R~s,M1,M can be shown to satisfy R~  (|s| + 1)1/3. The reason we use a dyadic
+subdivision in the proof, even though it is less efficient, is because it is likely more familiar, and
+
+so it might be marginally simpler.
+                                        COMPUTING CHARACTER SUMS                                                       19
+
+s(k/v)3/3 - · · · are O(1). More precisely, |s|(k/v)3+j1 /(3 + j1)  (|s| + 1)-j1/3 
+(3/2)-j1/3. Thus, using Taylor expansions (in the third equality below), we obtain
+
+(5.11)
+
+        k  -   k2      k3  -···         -  i(s)  k+  i(s)  k2  -   (s)   k+  (s)  k2 -    s  k3 +···
+        v     2v2     3v3                     v       2v2             v      2v2        3v3
+e = e e -s(        +             )
+
+                                           i(s)  k+  i(s)  k2
+                                              v       2v2
+                                    = e × -
+
+                                           (s)K      k     (s)K2   k2  -  sK3  k3  +···±  sKJ0    kJ0
+                                               v     K        2v2  K2     3v3  K3         J0 vJ0  KJ0
+                                        e + E -         +                                              
+
+                                                                                                       s,v,k,J0
+
+                                    = e-   i(s)  k+  i(s)  k2            zj,s,v,J0  kj  + Es,v,k,J     + Es,v,k,J0  .
+                                              v       2v2                           Kj
+
+                                                               0j<J
+
+Since |s|(k/v)3+j1 /(3 + j1)  (3/2)-j1/3, the truncation error Es,v,k,J0 satisfies
+|Es,v,k,J0 | < 0.1 q-(|s| + 1)-/(M K) when J0  J~0, where J~0  (d +  +
+1) log(q(|s| + 1)). Thus, it suffices to choose J0 = J~0. We similarly claim that
+|Es,v,k,J | < 0.1 q-(|s| + 1)-/(M K) when J  J~, where J~  (d +  + 1) log(q(|s| +
+1)), and so it suffices to take J = J~. To see why this bound on J~ holds, consider
+the function (w) := e1w+···+J0 wJ0 , where 1 := -(s)K/v, 2 := (s)K2/(2v2),
+and j := (-1)j+1sKj/(jvj) for 3  j  J0, note that 1, 2  1, and recall
+that |3+j1 |  (3/2)-j1/3, then, by a standard application of Cauchy's theorem, we
+obtain |zj,s,v,J0 |  (2)-1| |w|=5/4 (w)/wj+1 dw|  (5/4)-j. Moreover, the coeffi-
+cients zj,s,v,J0 (which are independent of k) can be computed fast as follows. Let j
+be defined as before, and define the polynomials Pr(w) via the recursion: P0(w) :=
+1, Pr(w) = (Pr-1(w) + Pr-1(w)Q(w))/r, where Q(w) := 1w + · · · + J0 wJ0 , and
+P (w) and Q(w) denote the derivative with respect to w. Then it is fairly easy to
+
+see that zj,s,v,J0 = Pj(0). And to compute zj,s,v,J0 , 0  j  J , it suffices to repeat
+the said recursion J +1 times, noting that each repetition requires  (J +1)(J0 +1)
+operations only because it suffices to keep track of merely the first J + 1 terms in
+
+Pr(w) throughout (we can discard the rest because Pr(w) will be differentiated at
+most J times, then evaluated at zero). It follows that zj,s,v,J0, 0  j  J , can be
+computed at a total cost  (J +1)2(J +1)  (d++1)3 log3(q(|s|+1)) operations.
+
+   By plugging (5.11) back into (5.10) and interchanging the order of summation, we
+see that the last sum in (5.10) can be rewritten, to within ± 0.2 q-(|s| + 1)-/M ,
+
+a linear combination, with quickly computable coefficients, of J + 1 sums of the
+
+form
+
+(5.12)                               1            kj (v + k) e2ik+2ik2 ,
+                                    Kj
+                                        0k<K
+
+where 0  j  J  (d++1) log q(|s|+1),  = -(s)/(2v), and  = (s)/(4v2).
+Letting 2 := (J +1)(d++1) log(q(|s|+1))  (+1)2 log2(q(|s|+1)), it follows by
+Theorem 4.4 that each sum (5.12) can be computed to within ± 0.1 q-(|s|+1)-/M
+
+using  p1a1/3 · · · phah/3 29 operations on numbers of  22 bits. Since there
+are  |I| (|V| + 1) (J + 1)  (|s| + 1)1/322 such sums to be computed, then, on
+accounting for all the truncation and finite precision errors introduced so far, we
+see that L(s, ) can be computed to within ± q-(|s| + 1)- using a further 
+
+p1a1/3 · · · phah/3(|s| + 1)1/329+2 operations. The theorem follows.
+20            G.A. HIARY
+
+   In anticipation of a practical implementation of the algorithm, let us make a
+few more comments. In order to improve efficiency, one could assume a type of
+pseudo-randomness in the round-off errors that accumulate from, say, summing
+a large number of terms; e.g. the sum over V in (5.9). For example, one might
+model the round-off errors by a sequence of independent identically distributed
+random variables with mean zero, which therefore gives square-root cancellation
+in the aggregate error; see [O2]. This way, the aggregate error is bounded in the
+l2-norm (root-mean-square) rather than in the l1-norm. Such a model is suitable in
+large-scale computations that focus on statistics of zeros (e.g. [O2], [Go], and [H3])
+because it is robust, it increases the practical efficiency noticeably, and the l1-error
+obtained without assuming it might still suffice for many purposes such as verifying
+the Riemann hypothesis at relatively low height, or computing moments or zero
+statistics. However, when checking the Riemann hypothesis in neighborhoods of
+very close zeros, it might appear risky to rely on a model that assumes square-
+root cancellation in the round-off errors since the Riemann hypothesis is itself,
+essentially, about square-root cancellation (even though the cancellation in each
+situation occurs for different reasons). Therefore, it is useful to have at least one
+algorithm implementation that controls the aggregate round-off error in the l1­
+norm while also minimizing the use of multi-precision arithmetic so as to avoid
+unnecessary increases in the running time. Such an implementation can be carried
+out with the aid of multi-precision packages (like MPFR and GMP).
+
+                     6. Comments on the general modulus case
+
+   While the algorithm presented here for computing S(K) does not yield a power-
+saving beyond q1/2 when q  {p, p2, p4}, and in fact it requires q1+o(1) time in the
+case q = p, it is still consistent with the existence of a general q1/3+o(1) algorithm
+for computing character sums. In the t-aspect (i.e. with s =  + it and thinking
+of t large), there exists such an algorithm, as well as a faster one performing in
+t4/13+o(1) time that relies on computing cubic exponential sums; see [H2]. The
+similarities between the algorithms in the t and q aspects rest heavily on the power-
+full structure of the modulus, which suggests that in order to tackle the prime
+modulus case (and, likely, the square-free case) we will need significant additional
+algorithms.
+
+   In the remainder of this section, we give a general method for computing S(K),
+where  mod q is any character, and with no assumption about the factorization
+of q. This method is primarily of interest in the range q1/2 < K < q. (One can
+always reduce to the range K < q by the periodicity of  and the observation
+
+   0n<q (n) = 0 if  is nonprincipal.) It might be illuminating, though, to first
+consider the following more general situation. Let 0, . . . , R-1 be any sequence of
+numbers. Then, under some favorable conditions on r, we describe a procedure
+for computing r<L r that can be faster than a straightforward evaluation when
+R1/2 < L < R. To this end, note that the domain of definition of m can be
+extended to all m  Z by setting m := m mod R, and let ^0, . . . , ^R-1 denote the
+dual sequence under the discrete Fourier transform, so
+
+(6.1)  ^m :=        r e 2imrR.
+
+              0r<R
+       COMPUTING CHARACTER SUMS                   21
+
+Then we have the following functional equation, valid for W in Schwartz class, say,
+
+(6.2)                     1                 m  ,
+                          R                 R
+               m W (m) =             ^m W^
+
+       m=-                   m=-
+
+where W^ (x) := R W (y)e-2ixy dy.
+   To compute r<L r, we choose W := I  H, where I is the indicator function of
+
+[0, L], and H(y) := e-y2/R. Notice that I(y) is very well-approximated by W (y),
+to within ±R- say, except for two intervals of length R1/2+o(1) near y = 0 and
+
+y = L. So the difference between the l.h.s. of (6.2) and r<L r can be computed
+to within LR-  R-+1 using a sum of length R1/2+o(1) terms. Also, W^ (y/R)
+decays, with y, like e-y2/R, which implies that the r.h.s of (6.2) can be made of
+length R1/2+o(1) by truncating the series with an error  R-. Letting R0 denote
+the cost of computing an individual point j, and letting R0 denote the cost of
+computing an individual dual point ^j, we see that r<L r (and more generally
+
+   L0r<L0+L r) can be computed, via (6.2), in about R1/2+0+o(1)+R1/2+0+o(1)
+time, instead of L1+0+o(1) time.
+
+   In the case of a primitive Dirichlet character  mod q, we take R = q, so the
+dual is ^(m) = (m)  ().4 If, in addition,  is real, then we have a simple formula
+
+for the Gauss sum  (), and so it is easy to see that ^ can be computed provably
+
+quickly (in poly-log time) by appealing to quadratic reciprocity. We conclude that
+   r<L (r) can always be computed in q1/2+o(1) time for real primitive . In the
+
+case of a general character, we do not have quadratic reciprocity, but we can still
+express the Gauss sum as a ratio of series involving q1/2+o(1) terms by applying
+
+formula (6.2) with n = (n) and with W (x) a self-similar function with sufficient
+decay (e.g. e-x2/q).
+
+   We also mention the following. Let p be an odd prime, let  be the real primitive
+
+character mod p, and let
+
+(6.3)  g(x)  :=   1          e . 2ixk2
+                 p                    p
+
+                     0k<p
+
+It is well-known that if  is even and (m, p) = 1, then (m) = g(m). Similarly, if  is
+odd and (m, p) = 1, then (m) = -ig(m). Assuming that  is even, say, we extend
+the domain of definition of  to all of x  R, setting (x) := g(x). By quadratic
+reciprocity, (x) can be computed, for integer x, in poly-log time. A consequence
+of the algorithm for computing quadratic exponential sums in Theorem 4.3 is that
+one can still compute (x) in poly-log time for any x  R.
+
+Acknowledgements. I would like to thank the referee for many useful comments
+and for pointing out the reference [BLT], Professor Peter Sarnak for suggesting
+the problem of computing character sums to me and for the reference [GL], Pro-
+fessor Henri Cohen for a useful comment about Gauss sums, and Professor Roger
+Heath-Brown for mentioning the reference [I]. I also would like to thank Michael
+Rubinstein and Pankaj Vishe for related conversations.
+
+    4If  is not primitive, say it is induced by 1 mod q1, then, for (m, q) = 1, we have ^(m) =
+(m)1(q/q1)µ(q/q1) (1) where µ is the Mo¨bius function.
+22  G.A. HIARY
+
+                                                           References
+
+[Bob] J.W. Bober, http://sage.math.washington.edu/home/bober/www/data/zeta/
+[Boo] A.R. Booker, Quadratic class numbers and character sums, Math. Comp. 75 no. 255 (2006)
+
+    14811492.
+[BF] E. Bombieri and J.B. Friedlander, Dirichlet polynomial approximations to zeta functions,
+
+    Annali della Scuola Normale Superiore di Pisa - Classe di Scienze Sr. 4 22 no. 3 (1995) 517­544.
+[BLT] M.B. Barban, V.Yu. Linnik, and N.G. Tshudakov, On prime numbers in an arithmetic
+
+    progression with a prime-power difference, Acta Arith. 9 (1964) 375-390.
+[CP] R. Crandall and C. Pomerance, Prime numbers: A computational perspective, Second edi-
+
+    tion. Springer, New York, (2005).
+[D] H. Davenport, Multiplicative number theory. Third edition. Revised and with a preface by
+
+    Hugh L. Montgomery. Graduate Texts in Mathematics, 74. Springer-Verlag, New York, (2000).
+[Da] D. Davies, An approximate functional equation for Dirichlet L-functions, Proc. Roy. Soc.
+
+    Ser.A v. 284 (1965) 224­236.
+[Ga] P.X. Gallagher, Primes in progressions to prime power modulus, Invent. Math. 16 (1972)
+
+    191­201.
+[Go] X. Gourdon, The 1013 first zeros of the Riemann zeta function and zero computation at very
+
+    large heights, unpublished manuscript.
+[GL] A.O. Gel'fond and Y.V. Linnik, Elementary methods in the analytic theory of numbers,
+
+    translated by D.E. Brown, edited by IN Sneddon, The MIT press, 1st Edition, (1966).
+[H1] G.A. Hiary, A nearly optimal method to compute the truncated theta function, its deriva-
+
+    tives, and integrals, Ann. Math. 174-2 (2011) 859­889.
+[H2] G.A. Hiary, Fast methods to compute the Riemann zeta function, Ann. Math. 174-2 (2011)
+
+    891­946.
+[H3] G.A. Hiary, An amortized-complexity method to compute the Riemann zeta function, Math.
+
+    Comp. 80 no. 275 (2011) 17851796.
+[H4] G.A. Hiary, https://people.math.osu.edu/hiary.1/fastmethods.html .
+[I] H. Iwaniec, On zeros of Dirichlet's L series, Invent. Math. 23 (1974) 97-104.
+[IK] H. Iwaniec and E. Kowalski, Analytic number theory, A.M.S Colloquium Publications vol 53
+
+    (2004).
+[LMO] J.C. Lagarias, V.S. Miller, and A.M. Odlyzko, Computing (x): the Meissel-Lehmer
+
+    method, Math. Comp. 44 no. 170 (1985) 537560.
+[MV] H.L. Montgomery and R.C. Vaughan, Multiplicative number theory I. Classical theory,
+
+    Cambridge University Press, (2007).
+[O1] A.M. Odlyzko, Discrete logarithms: The past and the future, Designs, Codes, and Cryptogra-
+
+    phy 19 (2000) 129­145. Reprinted in Towards a Quarter-Century of Public Key Cryptography,
+    N. Koblitz, ed., Kluwer, (2000) 59­75.
+[O2] A.M. Odlyzko, The 1020-th zero of the Riemann zeta function and 175 million of its neigh-
+    bors, unpublished manuscript.
+[Pom] C. Pomerance, Elementary thoughts on discrete logarithms, In Algorithmic Number The-
+    ory: Lattices, Number Fields, Curves and Cryptography, Cambridge University Press, (2008)
+    385­396.
+[Pos] A.G. Postnikov, On the sum of the characters for a prime power modulus, Izv. Akad. Nauk
+    SSSR 19 (1955) 11-16 (Russian).
+[R1] M.O. Rubinstein, Computational methods and experiments in analytic number theory, In:
+    Recent Perspectives in Random Matrix Theory and Number Theory, F. Mezzadri and N.C.
+    Snaith editors, (2005) 407­483.
+[R2] M.O. Rubinstein, L C++ class library and command line program for computing zeros and
+    values of L-functions, http://www.math.uwaterloo.ca/mrubinst
+[S] A. Sch¨onhage, Numerik analytischer Funktionen und Komplexit¨at, Jahresber. Deutsch. Math.-
+    Verein. 92 no. 1 (1990) 1­20.
+[T] E.C. Titchmarsh, The Theory of the Riemann zeta-Function, 2nd ed., revised by D.R. Heath-
+    Brown. Oxford University Press, Oxford (1986).
+[V1] P. Vishe, Rapid computation of L-functions for modular form, to appear in IMRN.
+[V2] P. Vishe, A Fast Algorithm to Compute L(1/2, f × q), arXiv:1202.6303v1 [math.NT].
+COMPUTING CHARACTER SUMS  23
+
+    Department of Mathematics, The Ohio State University, 100 Math Tower, 231 West
+18th Ave, Columbus, OH 43210.
+
+    E-mail address: hiaryg@gmail.com
+

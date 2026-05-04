@@ -1,0 +1,61 @@
+[warmup] Numba JIT compile...
+[warmup done]
+
+## r=4: q=243, N=27, period=81, J=4
+   |supp| = 27
+   D(-3a) computed in 0.00s
+   G(a) computed in 0.00s
+   ψ_lead(a) computed in 0.00s
+   |G(a)| = √q = 15.5885 for all a: True  (max dev = 1.42e-14)
+   S_lead     =         5.8561  (Scenario A: |Σ D·ψ_lead|)
+   S_true     =        12.8128  (Scenario B: |Σ D·G/√q|)
+   K_direct   =         2.5901  (direct Kalafatelis sum)
+   K_recon    =         2.4658  (= (3/√q)·S_true; should = K_direct)
+   ratio S_lead/S_true   = 0.4571
+   ratio K/K_recon (Plancherel check) = 1.050393 (should be 1.0)
+   total elapsed = 0.00s
+
+## r=6: q=2187, N=243, period=729, J=6
+   |supp| = 243
+   D(-3a) computed in 0.00s
+   G(a) computed in 0.00s
+   ψ_lead(a) computed in 0.00s
+   |G(a)| = √q = 46.7654 for all a: True  (max dev = 1.49e-13)
+   S_lead     =       170.6278  (Scenario A: |Σ D·ψ_lead|)
+   S_true     =       282.1321  (Scenario B: |Σ D·G/√q|)
+   K_direct   =        19.3451  (direct Kalafatelis sum)
+   K_recon    =        18.0988  (= (3/√q)·S_true; should = K_direct)
+   ratio S_lead/S_true   = 0.6048
+   ratio K/K_recon (Plancherel check) = 1.068864 (should be 1.0)
+   total elapsed = 0.00s
+
+## r=8: q=19683, N=2187, period=6561, J=9
+   |supp| = 2187
+   D(-3a) computed in 0.01s
+   G(a) computed in 0.02s
+   ψ_lead(a) computed in 0.00s
+   |G(a)| = √q = 140.2961 for all a: True  (max dev = 2.27e-12)
+   S_lead     =       864.0355  (Scenario A: |Σ D·ψ_lead|)
+   S_true     =      1860.9298  (Scenario B: |Σ D·G/√q|)
+   K_direct   =        38.1720  (direct Kalafatelis sum)
+   K_recon    =        39.7929  (= (3/√q)·S_true; should = K_direct)
+   ratio S_lead/S_true   = 0.4643
+   ratio K/K_recon (Plancherel check) = 0.959266 (should be 1.0)
+   total elapsed = 0.06s
+
+## r=10: q=177147, N=19683, period=59049, J=10
+   |supp| = 19683
+   D(-3a) computed in 0.29s
+   G(a) computed in 1.37s
+   ψ_lead(a) computed in 0.00s
+   |G(a)| = √q = 420.8883 for all a: True  (max dev = 3.21e-11)
+   S_lead     =      7773.7455  (Scenario A: |Σ D·ψ_lead|)
+   S_true     =     19945.2523  (Scenario B: |Σ D·G/√q|)
+   K_direct   =       142.9609  (direct Kalafatelis sum)
+   K_recon    =       142.1654  (= (3/√q)·S_true; should = K_direct)
+   ratio S_lead/S_true   = 0.3898
+   ratio K/K_recon (Plancherel check) = 1.005596 (should be 1.0)
+   total elapsed = 1.94s
+
+
+[done] csv = C:\Collatz\r79b_scenario_comparison.csv

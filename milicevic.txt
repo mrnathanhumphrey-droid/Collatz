@@ -1,0 +1,3785 @@
+                                           SUB-WEYL SUBCONVEXITY FOR DIRICHLET L-FUNCTIONS
+                                                                      TO PRIME POWER MODULI
+
+arXiv:1407.4100v1 [math.NT] 15 Jul 2014                                                        DJORDJE MILIC´ EVIC´
+
+                                                      Abstract.              We prove       a subconvexity     bound for    the central  value    L(  1  ,  )  of
+                                                                                                                                                      2
+                                                      a Dirichlet L-function of a character  to a prime power modulus q = pn of
+
+                                                      the       form     L(  1  ,  )     pr q+   with  a   fixed  r  and      0.1645  <  1  ,  breaking     the
+                                                                             2                                                           6
+
+                                                      long-standing Weyl exponent barrier. In fact, we develop a general new theory
+
+                                                      of estimation of short exponential sums involving p-adically analytic phases,
+
+                                                      which can be naturally seen as a p-adic analogue of the method of exponent
+
+                                                      pairs. This new method is presented in a ready-to-use form and applies to a
+
+                                                      wide class of well-behaved phases including many that arise from a stationary
+
+                                                      phase analysis of hyper-Kloosterman and other complete exponential sums.
+
+                                                                         1. Introduction and statement of results
+
+                                            One of the principal questions about L-functions is the size of their critical
+                                         values. In this paper, we address an instance of the subconvexity problem, which
+                                         we describe below, and break a long-standing barrier known as the Weyl exponent
+                                         for central values of certain Dirichlet L-functions.
+
+                                            In the case of the Riemann zeta-function, the distribution of values of (1/2 + it)
+                                         for large t is of central interest; see Titchmarsh [26]. From the functional equation
+                                         and the Phragm´en-Lindel¨of principle, it follows that
+
+                                         (1)                                                   |(1/2 + it)|  (1 + |t|)+
+
+                                         with         =   1  .  The      Lindelo¨f       hypothesis,      the    statement    that  (1)  holds       with        =  0,  is  a
+                                                          4
+                                         consequence of the celebrated Riemann hypothesis and lies very much out of reach
+
+                                         of  current         methods,              but   an    estimate   of  the    form   (1)  where         <  1   has      important
+                                                                                                                                                  4
+                                         implications. It was proved by Hardy and Littlewood by using Weyl differencing
+
+                                         that   (1)       holds      with             =  1  .  This exponent was lowered by Walfisz [29] in 1924
+                                                                                         6
+                                                      163       
+                                         to     =     988         0.1650;             many     subsequent     papers      slowly  improved        the       result  to  the
+
+                                         current      value           =  32             0.1561,  due   to  Huxley    [11].
+                                                                         205
+                                             For an automorphic representation  of GL(n), the statement that
+
+                                         (2)                                                   |L(1/2, )|  C()+,
+
+                                         where C() is the analytic conductor of  as defined by Iwaniec and Sarnak [13] and
+
+                                           =    1  ,  is  known          as  the      convexity  bound        and    follows  from  the  basic    analytic         proper-
+                                                4
+                                         ties of L(s, ). The subconvexity conjecture states that such a bound always holds
+
+                                         for some  <              1   .  Proving a subconvex estimate for any given L-function requires
+                                                                  4
+                                         deep arithmetic considerations and can have important arithmetic, geometric, or
+
+                                         dynamical consequences; see surveys [13, 16]. Many cases of subconvexity on lower-
+
+                                         dimensional groups have been                          proved, often with exponents                    very close to        1   .   A
+                                                                                                                                                                    4
+
+                                                                                                              1
+2                                           DJORDJE MILIC´ EVIC´
+
+breakthrough paper of Michel and Venkatesh [17] contains a fully general subcon-
+
+vexity    estimate     for  GL(2)     L-functions         (with           close  to  1    )  by    a  geometric      method
+                                                                                     4
+                                                                                     1
+and references to previous results.                 In some cases,  =                6       was proved, and such a
+
+result goes under the name of Weyl exponent.
+
+    In the case of a Dirichlet L-function of a character  modulo q, the corresponding
+
+statement that
+
+(3)                                         |L(1/2, )|  q+
+
+is  known     only  with      =  3    =  0.1875,          due    to  Burgess        [4].  That        the   Weyl  exponent
+                                 16
+       1
+    =  6  is  not   known     for  this     family        is  a     major source          of    frustration.      However,
+
+building on the ideas of Postnikov [20], Barban, Linnik and Tshudakov [1] proved
+
+estimates allowing them to take                        =      1  when considering Dirichlet                     L-functions
+L(s, ) associated to characters                               6  pn, where p is a fixed prime                  and n  .
+                                                  modulo
+
+This result was generalized by Heath-Brown [9] to a hybrid bound that contains
+
+(3)  with  an   exponent      1        <    1  assuming             that  the  modulus          q  has     a  divisor  d  in  a
+                              6             4
+                                   1                                                               q1/3+o(1)
+suitable   range,   with      =    6   for  moduli        q      having     a  divisor       d                 (including
+
+all sufficiently powerful moduli). Using a very different approach, Conrey and
+
+Iwaniec    [5]  obtained    the  Weyl     exponent               =   1  in  the     case  when          is  a  real  (that  is,
+                                                                     6
+quadratic) character.
+
+    The first main result of this article is the following theorem.
+
+Theorem 1. Let  > 0  0.1645 be given. There is an r 0 such that
+
+                                      L     1  ,           pr · q(log q)1/2
+                                            2
+
+holds for every Dirichlet character  to any prime power modulus q = pn.
+
+    In particular, we see that, for sufficiently large n n0, Theorem 1 yields the
+                                                    1
+subconvexity bound (3) with  <                      6  .  We stress that, even though our method is
+
+p-adic, the implied constant and the values of r and n0 in Theorem 1 depend only
+on the value of  and are universal across all primes p and all prime powers q = pn.
+
+This is the first family of L-functions since Walfisz's 1924 result for the Riemann
+
+zeta-function      in  which  a  better     exponent             than   1   has     been     obtained.
+                                                                        6
+
+   As the principal device of this paper, we develop a theory of estimation of expo-
+nential sums of the form
+
+(4)                                                              e   f (m)       ,
+                                                                      pn
+                                         M<m M+B
+
+where f (t) is an analytic function on the ring Zp of p-adic integers satisfying
+certain conditions. Here, and throughout the paper, e(x) denotes e2ix and its
+obvious unique extension from kZpkZ to a Zp-periodic function on Qp. In
+
+Definition 1 (section 3, below), we specify a class of (p-adically analytic) power
+series F, which includes multiples a logp(1 + pt) of the p-adic logarithm, and
+to which our estimates apply. Roughly speaking, series f in F satisfy f (t) =
+pw(1 + pt)-y + pw0 + pu+wg(t) with suitable parameters (which vary and are
+suppressed in this introduction) and a power series g satisfying suitable conditions
+
+(ensuring it does not interfere with the first, leading term). We call a pair of non-
+
+negative real numbers (k, ) a p-adic exponent pair if, roughly, for every f  F as
+                                        SUB-WEYL SUBCONVEXITY                                                                 3
+
+above, every sufficiently large n, and every 0 < B pn-w-,
+
+                              e  f (m)          pr                pn-w-            k
+                                  pn                                 B
+               M<m M+B                                                               B log pn-w- ,
+
+with some r,  depending on the exponent pair and the parameters implied in f .
+We will only need   [0, 1] in the exponent pairs we construct. In fact, we will
+be rather more precise and talk about p-adic exponent data in order to track all
+dependencies explicitly; see Definition 2 (section 3, below).
+
+   The heart of our method of estimating sums of the form (4) is contained in
+Theorems 4 and 5, which we term B- and A-processes, respectively. An immediate
+consequence of these results is the following compact statement.
+
+Theorem 2. If (k, ) is a p-adic exponent pair, then so are
+
+           A(k, ) =         k    1)  ,  k+   +1                    and         B(k, ) =           -   1  ,  k  +  1  .
+                        2(k +           2(k  + 1)                                                     2           2
+
+Starting from the "trivial" p-adic exponent pair (0, 1), we obtain with use of
+
+Theorem     2  further  pairs:   B(0, 1)       =  (      1  ,  1  )   (which       corresponds        to    a  variant  of  the
+                                                         2     2
+                                                                      1     2
+Po´lya-Vinogradov    inequality),       AB(0,         1)       =   (  6  ,  3  ),  and    infinitely  many     more,    includ-
+
+ing,  for  example,  ABA3B(0,           1)  =  (  11  ,  57    ).
+                                                  82     82
+Section 3, among other things, also presents the intuition behind the class F and
+
+Theorem 2 and describes a typical use of our method as well as further examples
+
+of phases in F that naturally arise in analytic number theory.
+
+We step back for a moment to reflect on the analogy with the Archimedean
+
+aspect. The parallel between the subconvexity problem (1) in the t-aspect and
+
+and (3) in the "depth" aspect (level pn, n  ) is particularly natural from the
+
+adelic point of view: one focuses on ramification at a single archimedean or non-
+
+archimedean place (or at a few places at once in hybrid bounds). The best available
+
+improvements on the bound (1) are obtained by estimating the exponential sum
+
+   N<n N+M nit in short intervals (M  (1 + |t|)1/2+). The method of expo-
+nent pairs of van der Corput [27], Phillips [19], and Rankin [21], a fundamental
+
+tool in the theory of exponential sums, relies on the iteration of two "processes",
+
+the ("Archimedean") A- and B-process, which exploit the arithmetic structure
+
+by transforming a given exponential sum into rather different sums with different
+
+ranges of summation. Graham and Kolesnik [8] give an excellent survey of the
+
+theory of exponential sums. Note that transformations of p-adic exponent pairs
+
+given by Theorem 2 formally coincide with those provided by the Archimedean A-
+
+and B-processes.
+
+The "q-analogues" of Weyl differencing allowed previous researchers to establish
+
+the   Weyl  exponent    in  the  context          of     estimating                L(  1  ,  )  with  a  character        to  a
+                                                                                       2
+powerful modulus and the associated exponential sums [20, 1, 6, 9]. In Theorem 5,
+
+which establishes the A-process as a recursive process relying on a q-analogue of
+
+the Weyl-van der Corput inequality (Lemma 11), we embrace a different paradigm
+
+of f as a p-adic analytic function rather than a finite (essentially cubic in the
+
+works just referenced) polynomial. This allows us to obtain more general results,
+
+leaves us flexibility for iterative estimates, and brings to the fore the analogy with
+
+the Archimedean situation, while also presenting some serious difficulties which we
+
+overcome in the proof. Vinogradov's method was also applied by Gallagher [7] and
+4                                          DJORDJE MILIC´ EVIC´
+
+Iwaniec [12] in the study of zero-free regions for L(s, ) near the line Re s = 1 and
+the prime number theorem in arithmetic progressions to powerful moduli. Note
+that iterations of the A-process alone yield exponent pairs (k, ) in which k is very
+small and  is very close to 1; such estimates are suitable in ranges relevant to the
+behavior close to the edge of the critical strip.
+
+   Theorem 4 establishes the analogue of the B-process. Along with Lemmas 9 and
+10 and Theorem 3 which we develop in the course of proving it, this result appears
+to have no nontrivial precedents in the literature. Our approach involves a careful
+application of p-adic Poisson summation, with the Fourier transform e^f (s) given
+by a complete exponential sum as in (23). We analyze such a sum using the p-adic
+analogue of the method of stationary phase (Lemma 7), which expresses it as a
+sum of contributions over all approximate critical points. In Lemma 9, we show
+that all such points indeed arise from actual, non-singular p-adic critical points and
+develop a p-adic implicit function theorem to express the critical points through
+analytic functions. This analysis culminates with Lemma 10, in which we evaluate
+e^f (s) in appropriate ranges. We show that contributions from all approximate
+critical points can be collected via the p-adic Gaussian, and find that, for an f  F,
+e^f (s) vanishes unless s lies in a certain arithmetic progression (roughly) of the form
+a0 + pt, in which case an extremely handsome formula
+
+                               e^f a0 + pt = p(n-w+)/2e                          f(t)
+                                                                                  pn
+
+holds, with some f  F. As a particularly pleasing application, we obtain, in The-
+
+orem 3, a summation formula in which an exponential sum involving f is related
+to its "dual sum", an exponential sum involving f, with a long original sum giving
+
+rise to a short dual sum and conversely. The statement of the B-process, Theo-
+
+rem 4, follows when the existing pair (k, ) is applied to the dual sum. In fact, the
+
+summation formula turns out to be extremely versatile, and we use it in the proof
+
+of the A-process (Theorem 5) to obtain tighter estimates.
+
+   Exponential sums of the form (4) enter the estimation of the central value
+
+L(1/2, ) via the approximate functional equation. As we will see in section 6,
+
+every character  modulo pn satisfies (1 + pt) = e a logp(1 + pt)/pn for some
+a  Zp, with a  Z×p corresponding to primitive characters (here, we can take  = 1
+for odd p). After splitting the Dirichlet polynomials according to classes modulo p
+
+and applying a p-adic exponent pair (k, ), the best value of the exponent  which
+
+can   be    obtained  in  the  estimate    of     Theorem        1   is  given      by    k+   -  1  ;  see  Theorem     6.
+                                                                                            2     4
+(In fact, while the factor (log q)1/2 in Theorem 1 is not needed with the present slick
+
+formulation, we keep it there so that the values of r and  arising from the p-adic
+
+exponent data apply verbatim without modification.) In particular, the trivial pair
+
+(0, 1)   recovers  the  convexity    bound             =  1  ,  the  pair  (  1  ,  2  )  gives  the    Weyl  exponent
+                                                          4                   6     3
+      1                                    11     57                     27   
+   =  6  ,  while  already  the  pair   (  82  ,  82   )  gives      =   164        0.1646,      breaking     the   Weyl
+
+exponent barrier in this family. In light of Theorem 2, the set of p-adic exponent
+
+pairs obtainable by the p-adic A- and B-processes coincides with the classical situ-
+
+ation. Rankin [21] found the infimum of (k + ) over all exponent pairs obtainable
+
+by A- and B-processes; his result gives the value of 0  0.1645 in Theorem 1.
+   With trivial modifications, our proof also yields the estimate L(1/2 + it, ) 
+
+(1 +  |t|)Aprq(log q)1/2       with  A  =  5      ,  applicable      along    the      entire    critical    line;  see  the
+                                           4
+remark after the proof of Theorem 6 for details. A hybrid bound also subconvex in
+                                    SUB-WEYL SUBCONVEXITY                                  5
+
+t or even of sub-Weyl strength in both t- and q-aspects would be very interesting,
+but we do not pursue it here.
+
+    In addition to its intrinsic interest and the context into which it puts the method
+
+of exponential sums, the importance of Theorem 1 lies in how it informs our under-
+
+standing of the various aspects of the subconvexity problem (including the t-aspect,
+
+the "depth" aspect with which we are concerned, and the q-aspect) and of the avail-
+
+able methods. We prefer to think of our A- and B-processes not as static estimates
+
+but as dynamical ways to transform (possibly incurring inequalities) a sum into
+
+(possibly a number of) other sums, which can in turn be transformed time and
+
+again, exploiting and transcoding the arithmetic structure present in the original
+
+sum. In this light, the fact that the analogous steps can be used in the transfor-
+
+mations of p-adic and Archimedean sums indicates a deep analogy of their built-in,
+
+"genetic" arithmetic structures.
+
+    From a generalist point of view (such as Selberg class), it is generally believed
+
+[17] that the analytic behavior of L-functions is controlled in a universal fashion
+
+by the conductors C(). Theorem 1 points at intrinsic features of the depth aspect
+
+and helps shed light on the structure that distinguishes between those families of
+
+L-functions     in  which   the  Weyl  subconvexity   exponent       =  1   is  available  through
+                                                                        6
+current techniques from those in which the naturally obtained exponent is Burgess's
+
+  =  3   .  The universality of  these   exponents and techniques which allow one to break
+     16
+them and obtain better estimates toward the Lindelo¨f hypothesis were principal re-
+
+search themes of a 2006 workshop at the American Institute of Mathematics [22].
+
+Subsequent to the current paper, in [3], Blomer and the author consider the subcon-
+
+vexity problem L(1/2, f ) f (q2)+ for character twists of a GL(2) L-function,
+
+in  which     =  3   is  currently  the  best  known  result  in  general,  and  develop   further
+                 16
+                                                      1
+p-adic   tools  to  obtain  the  Weyl  exponent    =  6  in  depth   aspect  and  corresponding
+
+estimates for twisted sums of Hecke eigenvalues. For other recent striking examples
+
+of the distinctive r^ole played by the square-full direction in analytic number theory,
+
+see [10, 18, 25, 28].
+
+    The close of this introduction is a good place to open several questions suggested
+
+by our work. A number of subconvexity, nonvanishing, and moments-related prob-
+
+lems for L-functions have so far found stronger answers in the t-aspect than in the
+
+q-aspect. The results of the present paper and [3] indicate that the analogy with the
+
+depth aspect carries over in some of them; it will be interesting to see further ways
+
+in which it intervenes and how far it goes. Quantitatively stronger or hybrid (adelic
+
+in a sense) versions of Theorem 1 would also appear seriously interesting; the au-
+
+thor has obtained some positive results in the initial investigations in this direction.
+
+Finally, our results establish a theory of short exponential sums involving p-adically
+
+analytic fluctuations independent of the specific application to Theorem 1. There
+
+are many applications of the method of (Archimedean) exponential sums to prob-
+
+lems other than estimates of L-functions (such as in the geometry of numbers), and
+
+our results are general enough to be appropriate analogues of the machinery that
+
+is needed to break the canonical exponents in most of the better-known of these
+
+applications; it appears extremely intriguing to investigate whether some of these
+
+questions have appropriate p-adic analogues.
+
+    Several notations will be used throughout the paper. For a positive integer i, we
+
+write
+
+                                 (y)i = y(y - 1) · · · (y - i + 1).
+6                               DJORDJE MILIC´ EVIC´
+
+For an y  Q+, let (y) = max 0, ordp(y-1) and (y) = max 0, ordp y , so that
+ordp y = (y) - (y). We also write simply  and  for (y) and (y), respectively,
+when the value of y is unambiguous form the context. We denote (y) = 1 if
+ordp y = 0 and (y) = 0 if ordp y = 0. We write f  g or f = O(g) to denote that
+|f | Cg for some constant C, or, equivalently, that lim sup(|f |/g) < +.
+
+                      2. Preliminaries on p-adic analysis
+
+   In this section, we collect facts about p-adic exponential, logarithmic, and power
+
+series and prove several auxiliary results related to these p-adic series which will
+
+be useful in our later capstone estimates. The reader is encouraged to postpone
+
+details of proofs for the second reading. Much of the pain in this section comes
+
+from the occasional need, inherent in the method of exponent pairs, to deal with
+
+power series of the form (1 + pt)y even when ordpy = 0, and our desire to minimize
+
+losses while doing so.
+
+   Throughout this section, all formal power series have coefficients in Qp unless
+                                                   
+specified otherwise. For such a series a(t) =      k=0     ak tk ,   we  follow  the  notation  of
+
+[23] and denote its radius of convergence by
+
+(5)          ra = sup{r 0 : lim |ak|prk = 0} = lim sup |ak|p1/k -1
+
+and its growth modulus by
+
+                 Mra = Mr(a) = max |ak|prk (0 r < ra).
+
+Note that we may very well have      logp ra  R \ Z even             though  each     logp |ak|p is
+an integer. We will write Mra =.     |ak0 |prk0 if there is a        unique  k0       N achieving
+
+the maximum and the value of k0 is clear from the context; such radii r are called
+
+regular.
+
+   We record the following standard fact.
+
+Lemma 1.     Let f (t) =        ak tk  = a0 +   ftf11=(.t)|ab1e|pa.  formal power series  with
+a1 = 0, and  let 0 < r <   k=0         that Mr                       Then, for every x,y  with
+                          rf be such
+
+|x|p, |y|p r, we have |f (x) - f (y)|p = |a1|p|x - y|p. In other words, for every x,
+
+y with |x|p, |y|p r,
+
+             f (x)  f (y) (mod pj|a1|-p 1)  x  y (mod pj).
+
+Proof. The proof is simple. We have that, for every k 2,
+
+             |ak(xk - yk)|p = |ak(x - y)(xk-1 + xk-2y + · · · + yk-1)|p
+                                   |ak|prk-1 · |x - y|p < |a1|p|x - y|p.
+
+Therefore,
+
+                                     
+
+                 |f (x) - f (y)|p =       ak(xk - yk) = |a1|p|x - y|p.
+
+                                     k=1                p
+
+   For two power series f (t) and g(t) such that g(0) = 0, one can define purely
+
+formally the power series (f  g)(t) = f (g(t)) obtained by formal substitution. On
+                                                   
+the other hand,  for any  power series a(t)   =    k=0  ak tk ,  we  can define its derivative
+series Da(t) =   a(t) =                       The                    for differentiation hold,
+                           k=1  kak  tk-1  .       usual rules
+
+including the Sum and Product rules, as well as the Chain Rule,
+
+(6)                       D(f  g)(t) = Df (g(t))Dg(t),
+                               SUB-WEYL SUBCONVEXITY                                                                 7
+
+valid for any two power series f and g with g(0) = 0 [23, page 289].
+   We will repeatedly use the following standard proposition, which gives a sufficient
+
+condition for this substitution to correspond to numerical substitution in convergent
+p-adic power series:
+
+Lemma 2. Let f and g be two convergent power series with g(0) = 0. If |x| < rg
+and M|x|(g) < rf , then rfg > |x| and the numerical evaluation of the composite
+f  g can be made according to
+
+                                                  (f  g)(x) = f (g(x)).
+
+Proof. This statement is from [23, page 294].
+
+In particular, consider the power series
+
+                      1                                                                           (-1)k-1
+                      k!                                                                              k
+(x) = expp(x) =            xk  =                  1  +  0(x),          (x) = logp(1 + x) =                    xk  .
+
+                 k=0                                                                         k=1
+
+Recall that
+
+     ordp(k!) =  k    +    k                      +  ·  ·  ·  <  p  k  1,  so that  ordp(k!)      k  -  1  .
+                 p         p2                                       -                             p  -  1
+
+It is therefore seen that
+
+                    r = r0 = rp, Mr0 =. r for all r < rp,
+                                                              Mr =. r for all r < rp,
+                    r = 1,
+
+where rp = p-p , p = 1/(p - 1). Moreover, if O is any complete valuation ring
+extension of Zp (possibly O = Zp) and K is the field of fractions of O, and if
+Br = {t  O : |t|p < r}, then 0,  : Brp  Brp are isometries such that, according
+to Lemma 2, 0   =   0 = idBrp .
+
+   Of particular interest to us will be the power series y(x), defined for y  K× as
+
+                                                                                    y  xk .
+                                                                                    k
+                 y(x) = 1 + 0y(x) = (y(x)) =
+
+                                                                           k=0
+
+It is easy to see that the radius of convergence ry = r0y equals  if y  N0, 1
+if (y) = 0 and y  N0, and rpp-(y) if (y) > 0. In any case, for r < rpp-(y),
+
+tMhera0ybo=.ve|yc|opmr.poMsitoiroenoviesr,also0y  valid as a numerical evaluation by Lemma 2,                 and
+                                                  : Brpp-(y)  Brpp-(y) is an isometry such                    that
+
+01/y  0y = idBrpp-(y) . We write y (x) = (1 + x)y. We have that
+
+(7)                 (1 + x1)(1 + x2) y = (1 + x1)y(1 + x2)y
+
+for all x1, x2  B . rpp-(y)
+   In particular, the equation (1+x)y = 1+t has a solution x  Brpp-(y) if and only
+
+if t  Brpp-(y) , in which case the solution is unique and given by 1 + x = (1 + t)1/y.
+8                             DJORDJE MILIC´ EVIC´
+
+   Among all power series a(t) =       ak tk  with  coefficients  ak    Zp,  we  consider
+                                  k=0
+the following subsets:
+
+     I0(Zp) = {a(t) : ak  Zp (k 0), lim |ak|p = 0} ,
+
+     I(Zp) = Zp + ptI0(Zp) = {a(t) : a0  Zp, ak  pZp (k     1), lim |ak|p = 0} ,
+   I×(Zp) = Z×p + ptI0(Zp) = a(t) : a0  Z×p , ak  pZp (k     1), lim |ak|p = 0 ,
+   I1(Zp) = (1 + pZp) + ptI0(Zp) = 1 + pI0(Zp),
+   I1(Zp) = (1 + pZp) + ptI0(Zp) = 1 + pI0(Zp).
+
+We see that all power series in the ring I0(Zp) define analytic functions Zp  Zp,
+that I(Zp) is a subring of I0(Zp), and that I×(Zp) is the group of invertible elements
+of I(Zp). We note for reference that obviously
+
+                        ra 1      for all a  I0(Zp),
+
+                        Mr(a) 1 for all r 1, a  I0(Zp),
+                        Mr(a) =. 1 for all r 1, a  I×(Zp).
+
+   Let y  Qp× and an integer  1 + (2) be arbitrary, and let  = (y),  = (y),
+so that  +  =  +  + ordpy. Then the power series [y+](x) = 1 + [y+]0(x) =
+(1 + p+x)y satisfies
+
+                                Mr[y+]0 =. |y|pp--r = p-- r
+
+for every r < prp (in particular for r = 1), and [y+] belongs to I1+(Zp).
+   We will also consider, for any given   R 0, the following subspaces of I0(Zp),
+
+              I0[](Zp) = {a(t)  I0(Zp) : ordpak k (k  N0)},
+
+(8)           In0 [](Zp) = tI0[](Zp),
+
+              I1 [](Zp) = (1 + pZp) + pI0n[](Zp).
+
+For example, if   N0, then I0[](Zp) consists of power series of the form a(t) =
+a1(pt) for some a1(t)  I0(Zp). It is clear that each I0[](Zp) is a ring, that
+I0n[](Zp) is an I0[](Zp)-module, and that, when  , I1 [](Zp) is a subgroup of
+I0[](Zp)×. It is also clear that ra p for every a(t)  I0[](Zp).
+
+   The relevance of these classes for us stems from the fact that, as is easily verfiied,
+
+              [y+]            I1+ [ - p](Zp),       ordpy = 0,
+                              I1+ [](Zp),           ordpy = 0.
+
+We can write [y+]  I1+ [ - p(y)](Zp), where p(y) equals p if ordpy = 0 and
+
+0 otherwise.
+
+   For every a(t)  I1+(Zp), a(t) =     a0 + p+ta1(t), a0    (1 +      p+Zp), a1(t) 
+I0(Zp), we can consider a(t)y = a0y    1 + p+a0-1ta1(t) y,  with      the latter power
+
+defined by formal substitution. This power series a(t)y belongs to I1+(Zp). Ac-
+cording to Lemma 2, the values a(t)y can be numerically evaluated as compositions
+
+for t  Zp. In particular, for every two a(t), b(t)  I1+(Zp), we have according to
+
+(7) the equality of values
+
+                              (a(t)b(t))y = a(t)yb(t)y
+
+for every t  Zp. Consequently, both sides of this equation must also agree as power
+series in I1+ (Zp). Similarly, let a(t)  I1+(Zp), and let b(t) = a(t)y  I1+ (Zp).
+                                 SUB-WEYL SUBCONVEXITY                                                    9
+
+For every t  Zp, we have an equality of values a(t)y = b(t) in 1+p+Zp. Therefore,
+
+we must also have
+                                             a(t) = b(t)1/y
+
+as an equality of values a(t) = b(t)1/y in 1 + p+Zp for every t  Zp, and therefore
+
+also as an equality of series in I1+(Zp).
+
+Finally, we comment on the compositions of series of the form (8). Suppose
+                                                                    
+that a(t) =   k=0  ak  tk        I0[a](Zp)     and     b(t)  =   t  k=0   bktk     In0 [b](Zp),  where
+
+a > 0. For every r < pb , Mr(b) r, so that numerical substitution in a(b(t)) is
+allowed for all r < min(pa , pb) according to Lemma 2. Moreover, from the formal
+
+substitution
+
+                                      k                                   ak0 b1 . . . bk0 tk,
+
+     a(b(t)) = aktk             bt      =              k=k0 +1 +···+k0
+
+                       k=0  =0               k=0
+
+it is clear that (a  b)  I0[min(a, b)](Zp). If, in addition, a(t)  I1[a](Zp) for
+some  a, then it follows from above that (a  b)(t)  I1 [min(a, b)](Zp). In
+particular, if a(t)  I1+[](Zp), then a(t)y  I1+[min( - p(y), )](Zp).
+
+   The following two lemmas 3 and 4 will be useful in obtaining successive conver-
+
+gents to the solution of an implicit function problem in Lemma 9.
+
+Lemma 3. Let y  Qp× and   N be arbitrary, and let  = (y),  = (y). Let fur-
+ther a(t) and b(t) be two power series with a(t)  I1+[a](Zp) and b(t)  I0n[b](Zp),
+a, b 0. Then there exists a power series ~b(t)  I0n[min( - p(y), a, b)](Zp)
+such that
+
+                              a(t) + p+b(t) y = a(t)y + p+~b(t).
+
+Proof. We may assume that a  + . Note that
+    a(t) + p+b(t) y = a(t) 1 + p+a(t)-1b(t) y = a(t)y 1 + p+a(t)-1b(t) y.
+
+As pointed above, we have that a(t)y  I1+[min( - p(y), a)](Zp), as well as
+a(t)-1  I1+[a](Zp), a(t)-1b(t)  I0n[min(a, b)](Zp), and so
+
+                  1 + p+a(t)-1b(t) y  I1+ [min( - p(y), a, b)](Zp).
+
+We can thus take                          1 + p+a(t)-1b(t) y - 1
+
+                       ~b(t) = a(t)y                   p+                 .
+
+We continue with a discussion regarding formal substitution in Taylor series. We
+
+start with an easy observation [23, Corollary on p.76] that, if bik  Qp (i, k  N0)
+                                                                                            
+are such  that limmax(i,k) |bik|p = 0, then                  i=0    k=0   bik   =    k=0    i=0      bik  .
+   For a
+          power series a(t) =               ak  tk  ,  we    can    also consider  its ith  derivative
+                                    k=0
+Dia(t) = a(i)(t) = i!            k  ak tk-i .
+                            k=i  i             The series for Dia converges on the disk of
+
+convergence D of a, and its sum agrees with the (analytic) ith derivative of a on
+
+D; in fact, it is immediate from (5) that ra(i) = ra. Moreover, for every x, b  D,
+we have an equality of values
+
+                                                f  (i) (b)
+                                                    i!
+(9)                              f (x) =                     (x  -  b)i,
+
+                                          i=0
+
+since the order of summation can be exchanged with bik =                  k     akbk-i(x - b)i   (k       i)
+                                                                          i
+[15, Proposition 3.22 on page 87].
+10                                  DJORDJE MILIC´ EVIC´
+
+    On the other hand, suppose that f0, f1, f2, . . . is a sequence of formal power
+                                          aiktk. If,
+series in    I0(Zp), with fi(t) =         f (t) =       for every fixed        k     N0, lim |aik|p  = 0,
+then we      can define the formal   k=0                                       tk .  If x  Qp is     such
+                                                        k=0          i=0  aik
+                                    sum
+
+that
+
+(10)                           lim           |aik    |p|x|pk  =  0,
+
+                           max(i,k)
+
+then all fi(x) and f (x) converge, and in fact we have an equality of values f (x) =
+    
+    i=0  fi  (x).
+
+    Finally, we will also consider, for an i  N0, the class
+
+             I0,i[](Zp) = {a(t)  I0(Zp) : ordpak (k + i) (k  N0)},
+
+and, analogously, In0,i[](Zp) = tI0,i[](Zp). It is easy to see that, if a(t)  I0[](Zp),
+then a(i)(t)/i!  I0,i[](Zp). It is also easy to see that, if a(t)  I0,ia [a](Zp) and
+b(t)  I0n,ib [b](Zp), then (a  b)  a(0) + I0,ia+ib [min(a, b)](Zp) (and the term
+a(0) may be omitted if ib = 0). Also, if a(t)  I0,i[a](Zp) and b(t)  tjI0[b](Zp),
+then a(t)b(t)  tmax(j-i,0)I0,max(i-j,0)[min(a, b)](Zp).
+
+   We use these observations in the proof of the final lemma of this section.
+
+Lemma 4. Let f  I0(Zp), g, h  In0 (Zp), u  N0. Then
+
+                                                     f  (i)  (g(t))
+                                                             i!
+                      f g(t) + puh(t)     =                          pui  h(t)i.
+
+                                             i=0
+
+In particular, if f  I0[f ](Zp), g  I0n[g](Zp), h  I0n[h](Zp), then
+
+                           f g(t) + puh(t) = f (g(t)) + puf1(t)
+
+for some f1  I0n,1[min(f , g, h)](Zp).
+
+Proof. We have seen that, if a(t)  I0(Zp) and b(t)  In0 (Zp), then (a  b)  I0(Zp).
+From the discussion above, both sides of the first equality exist as formal power
+
+series in I0(Zp), numerical substitution is allowed in all terms for t  pZp, and the
+
+values of both sides agree for all t  pZp (in fact for all t for which g(t), h(t)  Zp
+
+and numerical substitution is allowed); therefore, they must agree as power series.
+
+   Suppose additionally that f  I0[f ](Zp), g  In0 [g](Zp), and h  In0 [h](Zp).
+Since f (i)(t)/i!  I0,i[f ](Zp), we have that f (i)(g(t))/i!  I0,i[min(f , g)](Zp),
+
+and so                
+
+             f1(t) =       f (i)(g(t)) pu(i-1)h(t)i     I0n,1[min(f       ,  g ,  h)](Zp),
+                                i!
+                      i=1
+
+since pu(i-1)h(t)i/t  ti-1I0[h](Zp).
+
+                            3. p-adic exponent data and pairs
+
+   Exponential sums of the shape (4) cannot, of course, be non-trivially estimated
+entirely independently of the arithmetic structure of f . In this section, we define
+a class of functions to which our method suitably applies as well as the principal
+parameters of our estimates, p-adic exponent data and p-adic exponent pairs, derive
+some of their general properties, and give examples illustrating our definitions and
+their typical uses. Occasionally, and for illustrative purposes only, we reference in
+this section statements and equations from later sections, but, of course, all actual
+                      SUB-WEYL SUBCONVEXITY                                     11
+
+definitions and propositions are independent of the later material. Additional useful
+intuition, examples, and explanations can be found in section 6.
+
+   We may, in light of (9), think of f (t) as a power series in t. Of particular interest
+to us will be the case when f (t) is a constant multiple of the p-adic logarithm
+logp(1 + pt) and B is relatively short compared to pn. The method we develop,
+however, applies to estimation of sums of type (4) with a rather general f , as we
+discuss below. This is a very pleasing aspect of our method, although it is not
+entirely a matter of choice, for our recursive process produces many other f , in
+addition to the p-adic logarithm, which we need to be able to handle. Definition
+1 gives a universe of power series in which we find it convenient to formulate our
+results.
+
+Definition 1. Let w  Z, u,   N with  1 + (2),   pN, y  Q+, and let
+ = (y),  = (y), ,   Zp×. We say that a power series f  Q×p I0(Zp) belongs
+to class F(w, y, , , u, , ) if
+
+(11)  f (t) = pw 1 + p+t -y + pw0 + pu+wg(t)
+
+for some 0  Zp and g  I0[](Zp). We say that f belongs to class F(w, y, , , u)
+if f  F(w, y, , , u, , ) for some ,   Z×p .
+
+   The condition that   pN (rather than simply   R+) is used only to obtain
+sharper estimates in the proof of Lemma 10 and could easily be dispensed with, but
+the values of  naturally obtained from our iterative method lie in this discrete set
+anyway. We will sometimes use the symbol  in place of  and u and say that f
+belongs to the class F(w, y, , , , , ) if f satisfies Definition 1 for arbitrarily
+large values of  and u, which is to say that (11) holds with g = 0.
+
+   The class F(w, y, , , u) is wholly unnecessarily restrictive. In fact, for each par-
+ticular application of our method to an exponential sum involving a power series,
+say, in I0(Zp), we really only need a finite list of non-vanishing conditions of the
+kind that are discussed, for example, in [11]. Such non-vanishing conditions are
+tedious but straightforward to write down in each particular instance. However,
+writing these conditions out in full generality appears very involved, and the class
+of functions we consider amply suffices for the subconvexity application. Our Defi-
+nitions 1 and Definition 2 should be compared with their archimedean counterparts
+in [8, p. 30-31].
+
+   Note that, for every series f  F(w, y, , , u) and every n w,
+
+                         ef (m) = e  f (m)
+                                      pn
+
+defines a function ef : Z  C which is periodic with period pn-w. Indeed, by (9),
+we have, for every q  Z, an equality of values
+
+      f m + pn-wq  =  f  (m)  +  f (m)pn-wq  +       f  (r)(m)  p(n-w)r  qr  .
+                                                r=2       r!
+
+Since f (m)  pwZp, while ordp r! (r - 1)p and
+
+      ordp f (r)(m) w + min (r - 1), u + (r - 1)
+
+for every r 2, we conclude that f m + pn-wq - f (m)  pnZp, from which the
+periodicity of ef follows.
+12                             DJORDJE MILIC´ EVIC´
+
+    In this paper, we develop machinery to estimate sums of the form (4) whose
+
+general term ef (m) = e f (m)/pn is a periodic function arising from some f 
+F(w, y, , , u). We give several examples illustrating varied situations in which
+
+such arithmetic sums arise as well as the r^ole of various parameters in Definition 1.
+
+    Character sums
+
+                    S(M, B) =                (m),
+
+                                    M<m M+B
+
+for a Dirichlet character  modulo q = pn are of classical interest and of direct
+
+relevance to our subconvexity application; we discuss them in section 6. For defi-
+
+niteness, suppose that  is primitive. According to Lemma 13, there is an a0  Zp×
+
+such that                           a0 logp(1 + p1 t)
+                                             pn
+                     1 + p1 t = e
+
+for every t  Z, where 1 = 1 + (2). Splitting our character sum into classes
+modulo p for a suitable  1 and fixing, for every 1 c p such that p  c, an
+integer c with cc  1 (mod pn), we have that
+
+(12) S(M, B) =                 (c)                         e  a0 logp(1 + pct)  .
+                                                                       pn
+                    1 c p, pc       (M -c)/p<t (M +B-c)/p
+
+Note that, for any   Zp×, since logp(1 + pt)  pI0(Zp) and logp(1 + pt)  =
+p 1+pt -1, we have that logp 1+pt  F(, 1, , , , , ). In particular,
+we have that the phase fc(t) = a0 logp(1 + pct) satisfies
+
+(13)                fc  F(, 1, , , , c, a0c),
+
+so the inner sum above can be treated using our techniques.
+
+   We see already in this example the need for the parameter  in (11). A given
+
+arithmetic summand, such as (m) in this example, may exhibit its true local
+behavior as the exponential with a phase expressed by a well-behaved p-adic power
+
+series when restricted to a suitable p-adic neighborhood, such as the arithmetic
+progression c + pm with  1 = 1 + (2). On the other hand, the phase of our
+exponential is also properly a polynomial in t, and sometimes it can be convenient
+
+to take a larger value of  to obtain a lower-degree polynomial. In our case, the
+choices  > n/2 + O(1) and  > n/3 + O(1) produce exponential sums with a linear
+
+and quadratic phase, respectively, but of course they also require the splitting of
+
+the original sum into more pieces; we postpone the discussion of the relative utility
+of such choices to section 6. This first example also showcases the flexibility given
+by the extra parameters w, , and  in (11). As the discussion of periodicity of ef
+indicates, changing the value of w is effectively equivalent to changing the modulus
+to pn-w, so, while this flexibility could just as well be achieved by adjusting n, and
+
+while the value of w does change through the application of A- and B-processes,
+we find it convenient to keep n as a fixed parameter and track the changes in w
+separately. Finally the inclusion of  in the exponent to p+ is simply a natural
+normalization in light of the properties of the p-adic power function y(x) discussed
+in section 2 and is responsible for the elegant statement of Lemma 9.
+
+   Throughout our method, we think of the term pw 1 + p+t -y as the main
+term in (11), and we track the remaining terms to ensure that they do not interfere
+
+with the leading term. The extra flexibility afforded by allowing these smaller terms
+
+is both pleasing for the scope of our method and essential; we proceed to explain
+                                    SUB-WEYL SUBCONVEXITY                                                   13
+
+one of their sources and the r^ole of parameters u and  in controlling them. Our
+A-process relies on a version of Weyl differencing and reduces estimation of the sum
+(4) with f  F(w, y, , , u) to sums involving a phase of the form
+
+                                                                                         f  (r)(t)
+                                                                                             r!
+      f,h(t) = f       t + ph     - f (t) = phf (t) + p2h2             p(r-2)hr-2                   ;
+
+                                                              r=2
+
+see Lemma 12. For example, if f (t) = fc(t) = a0 logp(1 + pct) as in the inner
+sum in (12), (phf (t)) = a0c2p+2h(1 + pct)-2. The infinite sum contributes a
+secondary term (whose derivative is pu+wg(t) in (11)) which we must keep carrying
+
+while ensuring that it does not interfere with the main term, especially in light
+
+of the Implicit Function Theorem (Lemma 9); this separation is the r^ole of the
+parameter u. Moreover, the quantity u +  -  -  turns out to control both
+
+the new value of u for the phase f,h in Lemma 12 and the success of Lemmas 9
+
+and 10. The parameter  is a measure of decay of coefficients of g(t) (recall that,
+for   N0, g0(pt)  I0[](Zp) for every g0  I0(Zp), and compare with the form
+
+of the leading term) and, in a sense, helps the secondary term keep pace with the
+extra factor of p that the main term inherits with each differentiation.
+
+As our third example, we consider sums of Kloosterman sums. According to
+
+Sali´e's classical evaluation (see [14, p.322], [3, Sec.7]), the Kloosterman sum S(m1, m2, q),
+for an odd prime power q = pn (n                                                            m1 m2
+                                           2) and p  m1m2, vanishes unless                     p       = 1,
+
+in which case it is explicitly given as
+
+      S(m1, m2, q) =                    e  m1x¯ + m2x    = q1/2 (±, q)e               ±  2      ,
+                                                 q                                       q
+                               x mod q                                 ±
+
+where ± are the two points satisfying the stationary phase condition 2  m1m2
+(mod q) (cf. Lemma 7), and (a, pn) is the explicit unit factor as in Lemma 8, which
+
+depends only on p, the class of a mod p, and the parity of n. We refer the reader to
+
+[3] for a more refined discussion of p-adic square roots and content ourselves here
+with the observation that, if ± = ±(c) are the solutions to 2  c (mod pn), then
+(c + pt)  ±(c)(1 + pct)1/2 (mod pn) for every  1, t  Z. We thus have,
+
+for example,
+
+           S(1, m, q)
+
+M<m M+B
+
+           = q1/2                          (±(c), q)                                  e     ±  fc,  1  (t)  ,
+                                                                                                    2
+
+                          ± 1 c p, pc                 (M -c)/p<t (M +B-c)/p                     pn
+
+with  the  phase  fc,  1  (t)  =  2(c)(1 + pc t)1/2  in  the  class  F(,  1  ,  ,  ,  ,     c,  ±2(c)c)
+                       2                                                  2
+
+of Definition 1. We remark that the good analytic behavior of derivatives of solu-
+
+tions to the stationary phase equation is not accidental and is instead genetic to
+
+the corresponding implicit function problem.
+
+Many other cases of complete exponential sums to prime power moduli, such
+
+as for example hyper-Kloosterman sums, similarly give rise to exponentials with
+
+p-adically analytic phases satisfying the conditions of Definition 1. This involves
+
+an explicit evaluation of stationary points, which leads to an implicit function
+
+problem that can, under rather general conditions, be solved within the class F; see
+
+Lemma 9. In particular, this procedure also ultimately powers the duality approach
+
+in the proof of the B-process in section 4. Solution of the implicit function problem
+14                             DJORDJE MILIC´ EVIC´
+
+is another important source of the secondary term in (1) in applications. For
+another involved and hands-on example, in which the phase f  F arises from a
+repeated explicit evaluation by the p-adic method of stationary phase, see [3].
+
+   Finally we discuss translational invariance in the classes F(w, y, , , u). For a
+power series f  Q×p I0(Zp) and any t, M  Zp, we have by (9) an equality of values
+
+                                              f  (i)(M       )
+                                                   i!
+                          f (M + t) =                           ti  .
+
+                                         i=0
+
+We may therefore consider f (M + t) as a power series, which we denote by fM (t).
+Note that the formal derivative of fM agrees with the translation of the derivative
+f , that is, (fM )(t) = (f )M (t) = f (M + t). The following lemma is a simple but
+important verification.
+
+Lemma 5. Each of the classes I0(Zp), I0,j[](Zp), and F(w, y, , , u) is invariant
+under translations, that is, if f belongs to one of these classes C, then fM  C for
+every M  Zp.
+
+Proof. Suppose that f =        ck tk     I0(Zp),         so  that      lim |ck|p  =  0,  and  M    Zp.
+                          k=0
+Then f (i)(M )/i! =       k+i  ck+iM k,
+                     k=0    i            so  that
+
+    f (i)(M )        sup  k+i         ck+iM k            sup |ck|p  0 (i  ).
+        i! p                i
+                     k0                               p  ki
+
+This shows that fM is a power series with integral coefficients and that, in fact,
+fM  I0(Zp). If, moreover, f  I0,j[](Zp), then the above estimate shows that
+
+    ordp f (i)(M )/i! inf ordp ck inf (k + j) = (i + j),
+                               ki             ki
+
+so that fM  I0,j[](Zp) too.
+   Now, let f  F(w, y, , , u, , ), so that f  satisfies (11) with g  I0[](Zp).
+
+Then, using (7), we have for every t  Bp- an equality of values
+
+         f (M + t) = pw 1 + p+(M + t) -y + pw0 + pu+wg(M + t)
+                       = pw 1 + p+M -y 1 + p+ 1 + p+M -1 t -y
+
+                             + pw0 + pu+wgM (t).
+
+The right-hand side of this equality is a power series which must coincide with
+(fM ). We have already proved that fM  Q×p I0(Zp) and that gM  I0[](Zp), so
+that fM  F w, y, , , u, (1 + p+M )-1, (1 + p+M )-y .
+
+   We now define p-adic exponent data and pairs. Let P denote the set of prime
+
+numbers. For any sets X, Y , and any family of subsets Xp  X (p  P ), let
+J(Xp; Y ) be the set of all functions g : Q+ × pP ({p} × Xp)  Y such that, for
+every y  Q+, there is a finite subset P0(y)  P and a function g0 : (P \P0(y))×X 
+
+Y such that g(y, p, x) = g0(p, x) for every p  P \ P0(y) and every x  Xp.
+   In particular, write J(Y ) := J(; Y ) for the set of functions g(y, p) : Q+ × P  Y
+
+with the above properties, and J1(Y ) := J(Np × pN; Y ) (with X = R+ and Np =
+(2)+N) for the set of such functions g(y, p, , ) : Q+× pP ({p}×Np ×pN)  Y .
+
+   Classes J(Y ) and J1(Y ) for appropriate Y are suitable universes for certain
+
+components of p-adic exponent data in Definition 2. For example, with variables
+                               SUB-WEYL SUBCONVEXITY                          15
+
+keeping their meaning from Definition 1, 0(y, p)  J(N) is the smallest value
+of  to which our datum applies, and it may well differ from its generic value
+for some exceptional (y, p). For example, if a datum is obtained using our A-
+and B-processes, and if one of the iterations involves the power series [7y]+2(x),
+then it may be necessary to require a higher value of  for those pairs (y, p) for
+
+which ordp(7y + 2) = 0; when estimating (4), this simply corresponds to a finer
+initial splitting as in (12). We require p-adic exponent data to be universal in
+
+that they ultimately apply to all values of y and p. However, as our examples
+
+demonstrate, in a typical application, we need to estimate a sum involving a phase
+with one specific value of y. What really matters, then, is that our method applies
+
+in a uniform (tightest possible) way for all primes outside a finite exceptional set
+
+(which may depend on y), and with a possible finite adjustment of initial conditions
+at the exceptional primes; this is precisely the content of our definitions, with Y
+
+denoting the universe of assumed values and with J1(Y ) also taking into account
+the possible dependence of other parameters on specific values of  and . The
+
+reader interested in applications may treat quantities in classes J(Y ) and J1(Y )
+simply as explicit "expressions" in terms of other parameters y, p, , , knowing
+that their form suffices for the purpose of estimating any given exponential sum to
+
+which our method applies.
+
+   We note on the side that, in all p-adic exponent data we produce, the functions
+in corresponding classes J(Xp; Y ) actually satisfy the following stronger uniformity
+condition in y and p: there is a finite set P0  P , a finite set of non-vanishing
+linear forms li(y) = aiy + bi (1 i I), and functions g0 : ZI × P × X  Y and
+g0 : ZI × X  Y , such that f (y, p, x) = g0 (ordp li(y))Ii=1, p, x for every y  Q+,
+p  P , and x  Xp, as well as g0(z, p, x) = g0 (z, x) for every z  ZI , p  P \ P0,
+and x  Xp.
+
+   We are now ready for the main definition.
+
+Definition 2. Let Q be the set of all quintuples
+
+(14)                           q = k, , r, , (n0, u0, 0, 0)
+
+where k,   R, 0  k          1      1, r  J1(R),   R0+, n0, u0  J1(N), 0  J(N),
+                            2
+0  J(R+0 ), and n0(y, p, , ) >  + (y).
+We say that a quintuple q  Q as in (14) is a p-adic exponent datum if, for
+
+every p  P , y  Q+, w  Z,   N with  1 + (2),   pN, n, u  N such that
+
+       0(y, p),  0(y, p), n w + n0(y, p, , ), u u0(y, p, , ),
+
+and for every f  F(w, y, , , u), M  Z, and 0 < B pn-w--, we have the
+
+estimate
+
+(15)                     e  f (m)   pr  pn-w--    k
+                             pn              B
+          M<m M+B                                   B log pn-w-- ,
+
+where r = r(y, p, , ), and the implied constant depends only on the datum q.
+   We say that a pair
+                                                 = (k, )
+
+of non-negative numbers is a p-adic exponent pair if q = k, , r, , (n0, u0, 0, 0)
+is a p-adic exponent datum for some r  J1(R),   R0+, n0, u0  J1(N), 0  J(N),
+0  J(R0+).
+16                                   DJORDJE MILIC´ EVIC´
+
+    Every p-adic exponent datum q carries two kinds of quantities: the values of k,
+
+, r, and  describe the upper bound (15), while (n0, u0, 0, 0) can be thought of
+as "initial conditions" that control the moduli pn and the classes F(w, y, , , u)
+
+of phases f to which this estimate applies. We emphasize that, while the implied
+
+constant in (15) may be different from one p-adic exponent datum to another, it is,
+
+for a given datum q, absolute, and (15) holds uniformly across all other parameters,
+
+including p, y, w, , , n, u, f , M , and B.
+
+    Note that (0, 1) is trivially a p-adic exponent pair, as (0, 1, 0, 0, ( +  + 1, 1, 1 +
+
+(2), p)) is a p-adic exponent datum. Further, note that the estimate on the
+
+right-hand side of (15) is an increasing function of B, so that, when applying this
+
+estimate, we may freely use an upper bound on B instead of its exact value. We
+
+also mention that any   J1(R+0 ) would suffice for applications; we ask for   R+0
+simply because this will be the case in all p-adic exponent data we construct.
+
+    We now describe a typical use of Definition 2. The estimate (15) holds uniformly
+
+in all parameters. In a typical application, pn is the principal parameter, B is a
+
+certain power of pn (depending on ), and, upon choosing an allowable , the phase
+
+f and hence w, y, , u are all fixed. In a depth-aspect problem, the p-adic exponent
+
+pair (k, ) controls the principal power dependence of our estimate on pn, so, in
+
+practice, one first chooses the pair (k, ) to optimize this dependence (for specific
+
+relative sizes of B and pn and the desired type of result) and then considers the
+
+corresponding datum.            For  example,  the  pair  (  1  ,  1  ),  given by the  p-adic exponent
+                                                             2     2
+datum (36)
+
+    1/2 =   1  ,  1  ,  0,  1,   +  + 1 + (12), max( -  +  + 1, 1), 1 + (4), p          ,
+            2     2
+
+is well suited for very long sums (4), yielding in (15) the upper bound
+
+                              e      f (m)   pn-w-- 1/2 log pn-w-- ,
+                                      pn
+               M<m M+B
+
+valid for all pn and f  F(w, y, , , u) with  1+(4),  p, n w++ +1+
+(12), u max(-+ +1, 1) and for all M  Z and 0 < B pn-w--, which
+is uniform in B and can be seen as a variant of the Po´lya-Vinogradov inequality.
+Section 6 contains a supply of explicit p-adic exponent data yielded by our method
+that one can choose from, as we do in the course of proving the sub-Weyl subconvex
+bound (60). Each of these p-adic exponent pairs arises from (0, 1) by finitely many
+A- and B-processes, which in turn give rise to successive p-adic exponent data q.
+With each application, the quantities in q change and become fairly complicated
+(cf. the statement of Lemma 5), but they always take a dramatically simpler form
+away from finitely many p, such as for p  {2, 3}, p  y in the case of 1/2. For such
+generic p, the original sum is split as in (12) with  0 (the latter being a constant
+for a fixed y and non-execeptional p), and, assuming that the (generally mild)
+"separation" conditions  0 and u u0 are met, the inner sum is estimated by
+(15). Since the p-adic exponent datum used ultimately applies to all p, this proof
+is then easily adjusted at the finitely many exceptional primes, without necessarily
+impacting the final result. We refer the reader to the proof of Theorem 6 and
+the discussion around (60) for a sample execution of this approach. Finally, all
+these calculations simplify even further if one is willing to simply treat constants in
+certain exponents of p (such as , n0, u0, r) as O(1), a shortcut that we do not take
+                                      SUB-WEYL SUBCONVEXITY                                        17
+
+but that would be perfectly acceptable in a purely depth-aspect problem (when p
+is considered fixed).
+
+  We proceed to comment on why the conditions 0                      k      1      1 are included in
+                                                                            2
+Definition 2 and collect some additional useful information along the way. Consider
+f (t) = pw--(-y + 1)-1 1 + p+t -y+1 for y = 1, and f (t) = pw- logp 1 + pt
+
+for y = 1. Let
+
+                         S(a) =                        e       af (m)    .
+                                                                 pn
+                                      M<m M+B
+
+Note that, for a  Z×p , af (t)  F(w, y, , , , 1, a). We have that
+
+                     |S(a)|2 =                                 e        a(f (m1) - f (m2))     .
+                                                                                  pn
+         a(Z/pn Z)×             M <m1,m2 M +B a(Z/pnZ)×
+
+Recall from section 2 that Mr-0 y+1 =. | - y + 1|pr for all r < rpp- and Mr =. r
+
+for all r < rp. It follows easily that ordp(f (m1) - f (m2)) = w + ordp(m1 - m2)
+for every m1, m2  Zp. Therefore, if B pn-w-1 (and so certainly throughout the
+
+range 1 B pn-w--), the inner sum vanishes unless m1 = m2, so that
+
+                                                |S(a)|2 = (pn) · B.
+
+                                a(Z/pnZ)×
+
+It follows that |S(a)| B1/2 for at least one a  (Z/pnZ)×. It follows that, if an
+
+estimate of the form (15) is to hold for all B in some interval I  [1, pn-w--],
+
+we must have
+
+(16)                 pr  pn-w--       k
+                              B
+                                        B log pn-w--   B1/2
+
+throughout the entire range B  I. This conclusion ("no better than square root
+
+cancellation") will be used several times. In particular, with the choice B = 1 and
+
+n - w = n0, we have that pr+(n0--)k(log pn0-- )  1. On the other hand,
+taking B = pn-w--, we see that the defining property (15) cannot hold with
+
+  <   1  .
+      2
+  On the other hand, consider the behavior when f (t) is as above, M and B are
+
+arbitrary but fixed, and n  . An elementary application of Dirichlet's Box
+
+Principle shows that we can find an a  (Z/pnZ) \ (pnZ) such that
+
+     p-w af (M + 1), af (M + 2), . . . , af (M + B)
+
+                                       Q/pB/ + pn-wZpB + [0, pn-w/pn/B]  Z B,
+
+where Q/pB/ = {(q, . . . , q)  QBp : q  Qp}. For this choice of a, we have
+that |S(a)| = |B + O(Bp-n/B)|  B; on the other hand, af (t)  F(ordp a +
+w, y, , , , 1, a|a|p) and ordp a n-n/B, so that pn-(ordp a+w)-- pn/B-w--
+
+in (15). Taking n  , we see that no estimate of the form (15) can hold with
+
+k < 0.
+
+  We have seen how, for two different reasons (not entirely unlike the heuristics
+
+behind large sieve estimates), every p-adic exponent datum that is to satisfy (15)
+
+must have k     0 and           1  .  Finally,  there  is  no  need  to  consider  data  with  (k  0
+                                2
+and)  > 1, since such an estimate would be worse than that provided by the trivial
+
+datum (0, 1, 0, 0, ( +  + 1, 1, 1 + (2), p)) in most ranges. Similarly, there is no
+18                                  DJORDJE MILIC´ EVIC´
+
+need  to  consider  data  with   k  >  1     (and        1  )  since  the  estimate  obtained  would
+                                       2                 2
+be worse than that provided by the first non-trivial p-adic exponent datum (36).
+
+    The following Lemma 6, which states that the exponent datum condition may
+
+be verified (with a minimal loss) over either sharp or smooth cutoff functions,
+
+will be convenient. We will need several notations. Let C01(R) denote the set of
+continuously differentiable functions h : R  C such that lim|t| |t|N (|h(t)| +
+|h(t)|) = 0 for every N  N. For an h  C01(R), denote
+
+                                                       |t - t0| + 1 |h(t)| dt.
+
+(17)                      h  = inf
+                                    t0R -
+
+Note that the quantity h  is invariant under translations, that is, each of the
+
+translates hx(t) = h(t + x) (x  R) has hx  = h .
+    Let C = (Ci)iI be a family of classes Ci of power series in Q×p I0(Zp), each of
+
+which is invariant under translations in the sense of Lemma 5, and let 0 k
+
+1         1,   N0, n0 : I  N0, w : I  Z, r : I  R. We say that a triple
+2
+ = (k, , (r, w, n0)) satisfies the condition H() if the estimate
+
+                         e   f (m)         pr(i)         pn-w(i)  k
+                              pn                            B
+          M<m M+B                                                  B log pn-w(i) 
+
+holds, with a uniform implied constant depending only on  and  (so, explicitly
+
+not on i  I), for every i  I, every f  Ci, and every n n0(i), M  Z,
+and 0 < B pn-w(i). We will also write the above condition with r and w in
+place of r(i) and w(i) for brevity. We say that  satisfies the condition H()sq if,
+additionally, the right hand side of the above bound is  B1/2 uniformly for every
+i  I and all 0 < B pn-w(i).
+
+   As the example most important for us, a quintuple q = (k, , r, , (n0, u0, 0, 0))
+is a p-adic exponent datum if and only if, for the collection C = {F(w, y, , , u) :
+w  Z, y  Q+,  0,  0, u u0}, the triple (k, , (r, w +  + (y), n0))
+satifies the condition H(). We have already seen in (16) that, for these triples,
+H() automatically implies H()sq. Recall that each of the classes F(w, y, , , u)
+
+is invariant under translations by Lemma 5.
+
+   With the same notation, we say that  satisfies the condition Hsm() if the
+estimate
+
+               e  f (m)   h  m       c(h) · pr(i)           pn-w(i)   k
+                   pn        B                                 B
+          mZ                                                           B log pn-w(i) 
+
+holds, with a uniform implied constant depending only on  and  and with c(h)
+depending only on the cutoff function h, for every i  I, every f  Ci, and every
+n n0(i), 0 < B pn-w(i), and h  C01(R). We say that  satisfies the condition
+Hsm() if the above holds with
+
+                                             c(h) = h .
+
+The conditions Hsm()sq and Hsm()sq are defined analogously. Finally, denote
+
+          1/2 =     1,      (k,  )  =  (  1  ,  1  ),    01 =     1,  (k, ) = (0, 1),
+                    0,                    2     2                 0,  else.
+
+                            else;
+                                SUB-WEYL SUBCONVEXITY                                                       19
+
+Lemma 6. Let C = (Ci)iI be a family of classes Ci of power series in Q×p I0(Zp),
+
+each of which is invariant under translations in the sense of Lemma 5. Then, for
+
+every triple  = (k, , (r, w, n0)), 0          k           1              1, n0 : I  N0, w : I  Z,
+                                                          2
+r : I  R, and for every   N0, we have the following implications:
+
+         H() = Hsm() = Hsm(),                                Hsm()sq = H( + 1/2)sq.
+
+Proof. Suppose that Hsm()sq holds. Fix a smooth, compactly supported cutoff
+function   Cc(R) with the following properties:
+
+· 0 (x) 1 for all x.
+
+· (x) = 0 for all x              0,  3  .
+                                     4
+                 1+x                                   1
+· (x) +            2    = 1 for all 0         x        2     .
+
+Using , we define smooth, compactly supported cutoff functions i  Cc(R)
+(i  N0) as follows: let
+
+                           0(x) =          1 - (|x|),               |x|     1  ,
+                                           0,                               2
+
+                                                                    |x|  >  1  ,
+                                                                            2
+
+and, for i 1, let i(x) =  2i-1|x| - (2i-1 - 1) . Then, for all i 1,0 i(x)
+
+1 for all x, i(x) = 0 for all x with |x|                        1   -      1   ,  1  -    1   ,  and  i-1(x) +
+                                                                         2i-1           2i+1
+                                                1               1
+i(x) = 1 for all x with |x|             1  -  2i-1  ,  1  -     2i  .    Therefore, the cutoff function
+
+~i(x) =  i    j (x)  satisfies:
+         j=0
+
+· 0 ~i(x) 1 for all x,                        1  -   , 1
+· ~i(x) = 0 for all x with |x|
+· ~i(x) = 1 for all x with |x|                      2i+1
+                                                    1
+                                              1  -  2i    .
+
+   Now, let f  Ci, and let n n0(i), M  Z, and 0 < B pn-w(i) be given. Since
+the class Ci is closed under translations, we have that fM  Ci for every M   Z.
+Write B = 2C + B1, where 0 B1 < 2, and   N will be suitably chosen later.
+Then
+
+         e    f (m)     =        e      f (m)       ~-1             m - M - 2-1C                 + O(B1 + C)
+               pn                        pn                               2-1C
+M<m M+B                    mZ
+
+         =           e  fM+2-1C (m)              0          m            +O          B  +     2
+                               pn                         2-1C                       2
+              mZ
+
+              +         -1       fM+2-1C (m)                          |m| - (2-1 - 2-j)C
+                                        pn                                      2 -j C
+                             e
+
+                 mZ j=1
+
+         =           e  fM+2-1C (m)              0          m
+                               pn                         2-1C
+              mZ
+
+                  -1       e     fM+(2 -2-j )C (m)                            m
+                                           pn                               2 -j C
+              +
+
+                 j=1 mZ
+
+                  -1       e     fM+2-j C (m)                       -      m   C     +O          B  + 2  .
+                                        pn                               2-j                     2
+              +
+
+                 j=1 mZ
+20                                   DJORDJE MILIC´ EVIC´
+
+Since each translate of f belongs to Ci and 2-jC B pn-w(i), we may apply
+the condition Hsm() to see that the sum of the first three summands is at most
+
+     pn-w        k                                  -1       pn-w        k
+     2-1C                                                    2 -j C
+ pr                 (2-1C)(log pn-w) + pr                                  (2-jC)(log pn-w)
+ pr
+                                                    j=1
+
+     pn-w        k
+       B
+                   B(log pn-w)(1 + 1/2),
+
+recalling that      k, with  > k unless k =  =               1  .  Finally, we choose  so that
+                                                             2
+2  B1/2; then   log B  log pn-w. We thus obtain
+
+                    e   f (m)      pr         pn-w       k
+                         pn        pr           B
+     M<m M+B                                               B(log pn-w)+1/2 + B1/2
+
+                                              pn-w       k
+                                                B
+                                                           B(log pn-w)+1/2 ,
+
+as desired, since the first term dominates in light of the condition H()sq. This
+shows that  satisfies H( + 1/2)sq, proving the implication Hsm()sq = H( +
+1/2 )sq .
+
+   Suppose that H() holds. Let h  C01(R) be arbitrary, and let f  Ci, n n0(i),
+M  Z, and 0 < B pn-w(i) be given. Fix a t0  R, and let
+
+                                              t e f (m)/pn   ,         t > t0B,
+                                                                       t = t0B,
+                 S~(t)            t0 B  m                              t < t0B.
+                            
+                        =
+                              0,
+
+                            - t m<t0B e f (m)/pn ,
+
+We can break the sum defining S~(t) into at most |t - t0B|/B + 1 blocks of size at
+most B. Using the condition H() to estimate each of the blocks, we find that
+
+           S~(t)        |t  - t0B|      +  1  · pr  pn-w          k
+                             B                        B
+                                                                    B(log pn-w).
+
+Using summation by parts, we estimate
+
+     e  f (m)       h   m
+         pn             B
+    mZ
+
+        =h          t   dS~(t)    =  -  1       S~(t)h    t        dt
+                    B                   B                 B
+              R                               R
+
+        1           |t  - t0B|    +  1     h  t          dt · pr   pn-w  k
+            BR           B                    B                      B
+                                                                          B(log pn-w)
+
+        = |t - t0| + 1 |h(t)| dt · pr               pn-w     k
+                                                      B
+              R                                               B(log pn-w).
+
+This estimate is valid, with a uniform implied constant, for every t0  R. Taking
+the infimum of the right-hand side over all t0  R, we find that Hsm() holds. This
+proves that H() = Hsm() and completes the entire proof, since Hsm() =
+Hsm() is trivial.
+                              SUB-WEYL SUBCONVEXITY                                                  21
+
+                                   4. B-process
+
+   We are now ready for the proof of the B-process, which relies on Poisson sum-
+mation to replace an exponential sum with a short dual sum, and on the method
+of stationary phase and the implicit function theorem to evaluate the dual sum.
+Although historical precedent would have us presenting the A-process first, we find
+that this order of exposition allows us to obtain tighter estimates.
+
+   The following lemma is a version of the p-adic analogue of the method of sta-
+tionary phase and the starting point for the analysis of the Fourier transform e^f (s)
+(defined below in (23)). A variant of this method (as well as of Lemma 8) can be
+found in [14, sections 3.5 and 12.3], but we include it for completeness as Lemma 7
+and fine-tune the statement and proof to our particular situation.
+
+Lemma 7 (Method of stationary phase). Let p be a prime, let f  Q×p I(Zp) be
+such that f   (Zp + pµtI0(Zp)) for some µ  N0, and let n, j  N be such that
+j n - 1 and
+
+                                      2(n - j) + µ n + (2).
+
+Then
+
+                           e    f (m)   =                        e     f (m)      .
+                                 pn                                     pn
+                 m mod pn                  m mod pn
+
+                                           f (m)0 mod pj
+
+Proof. We can write
+
+      S=              e  f (m)     = p-j                            e  f (m + pn-j k)           .
+                          pn                                                  pn
+          m mod pn                        m mod pn k mod pj
+
+We can use Taylor's expansion (9) to write
+
+                                                              1
+                                                              r!
+      f (m + pn-jk) = f (m) + pn-jf (m)k +                          pr(n-j)    f  (r)(m)kr   .
+
+                                                        r=2
+
+We claim that, under our conditions, all terms in the rightmost sum are divisible by
+                                                                                        
+pn. Indeed, writing f (t) = b0+    k=1  pµ bk tk ,  we  have  f     (r)(t)  =  pµ       k=0  bk+r-1  (k+
+
+r - 1)r-1tk, so that
+
+ordp      1   pr(n-j)f   (r)(m)kr      2(n - j) + µ + (r - 2)(n - j) - ordpr .
+          r!
+
+That the right-hand side is divisible by pn is now immediate for r = 2 and r = 3;
+for r 4, the claim follows from pr-2 2r-2 r.
+
+It follows that
+
+              S = p-j              e    f (m)                 e        f (m)k        .
+                                         pn                               pj
+                         m mod pn                   k mod pj
+
+The inner sum equals pj if f (m)  0 (mod pj) and vanishes otherwise. This gives
+the desired equality.
+
+   The method of stationary phase, in some variation of that presented in Lemma 7,
+goes back at least to Sali´e [24]. A simple instance of this method is the classical
+evaluation of the Gaussian sum, which we record for reference. We will in fact only
+use the most elementary case n  {0, 1} of this Lemma (n  {2, 3} for p = 2).
+22                  DJORDJE MILIC´ EVIC´
+
+Lemma 8 (Gauss). For a prime p, n  N, and a  Z with p  a, let
+
+                    a(pn) =            e            am2     .
+                                                     pn
+                             m mod pn
+
+Then
+
+                    a(pn)    =            n+(2)  (a,  pn),
+
+                                       p2
+
+where (a, pn) is a unit factor given explicitly as
+
+           1,       p = 2, 2 | n,                           0,              p = 2, n = 1,
+                    p  1 mod 4, 2  n,                                       2 | n, n 2,
+                    p  3 mod 4, 2  n;                                       2  n, n 3.
+(a, pn) =    a                                   2n)           1+ia
+             p  ,                      (a,            =            2  ,
+
+             a  i,                                             2    1+ia ,
+             p                                                 a
+                                                                        2
+
+Proof. This is adapted to our notation from [2, Theorems 1.5.1 and 1.5.2 and
+Proposition 1.5.3 on page 26].
+
+   In the following lemma, we develop the p-adic implicit function theorem which
+we will use to characterize the critical points in the exponential sum (23).
+
+Lemma 9 (Implicit function theorem). Let f  F(w, y, , , u, , ), and assume
+
+that
+                        u >  -  + , ~ = min( - p(y), ) > 0.
+
+Let g~0 = f (0)p-w -   Zp. Then there is a power series f~  In0 [~](Zp) such that
+
+(18)  f~(t) = p---1 1 + p+t -1/y - p---1 + pu+-- g~(t)
+
+for some g~  I0n[~](Zp) and such that
+
+(19)                f  f~(t) p-w = g~0 +  1 + p+t .
+
+    Moreover, for j  +  and s  Zp, the congruence
+
+                    f (m)p-w  s (mod pj)
+
+has solutions m  Zp if and only if s  g~0 +  (mod p+). In this case, writing
+j = j -  -  and s = g~0 +  1 + p+t for some t  Zp unique modulo pj , the
+
+above congruence holds if and only if
+
+                    m  f~(t) (mod pj ).
+
+Proof. Recall that
+                         f (t)p-w =  1 + p+t -y + 0 + pug(t),
+
+where g  I0[](Zp). We can write
+           0 + pug(t) = 0 + pug(0) + pu+-ptg1(t) = g~0 + pu+tg1(t),
+
+where u = u +  -  >  and g1  I0[](Zp). We will now construct a power
+series f~ such that
+
+              f (f~(t))p-w = g~0 +  1 + p+f~(t) -y + pu+f~(t)g1(f~(t))
+                              = g~0 +  1 + p+t ,
+
+with all numerical substitutions allowed for t  Zp.
+                       SUB-WEYL SUBCONVEXITY                                 23
+
+Let  = -1. Define a sequence of power series f~k as follows:
+
+           f~0(t) =    1 + p+t -1/y - 1  ,
+
+(20)                   p+
+
+           f~k+1(t) =  1 + p+t - pu+f~k(t)g1(f~k(t))  -1/y
+
+                                                            -1
+
+                           p+                                   (k  0).
+
+Let k = (k + 1)(u - ). We claim that f~k is a sequence of power series with
+
+           f~0  I0n[ - p(y)](Zp) and f~k  In0 [~](Zp) (k 1)
+
+such that
+
+(21)                   f~k+1 = f~k + pk F~k
+
+for some F~k  In0 [~](Zp).
+   We prove this claim by induction on k. For k = 0, [-1+/y]  I1+[ - p(y)](Zp)
+
+implies that f~0  In0 [-p(y)](Zp). Then g1(f~0(t))  I0[~](Zp) and f~0(t)g1(f~0(t)) 
+In0 [~](Zp). Applying Lemma 3,
+
+           1 + p+t - p(u+-)+ · f~0(t)g1(f~0(t)) -1/y
+
+                           = 1 + p+t -1/y + pu+-+~b(t)
+
+for some ~b(t)  In0 [~](Zp). We see that we can take F~0(t) = -1~b(t) in (21).
+   Assume that (21) holds for some k  N0; then clearly f~k+1  I0n[~](Zp). More-
+
+over, according to Lemma 4, we can write
+                g1(f~k+1(t)) = g1 f~k(t) + pk F~k(t) = g1(f~k(t)) + pk g2(t)
+
+for some g2  I0n,1[~](Zp). We can rearrange
+
+   1 + p+t - pu+f~k+1(t)g1(f~k+1(t)) -1/y
+
+           = 1 + p+t - pu+f~k(t)g1(f~k(t))
+                      - p(u++k-)+  F~k(t)g1(f~k(t)) + f~k+1(t)g2(t) -1/y
+
+Since g1(f~k(t))  I0[~](Zp), we have that
+                     1 + p+t - pu+f~k(t)g1(f~k(t))  I1+[~](Zp),
+                           F~k(t)g1(f~k(t)) + f~k+1(t)g2(t)  In0 [~](Zp).
+
+Applying Lemma 3, we conclude that
+       1 + p+t - pu+f~k+1(t)g1(f~k+1(t)) -1/y
+                 = 1 + p+t - pu+f~k(t)g1(f~k(t)) -1/y + pu++k-+~bk(t)
+
+for some ~bk(t)  In0 [~](Zp). We see that we can take F~k+1(t) = -1~bk(t) in (21),
+since k+1 = u -  + k. This completes the inductive proof of (21).
+24                                       DJORDJE MILIC´ EVIC´
+
+    We now define
+
+                              
+
+(22)                g~(t) = pk-0 F~k(t), f~(t) = f~0(t) + pu- g~(t).
+
+                              k=0
+
+In light of  u >    ,  it is  clear that the series converges and that  g~(t), f~(t)      IMn0 [r~f~](=Z. pr)..
+Moreover,    for r  =  |t|p   < p~, we have (22) also as equalities of  values, and
+
+We claim that f~ has all desired properties; it is now immediate that (18) holds.
+                       
+    Define Fk =        =k     p -k  F~.  Then
+
+                                         f~k = f~ - pk Fk
+
+and Fk  I0n[~](Zp). The second equation in (20) is equivalent to
+
+          1 + p+f~k+1(t) =               1 + p+t - pu+f~k(t)g1(f~k(t))           -1/y
+
+                                                                                       .
+
+Applying Lemma 3 and Lemma 4 as above (with f~k(t), f~(t), and -Fk(t) in place
+of f~k+1(t), f~k(t), and F~k(t), respectively), we can re-write the right-hand side of
+this equality to see that
+
+   1 + p+f~(t)
+         = 1 + p+f~k+1(t) + pk+1++Fk+1(t)
+
+         = 1 + p+t - pu+f~(t)g1(f~(t)) -1/y + pk+1++(bk(t) + Fk+1(t))
+
+for some bk(t)  In0 [~](Zp). For k large enough, this is possible only if
+
+             1 + p+f~(t) =          1 + p+t - pu+f~(t)g1(f~(t))                  -1/y
+
+                                                                                       .
+
+This equality of series in I1+(Zp) is equivalent to
+                   1 + p+f~(t) -y = 1 + p+t - pu+f~(t)g1(f~(t)),
+
+                              f  f~(t) = pwg~0 + pw 1 + p+t .
+
+According to Lemma 2, the numerical substitution of f~(t) in f  is justified for all
+
+|t|p < p~.
+   We pass to characterizing the solutions to the congruence f (m)p-w  s (mod pj),
+
+that is,
+
+             g~0 +  1 + p+m -y + pu+mg1(m)  s (mod pj ),
+
+where j  + . Recalling that [-+y]  I1+(Zp), it is seen that solutions m exist
+only if s = g~0 +  1 + p+t for some t  Zp, in which case the above congruence
+becomes equivalent to
+
+                              f (m)p-w  f (f~(t))p-w (mod pj).
+
+In light of u > , the series f (t)p-w =                        ak tk  satisfies  the  conditions  of
+                                                 k=0
+Lemma 1 for every r < p~, with |a1|p = p-(+). In particular, an m  Zp is a
+
+solution of the above congruence if and only if
+
+                                    m  f~(t) (mod pj ),
+
+as announced.
+            SUB-WEYL SUBCONVEXITY                                 25
+
+Lemma 10. Let f  F(w, y, , , u, , ), and assume that
+
+            min n - w, u +  >  + , ~ = min( - p(y), ) > 0.
+
+   Let      e^f (s) =              e      f (m)p-w - sm  ,
+(23)                                            pn-w
+
+                       m mod pn-w
+
+and let  =  - ~. Then, assuming additional conditions listed below if
+p  {2, 3}, there exists a power series f  F(w, y-1, , ~, u, 1, --1) with f 
+pw++In0 [~](Zp), where
+
+                             w = w + ordpy, u = u +  - ordpy,
+
+and an   C, || = 1 such that
+
+            e^f (s) = e^f g~0 +  1 + p+t  = p(n-w++)/2e     f(t)
+                                                             pn
+
+if s = g~0 +  1 + p+t for some t  Zp, and e^f (s) = 0 otherwise. The unit 
+depends only on , , y, p, the parity of n - w +  +  - (2), and, for p = 2 only,
+on pu--g(0); in particular, it is independent of s.
+
+   In the case p  {2, 3}, we must make additional assumptions. Let   {0, 1}
+be the residue of n - w +  +  - (2) modulo 2, let n1 = n - w -  -  - 1, let
+ + (y + 1) =  + 2(2) + 1. Then assume additionally that
+
+                + (y + 1)  + 2(2), n1 2(2), n1 + 1 (3).
+
+These assumptions are automatically satisfied if  1 + (4) and n - w >  +  +
+(12), or if  1 + (12) and n - w >  +  + (4).
+
+Proof. In light of [-+y]  I1+(Zp) and u +  >  + , we have that p-wf (t) 
+Zp + pµtI0(Zp), with µ =  + . Write
+
+                                 n - w +  +  - (2) = 2j + ,
+
+with j  N and   {0, 1}. Note that, under our assumptions,
+
+                               +  j < n - w,
+
+as well as
+
+            2(n - w - j) + ( + ) n - w + (2).
+
+   This shows that all conditions are satisfied for an application of Lemma 7 to
+(23). According to Lemma 7, the summation in (23) can be restricted to indices m
+for which
+
+(24)        f (m)p-w  s (mod pj).
+
+   All conditions are also satisfied for an application of Lemma 9. Let f~ be the
+power series whose existence is established there, and let j = j -  - . According
+
+to Lemma 9, we have that indices m satisfying (24) exist if and only if
+
+                                       s = g~0 +  1 + p+t
+
+for some t  Zp (with congruence classes of s mod pj for which (24) is solvable in
+one-to-one correspondence with congruence classes of t mod pj ), in which case an
+m mod pn-w satisfies (24) if and only if m = f~(t) + pj q for some q mod pn-w-j .
+26                                       DJORDJE MILIC´ EVIC´
+
+   Consider two functions f(t, q) : Zp × Zp  Zp and f(t) : Zp  Zp defined by
+their pointwise values as
+
+         f(t, q) = f f~(t) + pj q - pw g~0 +  1 + p+t f~(t) + pj q ,
+
+(25)            f(t) = f(t, 0) = f (f~(t)) - pw g~0 +  1 + p+t f~(t).
+
+With this notation, we have proved so far that
+
+(26)          e^f (s) = e^f g~0 +  1 + p+t                   =                      e  f(t, q)
+                                                                                         pn
+                                                                q mod pn-w-j
+
+if s = g~0 +  1 + p+t for some t  Zp, and e^f (s) = 0 otherwise.
+   Using the Taylor expansion (9), we obtain, for every t, q  Zp, an equality of
+
+values
+
+                   f (r)(f~(t))        r - pw
+                        r!
+f(t, q) =                        pj q           g~0 +           1 + p+t             f~(t) + pj q
+
+              r=0
+
+                                                                                            f  (r)  (f~(t))
+                                                                                                    r!
+         = f(t) + f (f~(t)) - pw g~0 +  1 + p+t                               pj q +                         prj  qr
+
+                                                                                       r=2
+
+                       1                             f  (r)  (f~(t))
+                       2                                     r!
+         =    f(t)  +     f  (f~(t))p2j  q2  +                        prj  q  r  ,
+
+                                                r=3
+
+recalling the defining property (19) of f~. Note that
+
+(27)     f (r)(t)p-w = (-y)r-1 p+ r-1 1 + p+t -y-r+1 + pug(r-1)(t).
+
+Since u +  >  + , we have that
+
+                   2 := ordp     1 f (f~(t))p2j         = 2j + w +  +  - (2)
+                                 2
+                                                        = 2j + w -  -  - (2)
+                                                        = n -  - 2(2).
+
+   We now consider the remaining infinite sum E in the Taylor expansion for f(t, q)
+and set conditions under which ordp E n holds. We have that, for r 3,
+
+      f  (r)  (f~(t))  prj  qr
+              r!
+ordp                             -w
+
+      min (r - 1) + rj +  + (y + 1) - ordpr!, u + (r - 1) + rj - ordpr .
+
+We now carefully (and tediously) examine each of the two terms in the above expres-
+sion, which we denote by r,1(p) and r,2(p). (This examination is not pleasant. At
+the first reading, the reader is encouraged to skip it or consider the case p  {2, 3},
+for which we will see that no further assumptions are needed.)
+                        SUB-WEYL SUBCONVEXITY                                 27
+
+   Denote temporarily  = (y + 1). Using that ordpr! (r - 1)/(p - 1), we have
+that, for r 3,
+
+                        r,1(p) := (r - 1) + rj +  +  - ordpr!
+                                     (r - 1)  + j - p  + j +  + 
+                                     2 + 3j - 2p +  + 
+
+                                  = 2 + 3j +  +  - (12).
+
+In fact, we have the slightly stronger estimate
+
+                               r,1(p) 2 + 3j +  +  - (6).
+
+Namely, when p = 2, this follows by direct verification for r = 3 and from r,1(2)
+3 + 4j - 32 +  +  and  2 for r 4.
+
+   On the other hand,
+
+                             r,2(p) := u + (r - 1) + rj - ordpr
+                                         u + rj + (r - 1)( - p)
+                                         u + 3j + 2( - p).
+
+In fact, recalling also that   N for p = 2, we have that 3,2(2) = u + 3j + 2
+and 4,2(2) = u + 4j + 3 - 2; since ord2 r r - 5 for r 5, we also have that
+r,2(2) u + 5j + 4 > 3,2(2) for all r 5, so that
+
+      r,2(p)  u + 3j + ^2,  ^2 :=      2( - p),                p 3,
+                                       min (2, j + 3 - 2) ,    p = 2.
+
+Summing up, we have that
+
+      ordpE E := min 2 + 3j +  +  - (6), u + 3j + ^2 + w.
+
+This gives us two conditions that need to be met for E n. The first is that
+
+      2 + 3j +  +  - (6)
+
+      = 3j - 3 -  +  +  - (6)
+
+      =  3  n - w +  +  - (2)  -  3    -  3  -    +    +    -  (6)    n - w,
+         2                        2
+
+which is equivalent to
+
+              n - w -  +  - (2) -  + 2 2 + (16 · 9).
+
+By parity considerations, this inequality will be satisfied whenever
+
+(28)          (n - w) +  + 2  + 2 + (32 · 9).
+
+In light of n - w =  +  + 1 + n1, n1 0, the above is satisfied whenever
+                           2 + 2(y + 1) + 1 + n1 2 + (32 · 9),
+
+and this is automatically satisfied for p  {2, 3}. For p  {2, 3}, substituting
+ +  =  + 2(2) + 1, 1 0, the above inequality reads as
+
+                                        1 + n1 + 21 (18),
+
+which is trivially satisfied in light of the condition that n1 + 1 (3).
+28                                    DJORDJE MILIC´ EVIC´
+
+    The other condition for E n is that
+
+      u  +  3j  +  ^2  =  u  +  3  n - w +  +  - (2)         -  3     -   3  -  3     +   ^2  n-w
+                                2                               2
+
+                       (n - w - 3 - 3 - 3(2)) -  + 2u + 2^2 2.
+
+Again, by parity considerations, this inequality will be satisfied whenever
+
+(29)                      (n - w) + 2u + 2^2 3 + 3 + 2 + (8).
+
+We first comment how (29) is always satisfied for p 3. Indeed, for p 3 we have
+that
+
+                                      ^2 = 2( - p) ;
+
+this is trivially true if  = p and follows from 2( - p)  if  2p. The
+inequality (29) now follows from n - w  +  + 1 and u +   +  + 1.
+
+   Verifying the condition (29) for p = 2 involves checking all cases. The above
+argument clearly applies if ^2 = 2. If ^2 = j + 3 - 2, then (substituting for j as
+above), (29) reads as
+
+(30)            (n - w) + 2u + 2j - 2 - 2 + 6 - 4 3 + 3 + 2 + 3
+
+                             2(n - w) + 2u + 6 4 + 4 + 3 + 8,
+
+and this follows immediately in light of n - w  +  + 1 + 2(2).
+
+   Having checked that E n, we conclude that
+
+                         f(t, q)  f(t) + 1 f (f~(t))p2j q2 (mod pn).
+                                              2
+
+Writing ~ = n - 2 =  + 2(2), the summation in the intermediate stationary
+phase expression (26) becomes
+
+                                                       f(t)  +  1  f    (f~(t))p2j    q2
+                                                                2
+e^f g~0 +  1 + p+t                 =                e
+                                                                      pn
+                                      q mod pn-w-j
+
+                                   = p(n-w-j-~)e       f(t)                  1  f     (f~(t))p2j  -2  q  2
+                                                        pn                   2
+                                                                          e                                 .
+                                                                                          p~
+                                                             q mod p~
+
+    The remaining sum can be evaluated by Lemma 8 as
+
+                                p(~+(2))/2 1 f (f~(t))p2j-2 , p~ ,
+                                                  2
+
+where, for an odd prime p,  a, p~ depends on p, the parity of ~, and the class of
+a mod p only, while for p = 2 and ~  {2, 3},  a, 2~ also depends on the class of
+a mod 2~. We have already seen (compare (27) for r = 2) that, for an odd p (when
+~  {0, 1}),
+
+                   a   =  1  f  (f~(t))p2j  -2    (-y/2)|y/2|p            (mod p~).
+                          2
+
+   In the case p = 2 (when ~  {2, 3}), considering the power 2+ of p in non-
+constant terms in (27), we find that
+
+            2+ - 2 min  + , u + 2 + (2) -  - , u + 3 -  - 
+                          min  + 2(2), 3 = ~,
+                                   SUB-WEYL SUBCONVEXITY                      29
+
+and therefore
+
+       a  =    1  f    (f~(t))p2j  -2    (-y)|y|p  +  pu-- g(0)  (mod p~)
+               2
+
+in this case.
+   We conclude that, in any case,
+
+       e^f g~0 +  1 + p+t
+
+                       = pn~/2 (-y/2)|y/2|p + pu-- g(0), p~ e    f(t)      ,
+                                                                  pn
+
+where
+
+                       n~ = 2 n - w - j - ~ + ~ + (2)
+                         = 2(n - w) - 2j + 2 + 2 -  - (2)
+                         = n - w +  + .
+
+   Note that the equation (25) also defines f(t) as a formal power series; since
+rf = rf p~ , f~(t)  I0n[~](Zp), and, for every r < p~ , Mrf~ =. r, the numerical
+substitution of f~(t) in (25) is allowed for |t|p < p~. To complete the proof of
+Lemma 10, it remains to prove that f belongs to the announced classes. According
+
+to the Chain Rule (6), we obtain from (25), (19), and (18) that
+
+f(t) = f (f~(t))f~(t) - pw g~0 +  1 + p+t f~(t) - pw++f~(t)
+      = -pw++f~(t)
+      = --1pw+ordp y 1 + p+t -1/y + -1pw+ordp y - pw+u+g~(t).
+
+This clearly shows that f  pw++I0n[~](Zp). Recalling Definition 1, we have
+that, indeed, f  F(w, 1/y, , ~, u, 1, --1) with
+
+                        w = w + ordp y, u = u +  - ~ - ordpy,
+as announced.
+
+   We would like to point out the following feature of (23), which is a complete
+exponential sum modulo pn-w. That such exponential sums reduce to sums over the
+(approximate) critical points is classical; however, in general, one also encounters
+contributions from singular critical points, and these can be very difficult to evaluate
+or estimate. An extremely important feature of our definition of the class F is that
+it guarantees that we never encounter singular points, while still being sufficiently
+broad to cover all cases of interest for the estimation of short character sums. It is
+this feature that allows for the handsome, compact looks of the result of Lemma 10,
+the main thrust of whose proof is to explicate the p-adic implicit function f~ in a
+neighborhood of a non-singular critical point and collect all contributions through
+explicit computations with p-adic Gaussians.
+
+   We also remark that many of the conditions included in Lemma 10 for p  {2, 3}
+can be relaxed or altogether dropped by allowing higher-order terms and directly
+evaluating the resulting sums. For example, the condition n - w >  +  actually
+suffices for (30) in the case p = 2. Namely, (30) also holds if n-w =  ++1 (when
+30                                   DJORDJE MILIC´ EVIC´
+
+ = 0), or if u +   +  + 2, or if  2. In the remaining case n - w =  +  + 2,
+ = 1, ~ = 3, j = 0,  = 1, u =  + , we incur the extra term
+
+                     f  (iv)(f~(t))  p4j  q  4    A2 pn-1 q 4      (mod pn),
+                           4!
+
+where A2 = pu+w-n+1g(iii)(0)/4!  Z2, and the summation in (26) becomes
+
+       e^f g~0 +  1 + p+t        = pn-w-3e               f(t)            e       aq2 + 4A2q4  .
+                                                          pn                            8
+                                                               q mod 8
+
+Since 4A2q4  4A2q2 (mod 8), the inner sum can again be evaluated by Lemma 8,
+yielding Lemma 10 with only a change in the value of . However, we chose the
+
+current formulation, which reflects conditions that guarantee a purely quadratic-
+
+term expansion at each stationary point.
+   In the applications of Lemma 10, we will simply assume that  1 + (4) and
+
+n-w >  ++(12); while these conditions can occasionally be somewhat relaxed,
+we will not be concerned with this aspect, which is anyway relevant for p  {2, 3}
+
+only.
+
+    We collect the fruits of our labor in the following summation formula.
+
+Theorem 3 (Summation Formula). Let f  F(w, y, , , u, , ), n  N, B > 0,
+
+and a Schwarz function h  C0(R) be given, and assume that
+
+(31)                  1 + (4), n - w >  +  + (12),
+
+                  u +  >  + , ~ = min( - p(y), ) > 0.
+
+Let  =  - ~. Then there exists a function
+
+(32)       f° F w + ordp y, y-1, , ~, u +  - ordp y, -1, --1
+
+depending on f only and an   C, || = 1, such that
+
+        e  f (m)  h  m  =            B                      e  f°(t)     h^ f,B          t       ,
+            pn       B        p(n-w--)/2                        pn               pn-w--/B
+    mZ                                               tZ
+
+where h^f,B is a reflected translate of the Fourier transform h^ given by
+
+                        h^f,B(t) = h^                -t  -  f (0)     .
+                                                            pn/B
+
+Proof. Let S denote the sum on the left-hand side of the equality to be proved.
+Since e(f (t)/pn) is periodic with period pn-w, we have that
+
+           S=                        e    f m + pn-wq              h     m + pn-wq
+                                                                               B
+                  m mod pn-w qZ                      pn
+
+(33)       =                  e      f (m)p-w        hB (m),
+where                                  pn-w
+                  m mod pn-w
+
+                        hB(m) =                   h  m + pn-wq
+                                                           B
+                                          qZ
+                                    SUB-WEYL SUBCONVEXITY                                                 31
+
+is a (Z/pn-wZ)-periodic function. Applying Parseval's identity, we have that
+
+                              S  =       1                         e^f (s)h^B(-s),
+                                       pn-w
+                                              s mod pn-w
+
+where e^f (s) is as in (23), while, by unfolding,
+
+            h^B (s) =                  hB (m)e           -   sm
+                                                            pn-w
+                        m mod pn-w
+
+                     =                        h   m + pn-wq              e  -   s m + pn-wq
+                                                        B
+                        m mod pn-w qZ                                                pn-w
+
+                     =        h  m     e      -    sm           .
+                                 B                pn-w
+                        mZ
+
+Applying the Poisson summation formula, we find that
+
+h^B(s) =                      x                sx                   dx = B h^              s
+                              B               pn-w                                     pn-w /B
+                           h        e      -          -     x                     Z              +  B  ,
+
+            Z -
+
+where h^ denotes the usual Fourier transform. Therefore,
+
+(34)              S  =    B                              e^f (s)h^    -      s  /B  +  B   .
+                        pn-w                                             pn-w
+                                 s mod pn-w Z
+
+We make a remark that, while the expression of S as (34) can be reached in fewer
+
+steps, we have structured the above proof so as to emphasize the r^ole of duality in
+
+passing from a long sum in (33) to a short one or conversely.
+
+We now crucially apply Lemma 10. According to this lemma, which may be
+
+applied in light of (31), the Fourier transform e^f (s) vanishes unless s = g~0 +  1 +
+
+p+t for some t  Zp, in which case e^f (s) is given in terms of the exponential
+e f(t)/pn , with the function f as in the statement of Lemma 10. Using this result,
+
+we obtain that
+
+      S  =    B   p(n-w++)/2
+            pn-w
+                                       t mod pn-w-- Z
+
+                        e     f(t)     h^     -  g~0  +   1 + p+t           + B
+                               pn                        pn-w /B
+
+         =         B
+            p(n-w--)/2
+                              t mod pn-w-- Z
+
+                        e     f(-1t)          h^      -  t - pn-w-- + g~0 +                   p--
+                                  pn                                  pn-w--/B
+
+         =         B                e  f(-1t)               h^     -  t  + g~0 +  p--         ,
+            p(n-w--)/2                     pn                              pn-w--/B
+                              tZ
+
+by unfolding again. The statement of the theorem follows by setting
+
+                     f°(t) := f(-1t)  F w, y-1, , ~, u, -1, --1 ,
+
+noting that f°(t)  = -1f(-1t) and recalling that g~0 +  = f (0)p-w.
+32            DJORDJE MILIC´ EVIC´
+
+Theorem 4 (B-process). If k, , r, , (n0, u0, 0, 0) is a p-adic exponent datum,
+then so is
+
+    B k, , r, , (n0, u0, 0, 0) =         -  1   ,  k  +   1  ,  r~, ~,  (n~0,  u~0,  ~0,  ~0)  ,
+                                            2             2
+
+where, denoting ~ = min  - p(y),  ,
+
+          r~(y, p, , ) = r y-1, p, , ~ , ~ =  + 01,
+
+          ~0(y, p) = max 1 + (4), 0(y-1, p), 0(y-1, p) + p(y) ,
+          ~0(y, p) = 0(y-1, p),
+    n~0(y, p, , ) = max  +  + 1 + (12), ordpy + n0(y-1, p, , ~) ,
+    u~0(y, p, , ) = max  -  +  + 1, ordpy + u0(y-1, p, , ~) + ~ - , 1 .
+
+Proof. Let f  F(w, y, , , u, , ) and 0 < B pn-w-- be given. Fix a
+Schwarz function h  C0(R), and consider the sum
+
+          S=              e              f (m)     h      m     ,
+                                          pn              B
+                      mZ
+
+with an eye to invoking Lemma 6. According to Theorem 3, assuming that condi-
+tions (31) hold, we have that
+
+    S  =         B        e              f°(t)     ^hf,B                t                 ,
+          p(n-w--)/2                      pn                    pn-w--/B
+                      tZ
+
+with h^f,B as in Theorem 3, || = 1, and
+
+    f° F w + ordp y, y-1, , ~, u +  - ordp y, -1, --1 .
+
+We now estimate the sum on the right-hand side using the given p-adic exponent
+datum and Lemma 6. We note that, importantly, the cutoff function h^f,B satisfies
+
+ h^f,B  = h^ , where ·  is the (translation-invariant) quantity defined in (17)
+which enters the condition Hsm() in Lemma 6. The given exponent datum can be
+directly applied as long as
+
+          1 pn-w--/B p(n-w-+-)-,
+
+which is trivially satisfied, and
+(35)
+
+                     n - w - ordpy n0 y-1, p, , ~ ,  0 y-1, p ,
+
+  ~ = min  - p(y),  0 y-1, p , u +  - ~ - ordpy u0 y-1, p, , ~ .
+                                         SUB-WEYL SUBCONVEXITY                                                    33
+
+We thus find that
+
+      S  =           B                   e      f°(t)    h^ f,B          t
+              p(n-w--)/2                         pn              pn-w--/B
+                                     tZ
+
+              h^ f,B         ·         B  -)/2  pr       p(n-w-+)-- k              pn-w--               
+                                p(n-w-                    pn-w--/B                      B
+                                                                                                         ×
+
+                       × log p(n-w-+)-- 
+
+         = h^  · pr-(+)+(+)/2B1+k- pn-w -1/2 log pn-w-- 
+
+         = h^  · pr~             pn-w--         -1/2
+                                      B
+                                                       Bk+1/2 log pn-w-- ,
+
+with
+                                 r~ = r~(y, p, , ) = r y-1, p, , ~ .
+
+   We now apply Lemma 6 again. Since the estimate proved above holds with a con-
+
+stant depending on the cutoff function h only, we have according to the implication
+Hsm()sq = H( + 1/2)sq that, for every M  Z and every 0 < B pn-w--,
+
+               e       f (m)          pr~(y,p)         pn-w--    -1/2
+                         B                                  B
+M<m M+B                                                                 Bk+1/2 log pn-w-- ~,
+
+with  ~  =    +  01    (with         01  equal  to  the  1/2     applied  to  the  pair  (  -  1  ,  k  +  1  ))  and
+                                                                                               2           2
+a uniform implied constant. This estimate is valid as long as all conditions listed
+
+in (31) and (35) are satisfied; this gives us the p-adic exponent datum announced
+
+in the statement of the Theorem.
+
+   In particular, applying Theorem 4 to the trivial p-adic exponent datum
+                         01 = (0, 1, 0, 0, ( +  + 1, 1, 1 + (2), p)),
+
+we obtain the following important datum:
+
+(36) 1/2 =       1  ,  1  ,  0,  1,   +  + 1 + (12), max( -  +  + 1, 1), 1 + (4), p                               .
+                 2     2
+
+                                                5. A-process
+
+   A-process relies on a procedure in which an estimate on the exponential sum (4)
+is obtained by comparing it to sums obtained by replacing f with its differences over
+pairs of points in appropriate p-adic neighborhoods (see (37) below); this has the
+effect of considerably reducing the modulus relative to the length of the summation.
+This estimate can be seen as an adaptation of the classical Weyl-van der Corput
+inequality. For clarity, we state the underlying inequality separately and in some
+generality.
+
+Lemma 11. Let b : Z  C be an arbitrary function such that |b(t)|  1 for every
+t  Z. Let M  Z and B  N, and let
+
+                                            S=                   b(m).
+
+                                                    M<m M+B
+34                                        DJORDJE MILIC´ EVIC´
+
+Then, for every positive integer 0 < H B,
+
+                      S2  BH + H                                b(m + hH)b(m) ,
+
+                                          0<|h|<  B   mJ (h)
+                                                  H
+
+where
+
+                      J(h) = (M, M + B - hH]  (M - hH, M + B]
+
+is an interval of length |J(h)| = B - |h|H B.
+
+Proof. Let I(m) be an interval of the real axis depending on m  Z defined as
+
+        I(m) = {t  R : M < m + tH                     M + B} =        M  -    m  ,  M  +B     -  m  .
+                                                                         H               H
+
+Note that |I(m)| = B/H for every m  Z. We can adapt Weyl's "smoothing" trick
+to write
+
+                                       b(m + hH)
+
+            M-H<m M+B hI(m)
+
+               =                b(m) · #          (m1,  h)   :   M  -H <      m1    =  M   +  B,
+                                                                h   I (m1 ),  m        m1  +  hH
+                   M <m   M +B
+
+               =                    b(m) · #{h  Z : M - H < m - hH M + B}
+
+                   M<m M+B
+
+               =                    b(m)  B       + O(1)        =  B  S  +  O(B).
+                                          H                        H
+                   M<m M+B
+
+The second equality follows from an observation that, given m  (M, M + B],
+
+m1  (M - H, M + B], and h  Z such that m = m1 + hH, the condition that
+h  I(m1) is automatically satisfied.
+
+   Applying the Cauchy-Schwarz inequality, we have that
+
+                                                             2
+
+    B2  S2                                b(m + hH) + B2
+    H2
+               M-H<m M+B hI(m)
+
+                                                                2
+
+            B                                  b(m + hH) + B2
+
+               M-H<m M+B hI(m)
+
+               B3  +B                                               b(m + h1H)b(m + h2H) + B2
+               H
+                         M -H<m M +B h1,h2I(m), h1=h2
+
+             B3 + B                                          b (m + gH) + hH)b(m + gH)
+               H
+                         M -H <m       M +B,   0<|h|<  B  ,
+                                                       H
+                          gI(m), g+hI(m)
+
+            =  B3  +  B                                         b(m + hH)b(m)
+               H
+                         0<|h|<  B  -  B  <g<  B  +1  mJ  (h)
+                                 H     H       H
+
+               B3  +  B2                          b(m + hH)b(m) ,
+               H      H
+                          0<|h|<    B  mJ (h)
+                                    H
+                             SUB-WEYL SUBCONVEXITY                                         35
+
+with J(h) as in the statement of the Lemma. This gives the desired inequality.
+
+   The condition that |b(t)|  1 is not essential and was introduced only with
+our application in mind. Following the proof practically verbatim with an extra
+application of the Cauchy-Schwarz inequality to estimate the error term from the
+smoothing, one can prove that, for every function b : Z  C, we have
+
+                      S2  H                         b(m + hH)b(m) ,
+
+                             0  |h|<  B  mJ (h)
+                                      H
+
+with the term h = 0 accounting for the diagonal contribution; the statement of the
+
+lemma follows trivially when |b(t)|  1.
+   We will use Lemma 11 with b(t) = e(f (t)/pn) and with H = p chosen as a
+
+power of p. The estimate we just proved reads as
+
+(37)          S2  BH + H                         e  f (m + ph) - f (m)      .
+                                                               pn
+                          0<|h|<  B      mJ (h)
+                                  H
+
+In the following lemma, we consider the function appearing in the inner exponential
+
+sum.
+
+Lemma 12. Let f  F(w, y, , , u, , ), and assume that
+                              u >  -  +  and  +  > p.
+
+Let ~(y) = 1 if ordpy < 0 and ~(y) = 0 otherwise, and let
+      ~ = min( - ~(y)p, ), µ = min 2 +  - (2) - ~(y), u + 2 - p .
+
+Let  0, h  Z×p be fixed. Then there exists a power series g1  I0[~](Zp) with
+g1  pµI0[~](Zp) such that the equality
+
+                   f,h(t) := f t + ph - f (t) = phf (t) + p2+wg1(t)
+holds for all |t|p < p~. In particular,
+
+   f,h  F w +  +  + , y + 1, , ~,
+
+              min u +  -  - ,  +  - (2) - (y) , , (-y)|y|ph .
+
+Proof. Since rf = rf p~, we have according to (9) the equality of values
+
+                                                                         f  (r)(t)
+                                                                             r!
+           f  t + ph  - f (t) = phf (t) + p2h2           p(r-2)  hr-2
+
+                                                    r=2
+
+for every |t|p < p~.
+
+We now consider the infinite sum of the series on the right-hand side as a for-
+                                                            
+mal sum. With g(t) as in (11) and writing g(t) =            j=0  gj  tj     I0,1 [](Zp ),  the
+
+coefficient of the rth series with tj (j 0) equals
+
+arj  =  hr-2pw+(r-2)  ×
+                r!
+
+        ×  j+r-2p++(+)(j+r-2) (-y                - 1)j+r-2  + pugj+r-2(j    + r - 2)r-2    .
+                                                   j!
+36                     DJORDJE MILIC´ EVIC´
+
+It follows that
+
+    ordp (arj )  w + (r - 2) - ordp(r!)
+                   + min (j + r - 1) - ~(y)ordp(j!) + , u + (j + r - 1)
+
+                 w + min ( +  - p)(r - 2) - p + ( - ~(y)p)j +  + ,
+                                      u + (j + 1) + (r - 2)( +  - p) - p .
+
+According to our discussion in (10), since min(, ) +  > p, the formal sum of
+                                                           g~j tj
+power series converges to a power series g~1(t) =     j=0           with
+
+    ordpg~j w + min(( - ~(y)p)j +  +  - (2), u + (j + 1) - p);
+
+moreover, we have that g~1(t)  pwI0[~](Zp), and the pointwise equality of values
+holds for all |t|p < p~. Hence we can take g1(t) = h2p-wg~1(t). We also have that
+
+    ordp((j + 1)g~j+1) w + min ( - ~(y)p)j + 2 +  - (2) - ~(y),
+
+                                                                   u + (j + 2) - p ,
+
+so that g1 (t)  pµI0[~](Zp) with µ = min 2 +  - (2) - ~(y), u + 2 - p , as
+announced.
+
+   The following theorem establishes the p-adic A-process. Its statement may ap-
+
+pear somewhat frightening, but this is due to our desire to work in full generality.
+
+We will see in section 6 how one obtains very concrete and easy to work with ex-
+
+ponent data as long as one stays away from a finite number of primes and makes a
+concrete choice of . To keep the expressions manageable, we write g(y±) to denote
+max(g(y), g(y-1)).
+
+Theorem 5 (A-process). If k, , r, , (n0, u0, 0, 0) is a p-adic exponent datum,
+then
+
+    A k, , r, , (n0, u0, 0, 0) =  2(k  k  1)  ,  k+   +1    ,  r~,  ~,  (n~0,  u~0,  ~0,  ~0)
+                                       +         2(k  + 1)
+
+is also a p-adic exponent datum.
+                        < 1, then, denoting ~ = min  - p(y),  ,
+    Here, if 0 < k  1
+                    2
+
+    r~(y, p, , ) =  r + k 1 -  - min((y + 1), (y-1 + 1))            ,   ~ =    max(1,     )    ,
+                                                                                    2
+                                  2(k + 1)
+
+as well as
+
+       ~0(y, p) = max 1 + (4), 0(y± + 1, p), p(y) + 0(y± + 1, p), p(y) + 2p ,
+       ~0(y, p) = max 0(y± + 1, p), 2p ,
+ u~0(y, p, , ) = max 1, u0(y + 1, p, , ~) +  -  + (y),
+
+                              u0(y-1 + 1, p, , ~) +  + ~ -  - ~ + (y),
+                              2 -  - ~ + (y(y + 1)) + 1,
+                              2 + ~ -  - 2~ + (y) + (y-1 + 1) + 1 ,
+
+n~0(y, p, , ) =  + (y) + max 2 + 2(y± + 1) + 2(12),
+                            n0(y± + 1, p, , ~) +  + (y± + 1) - 1,
+                             SUB-WEYL SUBCONVEXITY                                                    37
+
+                      3  n0  (y±  +  1, p,  ,  ~)   -  1    -    1    (y±    +  1)   -  3  ,
+                      2                                2         2                      2
+
+                      n0(y± + 1, p, , ~) + (2) + (y± + 1) + (y±) - ~,
+
+                      2(r    +    +  (y± + 1))         +  (k  -     1)  ,
+                                        1-
+
+                      u      2k + 1 -       u0(y± + 1, p, , ~) -  + (2) + (y±) -
+                                  k
+
+                                                            -      r-1          +       +  (y± +  1)  ,
+                                                                 k(k + 1)                  k+1
+
+where u = 0 if u0(y± + 1, p, , ~) -  + (2) + (y±) 0, and u = 1 otherwise.
+  If k = 0, the above holds with
+
+                          r~(y) = r(y)/2, ~ = /2,
+         ~0 = 0(y, p), ~0 = 0(y, p), n~0 = n0, u~0 = u0.
+
+If  = 1, the above holds with
+
+         r~(y) = 0,          ~ =  k  k  1   ,     ~0 = 1 + (4),              ~0 = p,
+                                     +
+
+         n~0 =  + (y) + 1 + (12), u~0 = max  -  + (y) + 1, 1 .
+
+Proof. Let f  F(w, y, , , u, , ), M  Z, and 0 < B                                   pn-w-- be given,
+
+and let
+
+                             S=                     e     f (m)         .
+                                                           pn
+                                  M<m M+B
+
+We consider the   principal case 0 < k            1        < 1;       the complementary       cases are
+easy and will be  addressed at the end            2       proof.      Denote w~ = w +         + , and
+
+                                               of the
+
+let  and  be real parameters, to be suitably chosen later. We seek to prove an
+
+estimate of the form
+
+                                pn-w~          k
+                                  B
+                  S  pr~                    2(k+1)     k++1             pn-w~   )~.
+                                                       2(k+1)
+(38)                                                B            (log
+
+The basic strategy is to estimate S by applying the given p-adic exponent datum to
+the inner sum in (37). For this purpose, we will choose H to be a positive integer,
+in fact a power of p, satisfying
+
+                                                  pn-w~       k
+                                                    B
+(39)                     H = p = p                          B k+1         
+                                                                        k+1
+
+for some   R to be suitably chosen. It turns out that this strategy works well if
+B is neither too small nor too large, in a sense which will be made precise.
+
+   To make the discussion easier to follow, we present the proof in two parts. The
+principal range for B, along with the easy case when B is small, is treated in the
+first part of the proof. We will address the range when B is large in the second
+part of the proof by using the summation formula of Theorem 3 to shorten the sum
+down to the first range.
+38                                 DJORDJE MILIC´ EVIC´
+
+   1. Range 1 B pn-w~-/H. If 1 B H, then we use the trivial bound
+|S| B to obtain
+
+                                                 pn-w~            k
+                                                   B
+                        (BH)1/2 = p/2                        2(k+1)       k++1
+
+              |S|  B                                                 B . 2(k+1)
+
+This suffices for (38) as long as
+
+(40)                               r~ /2 + op,
+
+where (here and on) we denote op = O(1/ log p) and 0                      o+p  1/ log p, so that
+pop , po+ p  1.
+
+    We now consider the range H B pn-w~-/H, which is of principal interest.
+
+The lower bound on B implies that
+
+                        pn-w~      k
+
+                   p               H = p p H , k+1                     k  -k
+              H                            k+1               n-w~    k+1  k+1
+
+                        H
+
+                                                             k
+                                                       2k+1-
+                                   p p , 
+                                      2k+1-
+(41)                    H                        n-w~
+
+since we are assuming that (k, ) = (0, 1). The upper bound on B can be equiva-
+lently written as
+
+                                     k
+                                   k+1
+                        pn-w~      B = p p B --                              1   -  -k
+      B       pn-w~-p-                           k+1        -(+)     n-w~  k+1      k+1
+
+                        B
+
+                                           k+1                 1
+                                           +1                +1
+                                   p p . -(+)
+(42)                    B                             n-w~
+
+We will assume that
+                                                   ^,
+
+where ^ =  + (y + 1), thus ensuring that
+
+                                            B pn-w~--^ .
+
+    We can rewrite (37), the result of Weyl differencing (Lemma 11), as
+
+(43)          S2  BH + H                                  e  f,h(m)        ,
+                                                                pn
+                                   0<|h|<  B  mJ (h)
+                                           H
+
+where f,h(t) = f (t + ph) - f (t). According to Lemma 12, assuming that
+
+(44)               u >  -  + (y),  +  + ordp h > p,
+
+we have that
+
+f,h  F w +  + ordph +  + , y + 1, , ~,
+
+      min u +  -  - ,  + ordph +  - (2) - (y) , , h|h|p(-y)|y|p .
+
+   The inner sum S(h) in (43) will be estimated using an appropriate existing p-
+adic exponent datum. Write w~ =  + w~, hp = |h|-p 1 = pp . We see that we can
+use the given p-adic exponent datum for those values of h for which p satisfies
+
+                            n - w~ - p n0 := n0 y + 1, p, , ~ ,
+
+as long as all other conditions are satisfied. We separate the sum in (43) into two
+appropriate ranges for h as
+
+                                     S2  BH + H(S1 + S2),
+                               SUB-WEYL SUBCONVEXITY                                        39
+
+where
+
+            S1 =                    |S(h)|, S2 =                         |S(h)|.
+
+                        0<|h|<B/H                       0<|h|<B/H
+                    0 p n-w~-n0                        p >n-w~ -n0
+
+We think of BH and HS1 as the two main terms in this estimate on S2. All other
+terms we encounter will be estimated so as to be (essentially) majorized by upper
+
+bounds on one of them (as was already done in the case B H).
+
+   We first estimate S1. The inner sum S(h) in S1 can be estimated using the given
+p-adic exponent datum as long as
+
+(45)         0(y + 1, p), ~ = min  - p(y),  0(y + 1, p),
+                       u u0(y + 1, p, , ~) +  -  + (y),
+
+as well as              u0(y + 1, p, , ~) -  + (2) + (y).
+
+The latter condition is trivially satisfied when the right-hand side is non-positive.
+
+If this is not the case, we still need this inequality only in the range (41), so that it
+
+is satisfied whenever
+
+(46)        n - w~  u    2k + 1 -       u0(y + 1, p, , ~) -  + (2) + (y)          -      .
+                              k                                                       k
+
+Writing r = r(y + 1, p, , ~), we thus obtain the estimate
+
+                |S(h)|  pr     pn-w~ -p -^          k
+                                   |J (h)|
+                                                      |J (h)|(log pn-w~-p-^ )
+
+                         pr    pn-w~ -p -^          k
+
+                                 B                    B(log pn-w~)
+
+valid for all h appearing in S1 for which |J(h)|              pn-w~-p-^, as well as the
+estimate
+
+            |S(h)|  pr pn-w~-p-^                     |J (h)|  +  1  (log pn-w~),
+                                                 pn-w~ -p -^
+
+valid for all h in S1 regardless of the size of |J(h)|. Combining these estimates, we
+find that, assuming that (45) and (46) are satisfied, we have
+
+      HS1  prB      pn-w~ -^     k
+                        B
+                                   B(log pn-w~ )
+
+                    + prH                                    B      1- (log pn-w~ ).
+                                                    pn-w~ -p -^
+                                 0<|h|<       B  ,
+                                              H
+                             p>n-w~-^-log B/ log p
+
+The second term of this estimate is
+
+            pr         BH                              p(1-)        B/H  (log  pn-w~  )
+                p(n-w~-^)(1-)                                        p
+                                 >n-w~-^-log B/ log p
+
+            pr         B2        pn-w~ -^           -
+                p(n-w~ -^ )(1-)
+                                           B           (log pn-w~)
+
+       =    pr    B2+    (log  pn-w~ )  .
+                pn-w~-^
+40                                 DJORDJE MILIC´ EVIC´
+
+In light of B pn-w~-^, this term is  prB1+(log pn-w~) and is absorbed in the
+
+first term of the estimate. Summing up, we have proved that, assuming (45) and
+
+(46),
+
+                   HS1  pr         pn-w~ -^      k
+                                       B
+                                                   B1+(log pn-w~ ).
+
+   We now turn our attention to S2, where we estimate the inner sum S(h) using
+the p-adic exponential datum (36). This is allowable as long as
+
+                                   n - w~ - p ^ + 1 + (12)
+
+as well as       1 + (4), ~ = min  - p(y),  p,
+(47)                u 2 -  - ~ + (y(y + 1)) + 1,
+
+and
+                           + p (2) + (y + 1) + (y) + 1 - ~.
+
+Note that the final condition is required for p n - w~ - n0 + 1, so that it is
+satisfied as long as
+
+(48)               n - w~ - n0 (2) + (y + 1) + (y) - ~.
+
+Assuming this to be the case, we obtain the estimate
+
+       |S(h)|  pn-w~-p-^ 1/2                   |J (h)|    +1    log pn-w~-p-^ ,
+                                           pn-w~ -p -^
+
+valid for all h appearing in S2 for which p n - w~ - ^ - 1 - (12). Estimating
+the remaining summands in S2 trivially as |S(h)| B, we thus find that
+
+    HS2  H                 B/H                  B         + p(n-w~-^-)/2   log pn-w~
+                            p           p(n-w~ -^ - )/2
+             n-w~-n0+1
+
+                +H                         B/H   B
+                                            p
+                       n-w~-^-(12)
+
+                  B2                1        log pn-w~
+            p(n-w~ -^ )/2  p(n-w~ -n0 +1)/2
+
+                +  B  p(n-w~  -^)/2            1          log pn-w~  +         B2
+                                      p3(n-w~ -n0                       pn-w~ -^- (12)
+                                                   +1)/2
+
+            BH  B p(n0 -1)/2+^ /2  +  Bp(12)+^   +    p3(n0-1)/2-^/2  log  pn-w~ .
+                                        pn-w~
+
+We now arrange for our parameters to be such that this upper bound on HS2 is no
+more than BH log pn-w~. (Here and below, we sacrifice a small power of logarithm
+
+for no other reason but clarity.) We will initially do this for the entire range
+H B pn-w~-; this range will be restricted in the second part of the proof,
+relaxing the conditions to be imposed. Letting µ = max((n0 -1)/2+^/2, (12)+^),
+the condition that Bpµ pn-w~ is, in light of the range (42) for B, satisfied whenever
+
+                                   k+1             1
+                                   +1            +1
+                           p p p -(+)
+                                           n-w~       µ   pn-w~
+
+                                      k+1                   
+                                      +1
+                           p p -(+)        µ     pn-w~    . +1
+                                       SUB-WEYL SUBCONVEXITY                                                                 41
+
+Along with the condition that p3(n0-1)/2-^/2 pn-w~, we will have that HS2 
+BH log pn-w~ as long as (47) and (48) hold as well as
+
+             n - w~        +1    max(n0 - 1 + ^, 2(12) + 2^)                          -   (     +  )  k     +  1  ,
+                            2                                                                               
+(49)
+
+                                          n - w~     3  n0   -    1  ^  -  3    .
+                                                     2            2        2
+
+   Collecting all contributions from the estimations of HS1 and HS2, we find that,
+in the range under consideration, and assuming (44), (45), (46), (47), (48), and
+(49), we have that
+
+(50)                S2  BH + H(S1 + S2)                 pn-w~-^         k  B1+
+                         BH log pn-w~ + pr                 B                Hk
+                                                                                      (log   pn-w~    )     .
+
+An H satisfying
+
+                                    H k+1 = pr             pn-w~-^         k
+                                                              B
+                                                                            B
+
+would be essentially optimal. We can't make this exact choice as we are bound by
+
+the condition that H be a non-negative power of p. However, it is reasonable to
+
+seek an H to be the power of p for which
+
+                       pn-w~-^         k
+                          B
+         c p r-1                    B = H k+1   
+
+          H k+1                              k+1           
+
+                                                                                      pn-w~-^         k
+                                                                                         B
+                                             <H      H       =             r+k                        B , k+1    
+                                                                                                               k+1
+                                                                cH p k+1
+
+with a suitable choice of cH > 0, since H = pH. Such a choice is admissible
+as long as H 1. There are several ways to ensure this; we find it convenient
+
+to invoke the condition (55) below, which will be imposed anyway. In light of this
+
+condition, we have that n- w~ - ^ + 1                (n0     -  ^)+ max(n-            w~  -  n0    +  1,    1  (n0   -  ^ -  1)),
+                                                                                                            2
+with the first of the two latter expressions ^, so that n - w~ - ^ + 1 (n0 - ^) +
+      1                                   1                                                  1
+max(  2  (n  -  w~  -  n0  +  ^  +  1),   2  (n0  -  ^  -    1))        (n0        -  ^)  +  4  (n    -     w~).     It follows
+
+that H          cH pr+(n0-^)k(log pn-w~ ) 1/(k+1)p(n-w~)/4(k+1)/(log pn-w~ )                                            1 for a
+
+sufficiently large cH > 1 (depending only on the initial p-adic exponent datum in
+
+Theorem 5), since the second factor is trivially  1, while the first factor is  1 as
+
+seen (following Definition 2) after (16).
+
+With such a choice of H, we have
+
+(51)                       r  - 1 - k^       +  o+p  <          r  + k - k^           +   op+,
+as well as                     k+1                                  k+1
+
+                                          pn-w~         k
+                                            B
+                    S  p 2    r+k-k^                 k+1        k++1               pn-w~  )max(1,)
+                                  k+1                             k+1
+                                                             B          (log                             .
+
+We see that this is allowable for (38) as long as
+
+(52)                   r~     r + k(1 -  - (y + 1))                ,    ~          max(1,    )     .
+                                                                                        2
+                                          2(k + 1)
+
+   Note that the first of these two inequalities subsumes (40). Further, the first
+of the two conditions (44) is subsumed in (47). The second condition can also be
+42                       DJORDJE MILIC´ EVIC´
+
+dispensed with if  2p or if  > 0. We could ensure the latter by imposing a
+lower bound on n-w~, but we keep things simple and make an innocuous assumption
+
+(53)                            ~ 2p
+
+to take place of (44), with a ~ in place of  with an eye on the second part of the
+proof.
+
+   Summing up, we have proved that the estimate (38) holds for all 0 < B
+pn-w~- (where  ^), assuming that all conditions listed in (45), (46), (47), (48),
+(49), (52), (53), and (55) are met.
+
+   2. The complementary range, split at p(n-w~)/2, and conclusion. The
+complementary range pn-w~- < B pn-w~ really should be treated in a different
+way, for in this range the supposed second main term in (50) does not correctly
+capture the full contribution of the terms |S(h)| to HS1, because the length of sum-
+mation |J (h)| in S(h) is unfavorably large compared to the modulus pn-w~-p-^
+
+already for p = 0. This is in the nature of the method. The Weyl-van der Corput
+inequality (Lemma 11) has the effect of substantially reducing the modulus relative
+to the length of the summation; this is its intended purpose. But if the length of
+the summation, which remains  B, is too large, then this effect goes too far.
+
+   One way to deal with the supplementary range, in which B is rather large com-
+pared with the modulus pn-w~, is to apply the p-adic exponent datum (36) and then
+make sure that the resulting estimate p(n-w~)/2 is no more than (38). (This approach
+
+should be compared to the application of the Po´lya-Vinogradov inequality in [1]
+to dispense with the range x  q2/3 when estimating the sum n x (n).) This
+turns out to work wonderfully for pn-w~ B pn-w~, requiring no adjustments
+to the final result, and not too badly for pn-w~- < B < pn-w~ , where the price
+
+to be paid is that one must require r~ ( + )/2 + op (^ + )/2 + op, which
+increases the final upper bound by a factor of at least p^/2. This would not be
+
+horrible (and it is certainly inconsequential if one is only concerned with a fixed
+prime p), but we can do substantially better. If we think about the proof of the
+
+datum (36), we realize that it consists of an application of the summation formula
+of Theorem 3, followed by a trivial estimate of the resulting shortened sum. In this
+light, the range pn-w~ B pn-w~ corresponds dually to the range 1 B H, in
+
+which our estimate (38) was indeed obtained by the trivial bound. It thus becomes
+clear that, to avoid losses for B < pn-w~ , we should follow the application of the
+
+summation formula not by the trivial estimate but by exactly the same estimates
+
+that we used in the dual range B > H.
+   At this point, we reflect back on the range considered in the first part of the
+
+proof, choose
+
+                                                   = ^,
+
+and instead claim (38) for all 1 B p(n-w~)/2 and only those B. It suffices to
+establish (38) for all 1 B p(n-w~)/2/b, where b > 0 is a suitably chosen large
+
+constant. Note that, for all B in this interval,
+
+      pn-w~ -^  pn-w~-^
+
+                n-w~      k+
+                   2     (k+1)
+                p p /b 
+
+                k+              k+2-           k+           1-
+                k+1             2(k+1)         k+1        2(k+1)
+                = p b p = p b p p . -^-
+                         n-w~           -^-         n-w~          (n-w~)/2
+                              SUB-WEYL SUBCONVEXITY                                                                    43
+
+We want to ensure that the left-hand side, which is a power of p, is at least p(n-w~)/2;
+for this, it suffices to ensure that the right-hand is > p(n-w~-1)/2. Keeping in mind
+
+the range for  in (51) and adjusting the constant b as necessary, we conclude that
+
+the proof of the estimate (38) in the first part covers the entire range 1 B
+p(n-w~)/2 as long as
+
+(54) n - w~   2(k + 1)   ^  +     r   + k - k^      -   1  =  2(r       +     +  (y + 1))              +  (k  -  1) .
+                1-                     k+1              2                          1-
+
+As we announced, this restriction of range also allows us to relax the condition (49)
+somewhat. In light of B p(n-w~)/2, the condition that Bpµ pn-w~ is satisfied
+whenever n - w~ 2µ, so that we may replace (49) with
+
+(55)          n - w~  max     n0  -   1  +  ^,   2^  +  2(12),     3    (n0  -   1)  -     1  ^     .
+                                                                   2                       2
+
+We now address the case when B p(n-w~)/2. Instead of S, consider
+
+                           S =              e    f (m)     h       m     .
+                                                  pn               B
+                                      mZ
+
+According to Theorem 3, assuming that
+
+(56)                      1 + (4), n - w~ 1 + (12),
+
+              u +  >  + , ~ = min  - p(y),  > 0,
+
+we have that
+
+              S       =     B               e    f°(t)     h^ f,B         t             ,
+                         p(n-w~)/2                pn                  pn-w~ /B
+                                      tZ
+
+with || = 1 and f°as in (32):
+
+             f° F w + ordp y, y-1, , ~, u +  - ordp y, -1, --1 .
+
+Note that w~ := (w +ordp y)++ = w ++ = w~. Since pn-w~/B p(n-w~)/2, the
+first part of the proof shows that sharp-cutoff sums of e(f°(t)/pn) of length no more
+than pn-w~/B can be estimated as in (38), as long as f°satisfies all conditions accu-
+
+mulated in the process of proving this estimate. Refering to (45), (46), (47), (48),
+
+(52), (54) and (55), we find that we require the following additional assumptions:
+
+                          0(y-1 + 1, p), ~ 0(y-1 + 1, p),
+
+              u +  - ordp y u0(y-1 + 1, p, , ~) +  - ~ + (y),
+
+      n - w~  u       2k + 1 -        u0(y-1 + 1, p, , ~) -  + (2) + (y-1)                                -      ,
+                           k                                                                                  k
+
+              u +  - ordp y 2 - 2~ + (y-1(y-1 + 1)) + 1,
+
+(57)                  n - w~ - n0 (2) + (y-1 + 1) + (y-1) - ~
+
+                              r~      r  +  k(1  -  - (y-1            +  1))  ,
+                                                  2(k + 1)
+
+                      n - w~          2(r  +     +   (y-1 +        1))  +   (k   -  1)  ,
+                                                         1-
+
+              n - w~     max      n0  -  1  +  ^,  2^   +  2(12),        3  (n0  -   1)    -     1  ^  ,
+                                                                         2                       2
+44                                             DJORDJE MILIC´ EVIC´
+
+where
+
+                       n0 := n0 (y-1 + 1, p, , ~),                ^ :=  + (y-1 + 1),
+
+                          r    - 1 - k^        +  op+  <          r  + k - k^    +    op+.
+                                k+1                                   k+1
+
+Assuming that these hold, and in light of h^f,B  = h^ , we can estimate S,
+using also the implication H() = Hsm() of Lemma 6, as
+
+                       S           B        pr~B       k  pn-w~        k++1      log pn-w~ ~,
+                               p(n-w~)/2          2(k+1)    B          2(k+1)
+
+                          
+
+with a uniform implied constant, depending on h only. From this it follows that
+
+                            r~   n-w~                  2k+1-    log pn-w~ ~
+                                        2(k+1)         2(k+1)
+                       S  p p B 
+
+                                             k      +1         log pn-w~ ~     pn-w~          -k
+                                        2(k+1)    2(k+1)                        B2          2(k+1)
+                       = p p B r~
+                                 n-w~
+
+                                 pn-w~         k
+                                   B
+                                               B log p 2(k+1)          n-w~ ~
+                        pr~                               k++1
+                                                          2(k+1)
+
+for all B p(n-w~)/2. Using the implication H() = Hsm() of Lemma 6, it
+follows from the first part of the proof that the same estimate also holds for all
+
+B p(n-w~)/2 and thus for all 1 B pn-w~. The same upper bound follows for S
+
+in light of Hsm()sq = H()sq of Lemma 6, since no extra factor of 1/2 appears
+
+in the power of the logarithm because the exponent pair                                   k   ,  k++1     cannot
+                                                                                      2(k+1)     2(k+1)
+
+equal  (  1  ,  1  ).
+          2     2
+                                                                       1
+    The stated p-adic exponent datum for 0 < k                         2        < 1 follows from collecting
+
+all conditions (45), (46), (47), (48), (52), (53) (54), (55), (56), and (57).
+
+    The remaining cases k = 0 and  = 1 follow directly by convex interpolation from
+
+bounds given by known p-adic exponent data. If k = 0, we interpolate between the
+
+bound (15) for the given p-adic exponent datum and the trivial bound S  B to
+
+obtain                                            1/2
+
+                   S      pr B   log pn-w~                B1/2    =  pr/2B  +1     log pn-w~ /2.
+                                                                              2
+
+If  = 1, we use convex interpolation between the bound (15) for the first nontrivial
+datum (36) and the trivial bound S  B as follows:
+
+                                            k                  pn-w~      k
+                                                                 B
+                                                                       B log p . 2(k+1)                     k
+                                                    1                                k+2                  k+1
+                                                  k+1                              2(k+1)
+    S           p(n-w~)/2 log pn-w~     B = k+1                                                     n-w~
+
+   We comment briefly on possible optimality of the obtained value of n~0. The
+condition that n~0 (1 + )n0 with a fixed  = (k, ) > 0 appears essential to Weyl
+
+differencing method. We do not believe that, for example, a condition of the form
+
+n~0 n0 + C(k, ) can suffice in general. Substantial effort was put into making 1 + 
+                                                                                   3
+as  small    as    we  could,  but  it  is  not   clear   that    the  factor  of  2  is  necessarily     optimal.
+
+    While processes engaging some "q-variant" of the Weyl-van der Corput inequal-
+
+ity have been used by previous authors, our approach in Theorem 5 is, to our
+
+knowledge, novel in a number of ways, including the use of the                                1  ,  1  )  pair  to  re-
+                                                                                              2     2
+duce the required n~0 and of the summation formula to shorten the sum in the range
+                       SUB-WEYL SUBCONVEXITY                                               45
+
+B  p(n-w~)/2 and obtain what are probably nearly optimal exponents, as well as
+the entire paradigm of the method applying to classes of p-adic analytic functions.
+
+                       6. Application to L-functions
+
+   The relevance of the class F to Dirichlet L-functions stems from the following
+
+(in hindsight) simple Lemma 13. In a more elementary form, this line of reasoning
+
+seems to have been first used in the context of analysis of L-functions by Post-
+
+nikov [20].
+   Recall that the group (Z/pnZ)× of invertible congruence classes modulo pn is
+
+cyclic for an odd prime p and a product of the subgroup {±1} and a cyclic group
+of order 2n-2 if p = 2 and n 2 (we ignore the trivial case pn = 2 here). Let
+
+                                          1 = 1 + (2),
+
+and let (Z/pnZ)×1 =     {a + pnZ   :a           1 mod p1 }.    We have that (Z/pnZ)× =
+Gn × (Z/pnZ)1× with    a subgroup  Gn     =    (Z/p1 Z)×.
+
+Let n denote the set of all Dirichlet characters modulo pn, and let n1 denote
+the set of all characters of the subgroup (Z/pnZ)×1 . We have the isomorphism of
+dual groups n = G^n × n1, and restriction to 1 + p1Z gives a natural surjection
+
+n  n1.
+
+Lemma 13. Let n 1 be given. For every a = a0p-n  p-nZp,
+
+            a 1 + p1 t = e a logp(1 + p1 t) = e                a0 logp(1 + p1 t)
+                                                                        pn
+
+defines a character a  n1. Moreover, every character of n1 is of this form, and
+the correspondence a  a induces an isomorphism p-nZp/p-1Zp = n1, with
+primitive characters being those corresponding to p-nZp×/p-1Zp.
+
+PMrroof=..  We saw     in section 2 that  the  series  (x)  =  logp(1 + x)  has   r  =  1  and
+            r for all  r < rp. Since
+
+                       (x + y + xy) = (x) + (y)
+
+for every x, y  B1, it follows that a is a multiplicative function a : 1+p1Z  S1.
+On the other hand, since p1t  Brp for every t  Z, we have that
+
+                             ordp a logp(1 + p1 t) = ordp ap1 t .
+Note that a 1 + p1 t = 1 if and only if a logp(1 + p1t)  Zp. We see that
+1 + pnZ  ker a, so that a is indeed a character of (Z/pnZ)×1 .
+
+   It is immediate that a  a is a homomorphism of groups p-nZp  n1.
+Moreover, we see that a is the trivial character if and only if ap1t  Zp for every
+t  Z (and in particular for t = 1), that is, exactly when a  p-1Zp, so that we
+have a monomorphism p-nZp/p-1Zp  n1. This must be an isomorphism since
+|p-nZp/p-1 Zp| = |n1| = pn-1 ; in particular, every character of n1 is of the
+form a for some a  p-nZp. Since the characters of n-1,1 are consequently of
+the form a for some a  p-n+1Zp, the primitive characters of n1 correspond to
+a  p-nZp×.
+
+   Lemma 13 presents a parametrization of the restrictions to 1 + p1Z of Dirichlet
+characters modulo pn by classes of p-adic rationals. The isomorphism exhibited in
+the Lemma extends to an isomorphism of inductive limits Qp/p-1Zp = (1p), with
+46                                           DJORDJE MILIC´ EVIC´
+
+(1p) =  n=1n1 being the group of restrictions of all Dirichlet characters modulo
+all non-negative powers of p to 1 + p1 Z.
+
+   Let  be a primitive character modulo q > 1 (q = pn in our case). The Dirich-
+
+let L-function L(s, ) continues to an entire function and satisfies the functional
+equation
+
+       q      s/2         s+             L(s, ) = ()  q  (1-s)/2                1-s+          L(1 - s, ¯),
+                            2                                                        2
+                                                                  
+
+where  = 0 or 1 according as  is even or odd, and
+
+                                         ()  =  i-           (m)e            m
+                                                q                            q
+                                                    m mod q
+
+is a unit multiple of the normalized Gauss sum (see [14, Theorem 4.15 on page 84]).
+
+We   will  use    the  following         standard  expansion   of  L(  1  ,  )     in  terms  of    short  Dirichlet
+                                                                       2
+polynomials.
+
+Lemma 14 (Approximate functional equation). Let  be a primitive character
+modulo q > 1, and let A be a positive integer. Then
+
+                L      1  ,     =          (m)   V  m    +     ()               (m)       V   m     ,
+                       2              m=1     m     q               m=1            m          q
+
+where V (y) is a smooth function of y > 0 defined by
+
+                       V (y)    =      1      y-u   cos  u     -4A           1  +  u+        du  ,
+                                      2i                 4A                  4       2       u
+                                           (3)
+                                                                                1  +   
+                                                                                4      2
+
+and V (y) and its derivatives satisfy the estimates
+
+                   yaV (a)(y)  (1 + y)-A,                yaV (a)(y) = a0 + O(y1/6).
+
+Proof. This is an instance of [14], Theorem 5.3 and Proposition 5.4 on pages 98­100,
+with G(u) = (cos u/4A)-4A as on page 99.
+
+   We now arrive at the theorem in which a p-adic exponent datum will be used to
+estimate the central value L(1/2, ).
+
+Theorem 6. Suppose that k, , r, , (n0, u0, 0, 0) is a p-adic exponent datum.
+
+Let    =   1  if    =     k  +  1  ,  and    =  0  otherwise.
+                                2
+    If  k + 1/2, then, for every  max 0(1, p), 1 + (2) and with r =
+
+r(1, p, , ), and for every n max n0(1, p, , ) + , 2 and every primitive
+Dirichlet character  modulo pn,
+
+                          L     1,          pr+(1-k-) pn       k+   -     1     (log q)+ .
+                                                                 2        4
+
+                                2
+
+   If  < k + 1/2, then, for every  max 0(1, p), 0(1, p), 1 + (4) and with
+r = r(1, p, , ), and for every n max n0(1, p, , ) + , 2 + 1 + (12) and every
+primitive Dirichlet character  modulo pn,
+
+                             L     1  ,     pr+(1-k-) pn           k+     -  1     (log q).
+                                   2                                 2       4
+                           SUB-WEYL SUBCONVEXITY                               47
+
+Proof. Using Lemma 14 with A = 2, we can write L(1/2, ) = S + ()S, where
+
+          S  =       (m)   V      m      ,     S  =       (m)    V   m     .
+                m=1     m        pn/2                m=1     m      pn/2
+
+We will prove an upper bound for S; the estimate on the sum S is exactly the
+
+same with  replaced by ¯. We first consider the case  k + 1/2.
+   For every 1 c p such that p  c, fix an integer c with cc  1 (mod pn). We
+
+can decompose S as
+
+                             c + pm                  c + pm
+          S=                                      V    pn/2
+                                      c  +  p  m
+                1 c p,pc m=0
+
+                                    
+
+             =             (c)  1 + pcm Wc(m) + O p/2
+
+                1 c p,pc         m=1
+
+with the cutoff function
+
+                          Wc(t)  =       1  pt V     c + pt   .
+                                      c  +            pn/2
+
+According to Lemma 13, the values of the primitive character  modulo pn on
+
+1 + p1Z are given by a character a for some a = a0p-n, a0  Zp×. Since  1,
+we can write
+
+                                    a0 logp(1 + pcm)
+                                              pn
+(58)  S=             (c) e                                    Wc(m) + O p/2 .
+
+          1 c p,pc        m=1
+
+   Recall from (13) that the phase fc(t) = a0 logp(1 + pct) belongs to the class
+F(, 1, , , , c, a0c). We estimate the inner sum S(c) in (58) using a summation
+by parts argument similar to the one used in the proof of Lemma 6. Let
+
+                           S~(t) =             e  fc(m)
+                                                    pn
+                                      1mt
+
+if t 1, and S~(t) = 0 for t < 1. Since
+
+                                        n -  n0,  0,
+we can estimate S~(t) using the given p-adic exponential datum to find that
+
+(59)                      S~(t)  pr      pn-2     k
+                                            t
+                                                    t(log q)
+
+for 1 t pn-2, and, more generally, for all t 0,
+
+             S~(t)  pr     p(n-2)k t-k      +            t       (log q).
+                                                  p(n-2)(1-)
+48                                      DJORDJE MILIC´ EVIC´
+
+Using summation by parts, we obtain
+
+                                                                   
+
+S(c) =       Wc(t) dS~(t) = Wc(t)S~(t) -                              S~(t)Wc(t) dt
+
+        1-0                                          1-0        1
+
+                                     p(n-2)k t-k  +           t                ×
+                                                       p(n-2)(1-)
+        pr(log q)
+
+                                 1
+
+             ×        p                 V         c + pt           + pc-+np/2t V                 c + pt       dt.
+                (c + pt)3/2                        pn/2                                           pn/2
+
+Introducing a substitution t = (pn/2 - c)p-, we find that
+
+                                     
+
+    S(c)  pr-n/4(log q)                 p(n-2)(k+)/2 -k + p(n-2)(-1/2) ×
+
+                                     0
+
+                                                                            ×       |V ( )|      +  |V( )|    d,
+                                                                                      3/2               
+
+where 0 p-n/2. Multiplying out the integrand, we obtain a sum of four improper
+integrals. In light of the asymptotic behavior of V ( ), all four of these integrals
+converge absolutely when extended to (0, ) if  - k > 1/2; in the case  - k =
+1/2, the same is true except that the integral of |V ( )| -k-3/2 has a logarithmic
+
+singularity at zero. We thus have that
+
+        S(c)  pr-n/4(log q) p(n-2)(k+)/2(log q) + p(n-2)(-1/2)
+
+              pr-(k+) pn                k+   -    1  (log q)+ ,
+                                          2       4
+
+since (k + )/2 /2  - 1/2.
+   Going back to (58), we have that
+
+             S  pr+(1-k-) pn                         k+   -  1     (log q)+ + p/2.
+                                                       2     4
+
+Since the estimate (59) holds for all 1 t pn-2, we know from (16) that its
+right-hand side is greater than t1/2 throughout the same range. In particular, for
+t = pn/2-, we find that
+
+                                     pr pn/2- k+(log q) pn/4-/2,
+
+from which it follows that the first term dominates in our estimate of S. This
+completes the proof in the case  k + 1/2.
+
+   If  < k + 1/2, we apply the B-process (Theorem 4) to the given exponential
+datum and obtain a new datum
+
+        B k, , r, , (n0, u0, 0, 0) =                   -  1  ,  k  +  1  ,  r~, ~,  (n~0,  u~0,  ~0,  ~0)  ,
+                                                          2           2
+
+where
+
+                r~(1, p, , ) = r(1, p, , ), ~ =  + 01 = ,
+                 ~0(1, p) = max 1 + (4), 0(1, p), 0(1, p) ,
+             n~0(1, p, , ) = max( + 1 + (12), n0(1, p, , ) .
+
+Since k + 1/2 > ( - 1/2) + 1/2, the first case of our theorem applies to this new
+p-adic exponent datum; this gives the stated result.
+                                  SUB-WEYL SUBCONVEXITY                                                  49
+
+   We remark that the proof of Theorem 6 applies verbatim to estimation of the
+values L(1/2 + it, ) at any point along the critical line. Using the appropriate
+approximate functional equation from [14, Theorem 5.3 and Proposition 5.4], and
+denoting
+
+               Vs(y)     =   1       y-u         cos   u    -4A        1  s  +  u+          du  ,
+                            2i                         4A              2          2         u
+                                  (3)
+                                                                          1  s  +     
+                                                                          2           2
+
+                            Wc[s](t)   =   (c      1       Vs    c + pt            ,
+                                                 + pt)s           pn/2
+
+we find as above that
+
+L  1  +  it,                           Wc  [  1  +  it]( )    +  Wc    [  1  -  it    ( )       d + p/2
+   2                                          2                           2
+                |S~( )|
+
+                      1
+
+                pr+-n/4(log q)                         p(n-2)(k+)/2 -k + p(n-2)(-1/2) ×
+
+                                                 0
+
+                            ×      (3  +  |t|)|V1/2+it( )|       +   |V1/2+it( )|           d + p/2,
+                                              3/2                           
+
+with 0 p-n/2. Using the asymptotic yaV1(/a2)+it(y)  1 + y/ 3 + |t| -A and
+proceeding as above, we conclude that
+
+      L  1     +  it,         (3  +        -k    +  3  pr+-   n  +(n-2)      k+       (log  q)+
+         2                                          4         4                2
+                                     |t|) 2
+
+                                +  (3  +   |t|)  5  pr+-   n  +(n-2)         -  1     (log q) + p/2
+                                                 4         4                    2
+
+                              (3  +        5  pr+(1-k-)          pn  k+      -  1     (log q)+ .
+                                                                       2        4
+                                     |t|) 4
+
+In the remainder of this section, we describe explicit p-adic exponent data and
+apply them to estimation of the central value L(1/2, ). The above bound (which
+is somewhat lossy for all nontrivial (k, ) but conveniently compact), used with the
+same p-adic exponent data, then yields analogous estimates for L(1/2 + it, ) valid
+along the entire critical line with an explicit dependence in t, including the bound
+announced in the introduction.
+
+   Using Theorem 6, we can obtain a subconvex estimate on L(1/2, ) from every
+p-adic exponent datum in which k +  < 1. We show how to obtain such p-adic
+exponent data by iterating the A-and B-processes (Theorems 5 and 4). We have
+seen that the p-adic exponent data can take rather complicated forms in general,
+to account for all adjustments which need to be made at a finite number of special
+primes, possibly depending on y; the set of such primes was denoted by P0(y) in the
+definition of p-adic exponent data. We will, for simplicity, state our p-adic exponent
+data in their cleanest form, in which they are valid away from finitely many primes,
+and state the exceptions; however, for the application to Theorem 6, it is important
+to remember that the method does apply to every single prime without exception.
+50                                           DJORDJE MILIC´ EVIC´
+
+    Applying the A-process to the datum 1/2, we obtain with some labor the datum
+
+    A(1/2) = AB(01) =                 1   ,  2  ,  1  (1  -  ),        1  ,
+                                      6      3     6                   2
+
+                                                       max(5              -  1,  u(     13   +     5      -   3~))   ,
+                                                                                        3          3
+
+                                                      max(2 + ~ -  - 2~ + 1, 1), 1, 2p
+
+valid for all p  {2, 3} such that ordp y = ordp(y + 1) = 0,
+
+A2B(01) =  1   ,  11  ,  1  (1  -     ),     1     ,
+           14     14     7                   2
+
+               max(8 - 3, u(3 -                              9  ~         +  5),    u     (  47    +    4~     -  12~   +  58  ))  ,
+                                                             2                               7                             7
+
+           max(3 + 2~ -  - 4~ + 1, 1), 1, 2p
+
+valid for all p  {2, 3} such that ordp y = ordp(y +1) = ordp(y +2) = ordp(2y +1) =
+0 (u refers to the value of u in the previous datum), and so on. We recall from
+the statement of Theorem 5 that, when constructing a new p-adic exponent datum
+Aq from an existing datum q = (k, , r, , (n0, u0, 0, 0)) using the A-process, u is
+defined as u = 0 if u0(y± + 1, p, , ~) -  + (2) + (y±) 0, and u = 1 otherwise.
+
+   Our p-adic exponent data take an even simpler form if we restrict them to  = ~,
+
+which is equivalent to   and p(y) = 0. Note that this condition is always satis-
+fied in the cases needed for Theorem 6 away from finitely many primes. Moreover,
+
+this condition "propagates" through the recursive A- and B-processes, since a pair
+(, ~) always satisfies the condition  = ~ away from finitely many primes (possibly
+
+depending on y) if the pair (, ) does. Finally, note that, as shown below, with this
+restriction, every datum obtained from 01 using A- and B-processes has u0 = 1; in
+particular, this means that, away from finitely many primes, we always have u = 0
+upon application of Theorem 5. With this convenient restriction, we thus obtain
+
+the following p-adic exponent data:
+
+    01[ = ~] = 0, 1, 0, 0, ( + 1, 1, 1, p) ,
+
+                            ordp y = 0,
+
+       B(01)[ = ~] =        1   ,  1  ,  0,  1,    (   +   1,   1,     1,    p)     ,
+     AB(01)[ = ~] =         2      2
+    A2B(01)[ = ~] =
+                            p  {2, 3}, ordp y = 0,
+
+                            1   ,  2  ,  1   (1    -   ),  1  ,  (5          -  1,  1,  1,   2p)       ,
+                            6      3     6                 2
+
+                            p  {2, 3}, ordp{y, y + 1} = 0,
+
+                            1      ,  11  ,  1  (1    -   ),     1  ,  (8       -   3,  1,   1,  2p)       ,
+                            14        14     7                   2
+
+                            p  {2, 3}, ordp{y, y + 1, y + 2, 2y + 1} = 0,
+
+    A3B(01)[ = ~] =         1      ,  13  ,  1     (1  -  ),     1     ,  (  23        -  6,     1,   1,  2p)  ,
+                            30        15     10                  2           2
+
+                            p  {2, 3}, ordp{y, y + 1, y + 2, y + 3,
+
+                                                             2y + 1, 2y + 3, 3y + 1, 3y + 2} = 0,
+
+BA3B(01)[ = ~] =            11     ,  8   ,  1     (1  -  ),     1     ,  (  23        -  6,     1,   1,  2p)  ,
+                            30        15     10                  2           2
+
+                            p  {2, 3}, ordp{y, y + 1, y + 2, y + 3,
+
+                                                             2y + 1, 2y + 3, 3y + 1, 3y + 2} = 0,
+
+ABA3B(01)[ = ~] =           11     ,  57  ,  7     (1  -  ),     1     ,  (  71        -  39  ,    1,  1,  2p)    ,
+                            82        82     41                  2           4            4
+                                               SUB-WEYL SUBCONVEXITY                                                                  51
+
+                                   p  {2, 3}, ordp{y, y + 1, y + 2, y + 3, y + 4, 2y + 1, 2y + 3,
+                                                      2y + 5, 3y + 1, 3y + 2, 3y + 4, 3y + 4, 3y + 5,
+                                                      4y + 1, 4y + 3, 5y + 2, 5y + 3} = 0.
+
+   With a supply of p-adic exponent data, we can derive subconvex estimates on
+L(1/2, ), reflect back on our method, and prove Theorem 1. Applying Theorem 6
+using the datum AB(01) and  = 1, we get that, for every n 4 and every
+primitive Dirichlet character  modulo pn with p  {2, 3},
+
+                                   L           1  ,       p(n+1)/6(log pn)3/2,
+                                               2
+
+which    recovers    the   Weyl    exponent                =     1   for  a   fixed    p,  as  in  [1]   and  [6],  but     with    an
+                                                                 6
+explicit implied constant. Note that we cannot use special devices which allow one
+
+to precisely recover the Weyl exponent if one does not hope to iterate the process
+
+(as  in  [9]).  The  estimate      does        improve        upon        the   Burgess    exponent           =     3    for  n       9,
+                                                                                                                    16
+although this is a minor point for us.
+
+Note that, in the datum AB(01),                                     1  +  2     =   5  .   To improve upon the Weyl
+                                                                    6     3         6
+                                                                                                   5
+exponent,       we need a p-adic exponent datum with k +  <                                        6  .  One such datum is
+
+provided by ABA3B(01) above. Applying Theorem 6 with this datum and  = 1,
+we get that for every n 8 and every primitive Dirichlet character  modulo pn
+
+with p  {2, 3, 5, 7},
+
+(60)                            L     1  ,             p7/41 pn 27/164(log pn)1/2.
+                                      2
+
+This proves the main statement of Theorem 1,
+
+(61)                                  L        1   ,        pr pn (log pn)1/2
+                                               2
+
+with       =    27   <     1  and     r     =        7   for  all primitive            characters        modulo          pn,     p    
+                164        6                         41
+{2, 3, 5, 7}, n 8. Since A- and B-processes produce p-adic exponent data effective
+
+for every prime p without exception, the same bound holds for all primitive char-
+
+acters  modulo pn also in the case p  {2, 3, 5, 7} for n n0, with different values
+of r and n0 (and so also with the same values of r and n0 by adjusting the implied
+constant). Further, a bound of the same form holds for all values of n by adjusting
+
+the value of r. Finally, if  is induced from a primitive charater 1 modulo pn1,
+0 n1 n, then L(s, ) = L(s, 1) if n1 1 and L(s, ) = (1 - p-s)L(s, 1) if
+
+n1 = 0, so that the statement follows also for non-primitive characters. This proves
+                                                                                                                                 27
+Theorem    1    for  all   Dirichlet        characters           to    any    prime    power       modulus    with          =    164  .
+
+   Since    27          0.1646     <  1     ,  the       estimate         (60)  breaks     the     Weyl  exponent             barrier
+for n                                 6
+           n1064.  As another benefit of our explicit calculations of full exponent data
+
+(including the values of n0 and r), we can see that (60) improves on the Weyl
+                                               7         27            1
+exponent      for  all  n  for  which          41    +   164  n  <     6  n;  this  will   be  the    case    for   all  n       85.
+
+Note that no further improvement is obtained in (60) by taking a larger value
+
+of , and, equivalently, no harm is suffered by taking a smaller value of . This
+
+is in marked contrast to the works such as [6, 9] in which the Weyl exponent is
+
+obtained, which essentially rely on a choice  > n/3 + O(1). In our language, this
+
+ensures that, in appropriate ranges, f,h(t) of Lemma 12 is essentially a quadratic
+
+polynomial; this in turn allows for a sharper treatment of one special instance of
+52                             DJORDJE MILIC´ EVIC´
+
+the A-process but precludes iteration. It is essential for this iterative method to
+adopt the exactly opposite paradigm that n is sufficiently large compared to , so
+that f (t)/pn behaves like a p-adic analytic function, rather than sufficiently small
+compared to  (which presents simplifications in special cases but can obstruct the
+view of the analogy). It is quite possible that better -- possibly substantially better
+-- values of r and n0 (but not ) in (61) can be obtained by fixing the value of 
+in a range relative to n so that, by the time the iteration of A- and B-processes
+reaches the final application of Weyl differencing, we do have  > n/3 + O(1) and
+can obtain a sharper estimate. This would be a welcome development, but we felt
+that it would distract from the main thrust of this paper.
+
+   The above proof, relying on Theorem 6, applies verbatim to any p-adic exponent
+pair (k, ) and shows that the bound (61) holds with
+
+                                       =  k    +    -  1  .
+                                               2       4
+
+This brings to the fore the question of finding p-adic exponent pairs with k +  as
+
+small as possible. It is immediate from Theorem 2 that the set of p-adic exponent
+
+pairs we can construct from (0, 1) coincides with the set of (Archimedean) exponent
+
+pairs obtainable from (0, 1) by the classical A- and B-processes, for which we refer to
+
+[8]. For example, a further specific pair which improves on (60) is Phillips' exponent
+
+pair  ABA3BA2BA2B(0, 1)  =  (  97   ,  480  )  [19],  which  gives    =  229     0.1645.
+                               696     696                               1392
+    The question of finding a value of  as small as it is possible to obtain from
+
+the A- and B-processes was considered and solved by Rankin [21]. Rankin proved
+
+that there is a 0  0.1645 such that  > 0 for every pair obtainable by A- and
+B-processes, and, conversely, for every 1 > 0, there is an exponent pair obtainable
+from (0, 1) by A- and B-processes which yields   (0, 1). Our Theorem 2 shows
+that the corresponding p-adic processes will yield a p-adic exponent pair with the
+
+same value of ; using Theorem 6 with this pair, we obtain a proof of Theorem 1
+
+for any  > 0  0.1645.
+
+                         7. Acknowledgments
+
+   These results were prompted by a question posed by Kannan Soundararajan
+during an open problems session in a workshop on Zeta Functions and Their Rie-
+mann Hypotheses, held at the Courant Institute for Mathematical Sciences, New
+York University in 2002. Part of this work was done while the author visited Cen-
+tre Interfacultaire Bernoulli at the E´ cole Polytechnique F´ed´erale de Lausanne for
+the National Science Foundation-supported special semester on Group Actions in
+Number Theory in 2011. Most central claims and the paper as a whole took their
+final shape while the author visited the Max Planck Institute for Mathematics in
+Bonn during the 2011-12 academic year. The support and exceptional research
+infrastructure of both the EPFL and the Max Planck Institute for Mathematics
+are most gratefully acknowledged. Finally, the author would like to thank Valentin
+Blomer, Gergely Harcos, and Peter Sarnak for helpful feedback.
+
+                                            References
+
+1. M. B. Barban, Yu. V. Linnik, and N. G. Tshudakov, On prime numbers in an arithmetic
+    progression with a prime-power difference, Acta Arith. 9 (1964), 375­390. MR 0171766 (30
+    #1993)
+SUB-WEYL SUBCONVEXITY  53
+
+ 2. Bruce C. Berndt, Ronald J. Evans, and Kenneth S. Williams, Gauss and Jacobi sums, Cana-
+     dian Mathematical Society Series of Monographs and Advanced Texts, John Wiley & Sons
+     Inc., New York, 1998, A Wiley-Interscience Publication. MR 1625181 (99d:11092)
+
+ 3. Valentin Blomer and Djordje Mili´cevi´c, p-adic analytic twists and strong subconvexity, (2013),
+     to appear in Ann. Sci. E´ c. Norm. Sup´er. (4).
+
+ 4. D. A. Burgess, On character sums and L-series. II, Proc. London Math. Soc. (3) 13 (1963),
+     524­536. MR 0148626 (26 #6133)
+
+ 5. J. B. Conrey and H. Iwaniec, The cubic moment of central values of automorphic L-functions,
+     Ann. of Math. (2) 151 (2000), no. 3, 1175­1216. MR 1779567 (2001g:11070)
+
+ 6. Akio Fujii, P. X. Gallagher, and H. L. Montgomery, Some hybrid bounds for character sums
+     and Dirichlet L-series, Topics in number theory (Proc. Colloq., Debrecen, 1974), North-
+     Holland, Amsterdam, 1976, pp. 41­57. Colloq. Math. Soc. Ja´nos Bolyai, Vol. 13. MR 0434987
+     (55 #7949)
+
+ 7. P. X. Gallagher, Primes in progressions to prime-power modulus, Invent. Math. 16 (1972),
+     191­201. MR 0304327 (46 #3462)
+
+ 8. S. W. Graham and G. Kolesnik, van der Corput's method of exponential sums, London Math-
+     ematical Society Lecture Note Series, vol. 126, Cambridge University Press, Cambridge, 1991.
+     MR 1145488 (92k:11082)
+
+ 9. D. R. Heath-Brown, Hybrid bounds for Dirichlet L-functions, Invent. Math. 47 (1978), no. 2,
+     149­170. MR 0485727 (58 #5549)
+
+10. Ghaith A. Hiary, Computing Dirichlet character sums to a power-full modulus, J. Number
+     Theory 140 (2014), 122­146. MR 3181649
+
+11. M. N. Huxley, Exponential sums and the Riemann zeta function. V, Proc. London Math. Soc.
+     (3) 90 (2005), no. 1, 1­41. MR 2107036 (2005h:11180)
+
+12. H. Iwaniec, On zeros of Dirichlet's L series, Invent. Math. 23 (1974), 97­104. MR 0344207
+     (49 #8947)
+
+13. H. Iwaniec and P. Sarnak, Perspectives on the analytic theory of L-functions, Geom. Funct.
+     Anal. (2000), no. Special Volume, Part II, 705­741, GAFA 2000 (Tel Aviv, 1999). MR 1826269
+     (2002b:11117)
+
+14. Henryk Iwaniec and Emmanuel Kowalski, Analytic number theory, American Mathematical
+     Society Colloquium Publications, vol. 53, American Mathematical Society, Providence, RI,
+     2004. MR 2061214 (2005h:11005)
+
+15. Svetlana Katok, p-adic analysis compared with real, Student Mathematical Library, vol. 37,
+     American Mathematical Society, Providence, RI, 2007. MR 2298943 (2008j:12010)
+
+16. Philippe Michel, Analytic number theory and families of automorphic L-functions, Automor-
+     phic forms and applications, IAS/Park City Math. Ser., vol. 12, Amer. Math. Soc., Providence,
+     RI, 2007, pp. 181­295. MR 2331346 (2008m:11104)
+
+17. Philippe Michel and Akshay Venkatesh, The subconvexity problem for GL2, Publ. Math. Inst.
+     Hautes E´ tudes Sci. (2010), no. 111, 171­271. MR 2653249
+
+18. Paul D. Nelson, Ameya Pitale, and Abhishek Saha, Bounds for Rankin-Selberg integrals and
+     quantum unique ergodicity for powerful levels, J. Amer. Math. Soc. 27 (2014), no. 1, 147­191.
+     MR 3110797
+
+19. E. Phillips, The zeta-function of Riemann; further developments of van der Corput's method,
+     Quart. J. Math. Oxford 4 (1933), 209­225.
+
+20. A. G. Postnikov, On the sum of characters with respect to a modulus equal to a power of a
+     prime number, Izv. Akad. Nauk SSSR. Ser. Mat. 19 (1955), 11­16. MR 0068575 (16,905f)
+
+21. R. A. Rankin, Van der Corput's method and the theory of exponent pairs, Quart. J. Math.
+     Oxford Ser. (2) 6 (1955), 147­153. MR 0072170 (17,240a)
+
+22. Guillaume Ricotta (notes), Universality of convexity breaking exponents, in "Problem ses-
+     sions: Subconvexity bounds for L-functions", (2006).
+
+23. Alain M. Robert, A course in p-adic analysis, Graduate Texts in Mathematics, vol. 198,
+     Springer-Verlag, New York, 2000. MR 1760253 (2001g:11182)
+
+24. Hans Sali´e, U¨ber die Kloostermanschen Summen S(u, v; q), Math. Z. 34 (1932), no. 1, 91­109.
+     MR 1545243
+
+25. N. Templier, Large values of modular forms, ArXiv e-prints (to appear in Cambridge J. Math.)
+     (2012).
+54                                         DJORDJE MILIC´ EVIC´
+
+26. E. C. Titchmarsh, The theory of the Riemann zeta-function, second ed., The Clarendon Press
+
+     Oxford University Press, New York, 1986, Edited and with a preface by D. R. Heath-Brown.
+
+     MR 882550 (88c:11049)
+
+27. J. G. van der Corput, Verscha¨rfung der Absch¨atzung beim Teilerproblem., Math. Ann. 87
+
+     (1922), 39­65.
+
+28. Pankaj Vishe, A fast algorithm to compute L(1/2, f × q), J. Number Theory 133 (2013),
+
+     no. 5, 1502­1524. MR 3007119
+
+29.  A.  Walfisz,  Zur  Abscha¨tzung  von    (  1  + it).,  Nachr.  Ges.  Wiss.  G¨ottingen  Math.­Physik. Kl.
+                                                2
+
+     (1924), 155­158 (German).
+
+    Bryn Mawr College, Department of Mathematics, 101 North Merion Avenue, Bryn
+Mawr, PA 19010, U.S.A.
+
+    E-mail address: dmilicevic@brynmawr.edu
+

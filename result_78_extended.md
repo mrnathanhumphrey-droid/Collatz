@@ -57,34 +57,46 @@ where:
 
 The mixed bilinear sum **Σ_a 1̂(3a) · ψ(a)** is the residual quantity to bound.
 
-## Structural diophantine analysis of ψ(a)
+## Structural diophantine analysis of ψ(a) — REVISED 2026-05-04 per R79b empirical findings
 
-For r = 3, ψ(a) takes 9 distinct values from the support. By Theorems 78.4-78.6, ψ is a function of a via the chain:
-> a → C_a (linear in a mod 3^r) → s*(C_a) ∈ {0, 1, 2} → P_a(s*(C_a)) (polynomial in C_a mod q)
+For r = 3, ψ(a) takes 6 distinct values from the 9-element support (the s\* = 0 third all collapse to phase 0).
 
-The phase P_a(s*(C_a)) is a degree-3 polynomial in C_a (since P_a(s) is degree 3 in s and dP/ds = 0 at s*).
+**Original claim (now walked back, R79b):** "The phase P_a(s\*(C_a)) is a degree-3 polynomial in C_a... ψ(a) is e_q(cubic polynomial in a) — specifically a cubic exponential character of a mod 3^r... This is exactly the structure addressed by Heath-Brown's hybrid bound."
 
-Substituting back: ψ(a) is e_q(cubic polynomial in a) — specifically a cubic exponential character of a mod 3^r.
+**Revised statement (R79b, 2026-05-04):** The leading-order saddle prediction `ψ_lead(a) = e_q(P_a(s\*(C_a)))` with `s\*(C_a) = (C_a − 1)/3 mod 3` is **piecewise linear in a within each of the 3 s\* residue classes mod 9**, NOT cubic in a. Specifically: within each fixed s\* ∈ {0, 1, 2}, the phase satisfies `P_a(s\*) = 3·s\* − a · L̃⁻¹ · L(1+3·s\*) mod q`, which is linear in a.
 
-**This is exactly the structure addressed by Heath-Brown's hybrid bound and its generalizations** to cubic character sums on prime power moduli.
+Verified empirically at r = 6, 7, 8, 9, 10 (all 5 cases): within-class linear identity holds to identity-equality (not just mod q reduction); s\* = 0 class has slope identically zero (1/3 of supp has constant ψ_lead = 1).
 
-## Path to eq 190 closure
+**The full ψ_true(a) = G(a)/√q deviates from ψ_lead by 13–21% of q** (mean over support) at r = 4, 5, 6 — Hensel-lifted s\*(a) is needed at r ≥ 4. Empirically at r = 4..10, `|Σ 1̂·ψ_lead| / |Σ 1̂·ψ_true| ≈ 0.4–0.6` (range, not monotonic; **no closing of the factor-2 gap visible at r = 4..10**).
 
-Heath-Brown / Burgess-style bound for cubic character sums on (Z/3^r)*:
-> Σ_a · χ(a) · F(a) where χ is a cubic exponential character and F is a smooth function.
+**s\*-class deviation structure (R79b):** The deviation `D(a) = ψ_true − ψ_lead` is **class-correlated**, not class-uniform noise:
+- **j = 0 class is anomalous**: |mean(D)| → 1 as r grows (saturating at r = 10 to 0.979). ψ_lead is constant 1 in this class; ψ_true delocalizes uniformly with mean → 0. Hensel correction here is fundamental delocalization, not smooth perturbation.
+- **j = 1, 2 classes are regular**: complex mean(D) = 0 exactly across all r tested. Hensel correction is a bounded perturbation preserving the centered structure.
+- |D| distribution is identical across all three classes — only the directional bias is class-specific.
 
-Standard saving: q^{-η} for some η > 0. Combined with our framework:
-> |Σ_{a ∈ supp} 1̂(3a) · ψ(a)| ≤ (Σ |1̂|²)^{1/2} · #supp^{1/2} · q^{-η}
->                              ≤ √(q · N / 9) · √(q/9) · q^{-η}
->                              = (q/3) · √N · q^{-η}
+**Implication: saddle-class partition direction is PRESERVED with caveats.** The j ∈ {0, 1, 2} partition retains structural meaning — deviation is class-correlated, not class-uniform noise. But j = 0 must be handled by a **delocalization model** (collapse-to-uniform), while j = 1, 2 admit centered-perturbation handling. They are NOT interchangeable; constructive directions using the partition must respect this asymmetry.
 
-So |S_partial| ≤ (3/√q) · (q/3) · √N · q^{-η} = √q · √N · q^{-η}.
+The "cubic exponential character of a" claim was speculation about the structure of ψ_true; it is **not** present at leading order and is **unverified** for the full Hensel-lifted phase. Direct empirical computation of K(r) at r = 8..20 (R79b) yields rate β = 0.522 ± 0.008 (R² = 0.9976) — exactly square-root cancellation against N, **with no Weyl or sub-Weyl saving detectable**. **Heath-Brown / Burgess cubic-character-sum machinery is therefore not validated as a closure path for eq 190 at observed r.**
 
-For square-root cancellation we need: √q · q^{-η} ≤ const, i.e., q^{1/2-η} ≤ const, i.e., **η ≥ 1/2**.
+**Theorem 78.6 itself (saddle-point closed form, exact at r = 3) remains correct as stated.** The walk-back is for the downstream "cubic in a" structural remark only.
 
-Heath-Brown's saving is q^{-1/8} or so for cubic characters on prime modulus. For prime POWER modulus, Heath-Brown adapted by Iwaniec gives similar exponents but adapted to Postnikov structure.
+See `r79b_S_partial_empirical.md` for the full empirical computation, the Plancherel cross-check (K_direct ≈ K_recon = (3/√q)·S_true to <1% at r = 8, 10), and the side-by-side scenario A/B comparison at r = 4, 6, 8, 10.
 
-**Required η = 1/2 is at the limit of known cubic character sum bounds** — specifically Heath-Brown-Konyagin level.
+## Path to eq 190 closure — REVISED 2026-05-04 per R79b
+
+**Original framing (now walked back):** "Heath-Brown / Burgess-style bound for cubic character sums on (Z/3^r)\*... Required η = 1/2 is at the limit of known cubic character sum bounds — specifically Heath-Brown-Konyagin level."
+
+**Revised framing (R79b empirical):** The phase ψ_true(a) is **NOT** a cubic exponential character at leading order (it's piecewise linear within s\* classes), and the Hensel-corrected full phase has unknown polynomial structure. Heath-Brown / Burgess cubic-character-sum machinery is therefore **not directly applicable** — the framework's hypotheses don't match.
+
+Empirical evidence at r = 8..20 shows |K(r)| ∝ N^{0.522 ± 0.008} (R² = 0.9976) — exactly square-root cancellation against N. Independently of any saddle approximation. Sub-Weyl saving is **not present** for this specific cubic phase at observed r. The required η = 1/2 saving (which would close eq 190 fully) is consistent with the empirical rate-1/2 against N **but provides no margin** — it's at the boundary, with no sub-Weyl evidence to push below.
+
+This is consistent with the `milicevic_banks_verification.md` "structural-match-only" verdict: Milićević's framework's structural F-class conditions partially match, but **direct closure of η = 1/2 in eq 190 by either framework is not achieved** (verified-doc Section 1, Bottom line). The empirical β = 0.522 confirms the framework's predictions are not realized at observed r.
+
+**Open closure paths (now sharply specified):**
+1. Bourgain-Konyagin sum-product bounds on the multiplicative subgroup ⟨4⟩ ⊂ (Z/3^{r+1})\* — could give true rate 1/2 with explicit constants.
+2. Direct band-l¹ analysis of ĥ_{r,ℓ} on the dangerous band D_{r,t}(η) — required by R79's Step 4 obstruction analysis (pointwise √N is NOT sufficient for eq 190).
+3. Smooth completion via auxiliary prime q (R78 path 2) — averaging over auxiliary modulus might rescue Cochrane-style bounds.
+4. Explicit Hensel lifting of ψ_true to derive a closed-form polynomial structure at all r — open even structurally.
 
 ## Status update
 
@@ -96,7 +108,7 @@ Heath-Brown's saving is q^{-1/8} or so for cubic characters on prime modulus. Fo
 | 78.4 | F̂(3a) = 3 e_q(1) G(a) explicit | RIGOROUS |
 | 78.5 | a ↔ C_a bijection on support | RIGOROUS |
 | 78.6 | ψ(a) = e_q(P_a(s*(C_a))) at r=3 with J=3 | RIGOROUS at r=3 |
-| Eq 190 | \|Σ 1̂·ψ\| ≪ q^{1/2-δ} | OPEN — reduces to Heath-Brown cubic char sum |
+| Eq 190 | \|Σ 1̂·ψ\| ≪ q^{1/2-δ} | OPEN — Heath-Brown cubic-char-sum framing walked back (R79b); empirical β = 0.522 ± 0.008 against N, no sub-Weyl saving |
 
 ## Files
 
