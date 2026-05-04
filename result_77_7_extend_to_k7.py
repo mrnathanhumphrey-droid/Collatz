@@ -92,8 +92,9 @@ def stationary_rational(K):
 def get_eps_exact(max_k: int = 7) -> dict:
     """Return {k: Fraction(eps_k)} for k = 1..max_k.
 
-    Caches to JSON so re-runs are instant.
+    Caches to JSON. Skips any level already in cache; only computes missing.
     """
+    eps = {}
     if os.path.exists(EPS_CACHE):
         with open(EPS_CACHE, "r", encoding="utf-8") as fh:
             data = json.load(fh)
@@ -103,12 +104,16 @@ def get_eps_exact(max_k: int = 7) -> dict:
             for k in range(1, max_k + 1):
                 print(f"    eps_{k} ~ {float(eps[k]):+.10e}")
             return eps
+        cached_levels = sorted(eps.keys())
+        print(f"  [partial cache] have eps_{cached_levels} from {EPS_CACHE}")
+        for k in cached_levels:
+            print(f"    eps_{k} ~ {float(eps[k]):+.10e}  (cached)")
 
     target = Fraction(7, 15)
-    X = {0: Fraction(1)}
-    S = {}
-    eps = {}
+    # Reconstruct X_{k-1} = 1 + (k-1)*7/15 + sum(eps_1..eps_{k-1}) from cached eps
     for k in range(1, max_k + 1):
+        if k in eps:
+            continue
         t0 = time.time()
         K, coprime = build_markov_rational(k)
         t_build = time.time() - t0
@@ -116,13 +121,19 @@ def get_eps_exact(max_k: int = 7) -> dict:
         pi_q = stationary_rational(K)
         t_solve = time.time() - t0b
         sum_pi_sq = sum(p * p for p in pi_q)
-        X[k] = Fraction(3 ** k) * sum_pi_sq
-        S[k] = X[k] - X[k - 1]
-        eps[k] = S[k] - target
+        X_k = Fraction(3 ** k) * sum_pi_sq
+        # X_{k-1} from cached eps_1..eps_{k-1}
+        if k == 1:
+            X_km1 = Fraction(1)
+        else:
+            sum_eps_prior = sum(eps[j] for j in range(1, k))
+            X_km1 = Fraction(1) + Fraction(k - 1) * target + sum_eps_prior
+        S_k = X_k - X_km1
+        eps[k] = S_k - target
         print(f"  k = {k:>2} ({len(coprime):>5} states):  build {t_build:.1f}s   "
               f"solve {t_solve:.1f}s   eps_{k} ~ {float(eps[k]):+.10e}", flush=True)
 
-        # Save partial cache after each level (in case of interruption)
+        # Save partial cache after each level
         partial = {str(kk): {"num": str(eps[kk].numerator), "den": str(eps[kk].denominator)}
                    for kk in eps}
         with open(EPS_CACHE, "w", encoding="utf-8") as fh:
