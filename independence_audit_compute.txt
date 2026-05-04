@@ -1,0 +1,47 @@
+==============================================================================
+Claim 3 — Pearson(R58 prediction, R60 prediction)
+==============================================================================
+
+  Common residues: 16
+
+  Pearson(R58 variant_a, R60 D_pred)        = +0.9243
+  Pearson(R58 variant_a, R58 empirical D)   = +0.8665
+  Pearson(R60 D_pred,   R60 empirical D_avg)= +0.8033
+  Pearson(R58 variant_a, R60 empirical D_avg)= +0.8677
+  Pearson(R58 empirical, R60 empirical)     = +0.9184
+
+  R58 empirical (D at t=90): 1.217 0.990 1.836 0.912 0.794 0.849 0.680 1.093 1.010 0.771 0.862 1.351 0.702 0.967 1.112 0.835
+  R60 empirical (D_avg late-t): 1.609 1.236 1.864 0.738 0.696 0.658 0.557 1.058 1.132 0.627 0.931 1.398 0.544 0.802 1.354 0.767
+
+  MAE(R58 - D_avg) = 0.2053
+  MAE(R60 - D_avg) = 0.2122
+  MAE(R58 - R60)   = 0.0821
+
+==============================================================================
+Claim 7 — Are the various dim values algebraically related?
+==============================================================================
+
+  R23 lambda_max                 = 1.263763
+  log(lam_max)/log(2)            = 0.337726  (Furstenberg branching dim)
+  2 * log(lam_max)/log(2)        = 0.675452  (claimed = 0.6755)
+  Chang exact = log(phi)/log(2)  = 0.694242  (= log_2(phi))
+
+  R61 spatial info dim D_1       = 0.607772
+
+  Algebraic identity tests:
+    D_1 == 2 * log(lam_max)/log(2)?  0.6078 vs 0.6755  diff = 0.0677
+      -> NO — coincidence
+    D_1 == log(phi)/log(2)?           0.6078 vs 0.6942  diff = 0.0865
+      -> NO — distinct
+    2*log(lam_max) == log(phi)?       0.6755 vs 0.6942  diff = 0.0188
+      -> NO — distinct
+    Chang heuristic 0.68 vs D_1?      0.6800 vs 0.6078  diff = 0.0722
+      -> within 0.10
+
+  Conclusion:
+    Furstenberg branching dim (0.34), info dim D_1 (~0.61),
+    Chang exact (0.69), Chang heuristic (0.68), R23 derived 2x (0.68)
+    are five DIFFERENT numbers near 0.34/0.68 — no exact algebraic
+    identity holds among them at 4-decimal precision. The 'multiple
+    methods agree' claim is at the 0.07-wide 0.6-0.7 region, not
+    a sharp identification.

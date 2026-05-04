@@ -1,0 +1,2145 @@
+arXiv:2602.19435v2 [math.DS] 1 Mar 2026  Certified spectral approximation of transfer operators
+                                                                   and the Gauss map
+
+                                                                                             Isaia Nisoli
+
+                                                                                                         Abstract
+
+                                                     Existing rigorous frameworks for transfer operators require spectral gaps as a priori input.
+                                                 We reverse the logical direction: spectral gaps, eigenvalue multiplicities, and projector stability
+                                                 are certified a posteriori from finite-rank computed data, with no spectral assumption beyond
+                                                 a computable approximation bound.
+
+                                                     The method applies to compact operators on a single Banach space and to quasi-compact
+                                                 operators satisfying a Doeblin≠Fortet≠Lasota≠Yorke inequality, extending Li's resolution of the
+                                                 Ulam conjecture from the invariant density to the entire discrete spectrum with certified error
+                                                 bounds at every finite truncation. For the discrete spectrum of transfer operators, this resolves
+                                                 a computability obstruction identified in the Solvability Complexity Index hierarchy: the dy-
+                                                 namical structure furnishing the truncation bound is precisely the oracle that breaks the barrier
+                                                 preventing spectral certification from finite-dimensional sections.
+
+                                                     As a benchmark, we certify the first 50 nonzero eigenvalues of the Gauss≠Kuzmin≠Wirsing
+                                                 operator to at least 90 rigorous decimal digits, together with eigenvectors, Riesz projectors, and
+                                                 spectral gap, providing a rigorous answer to the Gauss≠Babenko≠Knuth problem.
+
+                                         MSC 2020: 37C30, 47A75 (primary); 37M25, 65G20, 11K50, 47A58 (secondary).
+
+                                         1 Introduction and overview
+
+                                         Spectral questions as certified linear algebra. Transfer operators govern invariant measures,
+                                         rates of mixing, and limit theorems through their spectral data (eigenvalues, called Ruelle≠Pollicott
+                                         resonances in this context, and eigenprojectors), yet extracting quantitative spectral information
+                                         from an infinite-dimensional operator remains delicate: one must control discretization/truncation
+                                         effects, resolvent growth, and spectral-projector stability with fully explicit constants.
+
+                                             The central message of this paper is that, under broadly available regularization hypotheses
+                                         (compactness/nuclearity on a suitable space, or a Lasota≠Yorke inequality), the spectral analysis of
+                                         an infinite-dimensional operator can be reduced to a finite-dimensional, computationally certifiable
+                                         task. Starting from a finite-rank discretization LN of an operator L with an explicit error bound,
+                                         we compute spectral objects for LN (eigenvalues, resolvent bounds, Riesz projectors) and transfer
+                                         them to L via a resolvent perturbation bound with fully explicit constants. The analytic work is
+                                         confined to producing a few quantitative constants, after which the spectral certification becomes
+                                         validated numerical linear algebra. The a posteriori approach to certifying spectral data of transfer
+                                         operators from computed information originates in [27, 29, 28, 25, 26], which developed rigorous
+                                         certification of invariant measures, mixing rates, and escape rates via Lasota≠Yorke inequalities and
+                                         the coarse-fine approximation strategy. A subsequent work [12] extended the approach to eigenvalue
+                                         enclosures via validated linear algebra. Here we isolate a set of hypotheses applicable in a range
+                                         of functional-analytic settings, extend the framework to the Doeblin≠Fortet≠Lasota≠Yorke (DFLY)
+
+                                                                                                         1
+setting, and develop high-precision implementations that certify many eigenvalues, eigenvectors,
+and Riesz projectors simultaneously.
+
+    Over the past two decades, anisotropic Banach spaces and Lasota≠Yorke inequalities have been
+constructed for broad classes of hyperbolic and piecewise hyperbolic systems [11, 32, 24, 5], yet
+for many concrete models (higher-dimensional piecewise hyperbolic maps, billiards with complex
+geometry, perturbations of known systems [23, 15]), proving a spectral gap on these spaces remains
+a difficult open problem. The present framework reduces the spectral gap question for any such sys-
+tem to a finite computation, producing certified eigenvalue enclosures and mixing rates. Even where
+a spectral gap has been established analytically, the method provides quantitative data (the actual
+gap size, subdominant eigenvalues, and projector norms) that purely qualitative arguments do not.
+Crimmins and Froyland [21] developed Fourier-analytic discretizations on the Gou®ezel≠Liverani
+spaces and proved spectral convergence for Anosov maps on tori, but their framework assumes the
+spectral gap a priori (the operator is "simple quasi-compact" in the Keller≠Liverani sense) and
+establishes convergence of the approximations without explicit error bounds at finite truncation.
+The present work removes both limitations: the spectral gap itself is certified a posteriori from
+computed data, with explicit error bounds at any given matrix size.
+
+The Gauss≠Kuzmin≠Wirsing problem. As a benchmark, we consider one of the oldest prob-
+
+lems in ergodic theory and thermodynamic formalism: the Gauss map T (x) = {1/x} on (0, 1],
+which generates continued fractions. Let x0 be uniformly distributed on [0, 1], and set xn := T n(x0).
+Gauss [30] (English translation in [53, Appendix III]) asked for the distribution function
+
+       Fn(x) = P(xn  x),
+
+whose limit F(x) = log2(1 + x) corresponds to the invariant probability measure of T . This
+distribution is governed by iterates of the transfer operator
+
+    1  1                                           x
+(Lf )(x) = (x + k)2 f x + k ,
+k1                             Fn(x) = (Ln1)(t) dt.
+
+                                                 0
+
+The Gauss≠Kuzmin≠L¥evy problem concerns the rate at which Fn converges to F. Early quan-
+titative bounds go back to Kuz'min [39] and L¥evy [41], while Wirsing [56] identified the leading
+exponential rate via the subdominant spectrum of the Gauss≠Kuzmin≠Wirsing (GKW) operator.
+See also Mayer [44, 45] and the eigenvalue asymptotics studied by Alkauskas [1].
+
+    The problem of quantifying this rate already appears as Exercise 22 [HM50] in the first edition
+of Knuth [37, p. 337]:
+
+       (K. F. Gauss.) What is the asymptotic behavior of Fn(x) - log2(1 + x) as n  ?
+
+This predates both the operator-theoretic resolution of Wirsing [56] and the discretization-based
+approaches of Babenko [3, 4]. In the third edition [38, p. 376], the exercise is reformulated in
+spectral terms, reclassified to [HM46], and attributed to Babenko:
+
+       (K. I. Babenko.) Develop efficient means to calculate accurate approximations to the
+       quantities j and j(x), for small j  3 and for 0  x  1.
+
+The shift from Gauss's distributional question to Babenko's spectral formulation reflects the math-
+ematical progress between editions.
+
+    The GKW operator has been the subject of extensive high-precision computations; however, as
+emphasized in [1], rigorous certification has historically been available only for the first few digits
+of the leading subdominant eigenvalues.
+
+          2
+Certified spectral data for the Gauss map.
+
+Theorem 1.1. The first 50 nonzero eigenvalues of the Gauss≠Kuzmin≠Wirsing operator, realized
+as L := SL : H2(D1)  H2(D1) (Section 4), are real and simple. Certified enclosures are given
+in the supplementary material, each with at least 90 certified decimal digits. In particular, the
+subdominant eigenvalue (the Gauss≠Kuzmin≠Wirsing constant) satisfies |2 - ~2| < 10-175, where
+
+                  ~2 = -0. 30366 30028 98732 65859 74481 21901 55623 31108 77352 25365
+                               78951 88245 48146 72269 95294 24691 09843 40811 93436 36368
+
+                               11098 27226 37106 16938 47461 48597 45801 31606 52653 81818
+
+                               23787 91324 46139 89647 64297.
+
+Certified enclosures for the corresponding eigenvectors and Riesz spectral projectors are provided,
+yielding a validated spectral expansion
+
+              50            R50(n)H2(D1)  3.72 ◊ 1021 ∑ (1.01 ◊ 10-21)n+1,
+
+Ln1 = jn j(1) vj + R50(n),
+
+             j=1
+
+for the Gauss≠Kuzmin distributions, with rigorous error below 10-20 already at n = 1.
+
+    Theorem 1.1 provides rigorous certified solutions to the Gauss≠Babenko≠Knuth problem: we
+compute j and j for j = 1, . . . , 50 with at least 90 validated digits each, together with the spectral
+projectors needed for the expansion of Fn. Both the number of eigenvalues and the precision can
+be pushed further: the truncation error decays geometrically in the matrix size, so additional digits
+or eigenvalues require only larger matrices and higher-precision arithmetic, with no new analytic
+input.
+
+Spectral gap as an output, not an input. Spectral separation is certified a posteriori from
+computed data, rather than assumed a priori. Many rigorous computational frameworks in ther-
+modynamic formalism require a qualitative spectral gap as a starting hypothesis, from which quan-
+titative consequences are then derived [48, 49, 55]. The present method certifies spectral gaps
+directly: the resolvent bounds along contours that enclose individual eigenvalues simultaneously
+establish spectral separation, eigenvalue multiplicity, and projector stability. This provides the
+certified spectral data that such approaches take as input. For Markov operators, this has a direct
+probabilistic interpretation: the spectral gap governs the mixing rate of the associated chain, so
+a posteriori spectral certification turns mixing rates into certified outputs rather than assumed
+inputs.
+
+Computability of isolated spectral data. A longstanding open problem, raised by Arveson [2]
+and B®ottcher [13], asks whether the spectrum of a bounded operator can be computed from its finite-
+dimensional sections. The Solvability Complexity Index (SCI) hierarchy developed by Colbrook,
+Hansen, and collaborators [10, 17, 18] resolves this question by showing that, for general bounded
+operators on a separable Hilbert space, computing the spectrum requires several successive limits
+and no single algorithm can provide error control at any finite step. In particular, computing the
+discrete spectrum and determining spectral gaps are both A2 -complete: they require two successive
+limits, and no algorithm taking only matrix entries as input can certify that its output is within a
+prescribed distance of the true spectral data [17, Theorems 3.13 and 3.15].
+
+    The a posteriori framework of Theorems 2.15 and A.18 resolves the problem in the affirmative
+for the discrete spectrum of transfer operators with explicit truncation bounds. For each isolated
+
+                            3
+                         v_1 ( = 1.0000,  = +0.833)                                 v_2 ( = -0.3037,  = +0.451)                           v_3 ( = 0.1009,  = -0.202)
+        1.5                                                        0.5
+                                                                   0.0                                                         0.25
+v_1(x)  1.0                                               v_2(x)  -0.5                                                v_3(x)   0.00
+                                                                  -1.0                                                        -0.25
+        0.5                                                                                                                   -0.50
+                                                                                                                              -0.75
+
+        0.0
+
+              0.0  0.5                               1.0                 0.0            0.5                      1.0                 0.0  0.5                          1.0
+
+                   x                                                                    x                                                 x
+
+                   v_4 ( = -0.0355,  = +0.087)                                v_5 ( = 0.0128,  = -0.037)                                  v_6 ( = -0.0047,  = +0.015)
+
+        0.0                                                       0.00                                                        0.0
+
+v_4(x)  -0.2                                              v_5(x)                                                      v_6(x)
+
+                                                                  -0.25                                                       -0.2
+
+        -0.4
+
+        -0.6                                                      -0.50                                                       -0.4
+
+              0.0  0.5                               1.0                 0.0            0.5                      1.0                 0.0  0.5                          1.0
+
+                   x                                                                    x                                                 x
+
+Figure 1: The first six certified eigenfunctions v1, . . . , v6 of the GKW transfer operator on [0, 1],
+
+computed at K = 512 (1024-bit precision). Each panel shows the eigenvalue j and spectral
+
+coefficient j(1).  The invariant density                                 v1 =   1    ∑    1  (top left)               is positive;        higher eigenfunctions
+                                                                               ln 2     1+x
+
+develop a singularity at x = 0 and oscillations that reflect the Markov partition of the Gauss map.
+
+eigenvalue, the certification algorithm takes a single limit (K  ) and provides verified error
+bounds at every truncation where the z-dependent perturbation condition K R(z, LK) < 1 is
+satisfied along the enclosing contour. The error bound at each eigenvalue depends on z through the
+resolvent of the finite-rank model LK, so certification targets individual eigenvalues via contour-
+specific resolvent control rather than uniform approximation of the full spectrum. The input that
+circumvents the general impossibility is the computable truncation bound K, which is not available
+for abstract compact operators given only by matrix entries but is furnished by the dynamical
+structure of the transfer-operator setting. Since every compact operator with positive spectral
+radius is quasi-compact (its essential spectral radius is zero), the impossibility results for general
+compact operators suggest that the Lasota≠Yorke inequality is a strictly stronger condition than
+quasi-compactness in a computational sense: it provides precisely the oracle enrichment needed
+to break the SCI barrier for spectral certification, and the impossibility results indicate that this
+structure cannot be universally available or uniformly recoverable from finite-dimensional data.
+
+The general framework. Although the GKW operator is the main benchmark, the method
+applies whenever the following inputs are available for a bounded operator L : B  B on a
+Banach space: (A) a finite-rank approximation LN with an explicit error bound L - LN   N ;
+(B) certified resolvent bounds (zI - LN )-1 along contours   C, obtained by validated linear
+algebra (Schur/SVD, interval/ball arithmetic); and (C) a resolvent perturbation bound transferring
+certified bounds from LN to L. The key condition is N supz (zI - LN )-1 < 1; when it holds,
+spectral enclosures, Riesz projectors, and invariant subspaces of LN transfer to L with explicit error
+control. The full framework is developed in Section 2; holomorphic transfer operators provide a
+
+                                                                               4
+natural setting where (A) arises from compactness/nuclearity induced by holomorphic extension,
+and related analytic frameworks appear in, e.g., [7, 48]. For the Gauss map, the holomorphic
+contraction of the branches induces compactness on Hardy spaces with explicit truncation bounds
+(input (A) with exponential decay (2/3)K), and certified Schur decompositions provide the resolvent
+control (input (B)). In an appendix we show that the same philosophy extends to the strong-
+weak setting of Doeblin≠Fortet≠Lasota≠Yorke (DFLY) inequalities, where the operator L acts on a
+Banach space Bs equipped with a weaker norm ∑w and satisfies a Lasota≠Yorke inequality Lf s 
+af s + bf w. Input (A) becomes the strong-to-weak approximation bound L - Lksw  k,
+and the resolvent of Lk is first controlled in the weak norm, which is computable from a finite
+matrix, and then lifted to the strong norm via the Lasota≠Yorke inequality.
+
+Guaranteed convergence of the full spectral picture. A second main contribution, beyond
+the GKW application, is the following convergence guarantee.
+
+Theorem 1.2. Let L be a bounded operator on a Banach space, and let (LK) be a sequence of finite-
+rank discretizations with L - LK  K  0 (compact case, Theorem 2.15) or L - Lksw 
+k  0 under a DFLY inequality, subject to a rate condition linking k to the norm-equivalence
+constants of the discretization spaces (strong-weak case, Theorem A.18). Let U  C be a spectral
+window isolating finitely many eigenvalues of L outside the essential spectral radius. Then for K
+large enough:
+
+   1. (No spectral pollution.) LK and L have the same number of eigenvalues (counted with
+       multiplicity) in U .
+
+   2. (Projector convergence.) PLK (U ) - PL(U )  0 as K  .
+
+   3. (A posteriori certification.) The perturbation condition that triggers (1)≠(2) is checkable from
+       the computed data of LK alone, with no spectral gap assumption.
+
+In the compact case, every isolated nonzero eigenvalue, eigenvector, and Riesz projector of L can
+be approximated to arbitrary precision by the finite-rank data of LK. In the DFLY case, the same
+holds for eigenvalues whose modulus exceeds any fixed µ > a, provided the rate condition is satisfied
+at µ.
+
+    These results are stated in abstract operator-theoretic terms. For quasi-compact operators
+satisfying a DFLY inequality, the spectrum outside the essential spectral radius consists of isolated
+eigenvalues of finite multiplicity, and the discrete spectral data there can be recovered from finite-
+rank discretizations, subject to a rate condition on the discretization error. Theorem A.18 makes
+this precise and quantitative. Li [42] proved convergence of Ulam approximations to the invariant
+density for piecewise expanding maps; the Keller≠Liverani perturbation theorem [36] extends this
+to the general DFLY framework (see, e.g., [43, 26]) and implies that isolated eigenvalues outside
+the essential spectral radius are stable under discretization, qualitatively extending convergence
+from the invariant density to the full discrete spectrum. The present work makes this extension
+certified and quantitative: the Galerkin hierarchy Lk approximates all eigenvalues, eigenvectors,
+and spectral projectors outside the essential spectral radius, with explicit error bounds at every
+finite truncation.
+
+    The Keller≠Liverani spectral stability theorem [36] and related frameworks [23, 15] assume
+a priori that certain eigenvalues are isolated and deduce their stability under perturbation. Liv-
+erani [43] reversed the logical direction by proposing to use the finite-rank (Ulam) approximation
+as the "known" operator and certify spectral data of the original operator a posteriori, via the
+
+                                                                5
+Keller≠Liverani perturbation theory; this was presented as a feasibility study without rigorous
+computations, and the required strong resolvent norms of the discretization are nontrivial to com-
+pute in practice. The present work addresses these difficulties with the a posteriori certification
+tools described above. In both settings the computable truncation bound is of dynamical origin:
+in the compact case it arises from the regularity of the underlying map (nuclearity, domain gain on
+Hardy spaces), while in the DFLY case it requires hyperbolicity constants, adapted Banach spaces,
+and a Lasota≠Yorke inequality. Once these bounds are in hand, the entire spectral certification is
+reduced to a computer program whose output is a rigorous proof.
+
+Related approaches. A substantial literature develops rigorous computer-assisted estimates
+for transfer operators. Representative examples include explicit eigenvalue bounds on holomorphic
+function spaces [6, 7], rigorous schemes based on Lagrange≠Chebyshev approximation and min-max
+techniques [52, 48], and thermodynamic computations for Hausdorff dimension problems [49, 55].
+As noted above, such methods typically assume spectral separation as input; the a posteriori
+approach developed here and in [27, 29, 28, 25, 26, 12] provides precisely that input, suggesting
+a hybrid strategy: a posteriori certification via coarse (e.g. Ulam) discretizations can establish
+spectral gaps and isolation, after which exponentially convergent methods (e.g. on holomorphic
+function spaces) can be deployed for high-precision computation. In the single-space (compact)
+setting, this can even bootstrap: a crude initial bound on the spectral gap can be sharpened
+a posteriori to arbitrary precision, as we demonstrate for the Gauss map. In the two-space (DFLY)
+setting, however, a priori methods that assume a spectral gap often cannot certify it from their
+own output, making the a posteriori approach essential in many cases.
+
+    A parallel program addresses the rigorous computation of spectra and pseudospectra for general
+classes of operators, including verified algorithms for spectral inclusion sets [17, 16] and data-
+driven spectral methods with convergence guarantees for Koopman and transfer operators [19, 14].
+These approaches typically work in Hilbert-space (L2 or 2) settings with operators specified by
+matrix entries or trajectory data, whereas the present method exploits explicit dynamical structure
+(regularity and domain gain, DFLY inequalities) for operator-norm certification of isolated spectral
+data with arbitrary precision.
+
+Organization. Section 2: abstract certified-spectral template. Section 3: certified resolvent
+bounds via validated Schur decompositions. Section 4: Hardy-space framework and truncation
+bounds for the Gauss operator. Section 5: certified spectral enclosures and eigendata. Appendix:
+DFLY resolvent lifting.
+
+2 A posteriori validated spectral certification: an abstract tem-
+     plate
+
+The resolvent perturbation bound at the core of this section can be viewed as a quantitative, a
+posteriori counterpart of the Keller≠Liverani spectral stability theorem [36]: rather than deducing
+spectral convergence from an abstract approximation scheme, we extract explicit enclosures from
+validated resolvent data. We work in the simplest setting: a compact operator on a single Banach
+space B. The strong-weak (DFLY) framework is treated in Appendix A.
+
+Assumption 2.1. Let B be a complex Banach space and let L  L(B) be compact. Assume we are
+given a sequence of finite-rank operators K  L(B) and define
+
+                                             LK := K L K (K  1).
+
+                                                                6
+We assume:
+   1. Each K is a projection with K2 = K, K  1, and the family is nested: for all K  K,
+                                                           K K = K .
+       or equivalently, Ran K  Ran K.
+   2. There exists C  0 such that
+                                    LBB  C, LK BB  C for all K  1.
+
+3. There exists a computable sequence K  0 such that
+
+                      (Id - K )LBB + L(Id - K )BB  K for all K  1.
+
+      In particular,
+
+                      L - LK BB  K ,  LK - LK BB  K for all K  K.
+
+2.1 Resolvent inequalities and the Householder argument
+
+Throughout,  ∑  denotes the operator norm on B. For A  L(B) we write RA(z) := (z Id - A)-1
+for the resolvent (z  (A)), R(z, A) := RA(z) for the resolvent norm (with R(z, A) := + for
+z  (A)), and (A) := {z  C : R(z, A)  1/} for the -pseudospectrum.
+
+Lemma 2.2 ([35, Ch. IV, ß1.1]). Let A, B  L(B) and z  (A)  (B). Then
+
+                         RA(z) - RB(z) = RA(z) (A - B) RB(z),
+
+and consequently
+
+                      RA(z) - RB(z)  R(z, A) A - B R(z, B).
+
+Corollary 2.3. Let A, B  L(B) and z  (B). If
+
+                         (z) := (A - B)RB(z) < 1,
+
+then z  (A) and
+
+                         R(z, B)                             R(z, B)2 A - B
+               R(z, A)            ,   RA(z) - RB(z)                           .
+                         1 - (z)                             1 - (z)
+
+Proof. Factor
+
+                         z Id - A = Id - (A - B)RB(z) (z Id - B),
+
+invert the first term by Neumann series, and use Lemma 2.2.
+
+Proposition 2.4. Let L  L(B) be compact and let LK be finite rank with
+
+                                      L - LK   K .
+
+Then
+
+                                     (L)  K (LK ).
+
+                                      7
+    Moreover, let U be a bounded connected component of K (LK) with 0 / U , and assume U is
+a piecewise C1 Jordan curve. Then U  (LK) and
+
+sup K R(z, LK ) < 1,
+
+zU
+
+so U  (L), and L and LK have the same total algebraic multiplicity of eigenvalues in U :
+
+dim Ran PL(U ) = dim Ran PLK (U ),                 1                         (zI - A)-1 dz.
+                                    PA(U ) := 2i
+                                                                          U
+
+Proof. Let   (L). If  / K (LK ), then   (LK ) and R(, LK ) < 1/K , hence
+
+(L - LK )(I - LK )-1  K R(, LK ) < 1.
+
+Thus I - L = I - (L - LK)(I - LK)-1 (I - LK) is invertible, contradicting   (L). This
+proves (L)  K (LK ).
+
+    For the multiplicity statement, the definition of U implies supzU R(z, LK) < 1/K, hence
+U  (L) by Corollary 2.3. Consider Lt := LK + t(L - LK), t  [0, 1]. For z  U ,
+
+                                  (Lt - LK )(zI - LK )-1  t K R(z, LK ) < 1,
+
+so U  (Lt) for all t. Therefore PLt(U ) varies continuously with t in operator norm, and
+dim Ran PLt(U ) is constant. Evaluating at t = 0 and t = 1 gives the claim.
+
+2.2 Resolvent perturbation bound and spectral exclusions
+
+Definition 2.5. Let A  L(B) and let  be a piecewise C1 closed curve in C. We say that  is a
+resolvent curve for A if   (A). If  bounds a domain U and   (A), we also call U a spectral
+window for A.
+
+Proposition 2.6. Assume L - LK  K and let   (LK) be a closed curve such that
+
+                                                 sup K R(z, LK ) < 1.
+
+                                                                   z
+
+Then   (L) as well. In particular, if  = U for a bounded domain U , then (L) cannot
+intersect  and the Riesz projector PL(U ) is well defined.
+
+Proof. For each z   we have
+
+                                      (L - LK )RLK (z)  K R(z, LK ) < 1,
+so z  (L) by Corollary 2.3.
+
+2.3 Riesz projectors, multiplicity, and invariant subspaces
+
+Definition 2.7. Let A  L(B) and let U  C be a bounded domain such that  := U  (A) is a
+piecewise C1 Jordan curve. The Riesz projector onto the spectral subset (A)  U is
+
+               1                     (zI - A)-1 dz.
+PA(U ) := 2i
+                                    
+
+Its range EA(U ) := Ran PA(U ) is A-invariant. The total algebraic multiplicity of eigenvalues of A
+in U is dim EA(U ) (finite in the compact setting when dist(U, 0) > 0).
+
+                  8
+Assumption 2.8. Let L, LK  L(B) satisfy L - LK  K. Let U  C be a bounded domain
+with piecewise C1 Jordan boundary  := U such that   (LK) and
+
+                   := sup (L - LK )RLK (z)  K sup R(z, LK ) < 1.
+                      z                                   z
+
+Lemma 2.9. Assume Assumption 2.8. Then   (L) and, writing
+
+                  P := PL(U ),        PK := PLK (U ),     M := sup R(z, LK),
+
+                                                                     z
+
+we have                                                   K M 2 ,
+                                                          1-
+                                  P   -  PK     ()     ∑
+                                                 2
+
+where () denotes the length of .
+
+Proof. Fix z  . Since z  (LK) and (L - LK)RLK (z)   < 1, the Neumann factorization
+
+                      zI - L = I - (L - LK )RLK (z) (zI - LK )
+
+shows z  (L) and
+
+                              RL(z) = RLK (z) I - (L - LK )RLK (z) -1.
+
+Hence                                         RLK (z)               R(z, LK ) .
+                                      1 - (L - LK )RLK (z)            1-
+                      RL(z)                                       
+
+Using the resolvent identity
+
+                      RL(z) - RLK (z) = RL(z) (L - LK ) RLK (z),
+
+we obtain  RL(z) -    RLK (z)         RL(z) L - LK  RLK (z)           K  R(z, LK )2 .
+Finally,                                                                  1-
+
+           P - PK  =  1                                        1
+                                RL(z) - RLK (z) dz                    RL(z) - RLK (z) |dz|
+                      2i                                     2
+                                                                    
+
+and bounding R(z, LK)  M along  yields the claim.
+
+Remark 2.10. If P - PK < 1, then P restricts to an isomorphism Ran PK  Ran P ; in
+particular, dim Ran P = dim Ran PK.
+
+Lemma 2.11. Assume Assumption 2.8 and suppose
+
+                      rank P = rank PK = 1,  := P - PK < 1.
+
+Let vK  Ran PK with vK  = 1. Then
+
+                              (I - P )vK  , P vK  1 - .
+
+In particular, the normalized vector  v := P vK  Ran P
+is well-defined and satisfies               P vK 
+
+                                      v  -  vK         2    .
+                                                          
+                                                   1   -
+
+                                                9
+Proof. Since vK  Ran PK we have PK vK = vK , hence
+
+(I - P )vK = (PK - P )vK ,  (I - P )vK   P - PK  vK  = .
+
+Thus                         P vK   vK  - (I - P )vK   1 - ,
+so v is well-defined. Next,
+
+v - vK  =                     P  vK   -  vK     P vK     -  P  vK     + P vK - vK .
+                             P   vK            P vK 
+
+The second term is P vK - vK = (P - PK)vK  . For the first term,                   P vK  -  P vK  =
+                                                                                  P vK 
+
+1 - P vK  P vK -1 P vK  = 1 - P vK   vK - P vK  = (I - P )vK   , and dividing by
+
+P vK  1 -  yields
+
+                                 v    - vK      +  2
+                                                      =          .
+                                               1-        1  -
+
+Lemma 2.12. Assume the setting of Lemma 2.11 and moreover LK  C. Let  be the (unique)
+eigenvalue of L in U and K the (unique) eigenvalue of LK in U . Then
+
+                                | - K |      K(1 + ) + 2C  .
+                                                    1-
+
+Proof. Since rank P = rank PK = 1, both Ran P and Ran PK are one-dimensional invariant sub-
+spaces, and L|Ran P (resp. LK |Ran PK ) acts as multiplication by  (resp. K ).
+
+    Define the linear map
+                                           := P |Ran PK : Ran PK  Ran P.
+
+For x  Ran PK, we have x = PKx, hence
+
+x - x = (P - PK)x  x,  x  (1 - )x.
+
+Therefore  is invertible and -1  (1 - )-1. Also, on Ran PK,
+
+x = P x  x + (P - PK)x  (1 + )x,    1 + .
+
+Now observe that for x  Ran PK,
+                           -1L x  Ran PK , and -1L x =  x,
+
+because x  Ran P and L acts as  on Ran P , while -1 maps Ran P back to Ran PK. Hence,
+as operators on the one-dimensional space Ran PK,
+
+                                         | - K | = -1L - LK |Ran PK .
+Insert L = LK + (L - LK ) and add and subtract -1LK :
+
+                           -1L - LK   -1(L - LK ) + -1LK  - LK .
+
+The first term satisfies
+
+-1(L                         -  LK )     -1 L      -  LK              K (1 + ) .
+                                                                         1-
+
+                                               10
+For the second term, note that on Ran PK we have  = P and PK = Id, hence
+                                       -1LK  - LK = -1 LK P - P LK .
+
+Since -1 is bounded by (1 - )-1, it remains to bound the commutator:
+
+LK P - P LK   LK (P - PK ) + (P - PK )LK   2LK  P - PK   2C .
+
+Putting the two bounds together gives
+
+           |  -                        K |    K (1  +  ) +  2C  
+                                                    1  -          .
+
+Remark 2.13. A certified bound on P - PK yields: (i) a certified invariant subspace enclosure
+Ran PK  Ran P (always), (ii) in the rank-one (simple eigenvalue) case, an explicit bound on
+the eigenvector direction (Lemma 2.11), and (iii) combined with L - LK (and a crude bound
+on LK), an explicit eigenvalue error bound (Lemma 2.12). For higher multiplicity, P certifies
+the whole invariant subspace; individual eigenvectors require additional structure (e.g. normality, a
+
+chosen basis, or a spectral gap within the cluster).
+
+2.4 Coarse≠fine approach
+
+Under Assumption 2.1, for all K  K,
+
+LK - LK   K , and L - LK   K  K .                                          (1)
+
+Thus a resolvent estimate at a coarse level K propagates to any finer K  K; the DFLY analogue
+requires additional bookkeeping (Appendix A).
+
+    Fix a region U  C and assume that U  (LK) and that
+
+              sup K R(z, LK ) < 1.                                         (2)
+
+              zU
+
+Then, by applying Corollary 2.3 with A = LK and B = LK and using (1), we obtain U  (LK)
+and the explicit bound
+
+R(z, LK )                                  R(z, LK )        for all z  U.  (3)
+                                       1 - K R(z, LK )
+
+In particular, the same coarse-level contour U that isolates (say) a simple eigenvalue of LK also
+isolates the corresponding eigenvalue of LK for every K  K, with no need to recompute resolvents
+from scratch at the fine level.
+
+    This yields a coarse-fine workflow:
+
+1. At a modest K, compute R(z, LK) and use Proposition 2.4 to produce enclosures for (L)
+   and certify spectral separation.
+
+2. Increase to K  K. Use (3) to control R(z, LK) on the same contour U , then apply
+   Lemma 2.9 with the smaller error K to obtain tighter projector bounds.
+
+                                              11
+Remark 2.14. The two levels play different roles. At the coarse level K, the resolvent bounds need
+only be good enough to certify that the contour U lies in (L), i.e., to establish spectral isolation.
+The resulting projector bound P - PK may be far too large for useful eigenvector or eigenvalue
+enclosures. At the fine level K, the same contour is reused and the projector bound improves by a
+factor of K/K, without recomputing any resolvent. In particular, the coarse matrix can be small
+(and hence cheap to certify), while the fine matrix is large and delivers precision.
+
+    The following theorem shows that the perturbation condition is not merely a checkable sufficient
+condition: it is eventually satisfied, so the certification pipeline is guaranteed to succeed at some
+finite truncation level.
+
+Theorem 2.15. Under Assumption 2.1, let U  C be a bounded domain with piecewise C1 bound-
+ary  := U such that 0 / U ,   (L), and (L)   = . Then there exists K0 such that for all
+K  K0:
+
+   1.   (LK ) and the perturbation condition supz K R(z, LK ) < 1 holds;
+
+   2. dim Ran PLK (U ) = dim Ran PL(U );
+
+   3. PLK (U ) - PL(U )  0 as K  .
+
+In particular, every eigenvalue, eigenvector, and Riesz projector of L in U can be approximated to
+arbitrary precision by the finite-rank data of LK.
+
+Proof. Since  is compact and   (L), we have M := supz R(z, L) < . Because L - LK 
+K  0, the second resolvent identity gives R(z, LK)  R(z, L) uniformly on . In particular,
+supz K R(z, LK)  0, so the perturbation condition holds for K  K0. Claims (ii) and (iii)
+then follow from Proposition 2.4 and Lemma 2.9.
+
+3 Certified resolvent bounds for discretizations (validated linear
+     algebra)
+
+Let AK  CN◊N represent LK |EK in a chosen basis of EK = Ran K . Throughout this section  ∑ 
+denotes the Euclidean operator norm  ∑ 2.
+
+3.1 Schur/SVD-based resolvent bounds with explicit defects
+
+A certified Schur build and its defects
+Let A  CN◊N denote AK for simplicity. Compute a complex Schur decomposition (numerically):
+
+                         AQ = QT + R,                       (4)
+
+where Q  CN◊N is approximately unitary, T  CN◊N is upper triangular, and R is the Schur
+residual. Define the defects
+
+ := I - QQ, rsch := AQ - QT  = R, CA := A.                  (5)
+
+Define the proxy matrix
+
+                         S0 := QT Q, E := A - S0.           (6)
+
+                         12
+Lemma 3.1 (cf. [12]). With S0 and E defined by (6), we have
+
+                                                                                     (7)
+                         E  rsch 1 +  + CA .
+
+Moreover, if  < 1 then Q is invertible and
+
+                         Q-1  (1 - )-1/2,         (Q) := Q Q-1             1+        (8)
+Q  1 + ,                                                                          .
+                                                                           1-
+
+Proof. Start from E = A - QT Q and add/subtract AQQ:
+
+                                        E = (AQ - QT )Q + A(I - QQ).
+
+                                            
+Taking norms and using Q  1 +  (from (1 - )I  QQ  (1 + )I) and I - QQ =
+I - QQ =  gives (7). The bounds (8) follow from the same Loewner inequality.
+
+Resolvent bounds via a Neumann argument
+
+Lemma 3.2. Fix z  C. If
+
+                         (z) := (zI - S0)-1 E < 1,
+
+then z  (A) and
+
+                         (zI - A)-1  (zI - S0)-1 .                                   (9)
+                                                  1 - (z)
+
+Proof. Factor zI - A = (I - (zI - S0)-1E) (zI - S0) and invert via Neumann series.
+
+Lemma 3.3. Assume  = I - QQ < 1 and let (Q) be as in (8). Then for every z  C,
+
+                         (zI - S0)-1  (Q)2 (zI - T )-1.                              (10)
+
+Proof. Let Q = U H be the polar decomposition. Then S0 = U (HT H)U , so (zI - S0)-1 =
+U H-1(zI - T )-1H-1 U  and (zI - S0)-1  H-12 (zI - T )-1  (Q)2 (zI - T )-1.
+
+Theorem 3.4. Let A  CN◊N and suppose (4) holds with defects , rsch, CA as in (5). Assume
+
+ < 1 and define S0, E by (6). Then
+
+                                            (zI - S0)-1  (Q)2 (zI - T )-1.
+E  rsch 1 +  + CA ,
+
+Consequently, if
+
+                         (z) := (Q)2 (zI - T )-1 E < 1,
+
+then z  (A) and
+
+                         (zI - A)-1           (Q)2 (zI - T )-1                       (11)
+                                                                        .
+                                                  1 - (z)
+
+Proof. Combine Lemma 3.1, Lemma 3.3, and Lemma 3.2.
+
+                                              13
+3.2 Triangular resolvent bounds: SVD and block splitting
+
+Since (zI - T )-1 = 1/min(zI - T ), it suffices to produce certified lower bounds for min(zI - T ).
+The following result from validated linear algebra provides such bounds.
+
+Theorem 3.5 ([50, Thm. 3.1]). Let A, U, V  Kn◊n with I - U H U    < 1 and I - V H V  
+ < 1. Write U H AV = D + E with D diagonal. Then there exists a permutation  such that
+
+                       |Dii| - E        (i)(A)             |Dii| + E .
+                       (1 + )(1 + )                        (1 - )(1 - )
+
+    In practice we apply Theorem 3.5 to A = zI - T ; see [46] for extensions and [12] for the
+implementation.
+
+Block splitting near a target eigenvalue
+
+When z is close to a cluster of diagonal entries of T , computing min(zI - T ) at high precision
+for the full N ◊ N matrix can be wasteful. Instead, we isolate the difficult part in a small leading
+block.
+
+    Let T be Schur-ordered so that the k diagonal entries closest to a target j appear first, and
+partition
+
+                                                     T = T11 T12 .
+                                                               0 T22
+
+Lemma 3.6. For every z  C,
+
+min(zI - T )  min min(zI - T11), min(zI - T22) - T12.
+
+Proof. Write zI - T = M (z) + E with
+
+M (z) :=               zI - T11           0     ,          E :=  0  -T12  .
+                           0          zI - T22                   0    0
+
+Then min(M (z)) = min(min(zI-T11), min(zI-T22)) and E = T12. Apply Weyl: min(M (z)+
+E)  min(M (z)) - E.
+
+Sampling a contour and Lipschitz propagation
+Lemma 3.7. For any fixed matrix A and any z, w  C,
+
+                       min(zI - A) - min(wI - A)  |z - w|.
+
+Proof. Since (zI - A) - (wI - A) = (z - w)I and (z - w)I = |z - w|, Weyl's inequality gives
+|min(zI - A) - min(wI - A)|  (z - w)I = |z - w|.
+
+For a circle  = {  + eit } sampled at m equally spaced points, every point of the circle lies
+
+within chord distance                                    
+                                      m := 2 sin 2m
+
+of some sample point.
+
+                                        14
+Proposition 3.8. Let T be upper triangular and let  = {z : |z - | = }. Fix sample points
+z =  + e2i/m,  = 0, . . . , m - 1, and let
+
+           s  min(zI - T ) ( = 0, . . . , m - 1)
+
+be certified lower bounds. Set                                                  
+                                 s := min s - m,             m := 2 sin 2m .
+
+                                                        0<m
+
+If s > 0, then   (T ) and
+
+                           sup (zI - T )-1                   1
+                                                               .
+                                                             s
+                           z
+
+Proof. For any z   choose  with |z - z|  m and apply Lemma 3.7:
+
+                           min(zI - T )  min(zI - T ) - |z - z|  s - m  s.
+
+Thus min(zI - T )  s > 0 for all z  , hence all zI - T are invertible and (zI - T )-1 =
+1/min(zI - T )  1/s.
+
+Remark 3.9. In [12] the equispaced sampling of Proposition 3.8 is replaced by an adaptive method
+that refines the mesh where min(zI -T ) is small, reducing the number of certified SVD evaluations
+while maintaining the same Lipschitz-propagation guarantee.
+
+Remark 3.10. In Proposition 3.8, the bounds s can be produced using Lemma 3.6: compute a
+certified c12  T12 once, then at each sample point bound min(zI - T11) (high precision, small
+k) and min(zI - T22) (fast, since T22 is well separated), and combine
+
+                           s := min s(11), s(22) - c12.
+
+3.3 Contour evaluation and certified suprema
+
+We summarize the certification workflow for producing M(A) := supz (zI -A)-1 on a contour
+ = U.
+
+1. Compute (Q, T ) and the defects , rsch, CA in (5). Form the bound on E from Lemma 3.1
+   and the conditioning factor (Q).
+
+2. Choose a sampling of  (e.g. circles around selected diagonal entries of T ). At sample points
+   z, produce certified lower bounds for min(zI - T ) (either directly by SVD, or by block
+   splitting as in Remark 3.10). Use Proposition 3.8 (or the obvious analogue for a general
+   piecewise C1 contour) to obtain a bound
+
+                                             M(T ) := sup (zI - T )-1.
+
+                                                                                    z
+
+3. Define
+
+                               := (Q)2 M(T ) E.
+
+If  < 1, then Theorem 3.4 gives   (A) and
+
+                           M(A)                              (Q)2 M(T ) .
+                                                                 1 - 
+
+If K M(A) < 1, then  is a certified exclusion curve for the original operator L.
+
+                                 15
+3.4 Projector error decomposition
+
+Fix a bounded domain U  C whose boundary  := U is a piecewise C1 Jordan curve. For any
+matrix M , write the Riesz projector
+
+                                                 1   (zI - M )-1 dz.
+                                  PM (U ) := 2i
+                                                    
+
+Let A  CN◊N and suppose we have a (numerical) Schur pair (Q, T ) with
+
+               AQ = QT + Rsch, rsch := Rsch2,
+
+where Q is unitary (or already certified as nearly unitary). Define the Schur-basis representation
+
+               A := QAQ = T + Esch,          Esch := QRsch,                      Esch2 = rsch.
+
+Next, suppose a reordering routine produces U and T~ such that
+
+               T U = U T~ + Rord,                       ord := Rord2,
+
+and let the orthogonality defect be
+
+                                  U := I - U U , U := U 2.
+
+Assume U < 1 so that U is invertible and U -12  (1 - U )-1/2.
+    Since T~ is expressed in the reordered basis, we compare projectors in the original Schur coordi-
+
+nates via
+
+                                     P~T (U ) := U PT~(U ) U -1.
+
+Lemma 3.11. With the objects above,
+
+                    PA(U ) - P~T (U )  PA(U ) - PT (U ) + PT (U ) - U PT~(U )U -1.
+Proof. Insert and subtract PT (U ) and use the triangle inequality.
+
+The first term in the triangle inequality is controlled by the Schur residual. Let
+
+                                               MT := sup (zI - T )-12.
+
+                                                                              z
+
+If
+                                          sch := Esch2 MT = rsch MT < 1,
+
+then   (A) and the resolvent perturbation bound gives
+
+               sup (zI               - A)-1  - (zI  - T )-12         rsch MT2 .
+                                                                     1 - sch
+               z
+
+Consequently,
+
+               PA(U )                -  PT (U )         ()  ∑  rsch  MT2 ,                      (12)
+                                                         2     1-    sch
+
+where () denotes the length of .
+    The second term is controlled by the reordering defect. From T U = U T~ + Rord we have
+
+           T = U T~ U -1 + Eord,     Eord := Rord U -1,        Eord2  ord (1 - U )-1/2.
+
+                                                    16
+If
+                                                 ord := Eord2 MT < 1,
+
+then  also lies in the resolvent set of U T~U -1 and
+
+                 sup (zI  -  T )-1  -  (zI  -  U T~U -1)-12            Eord2 MT2  .
+                                                                         1 - ord
+                 z
+
+Using similarity invariance of the Riesz projector in exact arithmetic, PUT~U-1(U ) = U PT~(U )U -1,
+
+we obtain                                                     Eord2 MT2 .
+                                                                1 - ord
+                 PT (U ) - U PT~(U )U -1               ()  ∑                            (13)
+                                                        2
+
+    Under sch < 1 and ord < 1, Lemma 3.11 together with (12)≠(13) yields an explicit certified
+estimate for PA(U ) - P~T (U ). Finally, since PA(U ) = Q PA(U ) Q and Q is unitary, this also
+
+bounds the projector error in the original coordinates of A.
+
+4 Hardy-space framework for the Gauss≠Kuzmin≠Wirsing opera-
+     tor
+
+4.1 Hardy spaces and branch geometry
+
+For r > 0 let
+
+                             Dr := { w  C : |w - 1| < r }
+
+and let H2(Dr) be the Hardy space on Dr, realized as holomorphic functions on Dr with square
+summable Taylor coefficients at 1.
+
+Definition 4.1. For r > 0, define
+
+                                                                                      
+
+                                                                                      
+H2(Dr) := f (w) = ck(w - 1)k holomorphic on Dr : f 2H2(Dr) := |ck|2r2k <  .
+
+                 k0                                                               k0  
+
+With the inner product f, gH2(Dr) := k0 ckdk r2k, H2(Dr) is a Hilbert space. If 0 < r < R,
+restriction defines a continuous embedding
+
+                           JRr : H2(DR)  H2(Dr),       (JRrf )(w) = f (w) Dr ,
+with operator norm JRr = 1.
+
+The Gauss inverse branches are
+
+                                   n(w)  =     1    ,  n  1.
+                                                  n
+                                            w  +
+
+They map discs D3/2 strictly inside D1, which is the key geometric fact behind the strong-weak
+smoothing that later yields compactness and explicit approximation bounds.
+
+Lemma 4.2. For every n  1 one has
+
+                                         n(D3/2)  D1.
+
+                                               17
+Proof.  If  w  D3/2,        then     w  >  -  1  .  Compute
+                                              2
+
+                                        |n(w) - 1| =         1                     |w + n - 1|
+                                                                  -1        =                  .
+                                                          w+n                      |w + n|
+
+Moreover
+
+       |w + n|2 - |w + n - 1|2 = (w + n)(w + n) - (w + n - 1)(w + n - 1) = 2w + (2n - 1).
+
+Since  w    >  -  1  ,  we  get  2w + (2n - 1) > 2n - 2  0.                    Hence        |w + n| > |w + n - 1|      and  therefore
+                  2
+
+|n(w) - 1| < 1, i.e. n(w)  D1.
+
+Lemma 4.3. For every n  1 and every w  D3/2,
+
+                                                    |(w + n)-2|      (n     -  1   )-2.
+                                                                               2
+
+Proof.  If  w  D3/2      then     w     >  -  1  and  hence  |w + n| > n -            1  ,  which     implies  the  claim.
+                                              2                                       2
+
+4.2 Boundedness and compactness
+
+Define the (un-normalized) Gauss≠Kuzmin≠Wirsing transfer operator by
+
+                               1                 1                                                    n(w) := (w + n)-2. (14)
+     (Lf )(w) := (w + n)2 f w + n = n(w) (f  n)(w),
+                     n1                                 n1
+
+The geometric inclusion of Lemma 4.2 ensures that if f is holomorphic on D1, then f  n is
+holomorphic on D3/2, so each summand in (14) is holomorphic on D3/2.
+
+Proposition 4.4. The operator L defined by (14) extends to a bounded operator
+
+                                                    L : H2(D1) - H2(D3/2),
+
+and                                                              Cn H2(D1)H2(D3/2)
+
+                            LH 2 (D1 )H 2 (D3/2 )                           (n     -  1  )2               =: C2,
+                                                                                      2
+                                                            n1
+
+where Cn : f  f  n is the composition operator. In particular, using the estimate Cn 
+  2n + 1 (proved below),
+
+                                                             2n + 1            
+
+                     LH 2 (D1 )H 2 (D3/2 )                (n  -  1   )2            6     23/2 - 1           3  =: C2.
+                                                                 2                                          2
+
+                                                      n1
+
+Proof. Fix f  H2(D1). For each n  1, the map w  (f  n)(w) is holomorphic on D3/2
+
+by Lemma 4.2, and multiplication by the bounded holomorphic weight n preserves holomorphy.
+Using the operator norm on H2(D3/2) and Lemma 4.3,
+
+        n   (f       n )H 2 (D3/2 )         sup     |n(w)|   f      n H 2 (D3/2 )            (n  -    1  )-2   Cn  f H2(D1).
+                                                                                                      2
+                                           wD3/2
+
+Summing in n yields
+
+                                                                                   
+
+                                     Lf H2(D3/2)                     Cn               f     H  2 (D1  ),
+
+                                                                            1  )2  
+                                                                            2
+                                                             n1  (n  -
+
+so L is bounded and the first inequality follows.
+ For the    explicit        constant,     combine Cn  2n + 1 (Lemma 4.5 below) with                                    the  comparison
+  2n + 1      6 (n -
+                            1  )1/2  and  the identity       n1(n    -   1  )-3/2     =     (23/2  -  1) (3/2).
+                            2                                            2
+
+                                                                 18
+Lemma 4.5. For every n  1, the composition operator
+
+                          Cn : H2(D1)  H2(D3/2),                                        Cn f = f  n,
+
+satisfies                                                        
+                               Cn H2(D1)H2(D3/2)  2n + 1.
+
+Proof. Let Tr() = 1 + r map D biholomorphically onto Dr, and define the unitary Ur : H2(Dr) 
+H2(D) by (Urf )() = f (Tr()). Then U3/2 Cn U1-1 = Cn with
+
+                                                                 n := T1-1  n  T3/2.
+
+A  direct  computation  gives  n(0)  =                        -    n  .  By  the   standard  Hardy-space  estimate  for  composition
+                                                                 n+1
+operators on H2(D) [20],
+
+                                                                                1 + |(0)| 1/2  ,
+                                     CH2(D)  1 - |(0)|
+
+hence                                                                                   1/2 
+                                                                                            = 2n + 1.
+                          Cn  = Cn                                           1  +    n
+                                                                                   n+1
+
+                                                                             1  -    n
+                                                                                   n+1
+
+   Let S := J3/21 : H2(D3/2)  H2(D1) denote the restriction map (Definition 4.1). Define
+
+           L1 := S L : H2(D1)  H2(D1),                                          L3/2 := L S : H2(D3/2)  H2(D3/2).
+
+Remark 4.6. Throughout this section we use the subscripted notation L1 and L3/2 to distinguish
+
+the two realizations. From Section 5 onward, we write simply L for the operator L1 = S L on
+H2(D1) and LK for its finite-rank truncation.
+
+Proposition 4.7. The operators L1 and L3/2 are compact.
+
+Proof. We will show that L1 is the operator-norm limit of finite-rank truncations, and the argument
+
+for L3/2 is identical.
+    Let K : H2(D3/2)  H2(D3/2) be the degree-K Taylor truncation at 1:
+
+                                                                             
+                               K 
+                                                                                              K
+
+                                                              am(w - 1)m = am(w - 1)m.
+
+                               m0                                                  m=0
+
+Then K has rank K + 1. Define (L1)K := K S L. Since K is finite rank, so is (L1)K . In
+Subsection 4.3 below we prove the tail estimate L1 - (L1)K  C2(2/3)K+1  0, which implies
+
+that L1 is compact. The same construction on the domain side yields compactness of L3/2.
+
+4.3 Explicit truncation bounds and construction of LN with L - LN   N
+
+Definition 4.8. For r > 0 and K  0, let K : H2(Dr)  H2(Dr) be the degree-K truncation at
+
+1:
+
+                                                           K
+
+           K f (w) := cm(w - 1)m, f (w) = cm(w - 1)m.
+
+                               m=0                                                           m0
+
+Then K has rank K + 1 and operator norm K = 1.
+
+                                                                             19
+Lemma 4.9. Let 0 < r < R and let JRr : H2(DR)  H2(Dr) be restriction. Then for every
+K  0 and every f  H2(DR),
+
+                                                           r K+1  f H2(DR).
+       JRrf - K (JRrf ) H2(Dr)  R
+
+In particular, for (r, R) = (1, 3/2),
+
+       J3/21f - K (J3/21f ) H2(D1)                         2 K+1       f H2(D3/2).
+
+                                                           3
+
+Proof. Write f (w) = m0 cm(w - 1)m on DR. Then
+
+      JRrf - K (JRrf )2H2(Dr) =                       |cm|2r2m =       |cm|2R2m  r 2m
+                                                                                         .
+                                                 m>K              m>K
+                                                                                 R
+
+Since m > K implies (r/R)2m  (r/R)2(K+1), we obtain
+
+      JRrf - K (JRrf )H2 2(Dr)            r 2(K+1)         |cm|2R2m    r  2(K+1) f H2 2(DR),
+                                          R                            R
+                                                      m>K
+
+and taking square roots gives the claim.
+
+Theorem 4.10. Let L : H2(D1)  H2(D3/2) be the GKW operator from (14), and set
+
+      L1 := S L : H2(D1)  H2(D1),                L3/2 := L S : H2(D3/2)  H2(D3/2).
+
+For K, k  0 define the finite-rank truncations
+
+      (L1)K := K S L, (L3/2)k := L k S.
+
+Then
+
+                                       2 K+1                                                2 k+1
+L1-(L1)K H2(D1)H2(D1)  C2 3                   ,  L3/2-(L3/2)kH2(D3/2)H2(D3/2)  C2 3                    ,
+
+where C2 := LH2(D1)H2(D3/2) (cf. Proposition 4.4).
+
+Proof. (i) Let f  H2(D1) and set g := Lf  H2(D3/2). Then L1f = Sg = J3/21g. By Lemma 4.9
+with (r, R) = (1, 3/2),
+
+                                                      2 K+1                         2 K+1
+L1f - (L1)K f H2(D1) =  Sg - K Sg H2(D1)  3                  gH2(D3/2)  C2 3                f H2(D1).
+
+Taking the supremum over f H2(D1) = 1 gives the first bound.
+    (ii) Let F  H2(D3/2). Then
+
+         L3/2F - (L3/2)kF H2(D3/2) = L(SF - kSF )H2(D3/2)  C2 SF - kSF H2(D1).
+
+Apply Lemma 4.9 with (r, R) = (1, 3/2) to F to get SF - kSF H2(D1)  (2/3)k+1F H2(D3/2),
+yielding the second bound.
+
+                                                 20
+Corollary 4.11. The approximation numbers of L1 and L3/2 satisfy
+
+                            2   m-1                                                 2     m-1
+                            3                                                       3
+       am(L1)           C2               ,         am(L3/2)                  C2                   (m  1).
+
+Hence both operators are trace class, with trace norm ( ∑ S1 := m1 sm)
+
+                        L1S1  3 C2,                            L3/2S1  3 C2,
+
+and their eigenvalues {m}m1 (ordered by decreasing modulus, with multiplicity) satisfy
+
+       |m(L1)|, |m(L3/2)|                             C2       2     m-1                 |m| < .
+                                                               3
+                                                                          ,         m1
+
+Proof. For m  2, choose K = m - 2 in Theorem 4.10; then (L1)K has rank  m - 1, so
+
+                        am(L1)              L1 - (L1)m-2                     C2        2  m-1
+                                                                                       3
+                                                                                               .
+
+For m = 1 we have a1(L1)  L1  C2. On H2(Dr) the approximation numbers coincide
+
+with the singular values, and Weyl's inequality gives |m|  sm = am [51, Thm. 1.33]. Finally,
+   m1 sm(L1)  C2 m1(2/3)m-1 = 3C2 < , so L1 is trace class [51, Thm. 1.35], and |m| 
+   sm < . The argument for L3/2 is identical.
+
+5 Certified spectral enclosures for the Gauss≠Kuzmin≠Wirsing
+     operator
+
+Throughout, the cross-space operator norm
+
+                                C2 := LH2(D1)H2(D3/2)
+
+enters only through the explicit truncation budget
+
+                                                               2 K+1
+                                            K = C2 3                     ,
+
+so improving the numerical bound for C2 immediately sharpens all a posteriori certificates.
+
+5.1 Refined bounds for C2 and truncation budgets
+
+Remark 5.1. Write           
+
+                               2n + 1           =        2n + 1      (n  -   1  )-3/2.
+                                                                             2
+                            (n -         1  )2           n  -     1
+                                         2                        2
+
+For any N  1 we have
+
+                                sup             2n + 1   =     2   +     2       ,
+
+                                nN              n  -  1               N  -   1
+                                                      2                      2
+
+hence, splitting the series at N yields
+
+                                            N -1            +  1                          2
+                                                     2n
+C2  =  LH 2 (D1 )H 2 (D3/2 )                                         +       2   +                    (n  -  1  )-3/2.
+                                                   (n -     1  )2                      N  -  1               2
+                                                            2                                2
+                                            n=1                                                   nN
+
+                                                         21
+The tail can be expressed via the Hurwitz zeta function:
+
+                                (n  -  1  )-3/2  =    3  ,  N  -  1  .
+                                       2              2           2
+
+                            nN
+
+Table 1 reports rigorous upper bounds for C2 obtained from this splitting strategy, computed with
+Arb; the maximum enclosure radius is bounded by 5 ◊ 10-34. (The case N = 1 coincides with the
+
+base estimate from Proposition 4.4.)
+
+                                    N               C2(N )
+                                      1   11.7000807086
+                                      2   10.4849507042
+                                      3   10.2709840576
+                                      4   10.1907129342
+                                      5   10.1506945125
+                                    10    10.0893118365
+                                   100    10.0590444185
+                                 1000     10.0581271764
+                                10000     10.0580982915
+
+Table 1: Refined upper bounds for C2 as a function of the splitting N .
+
+Once a bound for C2 is fixed, all truncation budgets used below are explicit and of the form
+
+                                                 2 K+1
+                                    K = C2 3                ,
+
+as in Theorem 4.10. This is the only infinite-dimensional input to the certification step.
+
+Remark 5.2. Note that as soon as we have a validated bound on LK we can update C2. In
+particular, if we are able to rigorously prove that LK  C~2, we have that
+
+                            L  C~2 + L                2     K +1
+                                                      3
+
+and we get the finer bound
+
+                                L                   C~2
+
+                                          1-         2 K+1
+                                                     3
+
+5.2 Discretization and matrix assembly
+
+We discretize L = SL on H2(D1) by truncating to the shifted monomial subspace
+
+                            VK+1 := span{(w - 1)j}jK=0.
+
+Let K denote the corresponding truncation operator (degree  K). The finite-rank discretization
+is then represented, in this basis, by a matrix AK  C(K+1)◊(K+1).
+
+    We assemble AK using exact coefficient formulas expressed in terms of Hurwitz zeta values,
+
+evaluated in ball arithmetic (Arb). Concretely, for each column k we expand the image of the basis
+element k(w) = (w - 1)k in a Taylor series at w = 1,
+
+(Lk)(w) = (AK ),k (w - 1),                                        0  k  K,
+
+                      0
+
+                                          22
+and retain the coefficients  = 0, . . . , K. The resulting matrix entries are complex balls, hence
+already include rigorous enclosures for all evaluation/rounding errors at assembly time.
+
+    The operator-level truncation error satisfies
+
+                                                      L - LK   K ,
+
+with K as above; this is the quantity used in the resolvent perturbation bound and projector per-
+turbation bounds. The numerical assembly and certification results are presented in the following
+subsections.
+
+5.3 Certified resolvent bounds on contours
+
+To lift the finite-dimensional spectral data of LK to the infinite-dimensional operator L : H2(D1) 
+
+H2(D1), we verify the small-gain condition: for each eigenvalue j and an excluding circle j =
+
+{z : |z - ^j| = rj},
+
+                      j = K ∑ sup (zI - LK )-1 < 1,          (15)
+
+                                zj
+
+where K = C2(2/3)K+1 is the truncation error bound (Theorem 4.10). When (15) holds, j  (L)
+
+and L has exactly as many eigenvalues (counted with multiplicity) inside j as LK.
+    We employ a two-stage strategy, following the certification workflow of ß3.3. For eigenvalues
+
+j = 1, . . . , 15, the resolvent of the full matrix L48 is sampled at 256 points on j and certified via
+Theorem 3.4 (Schur defects  resolvent bound), yielding j  6.2 ◊ 10-1 (48  2.37 ◊ 10-8).
+For j = 16, . . . , 50, the eigenvalue gaps shrink below 10-7 and the resolvent of L48 becomes too
+large; instead, we certify the resolvent at K = 256 (256  5.59 ◊ 10-45) using the block Schur
+method : the certified Schur form L256 = QT Q is partitioned around j (Lemma 3.6), and the
+resolvent supremum on each circle j is certified by Proposition 3.8, giving j  3.14 ◊ 10-4 for
+
+all 50 eigenvalues.
+
+    The certified finite-dimensional resolvent RLK  is then lifted to the infinite-dimensional one
+via Neumann perturbation:
+
+                         RL(z)    RLK (z)   =:  M,j .
+                                    1 - j
+
+The full results are given in the supplementary material (Tables S3 and S4); all certified data are
+also available in machine-readable form in [47]. All 50 excluding circles are certified, proving that
+the first 50 eigenvalues of L are simple.
+
+5.4 Eigenvalue, eigenvector, and projector enclosures
+
+The resolvent certification also yields bounds on the Riesz projector errors. Writing Pj = PL(j)
+and PK,j = PLK (j) for the spectral projectors of L and LK associated with the excluding circle
+j, the contour integral representation gives
+
+                      j  :=  Pj - PK,j    |j| ∑ M2 ,j ∑ K .  (16)
+                                          2 1 - j
+
+At the finite-dimensional level, the projector error PLK (j) - P~T (j) arising from the numerical
+Schur decomposition and reordering is bounded by the decomposition of Lemma 3.11: the Schur
+
+residual contributes (12) and the ordschur reordering contributes (13). At K = 256, j ranges from
+1.01 ◊ 10-41 (j = 1) to 2.96 ◊ 10-3 (j = 35). For j  36, useful projector bounds require higher
+
+K; we use K = 1024 (see supplementary Table S3).
+
+                                    23
+Since each j is certified simple and j < 1, Lemma 2.12 gives the eigenvalue error bound
+
+                                  |j - ^j|          K (1 + j) + 2C j ,                                       (17)
+                                                            1 - j
+
+where C = LK is a certified upper bound on the discretization norm and K = L - LK. This
+avoids any Newton≠Kantorovich argument: the projector error alone controls the eigenvalue error
+
+for all 50 eigenvalues simultaneously, with no requirement on the eigenvalue gap relative to K.
+For the dominant eigenvalues (j  15) the bound (17) is of order K  10-8 (at K = 48); for
+j  35 at K = 256 it reaches  10-45. The tightest enclosures use K = 1024 (2048-bit precision,
+
+1024  3.23 ◊ 10-180): for the leading eigenvalues (j  15) the enclosure radii are of order 10-176≠
+10-171, degrading to  10-119 for j = 50 due to resolvent growth on the excluding circles. In
+particular, |2 - ~2| < 5 ◊ 10-176 with ~2 as in Theorem 1.1, certifying the Wirsing constant to
+
+over 175 decimal digits. The full list of eigenvalue enclosures is given in the supplementary material
+
+(Table S3).
+
+    The eigenvectors v^j of LK are the first columns of the ordered Schur unitary Qord, known
+to within the combined Schur and ordschur similarity defect E  5.72 ◊ 10-317 at K = 1024
+
+(supplementary Table S6). At the infinite-dimensional level, the projector error j controls the gap
+between the true eigenvector vj of L and v^j of LK : vj - v^j  2j/(1 - j).
+
+Since L is non-normal, the spectral expansion requires the dual eigenvectors j. We compute
+
+the spectral coefficient j(1) = e1Pje1 from the ordered Schur form: with Tord =                       j T12  and
+q = Qorde1,                                                                                           0 T22
+
+                                  j(1) = q1 - T12 ∑ (T22 - jI)-1qrest,                                       (18)
+
+where the triangular system is solved in P-bit BigFloat arithmetic. The certified error is dominated
+by the Schur similarity defect E  rsch 1 +  + CA  (Lemma 3.1); the triangular solve residual
+is negligible ( 10-617 at 2048-bit).
+
+    At K = 1024 (2048-bit precision, E  5.72 ◊ 10-317), all 50 spectral coefficients are sign-
+certified : |j(1)| > j with radii j  [4.5 ◊ 10-316, 1.1 ◊ 10-282]. The signs alternate as 1 > 0,
+
+2 > 0, 3 < 0, 4 > 0, . . . , with |j(1)|  |j| for large j. Cross-validation at K = 256, 512, and
+
+1024 confirms agreement of all certified digits (see supplementary Table S6).
+
+5.5 Certified spectral expansion and computation of Fn(x)
+
+With all 50 eigenvalues certified simple and the spectral coefficients j(1) sign-certified, the spectral
+
+expansion
+
+                                            N
+
+                                  Ln1 = jn j(1) vj + RN (n)                                                  (19)
+
+                                            j=1
+
+holds rigorously in H2(D1) with the tail bound
+
+                                  RN (n)  n+1 ∑ M ∑ QN 1,                                                    (20)
+
+where QN = I -  N    Pj  is  the  tail  projector,    is  the  radius  of  a  separating  circle  in  the  eigenvalue
+                j=1
+
+gap |N+1| <  < |N |, and M is the certified resolvent on this circle. For N = 50, the parameters
+
+are  = 1.014 ◊ 10-21, M = 6.062 ◊ 1041, and Q501  6.138 ◊ 10-21 (computed at K = 1024),
+
+giving R50(n)  3.72 ◊ 1021 ∑ (1.01 ◊ 10-21)n+1. Already at n = 1 the remainder is below 10-20;
+
+at n = 5 it drops below 10-104 (see supplementary Table S8).
+
+                                                      24
+Define the integrated spectral expansion
+
+                             Fn(j0)(x) =     xN
+
+                                                    nj j(1) vj(t) dt,
+
+                                            0 j=j0
+
+which is computed exactly in the shifted monomial basis via 0x(t-1)k dt = (x-1)k+1-(-1)k+1 /(k+1).
+For j0 = 2, this measures the integrated deviation of Ln1 from its equilibrium 1(1) v1. The L
+error is controlled by Cauchy≠Schwarz and the Gram matrix of the basis on [0, 1] (spectral norm
+ ):
+
+sup Fn(j0)(x) -     x        j<j0 jnPj 1 dt            n+1      ∑  C        6.6 ◊ 1021 ∑ (1.01 ◊ 10-21)n+1.
+                                                     
+                      Ln1 -
+
+x[0,1]           0
+
+Figure 2 shows Fn(j0) for j0 = 2, . . . , 6 and n = 1, 2, 5. As dominant eigenfunctions are progressively
+
+removed, the Markov partition structure of the Gauss map becomes increasingly visible, and the
+
+amplitude decreases by roughly a factor |j0/j0-1|  1/3 per removed mode.            x
+                                                                                    0
+Returning to the Gauss≠Kuzmin problem, the distribution function Gn(x) =               Ln1(t)      dt  con-
+
+verges to log2(1 + x).  Since 1 = 1 and 1(1) v1 =    1    ∑    1    (the invariant density), the spectral
+                                                    ln 2     1+x
+
+expansion gives                                                 
+                                                                  
+                        |Gn(x) - log2(1+x)|    |Fn(2)(x)|    +        RN (n).
+
+The dominant error term is n2 2(1)  x  v2,   which  decays      at    rate  |2|n    0.3037n,  the  Wirsing
+                                    0
+
+constant. The tail bound certifies that the 50-term expansion captures this rate with rigorous error
+
+below 10-20 already at n = 1. Figure 3 illustrates the convergence: the spectral approximant
+
+S50(n, x)/1n rapidly approaches the invariant density 1(1) v1(x), with the spectral gap |2/1| 
+0.304 governing the rate.
+
+6 Discussion and portability
+
+Moving the bottleneck from analysis to certification. The central contribution is a shift in
+where the hard work lives. Once an operator L admits compactness/nuclearity on a suitable space
+or a DFLY inequality (Appendix A), the remaining spectral analysis reduces to checkable numer-
+ical statements about a finite-rank model LN : a certified approximation bound L - LN   N ,
+certified resolvent bounds along chosen contours, and certified residual information from linear al-
+gebra. Theorems are phrased in a fully a posteriori form, and a large portion of the proof burden
+is converted into validated numerical linear algebra, building on [12]. A practical consequence is
+high-throughput certification: many eigenvalues, multiplicities, and Riesz projectors can be vali-
+dated simultaneously, precisely in the regime where non-normality and pseudospectral effects make
+resolvent-based certification essential [31].
+
+The spectral-gap bottleneck and a posteriori reversal. Since a spectral gap is often the
+hardest ingredient in rigorous thermodynamic computations [48, 49, 55], the a posteriori reversal
+described in Section 1 is of particular interest. Liverani [43] proposed certifying spectral data of
+the true operator from a finite-rank discretization via Keller≠Liverani perturbation theory [36],
+but the approach requires the strong resolvent norm of the discretization, which is difficult to
+compute when the strong norm is, e.g., the BV norm. In the DFLY setting of Appendix A, we
+circumvent this by working with the weak resolvent of the discretization, which is computable via
+certified singular value enclosures of a finite matrix, and lifting to strong resolvent bounds via
+
+                                               25
+                           0.03F (n2)(x)       Removed: v≠v_1 (dominant: _2 = -0.3037)  n = 1 (amp 3.0e-02, err  10^-21)
+                           0.02                                                         n = 2 (amp 8.7e-03, err  10^-42)
+           F (n3)(x)       0.01                                           0.5           n = 5 (amp 2.5e-04, err  10^-105)
+                           0.00                Removed: v≠v_2 (dominant: _3 = 0.1009)
+F (n4)(x)                 -0.01                                                                                     1.0
+                                                                          0.5
+F (n5)(x)                                 0.0  Removed: v≠v_3 (dominant: _4 = -0.0355)  n = 1 (amp 1.8e-03, err  10^-21)
+                                                                                        n = 2 (amp 1.7e-04, err  10^-42)
+F (n6)(x)               0.0015                                            0.5           n = 5 (amp 1.8e-07, err  10^-105)
+                        0.0010                 Removed: v≠v_4 (dominant: _5 = 0.0128)
+                        0.0005                                                                                      1.0
+                        0.0000                                            0.5
+                                               Removed: v≠v_5 (dominant: _6 = -0.0047)  n = 1 (amp 1.6e-04, err  10^-21)
+                                          0.0                                           n = 2 (amp 5.0e-06, err  10^-42)
+                                                                          0.5           n = 5 (amp 2.3e-10, err  10^-105)
+                      0.00015                                              x
+                      0.00010                                                                                       1.0
+                      0.00005
+                      0.00000                                                           n = 1 (amp 1.6e-05, err  10^-21)
+                                                                                        n = 2 (amp 1.8e-07, err  10^-42)
+                                          0.0                                           n = 5 (amp 4.0e-13, err  10^-105)
+
+                    1.50◊10                                                                                         1.0
+                    1.00◊10
+                    5.00◊10                                                             n = 1 (amp 1.8e-06, err  10^-21)
+                                                                                        n = 2 (amp 7.2e-09, err  10^-42)
+                                0                                                       n = 5 (amp 7.9e-16, err  10^-105)
+                                          0.0
+                                                                                                                    1.0
+                    1.50◊10
+                    1.00◊10
+                    5.00◊10
+
+                                0
+                                          0.0
+
+Figure 2: Integrated spectral expansion Fn(j0)(x) =  x  jj0 jn j(1) vj(t) dt with the first j0 - 1
+                                                     0
+
+eigenfunctions cumulatively removed. Each panel shows n = 1 (blue), n = 2 (red), n = 5 (green).
+
+Dotted vertical lines mark the Markov partition boundaries x = 1/k. For j0 = 6, n = 5, the signal
+amplitude is  10-16 while the L error bound is  10-105, confirming that the plotted curves are
+
+rigorous to plotting accuracy.
+
+                                               26
+                                                Convergence of S(n, x) /  to (1) v(x)
+
+                          1.6                                                                   n=0
+
+                                                                                                n=1
+
+                                                                                                n=2
+
+                          1.4                                                                   n=5
+
+                                                                                                n = 10
+
+                                                                                                n = 20
+
+              S(n, x) /   1.2                                                                   (1) v(x)
+
+                          1.0
+
+                          0.8
+
+                               0.0                            0.5                                       1.0
+
+                                                              x
+
+Figure 3: Convergence of the spectral approximant S50(n, x) =                          50   jn  j (1)   vj (x)    (normalized  by
+                                                                                       j=1
+
+1n)  to  the  invariant  density    1(1) v1(x)  =       1     (dashed  black).         The  spectral         gap  |2/1|    0.304
+                                                   ln 2(1+x)
+
+governs the convergence rate: by n = 5 the approximation is indistinguishable from the limit.
+
+the Lasota≠Yorke inequality (Proposition A.7; see Remark A.8 for a detailed comparison). This
+makes the a posteriori approach both complementary to a priori methods on holomorphic function
+spaces [6, 7] or structured approximation schemes [8, 9, 52], and fully implementable.
+
+Full spectral convergence in the DFLY setting. A second main contribution, developed in
+Appendix A, is the convergence guarantee of Theorem A.18: under a DFLY inequality and a mild
+rate condition on the discretization error, every isolated eigenvalue, eigenvector, and Riesz projector
+outside the essential spectral radius can be approximated to arbitrary precision by the finite-rank
+data of Lk. This upgrades the qualitative spectral stability guaranteed by the Keller≠Liverani
+theorem [36] (which itself extends Li's Ulam-conjecture resolution [42] beyond the invariant density)
+to a fully certified and quantitative statement. A key ingredient is the coarse-to-fine propagation of
+Proposition A.14, which controls the growth of the weak resolvent Rw(z, Lk) as k  , preventing
+the spectral pollution that would otherwise invalidate finer certifications.
+
+Portability. The method applies beyond transfer operators. The three-input interface of Sec-
+tion 2 (approximation bound, resolvent control, perturbation bound) encompasses compact integral
+operators, Koopman/Perron≠Frobenius operators with noise-induced compactness, and Markov op-
+erators satisfying Doeblin≠Fortet/Harris-type inequalities [34, 33]. For the latter, certified spectral
+gaps yield rigorous mixing-rate estimates as a direct corollary. Hypocoercivity in PDE [54] pro-
+vides another natural setting where the same certification template applies. A particularly natural
+target is the derivative of a renormalization operator at a fixed point in the analytic category: the
+domain gain (A()  A() with   ) makes DRf compact on the same Hardy/Bergman-
+type spaces used here, and the truncation error decays geometrically by the same mechanism as
+for the Gauss map [40, 22, 57]. The present framework could therefore certify hyperbolicity of
+period-doubling and critical circle map renormalization from computed spectral data of finite-rank
+discretizations, systematizing the computer-assisted strategy pioneered by Lanford [40] with the
+a posteriori spectral tools developed here.
+
+                                                   27
+Limitations. The method's quantitative strength is governed by the product N ∑ supz (zI -
+LN )-1: if this exceeds 1, the Neumann-series bound fails; if it is close to 1, constants become weak,
+reflecting genuine pseudospectral sensitivity. The pipeline certifies isolated spectral data (clusters
+separated by contours), not continuous spectrum.
+
+Reproducibility. All certifications were carried out on a single desktop workstation with no
+supercomputing resources (see supplementary material for specifications); increasing the number
+of eigenvalues or the precision scales directly with matrix size and arithmetic precision. Detailed
+computational methodology, all certified spectral tables, eigenvector coefficients, and additional
+figures are collected in the supplementary material (arXiv ancillary file). The full source code
+for the certification pipeline is available at https://github.com/orkolorko/GKWExperiments.jl;
+certified spectral data in machine-readable form are deposited at https://doi.org/10.7910/DVN/
+HKM3Y2.
+
+A Strong≠weak (DFLY) resolvent lifting
+
+This appendix extends the abstract compact template of Section 2 to the common strong-weak
+transfer-operator setting: a Banach scale (Bs,  ∑ s)  (Bw,  ∑ w) with compact embedding,
+and a Doeblin≠Fortet≠Lasota≠Yorke (DFLY) inequality. The same resolvent-based certification
+logic applies: validated weak resolvent bounds for finite-rank discretizations yield certified strong
+resolvent bounds for the true operator, certified spectral exclusion curves, and a coarse-fine workflow
+in which a coarse certificate propagates to arbitrarily fine levels.
+
+    We use the resolvent notation of Section 2.1, writing Rs(z, A) := RA(z)ss and Rw(z, A) :=
+RA(z)ww to distinguish operator norms.
+
+A.1 Setting: Banach scale, DFLY bounds, and Galerkin hierarchy
+
+Assumption A.1. Let (Bs, ∑s)  (Bw, ∑w) be a continuous embedding with embedding constant
+Esw := isw. Assume the embedding is compact.
+
+Assumption A.2. Let L  L(Bs) admit a bounded extension to Bw satisfying the one-step DFLY
+bounds: for constants a, b, M  (0, ) and all u  Bs,
+
+                  Lus  aus + buw, Luw  M uw.                    (21)
+
+Assume we are given finite-rank operators Lk  L(Bs) extending boundedly to Bw with the same
+
+one-step bounds:
+
+                  Lkus  aus + buw, Lkuw  M uw.                  (22)
+
+Define the mixed discrepancy k := L - Lksw.
+
+Assumption A.3. Assume Lk arise from a nested Galerkin hierarchy: finite-rank projections
+k : Bw  Bw with k2 = k, kww  1, kss  1, kk = k for k  k, Ran(k)  Bs,
+and Lk := k L k. Assume there exists a computable sequence k  0 such that
+
+                  (Id - k)Lsw + L(Id - k)sw  k.                 (23)
+
+In particular, L - Lksw  k and Lk - Lksw  k for k  k.
+
+                  28
+Lemma A.4. Under Assumption A.2, for every n  1 and u  Bs,
+
+                       Lnus  anus + bnuw,                       Lnuw  M nuw,                 (24)
+
+where bn := b  n-1  a  n-1-j  M  j  .  The  same  bounds  hold  with  L  replaced  by  Lk .
+               j=0
+
+Proof. Iterate the weak bound and insert Ljuw  M juw into the strong inequality.
+
+Lemma A.5. Under Assumption A.2, if (zI - L)u = f with u, f  Bs, then
+
+                                       (|z| - a) us  b uw + f s.                             (25)
+
+The same holds with L replaced by Lk.
+Proof. From zu = Lu + f and (21): |z|us  aus + buw + f s.
+
+Remark A.6. Under Assumptions A.1≠A.2, the essential spectral radius of L : Bs  Bs is 
+a (Hennion-type quasi-compactness). We use only: for |z| > a, injectivity of zI - L implies
+invertibility on Bs.
+
+A.2 Weak-to-strong resolvent lifting and spectral exclusion
+
+Proposition A.7. Assume Assumption A.1≠A.2. Fix k  1 and z  C with z / (Lk), and set
+
+Mk(z) := Rw(z, Lk). If
+
+                                            |z| > a + b Mk(z) k,                             (26)
+
+then z / (L) and
+
+                                       Rs(z, L)     b Mk(z) Esw + 1 .                        (27)
+                                                   |z| - a - b Mk(z) k
+
+Proof. Injectivity. Let (zI - L)u = 0. Then (zI - Lk)u = (L - Lk)u, hence u = RLk (z)(L - Lk)u.
+Taking weak norms gives uw  Mk(z)kus. Lemma A.5 with f = 0 yields (|z| - a)us 
+b Mk(z)kus, forcing u = 0 under (26). Since |z| > a, Remark A.6 gives bijectivity.
+
+    Quantitative bound. For f  Bs with f s = 1, set u := RL(z)f . From (zI-Lk)u = f +(L-Lk)u,
+taking weak norms yields uw  Mk(z)Esw +Mk(z)kus. Lemma A.5 applied to (zI -L)u = f
+gives (|z| - a)us  buw + 1; inserting the weak bound and rearranging yields (27).
+
+Remark A.8. The use of the weak resolvent Rw(z, Lk) of the discretization in Proposition A.7 is
+essential for two reasons.
+
+    First, it is computable: since Lk is finite rank, Rw(z, Lk) reduces to a certified singular value
+problem for a finite matrix. An approach based on the strong resolvent Rs(z, Lk) (as proposed in
+the feasibility study [43]) requires the induced  ∑ s-norm of a matrix, which is nontrivial when  ∑ s
+is, e.g., the BV norm.
+
+    Second, Rw(z, L) for the original operator is not available: in typical DFLY applications L is
+a weak contraction (Lww  1), so its weak essential spectral radius is 1 and Rw(z, L) = +
+for every |z|  1, precisely where the discrete eigenvalues of interest lie. A strong-weak Neumann-
+
+series argument using Rw(z, L) therefore fails at exactly the points it would be needed. The DFLY
+inequality resolves this: it converts the computable quantity Rw(z, Lk) (finite because Lk has no
+essential spectrum) into a certified bound on Rs(z, L) (finite because the eigenvalues are discrete in
+Bs), bypassing Rw(z, L) entirely.
+
+                                                   29
+Proposition A.9. Assume Assumption A.1≠A.2. Let  be a piecewise C1 closed curve with  
+
+(Lk) and
+
+                               inf |z| - a > b k sup Rw(z, Lk).                 (28)
+                               z
+                                                    z
+
+Then      (L)  and  supz Rs(z, L)         supz  b Rw(z,Lk) Esw+1    .  In particular, if  = U then
+                                                |z|-a-b Rw(z,Lk) k
+
+PL(U ) is well-defined on Bs.
+
+Proof. Apply Proposition A.7 pointwise on .
+
+Lemma A.10. If Lk satisfies (22) and z  (Lk) with |z| > a, then
+
+                               Rs(z, Lk)      b Rw(z, Lk) Esw + 1 .             (29)
+                                                       |z| - a
+
+Proof. Apply Lemma A.5 to u := RLk (z)f and bound uw via Rw(z, Lk).
+Lemma A.11. If z  (L)  (Lk), then
+
+                    RLk (z) - RL(z)sw  Rw(z, Lk) k Rs(z, L).                    (30)
+
+Proof. From RLk (z) - RL(z) = RLk (z)(L - Lk)RL(z), bound (L - Lk)vw  kvs.
+
+A.3 Coarse≠fine propagation and weak resolvent growth
+
+A key issue in the DFLY framework is to prevent the weak resolvent Rw(z, Lk) from exploding as
+k increases. The next results extend the resolvent-blowup control of [12] to the present abstract
+setting, providing true-to-fine control: once z  (L) and Rs(z, L) are certified at a coarse level,
+Rw(z, Lk) is explicitly controlled for all finer k.
+
+Assumption A.12. For each k, set Ek := Ran(k) and assume the norm equivalence constant
+Ek,ws := supuEk\{0} us/uw is explicitly bounded.
+
+Lemma A.13. Under Assumptions A.2≠A.12, for every k, N  1, and f  Ek,
+
+                               LNk f s  aN Ek,ws + bN f w.                      (31)
+
+Proof. Apply Lemma A.4 to f  Ek  Bs and use f s  Ek,wsf w.
+
+Proposition A.14. Assume Assumption A.1≠A.3 and Assumption A.12. Fix k  1 and z  C
+with |z| > a and z  (L). Write K(z) := Rs(z, L) and k := L - Lksw.
+
+    Let N  1 and define
+
+                                   1    N -1  Lk ww      1 N-1         M    
+                                   |z|            |z|    |z|           |z|
+                    SN(k)(z)   :=                                            ,  (32)
+
+                                        =0                      =0
+
+and                                1
+                    N (z) := |z|N k K(z)
+                                                    aN Ek,ws + bN      .        (33)
+
+If N (z) < 1, then z  (Lk) and
+
+               Rw(z, Lk)  SN(k)(z) + |z|-N EswK(z) aN Ek,ws + bN                (34)
+                                                    1 - N (z).
+
+                                                30
+Proof. Fix f  Bw and consider u  Bs solving (zI - Lk)u = f . (Existence will follow from the a
+priori bound below.) Rewrite the equation as
+
+                             (zI - L)u = f + (L - Lk)u.
+
+Applying RL(z) yields
+
+                             u = RL(z)f + RL(z)(L - Lk)u.
+
+Taking weak norms and using (L - Lk)uw  kus gives
+
+                          uw  EswK(z)f s + EswK(z)kus.                        (35)
+
+Next, apply the truncated Laurent identity: from (zI - Lk)u = f ,
+
+                             u   =  1 N-1   Lk f  +   1  LkN u.
+                                    z        z       zN
+                                        =0
+
+Taking weak norms yields
+
+                                       uw  SN(k)(z) f w + |z|-N LkN uw.
+
+Using LNk uw  EswLNk us and Lemma A.13 (with LkN landing in the finite-dimensional range),
+we get
+
+                                        LNk uw  Esw aN us + bN uw .
+
+Insert this into the previous inequality and rearrange to isolate uw:
+
+                    1 - |z|-N EswbN uw  SN(k)(z)f w + |z|-N EswaN us.
+
+Now substitute the bound (35) into the right-hand side through us and collect terms so that the
+coefficient of uw becomes 1 - N (z); one obtains
+
+                       uw  SN(k)(z)f w + |z|-N EswK(z) aN Ek,ws + bN f w ,
+                                                               1 - N (z)
+
+where we also used f s  Ek,wsf w when f  Ek. This proves that (zI - Lk) is injective with
+bounded inverse on the finite-dimensional range, hence z  (Lk) and (34) holds.
+
+Remark A.15. In practice one certifies z  (L) and K(z) on a contour  using Proposition A.7 at
+a coarse level k0. Proposition A.14 then bounds Rw(z, Lk) for all finer k  k0, without recomputing
+resolvents.
+
+Corollary A.16. Assume Assumption A.1≠A.3 and Assumption A.12, with 0 < a < M . Fix
+
+µ  (a, M ) and set
+
+                       q :=  log(µ/M )   (0, 1),     C   :=  1   +     b   .
+                                                                          a
+                             log(a/M )                              M  -
+
+Let k  1 and assume z  (L) satisfies |z|  µ. Write K(z) := Rs(z, L) and k := L - Lksw.
+Choose Nk := log Ek,ws/| log(a/M )|. If
+
+                             1-  M      k K(z) C Ekq,ws  >   0,               (36)
+                                 µ
+
+                                            31
+then z  (Lk) and
+
+                                     M  Ekq,ws                 1
+                                     µ                      M - µ + Esw K(z) C .
+             Rw(z, Lk)                                                                                     (37)
+                                  M
+                              1-  µ  k K(z) C Ekq,ws
+
+Proof. Apply Proposition A.14 with N = Nk. The choice ensures aNk Ek,ws  M Nk and |z|-Nk 
+(M/µ)Ekq,ws
+             by  logarithmic  interpolation.  Substituting  bNk       b  M  Nk  into  (34)  yields  (37).
+                                                                   M -a
+
+A.4 Spectral convergence in the DFLY setting
+
+Corollary A.17. In the setting of Corollary A.16, suppose that at some coarse level k0 the per-
+turbation condition (26) certifies z  (L) and K(z) < . If
+
+                                  k Ekq,ws - 0        as k  ,                                       (38)
+
+then RLk (z) - RL(z)sw  0: Corollary A.16 gives Rw(z, Lk) = O(Ekq,ws), and Lemma A.11
+yields the claim.
+
+    The following theorem is the DFLY analogue of Theorem 2.15: it shows that under the feasibility
+condition (38), the full discrete spectral picture of L outside the essential spectral radius can be
+recovered from the Galerkin hierarchy Lk.
+
+Theorem A.18. Under Assumption A.1≠A.3 and Assumption A.12, suppose 0 < a < M . Fix
+µ  (a, M ) and let q := | log(µ/M )|/| log(a/M )|  (0, 1). Suppose
+
+                                  k Ekq,ws - 0        as k  .                                       (39)
+
+Let U  C be a bounded domain with piecewise C1 boundary  := U such that infz |z|  µ,
+  (L), and (L)   = . Then there exists k0 such that for all k  k0:
+
+1.   (Lk) and the perturbation condition supz b k Rw(z, Lk) < infz(|z| - a) holds;
+
+2. dim Ran PLk (U ) = dim Ran PL(U );
+
+   3. PLk (U ) - PL(U )sw  0 as k  .
+
+In particular, every isolated eigenvalue, eigenvector, and Riesz projector of L outside the essential
+spectral radius can be approximated to arbitrary precision by the finite-rank data of Lk, provided
+the contour can be chosen with inf |z|  µ for some µ satisfying (39).
+
+Proof. Since infz |z|  µ > a and   (L), Corollary A.16 applies to every z  . By Corol-
+
+lary A.17, the rate condition (39) ensures that   (Lk) for k  k0 and RLk (z) - RL(z)sw  0
+uniformly on . In particular, the perturbation condition of Proposition A.9 is eventually satis-
+
+fied on all of , giving (i). Claims (ii) and (iii) follow from the contour integral representation
+
+PLk (U ) - PL(U ) =   1  (RLk (z) - RL(z)) dz and the uniform convergence of the integrand in
+                     2i
+
+ ∑ sw established in Corollary A.17.
+
+                                                32
+Acknowledgements
+
+The author would like to acknowledge helpful discussions with A. Blumenthal, O. Bandtlow,
+S. Galatolo, and W. Tucker. The idea of treating the Gauss map arose during a discussion with
+I. Melbourne. The author is also grateful to the participants of related seminars and workshops for
+valuable feedback on preliminary versions of this work.
+
+    Claude (Anthropic) and ChatGPT (OpenAI) were used as assistants for prose editing and code
+development.
+
+    The author thanks the Uppsala University Library for access to their edition of Gauss's Werke,
+the Maurizio Monge Foundation for supporting access to Claude Pro, and Prof. Y. Sato for access
+to computational resources.
+
+    I.N. was partially supported by the Postgraduate Program in Mathematics at UFRJ, CAPES≠
+Finance Code 001, CNPq Projeto Universal No. 404943/2023-3, CAPES≠PRINT No. 88881.311616/2018-
+00, and CAPES≠STINT No. 88887.155746/2017-00.
+
+    Any remaining errors are solely the author's responsibility.
+
+References
+
+ [1] Giedrius Alkauskas. Transfer operator for the gauss' continued fraction map. I. Structure of
+      the eigenvalues and trace formulas, 2012. arXiv:1210.4083.
+
+ [2] William Arveson. C-algebras and numerical linear algebra. J. Funct. Anal., 122(2):333≠360,
+      1994. doi:10.1006/jfan.1994.1072.
+
+ [3] K. I. Babenko. On a problem of Gauss. Soviet Mathematics Doklady, 19:136≠140, 1978.
+
+ [4] K. I. Babenko and S. P. Jur'ev. On the discretization of a problem of Gauss. Soviet Mathematics
+      Doklady, 19:731≠735, 1978.
+
+ [5] Viviane Baladi and Masato Tsujii. Anisotropic H®older and Sobolev spaces for hyperbolic
+      diffeomorphisms. Annales de l'Institut Fourier, 57(1):127≠154, 2007. doi:10.5802/aif.2253.
+
+ [6] Oscar F. Bandtlow and Oliver Jenkinson. Explicit a priori bounds on transfer opera-
+      tor eigenvalues. Communications in Mathematical Physics, 276(3):901≠905, 2007. doi:
+      10.1007/s00220-007-0355-7.
+
+ [7] Oscar F. Bandtlow and Oliver Jenkinson. Explicit eigenvalue estimates for transfer operators
+      acting on spaces of holomorphic functions. Advances in Mathematics, 218(3):902≠925, 2008.
+      doi:10.1016/j.aim.2008.02.005.
+
+ [8] Oscar F. Bandtlow, Anke Pohl, Torben Schick, and Alexander Weiﬂe. Numerical resonances
+      for schottky surfaces via Lagrange≠Chebyshev approximation. Stochastics and Dynamics,
+      21(3):2140005, 2021. doi:10.1142/S0219493721400050.
+
+ [9] Oscar F. Bandtlow and Julia Slipantschuk. Lagrange approximation of transfer operators
+      associated with holomorphic data. 2020. arXiv:2004.03534, doi:10.48550/arXiv.2004.
+      03534.
+
+[10] Jonathan Ben-Artzi, Matthew J. Colbrook, Anders C. Hansen, Olavi Nevanlinna, and Markus
+      Seidel. Computing spectra ≠ on the Solvability Complexity Index hierarchy and towers of
+      algorithms, 2020. Preprint, 93 pages. arXiv:1508.03280.
+
+                                                               33
+[11] Michael Blank, Gerhard Keller, and Carlangelo Liverani. Ruelle≠Perron≠Frobenius spectrum
+      for Anosov maps. Nonlinearity, 15(6):1905≠1973, 2002. doi:10.1088/0951-7715/15/6/309.
+
+[12] Alex Blumenthal, Isaia Nisoli, and Toby Taylor-Crush. A pseudospectral approach to rigorous
+      numerical estimation of Ruelle resonances of transfer operators, July 2025. URL: https:
+      //arxiv.org/abs/2507.09021, arXiv:2507.09021.
+
+[13] Albrecht Bo®ttcher. Infinite matrices and projection methods. In Peter Lancaster, editor,
+      Lectures on Operator Theory and its Applications, volume 3 of Fields Inst. Monogr., pages
+      1≠72. Amer. Math. Soc., Providence, RI, 1996.
+
+[14] Nicolas Boull¥e, Matthew J. Colbrook, and Gustav Conradie. Convergent methods for Koopman
+      operators on reproducing kernel Hilbert spaces, 2025. Preprint. arXiv:2506.15782.
+
+[15] Oliver Butterley, Niloofar Kiamari, and Carlangelo Liverani. Locating Ruelle≠Pollicott reso-
+      nances. Nonlinearity, 35(1):513≠559, 2022. doi:10.1088/1361-6544/ac3ad5.
+
+[16] Simon N. Chandler-Wilde, Ratchanikorn Chonchaiya, and Marko Lindner. On spectral inclu-
+      sion sets and computing the spectra and pseudospectra of bounded linear operators. J. Spectr.
+      Theory, 14(2):719≠804, 2024. doi:10.4171/JST/514.
+
+[17] Matthew J. Colbrook and Anders C. Hansen. The foundations of spectral computations via
+      the Solvability Complexity Index hierarchy. J. Eur. Math. Soc. (JEMS), 25(12):4639≠4718,
+      2023. doi:10.4171/JEMS/1289.
+
+[18] Matthew J. Colbrook, Bogdan Roman, and Anders C. Hansen. How to compute spectra
+      with error control. Phys. Rev. Lett., 122(25):250201, 2019. doi:10.1103/PhysRevLett.122.
+      250201.
+
+[19] Matthew J. Colbrook and Alex Townsend. Rigorous data-driven computation of spectral
+      properties of Koopman operators for dynamical systems. Comm. Pure Appl. Math., 77(1):221≠
+      283, 2024. doi:10.1002/cpa.22125.
+
+[20] Carl C. Cowen and Barbara D. Maccluer. Composition Operators on Spaces of Analytic Func-
+      tions. Routledge, March 2019. doi:10.1201/9781315139920.
+
+[21] Harry Crimmins and Gary Froyland. Fourier approximation of the statistical properties
+      of Anosov maps on tori. Nonlinearity, 33(11):6244≠6296, 2020. doi:10.1088/1361-6544/
+      ab987e.
+
+[22] Edson de Faria, Welington de Melo, and Alberto Pinto. Global hyperbolicity of renormalization
+      for Cr unimodal mappings. Annals of Mathematics, 164(3):731≠824, 2006. doi:10.4007/
+      annals.2006.164.731.
+
+[23] Mark F. Demers, Niloofar Kiamari, and Carlangelo Liverani. Transfer Operators in Hyperbolic
+      Dynamics. An Introduction. Editora do IMPA, 2021.
+
+[24] Mark F. Demers and Carlangelo Liverani. Stability of statistical properties in two-dimensional
+      piecewise hyperbolic maps. Transactions of the American Mathematical Society, 360(9):4777≠
+      4814, 2008. doi:10.1090/S0002-9947-08-04464-4.
+
+[25] Stefano Galatolo, Maurizio Monge, and Isaia Nisoli. Existence of noise induced order, a
+      computer aided proof. Nonlinearity, 33(9):4237≠4276, 2020. doi:10.1088/1361-6544/ab86cd.
+
+                                                               34
+[26] Stefano Galatolo, Maurizio Monge, Isaia Nisoli, and Federico Poloni. A general framework for
+      the rigorous computation of invariant densities and the coarse-fine strategy. Chaos, Solitons
+      & Fractals, 170:113329, 2023. doi:10.1016/j.chaos.2023.113329.
+
+[27] Stefano Galatolo and Isaia Nisoli. An elementary approach to rigorous approximation of
+      invariant measures. SIAM Journal on Applied Dynamical Systems, 13(2):958≠985, 2014. doi:
+      10.1137/130911044.
+
+[28] Stefano Galatolo and Isaia Nisoli. Rigorous computation of invariant measures and fractal di-
+      mension for maps with contracting fibers: 2D Lorenz-like maps. Ergodic Theory and Dynamical
+      Systems, 36(6):1865≠1891, 2016. doi:10.1017/etds.2014.145.
+
+[29] Stefano Galatolo, Isaia Nisoli, and Beno^it Saussol. An elementary way to rigorously estimate
+      convergence to equilibrium and escape rates. Journal of Computational Dynamics, 2(1):51≠64,
+      2015. doi:10.3934/jcd.2015.2.51.
+
+[30] Carl Friedrich Gauss. Brief an Laplace vom 30. Januar 1812. In Werke, volume X1, pages
+      371≠374. Ko®nigliche Gesellschaft der Wissenschaften, G®ottingen, 1917.
+
+[31] I. Gohberg and M. Krein. Introduction to the Theory of Linear Nonselfadjoint Operators.
+      American Mathematical Society, 1969. doi:10.1090/mmono/018.
+
+[32] S¥ebastien Gou®ezel and Carlangelo Liverani. Banach spaces adapted to Anosov systems. Ergodic
+      Theory and Dynamical Systems, 26(1):189≠217, 2006. doi:10.1017/S0143385705000374.
+
+[33] Hubert Hennion and Lo®ic Herv¥e. Limit Theorems for Markov Chains and Stochastic Properties
+      of Dynamical Systems by Quasi-Compactness, volume 1766 of Lecture Notes in Mathematics.
+      Springer, 2001. doi:10.1007/b87874.
+
+[34] C. T. Ionescu Tulcea and G. Marinescu. Th¥eorie ergodique pour des classes d'op¥erations non
+      compl`etement continues. Annals of Mathematics, 52(1):140≠147, 1950. doi:10.2307/1969514.
+
+[35] Tosio Kato. Perturbation Theory for Linear Operators. Classics in Mathematics. Springer, 2
+      edition, 1995. doi:10.1007/978-3-642-66282-9.
+
+[36] Gerhard Keller and Carlangelo Liverani. Stability of the spectrum for transfer operators.
+      Annali della Scuola Normale Superiore di Pisa ≠ Classe di Scienze (4), 28(1):141≠152, 1999.
+
+[37] Donald E. Knuth. The Art of Computer Programming, Volume 2: Seminumerical Algorithms.
+      Addison≠Wesley, Reading, Massachusetts, 1969.
+
+[38] Donald E. Knuth. The Art of Computer Programming, Volume 2: Seminumerical Algorithms.
+      Addison-Wesley, Reading, Massachusetts, 3 edition, 1997.
+
+[39] R. O. Kuz'min. A problem of gauss. Dokl. Akad. Nauk SSSR, Ser. A, pages 375≠380, 1928.
+      In Russian.
+
+[40] Oscar E. III Lanford. A computer-assisted proof of the Feigenbaum conjectures. Bul-
+      letin of the American Mathematical Society. New Series, 6(3):427≠434, 1982. doi:10.1090/
+      S0273-0979-1982-15008-X.
+
+[41] P. Levy. Sur les lois de probabilit¥e dont d¥ependent les quotients complets et incomplets
+      d'une fraction continue. Bulletin de la Soci¥et¥e Math¥ematique de France, 57:178≠194, 1929.
+      doi:10.24033/bsmf.1150.
+
+                                                               35
+[42] Tien-Yien Li. Finite approximation for the Frobenius≠Perron operator. A solution of
+      Ulam's conjecture. Journal of Approximation Theory, 17(2):177≠186, 1976. doi:10.1016/
+      0021-9045(76)90037-X.
+
+[43] Carlangelo Liverani. Rigorous numerical investigation of the statistical properties of piece-
+      wise expanding maps. A feasibility study. Nonlinearity, 14(3):463≠490, 2001. doi:10.1088/
+      0951-7715/14/3/303.
+
+[44] Dieter H. Mayer. On a  function related to the continued fraction transformation. Bulletin
+      de la Soci¥et¥e Math¥ematique de France, 104:195≠203, 1976. doi:10.24033/bsmf.1825.
+
+[45] Dieter H. Mayer. On the thermodynamic formalism for the gauss map. Communications in
+      Mathematical Physics, 130(2):311≠333, 1990. doi:10.1007/BF02473355.
+
+[46] Shinya Miyajima. Verified bounds for all the singular values of matrix. Japan Journal of
+      Industrial and Applied Mathematics, 31:513≠539, 2014. doi:10.1007/s13160-014-0145-5.
+
+[47] Isaia Nisoli. Eigenvalue, eigenvectors, projection coefficients and data for the GKW map, 2026.
+      doi:10.7910/DVN/HKM3Y2.
+
+[48] Mark Pollicott and Julia Slipantschuk. Effective estimates of ergodic quantities illustrated on
+      the Bolyai≠R¥enyi map. Nonlinearity, 37(9):095013, 2024. doi:10.1088/1361-6544/ad6053.
+
+[49] Mark Pollicott and Polina Vytnova. Estimating Hausdorff dimension and approximating the
+      Lagrange and Markov spectra. Transactions of the American Mathematical Society, Series B,
+      9:1102≠1159, 2022. doi:10.1090/btran/109.
+
+[50] Siegfried M. Rump. Verified bounds for singular values, in particular for the spectral norm
+      of a matrix and its inverse. BIT Numerical Mathematics, 51:367≠384, 2011. doi:10.1007/
+      s10543-010-0294-0.
+
+[51] Barry Simon. Trace Ideals and Their Applications, volume 120 of Mathematical Surveys and
+      Monographs. American Mathematical Society, 2 edition, 2005. doi:10.1090/surv/120.
+
+[52] Julia Slipantschuk, Oscar F. Bandtlow, and Wolfram Just. Analytic expanding circle maps with
+      explicit spectra. Nonlinearity, 26(12):3231≠3245, 2013. doi:10.1088/0951-7715/26/12/3231.
+
+[53] James Victor Uspensky. Introduction to Mathematical Probability. McGraw≠Hill, 1937.
+
+[54] C¥edric Villani. Hypocoercivity, volume 202 of Memoirs of the American Mathematical Society.
+      American Mathematical Society, 2009. doi:10.1090/S0065-9266-09-00567-5.
+
+[55] Polina Vytnova and Caroline Wormell. Hausdorff dimension of the Apollonian gasket. Inven-
+      tiones mathematicae, 239:909≠946, 2025. doi:10.1007/s00222-024-01311-y.
+
+[56] Eduard Wirsing. On the theorem of Gauss≠Kuzmin≠L¥evy and a Frobenius-type theorem for
+      function spaces. Acta Arithmetica, 24:507≠528, 1974. doi:10.4064/aa-24-5-507-528.
+
+[57] Michael Yampolsky. Hyperbolicity of renormalization of critical circle maps. Publications
+      Math¥ematiques de l'IHE¥S, 96:1≠41, 2003. doi:10.1007/s10240-003-0007-1.
+
+                                                               36
+

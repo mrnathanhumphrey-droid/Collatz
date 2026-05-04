@@ -35,6 +35,19 @@ Thumbs.db
 references/*.pdf
 references/*.txt
 references.zip
+
+# Paper-bundle zips and their extracted dirs (reference material)
+*.zip
+Bilinear Estimates/
+Burgess/
+First Principles OPT/
+Lagarias/
+Multi Fractal Research/
+Taos Machinery/
+2603.04479v1.pdf
+
+# Large generated visualization renders
+blender_residue_graph/
 outputs/
 visualization/viz_outputs/
 visualization/__pycache__/

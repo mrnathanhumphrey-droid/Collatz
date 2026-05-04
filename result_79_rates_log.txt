@@ -1,0 +1,21 @@
+========================================================================
+Empirical rates (log|bound|/log N):
+  rate 1.00 = trivial bound N
+  rate 0.50 = √N (needed for closure)
+  rate strictly between = sub-trivial bound, partial cancellation
+
+    r     N  actual|S|    Weyl-l1   B2 sum^.25    r_act     r_W1     r_B2
+    3     9      4.735      5.418        5.768    0.708    0.769    0.798
+    4    27     10.334     11.842       14.281    0.709    0.750    0.807
+    5    81     17.464     23.147       34.968    0.651    0.715    0.809
+    6   243     32.341     54.251       85.009    0.633    0.727    0.809
+    7   729     55.755    119.318          nan    0.610    0.725      nan
+    8  2187     83.968    270.252          nan    0.576    0.728      nan
+
+  [time: 1.1s]
+
+Interpretation:
+  - actual rate ≈ 0.5 (square-root, observed empirically)
+  - Weyl-l1 (B=1 with naive |A|) rate trends to ~0.73
+  - B=2 rate trends to ~0.75 (slightly worse than B=1 due to more averaging)
+  - Both B=1 and B=2 are SUB-TRIVIAL but NEITHER reaches √N rigorously.

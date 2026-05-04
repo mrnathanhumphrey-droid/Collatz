@@ -1,0 +1,3620 @@
+                                          ALMOST ALL ORBITS OF THE COLLATZ MAP ATTAIN ALMOST
+                                                                                BOUNDED VALUES
+
+                                                                                                TERENCE TAO
+
+                                          Abstract. Define the Collatz map Col : N + 1  N + 1 on the positive integers
+
+arXiv:1909.03562v5 [math.PR] 15 Feb 2022  N + 1 = {1, 2, 3, . . . } by setting Col(N ) equal to 3N + 1 when N is odd and N/2 when
+                                          N is even, and let Colmin(N ) := infnN Coln(N ) denote the minimal element of the
+                                          Collatz orbit N, Col(N ), Col2(N ), . . . . The infamous Collatz conjecture asserts that
+
+                                          Colmin(N ) = 1 for all N  N + 1. Previously, it was shown by Korec that for any
+
+                                            >  log 3    0.7924,  one  has  Colmin(N )    N  for  almost  all  N    N+1  (in  the  sense
+                                               log 4
+
+                                          of natural density). In this paper we show that for any function f : N + 1  R with
+
+                                          limN f (N ) = +, one has Colmin(N )  f (N ) for almost all N  N+1 (in the sense
+
+                                          of logarithmic density). Our proof proceeds by establishing a stabilisation property for
+
+                                          a certain first passage random variable associated with the Collatz iteration (or more
+
+                                          precisely, the closely related Syracuse iteration), which in turn follows from estimation
+
+                                          of the characteristic function of a certain skew random walk on a 3-adic cyclic group
+
+                                          Z/3nZ at high frequencies. This estimation is achieved by studying how a certain
+
+                                          two-dimensional renewal process interacts with a union of triangles associated to a
+
+                                          given frequency.
+
+                                                                                      1. Introduction
+
+                                          1.1. Statement of main result. Let N := {0, 1, 2, . . . } denote the natural numbers, so
+                                          that N + 1 = {1, 2, 3, . . . } are the positive integers. The Collatz map Col : N + 1  N + 1
+                                          is defined by setting Col(N ) := 3N + 1 when N is odd and Col(N ) := N/2 when N is
+                                          even. For any N  N + 1, let Colmin(N ) := min ColN(N ) = infnN Coln(N ) denote the
+                                          minimal element of the Collatz orbit ColN(N ) := {N, Col(N ), Col2(N ), . . . }. We have
+                                          the infamous Collatz conjecture (also known as the 3x + 1 conjecture):
+
+                                          Conjecture 1.1 (Collatz conjecture). We have Colmin(N ) = 1 for all N  N + 1.
+
+                                          We refer the reader to [14], [6] for extensive surveys and historical discussion of this
+                                          conjecture.
+
+                                          While the full resolution of Conjecture 1.1 remains well beyond reach of current methods,
+                                          some partial results are known. Numerical computation has verified Colmin(N ) = 1 for
+                                          all N  5.78 × 1018 [17], for all N  1020 [18], and most recently for all N  268 
+                                          2.95 × 1020 [3], while Krasikov and Lagarias [13] showed that
+
+                                                                    #{N  N + 1  [1, x] : Colmin(N ) = 1} x0.84
+
+                                             2010 Mathematics Subject Classification. 37P99.
+                                                                                                                    1
+2                                           TERENCE TAO
+
+for all sufficiently large x, where #E denotes the cardinality of a finite set E, and our
+conventions for asymptotic notation are set out in Section 2. In this paper we will
+focus on a different type of partial result, in which one establishes upper bounds on the
+minimal orbit value Colmin(N ) for "almost all" N  N + 1. For technical reasons, the
+notion of "almost all" that we will use here is based on logarithmic density, which has
+better approximate multiplicative invariance properties than the more familiar notion of
+natural density (see [20] for a related phenomenon in a more number-theoretic context).
+Due to the highly probabilistic nature of the arguments in this paper, we will define
+logarithmic density using the language of probability theory.
+
+Definition 1.2 (Almost all). Given a finite non-empty subset R of N + 1, we define1
+
+Log(R) to be a random variable taking values in R with the logarithmically uniform
+
+distribution
+
+                                 P(Log(R)  A) =                            1
+                                                             N AR N
+
+                                                                        1
+                                                               N R N
+
+for all A  N + 1. The logarithmic density of a set A  N + 1 is then defined to
+
+be limx P(Log(N + 1  [1, x])  A), provided that the limit exists. We say that a
+property P (N ) holds for almost all N  N + 1 if P (N ) holds for N in a subset of N + 1
+
+of logarithmic density 1, or equivalently if
+
+                       lim P(P (Log(N + 1  [1, x]))) = 1.
+
+                       x
+
+In Terras [21] (and independently Everett [8]) it was shown that Colmin(N ) < N for
+
+almost all N . This was improved by Allouche [1] to Colmin(N ) < N  for almost all
+
+N,  and    any  fixed  constant    >  3  -  log 3    0.869;  the  range       of    was  later  extended  to
+                                      2     log 2
+
+>   log 3   0.7924     by Korec [9].     (Indeed,    in these  results one can use natural      density
+    log 4
+
+instead of logarithmic density to define "almost all".) It is tempting to try to iterate
+
+these results to lower the value of  further. However, one runs into the difficulty that the
+
+uniform (or logarithmic) measure does not enjoy any invariance properties with respect
+
+to the Collatz map: in particular, even if it is true that Colmin(N ) < x for almost all
+N  [1, x], and Colmin(N )  x2 for almost all N  [1, x], the two claims cannot be
+immediately concatenated to imply that Colmin(N )  x2 for almost all N  [1, x], since
+
+the Collatz iteration may send almost all of [1, x] into a very sparse subset of [1, x],
+
+and in particular into the exceptional set of the latter claim Colmin(N )  x2.
+
+Nevertheless, in this paper we show that it is possible to locate an alternate probability
+measure (or more precisely, a family of probability measures) on the natural numbers
+with enough invariance properties that an iterative argument does become fruitful. More
+precisely, the main result of this paper is the following improvement of these "almost
+all" results.
+
+   1In this paper all random variables will be denoted by boldface symbols, to distinguish them from
+purely deterministic quantities that will be denoted by non-boldface symbols. When it is only the
+distribution of the random variable that is important, we will use multi-character boldface symbols such
+as Log, Unif , or Geom to denote the random variable, but when the dependence or independence
+properties of the random variable are also relevant, we shall usually use single-character boldface
+symbols such as a or j instead.
+COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                             3
+
+Theorem 1.3 (Almost all Collatz orbits attain almost bounded values). Let f : N+1 
+R be any function with limN f (N ) = +. Then one has Colmin(N ) < f (N ) for
+almost all N  N + 1 (in the sense of logarithmic density).
+
+Thus for instance one has Colmin(N ) < log log log log N for almost all N .
+
+Remark 1.4. One could ask whether it is possible to sharpen the conclusion of Theorem
+1.3 further, to assert that there is an absolute constant C0 such that Colmin(N )  C0 for
+almost all N  N+1. However this question is likely to be almost as hard to settle as the
+full Collatz conjecture, and out of reach of the methods of this paper. Indeed, suppose
+for any given C0 that there existed an orbit ColN(N0) = {N0, Col(N0), Col2(N0), . . . }
+that never dropped below C0 (this is the case if there are infinitely many periodic
+orbits, or if there is at least one unbounded orbit). Then probabilistic heuristics (such
+as (1.16) below) suggest that for a positive density set of N  N+1, the orbit ColN(N ) =
+{N, Col(N ), Col2(N ), . . . } should encounter one of the elements Coln(N0) of the orbit
+of N0 before going below C0, and then the orbit of N will never dip below C0. However,
+Theorem 1.3 is easily seen2 to be equivalent to the assertion that for any  > 0, there
+exists a constant C such that Colmin(N )  C for all N in a subset of N + 1 of
+lower logarithmic density (in which the limit in the definition of logarithmic density is
+replaced by the limit inferior) at least 1 - ; in fact (see Theorem 3.1) our arguments
+give a constant of the form C exp(-O(1)), and it may be possible to refine the subset
+so that the logarithmic density (as opposed to merely the lower logarithmic density)
+exists and is at least 1 - . In particular3, it is possible in principle that a sufficiently
+explicit version of the arguments here, when combined with numerical verification of
+the Collatz conjecture, can be used to show that the Collatz conjecture holds for a set
+of N of positive logarithmic density. Also, it is plausible that some refinement of the
+arguments below will allow one to replace logarithmic density by natural density in the
+definition of "almost all".
+
+1.2. Syracuse formulation. We now discuss the methods of proof of Theorem 1.3.
+
+It is convenient to replace the Collatz map Col : N + 1  N + 1 with a slightly more
+tractable acceleration N  Colf(N)(N ) of that map. One common instance of such
+
+an acceleration in the literature is the map Col2 : N + 1  N + 1, defined by setting
+
+Col2(N ) := Col2(N ) =  3N +1  when  N  is odd  and  Col2(N ) :=  N  when N  is  even.  Each
+                           2                                      2
+
+iterate of the map Col2 performs exactly one division by 2, and for this reason Col2 is a
+
+particularly convenient choice of map when performing "2-adic" analysis of the Collatz
+
+iteration. It is easy to see that Colmin(N ) = (Col2)min(N ) for all N  N + 1, so all the
+
+results in this paper concerning Col may be equivalently reformulated using Col2. The
+triple iterate Col3 was also recently proposed as an acceleration in [5]. However, the
+
+methods in this paper will rely instead on "3-adic" analysis, and it will be preferable
+
+to use an acceleration of the Collatz map (first appearing to the author's knowledge in
+
+[7]) which performs exactly one multiplication by 3 per iteration. More precisely, let
+
+   2Indeed, if the latter assertion failed, then there exists a  such that the set {N  N+1 : Colmin(N ) 
+C} has lower logarithmic density less than 1 -  for every C. A routine diagonalisation argument then
+
+shows that there exists a function f growing to infinity such that {N  N + 1 : Colmin(N )  f (N )}
+has lower logarithmic density at most 1 - , contradicting Theorem 1.3.
+
+   3We thank Ben Green for this observation.
+4                            TERENCE TAO
+
+2N + 1 = {1, 3, 5, . . . } denote the odd natural numbers, and define the Syracuse map
+Syr : 2N + 1  2N + 1 (OEIS A075677) to be the largest odd number dividing 3N + 1;
+thus for instance
+
+   Syr(1) = 1; Syr(3) = 5; Syr(5) = 1; Syr(7) = 11.
+
+Equivalently, one can write
+
+   Syr(N ) = Col2(3N+1)+1(N ) = Aff2(3N+1)(N )                                   (1.1)
+
+where for each positive integer a  N + 1, Affa : R  R denotes the affine map
+                                                           3x + 1
+
+                                            Affa(x) := 2a
+
+and for each integer M and each prime p, the p-valuation p(M ) of M is defined as the
+largest natural number a such that pa divides M (with the convention p(0) = +).
+(Note that 2(3N + 1) is always a positive integer when N is odd.) For any N  2N + 1,
+let Syrmin(N ) := min SyrN(N ) be the minimal element of the Syracuse orbit
+
+                               SyrN(N ) := {N, Syr(N ), Syr2(N ), . . . }.
+
+This Syracuse orbit SyrN(N ) is nothing more than the odd elements of the corresponding
+Collatz orbit ColN(N ), and from this observation it is easy to verify the identity
+
+                             Colmin(N ) = Syrmin(N/22(N))                        (1.2)
+
+for any N  N + 1. Thus, the Collatz conjecture can be equivalently rephrased as
+
+Conjecture 1.5 (Collatz conjecture, Syracuse formulation). We have Syrmin(N ) = 1
+for all N  2N + 1.
+
+We may similarly reformulate Theorem 1.3 in terms of the Syracuse map. We say that
+a property P (N ) holds for almost all N  2N + 1 if
+
+                                 lim P(P (Log(2N + 1  [1, x]))) = 1,
+
+                                                x
+
+or equivalently if P (N ) holds for a set of odd natural numbers of logarithmic density
+1/2. Theorem 1.3 is then equivalent to
+
+Theorem 1.6 (Almost all Syracuse orbits attain almost bounded values). Let f : 2N +
+1  R be a function with limN f (N ) = +. Then one has Syrmin(N ) < f (N ) for
+almost all N  2N + 1.
+
+Indeed, if Theorem 1.6 holds and f : N + 1  R is such that limN f (N ) = +,
+then from (1.2) we see that for any a  N, the set of N  N + 1 with 2(N ) = a and
+Colmin(N ) = Syrmin(N/2a) < f (N ) has logarithmic density 2-a. Summing over any
+finite range 0  a  a0 we obtain a set of logarithmic density 1 - 2-a0 on which the
+claim Colmin(N ) < f (N ) holds, and on sending a0 to infinity one obtains Theorem 1.3.
+The converse implication (which we will not need) is also straightforward and left to
+
+the reader.
+                      COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                                 5
+
+The iterates Syrn of the Syracuse map can be described explicitly as follows. For any
+finite tuple a = (a1, . . . , an)  (N + 1)n of positive integers, we define the composition
+Affa = Affa1,...,an : R  R to be the affine map
+
+                        Affa1,...,an(x) := Affan(Affan-1(. . . (Affa1(x)) . . . )).
+
+A brief calculation shows that
+
+                                   Affa1,...,an (x) = 3n2-|a|x + Fn(a)                                         (1.3)
+where the size |a| of a tuple a is defined as
+
+                                            |a| := a1 + · · · + an,                                            (1.4)
+
+and  we  define  the  n-Syracuse        offset  map   Fn :  (N +       1)n    Z[  1  ]  to  be  the  function
+                                                                                  2
+
+                         n
+
+               Fn(a) :=       3 2 n-m -a[m,n]                                                                  (1.5)
+
+                         m=1
+
+                        = 3 2 n-1 -a[1,n] + 3 2 n-2 -a[2,n] + · · · + 3 21 -a[n-1,n] + 2-an ,
+
+where we adopt the summation notation
+
+                                                                    k                                          (1.6)
+
+                                                   a[j,k] := ai
+
+                                                                  i=j
+
+for any 1  j  k  n, thus for instance |a| = a[1,n]. The n-Syracuse offset map Fn
+
+takes  values  in  the  ring  Z[  1  ]  :=  {  M   :  M     Z, a         N}  formed         by  adjoining  1  to  the
+                                  2            2a                                                          2
+
+integers.
+
+By iterating (1.1) and then using (1.3), we conclude that
+
+                   Syrn(N ) = Affa(n)(N)(N ) = 3n2-|a(n)(N)|N + Fn(a(n)(N ))                                   (1.7)
+
+for any N  2N + 1 and n  N, where we define n-Syracuse valuation a(n)(N )  (N + 1)n
+of N to be the tuple
+
+           a(n)(N ) := 2(3N + 1), 2(3Syr(N ) + 1), . . . , 2(3Syrn-1(N ) + 1) . (1.8)
+
+This tuple is referred to as the n-path of N in [12].
+
+The identity (1.7) asserts that Syrn(N ) is the image of N under a certain affine map
+Affa(n)(N) that is determined by the n-Syracuse valuation a(n)(N ) of N . This suggests
+that in order to understand the behaviour of the iterates Syrn(N ) of a typical large
+number N , one needs to understand the behaviour of n-Syracuse valuation a(n)(N ), as
+well as the n-Syracuse offset map Fn. For the former, we can gain heuristic insight by
+observing that for a positive integer a, the set of odd natural numbers N  2N + 1 with
+2(3N + 1) = a has (logarithmic) relative density 2-a. To model this probabilistically,
+we introduce the following probability distribution:
+
+Definition 1.7 (Geometric random variable). If µ > 1, we use Geom(µ) to denote a
+geometric random variable of mean µ, that is to say Geom(µ) takes values in N + 1
+with
+
+                                                            1 µ - 1 a-1
+                                 P(Geom(µ) = a) = µ µ
+6          TERENCE TAO
+
+for all a  N + 1. We use Geom(µ)n to denote a tuple of n independent, identically
+distributed (or iid for short) copies of Geom(µ), and use X  Y to denote the assertion
+that two random variables X, Y have the same distribution. Thus for instance
+
+                                              P(a = a) = 2-a
+
+whenever a  Geom(2) and a  N + 1, and more generally
+                                             P(a = a) = 2-|a|
+
+whenever a  Geom(2)n and a  (N + 1)n for some n  N.
+
+In this paper, the only geometric random variables we will actually use are Geom(2)
+and Geom(4).
+
+We will then be guided by the following heuristic:
+
+Heuristic 1.8 (Valuation heuristic). If N is a "typical" large odd natural number,
+and n is much smaller than log N , then the n-Syracuse valuation a(n)(N ) behaves like
+Geom(2)n.
+
+We can make this heuristic precise as follows. Given two random variables X, Y taking
+
+values in the same discrete space R, we define the total variation dTV(X, Y) between
+the two variables to be the total variation of the difference in the probability measures,
+
+thus
+
+           dTV(X, Y) := |P(X = r) - P(Y = r)|.                          (1.9)
+
+           rR
+
+Note that
+
+   sup |P(X  E) - P(Y  E)|  dTV(X, Y)  2 sup |P(X  E) - P(Y  E)|. (1.10)
+
+   ER          ER
+
+For any finite non-empty set R, let Unif (R) denote a uniformly distributed random
+
+variable on R. Then we have the following result, proven in Section 4:
+
+Proposition 1.9 (Distribution of n-Syracuse valuation). Let n  N, and let N be a
+
+random variable taking values in 2N+1. Suppose there exist an absolute constant c0 > 0
+and some natural number n  (2+c0)n such that N mod 2n is approximately uniformly
+distributed in the odd residue classes (2Z + 1)/2n Z of Z/2 Z, in the sense that
+
+           dTV(N mod 2n , Unif ((2Z + 1)/2n Z)) 2-n .                   (1.11)
+
+Then
+
+           dTV(a(n)(N), Geom(2)n) 2-c1n                                 (1.12)
+
+for some absolute constant c1 > 0 (depending on c0). The implied constants in the
+asymptotic notation are also permitted to depend on c0.
+
+Informally, this proposition asserts that Heuristic 1.8 is justified whenever N is ex-
+pected to be uniformly distributed modulo 2n for some n slightly larger than 2n. The
+hypothesis (1.11) is somewhat stronger than what is actually needed for the conclusion
+(1.12) to hold, but this formulation of the implication will suffice for our applications.
+We will apply this proposition in Section 5, not to the original logarithmic distribution
+               COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                           7
+
+Log(2N + 1  [1, x]) (which has too heavy a tail near 1 for the hypothesis (1.11) to
+apply), but to the variant Log(2N + 1  [y, y]) for some large y and some  > 1 close
+
+to 1.
+
+Remark 1.10. Another standard way in the literature to justify Heuristic 1.8 is to
+consider the Syracuse dynamics on the 2-adic integers Z2 := lim-m Z/2mZ, or more
+precisely on the odd 2-adics 2Z2 + 1. As the 2-valuation 2 remains well defined on
+(almost all of) Z2, one can extend the Syracuse map Syr to a map on 2Z2 + 1. As is
+well known (see e.g., [14]), the Haar probability measure on 2Z2 + 1 is preserved by this
+map, and if Haar(2Z2 + 1) is a random element of 2Z2 + 1 drawn using this measure,
+then it is not difficult (basically using the 2-adic analogue of Lemma 2.1 below) to show
+that the random variables 2(3Syrj(Haar(2Z2 + 1)) + 1) for j  N are iid copies of
+Geom(2). However, we will not use this 2-adic formalism in this paper.
+
+In practice, the offset Fn(a) is fairly small (in an Archimedean sense) when n is not too
+large; indeed, from (1.5) we have
+
+                                    0  Fn(a)  3n2-an  3n                                        (1.13)
+
+for any n  N and a  (N + 1)n. For large N , we then conclude from (1.7) that we have
+the heuristic approximation
+
+                                        Syrn(N )  3n2-|a(n)(N)|N                                (1.14)
+and hence by Heuristic 1.8 we expect Syrn(N ) to behave statistically like
+
+          Syrn(N )  3n2-|Geom(2)n|N = N exp(n log 3 - |Geom(2)n| log 2)
+
+if n is much smaller than log N . One can view the sequence n  n log 3-|Geom(2)n| log 2
+
+as  a  simple  random  walk  on  R  with  negative  drift  log 3 - 2 log 2  =  log  3  .  From  the  law
+                                                                                    4
+
+of large numbers we expect to have
+
+                                    |Geom(2)n|  2n                                              (1.15)
+
+most of the time, thus we are led to the heuristic prediction
+
+                                    Syrn(N )  (3/4)nN                                           (1.16)
+
+for typical N ; indeed, from the central limit theorem or the Chernoff bound we in fact
+expect the refinement
+
+                             Syrn(N ) = exp(O(n1/2))(3/4)nN                                     (1.17)
+
+for "typical" N . In particular, we expect the Syracuse orbit N, Syr(N ), Syr2(N ), . . . to
+decay geometrically in time for typical N , which underlies the usual heuristic argument
+supporting the truth of Conjecture 1.1; see [16], [10] for further discussion. We remark
+that the multiplicative inaccuracy of exp(O(n1/2)) in (1.17) is the main reason why we
+work with logarithmic density instead of natural density in this paper (see also [11], [15]
+for a closely related "Benford's law" phenomenon).
+8                            TERENCE TAO
+
+1.3. Reduction to a stablisation property for first passage locations. Roughly
+speaking, Proposition 1.9 lets one obtain good control on the Syracuse iterates Syrn(N )
+
+for almost all N and for times n up to c log N for a small absolute constant c. This
+
+already can be used in conjunction with a rigorous version of (1.16) or (1.17) to recover
+the previously mentioned result Syrmin(N )  N 1-c for almost all N and some absolute
+constant c > 0; see Section 5 for details. In the language of evolutionary partial differ-
+
+ential equations, these type of results can be viewed as analogous to "almost sure local
+
+wellposedness" results, in which one has good short-time control on the evolution for
+
+almost all choices of initial condition N .
+
+In this analogy, Theorem 1.6 then corresponds to an "almost sure almost global well-
+posedness" result, where one needs to control the solution for times so large that the
+evolution gets arbitrary close to the bounded state N = O(1). To bootstrap from almost
+sure local wellposedness to almost sure almost global wellposedness, we were inspired by
+the work of Bourgain [4], who demonstrated an almost sure global wellposedness result
+for a certain nonlinear Schr¨odinger equation by combining local wellposedness theory
+with a construction of an invariant probability measure for the dynamics. Roughly
+speaking, the point was that the invariance of the measure would almost surely keep
+the solution in a "bounded" region of the state space for arbitrarily long times, allowing
+one to iterate the local wellposedness theory indefinitely.
+
+In our context, we do not expect to have any useful invariant probability measures for
+the dynamics due to the geometric decay (1.16) (and indeed Conjecture 1.5 would imply
+that the only invariant probability measure is the Dirac measure on {1}). Instead, we
+can construct a family of probability measures x which are approximately transported
+to each other by certain iterations of the Syracuse map (by a variable amount of time).
+More precisely, given a threshold x  1 and an odd natural number N  2N + 1, define
+the first passage time
+
+                                Tx(N ) := inf{n  N : Syrn(N )  x},
+
+with the convention that Tx(N ) := + if Syrn(N ) > x for all n. (Of course, if Conjec-
+ture 1.5 were true, this latter possibility could not occur, but we will not be assuming
+this conjecture in our arguments.) We then define the first passage location
+
+                                        Passx(N ) := SyrTx(N)(N )
+
+with the (somewhat arbitrary and artificial) convention that Syr(N ) := 1; thus
+Passx(N ) is the first location of the Syracuse orbit SyrN(N ) that falls inside [1, x],
+or 1 if no such location exists; if we ignore the latter possibility, then Passx can be
+viewed as a further acceleration of the Collatz and Syracuse maps. We will also need
+a constant  > 1 sufficiently close to one. The precise choice of this parameter is not
+critical, but for sake of concreteness we will set
+
+                              := 1.001.   (1.18)
+
+The key proposition is then
+
+Proposition 1.11 (Stabilisation of first passage). For each sufficiently large y, let Ny
+be a random variable with distribution Ny  Log(2N + 1  [y, y]) (note for sufficiently
+                         COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                     9
+
+large y that 2N + 1  [y, y] is non-empty). Then for sufficiently large x, we have the
+estimates
+
+                                       P(Tx(Ny) = +) x-c                                             (1.19)
+
+for y = x, x2, and also
+
+                               dTV(Passx(Nx), Passx(Nx2 )) log-c x                                   (1.20)
+
+for some absolute constant c > 0.
+
+Informally, this theorem asserts that the Syracuse orbits of Nx and Nx2 are almost
+indistinguishable from each other once they pass x, as long as one synchronises the
+orbits so that they simultaneously pass x for the first time. In Section 3 we shall see
+how Theorem 1.6 (and hence Theorem 1.3) follows from Proposition 1.11; basically the
+point is that (1.19), (1.20) imply that the first passage map Passx approximately maps
+the distribution x of Passx(Nx2 ) to the distribution x of Passx(Nx), and one can
+then iterate this to map almost all of the probabilistic mass of Ny for large y to be
+arbitrarily close to the bounded state N = O(1). The implication is very general and
+does not use any particular properties of the Syracuse map beyond (1.19), (1.20).
+
+The estimate (1.19) is easy to establish; it is (1.20) that is the most important and dif-
+ficult conclusion of Proposition 1.11. We remark that the bound of O(log-c x) in (1.20)
+is stronger than is needed for this argument; any bound of the form O((log log x)-1-c)
+would have sufficed. Conversely, it may be possible to improve the bound in (1.20)
+further, perhaps all the way to x-c.
+
+1.4. Fine-scale mixing of Syracuse random variables. It remains to establish
+
+Proposition 1.11. Since the constant  in (1.18) is close to 1, this proposition falls under
+
+the regime of a (refined) "local wellposedness" result, since from the heuristic (1.16) (or
+
+(1.17)) we expect the first passage time Tx(Ny) to be comparable to a small multiple of
+
+log Ny. Inspecting the iteration formula (1.7), the behaviour of the n-Syracuse valuation
+
+a(n)(Ny) for such times n is then well understood thanks to Proposition 1.9; the main
+
+remaining difficulty is to understand the behaviour of the n-Syracuse offset map Fn : (N+
+
+1)n     Z[   1  ],  and  more  specifically   to   analyse  the    distribution    of   the  random  variable
+             2
+Fn(Geom(2)n) mod 3k for various n, k, where by abuse of notation we use x  x mod 3k
+
+to  denote   the    unique   ring  homomorphism    from     Z[  1  ]  to  Z/3kZ  (which  in  particular  maps
+                                                                2
+                      3k +1
+1   to  the  inverse    2    mod   3k  of  2  mod  3k).  Indeed,      from  (1.7)  one  has
+2
+
+                                   Syrn(N ) = Fn(a(n)(N )) mod 3k
+
+whenever 0  k  n and N  2N + 1. Thus, if n, N, n , c0 obey the hypotheses of
+Proposition 1.9, one has
+
+                      dTV(Syrn(N) mod 3k, Fn(Geom(2)n) mod 3k) 2-c1n
+
+for all 0  k  n. If we now define the Syracuse random variables Syrac(Z/3nZ) for
+n  N to be random variables on the cyclic group Z/3nZ with the distribution
+
+                               Syrac(Z/3nZ)  Fn(Geom(2)n) mod 3n                                     (1.21)
+10                                         TERENCE TAO
+
+then from (1.5) we see that
+
+                          Syrac(Z/3nZ) mod 3k  Syrac(Z/3kZ)                                          (1.22)
+
+whenever k  n, and thus
+
+                  dTV(Syrn(N) mod 3k, Syrac(Z/3kZ)) 2-c1n.
+
+We thus see that the 3-adic distribution of the Syracuse orbit SyrN(N) is controlled
+(initially, at least) by the random variables Syrac(Z/3nZ). The distribution of these
+random variables can be computed explicitly for any given n via the following recursive
+
+formula:
+
+Lemma 1.12 (Recursive formula for Syracuse random variables). For any n  N and
+x  Z/3n+1Z, one has
+
+    P(Syrac(Z/3n+1Z) = x) =          1a2×3n:2ax=1 mod 3 2-aP    Syrac(Z/3nZ)               =  2ax-1     ,
+                                                                                                 3
+
+                                                            1 - 2-2×3n
+
+where  2ax-1  is  viewed  as  an  element  of  Z/3nZ.
+          3
+
+Proof. Let (a1, . . . , an+1)  Geom(2)n+1 be n + 1 iid copies of Geom(2). From (1.5)
+
+we have
+
+                          Fn+1(an+1, . . . , a1)  =  3Fn(an+1, . . . , a2)  +  1
+                                                                2a1
+
+and thus we have                                     3Syrac(Z/3nZ)
+                                                            2Geom(2)
+                          Syrac(Z/3n+1Z)                              +     1
+                                                                             ,
+
+where 3Syrac(Z/3nZ) is viewed as an element of Z/3n+1Z, and the random variables
+
+Syrac(Z/3nZ), Geom(2) on the right hand side are understood to be independent. We
+
+therefore have
+
+    P(Syrac(Z/3n+1Z) = x) =                2-aP      3Syrac(Z/3nZ) + 1 = x
+                                                                2a
+                                     aN+1
+
+                                  =                    2-aP     Syrac(Z/3nZ)         =     2ax -  1  .
+                                                                                               3
+                                     aN+1:2ax=1 mod 3
+
+By  Euler's   theorem,  the   quantity  2ax-1        Z/3nZ  is  periodic    in    a  with  period    2 × 3n.
+                                           3
+Splitting a into residue classes modulo 2 × 3n and using the geometric series formula,
+
+we obtain the claim.
+
+Thus for instance, we trivially have Syrac(Z/30Z) takes the value 0 mod 1 with prob-
+ability 1; then by the above lemma, Syrac(Z/3Z) takes the values 0, 1, 2 mod 3 with
+probabilities 0, 1/3, 2/3 respectively; another application of the above lemma then re-
+veals that Syrac(Z/32Z) takes the values 0, 1, . . . , 8 mod 9 with probabilities
+
+                                         8 16 11 4 2 22
+                                     0, , , 0, , , 0, ,
+
+                                         63 63 63 63 63 63
+
+respectively; and so forth. More generally, one can numerically compute the distribution
+of Syrac(Z/3nZ) exactly for small values of n, although the time and space required to
+do so increases exponentially with n.
+                  COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                               11
+
+Remark 1.13. One could view the Syracuse random variables Syrac(Z/3nZ) as pro-
+jections
+
+                          Syrac(Z/3nZ)  Syrac(Z3) mod 3n
+
+of a single random variable Syrac(Z3) taking values in the 3-adics Z3 := lim-n Z/3nZ
+(equipped with the usual metric d(x, y) := 3-3(x-y)), which can for instance be defined
+
+as
+
+                                      
+
+                      Syrac(Z3)            3 2j -a[1,j+1]
+
+                                      j=0
+
+                                = 2-a1 + 3 21 -a[1,2] + 3 22 -a[1,3] + . . .
+
+where a1, a2, . . . are iid copies of Geom(2); note that this series converges in Z3. One
+
+can view the distribution of Syrac(Z3) as the unique stationary measure for the discrete
+
+Markov  process4  on  Z3  that  maps  each  x    Z3  to    3x+1  for  each  a    N+1  with  transition
+                                                             2a
+probability 2-a (this fact is implicit in the proof of Lemma 1.12). However, we will not
+
+explicitly adopt the 3-adic perspective in this paper, preferring to work instead with
+
+the finite projections Syrac(Z/3nZ) of Syrac(Z3).
+
+While the Syracuse random variables Syrac(Z/3nZ) fail to be uniformly distributed on
+Z/3nZ, we can show that they do approach uniform distribution n   at fine scales
+(as measured in a 3-adic sense), and this turns out to be the key ingredient needed to
+
+establish Proposition 1.11. More precisely, we will show
+
+Proposition 1.14 (Fine scale mixing of n-Syracuse offsets). For all 1  m  n one
+
+has
+
+        Oscm,n (P(Syrac(Z/3nZ) = Y mod 3n))Y Z/3nZ A m-A                                    (1.23)
+
+for any fixed A > 0, where the oscillation Oscm,n(cY )Y Z/3nZ of a tuple of real numbers
+cY  R indexed by Z/3nZ at 3-adic scale 3-m is defined by
+
+        Oscm,n(cY )Y Z/3nZ :=              cY - 3m-n                             cY .       (1.24)
+
+                                Y Z/3nZ                    Y Z/3nZ:Y =Y mod 3m
+
+Informally, the above proposition asserts that the Syracuse random variable Syrac(Z/3nZ)
+is approximately uniformly distributed in "fine-scale" or "high-frequency" cosets Y +
+3mZ/3nZ, after conditioning to the event Syrac(Z/3nZ) = Y mod 3m. Indeed, one
+could write the left-hand side of (1.23) if desired as
+
+                    dTV(Syrac(Z/3nZ), Syrac(Z/3nZ) + Unif (3mZ/3nZ))
+
+where the random variables Syrac(Z/3nZ), Unif (3mZ/3nZ) are understood to be inde-
+pendent. In Section 5, we show how Proposition 1.11 (and hence Theorem 1.3) follows
+from Proposition 1.14 and Proposition 1.9.
+
+   4This Markov process may possibly be related to the 3-adic Markov process for the inverse Collatz
+map studied in [24]. See also a recent investigation of 3-adic irregularities of the Collatz iteration in
+[23].
+12                        TERENCE TAO
+
+Remark 1.15. One can heuristically justify this mixing property as follows. The geo-
+
+metric random variable Geom(2) can be computed to have a Shannon entropy of log 4;
+thus, by asymptotic equipartition, the random variable Geom(2)n is expected to behave
+like a uniform distribution on 4n+o(n) separate tuples in (N + 1)n. On the other hand,
+the range Z/3nZ of the map a  Fn(a) mod 3n only has cardinality 3n. While this map
+does have substantial irregularities at coarse 3-adic scales (for instance, it always avoids
+
+the multiples of 3), it is not expected to exhibit any such irregularity at fine scales, and
+so if one models this map by a random map from 4n+o(n) elements to Z/3nZ one is led
+to the estimate (1.23) (in fact this argument predicts a stronger bound of exp(-cm) for
+
+some c > 0, which we do not attempt to establish here).
+
+Remark 1.16. In order to upgrade logarithmic density to natural density in our results,
+
+it seems necessary to strengthen Proposition 1.14 by establishing a suitable fine scale
+
+mixing property of the entire random affine map AffGeom(2)n, as opposed to just the
+offset Fn(Geom(2)n). This looks plausibly attainable from the methods in this paper,
+but we do not pursue this question here.
+
+To prove Proposition 1.14, we use a partial convolution structure present in the n-
+Syracuse offset map, together with Plancherel's theorem, to reduce matters to estab-
+lishing a superpolynomial decay bound for the characteristic function (or Fourier coef-
+ficients) of a Syracuse random variable Syrac(Z/3nZ). More precisely, in Section 6 we
+derive Proposition 1.14 from
+
+Proposition 1.17 (Decay of characteristic function). Let n  1, and let   Z/3nZ be
+
+not divisible by 3. Then
+
+                          Ee-2iSyrac(Z/3nZ)/3n A n-A                     (1.25)
+
+for any fixed A > 0.
+
+A key point here is that the implied constant in (1.25) is uniform in n and , though as
+indicated we permit it to depend on A.
+
+Remark 1.18. In the converse direction, it is not difficult to use the triangle inequality
+to establish the inequality
+
+        |Ee-2iSyrac(Z/3nZ)/3n |  Oscn-1,n (P(Syrac(Z/3nZ) = Y mod 3n))Y Z/3nZ
+
+whenever  is not a multiple of 3 (so in particular the function x  e-2ix/3n has mean
+zero on cosets of 3n-1Z/3nZ). Thus Proposition 1.17 and Proposition 1.14 are in fact
+equivalent. One could also equivalently phrase Proposition 1.17 in terms of the decay
+properties of the characteristic function of Syrac(Z3) (which would be defined on the
+Pontryagin dual Z^3 = Q3/Z3 of Z3), but we will not do so here.
+
+The remaining task is to establish Proposition 1.17. This turns out to be the most
+difficult step in the argument, and is carried out in Section 7. From (1.5), (1.21) and
+reversing the order of the random variables a1, . . . , an, we can describe the distribution
+of the Syracuse random variable by the formula
+
+    Syrac(Z/3nZ)  2-a1 + 3 21 -a[1,2] + · · · + 3 2 n-1 -a[1,n] mod 3n,  (1.26)
+COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES  13
+
+with (a1, . . . , an)  Geom(2)n. If this random variable was the sum of independent ran-
+dom variables, then the characteristic function of Syrac(Z/3nZ) would factor as some-
+thing like a Riesz product of cosines, and its estimation would be straightforward. Unfor-
+
+tunately, the expression (1.26) does not obviously resolve into such a sum of independent
+random variables; however, by grouping adjacent terms 3 2 , 3 2 2j-2 -a[1,2j-1] 2j-1 -a[1,2j] in
+
+(1.26) into pairs, one can at least obtain a decomposition into the sum of independent
+expressions once one conditions on the sums bj := a2j-1 + a2j (which are iid copies of
+a Pascal distribution Pascal). This lets one express the characteristic functions as an
+
+average of products of cosines (times a phase), where the average is over trajectories of a
+certain random walk v1, v[1,2], v[1,3], . . . in Z2 with increments in the first quadrant that
+we call a two-dimensional renewal process. If we color certain elements of Z2 "white"
+when the associated cosines are small, and "black" otherwise, then the problem boils
+
+down to ensuring that this renewal process encounters a reasonably large number of
+
+white points (see Figure 3 in Section 7).
+
+From some elementary number theory, we will be able to describe the black regions of
+Z2 as a union of "triangles"  that are well separated from each other; again, see Figure
+3. As a consequence, whenever the renewal process passes through a black triangle, it
+will very likely also pass through at least one white point after it exits the triangle. This
+argument is adequate so long as the triangles are not too large in size; however, for very
+large triangles it does not produce a sufficient number of white points along the renewal
+process. However, it turns out that large triangles tend to be fairly well separated from
+each other (at least in the neighbourhood of even larger triangles), and this geometric
+observation allows one to close the argument.
+
+As with Proposition 1.14, it is possible that the bound in Proposition 1.17 could be
+improved, perhaps to as far as O(exp(-cn)) for some c > 0. However, we will not need
+or pursue such a bound here.
+
+The author is supported by NSF grant DMS-1764034 and by a Simons Investigator
+Award, and thanks Marek Biskup for useful discussions, and Ben Green, Matthias
+Hippold, Alex Kontorovich, Alexandre Patriota, Sankeerth Rao, Mary Rees, Lior Sil-
+berman, and several anonymous commenters on his blog for corrections and other com-
+ments. We are especially indebted to the anonymous referee for a careful reading and
+many useful suggestions.
+
+                                 2. Notation and preliminaries
+
+We use the asymptotic notation X Y , Y X, or X = O(Y ) to denote the bound
+|X|  CY for an absolute constant C. We also write X Y for X Y X. We
+also use c > 0 to denote various small constants that are allowed to vary from line to
+line, or even within the same line. If we need the implied constants to depend on other
+parameters, we will indicate this by subscripts unless explicitly stated otherwise, thus
+for instance X A Y denotes the estimate |X|  CAY for some CA depending on A.
+14                                  TERENCE TAO
+
+If E is a set, we use 1E to denote its indicator, thus 1E(n) equals 1 when n  E and 0
+otherwise. Similarly, if S is a statement, we define the indicator 1S to equal 1 when S
+is true and 0 otherwise, thus for instance 1E(n) = 1nE. If E, F are two events, we use
+E  F to denote their conjunction (the event that both E, F hold) and E to denote the
+complement of E (the event that E does not hold).
+
+The following alternate description of the n-Syracuse valuation a(n)(N ) (variants of
+which have frequently occurred in the literature on the Collatz conjecture, see e.g., [19])
+will be useful.
+
+Lemma 2.1 (Description of n-Syracuse valuation). Let N  2N + 1 and n  N. Then
+a(n)(N ) is the unique tuple a in (N + 1)n for which Affa(N )  2N + 1.
+
+Proof. It is clear from (1.7) that Affa(n)(N)  2N + 1. It remains to prove uniqueness.
+The claim is easy for n = 0, so suppose inductively that n  1 and that uniqueness has
+already been established for n - 1. Suppose that we have found a tuple a  (N + 1)n
+
+for which Affa(N ) is an odd integer. Then
+
+                       Affa(N )  =  Affan (Affa1,...,an-1 (N ))  =  3Affa1,...,an-1 (N )  +  1
+                                                                              2an
+
+and thus
+
+                                    2an Affa(N ) = 3Affa1,...,an-1 (N ) + 1.                    (2.1)
+
+This implies that 3Affa1,...,an-1(N ) is an odd natural number. But from (1.3), Affa1,...,an-1(N )
+
+also  lies  in  Z[  1  ].  The only way these claims can both be true is if Affa1,...,an-1(N ) is
+                    2
+also an odd natural number, and then by induction (a1, . . . , an-1) = a(n-1)(N ), which
+
+by (1.7) implies that
+
+                                    Affa1,...,an-1 (N ) = Syrn-1(N ).
+
+Inserting this into (2.1) and using the fact that Affa(N ) is odd, we obtain
+
+                                    an = 2(3SyrN-1(N ) + 1)
+
+and hence by (1.8) we have a = a(n) as required.
+
+We record the following concentration of measure bound of Chernoff type, which also
+
+bears some resemblance to a local limit theorem. We introduce the gaussian-type
+
+weights
+
+                                    Gn(x) := exp(-|x|2/n) + exp(-|x|)                           (2.2)
+
+for any n  0 and x  Rd for some d  1, where we adopt the convention that
+
+exp(-) = 0 (so that G0(x) = exp(-|x|)). Thus Gn(x) is comparable to 1 for
+x = O(n1/2), decays in a gaussian fashion in the regime n1/2  |x|  n, and decays
+
+exponentially for |x|  n.
+
+Lemma 2.2 (Chernoff type bound). Let d  N + 1, and let v be a random variable
+taking values in Zd obeying the exponential tail condition
+
+                                    P(|v|  ) exp(-c0)                                           (2.3)
+
+for all   0 and some c0 > 0. Assume the non-degeneracy condition that v is not
+almost surely concentrated on any coset of any proper subgroup of Zd. Let µ := Ev  Rd
+              COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                               15
+
+denote the mean of v. In this lemma all implied constants, as well as the constant c,
+
+can depend on d, c0, and the distribution of v. Let n  N, and let v1, . . . , vn be n iid
+copies of v. Following (1.6), we write v[1,n] := v1 + · · · + vn.
+
+(i) For any L  Zd, one has                   1
+                     P v[1,n] = L       (n + 1)d/2 Gn c L - nµ .
+
+(ii) For any   0, one has
+
+                     P |v[1,n] - nµ|   Gn(c).
+
+Thus, for instance for any n  N, we have
+
+              P (|Geom(2)n| = L)                       1     Gn(c(L  -   2n))
+                                                   n
+                                                       +  1
+
+for every L  Z, and
+
+                     P (||Geom(2)n| - 2n|  ) Gn(c).
+
+for any   0.
+
+Proof. We use the Fourier-analytic (and complex-analytic) method. We may assume
+
+that n is positive, since the claim is trivial for n = 0. We begin with (i). Let S denote
+the complex strip S := {z  C : |Re(z)| < c0}, then we can define the (complexified)
+moment generating function M : Sd  C by the formula
+
+                     M (z1, . . . , zd) := E exp((z1, . . . , zd) · v),
+
+where · is the usual bilinear dot product. From (2.3) and Morera's theorem one verifies
+that this is a well-defined holomorphic function of d complex variables on Sd, which is
+periodic with respect to the lattice (2iZ)d. By Fourier inversion, we have
+
+                                     1            M       it n exp  -it · L    dt.
+              P(v[1,n] = L) = (2)d
+                                           [-,]d
+
+By contour shifting, we then have
+
+                             1                            n
+
+P(v[1,n] = L) = (2)d                      M      it +        exp -(it + ) · L       dt
+
+                                   [-,]d
+
+whenever  = (1, . . . , d)  (-c0, c0)d. By the triangle inequality, we thus have
+
+              P(v[1,n] = L)                                            n
+
+                                           M it +  exp - · L dt.
+
+                                   [-,]d
+
+From Taylor expansion and the non-degeneracy condition we have
+
+                     M (z) = exp        z  ·  µ  +  1        +  O(|z|3)
+                                                     (z)
+                                                    2
+
+for all z  Sd sufficiently close to 0, where  is a positive definite quadratic form (the
+covariance matrix of v). From the non-degeneracy condition we also see that |M (it)| < 1
+16                                    TERENCE TAO
+
+whenever t  [-, ]d is not identically zero, hence by continuity |M (it + )|  1 - c
+whenever t  [-, ]d is bounded away from zero and  is sufficiently small. This
+implies the estimates
+
+                   |M (it + )|  exp  · µ - c|t|2 + O(||2)
+
+for all t  [-, ]d and all sufficiently small   Rd. Thus we have
+
+         P(v[1,n] = L)              exp - · (L - nµ) - cn|t|2 + O(n||2) dt
+
+                             [-,]d
+
+                           n-1/2 exp - · (L - nµ) + O(n||2) .
+
+If |L - nµ|  n, we can set  := c(L - nµ)/n for a sufficiently small c and obtain the
+claim; otherwise if |L - nµ| > n we set  := c(L - nµ)/|L - nµ| for a sufficiently small c
+and again obtain the claim. This gives (i), and the claim (ii) then follows from summing
+in L and applying the integral test.
+
+Remark 2.3. Informally, the above lemma asserts that as a crude first approximation
+
+we have                                                            
+                                                                O( n)}),
+                   v[1,n]      nµ  +  Unif ({k    Zd  :   k  =                            (2.4)
+
+and in particular
+
+                 |Geom(2)n|       Unif (Z    [2n  -             2n  +                     (2.5)
+                                                     O( n),            O( n)]),
+
+thus refining (1.15). The reader may wish to use this heuristic for subsequent arguments
+(for instance, in heuristically justifying (1.17)).
+
+                 3. Reduction to stabilisation of first passage
+
+In this section we show how Theorem 1.6 follows from Proposition 1.11. In fact we show
+that Proposition 1.11 implies a stronger claim5 :
+
+Theorem 3.1 (Alternate form of main theorem). For N0  2 and x  2, one has
+
+                        1                                 1        1
+                                                                logc N0
+                        log x  N 2N+1[1,x]:Syrmin(N )>N0  N
+
+or equivalently
+
+                                                                                 1
+               P(Syrmin(Log(2N + 1  [1, x]))  N0)  1 - O logc N0 .
+
+In particular, by (1.2), we have
+
+                 P(Colmin(Log(N + 1  [1, x]))  N0)  1 - O                 1
+                                                                       logc N0
+
+for all x  2.
+
+    5We thank the anonymous referee for suggesting this formulation of the main theorem.
+              COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                       17
+
+In other words, for N0  2, one has Syrmin(N )  N0 for all N in a set of odd natural
+                                            1  - O(log-c N0),
+numbers  of  (lower)  logarithmic  density  2                  and  one  also  has  Colmin(N )  
+
+N0 for all N in a set of positive natural numbers of (lower) logarithmic density 1 -
+
+O(log-c N0).
+
+Proof. We may assume that N0 is larger than any given absolute constant, since the
+claim is trivial for bounded N0. Let EN0  2N + 1 denote the set
+
+                              EN0 := {N  2N + 1 : Syrmin(N )  N0}
+
+of starting positions N of Syracuse orbits that reach N0 or below. Let  be defined
+by (1.18), let x  2, and let Ny be the random variables from Proposition 1.11. Let
+Bx = Bx,N0 denote the event that Tx(Nx) < + and Passx(Nx)  EN0. Informally,
+this is the event that the Syracuse orbit of Nx reaches x or below, and then reaches
+N0 or below. (For x < N0, the latter condition is automatic, while for x  N0, it is the
+former condition which is redundant.)
+
+Observe that if Tx(Nx2 ) < + and Passx(Nx2 )  EN0, then
+
+                      Tx (Nx2 )  Tx(Nx2 ) < +
+
+and
+
+                      SyrN(Passx(Nx2 ))  SyrN(Passx(Nx2 ))
+
+which implies that
+
+                       Syrmin(Passx(Nx2 ))  Syrmin(Passx(Nx2 ))  N0.
+
+In particular, the event Bx holds in this case. From this, (1.19), and (1.20), (1.10) we
+have
+
+                       P(Bx)  P(Passx(Nx2 )  EN0  Tx(Nx2 ) < +)
+                                 P(Passx(Nx2 )  EN0) - O(x-c)
+                                 P(Passx(Nx)  EN0) - O(log-c x)
+                                 P(Bx) - O(log-c x)
+
+whenever x is larger than a suitable absolute constant (note that the O(x-c) error can
+be absorbed into the O(log-c x) term). In fact the bound holds for all x  2, since the
+estimate is trivial for bounded values of x.
+
+Let J = J(x, N0) be the first natural number such that the quantity y := x-J is less
+than N01/. Since N0 is assumed to be large, we then have (by replacing x with yj-2 in
+the preceding estimate) that
+
+                              P(Byj-1 )  P(Byj-2 ) - O((j log y)-c)
+
+for all j = 1, . . . , J. The event By-1 occurs with probability 1 - O(y-c), thanks to
+(1.19) and the fact that Ny  y  N0. Summing the telescoping series, we conclude
+that
+
+                                      P(ByJ-1 )  1 - O(log-c y)
+18                                    TERENCE TAO
+
+(note that the O(y-c) error can be absorbed into the O(log-c y) term). By construction,
+y  N01/2 and yJ = x, so
+
+                                      P(Bx1/)  1 - O(log-c N0).
+
+If Bx1/ holds, then Passx1/(Nx) lies in the Syracuse orbit SyrN(Nx), and thus Syrmin(Nx) 
+Syrmin(Passx1/(Nx))  N0. We conclude that for any x  2, one has
+
+                                   P(Syrmin(Nx) > N0) log-c N0.
+
+By definition of Nx (and using the integral test to sum the harmonic series       N 2N+1[x,x]      1  ),
+                                                                                                   N
+
+we conclude that                                 1             1
+                                                 N          logc N0 log x
+                                                                                            (3.1)
+                  N 2N+1[x,x]:Syrmin(N )>N0
+
+for all x  2. Covering the interval 2N + 1  [1, x] by intervals of the form 2N + 1  [y, y]
+
+for various y, we obtain the claim.
+
+Now let f : 2N + 1  [0, +) be such that limN f (N ) = +. Set f~(x) :=
+infN2N+1:Nx f (N ), then f~(x)   as x  . Applying Theorem 3.1 with N0 := f~(x),
+
+we conclude that
+
+                                                  1             1
+                                                 N          logc f~(x) log x
+
+                  N 2N+1[1,x]:Syrmin(N )>f (N )
+
+for all sufficiently large x.  Since       1      goes  to  zero  as  x    ,  we  conclude  from
+                                      logc f~(x)
+
+telescoping series that the set {N  2N + 1 : Syrmin(N ) > f (N )} has zero logarithmic
+
+density, and Theorem 1.6 follows.
+
+                              4. 3-adic distribution of iterates
+
+In this section we establish Proposition 1.9. Let n, N, c0, n be as in that proposition; in
+particular, n  (2 + c0)n. In this section we allow implied constants in the asymptotic
+notation, as well as the constants c > 0, to depend on c0.
+
+We first need a tail bound on the size of the n-Syracuse valuation a(n)(N):
+Lemma 4.1 (Tail bound). We have
+
+                                       P(|a(n)(N)|  n ) 2-cn.
+
+Proof. Write a(n)(N) = (a1, . . . , an), then we may split
+
+                                                                              n-1
+
+                          P(|a(n)(N)|  n ) = P(a[1,k] < n  a[1,k+1])
+
+                                                                              k=0
+
+(using the summation convention (1.6)) and so it suffices to show that
+                                    P(a[1,k] < n  a[1,k+1]) 2-cn
+
+for each 0  k  n - 1.
+                 COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                   19
+
+From Lemma 2.1 and (1.3) we see that
+
+                                                      k+1
+
+                               3 2 N k+1 -a[1,k+1] +       3 2 k+1-i -a[i,k+1]
+
+                                                      i=1
+
+is an odd integer, and thus
+
+                                             k+1
+
+                                    3k+1N +           3 2 k+1-i a[1,i-1]
+
+                                             i=1
+
+is a multiple of 2 . a[1,k+1] In particular, when the event a[1,k] < n  a[1,k+1] holds, one
+
+has
+
+                                    k+1
+
+                        3k+1N +            3 2 k+1-i a[1,i-1] = 0 mod 2n .
+
+                                                                i=1
+
+Thus, if one conditions to the event aj = aj, j = 1, . . . , k for some positive inte-
+gers a1, . . . , ak, then N is constrained to a single residue class b mod 2n depending
+on a1, . . . , ak (because 3k+1 is invertible in the ring Z/2n Z). From (1.11), (1.9) we have
+the quite crude estimate
+
+                                       P(N = b mod 2n ) 2-n
+
+and hence
+
+                        P(a[1,k]  n < a[1,k+1])                             2-n .
+
+                                                      a1 ,...,ak N+1:a[1,k] <n
+
+The tuples (a1, . . . , ak) in the above sum are in one-to-one correspondence with the k-
+
+element subsets {a1, a[1,2], . . . , a[1,k]} of {1, . . . , n -1}, and hence have cardinality  n -1  ,
+                                                                                                 k
+
+thus
+
+                        P(a[1,k] < n  a[1,k+1])            2-n  n -1
+                                                                         .
+                                                                          k
+
+Since k  n - 1 and n  (2 + c0)n, the right-hand side is O(2-cn) by Stirling's formula
+
+(one can also use the Chernoff inequality for the sum of n -1 Bernoulli random variables
+
+Ber(  1  ),  or  Lemma  2.2).  The  claim  follows.
+      2
+
+From Lemma 2.2 we also have
+                                     P(|Geom(2)n|  n ) 2-cn.
+
+From (1.9) and the triangle inequality we therefore have
+
+dTV(a(n)(N), Geom(2)n) =                      |P(a(n)(N) = a)-P(Geom(2)n = a)|+O(2-cn).
+
+                               a(N+1)n:|a|<m
+
+From Definition 1.7 we have
+
+                                    P(Geom(2)n = a) = 2-|a|
+
+so it remains to show that                                                      2-cn.          (4.1)
+
+                                            |P(a(n)(N) = a) - 2-|a||
+
+                                         a(N+1)n:|a|<m
+20                      TERENCE TAO
+
+By Lemma 2.1, the event a(n)(N) = a occurs precisely when Affa(N) is an odd integer,
+which by (1.3) we may write (for a = (a1, . . . , an)) as
+
+                3n2-a[1,n] N + 3 2 n-1 -a[1,n] + 3 2 n-2 -a[2,n] + · · · + 2-an  2N + 1.
+
+Equivalently one has
+
+    3nN = -3n-1 - 3n-22a1 - · · · - 2a[1,n-1] + 2|a| mod 2|a|+1.
+
+This constrains N to a single odd residue class modulo 2|a|+1. For |a| < n , the proba-
+bility of falling in this class can be computed using (1.11), (1.9) as 2-|a| + O(2-n ). The
+left-hand side of (4.1) is then bounded by
+
+                      2-n #{a  (N + 1)n : |a| < n } = 2-n  n -1
+                                                                    .
+
+                                                             n
+
+The claim now follows from Stirling's formula (or Chernoff's inequality), as in the proof
+of Lemma 4.1. This completes the proof of Proposition 1.9.
+
+    5. Reduction to fine scale mixing of the n-Syracuse offset map
+
+We are now ready to derive Proposition 1.11 (and thus Theorem 1.3) assuming Propo-
+sition 1.14. Let x be sufficiently large. We take y to be either x or x2. From the
+
+heuristic (1.16) (or (1.17)) we expect the first passage time Passx(Ny) to be roughly
+
+                        Passx (Ny )    log Ny/x
+                                       log(4/3)
+
+with high probability. Now introduce the quantities
+
+                                   log x                               (5.1)
+                        n0 := 10 log 2
+
+(so that 2n0 x0.1) and
+
+                        m0 :=  -1
+                                     log x .                           (5.2)
+                               100
+
+Since the random variable Ny takes values in [y, y], we see from (1.18) that we would
+expect the bounds
+
+                        m0  Tx(Ny)  n0                                 (5.3)
+
+to hold with high probability. We will use these parameters m0, n0 to help control the
+distribution of Tx(Ny) and Passx(Ny) in order to prove (1.19), (1.20).
+
+We begin with the proof of (1.19). Let n0 be defined by (5.1). Since Ny  Log(2N +
+1  [y, y]), a routine application of the integral test reveals that
+
+    dTV(Ny mod 23n0, Unif ((2Z + 1)/23n0Z)) 2-3n0
+
+(with plenty of room to spare), hence by Proposition 1.9
+
+                        dTV(a(n0)(Ny), Geom(2)n0) 2-cn0.               (5.4)
+
+In particular, by (1.10) and Lemma 2.2 we have
+
+    P(|a(n0)(Ny)|  1.9n0)  P(|Geom(2)n0|  1.9n0) + O(2-cn0) 2-cn0 x-c (5.5)
+COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                                         21
+
+Figure 1. The Syracuse orbit n  Syrn(Ny), where the vertical axis is
+
+drawn in shifted log-scale. The diagonal lines have slope - log(4/3). For
+
+times n up to n0, the orbit usually stays close to the dashed line, and
+
+hence usually lies between the two dotted diagonal lines; in particular,
+
+the first passage time Tx(Ny) will usually lie in the interval Iy. Outside
+of a rare exceptional event, for any given n  Iy, Syrn-m(Ny) will lie in
+E if and only if n = Tx(Ny) and Syrn(Ny) lies in E; equivalently, outside
+of a rare exceptional event, Passx(Ny) lies in E if and only if Syrn-m(Ny)
+
+lies in E for precisely one n  Iy.
+
+(recall we allow c to vary even within the same line). On the other hand, from (1.7),
+(1.5) we have
+
+Syrn0 (Ny )    3 2 N n0 -|a(n0)(Ny)|             +  O(3n0 )    3 2 x n0 -|a(n0)(Ny)| 3  +  O(3n0 )
+                                              y
+
+and hence if |a(n0)(Ny)| > 1.9n then
+
+                                Syrn0 (Ny) 3n0 2-1.9n0 x3 + O(3n0 ).
+
+From (5.1), (1.18) and a brief calculation, the right-hand side is O(x0.99) (say). In
+particular, for x large enough, we have
+
+               Syrn0(Ny)  x,
+
+and hence Tx(Ny)  n0 < + whenever |a(n0)(Ny)| > 1.9n0 (cf., the upper bound in
+(5.3)). The claim (1.19) now follows from (5.5).
+
+Remark 5.1. This argument already establishes that Syrmin(N )  N  for almost all
+N for any  > 1/; by optimising the numerical exponents in this argument one can
+eventually recover the results of Korec [9] mentioned in the introduction. It also shows
+that most odd numbers do not lie in a periodic Syracuse orbit, or more precisely that
+
+             P(Syrn(Ny) = Ny for some n  N + 1) x-c.
+22                                  TERENCE TAO
+
+Indeed, the above arguments show that outside of an event of probability x-c, one has
+
+Syrm(Ny)  x for some m  n0, which we can assume to be minimal amongst all such
+m. If Syrn(Ny) = Ny for some n, we then have
+
+                                  Ny = Syrn(M)-m(M)                               (5.6)
+
+for M := Syrm(Ny)  [1, x] that generates a periodic Syracuse orbit with period n(M).
+(This period n(M) could be extremely large, and the periodic orbit could attain values
+much larger than x or y, but we will not need any upper bounds on the period in our
+arguments, other than that it is finite.) The number of possible pairs (M, m) obtained
+in this fashion is O(xn0). By (5.6), the pair (M, m) uniquely determines Ny. Thus,
+outside of the aforementioned event, a periodic orbit is only possible for at most O(xn0)
+possible values of Ny; as this is much smaller than y, we thus see that a periodic orbit
+is only attained with probability O(x-c), giving the claim. It is then a routine matter
+to then deduce that almost all positive integers do not lie in a periodic Collatz orbit;
+we leave the details to the interested reader.
+
+Now we establish (1.20). By (1.10), it suffices to show that for E  2N + 1  [1, x], that
+
+    P(Passx(Ny)  E) = 1 + O(log-c x) Q + O(log-c x)                               (5.7)
+
+for some quantity Q that can depend on x, , E but is independent of whether y is
+equal to x or x2 (note that this bound automatically forces Q = O(1) when x is large,
+so the first error term O(log-c x)Q on the right-hand side may be absorbed into the
+second term O(log-c x)). The strategy is to manipulate the left-hand side of (5.7) into
+an expression that involves the Syracuse random variables Syrac(Z/3nZ) for various n
+
+(in a range Iy depending on y) plus a small error, and then appeal to Proposition 1.14
+to remove the dependence on n and hence on y in the main term. The main difficulty
+
+is that the first passage location Passx(Ny) involves a first passage time n = Tx(Ny)
+whose value is not known in advance; but by stepping back in time by a fixed number of
+
+steps m0, we will be able to express the left-hand side of (5.7) (up to negligible errors)
+without having to explicitly refer to the first passage time.
+
+The first step is to establish the following approximate formula for the left-hand side of
+(5.7).
+
+Proposition 5.2 (Approximate formula). Let E  2N + 1  [1, x] and y = x, x2.
+Then we have
+
+    P(Passx(Ny)  E) =                              P(Affa(Ny) = M ) + O(log-c x)  (5.8)
+
+                          nIy aA(n-m0) M E
+
+where Iy is the interval
+
+    Iy :=                 log(y/x)  +  log0.8  x,  log(y/x)  -  log0.8  x  ,      (5.9)
+
+                          log  4                   log  4
+                               3                        3
+
+E is the set of odd natural numbers M  2N+1 such that Tx(M ) = m0 and Passx(M ) 
+E with
+
+    exp(- log0.7 x)(4/3)m0x  M  exp(log0.7 x)(4/3)m0x.                            (5.10)
+               COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                          23
+
+and for any natural number n , A(n )  (N+1)n denotes the set of all tuples (a1, . . . , an ) 
+
+(N + 1)n such that
+
+                    |a[1,n] - 2n| < log0.6 x                                    (5.11)
+
+for all 0  n  n .
+
+A key point in this formula (5.8) is that the right-hand side does not involve the passage
+
+time Tx(Ny) or the first passage location Passx(Ny), and the dependence on whether
+y is equal to x or x2 is confined to the range Iy of the summation variable n, as
+well as the input Ny of the affine map Affa. (In particular, note that the set E does
+not depend on y.) We also observe from (5.9), (5.1), (5.2) that Iy  [m0, n0], which is
+consistent with the heuristic (5.3).
+
+Proof. Fix E, and write a(n0)(Ny) = (a1, . . . , an0). From (5.4), (1.10), and Lemma 2.2
+we see that for every 0  n  n0, one has
+
+                           P(|a[1,n] - 2n|  log0.6 x) exp(-c log0.2 x).
+
+Hence, if A(n0) is the set defined in the proposition, we see from the union bound that
+
+                    P(a(n0)(Ny)  A(n0)) log-10 x                                (5.12)
+
+(say); this can be viewed as a rigorous analogue of the heuristic (2.5). Hence
+
+P(Passx(Ny)  E) = P(Passx(Ny)  E  a(n0)(Ny)  A(n0)) + O(log-c x).
+
+Suppose that a(n0)(Ny)  A(n0). For any 0  n  n0, we have from (1.7), (1.13) that
+                                  Syrn(Ny) = 3 2n -a[1,n] Ny + O(3n0 )
+
+and hence by (5.11), (5.1) and some calculation
+
+                    Syrn(Ny) = (1 + O(x-0.1))3n2-a[1,n] Ny.                     (5.13)
+
+In particular, from (5.11) one has
+
+                    Syrn(Ny) = exp(O(log0.6 x))(3/4)nNy                         (5.14)
+
+for all 0  n  n0, which can be viewed as a rigorous version of the heuristic (1.17).
+With regards to Figure 1, (5.14) asserts that the Syracuse orbit stays close to the dashed
+line.
+
+As Tx(Ny) is the first time n for which Syrn(Ny)  x, the estimate (5.14) gives an
+
+approximation
+
+                    Tx (Ny )        =  log(Ny/x)  +  O(log0.6 x);               (5.15)
+
+                                       log  4
+                                            3
+
+note from (5.1), (1.18) and a brief calculation that the right-hand side automatically
+
+lies between 0 and n0 if x is large enough. In particular, if Iy is the interval (5.9), then
+
+(5.14) will imply that Tx(Ny)  Iy whenever
+
+                    Ny  [y + 2 log0.8 x, y - 2 log0.8 x];
+
+a straightforward calculation using the integral test (and (5.12)) then shows that
+
+                    P(Tx(Ny)  Iy) = 1 - O(log-c x).                             (5.16)
+24                   TERENCE TAO
+
+Again, see Figure 1. Note from (5.1), (5.2) that Iy  [m0, n0]; compare with (5.3).
+
+Now suppose that n is an element of Iy. In particular, n  m0. We observe the following
+implications:
+
+    · If Tx(Ny) = n, then certainly Tx(Syrn-m0(Ny)) = m0.
+    · Conversely, if Tx(Syrn-m0(Ny)) = m0 and a(n0)(Ny)  A(n0), we have Syrn(Ny) 
+
+      x < Syrn-1(Ny), which by (5.14) forces
+
+               n  =  log(Ny/x)            +  O(log0.6   x),
+
+                     log  4
+                          3
+
+    which by (5.15), (5.2) implies that Tx(Ny)  n - m0, and hence
+
+               Tx(Ny) = n - m0 + Tx(Syrn-m0(Ny)) = n.
+
+We conclude that for any n  Iy, the event
+                    (Tx(Ny) = n)  (Passx(Ny)  E)  a(n0)(Ny)  A(n0)
+
+holds precisely when the event
+ Bn,y := Tx(Syrn-m0(Ny)) = m0  Passx(Syrn-m0(Ny))  E  a(n0)(Ny)  A(n0)
+
+does. From (5.16) we therefore have the estimate
+                          P(Passx(Ny)  E) = P(Bn,y) + O(log-c x).
+
+                                                                                nIy
+
+With E the set defined in the proposition, we observe the following implications:
+
+    · If Bn,y occurs, then from (5.14), (5.15) we have
+
+    Syrn-m0(Ny) = exp(O(log0.6 x))(3/4)Tx(Ny)-m0Ny = exp(O(log0.6 x))(4/3)m0x
+
+    and hence
+
+               Syrn-m0 (Ny)  E  a(n0)(Ny)  A(n0) .                 (5.17)
+
+    · Conversely, if (5.17) holds, then from (5.14) we have
+
+Syrn (Ny) = exp(O(log0.6 x))(4/3)n-m0-n Syrn-m0(Ny)  exp(O(log0.6 x))Syrn-m0(Ny)
+
+    for all 0  n  n - m0, and hence by (5.10)
+
+                     Syrn (Ny) > x
+
+    for all 0  n  n - m0. We conclude that
+                   Passx(Ny) = n - m0 + Passx(Syrn-m0(Ny)) = n
+
+    thanks to the definition of E , and hence also
+
+               Tx(Ny) = Tx(Syrn-m0(Ny))  E.
+
+    In particular, the event Bn,y holds.
+          COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                          25
+
+We conclude that we have the equality of events
+
+                        Bn,y = Syrn-m0 (Ny)  E  a(n0)(Ny)  A(n0)
+
+for any n  Iy. Since the event a(n0)(Ny)  A(n0) is contained in the event a(n-m0)(Ny) 
+A(n-m0), we conclude from (5.12) that
+
+P(Passx(Ny)  E) = P Syrn-m0(Ny)  E  a(n-m0)(Ny)  A(n-m0) +O(log-c x).
+
+                                         nIy
+
+Suppose that a = (a1, . . . , an-m) is a tuple in A(n-m), and M  E . From Lemma
+2.1, we see that the event Syrn-m0(Ny) = M  a(n-m0)(Ny) = a holds if and only if
+
+Affa(Ny)  E , and the claim (5.8) follows.
+
+Now we compute the right-hand side of (5.8). Let n  Iy, a  A(n-m0), and M  E .
+Then by (1.3), the event Affa(Ny) = M is only non-empty when
+
+          M = Fn-m0 (a) mod 3n-m0                                                              (5.18)
+
+Conversely, if (5.18) holds, then Affa(Ny) = M holds precisely when
+
+          Ny                  =  2|a| M         - Fn-m0(a) .                                   (5.19)
+                                                 3n-m0
+
+Note from (5.11), (1.13) that the right-hand side of (5.19) is equal to
+
+                                   2 M 2(n-m0)+O(log0.6 x) + O(3n-m0 )
+                                                               3n-m0
+
+which by (5.10), (5.1) simplifies to
+
+          exp(O(log0.7 x))(4/3)nx.
+
+Since n  Iy, we conclude from (5.9) that the right-hand side of (5.19) lies in [y, y];
+
+from (5.18), (1.5) we also see that this right-hand side is a odd integer. Since Ny 
+Log(2N + 1  [y, y]) and
+
+                              1  = 1+O                  1          -1
+                                                                          log y,
+          N 2N+1[y,y]         N                         x
+                                                                     2
+
+we thus see that when (5.18) occurs, one has
+
+          P(Affa(Ny) = M ) =                    1                  2-|a|      3n-m0
+                                                                                            .
+                              1  +       O(  1  )  -1   log     y         M
+                                             x       2                       - Fn-m0(a)
+
+From (5.10), (5.1), (1.13) we can write
+
+          M - Fn-m0(a) = M - O(3n0) = (1 + O(x-c))M
+
+and thus
+
+          P(Affa(Ny) = M ) =                 1 + O(x-c) 2-|a|3n-m0
+                                                                           .
+                                                   -1   log  y     M
+                                                     2
+26                                          TERENCE TAO
+
+We conclude that
+
+P(Passx(Ny)     E)   =   1 + O(x-c)          3n-m0                2-|a|                                 1
+                                                                                                        M
+                         -1     log  y  nIy         aA(n-m0 )            M E   :M =Fn-m0 (a) mod 3n-m0
+                           2
+
+                        + O(log-c x).
+
+We will eventually establish the estimate
+
+       3n-m0             2-|a|                                    1 = Z + O(log-c x)          (5.20)
+                                                                  M                           (5.21)
+              aA(n-m0 )         M E :M =Fn-m0 (a) mod 3n-m0
+
+for all n  Iy, where Z is the quantity
+
+                  Z :=            3m0 P(M       =  Syrac(Z/3m0 Z)        mod   3m0 )
+                                                                                     .
+                                                        M
+                         M E
+
+Since from (5.9) we have
+
+                           #Iy       =  (1  +  O(log-c  x))  -1      log   y,
+
+                                                             log  4
+                                                                  3
+
+we see that (5.20) would imply the bound
+
+              P(Passx(Ny)         E)    =   (1  +  O(log-c        2  4  Z  +   O(log-c  x)
+                                                            x))      3
+
+                                                                log
+
+which would give the desired estimate (5.7) since Z does not depend on whether y is
+equal to x or x2.
+
+It remains to establish (5.20). Fix n  Iy. The left-hand side of (5.20) may be written
+as
+
+              E1(a1,...,an-m0 )A(n-m0) cn(Fn-m0 (a1, . . . , an-m0 ) mod 3n-m0 )              (5.22)
+
+where (a1, . . . , an-m0)  Geom(2)n-m0 and cn : Z/3n-m0Z  R+ is the function
+
+                         cn(X) := 3n-m0                                    1                  (5.23)
+                                                                              .
+                                                M E :M =X mod 3n-m0
+                                                                           M
+
+We have a basic estimate:
+
+Lemma 5.3. We have cn(X) 1 for all n  Iy and X  Z/3n-m0Z.
+
+Proof. We can split
+
+                          cn(X)                           cn,a1,...,am0 (X )
+
+                                        (a1,...,am0 )Nm0
+
+where                                                                                   1
+                                                                                           .
+       cn,a1,...,am0 (X ) := 3n-m0
+                                                                                        M
+                                        M E :M =X mod 3n-m0 ;(a1,...,am0 ):=a(m0)(M )
+
+We now estimate cn,a1,...,am0 (X) for a given (a1, . . . , am0)  Nm0. If M  E , then on
+setting (a1, . . . , am0) := a(m0)(M ) we see from (1.7) that
+
+    3 2 M m0 -a[1,m0] + Fm0 (a1, . . . , am0 )  x < 3 2 M m0 -a[1,m0-1] + Fm0-1(a1, . . . , am0-1)
+                        COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                 27
+
+which by (5.2) and (1.13) implies that                3 2 M m0 -a[1,m0-1]
+                                3 2 M m0 -a[1,m0]  x
+
+or equivalently
+
+                          3 2 x -m0 a[1,m0-1]         M  3-m0 2a[1,m0] x.                    (5.24)
+
+Also, from (1.7) we also have that
+
+                    3m0 M + 2a[1,m0] Fm0 (a1, . . . , am0 ) = 2a[1,m0] mod 2a[1,m0]+1
+
+and so M is constrained to a single residue class modulo 2 . a[1,m0]+1 In (5.23) we are also
+constraining M to a single residue class modulo 3n-m0; by the Chinese remainder theo-
+rem, these constraints can be combined into a single residue class modulo 2 3 a[1,m0]+1 n-m0.
+
+Note from the integral test that
+
+                                         11                                    1
+                                            +
+                                         M     M0                                M
+
+                 M0M M1:M =a mod q                    M0+qM M1:M =a mod q
+
+                                                1 1 M1 dt                                    (5.25)
+                                            +
+
+                                               M0 q M0 t
+
+                                            = 1 + 1 log M1
+                                               M0 q M0
+
+for any M0  M1 and any residue class a mod q. In particular, for q  M0, we have
+
+                                                 1    1                 M1  .                (5.26)
+                                                M       log O
+                                                      q                 M0
+                        M0M M1:M =a mod q
+
+If 2a[1,m0]  x0.5 (say), then the modulus 2 3 a[1,m0]+1 n-m0 is much less than the lower
+bound on M in (5.24), and we can then use the integral test to bound
+
+      cn,a1,...,am0 (X )  3n-m0 (2a[1,m0]+13n-m0 )-1 log O               3 2 x -m0 a[1,m0]
+                                                                        3 2 x -m0 a[1,m0-1]
+                          2 a -a[1,m0] m0
+                          2 . -a[1,m0]/2
+
+Now suppose instead that 2a[1,m0] > x0.5, we recall from (1.7) that
+
+                 am0 = 2 3(3m0 2-a[1,m0-1] M + Fm0-1(a1, . . . , am0-1)) + 1
+
+so
+
+      2am0              3 2 M m0 -a[1,m0-1] + Fm0-1(a1, . . . , am0-1)  3 2 M m0 -a[1,m0-1]
+
+(using (1.13), (5.24) to handle the lower order term). Hence we we have the additional
+
+lower bound
+
+                                         M     3 2 . -m0 a[1,m0]
+
+Applying (5.25) with M0 equal to the larger of the two lower bounds on M , we conclude
+
+that
+
+    cn,a1,...,am0 (X )     3n-m0         + 3n-m0 (2a[1,m0]+13n-m0 )-1 log O     3 2 x -m0 a[1,m0]
+                        3 2 -m0 a[1,m0]                                        3 2 x -m0 a[1,m0-1]
+
+                        3 2 + 2 a n -a[1,m0]
+                                         -a[1,m0] m0
+
+                        2-a[1,m0]/2
+28                                     TERENCE TAO
+
+since 2-a[1,m0]  x 2 -1/4 -a[1,m0]/2  3 2 -n -a[1,m0]/2 for n  Iy. Thus we have
+
+                              cn (X )                   2-a[1,m0]/2
+
+                                       a1,...,am0 N
+
+and the claim follows from summing the geometric series.
+
+From the above lemma and (5.12), we may write (5.22) as
+                      Ecn(Fn-m0(a1, . . . , an-m0) mod 3n-m0) + O(log-c x)
+
+which by (1.21) is equal to
+
+                                 cn(X)P(Syrac(Z/3n-m0Z) = X) + O(log-c x).
+
+                            XZ/3n-m0 Z
+
+From (5.9), (5.2) we have n - m0  m0. Applying Proposition 1.14, Lemma 5.3 and
+the triangle inequality, one can thus write the preceding expression as
+
+                        cn(X)32m0-nP(Syrac(Z/3m0Z) = X mod 3m0) + O(log-c x)
+
+                XZ/3n-m0 Z
+
+and the claim (5.20) then follows from (5.23).
+
+            6. Reduction to Fourier decay bound
+
+In this section we derive Proposition 1.14 from Proposition 1.17. We first observe that
+to prove Proposition 1.14, it suffices to do so in the regime
+
+                                       0.9n  m  n.                                              (6.1)
+
+(The  main  significance  of  the  constant  0.9  here  is  that  it  lies  between   log 3     0.7925
+                                                                                     2 log 2
+
+and 1.) Indeed, once one has (1.23) in this regime, one also has from (1.22) that
+
+           3n-n P(Syrac(Z/3nZ) = Y mod 3n) - 3m-n P(Syrac(Z/3nZ) = Y mod 3m) A m-A
+
+Y Z/3n Z
+
+whenever 0.9n  m  n  n , and the claim (1.23) for general 10  m  n then follows
+from telescoping series, with the remaining cases 1  m < 10 following trivially from
+the triangle inequality.
+
+Henceforth we assume (6.1). We also fix A > 0, and let CA be a constant that is
+sufficiently large depending on A. We may assume that n (and hence m) are sufficiently
+large depending on A, CA, since the claim is trivial otherwise.
+
+Let (a1, . . . , an)  Geom(2)n, and define the random variable
+                       Xn := 2-a1 + 3 21 -a[1,2] + · · · + 3 2 n-1 -a[1,n] mod 3n,
+
+thus Xn  Syrac(Z/3nZ). The strategy will be to split Xn (after some conditioning
+and removal of exceptional events) as the sum of two independent components, one of
+which has quite large entropy (or more precisely, Renyi 2-entropy) in Z/3nZ thanks to
+some elementary number theory, and the other having very small Fourier coefficients at
+                COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                      29
+
+high frequencies thanks to Proposition 1.17. The desired bound will then follow from
+some L2-based Fourier analysis (i.e., Plancherel's theorem).
+
+We turn to the details. Let E denote the event that the inequalities
+
+                    |a[i,j] - 2(j - i)|  CA( (j - i)(log n) + log n)                             (6.2)
+
+hold for every 1  i  j  n. The event E occurs with nearly full probability;
+indeed, from Lemma 2.2 and the union bound, we can bound the probability of the
+complementary event E by
+
+                P(E)                      Gj-i(cCA( (j - i)(log n) + log n))
+
+                               1ijn
+
+                                        exp(-cCA log n) + exp(-cCA log n)                        (6.3)
+
+                               1ijn
+
+                               n2n-cCA
+                               n-A-1
+
+if CA is large enough. By the triangle inequality, we may then bound the left-hand side
+of (1.23) by
+
+                         Oscm,n (P((Xn = Y )  E))Y Z/3nZ + O(n-A-1),
+so it now suffices to show that
+
+                          Oscm,n (P((Xn = Y )  E))Y Z/3nZ A,CA n-A.
+
+Now suppose that E holds. From (6.2) we have
+
+                a[1,n]  2(n - 1) - CA(                                              log 3
+                                                          n log n + log n) > n
+                                                                                   log 2
+
+since    log 3  < 2 and n  is  large.  Thus, there is a well defined          stopping     time  0  k < n,
+         log 2
+
+defined as the unique natural number k for which
+
+                               a[1,k]       log  3  -  (CA)2  log  n  <  a[1,k+1].
+                                          n      2
+
+                                            log
+
+From (6.2) we have
+
+                               k       =  n  log 3     +  O(CA     n log n).
+                                            2
+                                               log  2
+
+It thus suffices by the union bound to show that
+
+                Oscm,n (P((Xn = Y )  E  Bk))Y Z/3nZ A,CA n-A-1                                   (6.4)
+                                                                                                 (6.5)
+for all                                      log 3                                               (6.6)
+
+                               k       =  n    log  2  +  O(CA     n log n),
+                                            2
+
+where Bk is the event that k = k, or equivalently that
+
+                               a[1,k]       log  3  -  (CA)2  log  n  <  a[1,k+1].
+                                          n      2
+
+                                            log
+
+Fix k. In order to decouple the events involved in (6.4) we need to enlarge the event E
+slightly, so that it only depends on a1, . . . , ak+1 and not on ak+2, . . . , an. Let Ek denote
+the event that the inequalities (6.2) hold for 1  i < j  k + 1, thus Ek contains E.
+30                                          TERENCE TAO
+
+Then the difference between E and Ek has probability O(n-A-1) by (6.3). Thus by the
+triangle inequality, the estimate (6.4) is equivalent to
+
+          Oscm,n (P((Xn = Y )  Ek  Bk))Y Z/3nZ A,CA n-A-1.
+
+From (6.6) and (6.2) we see that we have
+
+            log    3  -      (CA)2  log  n       a[1,k+1]           log  3  -  1  (CA  )2  log  n.    (6.7)
+          n        2                                              n      2     2
+
+            log                                                     log
+
+whenever one is in the event Ek  Bk. By a further application of the triangle inequality,
+it suffices to show that
+
+                 Oscm,n (P((Xn = Y )  Ek  Bk  Ck,l))Y Z/3nZ                           A,CA n-A-2
+for all l in the range
+
+                     log  3  -  (CA)2    log  n    l         log  3  -      1  (CA)2  log  n,         (6.8)
+                   n      2                                n      2         2
+
+                     log                                     log
+
+where Ck,l is the event that a[1,k+1] = l.
+
+Fix l. If we let g = gn,k,l : Z/3nZ  R denote the function                                            (6.9)
+                        g(Y ) = gn,k,l(Y ) := P((Xn = Y )  Ek  Bk  Ck,l)
+
+then our task can be written as
+
+                   g(Y ) -        1                                      g(Y )        A,CA n-A-2.
+
+          Y Z/3nZ               3n-m     Y Z/3nZ:Y =Y mod 3m
+
+By Cauchy-Schwarz, it suffices to show that
+
+                                                                               2
+
+      3n                       1                                  g(Y )           A,CA n-2A-4.        (6.10)
+                   g(Y ) -
+                             3n-m
+          Y Z/3nZ                    Y Z/3nZ:Y =Y mod 3m
+
+By the Fourier inversion formula, we have
+
+                                                                                  
+
+          g(Y ) = 3-n                                 g(Y )e-2iY /3n  e2iY /3n
+
+                                Z/3nZ Y Z/3nZ
+
+and
+
+                                                                                                    
+
+  1                          g(Y ) = 3-n                                          g(Y )e-2iY /3n  e2iY /3n
+3n-m
+      Y Z/3nZ:Y =Y mod 3m                     3n-mZ/3nZ Y Z/3nZ
+
+for any Y  Z/3nZ, so by Plancherel's theorem, the left-hand side of (6.10) may be
+written as
+
+                                                                                                                          2
+
+                                                                  g(Y )e-2iY/3n .
+
+                                         Z/3nZ:3n-mZ/3nZ Y Z/3nZ
+
+By (6.9), we can write
+
+                            g(Y )e-2iY /3n = Ee-2iXn/3n 1EkBkCk,l .
+
+                   Y Z/3nZ
+                       COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                                    31
+
+On the event Ck,l, one can use (1.5), (1.26) to write
+
+           Xn = Fk+1(ak+1, . . . , a1) + 3k+12-lFn-k-1(an, . . . , ak+2) mod 3n.
+
+The key point here is that the random variable 3k+12-lFn-k-1(an, . . . , ak+2) is indepen-
+dent of a1, . . . , ak+1, Ek, Bk, Ck,l. Thus we may factor
+
+                    g(Y )e-2iY /3n         =  Ee 1 -2i(Fk+1(ak+1,...,a1) mod 3n)/3n
+                                                                                                          Ek Bk Ck,l
+
+           Y Z/3nZ
+
+                                              × Ee . -2i(2-lFn-k-1(an,...,ak+2) mod 3n-k-1)/3n-k-1
+
+For  in Z/3nZ that does not lie in 3n-mZ/3nZ, we can write  = 3j2l mod 3n where
+0  j < n - m  0.1n and  is not divisible by 3. In particular, from (6.5) one has
+
+               n  -    k  -  j  -     1    0.9n  -  n  log 3     -  O(CA  n log n) - 1  n.
+                                                      2
+                                                         log  2
+
+Then by (1.22) we have
+
+     Ee = Ee -2i(2-lFn-k-1(an,...,ak+2) mod 3n-k-1)/3n-k-1          -2i Syrac(Z/3n-k-j-1Z)/3n-k-j-1
+
+and hence by Proposition 1.17 this quantity is OA (n-A ) for any A . Thus we can bound
+the left-hand side of (6.10) by
+
+                  A n-2A                   Ee 1 -2i(Fk+1(ak+1,...,a1) mod 3n)/3n             2
+
+                                                                                E k Bk Ck,l                           (6.11)
+
+                                Z/3nZ
+
+(where we have now discarded the restriction   3n-mZ/3nZ); by Plancherel's theorem,
+this expression can be written as
+
+           A n-2A 3n                       P((Fk+1(ak+1, . . . , a1) = Yk+1)  Ek  Bk  Ck,l)2.
+
+                          Yk+1Z/3nZ
+
+Remark 6.1. If we ignore the technical restriction to the events Ek, Bk, Ck,l, this quan-
+tity is essentially the Renyi 2-entropy (also known as collision entropy) of the random
+variable Fk+1(ak+1, . . . , a1) mod 3n.
+
+Now we make a key elementary number theory observation:
+
+Lemma 6.2 (Injectivity of offsets). For each natural number n, the n-Syracuse offset
+
+map  Fn :  (N  +  1)n     Z[    1  ]  is  injective.
+                                2
+
+Proof. Suppose that (a1, . . . , an), (a1, . . . , an)  (N + 1)n are such that Fn(a1, . . . , an) =
+Fn(a1, . . . , an). Taking 2-valuations of both sides using (1.5), we conclude that
+
+                                             -a[1,n] = -a[1,n].
+On the other hand, from (1.5) we have
+
+                           Fn(a1, . . . , an) = 3 2n -a[1,n] + Fn-1(a2, . . . , an)
+
+and similarly for a1, . . . , an, hence
+                                 Fn-1(a2, . . . , an) = Fn-1(a2, . . . , an).
+
+The claim now follows from iteration (or an induction on n).
+32                                               TERENCE TAO
+
+We will need a more quantitative 3-adic version of this injectivity:
+
+Corollary 6.3 (3-adic separation of offsets). Let CA be sufficiently large, let n be
+
+sufficiently large (depending on CA), let k be a natural number, and let l be a nat-
+ural number obeying (6.8). Then the residue classes Fk+1(ak+1, . . . , a1) mod 3n, as
+(a1, . . . , ak+1)  (N + 1)k+1 range over k + 1-tuples of positive integers that obey the
+
+conditions
+
+                      |a[i+1,j] - 2(j - i)|  CA (j - i)(log n) + log n                                            (6.12)
+
+for 1  i < j  k + 1 as well as                   a[1,k+1] = l,                                                    (6.13)
+are distinct.
+
+Proof. Suppose that (a1, . . . , ak+1), (a1, . . . , ak+1) are two tuples of positive integers that
+both obey (6.12), (6.13), and such that
+
+                         Fk+1(ak+1, . . . , a1) = Fk+1(ak+1, . . . , a1) mod 3n.
+Applying (1.5) and multiplying by 2l, we conclude that
+
+                          k+1                            k+1
+
+                                     3 2 j-1 l-a[1,j] =       3 2 j-1 l-a[1,j] mod 3n.                            (6.14)
+
+                          j=1                            j=1
+
+From (6.13), the expressions on the left and right sides are natural numbers. Using
+
+(6.12),  (6.8),  and  Young's        inequality  CA j 1/2     log1/2  n          j  +  1  CA2  log n  for  a  sufficiently
+                                                                              2        2
+
+small  > 0, the left-hand side may be bounded for CA large enough by
+
+k+1                       k+1             
+
+    3 2 j-1 l-a[1,j]  2l         3j 2-2j+CA( j log n+log n)
+
+j=1                       j=1
+
+                      exp(- (CA)2 log n)3n k+1 exp                 -j    log  4     +  O(CAj1/2  log1/2    n)  +  O(CA  log  n)
+                                 2                                            3
+                                                 j=1
+
+                      exp - (CA)2 log n               k+1
+                                  4
+                                                 3n exp(-cj)
+
+                                                      j=1
+
+                          (CA    )2
+                              4
+                      n 3 ; -        n
+
+in particular, for n large enough, this expression is less than 3n. Similarly for the right-
+
+hand side of (6.14). Thus these two sides are equal as natural numbers, not simply as
+residue classes modulo 3n:
+
+                                     k+1                      k+1
+
+                                          3 2 j-1 l-a[1,j] =       3j 2 -1 l-a[1,j] .                             (6.15)
+
+                                     j=1                      j=1
+
+Dividing by 2l, we conclude Fk+1(ak+1, . . . , a1) = Fk+1(ak+1, . . . , a1). From Lemma 6.2
+we conclude that (a1, . . . , ak+1) = (a1, . . . , ak+1), and the claim follows.
+
+In view of the above lemma, we see that for a given choice of Yk+1  Z/3nZ, the event
+                           (Fk+1(ak+1, . . . , a1) = Yk+1)  Ek  Bk  Ck,l
+                           COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                            33
+
+can only be non-empty for at most one value (a1, . . . , am) of the tuple (a1, . . . , am). By
+Definition 1.7, such a value is attained with probability 2-a[1,m] = 2-l, which by (6.8)
+
+is equal to nO((CA)2)3-n. We can thus bound (6.11) (and hence the left-hand side of
+
+(6.10)) by
+
+                                                   A n-2A , +O((CA)2)
+
+and the claim now follows by taking A large enough. This concludes the proof of
+
+Proposition 1.14 assuming Proposition 1.17.
+
+                                7. Decay of Fourier coefficients
+
+In this section we establish Proposition 1.17, which when combined with all the impli-
+cations established in preceding sections will yield Theorem 1.3.
+
+Let n  1, let   Z/3nZ be not divisible by 3, and let A > 0 be fixed. We will not
+
+vary n or  in this argument, but it is important that all of our estimates are uniform
+
+in these parameters. Without loss of generality we may assume A to be larger than any
+
+fixed  absolute      constant.      We   let    =  n, :  Z[  1  ]      C  denote  the   character
+                                                             2
+
+                                           (x) := e-2i(x mod 3n)/3n                                            (7.1)
+
+where   x        x mod 3n       is  the  ring   homomorphism           from  Z[   1  ]  to  Z/3nZ    (mapping  1  to
+                                                                                  2                            2
+1       3n           3n+1       3n).
+2  mod        =         2  mod          Note that  is a group homomorphism from the additive
+
+group  Z[  1  ]  to  the   multiplicative     group  C,  which     is  periodic  modulo     3n,  so  it  also  descends
+           2
+to a group homomorphism from Z/3nZ to C, which is still defined by the same formula
+
+(7.1). From (1.26), our task now reduces6 to establishing the following claim.
+
+Proposition 7.1 (Key Fourier decay estimate). Let  be defined by (7.1), and let
+(a1, . . . , an)  Geom(2)n be n iid copies of the geometric distribution Geom(2) (as
+defined in Definition 1.7). Then the quantity
+
+                           S(n) := E(2-a1 + 3 21 -a[1,2] + · · · + 3n-12-a[1,n] )                              (7.2)
+
+obeys the estimate
+
+                                                   S(n) A n-A                                                  (7.3)
+
+for any A > 0, where we use the summation convention a[i,j] := ai + · · · + aj from (1.6).
+
+7.1. Estimation in terms of white points. To extract some usable cancellation in
+the expression S(n), we will group the sum on the left-hand side into pairs. For any
+real x > 0, let [x] denote the discrete interval
+
+                                [x] := {j  N + 1 : j  x} = {1, . . . , x }.
+
+For j  [n/2], set bj := a2j-1 + a2j, so that
+
+   2-a1 + 3 21 -a[1,2] + · · · + 3 2 n-1 -a[1,n] =           32j-22-b[1,j] (2a2j + 3) + 3n-12-b[1, n/2 ]-an
+
+                                                     j[n/2]
+
+   6Note that we have reversed the order of variables a1, . . . , an from that in (1.5), as this will be a
+slightly more convenient normalization for the arguments in this section.
+34                                       TERENCE TAO
+
+when n is odd, where we extend the summation notation (1.6) to the bj. For n even, the
+formula is the same except that the final term 3 2 n-1 -b[1, n/2 ]-an is omitted. Note that
+
+the b1, . . . , b n/2 are jointly independent random variables taking values in N + 2 =
+{2, 3, 4, . . . }; they are iid copies of a Pascal (or negative binomial) random variable
+
+Pascal    NB(2,  1  )  on  N  +  2,  defined  by
+                 2
+
+                                                            b-1
+                                     P(Pascal = b) = 2b
+
+for b  N + 2.
+
+For any j  [n/2], a2j is independent of all of the b1, . . . , b n/2 except for bj. For n
+odd, an is independent of all of the bj. Regardless of whether n is even or odd, once
+one conditions on all of the bj to be fixed, the random variables a2j, j  [n/2] (as well
+as an, if n is odd) are all independent of each other. We conclude that
+
+                                                         
+
+               S(n) = E                  f (32j-22-b[1,j] , bj ) g(3n-12-b[1, n/2 ] )
+
+                                 j[n/2]
+
+when n is odd, with the factor g(2-b[1, n/2 ]) omitted when n is even, where f (x, b) is
+the conditional expectation
+
+                           f (x, b) := E ((x(2a2 + 3))|a1 + a2 = b)                    (7.4)
+
+(with (a1, a2)  Geom(2)2) and
+
+                                     g(x) := E(x2-Geom(2)).
+
+Clearly |g(x)|  1, so by the triangle inequality we can bound
+
+                           |S(n)|  E              |f (32j-22-b[1,j] , bj )|            (7.5)
+
+                                         j[n/2]
+
+regardless of whether n is even or odd.
+
+From (7.4) we certainly have
+
+                                         |f (x, b)|  1.                                (7.6)
+
+We now perform an explicit computation to improve upon this estimate for many values
+of x (of the form x = 32j-22-l) in the case b = 3, which is the least value of b  N + 2
+for which the event a1 + a2 = b does not completely determine a1 or a2. For any
+(j, l)  (N + 1) × Z, we can write
+
+                                     (32j-22-l+1) = e-2i(j,l)                          (7.7)
+
+where (j, l) = n,(j, l)  (-1/2, 1/2] denotes the argument                              (7.8)
+                                                32j-2(2-l+1 mod 3n)
+
+                                  (j, l) :=
+                                                            3n
+
+and {} : R/Z  (-1/2, 1/2] is the signed fractional part function, thus {x} denotes the
+unique element of the coset x + Z that lies in (-1/2, 1/2].
+                     COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                         35
+
+Let  0  <    <   1   be  a  sufficiently  small  absolute  constant    to  be  chosen  later;  we  will  take
+                100
+
+care to ensure that the implied constants in many of our asymptotic estimates do not
+
+depend on . Call a point (j, l)  [n/2] × Z black 7 if
+
+                                                 |(j, l)|  ,                                             (7.9)
+
+and white otherwise. We let B = Bn,, W = Wn, denote the black and white points of
+[n/2] × Z respectively, thus we have the partition [n/2] × Z = B W .
+
+Lemma 7.2 (Cancellation for white points). If (j, l) is white, then
+                                      |f (32j-22-l, 3)|  exp(-3).
+
+Proof. If a1, a2 are independent copies of Geom(2), then after conditioning to the event
+a1 + a2 = 3, the pair (a1, a2) is equal to either (1, 2) or (2, 1), with each pair occuring
+with (conditional) probability 1/2. From (7.4) we thus have
+
+                            1                    1            (5x)
+                         f (x, 3) = (5x) + (7x) =                      (1 + (2x))
+                            2                    2            2
+
+for any x, so that
+
+                                          |f (x, 3)| =  |1 + (2x)|  .
+
+                                                           2
+
+We specialise to the case x := 32j-22-l. By (7.7) we have
+
+                                          (2x) = e-2i(j,b[1,j])
+
+and hence by elementary trigonometry
+
+                            |f (32j-22-l, 3)| = cos((j, l)).
+
+By hypothesis we have
+                                                 |(j, l)| > 
+
+and the claim now follows by Taylor expansion (if  is small enough); indeed one can
+even obtain an upper bound of exp(-c2) for some absolute constant c > 0 independent
+of .
+
+From the above lemma, (7.6), and the law of total probability, we see that
+
+                  |S(n)|  E exp(-3#{j  [n/2] : bj = 3, (j, b[1,j])  W }).
+
+As we shall see later, we can interpret the (j, b[1,j]) with bj = 3 as a two-dimensional
+renewal process. To establish Proposition 7.1 (and thus Proposition 1.17 and Theorem
+1.3), it thus suffices to show the following estimate.
+
+Proposition 7.3 (Renewal process encounters many white points).                                    (7.10)
+                   E exp(-3#{j  [n/2] : bj = 3, (j, b[1,j])  W }) A n-A.
+
+We remark that this proposition is of a simpler nature to establish than Proposition 7.1
+as it is entirely "non-negative"; it does not require the need to capture any cancellation
+in an oscillating sum, as was the case in Proposition 7.1.
+
+   7This choice of notation was chosen purely in order to be consistent with the color choices in Figures
+2, 3, 4.
+36                                      TERENCE TAO
+
+    Figure 2. A triangle , which we have drawn as a solid region rather
+    than as a subset of the discrete lattice Z2.
+
+7.2. Deterministic structural analysis of black points. The proof of Proposition
+7.3 consists of a "deterministic" part, in which we understand the structure of the white
+set W (or the black set B), and a "probabilistic" part, in which we control the random
+walk b[1,j] and the events bj = 3. We begin with the former task. Define a triangle to
+be a subset  of (N + 1) × Z of the form
+
+                = {(j, l) : j  j; l  l; (j - j) log 9 + (l - l) log 2  s}                          (7.11)
+
+for some (j, l)  (N + 1) × Z (which we call the top left corner of ) and some s  0
+(which we call the size of ); see Figure 2.
+
+Lemma 7.4 (Structure of black set). The black set B  [n/2] × Z of points (j, l) with
+|(j, l)|   can be expressed as a disjoint union
+
+                                            B= 
+
+                                                     T
+
+of  triangles  ,  each  of  which  is  contained  in  [  n  -  1   log  1  ]  ×  Z.  Furthermore,  any  two
+                                                         2     10       
+                                                               1        1
+triangles ,       in T  are  separated  by  a  distance        10  log        (using the Euclidean metric
+
+on [n/2] × Z  R2). (See Figure 3.)
+            COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                                  37
+
+Figure 3.       The  black   set  is  a  union  of  triangles,  in  the  strip  [  n  -  1   log  1  ]×
+                                                                                   2     10       
+                                                                   1
+Z, that are separated from each other by                      log     .  The red      dots depict
+
+(a portion of) a renewal process v1, v[1,2], v[1,3] that we will encounter
+
+later in this section; our main objective will be to establish that this
+
+process usually contains a fair number of white points. We remark that
+
+the    average  slope    16  =  4  of    this  renewal  process          will  exceed    the  slope
+                         4
+log 9
+log 2    3.17   of  the  triangle     diagonals,    so  that  the   process    tends     to   exit   a
+
+given triangle through its horizontal side. The coordinate j increases in
+
+the rightward direction, while the coordinate l increases in the upward
+
+direction.
+
+Proof. We first observe some simple relations between adjacent values of . From (7.8)
+(or (7.7)) we observe the identity
+
+                         32(j-j)2(l-l)(j, l) = (j, l) mod Z                                              (7.12)
+
+whenever j  j and l  l. Thus for instance
+
+                             (j + 1, l) = 9(j, l) mod Z                                                  (7.13)
+
+and                                                                                                      (7.14)
+                                      (j, l - 1) = 2(j, l) mod Z.
+
+Among other things, this implies that
+
+                     (j, l) = (j + 1, l) - 4(j, l - 1) mod Z
+38                                             TERENCE TAO
+
+and hence by the triangle inequality                                                                       (7.15)
+                                |(j, l)|  |(j + 1, l)| + 4|(j, l - 1)|.
+
+These identities have the following consequences. Call a point (j, l)  [n/2] × Z weakly
+
+black if                                                   1
+                                             |(j, l)|  .
+
+                                                          100
+
+Clearly any black point is weakly black. We have the following further claims.
+
+    (i) If (j, l) is weakly black, and either (j + 1, l) or (j, l - 1) is black, then (j, l) is
+
+          black. (This follows from (7.13) or (7.14) respectively.)
+
+    (ii) If (j + 1, l), (j, l - 1) are weakly black, then (j, l) is also weakly black. (Indeed,
+
+          from  (7.15)  we  have   |(j, l)|        5     ,  and       the  claim      now   follows  from  (7.13)    or
+                                                  100
+
+          (7.14).)
+
+    (iii) If (j -1, l) and (j, l-1) are weakly black, then (j, l) is also weakly black. (Indeed,
+
+          from  (7.13)  we  have   |(j, l)|       9   ,  and    the    claim    now      follows  from  (7.14).)
+                                                 100
+
+Now we begin the proof of the lemma. Suppose (j, l)  [n/2] × Z is black, then by (7.9),
+
+(7.8) we have
+
+                            32j-2(2-l+1 mod 3n)                  [-, ] mod Z
+
+                                           3n
+
+and hence           3n-1(2-l+1              3n)
+                               3n
+                                      mod             [-3n+1-2j , 3n+1-2j ]                 mod  Z.
+
+On  the   other  hand,  since      is  not   a  multiple        of    3,   the  expression       3n-1(2-l+1 mod 3n)  is
+                                                                                                              3n
+
+either equal to 1/3 or 2/3 mod Z. We conclude that
+
+                                               3n+1-2j             1                                       (7.16)
+                                                                    ,
+                                                                   3
+
+so  the  black  points  in  [n/2]  ×  Z  actually     lie   in  [  n  -   1   log  1  ]  ×  Z.
+                                                                   2      10       
+
+Suppose that (j, l)  [n/2] × Z is such that (j, l ) is black for all l  l, thus
+
+                                                |(j, l )|  
+
+for all l  l. From (7.14) this implies that
+
+                                         (j, l ) = 2(j, l + 1)
+
+for all l  l, hence
+
+                                             (j, l )  2l-l 
+
+for all l  l. Repeating the proof of (7.16), one concludes that
+
+                                           3n+1-2j 2l-l                1
+                                                                        ,
+                                                                       3
+
+which is absurd for l large enough. Thus it is not possible for (j, l ) to be black for all
+
+l  l.
+
+Now let (j, l)  [n/2] × Z be black. By the preceding discussion, there exists a unique
+l = l(j, l)  l such that (j, l ) is black for all l  l  l, but such that (j, l + 1) is
+                   COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                                    39
+
+white. Now let j = j(j, l)  j be the unique positive integer such that (j , l) is black
+for all j  j  j, but such that either j = 1 or (j - 1, l) is white. Informally, (j, l)
+is obtained from (j, l) by first moving upwards as far as one can go in B, then moving
+leftwards as far as one can go in B; see Figure 4. As one should expect from glancing at
+this figure (or Figure 3), (j, l) should be the top left corner of the triangle containing
+(j, l), and the arguments below are intended to support this claim.
+
+By construction, (j, l) is black, thus by (7.9) we have
+
+                                       |(j, l)| =  exp(-s)                                                        (7.17)
+
+for some s  0. From (7.12) this implies in particular that
+
+                   |(j , l )|   exp(-s + (j - j) log 9 + (l - l ) log 2)                                          (7.18)
+
+whenever j  j, l  l, with equality whenever the right-hand side is strictly less than
+1/2.
+
+Let  denote the triangle with top left corner (j, l) and size s. If (j , l )  , then
+by (7.18) we have
+
+                            |(j , l )|  32(j 2 -j) (l-l ) exp(-s)  
+
+and  hence  every  element  of      is  black   (and  thus       lies     in   [  n  -    c log     1  ]  ×  Z).
+                                                                                  2                 
+
+Next, we make the following claim:
+
+(*) Every point (j , l )  [n/2] × Z that lies outside of , but is at a distance of at
+
+     most   1   log  1  to  ,   is  white.
+            10       
+
+To verify Claim (*), we divide into three cases (see Figure 4):
+
+Case 1: j  j, l  l. In this case we have from (7.11) that
+
+                                                                          log 9 + log 2 1
+            s < (j - j) log 9 + (l - l ) log 2  s +                                                    log
+                                                                                     10                    
+
+and hence
+
+             exp(-s + (j            -  j)  log  9  +  (l  -   l  )  log   2)1-       log  9+log  2  <        1
+                                                                                           10                 .
+
+                                                                                                             2
+
+Applying the equality case of (7.18), we conclude that
+
+             =  exp(-s + (j            -  j)  log  9  +   (l  -     l  )  log  2)1-       log  9+log      2  >
+                                                                                                10
+
+and thus (j , l ) is white as claimed.
+
+Case 2: j  j, l > l. In this case we have from (7.11) that
+
+                                                              log 2 1                                             (7.19)
+                                0 < (l - l) log 2                         log                                     (7.20)
+                                                                 10           
+
+and
+
+                                (j - j) log 9  s +            log 9 1
+                                                                          log
+                                                                 10           
+40               TERENCE TAO
+
+(say). Suppose for contradiction that (j , l ) was black, thus
+
+                    |(j , l )|  .
+
+From (7.19) and (7.12) (or (7.14)) this implies that
+
+            |(j  ,  l   +   1)|                      1-  log 2     ,
+                                                          10
+
+so in particular (j , l + 1) is weakly black.
+
+If j  j, then from (7.18), (7.20) we also have
+
+            |(j     -   1,  l)|                      1-  log 9     ,                  (7.21)
+                                                          10
+
+thus (j - 1, l) is weakly black. Applying claim (ii) and the fact that (j , l + 1) is
+weakly black, we conclude that (j - 1, l + 1) is weakly black. Iterating this argument,
+we conclude that (j , l + 1) is weakly black for all j  j  j . In particular, (j, l + 1)
+is weakly black; since (j, l) is black by construction of l, we conclude from Claim (i)
+that (j, l + 1) is black. But this contradicts the construction of l.
+
+Now suppose that j < j. From construction of l, j we see that (j + 1, l) is black,
+hence weakly black; since (j , l + 1) is weakly black, we conclude from Claim (iii) that
+(j + 1, l + 1) is weakly black. Iterating this argument we conclude that (j , l + 1) is
+weakly black for all j  j  j, thus in particular (j, l + 1) is weakly black, and we
+obtain a contradiction as before.
+
+Case 3: j < j. Clearly this implies j > 1; also, from (7.11) we have
+
+     -  log 2 1                                                          log 2 1      (7.22)
+            log   (l - l ) log 2  s +                                           log   (7.23)
+        10                                                                  10      
+
+and
+
+            0 < (j - j ) log 9                       log 9 1
+                                                            log .
+                                                       10       
+
+Suppose for contradiction that (j , l ) was black, thus
+
+                    |(j , l )|  .
+
+From (7.23) and (7.12) (or (7.13)) we thus have
+
+            |(j     -   1,  l                  )|    1-  log 9     .                  (7.24)
+                                                          10
+
+If l  l, then from (7.22), (7.12) we then have
+
+            |(j  -  1,  l)|                        1-  log  9+log     2  ,
+                                                             10
+
+so (j - 1, l) is weakly black. By construction of j, (j, l) is black, hence by Claim (i)
+(j - 1, l) is black, contradicting the construction of j.
+
+Now suppose that l < l. From (7.24), (j - 1, l ) is weakly black. On the other hand,
+from (7.22), (7.18) that
+
+            |(j, l      +   1)|                      1-     log 2
+                                                             10
+
+so (j, l + 1) is also weakly black. By Claim (ii), this implies that (j - 1, l + 1) is
+weakly black. Iterating this argument we see that (j - 1, l ) is weakly black for all
+                          COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                             41
+
+l  l  l, hence (j - 1, l) is weakly black and we can obtain a contradiction as
+before. This concludes the treatment of Case 3 of Claim (*).
+
+We have now verified Claim (*) in all cases. From this claim and the construction (j, l)
+from (j, l), we now see that (j, l) must lie in ; indeed, if (j, l) was outside of  then
+one of the (necessarily black) points between (j, l) and (j, l) would violate Case 1 of
+Claim (*), and similarly if (j, l) was in  but (j, l) was outside  then one of the
+(necessarily black points) between (j, l) and (j, l) would again violate Case 1 of Claim
+(*); see Figure 4. Furthermore, for any (j , l )  , that l(j , l ) = l and j(j , l ) = j.
+In other words, we have
+
+                           = {(j , l )  B : l(j , l ) = l; j(j , l ) = j},
+
+and so the triangles  form a partition of B. By the preceding arguments we see that
+
+these    triangles   lie  in  [  n  -  1   log  1  ]  ×  Z  and  are  separated      from   each  other  by   at  least
+                                 2     10       
+1        1
+10  log     .  This  proves   the   lemma.
+
+Remark 7.5. One can say a little bit more about the structure of the black set B; for
+
+instance, from Euler's theorem we see that B is periodic with respect to the vertical
+
+shift (0, 2 × 3n-1) (cf. Lemma 1.12), and one could use Baker's theorem [2] that (among
+
+other    things)     establishes    a  Diophantine          property  of  log 3  in  order  to  obtain  some  further
+                                                                          log 2
+
+control on B. However, we will not exploit any further structure of the black set in our
+
+arguments beyond what is provided by Lemma 7.4.
+
+7.3. Formulation in terms of holding time. We now return to the probabilistic
+portion of the proof of Proposition 7.3. Currently we have a finite sequence b1, . . . , b n/2
+of random variables that are iid copies of the sum a1 + a2 of two independent copies
+a1, a2 of Geom(2). We may extend this sequence to an infinite sequence b1, b2, b3, . . .
+of iid copies of a1 + a2. Recalling from definition that W is a subset of [n/2] × Z, the
+point (j, b[1,j]) can only lie in W when j  [n/2]. Thus the left-hand side of (7.10) can
+then be written as
+
+                        E exp(-3#{j  N + 1 : bj = 3, (j, b[1,j])  W }).
+
+We now describe the random set {(j, b[1,j]) : j  N + 1, bj = 3} as8 a two-dimensional
+renewal process (a special case of a renewal-reward process). Since the events bj = 3
+are independent and each occur with probability
+
+                                                                           1                                  (7.25)
+                                    P(bj = 3) = P(Pascal = 3) = 4 > 0,
+
+we see that almost surely one has bj = 3 for at least one j  N. Define the two-
+dimensional holding time Hold  (N + 1) × (N + 2) to be the random shift (j, b[1,j]),
+where j is the least positive integer for which bj = 3; this random variable is almost
+surely well defined. Note from (7.25) that the first component j of Hold has the
+
+distribution j  Geom(4). A little thought then reveals that the random set
+
+                                           {(j, b[1,j]) : j  N + 1, bj = 3}                                   (7.26)
+
+    8We are indebted to Marek Biskup for this suggestion.
+42                                     TERENCE TAO
+
+has the same distribution as the random set
+
+                                 {v1, v[1,2], v[1,3], . . . },                           (7.27)
+
+where v1, v2, . . . are iid copies of Hold, and we extend the summation notation (1.6)
+to the vj, thus for instance v[1,k] := v1 + · · · + vk. In particular, we have
+
+      #{j  N + 1 : bj = 3, (j, b[1,j])  W }  #{k  N + 1 : v[1,k]  W },
+
+and so we can write the left-hand side of (7.10) as
+
+                              E        exp(-31W (v[1,k]));                               (7.28)
+
+                                 kN+1
+
+note that all but finitely many of the terms in this product are equal to 1.
+
+We now pause our analysis of (7.10), (7.28) to record some basic properties about the
+distribution of Hold.
+
+Lemma 7.6 (Basic properties of holding time). The random variable Hold has expo-
+nential tail (in the sense of (2.3)), is not supported in any coset of any proper subgroup
+of Z2, and has mean (4, 16). In particular, the conclusion of Lemma 2.2 holds for Hold
+with µ = (4, 16).
+
+Proof. From the definition of Hold and (7.25), we see that Hold is equal to (1, 3) with
+
+probability 1/4, and on the remaining event of probability 3/4, it has the distribution
+
+of (1, Pascal ) + Hold , where Pascal is a copy of Pascal that is conditioned to the
+
+event Pascal = 3, so that
+
+                                                     4b-1                                (7.29)
+                              P(Pascal = b) = 3 2b
+
+for b  N + 2\{3}, and Hold is a copy of Hold that is independent of Pascal . Thus
+
+Hold has the distribution of (1, 3) + (1, b1) + · · · + (1, bj-1), where b1, b2, . . . are iid
+copies of Pascal and j  Geom(4) is independent of the bj. In particular, for any
+k = (k1, k2)  R2, one has from monotone convergence that
+
+    E exp(Hold · k) =      1  3  j-1                                                     (7.30)
+                           4  4
+                                     exp ((1, 3) · k) (E exp((1, Pascal ) · k))j .
+
+                       jN
+
+From  (7.29)  and  dominated  convergence,   we     have  E exp((1, Pascal ) · k)  <  4  for  k
+                                                                                      3
+
+sufficiently close to 0, which by (7.30) implies that E exp(Hold·k) <  for k sufficiently
+
+close to zero. This gives the exponential tail property by Markov's inequality.
+
+Since Hold attains the value (1, 3)+(1, b) for any b  N+2\{3} with positive probability,
+as well as attaining (1, 3) with positive probability, we see that the support of Hold is
+not supported in any coset of any proper subgroup of Z2. Finally, from the description
+of Hold at the start of this proof we have
+
+                   EHold      1           3  ((1, EPascal           EHold) ;
+                           =   (1, 3)  +                        )+
+                              4           4
+
+also, from the definition of Pascal we have
+
+                              EPascal        13
+                                       =      3  +  4 EPascal   .
+                                             4
+                   COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                               43
+
+We conclude that                                            3
+                           EHold = (1, EPascal) + 4 EHold;
+
+since EPascal = 2EGeom(2) = 4, we thus have EHold = (4, 16) as required.
+
+The following lemma allows us to control the distribution of first passage locations of
+renewal processes with holding times  Hold, which will be important for us as it lets
+us understand how such renewal processes exit a given triangle :
+
+Lemma 7.7 (Distribution of first passage location). Let v1, v2, . . . be iid copies of
+Hold, and write vk = (jk, lk). Let s  N, and define the first passage time k to be the
+least positive integer such that l[1,k] > s. Then for any j, l  N with l > s, one has
+
+                   P(v[1,k] = (j, l))        e-c(l-s)                 s        ,
+                                       (1 + s)1/2 G1+s         c      j-
+                                                                           4
+
+where  G1+s(x)  =  exp(-   |x|2  )  +  exp(-|x|)  was  the  function  defined  in  (2.2).
+                           1+s
+
+Informally, this lemma asserts that as a rough first approximation one has
+
+       v[1,k]  Unif        (j, l) : j = s + O((1 + s)1/2); s < l  s + O(1)         .         (7.31)
+                                         4
+
+Proof. Note that by construction of k one has l[1,k] - lk  s, so that lk  l[1,k] - s. From
+the union bound, we therefore have
+
+                P(v[1,k] = (j, l))           P((v[1,k] = (j, l))  (lk  l - s));
+
+                                       kN+1
+
+since vk has the exponential tail and is independent of v1, . . . , vk-1, we thus have
+
+       P(v[1,k] = (j, l))                         e-c(jk+lk)P(v[1,k-1] = (j - jk, l - lk)).
+
+                            kN+1 lkl-s jkN+1
+
+Writing lk = l - s + lk, we then have
+
+       P(v[1,k] = (j, l)) e-c(l-s)
+
+                                               kN+1 lkN jkN+1
+
+                                       e-c(jk+lk)P(v[1,k-1] = (j - jk, s - lk)).
+
+We can restrict to the region lk  s, since the summand vanishes otherwise. It now
+suffices to show that
+
+                                       e-c(jk+lk)P v[1,k-1] = (j - jk, s - lk)
+
+                kN+1 0lks jkN+1                                                              (7.32)
+
+                     (1 + s)-1/2G1+s          s             .
+                                       c(j - )
+
+                                              4
+
+This is in turn implied by
+
+                                       e-clk P(v[1,k-1] = (j , s - lk))
+
+                           kN+1 0lks                                                         (7.33)
+
+                                    (1 + s)-1/2G1+s            s
+                                                       c(j - )
+
+                                                               4
+44              TERENCE TAO
+
+for all j  Z, since (7.32) then follows by replacing j by j-jk, multiplying by exp(-cjk),
+and summing in jk (and adjusting the constants c appropriately). In a similar vein, it
+suffices to show that
+
+           P(v[1,k-1] = (j , s ))  (1 + s )-1/2G1+s          s
+                                                     c(j - )
+    kN+1
+                                                             4
+
+for all s  N, since (7.33) follows after setting s = s - lk, multiplying by exp(-clk),
+and summing in lk (splitting into the regions lk  s/2 and lk > s/2 if desired to simplify
+the calculations).
+
+From Lemma 7.6 and Lemma 2.2 one has
+                 P(v[1,k-1] = (j , s )) k-1Gk-1 (c((j , s ) - (k - 1)(4, 16))) ,
+
+and the claim now follows from summing in k and a routine calculation (splitting for
+instance into the regions 16(k-1)  [s /2, 2s ], 16(k-1) < s /2, and 16(k-1) > 2s ).
+
+7.4. Recursively controlling a maximal expression. We return to the study of the
+left-hand side of (7.10), which we have expressed as (7.28). For any (j, l)  N + 1 × Z,
+let Q(j, l) denote the quantity
+
+                             Q(j, l) := E exp(-31W ((j, l) + v[1,k]))         (7.34)
+                                                                              (7.35)
+                                                                   kN
+
+then we have the recursive formula
+                           Q(j, l) = exp(-31W (j, l))EQ((j, l) + Hold).
+
+Observe that for each (j, l)  N + 1 × Z, we have the conditional expectation
+
+    E        exp(-31W (v[1,k]))|v1 = (j, l) = Q(j, l)
+
+       kN+1
+
+since after conditioning on v1 = (j, l) then the v[1,k] have the same distribution as
+(j, l) + v[1,k-1] where v1, v2, . . . is another sequence of iid copies of Hold. Since v1 has
+the distribution of Hold, we conclude from the law of total probability that
+
+       E        exp(-31W (v[1,k])) = EQ(Hold).
+
+          kN+1
+
+From (7.28) we thus see that we can rewrite the desired estimate (7.10) as
+
+                EQ(Hold) A n-A.                                               (7.36)
+
+One can think of Q(j, l) as a quantity controlling how often one encounters white points
+when one walks along a two-dimensional renewal process (j, l), (j, l)+v1, (j, l)+v[1,2], . . .
+starting at (j, l) with holding times given by iid copies of Hold. The smaller this
+quantity is, the more white points one is likely to encounter. The main difficulty is thus
+to ensure that this renewal process is usually not trapped within the black triangles 
+from Lemma 7.4; as it turns out (and as may be evident from an inspection of Figure
+3), the large triangles will be the most troublesome to handle (as they are so large
+compared to the narrow band of white points surrounding them that are provided by
+Lemma 7.4).
+                 COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES              45
+
+Suppose that we can prove a bound of the form
+
+                        Q(j, l) A max( n/2 - j, 1)-A                      (7.37)
+
+for all (j, l)  (N + 1) × Z; this is trivial for j  n/2 but becomes increasingly non-trivial
+for smaller values of j. Then
+
+                 Q(Hold) A max( n/2 - j, 1)-A A n-AjA
+
+where j  Geom(4) is the first component of Hold. As Geom(4) has exponential tail,
+we conclude (7.36) and hence Proposition 7.3, which then implies Propositions 7.1, 1.17
+and Theorem 1.3.
+
+It remains to prove (7.37). Roughly speaking, we will accomplish this by a downwards
+induction on j, or more precisely, by an upwards induction on a quantity m, which is
+morally equivalent to n/2 -j. To make this more precise, it is convenient to introduce
+the quantities Qm for any m  [n/2] by the formula
+
+                 Qm :=  sup                    max( n/2 - j, 1)AQ(j, l).  (7.38)
+
+                        (j,l)(N+1)×Z:j n/2 -m
+
+Clearly we have
+
+                             Qm  mA,                                      (7.39)
+
+since Q(j, l)  1 for all j, l; this bound can be thought of as supplying the "base case"
+for our induction). We trivially have Qm  Qm-1 for any 1  m  n/2. We will shortly
+establish the opposite inequality:
+
+Proposition 7.8 (Monotonicity). We have
+
+                                                Qm  Qm-1                  (7.40)
+whenever CA,  m  n/2 for some sufficiently large CA, depending on A, .
+
+Assuming Proposition 7.8, we conclude from (7.39) and a (forwards) induction on m
+that Qm  CAA, A 1 for all 1  m  n/2, which gives (7.37). This in turn implies
+Proposition 7.3, and hence Proposition 7.1, Proposition 1.17, and Theorem 1.3.
+
+It remains to establish Proposition (7.8). Let CA,  m  n/2 for some sufficiently
+large CA,. It suffices to show that
+
+                        Q(j, l)  m-AQm-1                                  (7.41)
+
+whenever j = n/2 - m and l  Z. Note from (7.38) that we immediately obtain
+Q(j, l)  m-AQm, but to be able to use Qm-1 instead of Qm we will apply (7.35) at
+least once, in order to estimate Q(j, l) in terms of other values Q(j , l ) of Q with j > j.
+This causes a degradation in the m-A term, even when m is large; to overcome this
+
+loss we need to ensure that (with high probability) the two-dimensional renewal process
+
+visits a sufficient number of white points before we use Qm-1 to bound the resulting
+expression. This is of course consistent with the interpretation of (7.10) as an assertion
+
+that the renewal process encounters plenty of white points.
+
+We divide the proof of (7.41) into three cases. Let T be the family of triangles from
+Lemma 7.4.
+46                                         TERENCE TAO
+
+Case 1: (j, l)  W . This is the easiest case, as one can immediately get a gain from
+the white point (j, l). From (7.35) we have
+
+                             Q(j, l) = exp(-3)EQ((j, l) + Hold).
+
+For any (j , l )  (N + 1) × Z, we have from (7.38) (applied with m replaced by m - 1)
+that
+
+    Q((j, l) + (j , l ))  max( n/2 - j - j , 1)-AQm-1 = max(m - j , 1)-AQm-1
+
+since j + j  j + 1 = n/2 - (m - 1). Replacing (j , l ) by Hold (so that j has the
+distribution of Geom(4)) and taking expectations, we conclude that
+
+                   Q(j, l)  exp(-3)Qm-1E max(m - Geom(4), 1)-A.
+
+We can bound
+
+                    max(m - r, 1)-1  m-1 exp O r log m                                                       (7.42)
+                                                                  m
+
+for any r  N + 1; indeed this bound is trivial for r  m, and for r < m one can use
+the concave nature of x  log(1 - x) for 0 < x < 1 to conclude that
+
+                                   log  1  -  r     log    1  -  m-1
+                                              m                    m
+
+                                        r/m            (m - 1)/m
+
+which rearranges to give the stated bound. Replacing r by Geom(4) and raising to the
+Ath power, we obtain
+
+              Q(j, l)  exp(-3)m-AQm-1E exp                 O     A log m                            .
+                                                                          Geom(4)
+
+                                                                    m
+
+For m large enough depending on A, , we then have
+
+                             Q(j, l)  exp(-3/2)m-AQm-1                                                       (7.43)
+
+which gives (7.41) in this case (with some room to spare).
+
+Case  2:  (j, l)    for      some  triangle      T,      and     l    l      -     m    .  This case is slightly
+                                                                                log2 m
+
+harder than the preceding one, as one has to walk randomly through the triangle 
+
+before one has a good chance to encounter a white point, but because this portion of
+
+the walk is relatively short, the degradation of the weight m-A during this portion will
+
+be negligible.
+
+We  turn  to  the  details.  Set s := l - l,     thus  0s              m  m  .  Let  v1, v2, . . .  be  iid  copies
+                                                                    log2
+
+of Hold, write vk = (jk, lk) for each k with the usual summation notations (1.6), and
+
+define the first passage time k  N + 1 to be the least positive integer such that
+
+                                              l[1,k] > s.                                                    (7.44)
+
+This is a finite random variable since the lk are all positive integers. Heuristially, k
+represents the time in which the sequence first exits the triangle , assuming that this
+exit occurs on the top edge of the triangle. It is in principle possible for the sequence to
+instead exit  through the hypotenuse of the triangle, in which case k will be somewhat
+larger than the first exit time; however, as we shall see below, the Chernoff bound in
+Lemma 7.7 can be used to show that the former scenario will occur with probability
+
+   1, which will be sufficient for the purposes of establishing (7.41) in this case.
+                         COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                         47
+
+By iterating (7.35) appropriately (or using (7.34)), we have the identity                              (7.45)
+
+                                                             k-1                                       .
+                                                                                                       (7.46)
+                 Q(j, l) = E exp -3 1W ((j, l) + v[1,i]) Q((j, l) + v[1,k])                            (7.47)
+
+                                                             i=0
+
+and hence by (7.38)
+
+             Q(j, l)  Qm-1E exp             3                           max(m - j[1,k], 1)-A
+                                          - 2 1W ((j, l) + v[1,k])
+
+which by (7.42) gives
+
+Q(j, l)  m-AQm-1E exp                       3                         exp      O      A log m
+                                          - 2 1W ((j, l) + v[1,k])                       m j[1,k]
+
+To prove (7.41) in this case, it thus suffices to show that
+
+                                3                                     A log m
+                    E exp - 2 1W ((j, l) + v[1,k]) exp O                m j[1,k]          1.
+
+Since exp(-3/2)  1 - 3/4, we can upper bound the left-hand side by
+
+                                         A log m             3
+                         E exp O          m j[1,k]        - 4 P((j, l) + v[1,k]  W ).
+
+We begin by controlling the first term on the right-hand side of (7.47). By definition, the
+first passage location (j, l)+v[1,k] takes values in the region {(j , l )  Z2 : j > j, l > l}.
+From Lemma 7.7 we have
+
+                    P((j, l) + v[1,k] = (j , l ))      e-c(l -l)                      s
+                                                       (1 + s)1/2 G1+s      c(j - j - )     .          (7.48)
+                                                                                         4
+
+Summing in l , we conclude that
+
+                         P(j[1,k] = j - j)         (1 + s)-1/2G1+s                 s
+                                                                      c(j - j - )
+
+                                                                                   4
+
+for any j ; informally, j[1,k] is behaving like a Gaussian random variable centred at s/4
+
+with standard deviation            (1 + s)1/2.     In  particular,  because  of  the  hypothesis  s       m  m  ,
+                                                                                                       log2
+
+we have
+
+                                          P(j[1,k] = r) exp(-|r|)
+
+when r >            m    (say).  With our hypotheses s                 m    and m  CA,, the quantity
+                 log2 m                                             log2 m
+
+A log m  is  much   smaller     than  1,  and  by  using  the  above  bound  to   control   the  contribution
+   m
+                       m
+when     j[1,k]  >  log2 m  we  have
+
+                    A log m                            A log m m                                     m
+E exp O             m j[1,k]              E exp O                              + O exp -c log2 m
+                                                          m log2 m
+                                                                                                        (7.49)
+             =1+O            A        .
+
+                            log m
+48                                                     TERENCE TAO
+
+Now we turn attention to the second term on the right-hand side of (7.47). Using (7.48)
+
+to handle all points (j , l ) outside the region l                    = l +O(1) and j         =   j  +  s  + O((1 + s)1/2 ),
+                                                                                                        4
+
+we have                                                   s
+                                                          4
+                  P        (j, l) + v[1,k] =     j     +     +   O((1  +  s)1/2),  l  +  O(1)              1      (7.50)
+
+for a suitable choice of implied constants in the O-notation that is independent of  (cf.
+
+(7.31)). On the other hand, since (j, l)   and s = l - l, we have from (7.11) that
+
+                                            0  (j - j) log 9  s - s log 2
+
+and  thus   (since         0  <  1  log  9  <  log 2)  one   has
+                                 4
+
+                                         -O(1)  (j - j) log 9  s + O(1)
+
+whenever j        =     j  +  s  +  O((1    +  s)1/2),    with   the   implied     constants  independent     of  .  We
+                              4
+
+conclude that with probability 1, the first passage location (j, l) + v[1,k] lies outside
+
+of , but at a distance O(1) from , hence is white by Lemma 7.4. We conclude that
+
+                                               P((j, l) + v[1,k]  W ) 1                                           (7.51)
+
+and (7.41) (and hence (7.46)) now follows from (7.47), (7.49), (7.51) since m  CA,.
+
+Case    3:  (j, l)               for  some       triangle        T,       and   l  <  l  -     m  m  .  This is the most
+                                                                                            log2
+
+difficult case, as one has to walk so far before exiting  that one needs to encounter
+
+multiple white points, not just a single white point, in order to counteract the degrada-
+
+tion of the weight m-A. Fortunately, the number of white points one needs to encounter
+
+is OA,(1), and we will be able to locate such a number of white points on average for
+m large enough.
+
+We will need a large constant P (much larger than A or 1/, but much smaller than m)
+
+depending on A,  to be chosen later; the implied constants in the asymptotic notation
+
+below will not depend on P unless otherwise specified. As before, we set s := l - l, so
+
+now  s  >      m  m  .  From        (7.11)  we   have
+            log2
+
+                                               (j - j) log 9 + s log 2  s
+
+while   from  Lemma           7.4     one   has  j  +      s       n    j + m, hence
+                                                          log 9    2
+
+                                                               log 9                                              (7.52)
+                                                          s  m.
+
+                                                               log 2
+
+We again let v1, v2, . . . be iid copies of Hold, write vk = (jk, lk) for each k, and define
+the first passage time k  N + 1 to be the least positive integer such that (7.44) holds.
+From (7.45) we have
+
+                                      Q(j, l)  EQ((j, l) + v[1,k]).
+
+Applying (7.35) we then have
+
+                                                  P -1                                                            (7.53)
+
+         Q(j, l)  E exp -3 1W ((j, l) + v[1,k+p]) Q((j, l) + v[1,k+P ]).
+
+                                                  p=0
+
+Applying (7.38) to Q((j, l) + v[1,k+P ]) = Q(j + j[1,k+P ], l + l[1,k+P ]), we have
+                    max( n/2 - j - j[1,k+P ], 1)AQ((j, l) + v[1,k+P ])  Qm-1
+                    COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                              49
+
+(since j + j[1,k+P ]  j + 1  n/2 - (m - 1)). We can rearrange this inequality as
+
+               Q((j, l) + v[1,k+P ])  m-AQm-1 max                   1 - j[1,k+P ] , 1  -A
+                                                                            mm
+                                                                                          ;
+
+inserting this back into (7.53), we conclude that
+
+Q(j, l)  m-AQm-1E exp                           P -1                max           1 - j[1,k+P ] , 1  -A
+                                                                                          mm
+                                        -3 1W ((j, l) + v[1,k+p])                                       .
+
+                                            p=0
+
+Thus, to establish (7.41) in this case, it suffices to show that
+
+        E exp          P -1                       max          1 - j[1,k+P ] , 1  -A                 (7.54)
+                                                                       mm
+               -3 1W ((j, l) + v[1,k+p])                                               1.
+
+                       p=0
+
+Let us first consider the event that j[1,k+P ]  0.9m. From Lemma 7.7 and the bound
+(7.52), we have
+
+                                        P(j[1,k]  0.8m) exp(-cm)
+
+(noting  that  0.8  >  1  log  9  )  while  from  Lemma  2.2   (recalling  that  the   jk  are  iid  copies  of
+                       4  log  2
+
+Geom(4)) we have
+
+                                     P(j[k+1,k+P ]  0.1m) P exp(-cm)
+
+and thus by the triangle inequality
+
+                                     P(j[1,k+P ]  0.9m) P exp(-cm).
+
+Thus the contribution of this case to (7.54) is OP,A(mA exp(-cm)) = OP,A(exp(-cm/2)).
+If instead we have j[1,k+P ] < 0.9m, then
+
+                                     max    1 - j[1,k+P ] , 1  -A
+                                                  mm
+                                                                    10A.
+
+Since m is large compared to A, P , to show (7.54) it thus suffices to show that
+
+                       E exp                   P -1                  10-A-1.                         (7.55)
+
+                                       -3 1W ((j, l) + v[1,k+p])
+
+                                               p=0
+
+Since the left-hand side of (7.55) is at most
+
+                             P -1                              10A
+
+                    P                1W ((j, l) + v[1,k+p])  3 + exp(-10A),
+
+                             p=0
+
+it will suffice to establish the bound
+
+                                  P -1                         10A
+
+                          P             1W ((j, l) + v[1,k+p])  3    10-A-2                          (7.56)
+
+                                  p=0
+
+(say).
+
+Roughly speaking, the estimate (7.56) asserts that once one exits the large triangle 
+then one should almost always encounter at least 10A/3 white points by a certain time
+
+P = OA,(1).
+50                                              TERENCE TAO
+
+To prove (7.56), we introduce another random statistic that measures the number of tri-
+angles that one encounters on an infinite two-dimensional renewal process (j , l ), (j , l )+
+v1, (j , l ) + v[1,2], . . . , where (j , l )  (N + 1) × Z and v1, v2, . . . are iid copies of Hold.
+(We will eventually set (j , l ) := (j, l) + v[1,k], so that the above renewal process is
+identical in distribution to (j, l) + v[1,k], (j, l) + v[1,k+1], (j, l) + v[1,k+2], . . . .)
+
+Given an initial point (j , l )  (N + 1) × Z, we recursively introduce the stopping times
+
+t1 = t1(j , l ), . . . , tr = tr(j ,l )(j, l) by defining t1 to be the first natural number (if it
+exists) for which (j , l ) + v[1,t1] lies in a triangle 1  T , then for each i > 1, defining ti
+to be the first natural number (if it exists) with l + l[1,ti] > li-1 and (j , l ) + v[1,ti] lies
+in a triangle i  T . We set r = r(j , l ) to be the number of stopping times that can
+be constructed in this fashion (thus, there are no natural numbers k with l + l[1,k] > lr
+and (j , l ) + v[1,k] black). Note that r is finite since the process (j , l ) + v[1,k] eventually
+exits the strip [n/2] × Z when k is large enough, at which point it no longer encounters
+
+any black triangles.
+
+The key estimate relating r with the expression in (7.56) is then
+
+Lemma 7.9 (Many triangles usually implies many white points). Let v1, v2, . . . be iid
+copies of Hold. Then for any (j , l )  (N + 1) × Z and any positive integer R, we have
+
+                      tmin(r,R)                                            
+
+          E exp -                     1W ((j , l ) + v[1,p]) +  min(r, R)  exp(),                     (7.57)
+
+                              p=1
+
+where 0 <  < 1/100 is the sufficiently small absolute constant that has been in use
+throughout this section.
+
+Informally the estimate (7.57) asserts that when r is large (so that the renewal process
+
+(j , l ), (j , l ) + v1, (j , l ) + v[1,2], . . . passes through many different triangles), then the
+
+quantity  tmin(r,R)  1W  ((j  ,  l  ) + v[1,p]  is  usually  also  large,  implying  that  the  same  renewal
+          p=1
+
+process also visits many white points. This is basically due to the separation between
+
+triangles that is given by Lemma 7.4.
+
+Proof. Denote the quantity on the left-hand side of (7.57) by Z((j , l ), R). We induct
+on R. The case R = 1 is trivial, so suppose R  2 and that we have already established
+that
+
+                                      Z((j , l ), R - 1)  exp()                                       (7.58)
+
+for all (j , l )  (N + 1) × Z. If r = 0 then we can bound
+
+                      tmin(r,R)                                            
+
+          exp -                       1W ((j , l ) + v[1,p]) +  min(r, R)  1.
+
+                                 p=1
+
+Suppose that r = 0, so that the first stopping time t1 and triangle 1 exists. Let k1
+be the first natural number for which l + l[1,k1] > l1; then k1 is well-defined (since we
+have an infinite number of lk, all of which are at least 2) and k1 > t1. The conditional
+                     COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                                            51
+
+expectation of exp(-          tmin(r,R)  1W ((j  ,  l  )  +  v[1,p])  +   min(r,  R))  relative  to  the    random
+                              p=1
+
+variables v1, . . . , vk1 is equal to
+
+                                 k1
+
+                 exp - 1W ((j , l ) + v[1,p]) +  Z(1W ((j , l ) + v[1,k1], R - 1)
+
+                                p=1
+
+which we can upper bound using the inductive hypothesis (7.58) as
+
+                                  exp -1W ((j , l ) + v[1,k1]) + 2 .
+We thus obtain the inequality
+
+             Z((j , l ), R)  P(r = 0) + exp(2)E1r=0 exp(-1W ((j , l ) + v[1,k1]))
+so to close the induction it suffices to show that
+
+                      E1r=0 exp(-1W ((j , l ) + v[1,k1]))  exp(-)P(r = 0).
+Since the left-hand side is equal to
+
+                     P(r = 0) - (1 - 1/e)P((r = 0)  ((j , l ) + v[1,k1]  W ))
+
+and  > 0 is a sufficiently small absolute constant, it will thus suffice to establish the
+bound
+
+                         P((r = 0)  ((j , l ) + v[1,k1]  W )) P(r = 0).
+
+For each p  N + 1, triangle 1  T , and (j , l )  1, let Ep,1,(j ,l ) denote the event
+that (j , l ) + v[1,p] = (j , l ), and (j , l ) + v[1,p ]  W for all 1  p < p. Observe that
+the event r = 0 is the disjoint union of the events Ep,1,(j ,l ). It therefore suffices to
+show that
+
+                     P Ep,1,(j ,l )  ((j , l ) + v[1,k1]  W )                P(Ep,1,(j ,l )).               (7.59)
+
+We may of course assume that the event Ep,1,(j ,l ) occurs with non-zero probability.
+Conditioning to this event, we see that (j , l ) + v[1,k1] has the same distribution as (the
+unconditioned random variable) (j , l ) + v[1,k ], where the first passage time k is the
+
+first natural number for which l + l[1,k ] > l1. By repeating the proof of (7.51), one
+has
+
+                              P((j , l ) + v[1,k ]  W |Ep,1,(j ,l )) 1
+giving (7.59). This establishes the lemma.
+
+To use this bound we need to show that the renewal process (j, l) + v[1, k], (j, l) +
+v[1, k + 1], (j, l) + v[1,k+2], . . . either passes through many white points, or through
+many triangles. This will be established via a probabilistic upper bound on the size s
+of the triangles encountered. The key lemma in this regard is
+
+Lemma 7.10 (Large triangles are rarely encountered shortly after a lengthy crossing).
+
+Let  (j, l)  be  an  element  of  a  black  triangle         with     s  :=  l  -l  obeying  s   >     m    (where
+                                                                                                    log2 m
+
+we recall m = n/2 - j), and let k be the first passage time associated to s defined in
+
+Lemma 7.7. Let p  N and 1  s  m0.4. Let Ep,s denote the event that (j, l) + v[1,k+p]
+
+lies in a triangle   T of size s  s . Then
+
+                              P(Ep,s )      A2 1 + p + exp(-cA2(1 + p)).
+                                                 s
+52                                          TERENCE TAO
+
+As in the rest of this section, we stress that the implied constants in our asymptotic
+notation are uniform in n and .
+
+Proof. We can assume that
+
+                                         s  CA2(1 + p)                                                  (7.60)
+
+for a large constant C, since the claim is trivial otherwise.
+
+From Lemma 7.7 we have (7.48) as before, so on summing in j we have
+
+                          P(l + l[1,k] = l ) exp(-c(l - l))
+
+and thus                                                      exp(-cA2(1 + p)).
+                       P(l + l[1,k]  l + A2(1 + p))
+
+Similarly, from Lemma 2.2 one has
+
+                     P(l[k+1,k+p]  A2(1 + p)) exp(-cA2(1 + p))
+
+and thus
+
+                  P(l + l[1,k+p]  l + 2A2(1 + p)) exp(-cA2(1 + p)).
+
+In a similar spirit, from (7.48) and summing in l one has
+
+                     P(j + j[1,k] = j )         s-1/2G1+s                   s
+                                                               c(j - j - )
+
+                                                                            4
+
+so in particular
+
+                     P             s   s0.6     exp(-cs0.2) A2 1 + p
+                          j[1,k] - 4                                     s
+
+from the upper bound on s . From Lemma 2.2 we also have
+
+                     P(|j[k+1,k+p]|  s0.6)      exp(-cs0.6)          A2 1 + p
+                                                                          s
+
+and hence                                    s                    A2 1 + p
+                                 j[1,k+p] - 4                          s
+                          P                      2s0.6
+
+Thus, if E  denotes  the  event  that    l  +  l[1,k+p]    l  +  2A2(1  +   p)  or  |j[1,k+p]  -  s  |    2s0.6,
+                                                                                                  4
+
+then                                  A2 1 + p + exp(-cA2(1 + p)).
+                                           s
+                          P(E )                                                                         (7.61)
+
+We will devote the rest of the proof to establishing the complementary estimate
+
+                                 P(Ep,s  E¯ )              A2 1 + p                                     (7.62)
+                                                                s
+
+which together with (7.61) implies the lemma.
+
+Suppose now that we are outside the event E , and that (j, l) + v[1,k+p] lies in a triangle
+
+ , thus
+
+                             l + l[1,k+p] = l + O(A2(1 + p))                                            (7.63)
+
+and                                      s                  s
+                                         4                  4
+                          j[1,k+p]    =     +  O(s0.6)   =     +  O(m0.6)                               (7.64)
+                    COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES          53
+
+thanks to (7.52). From (7.11) we then have
+
+                                                1          log 2
+            0  j + j[1,k+p] - j  log 9 s - log 9 (l - l - l[1,k+p]).
+
+Suppose that the lower tip of  lies well below the upper edge of  in the sense that
+
+                                       l  -     s       l - 10.
+                                                log 2
+
+Then by (7.63) we can find an integer j = j + j[1,k+p] + O(A2(1 + p)) such that j  j
+
+and                                             1          log 2
+
+                         0  j - j  log 9 s - log 9 (l - l).
+
+In other words, (j , l)   . But by (7.64) we have
+
+            j = j + s + O(m0.6) + O(A2(1 + p)) = j + s + O(m0.6).
+                         4                                            4
+
+From (7.11) we have
+
+                                 0  (j - j) log 9  s - s log 2
+
+and  hence  (since  s       m    and  1  log 9  <  log 2)
+                         log2 m       4
+
+                                      0  (j - j) log 9  s
+
+Thus (j , l)  . Thus  and  intersect, which by Lemma 7.4 forces  =  , which
+
+is absurd since (j, l) + v[1,k+p] lies in  but not  (the l coordinate is larger than l).
+
+We conclude that                                s
+                                                log 2
+                                       l  -            > l - 10.
+
+On the other hand, from (7.11) we have
+
+                                      l   -     s       l + l[1,k+p]
+                                                log 2
+
+hence by (7.63) we have
+
+                                 l  -    s      = l + O(A2(1 + p)).      (7.65)
+                                         log 2
+
+From (7.11), (7.63) we then have
+
+                                                   1       log 2
+            0  j + j[1,k+p] - j  log 9 s - log 9 (l - l - l[1,k+p])
+
+                                          = O(A2(1 + p)).
+
+so that
+                                   j + j[1,k+p] = j + O(A2(1 + p)).
+
+Thus, outside the event E , the event that (j, l) + v[1,k+p] lies in a triangle  can only
+occur if (j, l) + v[1,k+p] lies within a distance O(A2(1 + p)) of the point (j , l).
+
+Now suppose we have two distinct triangles  ,  in T obeying (7.65), with s , s 
+s with j  j . Set l := l + s /2 , and observe from (7.11) that (j, l)  
+whenever j lies in the interval
+
+                                                   1       log 2
+                         j  j  j + log 9 s - log 9 (l - l)
+54                                         TERENCE TAO
+
+and similarly (j, l)   whenever
+
+                                                 1              log 2
+                  j  j  j + log 9 s - log 9 (l - l).
+
+By Lemma 7.4, these two intervals cannot have any integer point in common, thus
+
+                                        1        log 2
+                         j + log 9 s - log 9 (l - l)  j .
+
+Applying (7.65) and the definition of l, we conclude that
+
+                         j     +  1 log 2        + O(A2(1 + p))  j
+                                          s
+
+                                  2 log 9
+
+and hence by (7.60)
+                                              j - j s .
+
+We conclude that for the triangles  in T obeying (7.65) with s  s , the points
+(j , l) are s -separated. Let  denote the collection of such points, thus  is a
+
+   s -separated set of points, and outside of the event E , (j, l) + v[1,k+p] can only occur
+in a triangle  with s  s if
+
+                                dist((j, l) + v[1,k+p], ) A2(1 + p).
+
+We conclude that
+
+    P(Ep,s  E¯ ) P dist((j, l) + v[1,k+p], ) A2(1 + p) .
+
+From (7.48) we see that
+
+    P (j, l) + v[1,k+p] = (j , l) + O(A2(1 + p))
+
+                         A2(1 + p)                              s
+                                           G1+s  c(j    -j-      )
+                         s1/2                                   4
+
+                         A2(1 + p)                      1                         s    .
+                                                        s1/2 G1+s      c(j - j - )
+                            s              j =j +O(s )                              4
+
+Summing and using the s -separated nature of , we conclude that
+
+    P dist((j, l) + v[1,k+p], ) A2(1 + p)               A2(1 + p)           1                       s
+                                                                            s1/2 G1+s  c(j - j - )
+                                                             s         j Z
+                                                                                                    4
+
+                                                        A2(1 + p)
+
+                                                             s
+
+and the claim (7.62) follows.
+
+From Lemma 7.10 we have                    A2       1   p)2  +  exp(-cA2(1     +  p))
+                       P(Ep,4A(1+p)3 )         4A(1 +
+
+whenever 0  p  m0.1. Thus by the union bound, if E denotes the union of the
+Ep,4A(1+p)3 for 0  p  m0.1, then
+
+                                           P(E) A24-A.
+                  COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                55
+
+Next, we apply Lemma 7.9 with (j , l ) := (j, l) + v[1,k] to conclude that
+
+                     tmin(r,R)                                       
+
+         E exp -                1W ((j, l) + v[1,k+p] +  min(r, R)  exp(),
+
+                    p=1
+
+where now r = r((j, l) + v[1,k]) and ti = ti((j, l) + v[1,k]). By Markov's inequality we
+thus see that outside of an event F of probability
+
+                                             P(F)  10-A-2,
+
+one has              tmin(r,R)                                       
+
+         exp -                  1W ((j, l) + v[1,k+p] +  min(r, R) 10A
+
+                    p=1
+
+which implies that
+
+                                    tmin(r,R)             min(r, R) - O(A).
+
+                                 1W ((j, l) + v[1,k+p])
+
+                                       p=1
+
+In particular, if we set R := A2/4 , we have
+
+                                tR                            A2
+
+                                    1W ((j, l) + v[1,k+p]) 3                 (7.66)
+
+                         p=1
+
+whenever we lie outside of F and r  R.
+
+Now suppose we lie outside of both E and F. To prove (7.56), it will now suffice to
+show the deterministic claim
+
+                         P -1                                 10A
+
+                                    1W ((j, l) + v[1,k+p]) >      .          (7.67)
+                                                              3
+                         p=0
+
+Suppose this is not the case, thus
+
+                         P -1                                 10A
+
+                                    1W ((j, l) + v[1,k+p])        .
+                                                              3
+                         p=0
+
+Thus the point (j, l) + v[1,k+p] is white for at most 10A/3 values of 0  p  P - 1,
+so in particular for P large enough there is 0  p  10A/3 + 1 = OA,(1) such that
+
+(j, l) + v[1,k+p] is black. By Lemma 7.4, this point lies in a triangle   T . As we are
+
+outside E, we have
+                                             s < 4A(1 + p)3.
+
+Thus by (7.11), for p in the range
+
+                    p + 10 × 4A(1 + p)3 < p  P - 1,
+
+we must have l + l[1,k+p ] > l , hence we exit  (and increment the random variable
+r). In particular, if
+
+                    p + 10 × 4A(1 + p)3 + 10A/3 + 1  P - 1,
+
+then we can find
+
+                  p  p + 10 × 4A(1 + p)3 + 10A/3 + 1 = Op,A,(1)
+56  TERENCE TAO
+
+such that l + l[1,k+p ] > l and (j, l) + v[1,k+p] is black (and therefore lies in a new
+triangle  ). Iterating this R times, we conclude (if P is sufficiently large depending
+on A, ) that r  R and that tR  P . Choosing P large enough so that all the previous
+arguments are justified, the claim (7.67) now follows from (7.66), giving the required
+contradiction. This (finally!) concludes the proof of (7.41), and hence Proposition 7.8.
+As discussed previously, this implies Propositions 7.3, 7.1, 1.17 and Theorem 1.3.
+
+                                               References
+
+ [1] J.-P. Allouche, Sur la conjecture de "Syracuse-Kakutani-Collatz", S´eminaire de Th´eorie des Nom-
+      bres, 1978­1979, Exp. No. 9, 15 pp., CNRS, Talence, 1979.
+
+ [2] A. Baker, Linear forms in the logarithms of algebraic numbers. I, Mathematika. A Journal of Pure
+      and Applied Mathematics, 13 (1966), 204­216.
+
+ [3] D. Barina, Convergence verification of the Collatz problem, The Journal of Supercomputing, 2020.
+ [4] J. Bourgain, Periodic nonlinear Schr¨odinger equation and invariant measures, Comm. Math. Phys.
+
+      166 (1994), 1­26.
+ [5] T. Carletti, D. Fanelli, Quantifying the degree of average contraction of Collatz orbits, Boll. Unione
+
+      Mat. Ital. 11 (2018), 445­468.
+ [6] M. Chamberland, A 3x + 1 survey: number theory and dynamical systems, The ultimate challenge:
+
+      the 3x + 1 problem, 57­78, Amer. Math. Soc., Providence, RI, 2010.
+ [7] R. E. Crandall, On the `3x + 1' problem, Math. Comp. 32 (1978), 1281­1292.
+ [8] C. J. Everett, Iteration of the number-theoretic function f (2n) = n, f (2n + 1) = 3n + 2, Adv.
+
+      Math. 25 (1977), no. 1, 42­45.
+ [9] I. Korec, A density estimate for the 3x + 1 problem, Math. Slovaca 44 (1994), no. 1, 85­89.
+[10] A. Kontorovich, J. Lagarias, Stochastic models for the 3x + 1 and 5x + 1 problems and related
+
+      problems, The ultimate challenge: the 3x + 1 problem, 131­188, Amer. Math. Soc., Providence,
+      RI, 2010.
+[11] A. Kontorovich, S. J. Miller, Benford's law, values of L-functions and the 3x + 1 problem, Acta
+      Arith. 120 (2005), no. 3, 269­297.
+[12] A. V. Kontorovich, Ya. G. Sinai, Structure theorem for (d, g, h)-maps, Bull. Braz. Math. Soc.
+      (N.S.) 33 (2002), no. 2, 213­224.
+[13] I. Krasikov, J. Lagarias, Bounds for the 3x + 1 problem using difference inequalities, Acta Arith.
+      109 (2003), 237­258.
+[14] J. Lagarias, The 3x+1 problem and its generalizations, Amer. Math. Monthly 92 (1985), no. 1,
+      3­23.
+[15] J. Lagarias, K. Soundararajan, Benford's law for the 3x + 1 function, J. London Math. Soc. (2)
+      74 (2006), no. 2, 289­303.
+[16] J. Lagarias, A. Weiss, The 3x + 1 problem: two stochastic models, Ann. Appl. Probab. 2 (1992),
+      no. 1, 229­261.
+[17] T. Oliveira e Silva, Empirical verification of the 3x+1 and related conjectures, The ultimate chal-
+      lenge: the 3x + 1 problem, 189­207, Amer. Math. Soc., Providence, RI, 2010.
+[18] E. Roosendaal, www.ericr.nl/wondrous
+[19] Ya. G. Sinai, Statistical (3x + 1) problem, Dedicated to the memory of Ju¨rgen K. Moser. Comm.
+      Pure Appl. Math. 56 (2003), no. 7, 1016­1028.
+[20] T. Tao, The logarithmically averaged Chowla and Elliott conjectures for two-point correlations,
+      Forum Math. Pi 4 (2016), e8, 36 pp.
+[21] R. Terras, A stopping time problem on the positive integers, Acta Arith. 30 (1976), 241­252.
+[22] R. Terras, On the existence of a density, Acta Arith. 35 (1979), 101­102.
+[23] A. Thomas, A non-uniform distribution property of most orbits, in case the 3x + 1 conjecture is
+      true, Acta Arith. 178 (2017), no. 2, 125­134.
+[24] G. Wirsching, The Dynamical System Generated by the 3n + 1 Function, Lecture Notes in Math.
+      No. 1681, Springer-Verlag: Berlin 1998.
+COLLATZ ORBITS ATTAIN ALMOST BOUNDED VALUES                  57
+
+UCLA Department of Mathematics, Los Angeles, CA 90095-1555.
+
+Email address: tao@math.ucla.edu
+58  TERENCE TAO
+
+    Figure 4. The proof of Lemma 7.4. The points connecting (j, l) to
+    (j, l), and from (j, l) to (j, l), are known to be black, while the points
+    (j, l + 1), (j - 1, l) are known to be white. The point (j , l ) can be in
+    various locations, as illustrated by the red dots here. From (7.18) one
+
+    can obtain that every point in the dashed triangle  is black (and every
+    point in the Case 1 region is weakly black), which can treat the Case 1
+
+    locations of (j , l ) (and also forces (j, l) to lie inside ). In Case 2, (j , l )
+    can be to the right or left of (j, l +1), but in either case one can show that
+    if (j , l ) is black, then (j , l + 1) (displayed here in blue) is weakly black
+    and hence (j, l + 1) is weakly black and in fact black, a contradiction.
+    Similarly, in Case 3, (j , l ) can be above or below (j - 1, l), but in either
+    case one can show that if (j , l ) is black, then so (j - 1, l ) (displayed
+    here in green) is weakly black and hence (j - 1, l) is weakly black and
+    in fact black, again giving a contradiction.
+
