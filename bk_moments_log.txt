@@ -1,0 +1,69 @@
+========================================================================================
+# C2: Bourgain-Konyagin moment analysis on ⟨4⟩ ⊂ (Z/3^{r+1})^*
+# M_{2k}(r) := Σ_{c ∈ (Z/q)^*} |K(r, c, 0)|^{2k}
+========================================================================================
+
+[warmup]
+[warmup done]
+
+## r = 6: q = 2187, N = 243, |(Z/q)^*| = 1458
+   computed |K| for 1458 c-units in 0.00s
+   M_2 emp = 3.5429e+05,  per-unit avg = 243.0000,  prediction n_units·N = 3.5429e+05,  ratio = 1.0000
+   M_4 emp = 9.8822e+07
+     vs saturated (q·E_+) = 2.0921e+10,  ratio = 0.0047
+     vs random model (n_units · 2N²) = 1.7219e+08,  ratio = 0.5739
+   M_6 emp = 3.0298e+10
+   M_8 emp = 9.9332e+12
+   |K| stats: max = 21.8954, p99 = 20.6649, median = 15.5480, √N = 15.5885
+   max/√N = 1.4046, median/√N = 0.9974
+
+## r = 8: q = 19683, N = 2187, |(Z/q)^*| = 13122
+   computed |K| for 13122 c-units in 0.03s
+   M_2 emp = 2.8698e+07,  per-unit avg = 2187.0000,  prediction n_units·N = 2.8698e+07,  ratio = 1.0000
+   M_4 emp = 8.2401e+10
+     vs saturated (q·E_+) = 1.3726e+14,  ratio = 0.0006
+     vs random model (n_units · 2N²) = 1.2552e+11,  ratio = 0.6565
+   M_6 emp = 2.9499e+14
+   M_8 emp = 1.2470e+18
+   |K| stats: max = 82.5713, p99 = 78.3049, median = 44.0324, √N = 46.7654
+   max/√N = 1.7657, median/√N = 0.9416
+
+## r = 10: q = 177147, N = 19683, |(Z/q)^*| = 118098
+   computed |K| for 118098 c-units in 2.20s
+   M_2 emp = 2.3245e+09,  per-unit avg = 19683.0000,  prediction n_units·N = 2.3245e+09,  ratio = 1.0000
+   M_4 emp = 5.1489e+13
+     vs saturated (q·E_+) = 9.0057e+17,  ratio = 0.0001
+     vs random model (n_units · 2N²) = 9.1507e+13,  ratio = 0.5627
+   M_6 emp = 1.2358e+18
+   M_8 emp = 3.1619e+22
+   |K| stats: max = 199.8467, p99 = 191.0480, median = 139.4094, √N = 140.2961
+   max/√N = 1.4245, median/√N = 0.9937
+
+## r = 12: q = 1594323, N = 177147, |(Z/q)^*| = 1062882
+   computed |K| for 1062882 c-units in 171.40s
+   M_2 emp = 1.8829e+11,  per-unit avg = 177147.0000,  prediction n_units·N = 1.8829e+11,  ratio = 1.0000
+   M_4 emp = 4.2082e+16
+     vs saturated (q·E_+) = 5.9086e+21,  ratio = 0.0000
+     vs random model (n_units · 2N²) = 6.6709e+16,  ratio = 0.6308
+   M_6 emp = 1.1008e+22
+   M_8 emp = 3.2173e+27
+   |K| stats: max = 680.4381, p99 = 641.8464, median = 396.5824, √N = 420.8883
+   max/√N = 1.6167, median/√N = 0.9423
+
+[csv: C:\Collatz\bk_moments_data.csv]
+
+========================================================================================
+# Moment scaling: log(M_{2k}) = a + b · log(N)
+# Saturated prediction: M_4 ∝ N^4, M_6 ∝ N^?, M_8 ∝ N^?
+# Random prediction:    M_4 ∝ N^3, M_6 ∝ N^4, M_8 ∝ N^5
+========================================================================================
+
+  M_2:  β = 2.0000,  R² = 1.0000  (Plancherel predicts β = 2 since q·N = 9N²)
+  M_4:  β = 3.0059,  R² = 0.9999  (saturated β=4, random β=3)
+  M_6:  β = 4.0140,  R² = 0.9997  (saturated β=5, random β=4)
+  M_8:  β = 5.0234,  R² = 0.9992  (saturated β=6, random β=5)
+
+# Verdict:
+  M_4 slope 3.006 ≈ 3 ⟹ random-like multiplicative structure.
+     ⟹ BK could give a polynomial saving.
+     ⟹ C2 closure path requires further analytical follow-up.
