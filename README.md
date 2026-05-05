@@ -1,6 +1,6 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-05-04):** Live state in [`STATE.md`](STATE.md). The repo has accreted three additional research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-05-05):** Live state in [`STATE.md`](STATE.md). The repo has accreted three additional research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
 
 **Original status (2026-05-02):** Bridge result to Tao 2022 documented. Three findings consolidated: (a) prefix-decomposition theorem at modular resolutions k = 4..14; (b) `s_mean(r) ≈ α_det(r) + K_h · log(N/f(N))` with slope = 1.000 ± 0.005 at K_h = 3/log(4/3) across two independent observables (σ and first-passage), four modular resolutions, and two data scales; (c) qx+1 Cramér convergence law at q ∈ {5, 7, 9, 11} with q=5 match to 0.01%.
 
@@ -14,19 +14,21 @@ Three threads layered on top of the architectural overview below. **For the curr
 
 Plancherel-side derivation of the trajectory measure's structural constant via Tao's Syracuse Markov chain on (Z/3^k)*.
 
-- **R75 / `c_seven_forty_fifth.md`** — derivation of c = 7/45 with rate-1/2 envelope through k=6.
+- **R75 / `c_seven_forty_fifth.md`** — derivation of c = 7/45. Rate-1/2 envelope on |ε_n|·2^n appeared stable at k=2..6 (~0.04). **WALKED BACK 2026-05-05** — at k=7 the envelope jumps to 0.150 (4× the supposed plateau); ρ ≈ 0.984 single-pair model also falsified at k=11. Current best fit: order-3 linear recurrence on ε_2..ε_11 with ρ_slow ≈ 0.827 (real). The asymptotic rate question is open; structural form not yet identified.
 - **R76 / `result_76_conservation_law.md`** — `Σ_j M_{n+1}(η_0 + j·3^n) = 0` conservation law; reduces rate question to scalar sequence R_n.
 - **R77 / `result_77_T_lead_spectrum.md`** through R77.6 / `result_77_6_generating_function.md` — operator-shape attempt: R77.3 falsified the 3-mode geometric ansatz over Q; R77.4 envelope fits gave verdict (M); R77.4 erratum / `result_77_4_K_spectrum_erratum.md` showed K_k itself has no eigenvalue near 1/2 (rate operator is inter-level, not within-level); R77.6 generating-function probe found branch-cut signature at z=2 (type indeterminate at N=5).
-- **R77.7 (NOT COMPLETED, `result_77_7_status.md`)** — k=7 ε-extension killed at ~8.5 hr, superseded by the Bohr empirical positive (below).
+- **R77.7 (NOT COMPLETED, `result_77_7_status.md`)** — k=7 ε-extension killed at ~8.5 hr. Original "superseded by Bohr empirical positive" framing also retired (Bohr deflated, see below); R77.7 stands as: killed before completion, no current empirical successor in place.
 - **R78 / `result_78.md`, R79 / `result_79.md`, R79b / `r79b_S_partial_empirical.md`** — Path-A obstruction map (Cochrane / van der Corput / direct band-l¹ / band-spectral): all subroutes closed for analytical closure of Kalafatelis eq 190.
 
-The rate-1/2 rigorous-proof gate remains the single open piece for c = 7/45.
+The rate-1/2 rigorous-proof gate remains the single open piece for c = 7/45 — but as of 2026-05-05, the rate itself is empirically reframed (no longer rate-1/2; current best ρ_slow ≈ 0.83 from order-3 recurrence).
 
-### Joint 2-3-adic Bohr empirical positive — `result_bohr_probe.md`
+### Joint 2-3-adic Bohr empirical positive — RETIRED 2026-05-05
 
-Direct empirical observation of structured non-CRT-independence between Z/2^a and Z/3^b residues of N=10⁷ Syracuse iterates. χ²-departures grow monotonically with depth k, reaching z = 16.5 at k=20 (a=5, b=4). Same multiplicative joint structure that R66/R74/R77.x closed forms were probing indirectly via Plancherel sums and ε_n shapes — now directly observable. Verification chain: `result_bohr_probe_{verify,check,cliff,asymptote,brackets,strat}.md`.
+Original claim (`result_bohr_probe.md`, 2026-05-04): structured non-CRT-independence between Z/2^a and Z/3^b residues of N=10⁷ Syracuse iterates, z=16.5 at k=20 (a=5, b=4).
 
-This is the load-bearing structural finding as of 2026-05-04.
+**Deflated 2026-05-04/05** by bracket-stratification probe (`result_bohr_probe_strat.md`): per-bracket χ²/df at v ∈ (10⁶, 10⁹] is 0.95 (z = −0.99) and at v > 10⁹ is 0.94 (z = −1.18) — statistically CRT-independent within ±2σ. The original aggregate signal was driven by the v ≤ 100 descent funnel (low-v trajectories transiting toward 1), not by joint structure at the scales relevant to D_emp.
+
+**Status:** retired as a load-bearing structural object. Do not cite as a closure path or as evidence of R58/R60 gap structure.
 
 ### qx+1 sweep + sibling 3x±1 study
 
@@ -36,6 +38,51 @@ This is the load-bearing structural finding as of 2026-05-04.
 - **Sibling 3x±1 inverse-tree / `duality_S_vs_D_verdict.md` + `duality_followup_verdict.md`** — D_n^((x±1)/3) tables (Agent 2 single-basin from 1, Agent 3 three-basin from {1,5,17} cycles). Raw 10³–10⁴× difference is ~95% sample-size artifact after matched-N control; residual structural difference factor 0.2-4. No clean forward-backward duality D = f(S).
 
 The c̃_q = (q − 3)/q observation is a publishable theorem candidate independent of c = 7/45 closure status.
+
+---
+
+## Index by mathematical field
+
+### Analytic number theory
+- Plancherel decomposition on Z/3^k coprime classes (R75; `c_seven_forty_fifth.md`, `result_76_conservation_law.md`)
+- Sign-invariance theorem K_- = σK_+σ (`sibling_3x_minus_1_symmetry_verdict.md`)
+- (q−3)/q closed-form candidate for c̃_q at q ∈ {11, 13, 17} (`c_tilde_structure_verdict.md`, `c_tilde_q17_probe.py`)
+- q-spectrum probe across q ∈ {3, 5, 7, 11, 13} (`result_qspectrum.md`)
+
+### Arithmetic dynamics
+- Syracuse Markov chain construction at k=1..7 (`K_full.npz`, `K_derived_v2.npz`)
+- α_det deterministic prefix algorithm (`experiments/01_alpha_decomposition.py`)
+- Inter-level renormalization R̃ operator probe at k=4..7 (`result_R_operator_spectrum.md`, `result_renormalization_spectrum.md`)
+- Bridge to Tao 2022 leading term (`tao_bridge_findings.md`)
+
+### Probability / Markov chain theory
+- Stationary distribution Plancherel mass S_k (`S_k_recursion.csv`, `s_infinity_exact.py`)
+- Convergence rate ε_k = S_k − 7/15 trajectory at k=2..11 (`result_epsilon_6.md` … `result_epsilon_11.md`)
+- Direct K_k top-10 eigenvalue spectrum at k=5,6,7 (`result_eigenvalue_spectrum.md`)
+- Order-3 linear recurrence characterization on ε_2..ε_11, ρ_slow ≈ 0.83 (`result_renormalization_recurrence_fits.csv`, `result_renormalization_spectrum.md`)
+- Cycle obstruction null result (`result_cycle_obstruction.md`)
+
+### Hierarchical Bayesian statistics (Collatz σ)
+- Hierarchical NB GLM with Stan for σ vs log n (`fit.py`, `experiments/nb2_glm.stan`)
+- Bonacorsi-Bordoni 2026 NB GLM replication (`experiments/04_head_to_head_nb_glm.py`, `experiments/06_bb_replication.py`, `experiments/06b_bb_pathfinder.py`)
+
+### Ergodic theory / measure theory
+- Connection to Lagarias 1985 2-adic equidistribution (`literature_check.md`)
+- Tao 2022 bridge at 40 verification cells (`tao_bridge_findings.md`)
+- TA.1 N-stability of σ structural offset across N ∈ 2²⁵..2³² (`experiments/36_TA1_sigma_offset_N_sweep.py`)
+- Unconditional ensemble mean v_2 = 2.102 vs Geom(½) prediction 2.0 across 2.8M trajectories (`result_density_one_v2_bounds.md`)
+
+### qx+1 generalization
+- Cramér convergence law q^(−θ) = 2^(1−θ) − 1 exact (`experiments/16_cramer_root.py`, `experiments/17_cramer_dual_verification.py`)
+- Per-prime decomposition q ∈ {3, 5, 7, 9, 11} (`experiments/10_q_decomposition.py`, `experiments/12_q_convrate_analytical.py`, `experiments/13_cross_q_unification.py`)
+- Cycle classification for q ∈ {5, 7, 11, 13} (`experiments/22_q5_cycle_detection.py`, `experiments/29_qx1_cycle_classification.py`, `experiments/36_q5_fourth_cycle_search.py`)
+- Sibling 3x±1 forward-symmetry and inverse-tree asymmetry (`sibling_3x_minus_1_symmetry_verdict.md`, `duality_S_vs_D_verdict.md`, `duality_followup_verdict.md`)
+
+### Numerical methods
+- Exact-rational stationary computation k ≤ 5 (Gaussian elimination over Q; `lifting_operator_spectral.py`)
+- Float64 power iteration with scipy.eigs cross-check at k=6, 7 (`result_epsilon_6.py`, `result_epsilon_7.py`, `result_epsilon_7_verify.py`)
+- Matrix-free power iteration for k=8..11 (sparse + Krylov; `result_epsilon_8.py` … `result_epsilon_11.py`)
+- FFT-based Plancherel mass computation (`result_epsilon_10.py` cross-validation chain)
 
 ---
 
