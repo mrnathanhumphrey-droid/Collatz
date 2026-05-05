@@ -1,0 +1,62 @@
+[1/4] generating starts; iterating up to 1000 Syracuse steps
+  3,333,332 starting integers
+  step 100: alive=131,609
+  step 200: alive=85
+  iteration done in 38.3s; 0 did not collapse within 1000 steps
+
+[2/4] descriptive stats on full ensemble
+  total v_2 (all trajectories): mean=107.52, median=104, min=4, max=429
+  trajectory length: mean=53.94, median=51, max=256
+  avg v_2 per step: mean=2.1006, median=2.0185
+
+  fraction with horizon reached:
+    m= 6: reached 100.00%  (mean horizon 3.50, median 3; 1 did NOT reach m bits)
+    m= 8: reached 100.00%  (mean horizon 4.50, median 4; 2 did NOT reach m bits)
+    m=10: reached 100.00%  (mean horizon 5.50, median 6; 5 did NOT reach m bits)
+    m=12: reached 100.00%  (mean horizon 6.50, median 6; 12 did NOT reach m bits)
+    m=16: reached 100.00%  (mean horizon 8.50, median 8; 32 did NOT reach m bits)
+    m=20: reached 100.00%  (mean horizon 10.50, median 11; 106 did NOT reach m bits)
+
+[3/4] stratifying by bottom-q quantile on count(v_2 ≥ 2)
+  count(v_2 ≥ 2) summary: mean=26.96, median=26, min=1, max=104
+  using PRIMARY metric: avg v_2 per step (length-normalized)
+  avg_v2 summary: mean=2.1006, min=1.6758, max=22.0000
+
+  bottom-q quantile cuts:
+
+  q=0.001: cut=1.7329, 3,347 trajectories at or below
+      m   mean h (low)  mean h (rest)   median h (low)  median h (rest)   frac reached (low)  frac reached (rest)
+      6         4.4658         3.4990              5.0              3.0               1.0000               1.0000
+      8         5.8315         4.4987              6.0              4.0               1.0000               1.0000
+     10         7.1915         5.4983              7.0              5.0               1.0000               1.0000
+     12         8.5375         6.4980              9.0              6.0               1.0000               1.0000
+     16        11.2145         8.4973             11.0              8.0               1.0000               1.0000
+     20        13.8739        10.4967             14.0             10.0               1.0000               1.0000
+
+  q=0.010: cut=1.7698, 33,719 trajectories at or below
+      m   mean h (low)  mean h (rest)   median h (low)  median h (rest)   frac reached (low)  frac reached (rest)
+      6         4.2143         3.4927              4.0              3.0               1.0000               1.0000
+      8         5.4944         4.4898              6.0              4.0               1.0000               1.0000
+     10         6.7712         5.4870              7.0              5.0               1.0000               1.0000
+     12         8.0397         6.4843              8.0              6.0               1.0000               1.0000
+     16        10.5735         8.4788             11.0              8.0               1.0000               1.0000
+     20        13.0854        10.4737             13.0             10.0               1.0000               1.0000
+
+  q=0.050: cut=1.8137, 170,875 trajectories at or below
+      m   mean h (low)  mean h (rest)   median h (low)  median h (rest)   frac reached (low)  frac reached (rest)
+      6         4.0481         3.4704              4.0              3.0               1.0000               1.0000
+      8         5.2661         4.4586              5.0              4.0               1.0000               1.0000
+     10         6.4835         5.4469              6.0              5.0               1.0000               1.0000
+     12         7.6998         6.4352              8.0              6.0               1.0000               1.0000
+     16        10.1289         8.4120             10.0              8.0               1.0000               1.0000
+     20        12.5518        10.3892             13.0             10.0               1.0000               1.0000
+
+[4/4] verdict on horizon direction:
+  cells where low-v has LARGER mean horizon than rest: 18/18
+  cells where low-v has SMALLER mean horizon than rest: 0/18
+
+*** VERDICT: BIT-BUDGET CONFIRMED. Low-v_2 trajectories have SYSTEMATICALLY LARGER admissibility horizons than typical trajectories. The brief's hypothesis (smaller k_max for low-v) is REFUTED — the math predicts and the data confirms that lower per-step v_2 means more steps to exhaust m bits.
+  saved C:\Collatz\result_low_v2_residue_admissibility.csv
+  saved C:\Collatz\result_low_v2_residue_admissibility.md
+
+[done] runtime = 39.7s

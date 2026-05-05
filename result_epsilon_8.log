@@ -1,0 +1,54 @@
+==============================================================================
+Computing eps_8 = S_8 - 7/15 (bouncing vs decay-resumed)
+==============================================================================
+
+X_5 (exact, cached) = 3.534161151367800
+
+--- k = 6 (sanity recompute) ---
+  build K_6 (states=486, M=486): 0.06s
+  power iteration: 7 iters, residual 2.59e-16, 0.00s
+  X_6 = 4.000329912369247, S_6 = 0.466168761001446
+  eps_6 = -4.9790566522e-04
+
+--- k = 7 (sanity recompute) ---
+  build K_7 (states=1458, M=1458): 0.58s
+  power iteration: 8 iters, residual 2.81e-16, 0.00s
+  X_7 = 4.465821342205540, S_7 = 0.465491429836293
+  eps_7 = -1.1752368304e-03
+
+--- k = 8 (target) ---
+  build K_8 (states=4374, M=4374): 7.08s
+  K_8 row-sum check: max |row sum - 1| = 2.22e-16
+  power iteration: 9 iters, residual 2.84e-16, 0.02s
+  sum(pi_8) = 1.000000000000000  (expect 1)
+
+  cross-check via scipy.sparse.linalg.eigs (Arnoldi)...
+  eigs: leading eigenvalue = 1.000000000000  (expect 1.0), 0.05s
+  |pi8_power - pi8_eigs|_1 = 5.6641e-16, max-abs = 3.9031e-18
+
+  X_8 = 4.931742462504920, S_8 = 0.465921120299381
+  eps_8 = -7.4554636729e-04
+  cross-check eps_8 via eigs vector: -7.4554636729e-04
+  agreement: |eps8_power - eps8_eigs| = 1.7764e-15
+
+  FFT cross-check of S_8 = sum_{xi != 0 mod 3} |pi_hat|^2...
+  S_8 via FFT = 0.465921120299381, eps_8_fft = -7.4554636729e-04
+  agreement: |S_8_X - S_8_FFT| = 3.3307e-16
+
+|eps_8 / eps_7| = 0.634380
+
+*** VERDICT: AMBIGUOUS — 0.5 < |eps_8/eps_7| < 0.7. Neither clean decay nor sustained bouncing. eps_9 (k=9 chain, ~13k states, ~3-5 min compute) would disambiguate.
+
+Updated ratio trajectory |eps_{k+1}/eps_k|:
+  k = 1 -> 2: 0.047619
+  k = 2 -> 3: 0.534659
+  k = 3 -> 4: 0.481592
+  k = 4 -> 5: 0.469668
+  k = 5 -> 6: 0.432305
+  k = 6 -> 7: 2.360360
+  k = 7 -> 8: 0.634380
+
+saved C:\Collatz\result_epsilon_8.md
+saved C:\Collatz\result_epsilon_8.csv
+
+Done.

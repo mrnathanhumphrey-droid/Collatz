@@ -1,0 +1,81 @@
+==============================================================================
+Computing eps_10 = S_10 - 7/15 (oscillation vs one-time plunge)
+==============================================================================
+
+X_5 (exact, cached) = 3.534161151367800
+
+--- k = 6 (sanity recompute) ---
+  build K_6 (states=486, M=486): 0.00s
+  power iter: 7 iters, residual 2.59e-16, 0.00s
+  X_6 = 4.000329912369247, eps_6 = -4.9790566522e-04
+
+--- k = 7 (sanity recompute) ---
+  build K_7 (states=1458, M=1458): 0.01s
+  power iter: 8 iters, residual 2.81e-16, 0.00s
+  X_7 = 4.465821342205540, eps_7 = -1.1752368304e-03
+
+--- k = 8 (sanity recompute) ---
+  build K_8 (states=4374, M=4374): 0.09s
+  power iter: 9 iters, residual 2.84e-16, 0.03s
+  X_8 = 4.931742462504920, eps_8 = -7.4554636729e-04
+
+--- k = 9 (sanity recompute) ---
+  build K_9 (states=13122, M=13122): 0.75s
+  power iter: 10 iters, residual 3.11e-16, 0.30s
+  X_9 = 5.398401608914431, eps_9 = -7.5202571564e-06
+
+--- k = 10 (TARGET, matrix-free) ---
+  initialize MatVecK_10: 39366 states, M=39366, chunk=512, 0.01s
+  K_10 row-sum sanity check (5 random rows)...
+    row 26169: sum = 1.000000000000000
+    row 10569: sum = 1.000000000000000
+    row 23736: sum = 1.000000000000000
+    row 17455: sum = 1.000000000000000
+    row 25575: sum = 1.000000000000000
+    iter    1: residual = 5.0794e-01, matvec 14.13s
+    iter    2: residual = 3.6974e-01, matvec 13.79s
+    iter    3: residual = 3.0050e-01, matvec 13.98s
+    iter    4: residual = 2.5185e-01, matvec 13.68s
+    iter    5: residual = 2.1774e-01, matvec 14.11s
+    iter    6: residual = 1.9226e-01, matvec 13.91s
+    iter    7: residual = 1.7279e-01, matvec 13.96s
+    iter    8: residual = 1.5677e-01, matvec 13.63s
+    iter    9: residual = 1.4325e-01, matvec 13.72s
+    iter   10: residual = 1.1161e-01, matvec 14.73s
+    iter   11: residual = 7.6516e-16, matvec 14.66s
+  power iteration: 11 iters, residual 7.65e-16, 154.31s
+  sum(pi_10) = 1.000000000000000  (expect 1)
+
+  cross-check via scipy.sparse.linalg.eigs (Arnoldi)...
+  eigs: leading eigenvalue = 1.000000000000, 290.28s
+  |pi10_power - pi10_eigs|_1 = 8.6246e-16, max-abs = 1.7347e-18
+
+  X_10 = 5.865789026498212, S_10 = 0.467387417583781
+  eps_10 = +7.2075091711e-04
+  cross-check eps_10 via eigs vector: +7.2075091712e-04
+  agreement: |eps10_power - eps10_eigs| = 3.5527e-15
+
+  FFT cross-check of S_10...
+  S_10 via FFT = 0.467387417583781, eps_10_fft = +7.2075091711e-04
+  agreement: |S_10_X - S_10_FFT| = 6.1062e-16
+
+|eps_10 / eps_9| = 95.841259  (compare |eps_9/eps_8| = 0.010087)
+sign(eps_10) = +
+
+*** VERDICT: OSCILLATION CONFIRMED — |eps_10/eps_9| = 95.84 >> 1. The k=9 collapse was a near-zero node, and eps_10 rebounds to a magnitude consistent with the next half-cycle peak. The k-space trajectory of eps_k carries a non-trivial oscillating component (complex eigenpair in K).
+
+Updated ratio trajectory |eps_{k+1}/eps_k|:
+  k = 1 -> 2: 0.047619
+  k = 2 -> 3: 0.534659
+  k = 3 -> 4: 0.481592
+  k = 4 -> 5: 0.469668
+  k = 5 -> 6: 0.432305
+  k = 6 -> 7: 2.360360
+  k = 7 -> 8: 0.634380
+  k = 8 -> 9: 0.010087
+  k = 9 -> 10: 95.841259
+
+saved C:\Collatz\result_epsilon_10.md
+saved C:\Collatz\result_epsilon_10.csv
+
+Done.

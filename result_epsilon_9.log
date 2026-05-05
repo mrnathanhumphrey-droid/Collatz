@@ -1,0 +1,62 @@
+==============================================================================
+Computing eps_9 = S_9 - 7/15 (disambiguate 0.5..0.7 band at k=8)
+==============================================================================
+
+X_5 (exact, cached) = 3.534161151367800
+
+--- k = 6 (sanity recompute) ---
+  build K_6 (states=486, M=486): 0.00s
+  power iteration: 7 iters, residual 2.59e-16, 0.00s
+  X_6 = 4.000329912369247, S_6 = 0.466168761001447
+  eps_6 = -4.9790566522e-04
+
+--- k = 7 (sanity recompute) ---
+  build K_7 (states=1458, M=1458): 0.01s
+  power iteration: 8 iters, residual 2.81e-16, 0.00s
+  X_7 = 4.465821342205540, S_7 = 0.465491429836293
+  eps_7 = -1.1752368304e-03
+
+--- k = 8 (sanity recompute) ---
+  build K_8 (states=4374, M=4374): 0.09s
+  power iteration: 9 iters, residual 2.84e-16, 0.03s
+  X_8 = 4.931742462504920, S_8 = 0.465921120299381
+  eps_8 = -7.4554636729e-04
+
+--- k = 9 (TARGET) ---
+  expected size: 13,122 states, dense float64 ~ 1.38 GB
+  build K_9 (states=13122, M=13122): 0.75s
+  K_9 row-sum check: max |row sum - 1| = 2.22e-16
+  power iteration: 10 iters, residual 3.11e-16, 0.31s
+  sum(pi_9) = 1.000000000000000  (expect 1)
+
+  cross-check via scipy.sparse.linalg.eigs (Arnoldi)...
+  eigs: leading eigenvalue = 1.000000000000, 0.67s
+  |pi9_power - pi9_eigs|_1 = 4.6841e-16, max-abs = 3.9031e-18
+
+  X_9 = 5.398401608914431, S_9 = 0.466659146409510
+  eps_9 = -7.5202571564e-06
+  cross-check eps_9 via eigs vector: -7.5202571564e-06
+  agreement: |eps9_power - eps9_eigs| = 0.0000e+00
+
+  FFT cross-check of S_9...
+  S_9 via FFT = 0.466659146409511, eps_9_fft = -7.5202571555e-06
+  agreement: |S_9_X - S_9_FFT| = 9.4369e-16
+
+|eps_9 / eps_8| = 0.010087  (compare |eps_8/eps_7| = 0.634380)
+
+*** VERDICT: ACCELERATED DECAY — |eps_9/eps_8| < 0.40, faster than pre-spike. The k=7 spike was a one-off and post-spike trajectory is faster than the k=2..6 trend. Asymptotic rate may be > 1/2.
+
+Updated ratio trajectory |eps_{k+1}/eps_k|:
+  k = 1 -> 2: 0.047619
+  k = 2 -> 3: 0.534659
+  k = 3 -> 4: 0.481592
+  k = 4 -> 5: 0.469668
+  k = 5 -> 6: 0.432305
+  k = 6 -> 7: 2.360360
+  k = 7 -> 8: 0.634380
+  k = 8 -> 9: 0.010087
+
+saved C:\Collatz\result_epsilon_9.md
+saved C:\Collatz\result_epsilon_9.csv
+
+Done.

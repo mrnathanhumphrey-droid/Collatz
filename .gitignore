@@ -59,3 +59,25 @@ visualization/*.npz
 visualization/snapshots/
 inverse_tree/__pycache__/
 inverse_tree/*.csv
+
+# Hateley framework comparison — kept local only.
+# The single shipping artifact is result_hateley_duality_eliminated.md.
+# Everything else (the preprint dump, the operator/projection/lift diagnostics,
+# all logs and intermediate CSVs) stays out of the repository.
+hateley2026.txt
+result_hateley_projection.py
+result_hateley_projection.md
+result_hateley_projection.log
+result_hateley_h_density.npy
+result_hateley_block_profile.csv
+result_hateley_pi_tilde.csv
+result_hateley_diagnostic.md
+result_hateley_alt_operator.py
+result_hateley_asymptotic_projection.py
+result_hateley_asymptotic_projection.md
+result_hateley_asymptotic_projection.csv
+result_framework_to_hateley_lift.py
+result_framework_to_hateley_lift.md
+result_framework_to_hateley_lift.log
+result_framework_to_hateley_lift_block_profiles.csv
+result_framework_to_hateley_lift_residuals.csv

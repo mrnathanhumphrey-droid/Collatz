@@ -1,0 +1,56 @@
+[1/5] generating odd-coprime-to-3 starts in [1, 10^7]
+  3,333,332 starts
+[2/5] iterating trajectories...
+  step 50: alive=1,720,652  (51.62%)
+  step 100: alive=131,609  (3.95%)
+  step 150: alive=3,193  (0.10%)
+  step 200: alive=85  (0.00%)
+  step 250: alive=1  (0.00%)
+  iteration done in 27.7s. still alive after cap: 0
+
+[3/5] running tests...
+
+T1: v_2(3n+1) distribution vs geometric null
+  total Syracuse steps recorded: 179,787,888
+  chi² = 1504114.45, df = 24, p = 0.0000e+00
+  per-k relative deviation (k=1..10):
+    k= 1: obs=89,904,599  exp=    89,893,944  rel_dev=+0.0119%
+    k= 2: obs=43,326,350  exp=    44,946,972  rel_dev=-3.6056%
+    k= 3: obs=22,344,788  exp=    22,473,486  rel_dev=-0.5727%
+    k= 4: obs=14,615,862  exp=    11,236,743  rel_dev=+30.0721%
+    k= 5: obs= 5,368,604  exp=     5,618,372  rel_dev=-4.4455%
+    k= 6: obs= 2,163,990  exp=     2,809,186  rel_dev=-22.9674%
+    k= 7: obs= 1,041,648  exp=     1,404,593  rel_dev=-25.8399%
+    k= 8: obs=   478,823  exp=       702,296  rel_dev=-31.8204%
+    k= 9: obs=   224,451  exp=       351,148  rel_dev=-36.0808%
+    k=10: obs=   228,176  exp=       175,574  rel_dev=+29.9599%
+  -> STRUCTURE  (Bonferroni p<0.0100)
+
+T2: v_2 conditional on n mod 27 (and mod 81)
+  mod 27: chi² = 27307163.54, df = 357, p = 0.0000e+00
+  mod 81: chi² = 69807125.41, df = 1113, p = 0.0000e+00
+  -> STRUCTURE
+
+T3: sibling-prime joint distributions vs CRT product
+  mod 5 × mod 27: chi² = 17715329.23, df = 68, p = 0.0000e+00
+  mod 7 × mod 27: chi² = 28680259.44, df = 102, p = 0.0000e+00
+  mod 11 × mod 27: chi² = 46656114.80, df = 170, p = 0.0000e+00
+  -> STRUCTURE
+
+T4: return time τ(n) conditional on starting mod 27
+  τ ≈ 3.4713·log(n) + 1.4568  (R = 0.1438)
+  Lagarias predict slope = 2/log(4/3) = 6.9521
+  ANOVA F = 0.9966, p = 4.5835e-01
+  -> NULL
+
+T5: visit-frequency vs framework's π_3 stationary
+  per-starting-residue χ² tests (Bonferroni-corrected within this test):
+    18 of 18 starting residues reject π_3 match at p<5.56e-04
+  Fisher combined: stat = 24867.92, df = 36, p = 0.0000e+00
+  -> STRUCTURE
+
+[4/5] writing CSVs
+
+[5/5] writing markdown
+
+[done] runtime = 28.1s; outputs in C:\Collatz
