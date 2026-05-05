@@ -1,0 +1,29 @@
+[t=   0.0s] verify probe; N=1,000,000; depths=[5, 10, 15, 18, 19, 20, 22, 25, 30, 40, 50]
+  [t=   0.3s] depth= 5  alive_full=1,000,000  alive_s15=        -  overflow=0
+  [t=   0.6s] depth=10  alive_full=  999,997  alive_s15=        -  overflow=0
+  [t=   0.9s] depth=15  alive_full=  999,965  alive_s15=   999965  overflow=0
+  [t=   1.0s] depth=18  alive_full=  999,873  alive_s15=   999873  overflow=0
+  [t=   1.1s] depth=19  alive_full=  999,816  alive_s15=   999816  overflow=0
+  [t=   1.2s] depth=20  alive_full=  999,750  alive_s15=   999750  overflow=0
+  [t=   1.3s] depth=22  alive_full=  999,499  alive_s15=   999499  overflow=0
+  [t=   1.5s] depth=25  alive_full=  998,753  alive_s15=   998753  overflow=0
+  [t=   1.9s] depth=30  alive_full=  995,860  alive_s15=   995860  overflow=0
+  [t=   2.4s] depth=40  alive_full=  977,352  alive_s15=   977352  overflow=0
+  [t=   3.0s] depth=50  alive_full=  930,365  alive_s15=   930365  overflow=0
+[t=   3.0s] computing chi2 and growth fit
+  k= 5  alive_full=1,000,000 (100.00%)  cpdf_full=  0.976  z_full=   -0.48  cpdf_s15=    nan  z_s15=    +nan
+  k=10  alive_full=  999,997 (100.00%)  cpdf_full=  0.964  z_full=   -0.71  cpdf_s15=    nan  z_s15=    +nan
+  k=15  alive_full=  999,965 (100.00%)  cpdf_full=  0.998  z_full=   -0.05  cpdf_s15=  0.998  z_s15=   -0.05
+  k=18  alive_full=  999,873 (99.99%)  cpdf_full=  0.928  z_full=   -1.44  cpdf_s15=  0.928  z_s15=   -1.44
+  k=19  alive_full=  999,816 (99.98%)  cpdf_full=  1.072  z_full=   +1.43  cpdf_s15=  1.072  z_s15=   +1.43
+  k=20  alive_full=  999,750 (99.97%)  cpdf_full=  1.066  z_full=   +1.31  cpdf_s15=  1.066  z_s15=   +1.31
+  k=22  alive_full=  999,499 (99.95%)  cpdf_full=  1.327  z_full=   +6.51  cpdf_s15=  1.327  z_s15=   +6.51
+  k=25  alive_full=  998,753 (99.88%)  cpdf_full=  1.849  z_full=  +16.93  cpdf_s15=  1.849  z_s15=  +16.93
+  k=30  alive_full=  995,860 (99.59%)  cpdf_full=  6.367  z_full= +107.00  cpdf_s15=  6.367  z_s15= +107.00
+  k=40  alive_full=  977,352 (97.74%)  cpdf_full= 49.770  z_full= +972.35  cpdf_s15= 49.770  z_s15= +972.35
+  k=50  alive_full=  930,365 (93.04%)  cpdf_full=199.878  z_full=+3965.12  cpdf_s15=199.878  z_s15=+3965.12
+[fit] chi2/df ~ 5.0356e-02 * 1.1674^k    (log-linear LS on k=[18, 19, 20, 22, 25, 30])
+[fit] closest candidate: 4/3 = 1.3333 (|diff|=0.1660)
+[predict] k=40: chi2/df = 24.58  actual = 49.77
+[predict] k=50: chi2/df = 115.54  actual = 199.88
+[done] runtime = 3.0s; outputs in C:\Collatz

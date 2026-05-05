@@ -1,0 +1,12 @@
+[t=   0.0s] strat probe; N=1,000,000; k=50
+[t=   2.5s] depth=50 alive=930,379 (93.04%)
+[t=   2.6s] per-bracket chi²
+  A:[1,100]       N=   50,428  cpdf=   951.472  z=  +18949.94  diag=6/10
+  B:(100,1e4]     N=  199,765  cpdf=   237.715  z=   +4719.47  diag=0/10
+  C:(1e4,1e6]     N=  250,623  cpdf=     2.294  z=     +25.81  diag=0/10
+  D:(1e6,1e9]     N=  321,671  cpdf=     0.950  z=      -0.99  diag=0/10
+  E:>1e9          N=  107,892  cpdf=     0.941  z=      -1.18  diag=0/10
+  BE = B+C+D+E    N=  879,951  cpdf=    62.214  z=   +1220.45  diag=0/10
+  full           N=  930,379  cpdf=   197.417  z=   +3916.04
+
+[done] runtime = 2.6s; outputs in C:\Collatz

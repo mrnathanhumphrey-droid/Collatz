@@ -1,6 +1,41 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-05-02):** Bridge result to Tao 2022 documented. Three findings consolidated: (a) prefix-decomposition theorem at modular resolutions k = 4..14; (b) `s_mean(r) ≈ α_det(r) + K_h · log(N/f(N))` with slope = 1.000 ± 0.005 at K_h = 3/log(4/3) across two independent observables (σ and first-passage), four modular resolutions, and two data scales; (c) qx+1 Cramér convergence law at q ∈ {5, 7, 9, 11} with q=5 match to 0.01%.
+**Status (2026-05-04):** Live state in [`STATE.md`](STATE.md). The repo has accreted three additional research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+
+**Original status (2026-05-02):** Bridge result to Tao 2022 documented. Three findings consolidated: (a) prefix-decomposition theorem at modular resolutions k = 4..14; (b) `s_mean(r) ≈ α_det(r) + K_h · log(N/f(N))` with slope = 1.000 ± 0.005 at K_h = 3/log(4/3) across two independent observables (σ and first-passage), four modular resolutions, and two data scales; (c) qx+1 Cramér convergence law at q ∈ {5, 7, 9, 11} with q=5 match to 0.01%.
+
+---
+
+## Recent landmarks (post-2026-05-02)
+
+Three threads layered on top of the architectural overview below. **For the current state of any of these, read [`STATE.md`](STATE.md) first** — it is the live document and supersedes any drift in this README.
+
+### c = 7/45 closed-form thread (R75–R79.x)
+
+Plancherel-side derivation of the trajectory measure's structural constant via Tao's Syracuse Markov chain on (Z/3^k)*.
+
+- **R75 / `c_seven_forty_fifth.md`** — derivation of c = 7/45 with rate-1/2 envelope through k=6.
+- **R76 / `result_76_conservation_law.md`** — `Σ_j M_{n+1}(η_0 + j·3^n) = 0` conservation law; reduces rate question to scalar sequence R_n.
+- **R77 / `result_77_T_lead_spectrum.md`** through R77.6 / `result_77_6_generating_function.md` — operator-shape attempt: R77.3 falsified the 3-mode geometric ansatz over Q; R77.4 envelope fits gave verdict (M); R77.4 erratum / `result_77_4_K_spectrum_erratum.md` showed K_k itself has no eigenvalue near 1/2 (rate operator is inter-level, not within-level); R77.6 generating-function probe found branch-cut signature at z=2 (type indeterminate at N=5).
+- **R77.7 (NOT COMPLETED, `result_77_7_status.md`)** — k=7 ε-extension killed at ~8.5 hr, superseded by the Bohr empirical positive (below).
+- **R78 / `result_78.md`, R79 / `result_79.md`, R79b / `r79b_S_partial_empirical.md`** — Path-A obstruction map (Cochrane / van der Corput / direct band-l¹ / band-spectral): all subroutes closed for analytical closure of Kalafatelis eq 190.
+
+The rate-1/2 rigorous-proof gate remains the single open piece for c = 7/45.
+
+### Joint 2-3-adic Bohr empirical positive — `result_bohr_probe.md`
+
+Direct empirical observation of structured non-CRT-independence between Z/2^a and Z/3^b residues of N=10⁷ Syracuse iterates. χ²-departures grow monotonically with depth k, reaching z = 16.5 at k=20 (a=5, b=4). Same multiplicative joint structure that R66/R74/R77.x closed forms were probing indirectly via Plancherel sums and ε_n shapes — now directly observable. Verification chain: `result_bohr_probe_{verify,check,cliff,asymptote,brackets,strat}.md`.
+
+This is the load-bearing structural finding as of 2026-05-04.
+
+### qx+1 sweep + sibling 3x±1 study
+
+- **q-sweep / `result_q_sweep_test_2_c_q.md`** — literal hypothesis c_q = S_∞^{(q)}/q falsified for q ≥ 5 (S_k diverges geometrically as (q/3)^k); but renormalized c̃_q := lim S_k^{(q)} / (q/3)^k exists universally.
+- **c̃_q structure / `c_tilde_structure_verdict.md` + `c_tilde_q17_probe.py`** — c̃_q = (q − 3)/q confirmed at q=11, 13, 17 within 1%. q=17 (where 2 is NOT a primitive root, like q=7) cleanly fits the formula, ruling out the non-prim-root explanation for q=7's anomalous +0.21 deviation.
+- **Sibling 3x±1 forward / `sibling_3x_minus_1_symmetry_verdict.md`** — K_- = σK_+σ proved with σ(r) = −r mod 3^k. Implies S_n^{3x−1} = S_n^{3x+1} as exact rationals; all R76/R77 derived quantities transfer; c=7/45 is automatic for the 3x−1 system by symmetry.
+- **Sibling 3x±1 inverse-tree / `duality_S_vs_D_verdict.md` + `duality_followup_verdict.md`** — D_n^((x±1)/3) tables (Agent 2 single-basin from 1, Agent 3 three-basin from {1,5,17} cycles). Raw 10³–10⁴× difference is ~95% sample-size artifact after matched-N control; residual structural difference factor 0.2-4. No clean forward-backward duality D = f(S).
+
+The c̃_q = (q − 3)/q observation is a publishable theorem candidate independent of c = 7/45 closure status.
 
 ---
 

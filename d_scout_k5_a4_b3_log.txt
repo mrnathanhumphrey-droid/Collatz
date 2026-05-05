@@ -1,0 +1,37 @@
+==============================================================================
+Scout probe: D(r_2, r_3) at k=5, (a, b)=(4, 3), N=1,000,000
+==============================================================================
+  sampled 1,000,000 odd starts in [3, ~10^12]
+  walked depth 5 in 0.93s
+  N_eff = 1,000,000  (100.0000% survived)
+  collapsed/excluded: 0
+  sanity: 1,000,000 of 1,000,000 surviving values are odd (OK)
+  sanity: 1,000,000 of 1,000,000 surviving values are coprime to 3 (OK)
+  joint histogram: (8, 18) grid, total 1,000,000
+  marginals: sum M2 = 1.000000  (expect 1), sum M3 = 1.000000  (expect 1)
+  D matrix sum = 2.3636e-17  (expect ~0)
+
+  CHI-SQ (per cell) = 8.774136e-07
+  noise floor       = 1.440000e-04  (= 144 / N_eff)
+  ratio (chi2 / noise floor) = 0.01
+
+  max |D|     = 3.107357e-04
+  90% |D|     = 1.267029e-04
+  cells with |D| > 3 sigma_noise: 1 of 144  (0.7%)
+
+  Top 5 deviating cells by sigma multiple:
+     r_2   r_3               D  sigma_mult
+       9     8   -2.255322e-04        3.19
+      11    20   +2.972100e-04        2.33
+       5     8   +1.580776e-04        2.24
+      15    26   -3.107357e-04        2.11
+      11    17   +2.325361e-04        1.82
+
+==============================================================================
+Verdict
+==============================================================================
+  CRT-INDEPENDENT (no structure detected at N=10^6)
+  recommendation: skip full probe, or push N to 10^7-10^8 for tighter test
+
+  saved D matrix: C:\Collatz\d_scout_k5_a4_b3.csv
+  saved metadata: C:\Collatz\d_scout_k5_a4_b3_meta.csv

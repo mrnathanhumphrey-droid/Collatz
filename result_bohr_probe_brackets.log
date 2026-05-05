@@ -1,0 +1,11 @@
+[t=   0.0s] bracket probe; N=1,000,000; k=50
+[t=   2.5s] depth=50 alive=930,379 (93.04%)  overflow=0
+[t=   2.5s] picked 5 control cells (|z|<0.5, Q·N>500)
+  control: (1, 2)  z=-0.014
+  control: (7, 37)  z=-0.019
+  control: (27, 38)  z=-0.070
+  control: (21, 13)  z=+0.095
+  control: (27, 2)  z=-0.096
+[t=   2.5s] bracket decomposition
+
+[done] runtime = 2.6s; outputs in C:\Collatz

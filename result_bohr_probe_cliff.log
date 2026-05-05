@@ -1,0 +1,22 @@
+[t=   0.0s] starting cliff probe; N=10,000,000; depths=[15, 16, 17, 18, 19, 20, 22, 25, 30]; (a,b)=(5,4)
+[t=   1.7s] chunk 1/10 done; rate=591,031/s; alive(d30)=995,860
+[t=   3.3s] chunk 2/10 done; rate=601,997/s; alive(d30)=1,991,854
+[t=   5.0s] chunk 3/10 done; rate=603,810/s; alive(d30)=2,987,770
+[t=   6.6s] chunk 4/10 done; rate=601,802/s; alive(d30)=3,983,737
+[t=   8.3s] chunk 5/10 done; rate=602,565/s; alive(d30)=4,979,767
+[t=   9.9s] chunk 6/10 done; rate=606,475/s; alive(d30)=5,975,681
+[t=  11.5s] chunk 7/10 done; rate=609,758/s; alive(d30)=6,971,566
+[t=  13.1s] chunk 8/10 done; rate=612,263/s; alive(d30)=7,967,415
+[t=  14.6s] chunk 9/10 done; rate=614,576/s; alive(d30)=8,963,333
+[t=  16.2s] chunk 10/10 done; rate=615,951/s; alive(d30)=9,959,189
+[t=  16.2s] computing chi^2 by depth
+  k=15  N_eff= 9,999,712  chi2=   838.86  chi2/df=1.0552  z=+1.10
+  k=16  N_eff= 9,999,509  chi2=   795.57  chi2/df=1.0007  z=+0.01
+  k=17  N_eff= 9,999,224  chi2=   843.12  chi2/df=1.0605  z=+1.21
+  k=18  N_eff= 9,998,817  chi2=   935.11  chi2/df=1.1762  z=+3.51
+  k=19  N_eff= 9,998,214  chi2=  1155.49  chi2/df=1.4534  z=+9.04
+  k=20  N_eff= 9,997,469  chi2=  1453.09  chi2/df=1.8278  z=+16.50
+  k=22  N_eff= 9,994,963  chi2=  2439.12  chi2/df=3.0681  z=+41.23
+  k=25  N_eff= 9,987,659  chi2=  7709.64  chi2/df=9.6977  z=+173.41
+  k=30  N_eff= 9,959,189  chi2= 40833.60  chi2/df=51.3630  z=+1004.11
+[done] runtime = 16.2s; outputs in C:\Collatz

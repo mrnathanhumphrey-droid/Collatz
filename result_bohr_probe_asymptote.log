@@ -1,0 +1,25 @@
+[t=   0.0s] asymptote probe; N=1,000,000; depths=[40, 45, 50, 55, 60, 65, 70]
+  [t=   2.1s] depth= 40  alive=  977,314 ( 97.73%)  overflow=0
+  [t=   2.4s] depth= 45  alive=  958,120 ( 95.81%)  overflow=0
+  [t=   2.6s] depth= 50  alive=  930,379 ( 93.04%)  overflow=0
+  [t=   2.9s] depth= 55  alive=  894,726 ( 89.47%)  overflow=0
+  [t=   3.1s] depth= 60  alive=  851,694 ( 85.17%)  overflow=0
+  [t=   3.3s] depth= 65  alive=  802,798 ( 80.28%)  overflow=0
+  [t=   3.5s] depth= 70  alive=  748,957 ( 74.90%)  overflow=0
+[t=   3.5s] computing chi2 + tops + fit
+  k=40  alive= 977,314  cpdf=   50.118  z=   +979.29  diag=6/6
+  k=45  alive= 958,120  cpdf=  108.036  z=  +2134.01  diag=5/6
+  k=50  alive= 930,379  cpdf=  197.417  z=  +3916.04  diag=5/6
+  k=55  alive= 894,726  cpdf=  320.724  z=  +6374.47  diag=5/6
+  k=60  alive= 851,694  cpdf=  459.853  z=  +9148.33  diag=5/6
+  k=65  alive= 802,798  cpdf=  601.643  z= +11975.27  diag=5/6
+  k=70  alive= 748,957  cpdf=  774.032  z= +15412.25  diag=4/6
+[fit:scipy curve_fit (A0_factor=1.5)] A = 2861605.12, B = 2862590.69, C = 0.00001
+[t=   3.5s] EXT check at k=50
+  r= 7 → cell (7,7)  z_cell=+97.11
+  r=23 → cell (23,23)  z_cell=+64.61
+  r=25 → cell (25,25)  z_cell=+34.61
+  r=31 → cell (31,31)  z_cell=+62.19
+  r=37 → cell (5,37)  z_cell=+31.40
+
+[done] runtime = 3.5s; outputs in C:\Collatz

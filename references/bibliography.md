@@ -162,3 +162,4 @@ where L_γ(t) = p t − (p t)²/2 + (p t)³/3 − ⋯ + (−1)^{γ−1} (p t)^γ
 - **Secondary reproduction:** ✓ Banks–Shparlinski 2016 (arXiv:1605.07553) PDF cached locally — clean modern restatement of the formula as Lemma 4.1, with explicit truncated-log polynomial F_d, citing Postnikov 1956 directly as ref [12].
 - **Formula captured:** ✓ verbatim above.
 
+---
