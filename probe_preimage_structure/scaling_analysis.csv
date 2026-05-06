@@ -1,0 +1,11 @@
+k,n_coprime,preimage_strict_mean,preimage_strict_median,preimage_strict_max,preimage_strict_min,preimage_eff_mean,preimage_eff_median,preimage_eff_max,max_K_median,entropy_mean,entropy_over_log_npre_median
+5,162,21.0000,21,24,18,21.0000,21,24,0.250000,1.588547,0.543756
+6,486,21.0000,21,25,18,21.0000,21,25,0.250000,1.588547,0.543756
+7,1458,21.0000,21,25,18,21.0000,21,25,0.250000,1.588547,0.543756
+
+fit_type,param_a_or_p,param_b_or_c,rss
+strict_linear,0.000000,21.000000,7.573065e-29
+strict_loglog_powerlaw,0.000000,21.000000,
+strict_constant,21.000000,,0.000000e+00
+eff_linear,0.000000,21.000000,7.573065e-29
+eff_constant,21.000000,,0.000000e+00

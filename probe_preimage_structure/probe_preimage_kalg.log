@@ -1,0 +1,111 @@
+==============================================================================
+K_ALG PREIMAGE PROBE — Tao truncated-Geom chain on (Z/3^k)*, k=5,6,7
+==============================================================================
+
+==============================================================================
+PART A: full v_eff = M = ord(2 mod 3^k) (proper Tao chain)
+==============================================================================
+
+--- k = 5 ---
+  n = 162, M = 162, v_eff (math) = 162, build 0.00s
+  Edges (struct, ec>0): 26244; expected n·M = 26244
+  Edges (weighted, K>0): 26244; density 1.0000
+  |Preimage|_struct: mean=162.00, median=162, max=162, min=162
+  |Preimage|_weighted: mean=162.00, max=162, min=162
+  Column sum: mean=1.000000, std=5.9094e-01, min=2.3810e-01, max=1.9048e+00
+  Max weight per column: median=2.5000e-01, max=5.0000e-01
+  Column entropy: mean=1.5885, entropy/log(|P|_w) median = 0.3304
+  saved C:\Collatz\probe_preimage_structure\preimage_map_k5_kalg_full.csv
+
+--- k = 6 ---
+  n = 486, M = 486, v_eff (math) = 486, build 0.01s
+  Edges (struct, ec>0): 236196; expected n·M = 236196
+  Edges (weighted, K>0): 236196; density 1.0000
+  |Preimage|_struct: mean=486.00, median=486, max=486, min=486
+  |Preimage|_weighted: mean=486.00, max=486, min=486
+  Column sum: mean=1.000000, std=5.9094e-01, min=2.3810e-01, max=1.9048e+00
+  Max weight per column: median=2.5000e-01, max=5.0000e-01
+  Column entropy: mean=1.5885, entropy/log(|P|_w) median = 0.2717
+  saved C:\Collatz\probe_preimage_structure\preimage_map_k6_kalg_full.csv
+
+--- k = 7 ---
+  n = 1458, M = 1458, v_eff (math) = 1458, build 0.07s
+  weights underflow to 0 for 384 v values (v >= 1074); 2^-v below float64 min ~ 5e-324)
+  Edges (struct, ec>0): 2125764; expected n·M = 2125764
+  Edges (weighted, K>0): 1565892; density 0.7366
+  |Preimage|_struct: mean=1458.00, median=1458, max=1458, min=1458
+  |Preimage|_weighted: mean=1074.00, max=1074, min=1074
+  Column sum: mean=1.000000, std=5.9094e-01, min=2.3810e-01, max=1.9048e+00
+  Max weight per column: median=2.5000e-01, max=5.0000e-01
+  Column entropy: mean=1.5885, entropy/log(|P|_w) median = 0.2408
+  saved C:\Collatz\probe_preimage_structure\preimage_map_k7_kalg_full.csv
+
+==============================================================================
+PART B: truncated v_eff = min(M, 60)
+==============================================================================
+
+--- k = 5 ---
+  n = 162, M = 162, v_eff = 60, build 0.00s
+  Edges (weighted, K>0): 9720; density 0.3704
+  |Preimage|_struct: mean=60.00, max=60, min=60
+  |Preimage|_weighted: mean=60.00, max=60, min=60
+  Column sum: mean=1.000000, std=5.9094e-01
+  Max weight per column: median=2.5000e-01
+  Column entropy: mean=1.5885, entropy/log(|P|_w) median = 0.4105
+  saved C:\Collatz\probe_preimage_structure\preimage_map_k5_kalg_trunc60.csv
+
+--- k = 6 ---
+  n = 486, M = 486, v_eff = 60, build 0.00s
+  Edges (weighted, K>0): 29160; density 0.1235
+  |Preimage|_struct: mean=60.00, max=60, min=60
+  |Preimage|_weighted: mean=60.00, max=60, min=60
+  Column sum: mean=1.000000, std=5.9094e-01
+  Max weight per column: median=2.5000e-01
+  Column entropy: mean=1.5885, entropy/log(|P|_w) median = 0.4105
+  saved C:\Collatz\probe_preimage_structure\preimage_map_k6_kalg_trunc60.csv
+
+--- k = 7 ---
+  n = 1458, M = 1458, v_eff = 60, build 0.01s
+  Edges (weighted, K>0): 87480; density 0.0412
+  |Preimage|_struct: mean=60.00, max=60, min=60
+  |Preimage|_weighted: mean=60.00, max=60, min=60
+  Column sum: mean=1.000000, std=5.9094e-01
+  Max weight per column: median=2.5000e-01
+  Column entropy: mean=1.5885, entropy/log(|P|_w) median = 0.4105
+  saved C:\Collatz\probe_preimage_structure\preimage_map_k7_kalg_trunc60.csv
+
+==============================================================================
+PART C: scaling analysis
+==============================================================================
+
+  Full v_eff=M:
+    n values:               [ 162.  486. 1458.]
+    M values:               [ 162.  486. 1458.]
+    mean |Pre|_struct:      [ 162.  486. 1458.]
+    mean |Pre|_weighted:    [ 162.  486. 1074.]
+
+  Linear |Pre|_struct = -3186.0000 + 648.0000·k, R² = 0.9231
+  log|Pre|_struct = -0.4055 + 1.0986·k → exp(b) = 3.0000
+    Predicted (|Pre|=M=2·3^(k-1)): rate=3 per step, intercept=log(2/3)=-0.4055
+  log|Pre|_weighted = 0.4097 + 0.9458·k → exp(b) = 2.5748
+
+  Truncated v_eff=min(M,60):
+    mean |Pre|_struct:      [60. 60. 60.]
+    mean |Pre|_weighted:    [60. 60. 60.]
+    Linear |Pre|_struct = 60.0000 + -0.0000·k, R² = 1.0000
+    Linear |Pre|_weighted = 60.0000 + -0.0000·k, R² = 1.0000
+
+  saved C:\Collatz\probe_preimage_structure\scaling_analysis_kalg.csv
+
+==============================================================================
+PART D: row-collision structure (3:1 collapse from 3x+1 mod 3^(k-1))
+==============================================================================
+
+  k=5: 18 row-equivalence-classes (predicted n/3 = 54); sample diff between rows in same class = 8.16e-01
+      numerical rank (rel tol 1e-12): 54 (predicted n/3 = 54)
+  k=6: 54 row-equivalence-classes (predicted n/3 = 162); sample diff between rows in same class = 8.16e-01
+      numerical rank (rel tol 1e-12): 162 (predicted n/3 = 162)
+  k=7: 162 row-equivalence-classes (predicted n/3 = 486); sample diff between rows in same class = 8.16e-01
+      numerical rank (rel tol 1e-12): 486 (predicted n/3 = 486)
+
+All outputs in C:\Collatz\probe_preimage_structure

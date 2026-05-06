@@ -1,0 +1,45 @@
+
+=== k = 5 (n = 162) ===
+  built dense K_5 in 0.0s
+  r0 test set (8 points): [ 98 135  20  88 153]...
+  Q̂_n(χ) computed: shape (8, 11, 162)
+  saved C:\Collatz\probe_framework_test\Q_hat_per_character_k5.csv
+  saved C:\Collatz\probe_framework_test\product_structure_test_k5.csv
+  product test stats:
+    coefficient-of-variation of |F_n| across n:  median 2.842e-01, max 9.444e-01
+    phase circular std of F_n across n:          median 7.898e-01, max 1.486e+00
+    F(χ) disagreement across r0 (relative): median 5.555e-02, max 2.510e-01
+  saved C:\Collatz\probe_framework_test\moderate_growth_test_k5.csv
+  Cayley diameter γ_5 = 81
+  growth dim d = 1 (abelian cyclic; trivially polynomial)
+
+=== k = 6 (n = 486) ===
+  built dense K_6 in 0.7s
+  r0 test set (8 points): [165 335 394 432 286]...
+  Q̂_n(χ) computed: shape (8, 11, 486)
+  saved C:\Collatz\probe_framework_test\Q_hat_per_character_k6.csv
+  saved C:\Collatz\probe_framework_test\product_structure_test_k6.csv
+  product test stats:
+    coefficient-of-variation of |F_n| across n:  median 2.864e-01, max 7.050e-01
+    phase circular std of F_n across n:          median 9.412e-01, max 2.381e+00
+    F(χ) disagreement across r0 (relative): median 7.345e-02, max 2.013e-01
+  saved C:\Collatz\probe_framework_test\moderate_growth_test_k6.csv
+  Cayley diameter γ_6 = 243
+  growth dim d = 1 (abelian cyclic; trivially polynomial)
+
+=== k = 7 (n = 1458) ===
+  built dense K_7 in 18.9s
+  r0 test set (8 points): [ 757  435  933  805 1277]...
+  Q̂_n(χ) computed: shape (8, 11, 1458)
+  saved C:\Collatz\probe_framework_test\Q_hat_per_character_k7.csv
+  saved C:\Collatz\probe_framework_test\product_structure_test_k7.csv
+  product test stats:
+    coefficient-of-variation of |F_n| across n:  median 2.747e-01, max 9.261e-01
+    phase circular std of F_n across n:          median 7.485e-01, max 1.964e+00
+    F(χ) disagreement across r0 (relative): median 6.816e-02, max 2.209e-01
+  saved C:\Collatz\probe_framework_test\moderate_growth_test_k7.csv
+  Cayley diameter γ_7 = 729
+  growth dim d = 1 (abelian cyclic; trivially polynomial)
+
+*** OUTCOME B ***
+Saved C:\Collatz\probe_framework_test\framework_findings.md

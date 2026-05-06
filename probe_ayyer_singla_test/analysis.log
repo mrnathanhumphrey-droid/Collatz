@@ -1,0 +1,43 @@
+======================================================================
+Ayyer-Singla character-sum eigenvalue test
+======================================================================
+
+--- k = 5 (n = 162) ---
+  built K_5 dense ((162, 162)) in 0.0s
+  eigendecomposition in 0.0s; top-5 |λ|: 1.000e+00, 3.419e-04, 3.418e-04, 3.418e-04, 3.418e-04
+  predicted top-5 |λ|: 1.000e+00, 9.985e-01, 9.985e-01, 9.940e-01, 9.940e-01
+  saved C:\Collatz\probe_ayyer_singla_test\predicted_eigenvalues_k5.csv
+  saved C:\Collatz\probe_ayyer_singla_test\measured_vs_predicted_k5.csv
+  saved C:\Collatz\probe_ayyer_singla_test\measured_eigenvalues_k5.csv
+  Phase 4: Jordan test on top-20 measured eigenvalues...
+  Jordan test done in 2.6s
+  saved C:\Collatz\probe_ayyer_singla_test\jordan_test_k5.csv
+  Jordan blocks detected: 19 / 20 clusters tested
+
+--- k = 6 (n = 486) ---
+  built K_6 dense ((486, 486)) in 0.7s
+  eigendecomposition in 0.1s; top-5 |λ|: 1.000e+00, 1.224e-03, 1.224e-03, 1.223e-03, 1.223e-03
+  predicted top-5 |λ|: 1.000e+00, 9.998e-01, 9.998e-01, 9.993e-01, 9.993e-01
+  saved C:\Collatz\probe_ayyer_singla_test\predicted_eigenvalues_k6.csv
+  saved C:\Collatz\probe_ayyer_singla_test\measured_vs_predicted_k6.csv
+  saved C:\Collatz\probe_ayyer_singla_test\measured_eigenvalues_k6.csv
+  Phase 4: Jordan test on top-20 measured eigenvalues...
+  Jordan test done in 34.8s
+  saved C:\Collatz\probe_ayyer_singla_test\jordan_test_k6.csv
+  Jordan blocks detected: 19 / 20 clusters tested
+
+--- k = 7 (n = 1458) ---
+  built K_7 dense ((1458, 1458)) in 18.6s
+  eigendecomposition in 1.3s; top-5 |λ|: 1.000e+00, 2.943e-03, 2.942e-03, 2.942e-03, 2.940e-03
+  predicted top-5 |λ|: 1.000e+00, 1.000e+00, 1.000e+00, 9.999e-01, 9.999e-01
+  saved C:\Collatz\probe_ayyer_singla_test\predicted_eigenvalues_k7.csv
+  saved C:\Collatz\probe_ayyer_singla_test\measured_vs_predicted_k7.csv
+  saved C:\Collatz\probe_ayyer_singla_test\measured_eigenvalues_k7.csv
+  Phase 4: Jordan test on top-20 measured eigenvalues...
+  Jordan test done in 277.7s
+  saved C:\Collatz\probe_ayyer_singla_test\jordan_test_k7.csv
+  Jordan blocks detected: 19 / 20 clusters tested
+
+Saved C:\Collatz\probe_ayyer_singla_test\ayyer_singla_findings.md
+
+*** OUTCOME C ***

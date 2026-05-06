@@ -1,0 +1,8 @@
+S_13 = 0.469614913983820
+ε_13 = +2.948247317153707e-03
+
+Recurrence prediction: ε_13_pred = +2.677114901586760e-03
+abs error: +2.7113e-04
+rel error: +9.1964e-02
+
+Method: matrix-free FFT on truncated π_13 (v_max=60, ε ≈ 2^-60 ≈ 8.7e-19).

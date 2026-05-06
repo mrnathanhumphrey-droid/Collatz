@@ -1,0 +1,68 @@
+======================================================================
+ε_13 + Δ_13 from existing pi_13_truncated.npz
+======================================================================
+
+Loaded π_13 from C:\Collatz\probe_self_similarity\pi_13_truncated.npz
+  k = 13, n = 1,062,882, v_max = 60
+  sum(π_13) = 1.000000000000000
+  truncation error bound: 2^-60 ≈ 8.67e-19
+
+FFT cross-check of S_13...
+  S_13 (FFT) = 0.469614913983820  (0.05s)
+  ε_13 (FFT) = +2.9482473172e-03
+
+ε_k (k=2..12 cached, k=13 measured):
+  ε_1 = +2.0000000000e-01
+  ε_2 = +9.5238095238e-03
+  ε_3 = -5.0919863259e-03
+  ε_4 = -2.4522582483e-03
+  ε_5 = -1.1517469151e-03
+  ε_6 = -4.9790566522e-04
+  ε_7 = -1.1752368304e-03
+  ε_8 = -7.4554636729e-04
+  ε_9 = -7.5202571564e-06
+  ε_10 = +7.2075091711e-04
+  ε_11 = +1.5019670121e-03
+  ε_12 = +2.2747137206e-03
+  ε_13 = +2.9482473172e-03  ← MEASURED
+
+Order-3 recurrence fit (training k=2..12):
+  ε_{k+3} = 1.495468·ε_{k+2} + -0.485378·ε_{k+1} + 0.006070·ε_{k}
+  rows used: 8
+  characteristic roots: (+1.0299+0.0000j) [|r|=1.0299], (+0.4525+0.0000j) [|r|=0.4525], (+0.0130+0.0000j) [|r|=0.0130]
+
+Recurrence prediction for ε_13:
+  predicted = +2.6771149016e-03
+  measured  = +2.9482473172e-03
+  abs error = +2.7113e-04
+  rel error = +9.1964e-02
+
+Δ_k entropy-deficit trajectory:
+  k=5→6: Δ_5=4.9190e-02, Δ_6=4.0138e-02, ratio=0.8160
+  k=6→7: Δ_6=4.0138e-02, Δ_7=3.3518e-02, ratio=0.8351
+  k=7→8: Δ_7=3.3518e-02, Δ_8=2.8391e-02, ratio=0.8471
+  k=8→9: Δ_8=2.8391e-02, Δ_9=2.4353e-02, ratio=0.8578
+  k=9→10: Δ_9=2.4353e-02, Δ_10=2.1050e-02, ratio=0.8644
+  k=10→11: Δ_10=2.1050e-02, Δ_11=1.8319e-02, ratio=0.8703
+  k=11→12: Δ_11=1.8319e-02, Δ_12=1.6025e-02, ratio=0.8748
+  k=12→13: Δ_12=1.6025e-02, Δ_13=1.4085e-02, ratio=0.8789
+  fit k=5..11 (7 points):  ρ_Δ = 0.849303, R² = 0.995597
+  fit k=5..12 (8 points):  ρ_Δ = 0.853345, R² = 0.995103
+  fit k=5..13 (9 points):  ρ_Δ = 0.856925, R² = 0.994680
+  fit k=9..13 (5 points):  ρ_Δ = 0.872159, R² = 0.999429
+  fit k=10..13 (4 points):  ρ_Δ = 0.874665, R² = 0.999726
+
+ρ_slow (order-3 recurrence dominant root from ε_k) = 0.826934
+
+Gap from ρ_slow as window extends:
+  k=5..11: gap = +0.0224 (+2.71%)
+  k=5..12: gap = +0.0264 (+3.19%)
+  k=5..13: gap = +0.0300 (+3.63%)
+  k=9..13: gap = +0.0452 (+5.47%)
+  k=10..13: gap = +0.0477 (+5.77%)
+
+saved C:\Collatz\probe_epsilon_13\S_13_epsilon_13.txt
+saved C:\Collatz\probe_epsilon_13\delta_k_extended.csv
+saved C:\Collatz\probe_epsilon_13\trajectory_analysis.csv
+
+saved C:\Collatz\probe_epsilon_13\epsilon_13_findings.md

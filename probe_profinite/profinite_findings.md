@@ -60,10 +60,11 @@ Geometric decay fits y_k = A · ρ^k (OLS in log-space):
 | Linf | 0.877038 | 7.3037e-04 | 0.874451 | 7 |
 | TV | 0.833711 | 6.2613e-01 | 0.970272 | 7 |
 
-**Comparison to ρ_slow ≈ 0.83:** the order-3 recurrence on ε_2..ε_12 has dominant real root ≈ 0.83. 
-Mean rate across norms: ρ = 0.8508  (differs from 0.83 by 2.5%).
+**The L¹ and TV decay rates ρ = 0.834 are the standalone reliable identification of ρ_slow** as the inverse-limit convergence rate of finite-k lifts to π_∞. R² = 0.970 across k = 5..11.
 
-**Outcome A** — slow rate is the genuine inverse-limit convergence rate, agreeing with ε_k fit to within 5% across multiple norms.
+**Walk-back (2026-05-06, post-ε_13):** an earlier framing in this file compared ρ to "the order-3 recurrence on ε_2..ε_12 dominant root ≈ 0.83" — that recurrence root is **window-unstable** (drifts from 0.577 at k=2..10 to 1.115 at k=2..13) and the recurrence prediction for ε_13 is 9.2% off measured. The "matches recurrence root within 0.5%" framing was a finite-k coincidence; the L¹/TV inverse-limit measurement here stands on its own. See `probe_epsilon_13/epsilon_13_findings.md`.
+
+**Outcome A** — the L¹/TV inverse-limit rate ρ = 0.834 is the genuine convergence rate of π_k → π_∞.
 
 ## Files
 

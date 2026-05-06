@@ -1,0 +1,96 @@
+Empirical K_k via M = 2^20 = 1048576 integer lifts per coprime state
+
+=== k = 5  (N=3^k=243, n_coprime=162) ===
+  K_emp built in 1.0s; total_lifts = 1.70e+08
+  K_alg built in 0.0s; ord_{3^k}(2) = 162
+  ||K_emp - K_alg||_F / ||K_alg||_F = 1.0000e+00
+  |Preimage(y)| (strict, K>0):    min=18, median=21, mean=21.00, max=24
+  |Preimage(y)| (effective, K>=1/M): min=18, median=21, mean=21.00, max=24
+  max K_k[x,y] over (x,y):  median=0.2500, mean=0.2812, max=0.5000
+  entropy of preimage dist:  median=1.6808, mean=1.5885
+  log(|Preimage|) baseline:  median=3.0445
+  entropy / log|Preimage|:   median=0.5438, mean=0.5226
+
+  Empirical P(v=j) (top 12) vs Geom(1/2) = 2^(-j):
+    j        count     P(v=j)_emp    P(v=j)_geom      ratio
+    1     42467328   2.500000e-01   5.000000e-01     0.5000
+    2     21233664   1.250000e-01   2.500000e-01     0.5000
+    3     10616832   6.250000e-02   1.250000e-01     0.5000
+    4      5308416   3.125000e-02   6.250000e-02     0.5000
+    5      2654208   1.562500e-02   3.125000e-02     0.5000
+    6      1327104   7.812500e-03   1.562500e-02     0.5000
+    7       663552   3.906250e-03   7.812500e-03     0.5000
+    8       331776   1.953125e-03   3.906250e-03     0.5000
+    9       165888   9.765625e-04   1.953125e-03     0.5000
+   10        82944   4.882812e-04   9.765625e-04     0.5000
+   11        41472   2.441406e-04   4.882812e-04     0.5000
+   12        20736   1.220703e-04   2.441406e-04     0.5000
+
+=== k = 6  (N=3^k=729, n_coprime=486) ===
+  K_emp built in 0.8s; total_lifts = 5.10e+08
+  |Preimage(y)| (strict, K>0):    min=18, median=21, mean=21.00, max=25
+  |Preimage(y)| (effective, K>=1/M): min=18, median=21, mean=21.00, max=25
+  max K_k[x,y] over (x,y):  median=0.2500, mean=0.2812, max=0.5000
+  entropy of preimage dist:  median=1.6808, mean=1.5885
+  log(|Preimage|) baseline:  median=3.0445
+  entropy / log|Preimage|:   median=0.5438, mean=0.5226
+
+  Empirical P(v=j) (top 12) vs Geom(1/2) = 2^(-j):
+    j        count     P(v=j)_emp    P(v=j)_geom      ratio
+    1    127401984   2.500000e-01   5.000000e-01     0.5000
+    2     63700992   1.250000e-01   2.500000e-01     0.5000
+    3     31850496   6.250000e-02   1.250000e-01     0.5000
+    4     15925248   3.125000e-02   6.250000e-02     0.5000
+    5      7962624   1.562500e-02   3.125000e-02     0.5000
+    6      3981312   7.812500e-03   1.562500e-02     0.5000
+    7      1990656   3.906250e-03   7.812500e-03     0.5000
+    8       995328   1.953125e-03   3.906250e-03     0.5000
+    9       497664   9.765625e-04   1.953125e-03     0.5000
+   10       248832   4.882812e-04   9.765625e-04     0.5000
+   11       124416   2.441406e-04   4.882812e-04     0.5000
+   12        62208   1.220703e-04   2.441406e-04     0.5000
+
+=== k = 7  (N=3^k=2187, n_coprime=1458) ===
+  K_emp built in 2.3s; total_lifts = 1.53e+09
+  |Preimage(y)| (strict, K>0):    min=18, median=21, mean=21.00, max=25
+  |Preimage(y)| (effective, K>=1/M): min=18, median=21, mean=21.00, max=25
+  max K_k[x,y] over (x,y):  median=0.2500, mean=0.2812, max=0.5000
+  entropy of preimage dist:  median=1.6808, mean=1.5885
+  log(|Preimage|) baseline:  median=3.0445
+  entropy / log|Preimage|:   median=0.5438, mean=0.5226
+
+  Empirical P(v=j) (top 12) vs Geom(1/2) = 2^(-j):
+    j        count     P(v=j)_emp    P(v=j)_geom      ratio
+    1    382205952   2.500000e-01   5.000000e-01     0.5000
+    2    191102976   1.250000e-01   2.500000e-01     0.5000
+    3     95551488   6.250000e-02   1.250000e-01     0.5000
+    4     47775744   3.125000e-02   6.250000e-02     0.5000
+    5     23887872   1.562500e-02   3.125000e-02     0.5000
+    6     11943936   7.812500e-03   1.562500e-02     0.5000
+    7      5971968   3.906250e-03   7.812500e-03     0.5000
+    8      2985984   1.953125e-03   3.906250e-03     0.5000
+    9      1492992   9.765625e-04   1.953125e-03     0.5000
+   10       746496   4.882812e-04   9.765625e-04     0.5000
+   11       373248   2.441406e-04   4.882812e-04     0.5000
+   12       186624   1.220703e-04   2.441406e-04     0.5000
+
+======================================================================
+PHASE 4: scaling fits
+======================================================================
+
+Fit comparisons (RSS smaller = better):
+  Strict (>0):    linear  a·k+b: a=0.0000, b=21.0000, RSS=7.5731e-29
+                  log-log: c·k^p: p=0.0000, c=21.0000
+                  constant:      ≈21.00, RSS=0.0000e+00
+  Effective (≥1/M): linear: a=0.0000, b=21.0000, RSS=7.5731e-29
+                    log-log: p=0.0000, c=21.0000
+                    constant:    ≈21.00, RSS=0.0000e+00
+  max_strict:     linear  a·k+b: a=0.5000, b=21.6667
+
+Summary table:
+    k     n  mean_strict   med_strict   max_strict   mean_eff    max_eff    ent/log
+    5   162        21.00           21           24      21.00         24     0.5438
+    6   486        21.00           21           25      21.00         25     0.5438
+    7  1458        21.00           21           25      21.00         25     0.5438
+
+Outputs in C:\Collatz\probe_preimage_structure
