@@ -1,0 +1,49 @@
+Eigenvalue Spectrum Consolidation — Summary
+============================================================
+
+SOURCES
+------------------------------------------------------------
+  primary:       C:\Collatz\result_eigenvalue_spectrum.csv
+  supplementary: C:\Collatz\experiments_output\result_77_4_K_spectrum_data.csv
+
+PER-k EXTRACTION
+------------------------------------------------------------
+  k = 5: source = supplementary (full spectrum, 162 eigvals, top-20 by |λ|)
+          rows = 20
+  k = 6: source = supplementary (full spectrum, 486 eigvals, top-20 by |λ|)
+          rows = 20
+  k = 7: source = primary only (top-10, requested top-20; supplementary file does not contain k=7)
+          rows = 10
+
+PER-k STATISTICS
+------------------------------------------------------------
+
+  k = 5  (20 eigenvalues)
+    complex eigvals: 16 / 20
+    |λ| range:       [2.5007e-06, 1.0000e+00]
+    |λ| geom mean (top 10): 3.6274e-04
+    arg range:       [-2.5134, +3.1416] rad
+    arg pattern:     2/19 within 0.6° of 3rd roots; 5/19 within 0.6° of 4th roots; 6/19 within 0.6° of 5th roots; 3/19 within 0.6° of 6th roots; 13/19 within 0.6° of 8th roots; 2/19 within 0.6° of 9th roots; 2/19 within 0.6° of 27th roots
+
+  k = 6  (20 eigenvalues)
+    complex eigvals: 16 / 20
+    |λ| range:       [2.4599e-04, 1.0000e+00]
+    |λ| geom mean (top 10): 1.5913e-03
+    arg range:       [-2.6186, +3.1416] rad
+    arg pattern:     1/19 within 0.6° of 3rd roots; 5/19 within 0.6° of 4th roots; 5/19 within 0.6° of 5th roots; 3/19 within 0.6° of 6th roots; 5/19 within 0.6° of 8th roots; 1/19 within 0.6° of 9th roots; 1/19 within 0.6° of 27th roots
+    nontrivial-mode arg distribution: 6 distinct values among 6
+
+  k = 7  (10 eigenvalues)
+    complex eigvals: 8 / 10
+    |λ| range:       [1.5281e-03, 1.0000e+00]
+    |λ| geom mean (top 10): 3.2406e-03
+    arg range:       [-2.7059, +2.7059] rad
+    arg pattern:     1/9 within 0.6° of 3rd roots; 1/9 within 0.6° of 4th roots; 1/9 within 0.6° of 5th roots; 1/9 within 0.6° of 6th roots; 1/9 within 0.6° of 8th roots; 1/9 within 0.6° of 9th roots; 1/9 within 0.6° of 27th roots
+    nontrivial-mode arg distribution: 9 distinct values among 9
+
+ANOMALIES / CAVEATS
+------------------------------------------------------------
+  k=7: only 10 eigenvalues available (requested 20). Supplementary file does not extend to k=7. To get the full top-20 at k=7 would require a new compute on K_7 (1458 states).
+  k=5: ranks 3,4 have same |λ| = 3.381111e-04 (degenerate / complex pair)
+  k=6: ranks 2,3 have same |λ| = 1.231642e-03 (degenerate / complex pair)
+  k=7: ranks 3,4 have same |λ| = 1.801540e-03 (degenerate / complex pair)

@@ -1,0 +1,93 @@
+  k     n   corr(pi, max_p)  corr(pi, log_max_p)  spearman(pi, max_p)   corr(pi^2, max_p)
+-----------------------------------------------------------------------------------------------
+  5   162           +0.2994              +0.2223              +0.1526             +0.2675
+  6   486           +0.0213              +0.1657              +0.0933             +0.0350
+  7  1458           -0.0185              +0.0351              +0.0223             -0.0158
+
+Top-10 highest pi residues per k:
+  k=5:
+    r=  242  pi=4.5176e-02  max_prime=   1619  orbit_len=96
+    r=  152  pi=3.3919e-02  max_prime=     29  orbit_len=23
+    r=  107  pi=3.3906e-02  max_prime=   1619  orbit_len=100
+    r=  182  pi=3.3728e-02  max_prime=   1619  orbit_len=93
+    r=  161  pi=3.3565e-02  max_prime=   1619  orbit_len=98
+    r=  121  pi=2.2588e-02  max_prime=   1619  orbit_len=95
+    r=  188  pi=1.9784e-02  max_prime=   1619  orbit_len=106
+    r=   20  pi=1.9420e-02  max_prime=      5  orbit_len=7
+    r=  233  pi=1.9410e-02  max_prime=   1619  orbit_len=83
+    r=  206  pi=1.9243e-02  max_prime=   1619  orbit_len=88
+  k=6:
+    r=  728  pi=2.2671e-02  max_prime=   1619  orbit_len=95
+    r=  593  pi=1.7048e-02  max_prime=   1619  orbit_len=74
+    r=  161  pi=1.7032e-02  max_prime=   1619  orbit_len=98
+    r=  638  pi=1.7028e-02  max_prime=   1619  orbit_len=56
+    r=  182  pi=1.6962e-02  max_prime=   1619  orbit_len=93
+    r=  242  pi=1.6902e-02  max_prime=   1619  orbit_len=96
+    r=  364  pi=1.1335e-02  max_prime=   1619  orbit_len=94
+    r=  647  pi=9.9539e-03  max_prime=   1093  orbit_len=38
+    r=  395  pi=9.8960e-03  max_prime=   1619  orbit_len=76
+    r=  668  pi=9.7921e-03  max_prime=   1619  orbit_len=69
+  k=7:
+    r= 2186  pi=1.1362e-02  max_prime=   1093  orbit_len=32
+    r=  890  pi=8.5441e-03  max_prime=   1619  orbit_len=72
+    r= 2051  pi=8.5438e-03  max_prime=    577  orbit_len=37
+    r=  242  pi=8.5420e-03  max_prime=   1619  orbit_len=96
+    r= 1367  pi=8.5300e-03  max_prime=   1367  orbit_len=39
+    r= 1640  pi=8.5082e-03  max_prime=     41  orbit_len=29
+    r= 1457  pi=8.4722e-03  max_prime=   1093  orbit_len=34
+    r= 1093  pi=5.6810e-03  max_prime=   1093  orbit_len=31
+    r=  971  pi=5.0279e-03  max_prime=   1093  orbit_len=36
+    r=  593  pi=4.9725e-03  max_prime=   1619  orbit_len=74
+
+Top-10 lowest pi residues per k:
+  k=5:
+    r=   79  pi=4.4458e-04  max_prime=    269  orbit_len=35
+    r=  115  pi=5.1892e-04  max_prime=    173  orbit_len=33
+    r=  214  pi=5.2264e-04  max_prime=   1619  orbit_len=101
+    r=   25  pi=5.4832e-04  max_prime=     29  orbit_len=23
+    r=  133  pi=5.5738e-04  max_prime=     29  orbit_len=28
+    r=  196  pi=5.6877e-04  max_prime=     37  orbit_len=26
+    r=  241  pi=6.1703e-04  max_prime=    241  orbit_len=21
+    r=  223  pi=6.1720e-04  max_prime=   1619  orbit_len=70
+    r=   34  pi=7.0139e-04  max_prime=     17  orbit_len=13
+    r=   52  pi=7.1316e-04  max_prime=     13  orbit_len=11
+  k=6:
+    r=  565  pi=1.2400e-04  max_prime=    113  orbit_len=17
+    r=  700  pi=1.3828e-04  max_prime=   1619  orbit_len=82
+    r=  196  pi=1.4590e-04  max_prime=     37  orbit_len=26
+    r=  106  pi=1.4708e-04  max_prime=     53  orbit_len=12
+    r=  115  pi=1.5234e-04  max_prime=    173  orbit_len=33
+    r=  322  pi=1.5774e-04  max_prime=   1619  orbit_len=99
+    r=  268  pi=1.5874e-04  max_prime=    101  orbit_len=29
+    r=  601  pi=1.6034e-04  max_prime=   1093  orbit_len=56
+    r=  520  pi=1.6136e-04  max_prime=     37  orbit_len=30
+    r=   79  pi=1.6285e-04  max_prime=    269  orbit_len=35
+  k=7:
+    r= 2023  pi=3.5254e-05  max_prime=   1619  orbit_len=156
+    r= 1780  pi=4.0708e-05  max_prime=   1619  orbit_len=73
+    r=  565  pi=4.0788e-05  max_prime=    113  orbit_len=17
+    r= 2158  pi=4.0889e-05  max_prime=   1619  orbit_len=50
+    r=  115  pi=4.2232e-05  max_prime=    173  orbit_len=33
+    r=  727  pi=4.2463e-05  max_prime=   1637  orbit_len=46
+    r=  997  pi=4.4514e-05  max_prime=    997  orbit_len=49
+    r= 1564  pi=4.4739e-05  max_prime=   1619  orbit_len=122
+    r= 1267  pi=4.5207e-05  max_prime=   1901  orbit_len=31
+    r=  808  pi=4.5787e-05  max_prime=    101  orbit_len=28
+
+  k      B  count_share_rough  mass_share_rough  mass_ratio_rough
+----------------------------------------------------------------------
+  5      7             0.9136            0.9379            1.0266
+  5     50             0.6111            0.7672            1.2555
+  5    100             0.5370            0.7603            1.4157
+  5   1000             0.3148            0.6474            2.0564
+  5  10000             0.0000            0.0000               nan
+  6      7             0.9630            0.9876            1.0256
+  6     50             0.8045            0.9333            1.1601
+  6    100             0.7490            0.9177            1.2253
+  6   1000             0.4239            0.7814            1.8435
+  6  10000             0.0062            0.0001            0.0238
+  7      7             0.9856            0.9966            1.0112
+  7     50             0.9108            0.9179            1.0078
+  7    100             0.8786            0.9088            1.0344
+  7   1000             0.6029            0.7453            1.2362
+  7  10000             0.0439            0.0160            0.3645

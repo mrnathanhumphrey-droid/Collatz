@@ -1,0 +1,45 @@
+Rendering K_7 full-spectrum chord
+  source: C:\Collatz\audio_data\eigenvalue_spectra_consolidated.csv
+  output: C:\Collatz\audio_data\measured_K7_full_spectrum_chord.wav
+  voices: 10
+  duration: 30.0s @ 44100 Hz
+  fundamental: 207.65 Hz (G#3)
+  carrier: sine, mono
+
+Calibration:
+  decay: α = 0.05 (Perron, |λ|=1) → 3.0 (smallest |λ|), linear in log10|λ|
+  weight: w = 1 / (1 + |log10|λ||)
+  log10|λ| span:  [-2.8158, 0.0000]
+
+  Perron (|λ|=1)            → α=0.05/s, e^(-α·30) = 0.2231  (still audible)
+  smallest (|λ|=1.528e-03) → α=3.0/s,  e^(-α·1) = 0.0498,  e^(-α·2) = 0.0025  (1-2 s effective)
+
+  rank           |λ|       arg   f_voice      α/s  weight  cmplx
+  --------------------------------------------------------------
+     1    1.0000e+00   +0.0000    207.65    0.050  1.0000     no
+     2    1.8165e-03   +0.0000    207.65    2.921  0.2673     no
+     3    1.8015e-03   +0.9170    229.76    2.925  0.2671    yes
+     4    1.8015e-03   -0.9170    375.34    2.925  0.2671    yes
+     5    1.7635e-03   +1.8219    253.88    2.935  0.2664    yes
+     6    1.7635e-03   -1.8219    339.68    2.935  0.2664    yes
+     7    1.7271e-03   +2.7059    279.88    2.944  0.2658    yes
+     8    1.7271e-03   -2.7059    308.12    2.944  0.2658    yes
+     9    1.5281e-03   +2.0585    260.59    3.000  0.2621    yes
+    10    1.5281e-03   -2.0585    330.93    3.000  0.2621    yes
+
+  peak before normalize: 2.2663
+  peak after normalize:  0.8913  (-1 dBFS)
+
+  per-second RMS (envelope verification):
+     t (s)         RMS      dBFS
+         0      0.3016    -10.41
+         1      0.2594    -11.72
+         2      0.2455    -12.20
+         5      0.2113    -13.50
+        10      0.1645    -15.68
+        15      0.1282    -17.85
+        20      0.0998    -20.02
+        25      0.0777    -22.19
+        29      0.0624    -24.10
+
+  wrote C:\Collatz\audio_data\measured_K7_full_spectrum_chord.wav  (2.65 MB)

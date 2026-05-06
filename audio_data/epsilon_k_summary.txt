@@ -1,0 +1,68 @@
+Epsilon_k convergence sequence summary
+=======================================
+
+Source: result_epsilon_11.csv (k = 1..11; consolidating k = 2..11)
+Limit: 7/15 = 0.466666666666667
+epsilon_k = S_k - 7/15  (S_k = stationary Plancherel mass at level k)
+
+k     eps_k                  |eps_k|              sign
+ 2    +9.523809523809525e-03  9.523809523809525e-03  +
+ 3    -5.091986325893010e-03  5.091986325893010e-03  -
+ 4    -2.452258248318762e-03  2.452258248318762e-03  -
+ 5    -1.151746915130986e-03  1.151746915130986e-03  -
+ 6    -4.979056652200001e-04  4.979056652200001e-04  -
+ 7    -1.175236830400000e-03  1.175236830400000e-03  -
+ 8    -7.455463672900000e-04  7.455463672900000e-04  -
+ 9    -7.520257156400000e-06  7.520257156400000e-06  -
+10    +7.207509171100000e-04  7.207509171100000e-04  +
+11    +1.501967012082273e-03  1.501967012082273e-03  +
+
+Sign sequence (k=2..11):  + - - - - - - - + +
+
+Magnitude sequence |eps_k|:
+  9.523810e-03, 5.091986e-03, 2.452258e-03, 1.151747e-03, 4.979057e-04, 1.175237e-03, 7.455464e-04, 7.520257e-06, 7.207509e-04, 1.501967e-03
+
+Ratio eps_{k+1} / eps_k (signed):
+  +0.047619, -0.534659, +0.481592, +0.469668, +0.432305, +2.360360, +0.634380, +0.010087, -95.841259, +2.083892
+
+Ratio |eps_{k+1}/eps_k| (absolute):
+  0.047619, 0.534659, 0.481592, 0.469668, 0.432305, 2.360360, 0.634380, 0.010087, 95.841259, 2.083892
+
+On-file recurrence fits (result_renormalization_recurrence_fits.csv)
+--------------------------------------------------------------------
+
+Order 1: n_eq=10, R^2=0.679214, ss_res=4.1347e-05
+  alphas: 0.0467194341
+  roots:  (+0.046719+0.000000j)
+
+Order 2: n_eq=9, R^2=0.892353, ss_res=3.1679e-06
+  alphas: 0.4641382848,-0.0474278419
+  roots:  (+0.312245+0.000000j),(+0.151893+0.000000j)
+
+Order 3: n_eq=8, R^2=0.797095, ss_res=2.1281e-06
+  alphas: 1.1357421039,-0.2922585185,0.0305094949
+  roots:  (+0.826934+0.000000j),(+0.154404+0.114255j),(+0.154404-0.114255j)
+
+Order 4: n_eq=7, R^2=0.664364, ss_res=2.0220e-06
+  alphas: 1.2519398587,-0.5216783676,0.0735867997,-0.0071071560
+  roots:  (+0.551090+0.178123j),(+0.551090-0.178123j),(+0.074880+0.124825j),(+0.074880-0.124825j)
+
+Order-3 highlight (per STATE.md):
+  Real root rho_slow = 0.826934  (the slow-mode rate)
+  Complex pair        = 0.154404 +/- 0.114255 i  (magnitude 0.192080, period 2*pi/atan2(0.114255, 0.154404) ~= 9.8629 k-steps)
+  R^2 (on file)       = 0.797095  (STATE.md cites ~1.00; on-file CSV has 0.797 — discrepancy worth verifying)
+
+Walk-back log (relevant to audio interpretation)
+-----------------------------------------------
+- Rate-1/2 envelope on |eps_n|*2^n looked stable ~0.04 at k=2..6;
+  jumped to 0.150 at k=7 (4x).  WALKED BACK 2026-05-05.
+- rho ~ 0.984 single complex-pair model fitted from k=2..10;
+  falsified at k=11 (eps_11 grew further to +1.50e-3).
+- Current best: order-3 linear recurrence with rho_slow ~ 0.827 (real)
+  plus damped complex pair near origin.
+
+Notes for audio mapping
+-----------------------
+- Sign flips (+/-) at k=2->3 and k=9->10 are the major structural events.
+- Magnitude minimum at k=9 (|eps_9|=7.5e-6, three orders below typical scale).
+- Magnitude bounce at k=10 (95.8x increase) is the largest ratio in the sequence.

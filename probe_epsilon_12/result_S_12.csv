@@ -1,0 +1,2 @@
+k,method,n,M,chunk,iters,final_residual,t_iter_seconds,X_k,S_k,eps_k,eps_k_fft,fft_agreement
+12,matvec_power_iter_aitken,354294,354294,256,13,7.403700e-16,19003.18,6.802899040564186,0.468941380387225,+2.274713720558208e-03,+2.274713720559540e-03,1.332268e-15

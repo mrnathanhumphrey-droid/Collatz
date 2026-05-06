@@ -1,0 +1,32 @@
+
+=== k = 8, chunk = 512 ===
+  init: n = 4,374, M = 4,374, 0.00s
+    iter    9: residual = 6.9553e-16, sum = 1.000000000000000, matvec 0.20s
+    [converged at iter 9, residual 6.96e-16]
+  converged: 9 iters, residual 6.96e-16, 1.7s
+  saved C:\Collatz\probe_profinite\pi_8.npz
+
+=== k = 9, chunk = 512 ===
+  init: n = 13,122, M = 13,122, 0.00s
+    iter   10: residual = 7.4332e-16, sum = 1.000000000000000, matvec 1.74s
+    [converged at iter 10, residual 7.43e-16]
+  converged: 10 iters, residual 7.43e-16, 17.6s
+  saved C:\Collatz\probe_profinite\pi_9.npz
+
+=== k = 10, chunk = 512 ===
+  init: n = 39,366, M = 39,366, 0.01s
+    iter   10: residual = 1.1161e-01, sum = 1.000000000000000, matvec 16.06s
+    iter   11: residual = 7.6516e-16, sum = 1.000000000000000, matvec 15.68s
+    [converged at iter 11, residual 7.65e-16]
+  converged: 11 iters, residual 7.65e-16, 175.7s
+  saved C:\Collatz\probe_profinite\pi_10.npz
+
+=== k = 11, chunk = 1024 ===
+  init: n = 118,098, M = 118,098, 0.03s
+    iter   10: residual = 1.3160e-01, sum = 1.000000000000000, matvec 134.65s
+    iter   12: residual = 6.9915e-16, sum = 1.000000000000000, matvec 141.24s
+    [converged at iter 12, residual 6.99e-16]
+  converged: 12 iters, residual 6.99e-16, 1645.6s
+  saved C:\Collatz\probe_profinite\pi_11.npz
+
+All π_k computed.

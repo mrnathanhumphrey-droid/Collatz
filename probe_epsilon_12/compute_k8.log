@@ -1,0 +1,22 @@
+    iter    1: residual = 5.0794e-01, sum = 0.999999999999999, matvec 0.12s
+    iter    2: residual = 3.6974e-01, sum = 1.000000000000000, matvec 0.13s
+    iter    3: residual = 3.0050e-01, sum = 1.000000000000000, matvec 0.12s
+    [Aitken probe at iter 3: ratio=0.8127, accelerated residual vs current = 4.7754e-01]
+    [Aitken rejected: post-Aitken residual=4.5718e-01]
+    iter    4: residual = 2.5185e-01, sum = 1.000000000000000, matvec 0.12s
+    [Aitken probe at iter 4: ratio=0.8381, accelerated residual vs current = 4.5064e-01]
+    [Aitken rejected: post-Aitken residual=4.5925e-01]
+    iter    5: residual = 2.1774e-01, sum = 1.000000000000000, matvec 0.12s
+    [Aitken probe at iter 5: ratio=0.8645, accelerated residual vs current = 4.3380e-01]
+    [Aitken rejected: post-Aitken residual=4.7085e-01]
+    iter    6: residual = 1.9226e-01, sum = 1.000000000000000, matvec 0.15s
+    [Aitken probe at iter 6: ratio=0.8830, accelerated residual vs current = 4.2413e-01]
+    [Aitken rejected: post-Aitken residual=5.0873e-01]
+    iter    7: residual = 1.7279e-01, sum = 1.000000000000000, matvec 0.12s
+    [Aitken probe at iter 7: ratio=0.8987, accelerated residual vs current = 3.9757e-01]
+    [Aitken rejected: post-Aitken residual=4.5603e-01]
+    iter    8: residual = 1.3396e-01, sum = 1.000000000000000, matvec 0.12s
+    [Aitken probe at iter 8: ratio=0.7753, accelerated residual vs current = 3.7475e-01]
+    [Aitken rejected: post-Aitken residual=4.2494e-01]
+    iter    9: residual = 6.9553e-16, sum = 1.000000000000000, matvec 0.12s
+    [converged at iter 9, residual 6.96e-16]
