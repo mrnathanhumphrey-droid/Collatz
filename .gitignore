@@ -1,3 +1,7 @@
+# VST data (eigenvalue spectra, closed forms, audio renders — regeneratable
+# via vst_data/_compute_spectra.py and vst_data/_render_audio.py)
+vst_data/
+
 # Compiled / cached
 __pycache__/
 *.pyc
