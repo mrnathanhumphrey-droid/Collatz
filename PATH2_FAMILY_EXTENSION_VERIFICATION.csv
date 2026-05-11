@@ -1,0 +1,9 @@
+p,r,q,period,J,supp_size,bijection_ok,max_mag_dev,mag_ok,max_saddle_diff,saddle_ok_r3,r2_uniform_factor,r2_avg_ratio_re,r2_avg_ratio_im
+3,2,27,9,3,3,True,8.881784e-16,True,5.176381e-01,,True,0.866025,0.500000
+3,3,81,27,3,9,True,1.776357e-15,True,3.330669e-16,True,,,
+5,2,125,25,2,5,True,3.552714e-15,True,2.000000e+00,,True,-1.000000,-0.000000
+5,3,625,125,3,25,True,2.131628e-14,True,8.989551e-16,True,,,
+7,2,343,49,2,7,True,3.552714e-15,True,1.414214e+00,,True,-0.000000,1.000000
+7,3,2401,343,3,49,True,1.278977e-13,True,2.664680e-15,True,,,
+11,2,1331,121,2,11,True,2.131628e-14,True,1.414214e+00,,True,-0.000000,-1.000000
+11,3,14641,1331,3,121,True,7.389644e-13,True,6.107803e-15,True,,,
