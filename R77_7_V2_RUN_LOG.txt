@@ -1,0 +1,413 @@
+==============================================================================
+R77.7 V2 — CRT + modular solver for exact eps_n through k=7
+==============================================================================
+Output cache: C:\Collatz\experiments_output\result_77_7_eps_exact_through_k7_v2.json
+
+Loaded 6 cached eps from original solver:
+  eps_1 ~ +2.0000000000e-01
+  eps_2 ~ +9.5238095238e-03
+  eps_3 ~ -5.0919863259e-03
+  eps_4 ~ -2.4522582483e-03
+  eps_5 ~ -1.1517469151e-03
+  eps_6 ~ -4.9790566522e-04
+
+
+Phase 4: verification k=1..6 against cache
+------------------------------------------------------------------------------
+
+  [k=1] Building K_exp...
+  [k=1] N=2, M=2, build time 0.00s
+  [k=1] +prime 1 = 1000000007: solved in 0.00s
+  [k=1] +prime 2 = 1000000009: solved in 0.00s
+  [k=1] +prime 3 = 1000000021: solved in 0.00s
+  [k=1] +prime 4 = 1000000033: solved in 0.00s
+  [k=1] +prime 5 = 1000000087: solved in 0.00s
+  [k=1] +prime 6 = 1000000093: solved in 0.00s
+  [k=1] CRT-combining 6 primes...
+  [k=1] CRT done in 0.00s, P has 180 bits
+  [k=1] Reconstructing 2 components...
+  [k=1] reconstruction done in 0.00s, 0/2 failed components
+  [k=1] sum(pi) == 1: True
+  [k=1] Adding 1 witness prime for verification...
+  [k=1] Witness verification PASSED (prime 1000000097)
+  [k=1] DONE — avg per-prime solve 0.00s, total primes used 7
+  [k=1] TOTAL wall time 0.00s, primes used 7
+
+  [k=2] Building K_exp...
+  [k=2] N=6, M=6, build time 0.00s
+  [k=2] +prime 1 = 1000000007: solved in 0.00s
+  [k=2] +prime 2 = 1000000009: solved in 0.00s
+  [k=2] +prime 3 = 1000000021: solved in 0.00s
+  [k=2] +prime 4 = 1000000033: solved in 0.00s
+  [k=2] +prime 5 = 1000000087: solved in 0.00s
+  [k=2] +prime 6 = 1000000093: solved in 0.00s
+  [k=2] CRT-combining 6 primes...
+  [k=2] CRT done in 0.00s, P has 180 bits
+  [k=2] Reconstructing 6 components...
+  [k=2] reconstruction done in 0.00s, 0/6 failed components
+  [k=2] sum(pi) == 1: True
+  [k=2] Adding 1 witness prime for verification...
+  [k=2] Witness verification PASSED (prime 1000000097)
+  [k=2] DONE — avg per-prime solve 0.00s, total primes used 7
+  [k=2] TOTAL wall time 0.00s, primes used 7
+
+  [k=3] Building K_exp...
+  [k=3] N=18, M=18, build time 0.00s
+  [k=3] +prime 1 = 1000000007: solved in 0.00s
+  [k=3] +prime 2 = 1000000009: solved in 0.00s
+  [k=3] +prime 3 = 1000000021: solved in 0.00s
+  [k=3] +prime 4 = 1000000033: solved in 0.00s
+  [k=3] +prime 5 = 1000000087: solved in 0.00s
+  [k=3] +prime 6 = 1000000093: solved in 0.00s
+  [k=3] +prime 7 = 1000000097: solved in 0.00s
+  [k=3] +prime 8 = 1000000103: solved in 0.00s
+  [k=3] CRT-combining 8 primes...
+  [k=3] CRT done in 0.00s, P has 240 bits
+  [k=3] Reconstructing 18 components...
+  [k=3] reconstruction done in 0.00s, 0/18 failed components
+  [k=3] sum(pi) == 1: True
+  [k=3] Adding 1 witness prime for verification...
+  [k=3] Witness verification PASSED (prime 1000000123)
+  [k=3] DONE — avg per-prime solve 0.00s, total primes used 9
+  [k=3] TOTAL wall time 0.01s, primes used 9
+
+  [k=4] Building K_exp...
+  [k=4] N=54, M=54, build time 0.00s
+  [k=4] +prime 1 = 1000000007: solved in 0.01s
+  [k=4] +prime 2 = 1000000009: solved in 0.01s
+  [k=4] +prime 3 = 1000000021: solved in 0.01s
+  [k=4] +prime 4 = 1000000033: solved in 0.01s
+  [k=4] +prime 5 = 1000000087: solved in 0.01s
+  [k=4] +prime 6 = 1000000093: solved in 0.01s
+  [k=4] +prime 7 = 1000000097: solved in 0.01s
+  [k=4] +prime 8 = 1000000103: solved in 0.01s
+  [k=4] +prime 9 = 1000000123: solved in 0.01s
+  [k=4] +prime 10 = 1000000181: solved in 0.01s
+  [k=4] +prime 11 = 1000000207: solved in 0.01s
+  [k=4] +prime 12 = 1000000223: solved in 0.01s
+  [k=4] CRT-combining 12 primes...
+  [k=4] CRT done in 0.00s, P has 359 bits
+  [k=4] Reconstructing 54 components...
+  [k=4] reconstruction done in 0.00s, 0/54 failed components
+  [k=4] sum(pi) == 1: True
+  [k=4] Adding 1 witness prime for verification...
+  [k=4] Witness verification PASSED (prime 1000000241)
+  [k=4] DONE — avg per-prime solve 0.01s, total primes used 13
+  [k=4] TOTAL wall time 0.11s, primes used 13
+
+  [k=5] Building K_exp...
+  [k=5] N=162, M=162, build time 0.01s
+  [k=5] +prime 1 = 1000000007: solved in 0.06s
+  [k=5] +prime 2 = 1000000009: solved in 0.09s
+  [k=5] +prime 3 = 1000000021: solved in 0.09s
+  [k=5] +prime 4 = 1000000033: solved in 0.07s
+  [k=5] +prime 5 = 1000000087: solved in 0.09s
+  [k=5] +prime 6 = 1000000093: solved in 0.08s
+  [k=5] +prime 7 = 1000000097: solved in 0.08s
+  [k=5] +prime 8 = 1000000103: solved in 0.09s
+  [k=5] +prime 9 = 1000000123: solved in 0.07s
+  [k=5] +prime 10 = 1000000181: solved in 0.09s
+  [k=5] +prime 11 = 1000000207: solved in 0.08s
+  [k=5] +prime 12 = 1000000223: solved in 0.10s
+  [k=5] +prime 13 = 1000000241: solved in 0.09s
+  [k=5] +prime 14 = 1000000271: solved in 0.09s
+  [k=5] +prime 15 = 1000000289: solved in 0.09s
+  [k=5] +prime 16 = 1000000297: solved in 0.08s
+  [k=5] +prime 17 = 1000000321: solved in 0.07s
+  [k=5] +prime 18 = 1000000349: solved in 0.09s
+  [k=5] +prime 19 = 1000000363: solved in 0.09s
+  [k=5] +prime 20 = 1000000403: solved in 0.09s
+  [k=5] +prime 21 = 1000000409: solved in 0.07s
+  [k=5] +prime 22 = 1000000411: solved in 0.07s
+  [k=5] +prime 23 = 1000000427: solved in 0.07s
+  [k=5] +prime 24 = 1000000433: solved in 0.09s
+  [k=5] CRT-combining 24 primes...
+  [k=5] CRT done in 0.00s, P has 718 bits
+  [k=5] Reconstructing 162 components...
+  [k=5] reconstruction done in 0.00s, 0/162 failed components
+  [k=5] sum(pi) == 1: True
+  [k=5] Adding 1 witness prime for verification...
+  [k=5] Witness verification PASSED (prime 1000000439)
+  [k=5] DONE — avg per-prime solve 0.08s, total primes used 25
+  [k=5] TOTAL wall time 2.09s, primes used 25
+
+  [k=6] Building K_exp...
+  [k=6] N=486, M=486, build time 0.07s
+  [k=6] +prime 1 = 1000000007: solved in 0.97s
+  [k=6] +prime 2 = 1000000009: solved in 1.02s
+  [k=6] +prime 3 = 1000000021: solved in 1.03s
+  [k=6] +prime 4 = 1000000033: solved in 1.04s
+  [k=6] +prime 5 = 1000000087: solved in 1.03s
+  [k=6] +prime 6 = 1000000093: solved in 1.04s
+  [k=6] +prime 7 = 1000000097: solved in 1.08s
+  [k=6] +prime 8 = 1000000103: solved in 1.06s
+  [k=6] +prime 9 = 1000000123: solved in 1.03s
+  [k=6] +prime 10 = 1000000181: solved in 1.03s
+  [k=6] +prime 11 = 1000000207: solved in 1.02s
+  [k=6] +prime 12 = 1000000223: solved in 1.02s
+  [k=6] +prime 13 = 1000000241: solved in 1.03s
+  [k=6] +prime 14 = 1000000271: solved in 1.03s
+  [k=6] +prime 15 = 1000000289: solved in 1.03s
+  [k=6] +prime 16 = 1000000297: solved in 1.04s
+  [k=6] +prime 17 = 1000000321: solved in 1.04s
+  [k=6] +prime 18 = 1000000349: solved in 1.03s
+  [k=6] +prime 19 = 1000000363: solved in 1.03s
+  [k=6] +prime 20 = 1000000403: solved in 1.03s
+  [k=6] +prime 21 = 1000000409: solved in 1.02s
+  [k=6] +prime 22 = 1000000411: solved in 1.04s
+  [k=6] +prime 23 = 1000000427: solved in 1.09s
+  [k=6] +prime 24 = 1000000433: solved in 1.07s
+  [k=6] +prime 25 = 1000000439: solved in 1.03s
+  [k=6] +prime 26 = 1000000447: solved in 1.03s
+  [k=6] +prime 27 = 1000000453: solved in 1.02s
+  [k=6] +prime 28 = 1000000459: solved in 1.03s
+  [k=6] +prime 29 = 1000000483: solved in 1.02s
+  [k=6] +prime 30 = 1000000513: solved in 1.03s
+  [k=6] +prime 31 = 1000000531: solved in 1.03s
+  [k=6] +prime 32 = 1000000579: solved in 1.03s
+  [k=6] +prime 33 = 1000000607: solved in 1.03s
+  [k=6] +prime 34 = 1000000613: solved in 1.01s
+  [k=6] +prime 35 = 1000000637: solved in 1.05s
+  [k=6] +prime 36 = 1000000663: solved in 1.04s
+  [k=6] +prime 37 = 1000000711: solved in 1.09s
+  [k=6] +prime 38 = 1000000753: solved in 1.08s
+  [k=6] +prime 39 = 1000000787: solved in 1.08s
+  [k=6] +prime 40 = 1000000801: solved in 1.09s
+  [k=6] +prime 41 = 1000000829: solved in 1.05s
+  [k=6] +prime 42 = 1000000861: solved in 1.03s
+  [k=6] +prime 43 = 1000000871: solved in 1.06s
+  [k=6] +prime 44 = 1000000891: solved in 1.06s
+  [k=6] +prime 45 = 1000000901: solved in 1.01s
+  [k=6] +prime 46 = 1000000919: solved in 1.04s
+  [k=6] +prime 47 = 1000000931: solved in 1.04s
+  [k=6] +prime 48 = 1000000933: solved in 1.03s
+  [k=6] +prime 49 = 1000000993: solved in 1.04s
+  [k=6] +prime 50 = 1000001011: solved in 1.09s
+  [k=6] CRT-combining 50 primes...
+  [k=6] CRT done in 0.01s, P has 1495 bits
+  [k=6] Reconstructing 486 components...
+  [k=6] reconstruction done in 0.05s, 0/486 failed components
+  [k=6] sum(pi) == 1: True
+  [k=6] Adding 1 witness prime for verification...
+  [k=6] Witness verification PASSED (prime 1000001021)
+  [k=6] DONE — avg per-prime solve 1.04s, total primes used 51
+  [k=6] TOTAL wall time 53.27s, primes used 51
+
+  Computed eps_k from new solver:
+    eps_1 = num/den lens (1,1)  ~ +2.0000000000e-01
+    eps_2 = num/den lens (1,3)  ~ +9.5238095238e-03
+    eps_3 = num/den lens (4,7)  ~ -5.0919863259e-03
+    eps_4 = num/den lens (17,19)  ~ -2.4522582483e-03
+    eps_5 = num/den lens (59,62)  ~ -1.1517469151e-03
+    eps_6 = num/den lens (188,191)  ~ -4.9790566522e-04
+
+  Verifying against cache:
+    eps_1: OK  (computed=+2.0000000000e-01, cached=+2.0000000000e-01)
+    eps_2: OK  (computed=+9.5238095238e-03, cached=+9.5238095238e-03)
+    eps_3: OK  (computed=-5.0919863259e-03, cached=-5.0919863259e-03)
+    eps_4: OK  (computed=-2.4522582483e-03, cached=-2.4522582483e-03)
+    eps_5: OK  (computed=-1.1517469151e-03, cached=-1.1517469151e-03)
+    eps_6: OK  (computed=-4.9790566522e-04, cached=-4.9790566522e-04)
+
+  All k=1..6 match cache. Verification PASSED.
+
+  Estimated k=7 wall time from k=6 scaling: ~1357s = ~22.6 min
+  Theoretical N^3 estimate from k=6: ~2157s = ~36.0 min
+
+Phase 4 verification complete. Proceeding to k=7.
+
+==============================================================================
+Phase 5: compute eps_7
+==============================================================================
+
+  [k=7] Building K_exp...
+  [k=7] N=1458, M=1458, build time 1.27s
+  [k=7] +prime 1 = 1000000007: solved in 15.95s
+  [k=7] +prime 2 = 1000000009: solved in 16.81s
+  [k=7] +prime 3 = 1000000021: solved in 16.55s
+  [k=7] +prime 4 = 1000000033: solved in 15.12s
+  [k=7] +prime 5 = 1000000087: solved in 15.18s
+  [k=7] +prime 6 = 1000000093: solved in 14.37s
+  [k=7] +prime 7 = 1000000097: solved in 14.26s
+  [k=7] +prime 8 = 1000000103: solved in 14.25s
+  [k=7] +prime 9 = 1000000123: solved in 14.24s
+  [k=7] +prime 10 = 1000000181: solved in 14.12s
+  [k=7] +prime 11 = 1000000207: solved in 14.13s
+  [k=7] +prime 12 = 1000000223: solved in 14.27s
+  [k=7] +prime 13 = 1000000241: solved in 14.04s
+  [k=7] +prime 14 = 1000000271: solved in 13.98s
+  [k=7] +prime 15 = 1000000289: solved in 14.93s
+  [k=7] +prime 16 = 1000000297: solved in 16.00s
+  [k=7] +prime 17 = 1000000321: solved in 16.04s
+  [k=7] +prime 18 = 1000000349: solved in 16.61s
+  [k=7] +prime 19 = 1000000363: solved in 16.57s
+  [k=7] +prime 20 = 1000000403: solved in 16.02s
+  [k=7] +prime 21 = 1000000409: solved in 15.77s
+  [k=7] +prime 22 = 1000000411: solved in 16.22s
+  [k=7] +prime 23 = 1000000427: solved in 16.55s
+  [k=7] +prime 24 = 1000000433: solved in 16.10s
+  [k=7] +prime 25 = 1000000439: solved in 15.84s
+  [k=7] +prime 26 = 1000000447: solved in 15.69s
+  [k=7] +prime 27 = 1000000453: solved in 15.48s
+  [k=7] +prime 28 = 1000000459: solved in 15.56s
+  [k=7] +prime 29 = 1000000483: solved in 15.50s
+  [k=7] +prime 30 = 1000000513: solved in 15.60s
+  [k=7] +prime 31 = 1000000531: solved in 15.67s
+  [k=7] +prime 32 = 1000000579: solved in 16.00s
+  [k=7] +prime 33 = 1000000607: solved in 15.91s
+  [k=7] +prime 34 = 1000000613: solved in 15.70s
+  [k=7] +prime 35 = 1000000637: solved in 15.58s
+  [k=7] +prime 36 = 1000000663: solved in 15.66s
+  [k=7] +prime 37 = 1000000711: solved in 15.77s
+  [k=7] +prime 38 = 1000000753: solved in 15.62s
+  [k=7] +prime 39 = 1000000787: solved in 15.59s
+  [k=7] +prime 40 = 1000000801: solved in 15.64s
+  [k=7] +prime 41 = 1000000829: solved in 15.58s
+  [k=7] +prime 42 = 1000000861: solved in 15.52s
+  [k=7] +prime 43 = 1000000871: solved in 15.69s
+  [k=7] +prime 44 = 1000000891: solved in 15.89s
+  [k=7] +prime 45 = 1000000901: solved in 15.69s
+  [k=7] +prime 46 = 1000000919: solved in 15.68s
+  [k=7] +prime 47 = 1000000931: solved in 15.60s
+  [k=7] +prime 48 = 1000000933: solved in 15.69s
+  [k=7] +prime 49 = 1000000993: solved in 15.56s
+  [k=7] +prime 50 = 1000001011: solved in 15.56s
+  [k=7] +prime 51 = 1000001021: solved in 15.60s
+  [k=7] +prime 52 = 1000001053: solved in 15.62s
+  [k=7] +prime 53 = 1000001087: solved in 15.64s
+  [k=7] +prime 54 = 1000001099: solved in 16.04s
+  [k=7] +prime 55 = 1000001137: solved in 15.89s
+  [k=7] +prime 56 = 1000001161: solved in 15.67s
+  [k=7] +prime 57 = 1000001203: solved in 15.56s
+  [k=7] +prime 58 = 1000001213: solved in 15.65s
+  [k=7] +prime 59 = 1000001237: solved in 15.62s
+  [k=7] +prime 60 = 1000001263: solved in 15.55s
+  [k=7] +prime 61 = 1000001269: solved in 15.67s
+  [k=7] +prime 62 = 1000001273: solved in 15.66s
+  [k=7] +prime 63 = 1000001279: solved in 15.60s
+  [k=7] +prime 64 = 1000001311: solved in 15.56s
+  [k=7] +prime 65 = 1000001329: solved in 15.56s
+  [k=7] +prime 66 = 1000001333: solved in 15.57s
+  [k=7] +prime 67 = 1000001351: solved in 15.62s
+  [k=7] +prime 68 = 1000001371: solved in 15.56s
+  [k=7] +prime 69 = 1000001393: solved in 15.50s
+  [k=7] +prime 70 = 1000001413: solved in 15.71s
+  [k=7] +prime 71 = 1000001447: solved in 15.62s
+  [k=7] +prime 72 = 1000001449: solved in 15.70s
+  [k=7] +prime 73 = 1000001491: solved in 15.69s
+  [k=7] +prime 74 = 1000001501: solved in 15.69s
+  [k=7] +prime 75 = 1000001531: solved in 15.81s
+  [k=7] +prime 76 = 1000001537: solved in 16.17s
+  [k=7] +prime 77 = 1000001539: solved in 15.93s
+  [k=7] +prime 78 = 1000001581: solved in 15.61s
+  [k=7] +prime 79 = 1000001617: solved in 15.79s
+  [k=7] +prime 80 = 1000001621: solved in 15.72s
+  [k=7] +prime 81 = 1000001633: solved in 15.69s
+  [k=7] +prime 82 = 1000001647: solved in 15.80s
+  [k=7] +prime 83 = 1000001663: solved in 15.71s
+  [k=7] +prime 84 = 1000001677: solved in 15.71s
+  [k=7] +prime 85 = 1000001699: solved in 15.66s
+  [k=7] +prime 86 = 1000001759: solved in 15.72s
+  [k=7] +prime 87 = 1000001773: solved in 15.54s
+  [k=7] +prime 88 = 1000001789: solved in 15.65s
+  [k=7] +prime 89 = 1000001791: solved in 15.64s
+  [k=7] +prime 90 = 1000001801: solved in 15.58s
+  [k=7] +prime 91 = 1000001803: solved in 15.67s
+  [k=7] +prime 92 = 1000001819: solved in 15.56s
+  [k=7] +prime 93 = 1000001857: solved in 15.56s
+  [k=7] +prime 94 = 1000001887: solved in 15.56s
+  [k=7] +prime 95 = 1000001917: solved in 15.64s
+  [k=7] +prime 96 = 1000001927: solved in 15.64s
+  [k=7] +prime 97 = 1000001957: solved in 15.88s
+  [k=7] +prime 98 = 1000001963: solved in 16.02s
+  [k=7] +prime 99 = 1000001969: solved in 15.93s
+  [k=7] +prime 100 = 1000002043: solved in 15.62s
+  [k=7] +prime 101 = 1000002089: solved in 15.62s
+  [k=7] +prime 102 = 1000002103: solved in 15.64s
+  [k=7] +prime 103 = 1000002139: solved in 15.55s
+  [k=7] +prime 104 = 1000002149: solved in 15.56s
+  [k=7] +prime 105 = 1000002161: solved in 15.72s
+  [k=7] +prime 106 = 1000002173: solved in 15.55s
+  [k=7] +prime 107 = 1000002187: solved in 15.62s
+  [k=7] +prime 108 = 1000002193: solved in 15.67s
+  [k=7] +prime 109 = 1000002233: solved in 15.63s
+  [k=7] +prime 110 = 1000002239: solved in 15.55s
+  [k=7] +prime 111 = 1000002277: solved in 15.69s
+  [k=7] +prime 112 = 1000002307: solved in 15.67s
+  [k=7] +prime 113 = 1000002359: solved in 15.67s
+  [k=7] +prime 114 = 1000002361: solved in 15.83s
+  [k=7] +prime 115 = 1000002431: solved in 15.68s
+  [k=7] +prime 116 = 1000002449: solved in 15.80s
+  [k=7] +prime 117 = 1000002457: solved in 15.52s
+  [k=7] +prime 118 = 1000002499: solved in 15.60s
+  [k=7] +prime 119 = 1000002571: solved in 15.88s
+  [k=7] +prime 120 = 1000002581: solved in 16.03s
+  [k=7] +prime 121 = 1000002607: solved in 15.95s
+  [k=7] +prime 122 = 1000002631: solved in 15.73s
+  [k=7] +prime 123 = 1000002637: solved in 15.71s
+  [k=7] +prime 124 = 1000002649: solved in 15.50s
+  [k=7] +prime 125 = 1000002667: solved in 15.62s
+  [k=7] +prime 126 = 1000002727: solved in 15.61s
+  [k=7] +prime 127 = 1000002791: solved in 15.65s
+  [k=7] +prime 128 = 1000002803: solved in 15.72s
+  [k=7] +prime 129 = 1000002821: solved in 15.66s
+  [k=7] +prime 130 = 1000002823: solved in 15.81s
+  [k=7] +prime 131 = 1000002827: solved in 15.62s
+  [k=7] +prime 132 = 1000002907: solved in 15.60s
+  [k=7] +prime 133 = 1000002937: solved in 15.70s
+  [k=7] +prime 134 = 1000002989: solved in 15.60s
+  [k=7] +prime 135 = 1000003009: solved in 15.67s
+  [k=7] +prime 136 = 1000003013: solved in 15.76s
+  [k=7] +prime 137 = 1000003051: solved in 15.54s
+  [k=7] +prime 138 = 1000003057: solved in 15.77s
+  [k=7] +prime 139 = 1000003097: solved in 15.61s
+  [k=7] +prime 140 = 1000003111: solved in 15.51s
+  [k=7] +prime 141 = 1000003133: solved in 15.82s
+  [k=7] +prime 142 = 1000003153: solved in 16.08s
+  [k=7] +prime 143 = 1000003157: solved in 15.99s
+  [k=7] +prime 144 = 1000003163: solved in 15.58s
+  [k=7] +prime 145 = 1000003211: solved in 15.63s
+  [k=7] +prime 146 = 1000003241: solved in 15.63s
+  [k=7] +prime 147 = 1000003247: solved in 15.52s
+  [k=7] +prime 148 = 1000003253: solved in 15.64s
+  [k=7] +prime 149 = 1000003267: solved in 15.73s
+  [k=7] +prime 150 = 1000003271: solved in 15.76s
+  [k=7] CRT-combining 150 primes...
+  [k=7] CRT done in 0.15s, P has 4485 bits
+  [k=7] Reconstructing 1458 components...
+  [k=7] reconstruction done in 1.03s, 0/1458 failed components
+  [k=7] sum(pi) == 1: True
+  [k=7] Adding 1 witness prime for verification...
+  [k=7] Witness verification PASSED (prime 1000003273)
+  [k=7] DONE — avg per-prime solve 15.63s, total primes used 151
+
+  [k=7] TOTAL wall time 2362.1s = 39.37 min, primes used 151, mean per-prime solve 15.63s
+
+  eps_7 = -17617809581489739278424754038351241185555396958196593231548898210423242664438624149488767163281196161310692835629322782723944486957336029973053152855972741671103868235207707665397401848630111811534590507729144628398619143925978406465849184689520214036029377984952842489636244654469555943263844427652111892265446441932377373090021280561113631985054647464869979817559920532537145399881408420195073877333366543702907818170272791082390552759833516131118123867154063229606720149820035612481022292670615807859929514631472074629994751244512598013327189905521242122366235356302458165031 / 14990858970849619015225692830590982373277236508020356874791257066775001751726130338701443981547183753370713364102095910699161571530635719806580869143446006765549302098146948470319463232557922180470075243897514888092239295597821983539018345704273883425133586778101531562289167863757256194409036439014789556608516662004820760201852420116464244290573789249382960074554993077480270354364035246067237449458307196924559813916847833532967778185527556458599663278274876170786319973186009124285357164758746716455647161168500998285566938387790821929776703390721608115377910377584756229884245
+  eps_7 (float) ~ -1.175236830374320e-03
+  |eps_7| * 2^7 = +0.1504303143
+
+  Saved eps_1..eps_7 to C:\Collatz\experiments_output\result_77_7_eps_exact_through_k7_v2.json
+
+  Comparison to project numerical (power-iteration) prior: ~-1.18e-3
+  Computed exact (float) eps_7 = -1.175237e-03
+  Ratio |eps_7|/|eps_6| = 2.3604
+  |eps_n| * 2^n series:
+    n=1: |eps_1|*2^1 = +0.400000
+    n=2: |eps_2|*2^2 = +0.038095
+    n=3: |eps_3|*2^3 = +0.040736
+    n=4: |eps_4|*2^4 = +0.039236
+    n=5: |eps_5|*2^5 = +0.036856
+    n=6: |eps_6|*2^6 = +0.031866
+    n=7: |eps_7|*2^7 = +0.150430
+
+==============================================================================
+Wall time summary
+==============================================================================
+  k=1: 0.00s, 7 primes
+  k=2: 0.00s, 7 primes
+  k=3: 0.01s, 9 primes
+  k=4: 0.11s, 13 primes
+  k=5: 2.09s, 25 primes
+  k=6: 53.27s, 51 primes
+  k=7: 2362.10s, 151 primes
