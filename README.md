@@ -23,6 +23,23 @@ Empirical `K_max/√N ≈ 2.0` at r = 8..20 (`r79b_S_partial_empirical.md`) matc
 
 The candidate theorem `|F̂_p^full(ξ)| = p^{(r+3)/2}` is verified across 33 cells (primes p ∈ {3..31}, r ∈ {1..6}); mpmath at 50 digits confirms exact algebraic equality to 1e-49 at (p=5, r=3). Standalone result independent of c=7/45 closure. See `FHAT_THEOREM_VERIFICATION_RESULTS.md`, `QX1_FAMILY_THEOREM_ATTEMPT.md`.
 
+### Eighth + ninth probes — **obstruction-separation finding** — 2026-05-12
+
+After the seven-probe trajectory and Tauberian framework arc, two more probes ran at the corrected rate parameters and **separated two obstructions that the seven-probe framing was conflating:**
+
+- **Eighth probe (T_lead at corrected rate)** — `T_LEAD_CORRECTED_DISPOSITION.md`: cross-freq machinery delivers **T_lead = (1/45)·[[7, 9], [28, 36]]** over Q with **spectrum {43/45, 0}**. Eigenvalue **43/45 ≈ 0.9556** on (1, 4). Closed-form origin: 1 − Σ_g W_+(g) = 1 − 2/45. M_3'' = ||(I − T_lead)^{−1}|| = **24.426 exact**. First positive algebraic spectral result of the trajectory. R77.3's rate-1/2 falsification reframes: wrong target, not framework failure.
+- **Ninth probe (Nisoli closure at λ=43/45)** — `NISOLI_CLOSURE_CORRECTED_DISPOSITION.md`: closure inequality `|K_bil|·K^{−A}·M_3'' < 1` **FIRES at (r=3, A=3, K=6) with product 0.679 under optimistic C_A = 1.** But under realistic Tao bookkeeping C_A ≥ A^{O(A)}: at A=3, C_3 ≥ 27 blows the K^3 budget by 18×. **No realistic Tao-C_A delivers closure** — H_A_EXTRACTION_HARD.
+
+**The c=7/45 closure landscape goes from "three independent obstructions" (2026-05-11) to "single isolated obstruction" (2026-05-12):**
+
+| Obstruction | Rate-specific? | Status |
+|---|---|---|
+| (1) Operator-theoretic (discrete eigenvalue at target rate) | rate-specific | **LIFTED at corrected rate** (T_lead 43/45 exact, M_3'' 24.43 exact) |
+| (2) Tao Prop 1.17 effective C_A | rate-invariant | **INFEASIBLE — single remaining obstruction** |
+| (3) Bilinear \|K\| | independent | DELIVERED 2026-05-11 |
+
+**Single load-bearing unblocker: novel polynomial-in-A Fourier bound on |μ̂_n(ξ)| outside Tao's method.**
+
 ### Seven-probe spectral trajectory + Tauberian framework arc — 2026-05-12
 
 Continuation session mapped the structural boundary of c=7/45 closure beyond the bilinear bound. Seven probes (T_3 → R_k → Candidate A → R76 §11 → T_N → cross-frequency closure → T_V iteration → Tauberian scoping) plus the R77.6 Padé re-read converged on a single conclusion:
