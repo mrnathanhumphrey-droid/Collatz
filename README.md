@@ -1,6 +1,6 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-05-05):** Live state in [`STATE.md`](STATE.md). The repo has accreted three additional research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-05-12):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
 
 **Original status (2026-05-02):** Bridge result to Tao 2022 documented. Three findings consolidated: (a) prefix-decomposition theorem at modular resolutions k = 4..14; (b) `s_mean(r) ≈ α_det(r) + K_h · log(N/f(N))` with slope = 1.000 ± 0.005 at K_h = 3/log(4/3) across two independent observables (σ and first-passage), four modular resolutions, and two data scales; (c) qx+1 Cramér convergence law at q ∈ {5, 7, 9, 11} with q=5 match to 0.01%.
 
@@ -8,7 +8,32 @@
 
 ## Recent landmarks (post-2026-05-02)
 
-Three threads layered on top of the architectural overview below. **For the current state of any of these, read [`STATE.md`](STATE.md) first** — it is the live document and supersedes any drift in this README.
+Threads layered on top of the architectural overview below. **For the current state of any of these, read [`STATE.md`](STATE.md) first** — it is the live document and supersedes any drift in this README.
+
+### Bilinear bound on the R78 wall — DELIVERED 2026-05-11
+
+The dual-side Plancherel bilinear character sum `|S_partial(r)| ≤ C · √N` (Route 2 of the c=7/45 closure landscape) has rigorous proof:
+
+- **r ≤ 3:** strict `|S_partial(r)| ≤ 2√N`, family-level at p ∈ {3, 5, 7, 11}, no tradition ingredients (Path 2 + pushback reconstruction CONFIRMS). See `PATH2_DISPOSITION.md`, `PATH2_BILINEAR_FROM_CLOSED_FORM.md`.
+- **r ≥ 4:** polylog-free `|S_partial(r)| ≤ 2√p · √N` via **Hensel-lifted closed form**. The truncated p-adic log gives a saddle equation `1+ps = C_a` linear in s, exactly solvable in Z_p; "Hensel correction collapse" is literal digit extraction `s*(r) = (C_a − 1)/p mod p^{r-1}`. Phase identity `P_a(s*) = M(C_a − 1)` where `M(y) = y − (1+y)·log(1+y) = Σ_{j≥2} (−1)^{j-1}/(j(j-1)) · y^j` falls out algebraically. Triple-verified on closed form (10 cells at 1e-15, max rel dev 6.4e-15 at p=7,r=6) + independent re-derivation CONFIRMS. See `HENSEL_DISPOSITION.md`.
+
+Empirical `K_max/√N ≈ 2.0` at r = 8..20 (`r79b_S_partial_empirical.md`) matches the rigorous constant level. Six literature candidates (Milićević, Banks-Shparlinski, Petrow-Young, Garcia-Young, Pascadi, DFI 1995) + the Polymath8 chain ruled out by object-shape mismatch before Path 2 closed; see `BURGESS_LITERATURE_FINDINGS.md`.
+
+### F̂_p family-level Plancherel saturation — VERIFIED 2026-05-11
+
+The candidate theorem `|F̂_p^full(ξ)| = p^{(r+3)/2}` is verified across 33 cells (primes p ∈ {3..31}, r ∈ {1..6}); mpmath at 50 digits confirms exact algebraic equality to 1e-49 at (p=5, r=3). Standalone result independent of c=7/45 closure. See `FHAT_THEOREM_VERIFICATION_RESULTS.md`, `QX1_FAMILY_THEOREM_ATTEMPT.md`.
+
+### Seven-probe spectral trajectory + Tauberian framework arc — 2026-05-12
+
+Continuation session mapped the structural boundary of c=7/45 closure beyond the bilinear bound. Seven probes (T_3 → R_k → Candidate A → R76 §11 → T_N → cross-frequency closure → T_V iteration → Tauberian scoping) plus the R77.6 Padé re-read converged on a single conclusion:
+
+**Nisoli framework is STRUCTURALLY INAPPLICABLE** — it requires a discrete eigenvalue of a resolvent at rate 1/2, but no Q-constructable finite-rank operator carries one. Rate-1/2 lives in continuous spectrum / branch-cut endpoint structure, NOT a discrete eigenvalue.
+
+First positive structural advance: cross-frequency closure exists on enlarged span V_M = span{M_n^{ab}(g, c)} parameterized by g = v' − v. But V_M doesn't close under iteration n → n+1 (phase + parity obstructions). See `CROSS_FREQ_DISPOSITION.md`, `T_V_DISPOSITION.md`.
+
+The Tauberian framework arc is the live direction: Flajolet-Sedgewick Ch. VI singularity analysis with Chevalier 2507.15394 Thm 1.16 (n^{M − 3/2} via meromorphic h with pole of order M) as cleanest single-theorem candidate. Single-theorem selection is gated on ε_7 exact-rational compute (R77.7 re-fire with new modular-arithmetic solver in flight). See `TAUBERIAN_SCOPING_DISPOSITION.md`, `SESSION_DISPOSITIONS_2026_05_12.md`.
+
+Literature bundle: `C:/Users/Nate/Documents/burgess/literature/` — 73 PDFs across 7 math-field lots, master index at `literature/INDEX.md`.
 
 ### c = 7/45 closed-form thread (R75–R79.x)
 
@@ -17,10 +42,12 @@ Plancherel-side derivation of the trajectory measure's structural constant via T
 - **R75 / `c_seven_forty_fifth.md`** — derivation of c = 7/45. Rate-1/2 envelope on |ε_n|·2^n appeared stable at k=2..6 (~0.04). **WALKED BACK 2026-05-05** — at k=7 the envelope jumps to 0.150 (4× the supposed plateau); ρ ≈ 0.984 single-pair model also falsified at k=11. Current best fit: order-3 linear recurrence on ε_2..ε_11 with ρ_slow ≈ 0.827 (real). The asymptotic rate question is open; structural form not yet identified.
 - **R76 / `result_76_conservation_law.md`** — `Σ_j M_{n+1}(η_0 + j·3^n) = 0` conservation law; reduces rate question to scalar sequence R_n.
 - **R77 / `result_77_T_lead_spectrum.md`** through R77.6 / `result_77_6_generating_function.md` — operator-shape attempt: R77.3 falsified the 3-mode geometric ansatz over Q; R77.4 envelope fits gave verdict (M); R77.4 erratum / `result_77_4_K_spectrum_erratum.md` showed K_k itself has no eigenvalue near 1/2 (rate operator is inter-level, not within-level); R77.6 generating-function probe found branch-cut signature at z=2 (type indeterminate at N=5).
-- **R77.7 (NOT COMPLETED, `result_77_7_status.md`)** — k=7 ε-extension killed at ~8.5 hr. Original "superseded by Bohr empirical positive" framing also retired (Bohr deflated, see below); R77.7 stands as: killed before completion, no current empirical successor in place.
-- **R78 / `result_78.md`, R79 / `result_79.md`, R79b / `r79b_S_partial_empirical.md`** — Path-A obstruction map (Cochrane / van der Corput / direct band-l¹ / band-spectral): all subroutes closed for analytical closure of Kalafatelis eq 190.
+- **R77.7 (RE-FIRE IN FLIGHT, `R77_7_V2_*`)** — original k=7 ε-extension killed at ~8.5 hr (`result_77_7_status.md`). New solver design (modular sparse linear solve mod p + CRT recovery + rational reconstruction) targets <2hr; gates the Tauberian framework arc's [3/3] Padé refresh.
+- **R78 / `result_78.md`, `result_78_extended.md`, R79 / `result_79.md`, R79b / `r79b_S_partial_empirical.md`** — Path-A obstruction map (Cochrane / van der Corput / direct band-l¹ / band-spectral): all internal subroutes closed for analytical closure of Kalafatelis eq 190 within Tao's framework. **Resolved 2026-05-11 via direct construction (Path 2 + Hensel):** see "Bilinear bound" landmark at top of this section — strict `|S_partial| ≤ 2√N` at r ≤ 3, polylog-free `2√p · √N` at r ≥ 4 via Hensel-lifted closed form.
+- **Seven-probe spectral trajectory (2026-05-12)** — `SESSION_DISPOSITIONS_2026_05_12.md`, `READING_A_SCOPING_*`, `CANDIDATE_A_*`, `R76_S11_*`, `T_N_*`, `CROSS_FREQ_*`, `T_V_*`, `TAUBERIAN_SCOPING_*`. After R77.4 erratum's "K_k itself has no eigenvalue near 1/2," the M_3 obstruction was attempted via Reading A scoping → Candidate A construction → R76 §11 verification → T_N construction → cross-frequency closure → T_V spectrum → Tauberian scoping. Conclusion: **Nisoli framework is structurally inapplicable** — no Q-constructable finite-rank operator carries a discrete eigenvalue at rate 1/2; rate-1/2 lives in continuous spectrum / branch-cut endpoint structure. Three positive findings within: (1, 4) eigendirection structurally forced by R64.B's squared class-mass ratio; cross-frequency closure on enlarged span V_M = span{M_n^{ab}(g, c)} (g=0 IS T_diag); R76 §11's empirical P^{+−} = 0 upgraded to rigorous algebraic identity via lift-fiber orthogonality.
+- **Tauberian framework arc (2026-05-12, OPEN)** — Flajolet-Sedgewick Ch. VI singularity analysis with Chevalier 2507.15394 Thm 1.16 as cleanest single-theorem candidate. Today's delta diagnostic (`DELTA_DIAGNOSTIC_*`) + Padé extension (`PADE_EXTENSION_*`) both confirm n=2..6 is pre-asymptotic in strong sense: leading "1/30·(1/2)^n" is fast-transient, true asymptotic rate gated on ε_7 from R77.7 v2 (in flight) plus structural reading from PADE_NUMERICAL_* (in flight, uses numerical ε_7..ε_13).
 
-The rate-1/2 rigorous-proof gate remains the single open piece for c = 7/45 — but as of 2026-05-05, the rate itself is empirically reframed (no longer rate-1/2; current best ρ_slow ≈ 0.83 from order-3 recurrence).
+The rate-1/2 rigorous-proof gate is no longer "the single open piece" — bilinear bound delivered the explicit C·√N piece. Remaining open: the analytic structure of E(z) at z=2 (or wherever the true leading singularity is), via Tauberian framework arc.
 
 ### Joint 2-3-adic Bohr empirical positive — RETIRED 2026-05-05
 
@@ -45,22 +72,30 @@ The c̃_q = (q − 3)/q observation is a publishable theorem candidate independe
 
 ### Analytic number theory
 - Plancherel decomposition on Z/3^k coprime classes (R75; `c_seven_forty_fifth.md`, `result_76_conservation_law.md`)
+- **Bilinear bound on R78 wall — DELIVERED 2026-05-11.** Strict `|S_partial(r)| ≤ 2√N` at r ≤ 3 (family-level p ∈ {3, 5, 7, 11}); polylog-free `2√p · √N` at r ≥ 4 via Hensel-lifted closed form (`PATH2_DISPOSITION.md`, `HENSEL_DISPOSITION.md`, `PATH2_BILINEAR_FROM_CLOSED_FORM.md`)
+- **F̂_p family-level Plancherel saturation theorem — VERIFIED 2026-05-11.** `|F̂_p^full(ξ)| = p^{(r+3)/2}` across 33 cells, primes 3-31, r ∈ {1..6}; mpmath 50-digit confirms 1e-49 at p=5, r=3 (`FHAT_THEOREM_VERIFICATION_RESULTS.md`, `QX1_FAMILY_THEOREM_ATTEMPT.md`)
 - Sign-invariance theorem K_- = σK_+σ (`sibling_3x_minus_1_symmetry_verdict.md`)
 - (q−3)/q closed-form candidate for c̃_q at q ∈ {11, 13, 17} (`c_tilde_structure_verdict.md`, `c_tilde_q17_probe.py`)
 - q-spectrum probe across q ∈ {3, 5, 7, 11, 13} (`result_qspectrum.md`)
+- **Cross-frequency bilinear closure on V_M — POSITIVE STRUCTURAL FINDING 2026-05-12.** Cross-frequency bilinears reduce to enlarged span V_M = span{M_n^{ab}(g, c)} parameterized by g = v' − v; g=0 IS span{P_n^{ab}(c)}; mixed-parity vanishing upgrades R76 §11's empirical P^{+−} = 0 to rigorous algebraic identity via lift-fiber orthogonality. R77 sketch §5's "quadratic forms in {P_n^{ab}(c)}" assertion is FALSE as stated (`CROSS_FREQ_DISPOSITION.md`, `cross_freq_compute.py`)
 
 ### Arithmetic dynamics
 - Syracuse Markov chain construction at k=1..7 (`K_full.npz`, `K_derived_v2.npz`)
 - α_det deterministic prefix algorithm (`experiments/01_alpha_decomposition.py`)
 - Inter-level renormalization R̃ operator probe at k=4..7 (`result_R_operator_spectrum.md`, `result_renormalization_spectrum.md`)
 - Bridge to Tao 2022 leading term (`tao_bridge_findings.md`)
+- **T_diag = (1/5)·[[1, 1], [4, 4]] over Q** — spectrum {0, 1} via char poly λ² − λ = 0; (1, 4) is the λ=1 eigenvector (the **conserved quantity is the squared class-mass direction**, structurally forced by R64.B's class fractions (1/3)² : (2/3)² = 1:4) (`R76_S11_VERIFICATION.md`, `R76_S11_DISPOSITION.md`, `analytical_abc_derivation.md`)
+- **W_k filtration via φ_n bilinear pair-form moment — H_CANDIDATE_A_FALSIFIES_F2 2026-05-12.** c_{n, k} := ⟨φ_n, lift_n(R_k)⟩ over Q computed at n=1..6: 15 of 21 are exactly 0/1, only diagonal k=n−1 nonzero; structurally forced by K_n's coset support — φ_n ∈ W_{n−1} by construction. Rate-1/2 does not live in W_k filtration (`CANDIDATE_A_DISPOSITION.md`, `candidate_a_compute.py`)
+- **T_V on V_M does not close under iteration — 2026-05-12.** F1 phase obstruction: θ_{v,g} = 2^v · ẽ_g / 3 generically not expressible as ẽ_{G''} − ẽ_G. F2 parity: incoming g ∈ {2, 4} produces only odd outgoing G; V_M = span{g ∈ {0, 2, 4, ...}} doesn't contain odd-G moments (`T_V_DISPOSITION.md`, `T_V_RECURSION.md`, `t_v_compute.py`)
+- **Seven-probe spectral trajectory mapping the structural boundary of operator-spectral framework** — T_3 (falsified) → R_k (intractable) → Candidate A (F2) → R76 §11 (inconclusive) → T_N (off_lin underspecified) → cross-frequency (positive on V_M) → T_V (recursion underspecified) → Tauberian scoping (ambiguous, framework right). Combined verdict: no Q-constructable finite-rank operator carries discrete eigenvalue at rate 1/2 (`SESSION_DISPOSITIONS_2026_05_12.md`)
 
 ### Probability / Markov chain theory
 - Stationary distribution Plancherel mass S_k (`S_k_recursion.csv`, `s_infinity_exact.py`)
-- Convergence rate ε_k = S_k − 7/15 trajectory at k=2..11 (`result_epsilon_6.md` … `result_epsilon_11.md`)
+- Convergence rate ε_k = S_k − 7/15 trajectory at k=2..11 (`result_epsilon_6.md` … `result_epsilon_11.md`); extended to k=13 (slow oscillating mode at ρ ≈ 0.984, period ≈ 9.2 in k-space)
 - Direct K_k top-10 eigenvalue spectrum at k=5,6,7 (`result_eigenvalue_spectrum.md`)
-- Order-3 linear recurrence characterization on ε_2..ε_11, ρ_slow ≈ 0.83 (`result_renormalization_recurrence_fits.csv`, `result_renormalization_spectrum.md`)
+- Order-3 linear recurrence characterization on ε_2..ε_11, ρ_slow ≈ 0.83 (`result_renormalization_recurrence_fits.csv`, `result_renormalization_spectrum.md`); WALKED BACK 2026-05-06 as window-unstable
 - Cycle obstruction null result (`result_cycle_obstruction.md`)
+- **R77.7 v2 — modular sparse + CRT recovery solver for exact-rational π_7 (in flight 2026-05-12).** Original R77.7 O(N³) Fraction Gauss elimination killed at 8.5hr on N=1458 states; new solver targets <2hr via sparse mod-p linear solve + Chinese Remainder Theorem + rational reconstruction (`R77_7_V2_*`)
 
 ### Hierarchical Bayesian statistics (Collatz σ)
 - Hierarchical NB GLM with Stan for σ vs log n (`fit.py`, `experiments/nb2_glm.stan`)
@@ -72,6 +107,14 @@ The c̃_q = (q − 3)/q observation is a publishable theorem candidate independe
 - TA.1 N-stability of σ structural offset across N ∈ 2²⁵..2³² (`experiments/36_TA1_sigma_offset_N_sweep.py`)
 - Unconditional ensemble mean v_2 = 2.102 vs Geom(½) prediction 2.0 across 2.8M trajectories (`result_density_one_v2_bounds.md`)
 
+### Analytic combinatorics / Tauberian theory (NEW 2026-05-12)
+- **R77.6 Padé analysis of E(z) = Σ ε_n z^n** — diagonal [n/n] poles drift monotonically toward z=2 from above the real axis with convergence ratio ~0.67 (slower than exponential → consistent with branch-cut, NOT simple pole) (`result_77_6_generating_function.md`)
+- **Tauberian scoping probe** — Flajolet-Sedgewick Ch. VI singularity analysis is the right level of abstraction; Chevalier 2507.15394 Thm 1.16 (n^{M − 3/2} via meromorphic h with pole of order M) cleanest single-theorem candidate; Newman-Zagier excluded (Dirichlet, requires pole). Chevalier Thm 1.14 pure √-singularity FALSIFIED at leading order (n^{-3/2} prediction has growing product across n=2..6) (`TAUBERIAN_SCOPING_DISPOSITION.md`, `tauberian_verify.py`)
+- **Delta diagnostic** — H_DELTA_IRREGULAR. All five pre-registered ansatze (geometric, power-law, log, two-term Prony, oscillating·(1/2)^n) fail held-out n=6 with residuals 1.8× to 4.0×; |δ_n/ε_n| ∈ [0.5, 3.0] indicates pre-asymptotic regime (`DELTA_DIAGNOSTIC_DISPOSITION.md`, `delta_diagnostic.py`)
+- **Padé extension probe** — H_AMBIGUOUS within n=2..6 window; rules out H_COMPLEX_SECONDARY (no off-axis primary poles) and H_PURE_SIMPLE_POLE (ratios r_n = |ε_n|/|ε_{n-1}| not monotone-approaching 0.5; +0.035, −0.018, −0.030, −0.068 with accelerating downward deviations). Consistent with branch-cut at z=2 with negative subleading coefficient (`PADE_EXTENSION_DISPOSITION.md`)
+- **Padé numerical extension** (in flight) — uses numerical ε_7..ε_13 from `result_epsilon_*.md` to extend Padé budget beyond N=5; tests whether leading singularity shifts from z=2 to z ≈ 1.016 (slow-mode prediction at ρ ≈ 0.984) (`PADE_NUMERICAL_*`)
+- **Literature bundle** — 18 Tauberian / analytic combinatorics PDFs at `C:/Users/Nate/Documents/burgess/literature/tauberian/`, indexed by Hank's curated reading order (Borwein survey → Haggstrom basics → Flajolet-Sedgewick Ch. VI → Chevalier 2507.15394 + 2504.16233 modern guide)
+
 ### qx+1 generalization
 - Cramér convergence law q^(−θ) = 2^(1−θ) − 1 exact (`experiments/16_cramer_root.py`, `experiments/17_cramer_dual_verification.py`)
 - Per-prime decomposition q ∈ {3, 5, 7, 9, 11} (`experiments/10_q_decomposition.py`, `experiments/12_q_convrate_analytical.py`, `experiments/13_cross_q_unification.py`)
@@ -82,6 +125,11 @@ The c̃_q = (q − 3)/q observation is a publishable theorem candidate independe
 - Exact-rational stationary computation k ≤ 5 (Gaussian elimination over Q; `lifting_operator_spectral.py`)
 - Float64 power iteration with scipy.eigs cross-check at k=6, 7 (`result_epsilon_6.py`, `result_epsilon_7.py`, `result_epsilon_7_verify.py`)
 - Matrix-free power iteration for k=8..11 (sparse + Krylov; `result_epsilon_8.py` … `result_epsilon_11.py`)
+- Exact-rational K_n verification at n=1..6 via `candidate_a_compute.py` (Markov chain stationary vector over Q using `fractions.Fraction`)
+- **R77.7 v2 modular CRT solver (2026-05-12, in flight)** — sparse linear solve mod p for ~20-30 primes + Chinese Remainder Theorem recovery + rational reconstruction; targets <2hr at k=7 vs original 8.5hr-killed O(N³) Fraction Gauss elimination
+- **Hensel digit-extraction verification** — `hensel_approach_a_verify_fast.py` (numpy vectorized) verified the closed-form Hensel saddle s*(r) = (C_a − 1)/p mod p^{r-1} at 10 cells across p ∈ {3, 5, 7, 11} and r ∈ {4, 5, 6}, max rel dev 6.4e-15 at (p=7, r=6)
+- **Cross-frequency closure verification** — `cross_freq_compute.py` confirmed at n=2, 3: augmented rank 6 (n=2) and 7 (n=3) vs P-only rank 1, demonstrating V_M has 5-6 new dimensions beyond span{P_n^{ab}(c)}
+- **T_V iteration obstruction verification** — `t_v_compute.py` demonstrates both F1 phase obstruction and F2 parity obstruction explicitly with worked examples
 - FFT-based Plancherel mass computation (`result_epsilon_10.py` cross-validation chain)
 
 ---
