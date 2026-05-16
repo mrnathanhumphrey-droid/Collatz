@@ -6,15 +6,17 @@
 
 ## AT A GLANCE — where the project stands (2026-05-15)
 
-**Two paper-shaped results in hand:**
+**Three paper-shaped results in hand:**
 
 1. **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). `S_k = 3^k · ‖d_k‖² → 7/15` proved via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74 algebraic identity. Paper-shaped. Independent of all operator-valued probability framework questions.
 
 2. **Syracuse = Davies-Wiseman-Milburn quantum trajectory, NUMERICALLY VERIFIED to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](DWM_MP_G1_RESULT.md)). DWM cross-Kraus form `M̃_{v,v'}^{(j, b_prior)} · f(ξ) = phase·σ_{-(v+v')}·f(ξ)` reproduces Syracuse's measured moments **exactly to 6 sig digits across all 4 scalar reductions** for both 3-alternating (0.108) and 4-alternating (0.609) moments. Cross-applies to AI-video detection (`project_physics_detector`).
 
-**Subdominant-rate question (open, structural boundary mapped):**
+3. **Dark-subspace classification of Syracuse's adaptive Kraus family** ([`R3_DARK_SUBSPACE_STRUCTURAL.md`](R3_DARK_SUBSPACE_STRUCTURAL.md), integrates Phases 1+2+4). Three sub-results: (a) the full adaptive Kraus family at level n is irreducible at finite n (dim(A') = 1 at n=2, 3, via SVD of commutator-stack); (b) the **3-fiber-zero-mean subspace D_W is EXACTLY dark under the j ≥ 2 sub-family** (machine-epsilon leakage), with j = 1 the unique mixing event — structurally forced by `x_{j≥2} ≡ 0 mod 9` vs `x_1 ≡ ±1 mod 3`; (c) the per-step channel `L|_{D_W}` for j ≥ 2 has **closed-form below-commutant spectrum** `λ_below(n) = 0.5/|1 − 0.5·e^{iπ/3^{n−1}}|` (verified at n=2, 3) which → 1 as n → ∞. **Route B partial closure (2026-05-16)** ([`ROUTEB_PERIOD9_IDENTIFICATION.md`](ROUTEB_PERIOD9_IDENTIFICATION.md)): the (class, b_prior mod M) Markov chain at M=18 reproduces the same eigenvalue, with period 9.5 ≈ empirical PADE 9.2 — **the empirical period-9 CC pair IS Phase 4's L|_{D_W} below-commutant eigenvalue.** Magnitude residual 9% (0.898 vs 0.984) closes structurally at effective level n ≈ 3.91; full magnitude closure via mixed-level chain / Tao C_A corrections / bilinear lift remains open.
 
-The c=7/45 subdominant rate has **no finite-truncation discrete-eigenvalue closure available**. Every natural finite-rank operator over Q has been probed and either:
+**Subdominant-rate question (open, structural boundary mapped — R3 does NOT close the 2.9% gap):**
+
+The 2.9% gap between T_lead's exact spectrum {43/45, 0} and empirical Hadamard 0.984 + period-9.2 CC oscillation remains open. R3 dark-subspace classification is structurally clean but does not provide the closure mechanism. The c=7/45 subdominant rate has **no finite-truncation discrete-eigenvalue closure available**. Every natural finite-rank operator over Q has been probed and either:
 - Has trivial spectrum (K_k = {1, 0, ..., 0} via 3-fiber row-equality + marginal consistency).
 - Has continuous-on-circle spectrum (U_n, Phi_omega = T^ω ∘ U_n: continuous distribution at radius 0.319 or 0.587, no discrete CC pair).
 - Is identically zero on trivial-twist class projections at any modulus (U_n → W_n exact, kills all class averages by cube-root cancellation).

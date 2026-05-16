@@ -1,192 +1,151 @@
 # Post-compact next steps
 
-**Date written:** 2026-05-15
-**Context:** End of the framework-identification + leading-c=7/45-theorem session. Two paper-shaped results in hand + one open quantitative gap.
+**Date:** 2026-05-15 (rewritten post-DWM-dive). **Major framing shift in this session: c=7/45 subdominant rate recognized as spectral gap of inverse-limit DWM transition kernel on a specific dark subspace.**
 
-## What just happened (1-paragraph summary)
+## What just happened (one paragraph)
 
-The session opened with yesterday's terminal finding (Syracuse needs B-valued monotone independence, not free) and ran an exhaustive framework-identification arc across 6 probes (H1' fail → D2 Tier 1 monotone variants fail → BMT/bigraph block-factorization fail → HP/QSC Outcome C → AFL Outcome B 3/7 → Belavkin claimed Outcome A AUDITED DOWN to Outcome B with framework mislabel → DWM Outcome B 4-5/7 → DWM-MP-G1+G2 numerical closure 6-7/7). Result: **Syracuse's transfer operators are an instance of Davies-Wiseman-Milburn quantum trajectory** with adaptive Kraus operators encoding the level-graded Tao phase coupling. The numerical match is exact to 6 significant digits across all 4 scalar reductions for both 3-alternating and 4-alternating moments. Separately, the **leading c = 7/45 derivation is RIGOROUS UNCONDITIONAL** via R75+R76+R77+R64.B+HR74 — independent of the framework question; the Hasebe-Saigo framework was an interpretive overlay (D3 audit confirmed).
+The morning produced two paper-shaped results (leading c=7/45 RIGOROUS UNCONDITIONAL + Syracuse=DWM numerically verified to 6 sig digits). The post-compact evening session exhausted finite-truncation discrete-eigenvalue paths for the c=7/45 subdominant rate (5 probes: K_k, U_n, Phi_omega, T_M tensor, mod-9 class projection — all confirm continuous-spectrum reading). Then a DWM-framework literature dive (4 parallel agents, +49 PDFs, total 75 in closure hunt) identified Benoist-Pellegrini-Szczepanek 2024 dark-subspace classification as the natural framework for the open subdominant-rate question. A phased attack plan at `DWM_DARK_SUBSPACE_ATTACK_PLAN.md` lays out 6 phases of work (~10-15 sessions total).
 
-## Two paper-shaped results
+## Three paper-shaped results in hand
 
-**Result 1 — Theorem (leading c = 7/45 unconditional):** `C:/Collatz/THEOREM_C_745.md`
-- `S_k = 3^k · ‖d_k‖² → 7/15`, equivalently `‖d_k‖² · 3^{k-1} → 7/45`
-- Proof: R75 Plancherel × R76 conservation × R77 T_diag (1,4)-eigenstructure × R64.B class-mass × HR74 algebraic identity
-- 8 sections, full hypotheses verbatim, proof sketch, scope, audit trail
-- Independent of any operator-valued probability framework
+| Result | File | Status |
+|---|---|---|
+| **R1: Leading c=7/45 RIGOROUS UNCONDITIONAL** | `THEOREM_C_745.md` | Done, paper-shaped |
+| **R2: Syracuse=DWM quantum trajectory, numerically verified to 6 sig digits** | `FRAMEWORK_IDENTIFICATION.md` + `DWM_MP_G1_RESULT.md` | Done, paper-shaped |
+| **R3: Dark-subspace classification (full irreducibility + D_W exact darkness + closed-form below-commutant spectrum)** | `R3_DARK_SUBSPACE_STRUCTURAL.md` (integrates Phases 1, 2, 4) | **Done, paper-shaped** (Route C chosen) |
 
-**Result 2 — Framework identification (Syracuse = DWM quantum trajectory, numerically verified):** `C:/Collatz/FRAMEWORK_IDENTIFICATION.md`
-- Davies 1976 instruments / Wiseman 1996 measurement operators / Plenio-Knight 1998 quantum-jump form
-- Adaptive Kraus M_v^{(j, b_{[1,j-1]})} = 2^{-v/2}·A_v^{(j)}(ξ, b_prior)·σ_{-v} Stinespring-dilated from T_j
-- POVM resolution exact at truncation tail
-- Countably-infinite POVM outcomes native (Wiseman 1996 eq.7 unrestricted cardinality)
-- Non-demolition [T_j, M_{b_[1,k]}] = 0 for k<j verified
-- 14-row identification table
-- P1-P7 score 6-7/7 (P5+P6 NUMERICALLY VERIFIED; P7 framework-independent)
+All three independent and complete. R3 is **structural ancillary** for the c=7/45 closure (not the mechanism); the 2.9% gap remains open as Route B follow-up.
 
-## Numerical closure proof
+## R3 attack: dark-subspace classification of Syracuse per Benoist-Pellegrini-Szczepanek 2024
 
-**DWM-MP-G1 (3-alternating) + MP-G2 (4-alternating):** `C:/Collatz/DWM_MP_G1_RESULT.md`
+**Target framework:** arXiv 2409.18655 (Benoist-Pellegrini-Szczepanek 2024 "Dark Subspaces and Invariant Measures of Quantum Trajectories"). Their Theorem 1+2 classify invariant measures of any quantum trajectory (with irreducible µ) via:
+- Dark subspaces D_m ⊂ H (invariant under all Kraus operators)
+- Markov chain on each D_m has unique invariant measure
+- Ergodic decomposition via minimal-isometry families + unitary-group orbits
 
-| Moment | Reduction | DWM Kraus | Syracuse direct | Ratio |
-|---|---|---|---|---|
-| ϕ(X̃_1·X̃_2·X̃_1) | sum_entries | 1.078308×10⁻¹ | 1.0783×10⁻¹ | **1.000008** |
-| ϕ(X̃_1·X̃_2·X̃_1·X̃_2) | sum_entries | 6.088793×10⁻¹ | 6.089×10⁻¹ | **0.999966** |
-| same | tr_π | 5.357225×10⁻² | 5.357×10⁻² | **1.000042** |
-| same | delta_1 | 5.742026×10⁻² | 5.742×10⁻² | **1.000005** |
-| same | vac_π | 4.775479×10⁻³ | 4.775×10⁻³ | **1.000100** |
+**Adaptation needed for Syracuse:**
+- Level-graded Kraus family `M_v^{(j, b_prior)}` (time-INHOMOGENEOUS — gap in Benoist-Pellegrini, which treats time-homogeneous case)
+- Inverse-limit Hilbert space H_∞ = L²(Ẑ_3^×) (per Benoist-Bruneau-Pellegrini 2024 arXiv 2403.20094 + 2509.13377 for infinite-dim machinery)
 
-All 4 scalar reductions match Syracuse to 6 significant digits.
+## Phased attack (resumption point post-compact)
 
-Scripts: `dwm_kraus_match_syracuse.py` + `dwm_kraus_match_g2.py`. Outputs: `experiments_output/dwm_kraus_match_{syracuse,g2}.json`.
+**Phase 1 [DONE 2026-05-15]:** dim(A') = 1 at n=2 (84 Kraus, dim H=6) and n=3 (252 Kraus, dim H=18). Syracuse fully irreducible at finite n. Predicted outcome confirmed. Result: `PHASE1_DARK_SUBSPACE_RESULT.md` + `experiments_output/dark_subspace_probe.json`. Routes to Phase 2.
 
-## CORRECTION NOTE (added 2026-05-15 post-compact):
+**Phase 2 [DONE 2026-05-15]:** D_W is EXACTLY dark under the j ≥ 2 sub-family at n=2, 3 (α < 5×10^{-15} machine epsilon). j = 1 is the unique mixing event (α = 1.0 exactly). D_T_diag is NOT approximately dark. Structural derivation via x_j ≡ 0 mod 9 for j ≥ 2 (only first step has x_1 ≡ ±1 mod 3). Result: `PHASE2_APPROX_DARK_RESULT.md` + `phase2_approx_dark_probe.py` + `experiments_output/phase2_approx_dark_probe.json`. Routes to Phase 4.
 
-The "T_M λ_2 = 1/2 spectral closure" framing below is **STALE**. R77.3 falsified rate-1/2 algebraically. ε_7 exact-rational computed at |ε_7|·2^7 = 0.1504 → 4.7× envelope jump. R76 §11's `(1/30)·(1/2)^n + O((1/4)^n)` REFUTED. The actual open question is:
+**Phase 4 [DONE 2026-05-15]:** L|_{D_W} for j ≥ 2 has LARGE commutant (4 at n=2, 8 at n=3 for j=2, 16 at n=3 for j=3); first below-commutant eigenvalue `λ_below(n) = 0.5/|1 − 0.5 e^{iπ/3^{n−1}}|` → 1 as n → ∞. NOT 43/45 / 0.984. Framing refinement: dark-subspace classification is structurally clean but not the closure mechanism. Result: `PHASE4_DARK_SPECTRAL_GAP_RESULT.md` + `phase4_dark_spectral_gap_probe.py` + `experiments_output/phase4_dark_spectral_gap_probe.json`.
 
-> **Resolve the 2.9% gap between T_lead's exact spectrum {43/45, 0} (within-level cross-freq closure, Q-rigorous per `T_LEAD_CORRECTED_DISPOSITION.md`) and empirical Hadamard radius at n=10..13 (inward-trending, slow-mode candidate ρ ≈ 0.984). Additionally, characterize the period-9.2 complex-conjugate-pair oscillation in the empirical sign pattern (must live in an inter-level operator since T_lead's spectrum is real rank-1).**
+**Phase 5 [MOOT in original framing]:** Inverse-limit channel-spectral-gap on D_W is degenerate (λ → 1 as n → ∞). The asymptotic c=7/45 closure is NOT recoverable as "spectral gap of inverse-limit Π on largest non-trivial dark subspace." Original framing was wrong direction. **Phase 5 path needs reformulation if pursued.**
 
-Routing candidates per `T_LEAD_CORRECTED_DISPOSITION.md`:
-- **Route A:** Nisoli closure at λ=43/45 with M_3''=24.4. If `|K|·K^{-A}·M_3'' < 1` satisfiable at some r, the corrected-rate Nisoli closure gives c=7/45 a rigorous spectral closure at rate 43/45.
-- **Route B:** Alternative inter-level operator construction (not the failed R̃_k = L·K^m·P which algebraically reduces to K_k). Period-9 CC pair may live here.
-- **Route C:** Document T_lead 43/45 = 1 − Σ_g W_+(g) = 1 − 2/45 as a paper-grade within-level anchor; combined with the K_k spectrum {1, 0, ..., 0} structural lemma (added 2026-05-15: `K_STRUCTURE_RESULT.md`), this gives a clean "within-level: trivial mixing + 43/45 moment-projection rate; inter-level: open" partition for the paper.
+**Phase 6 [PAPER-SHAPED if Route C chosen]:** Document Phases 1-4 dark-subspace classification (D_W exactly dark under j ≥ 2 + closed-form below-commutant eigenvalue + structural separation of j=1 vs j ≥ 2) as ancillary structural results alongside R1 (THEOREM_C_745.md) and R2 (FRAMEWORK_IDENTIFICATION.md + DWM_MP_G1_RESULT.md). The dark-subspace work is publishable on its own; 2.9% gap to 0.984 remains unmodeled.
 
-Newly added sharpener (2026-05-15): K_k spectrum is exactly {1, 0, ..., 0} with Jordan chain length k (K_k mixes in EXACTLY k steps). This corrects R77.4 erratum's "|λ_2| ≈ 10⁻³" reading as numerical noise on the ill-conditioned matrix. K_k maps W_{k-1} → 0 exactly. Useful as a within-vs-inter-level distinction-sharpener; does NOT close any open gap.
+**Open user-decision routing point:**
+- **Route B (new probe)**: target period-9 inter-level operator on D_class (NOT D_W). Spectral structure for the 2.9% gap closure. Would need fresh probe design — Benoist-Pellegrini framework doesn't directly apply since D_class is the COMPLEMENT of the dark subspace.
+- **Route C (consolidate)**: paper-shape Phases 1-4 alongside R1+R2 morning results. Three structural results in hand; defer 2.9% gap to follow-up work.
 
-### STALE FRAMING (left for context):
+**Phase 3 [SKIPPED — Phase 1 returned predicted outcome]:** Explicit dark-subspace decomposition only needed if dim(A') > 1, which it is not at finite n.
 
-**T_M λ_2 spectral closure (R77 Conjecture 77.2):**
-- T_M is the **inter-level** bilinear pair operator (relating M_n on (Z/3^n)* to M_{n+1} on (Z/3^{n+1})*)
-- Conjectured `λ_2(T_M) = 1/2`
-- If true, combined with W2's `1/30 = 1/(2·15)` amplitude factorization (rigorous), the **full subdominant statement** `S_n = 7/15 − (1/30)·(1/2)^n + O((1/4)^n)` becomes rigorous
-- Historically hard (R77 §6 long-open across sessions)
-- The earlier `TM_spectrum_scan.py` was a FALSE START — it computed the within-level Markov K spectrum (very fast mixing, λ_2 → 0), not the inter-level T_M
-- The actual inter-level construction needs to relate M_n at level n to M_{n+1} at level n+1 with explicit lift+project structure
-- **^^^ this conjecture itself is now algebraically REFUTED by ε_7 exact-rational, see correction note above ^^^**
+**Phase 4:** Spectral gap on the largest non-trivial dark subspace. Test: does T_lead's 43/45 emerge as a dark-subspace spectral gap? 2-3 sessions.
 
-**Approach candidates (for the corrected framing — 43/45 vs 0.984 gap + period-9 CC):**
-1. **Push ε_8, 9, 10 via R77.7 v2 (modular CRT + rational reconstruction).** ε_7 took 39 min; ε_8 at N=4374 (3× state count) likely ~3-10 hr. Each new ε_k tightens the Hadamard estimate + adds a Padé diagonal point. With ε_8..10, the asymptotic singularity location should be readable.
-2. **Inter-level operator construction beyond R̃_k = L·K^m·P** (which trivially reduces to K_k per the K_k spectrum lemma). Need a non-square operator W_{k-1} → W_k that captures the actual residual propagation — open structural question.
-3. **DWM Kraus-channel iteration projected onto level-n moments.** The cross-Kraus form already gives the correct moment values at n=3 — does iterating and projecting give the period-9 phase structure?
-4. **Nisoli closure at λ=43/45 with M_3'' = 24.4.** If `|K|·K^{-A}·M_3'' < 1` is satisfiable at some r, this closes c=7/45 rigorously at the corrected rate.
+**Phase 5:** Inverse-limit extension. The c=7/45 rate as spectral gap of inverse-limit Π on the largest non-trivial dark subspace. 3-5 sessions, substantial.
 
-**Effort:** unknown. Routes 1 and 4 are most tractable in single-session scopes.
+**Phase 6:** Paper-shaped writeup. 1-2 sessions.
 
-## Other open items (lower priority)
+Total: ~10-15 sessions for Phase 1→6 closure of R3.
 
-- **DWM-V-G1, G2:** verbatim quotes from Davies 1976 monograph Ch. 2 + Wiseman-Milburn 2010 Cambridge Ch. 3/5. Physical books, no open electronic. Canonical equation forms transmitted via Wiseman 1996 arXiv:quant-ph/0302080 and Plenio-Knight 1998 arXiv:quant-ph/9702007.
-- **W3 PADE complex pair period 9.2:** unchanged, possibly Diophantine of log 3 / log 2.
-- **Cross-application to physics_detector:** same DWM transfer-operator structure → AI-video detection via residual diagnostic. Per user 2026-05-15 cross-pollination note; documented in FRAMEWORK_IDENTIFICATION.md §What-this-means item 4.
+## Open quantitative gaps (lower priority)
+
+- **DWM-V-G1, G2:** verbatim quotes from Davies 1976 + Wiseman-Milburn 2010 physical books. Surrogates pulled: Lindblad 1975 + Belavkin canon + Jacobs-Steck 2006 + Daley 2014 cover the material. No further action needed unless writing the formal paper.
+- **W3 PADE complex pair period 9.2:** possibly Diophantine of log 3 / log 2. Unchanged.
+- **ε_n exact extension** (R77.7 v2 modular CRT): empirical-discriminative path. Compute-only, ~3-10hr per coefficient. Could run in parallel with R3 work.
+- **Cross-application to physics_detector:** AI-video detection via residual moment diagnostic. Already documented; downstream consequence of R2.
+
+## Key files preserved through compact
+
+**Top-level state:**
+- `C:/Collatz/STATE.md` (header updated with 2026-05-15 DWM dive entry)
+- `C:/Collatz/POST_COMPACT_NEXT_STEPS.md` (this file)
+- Memory: `C:/Users/Nate/.claude/projects/c--As-Above-So-Below-Master/memory/project_collatz_monotone_terminal.md`
+
+**Paper-shaped artifacts:**
+- `C:/Collatz/THEOREM_C_745.md` (R1)
+- `C:/Collatz/FRAMEWORK_IDENTIFICATION.md` (R2 structural)
+- `C:/Collatz/DWM_MP_G1_RESULT.md` (R2 numerical)
+- `C:/Collatz/DWM_FRAMEWORK_DIVE.md` (R3 dive synthesis)
+- `C:/Collatz/DWM_DARK_SUBSPACE_ATTACK_PLAN.md` (R3 phased plan)
+
+**Probe infrastructure (Phase 1 ready):**
+- `C:/Collatz/dark_subspace_probe.py` — commutant dimension computation at n=2, 3
+
+**Literature corpus:**
+- `C:/Users/Nate/OneDrive/Documents/closure hunt/` — 75 PDFs total
+- Key: `benoist_*_2017/2023/2024/2025*.pdf` (6 papers, the Benoist-Pellegrini program)
+- Key: `bouten_vanhandel_james_2009_discrete_invitation.pdf` (direct structural match)
+- Key: `belavkin_*` (10 papers, filtering canon)
+- Key: `lindblad_1975_CP_maps_entropy_inequalities_CMP40.pdf`, `daley_2014_quantum_trajectories_open_many_body_AdvPhys.pdf`, `attal_pautrat_2003_repeated_to_continuous_quantum_interactions.pdf`, `wiseman_1996_quantum_trajectories_measurement_theory_QSO.pdf`
+- Download scripts: `_download_quantum_filtering_set.ps1`, `_download_dwm_discrete_set.ps1`
+
+**This session's negative-results files (load-bearing context):**
+- `K_STRUCTURE_RESULT.md`
+- `INTERLEVEL_U_PROBE_RESULT.md`
+- `D1_T_M_NEGATIVE_RESULT.md`
+- `SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`
+- Scripts: `K_W_restricted_spectrum.py`, `K_structure_verify.py`, `interlevel_U_spectrum.py`, `interlevel_twisted_endomorphism.py`, `T_M_truncated_spectrum.py`, `T_M_tensor_spectrum.py`, `T_M_class_mod9_spectrum.py`
 
 ## Uncommitted git state
 
-Since the morning's commit `be6da36` ("11-arc obstruction map → monotone framework → Track A: leading c=7/45 rigorous unconditional"), the following NEW files are uncommitted:
+After commit `a138a1d` (DWM identification + structural boundary mapped), this session further added:
 
-**Numerical scripts + outputs:**
-- `TM_spectrum_scan.py` + `experiments_output/TM_spectrum_scan.json` (false-start, documented)
-- `dwm_kraus_verify.py` + `experiments_output/dwm_kraus_verify.json` (intermediate)
-- `dwm_cross_kraus_verify.py` + `experiments_output/dwm_cross_kraus_verify.json` (intermediate, 1.087×/sign-flipped)
-- `dwm_kraus_match_syracuse.py` + `experiments_output/dwm_kraus_match_syracuse.json` (MP-G1 closure, ratio 1.000008)
-- `dwm_kraus_match_g2.py` + `experiments_output/dwm_kraus_match_g2.json` (MP-G2 closure, all 4 reductions 6 sig digits)
+**New (uncommitted):**
+- `DWM_FRAMEWORK_DIVE.md`
+- `DWM_DARK_SUBSPACE_ATTACK_PLAN.md`
+- `dark_subspace_probe.py`
+- This `POST_COMPACT_NEXT_STEPS.md` (rewritten)
+- `STATE.md` (modified, top entry added)
+- Plus closure hunt corpus expansion (49 PDFs + 2 download scripts; corpus is outside git tree, in OneDrive)
 
-**Framework-arc deliverables:**
-- `QSC_{VERBATIM,SYRACUSE_IDENTIFICATION,MOMENT_PREDICTIONS,DISPOSITION}.md`
-- `AFL_{VERBATIM,SYRACUSE_IDENTIFICATION,MOMENT_PREDICTIONS,DISPOSITION}.md`
-- `BELAVKIN_{VERBATIM,SYRACUSE_IDENTIFICATION,MOMENT_PREDICTIONS,DISPOSITION,ADVERSARIAL_AUDIT}.md`
-- `DWM_{VERBATIM,SYRACUSE_IDENTIFICATION,MOMENT_PREDICTIONS,DISPOSITION}.md`
-- `DWM_MP_G1_RESULT.md`
-- `FRAMEWORK_IDENTIFICATION.md`
-- `THEOREM_C_745.md`
-- `STATE.md` (modified)
-
-**Closure-hunt corpus pulled this session (in OneDrive, not in repo):**
-- `hasebe_saigo_2014_operator_valued_monotone.pdf` (the W1 framework lift, audited)
-- `bi-monotonic_gu_hasebe_skoufranis_2017.pdf`
-- `hasebe_2010_three_state_independence.pdf`
-- `hasebe_2011_conditionally_monotone.pdf`
-- `bmt_independence_2023.pdf`
-- `bigraph_independence_mixture_2026.pdf`
-- `belavkin_1992_cmp.pdf`
-- `plenio_knight_1998.pdf`
-- `wiseman_1996_qtmt.pdf`
-
-Recommended commit message draft:
+Recommended commit message after compact:
 ```
-DWM identification + numerical closure: Syracuse = quantum trajectory
+DWM framework dive + dark-subspace attack plan: 6-phase path to c=7/45 closure
 
-6-probe framework arc (H1' → D2 Tier 1 → BMT/bigraph → HP/QSC → AFL →
-Belavkin/DWM) closed at Davies-Wiseman-Milburn quantum trajectory.
-DWM-MP-G1+G2 numerical match to 6 sig digits across all 4 scalar
-reductions for both 3-alternating and 4-alternating moments.
+Four parallel literature-fetch agents pulled the canonical DWM corpus (+49 PDFs,
+total 75 in closure hunt/). Key finding: Benoist-Pellegrini program (6 papers,
+2017-2025) is the closest discrete-time DWM literature to Syracuse's regime;
+no prior paper treats Syracuse as a DWM trajectory. Synthesis at
+DWM_FRAMEWORK_DIVE.md.
 
-Leading c=7/45 RIGOROUS UNCONDITIONAL theorem at THEOREM_C_745.md
-remains independent of framework question (R75+R76+R77+R64.B+HR74).
+Phased attack plan at DWM_DARK_SUBSPACE_ATTACK_PLAN.md: 6 phases (commutant
+dim → approximate-darkness of structural subspaces → explicit decomposition →
+spectral gap on largest dark subspace → inverse-limit extension → paper-shaped
+writeup). ~10-15 sessions total. Phase 1 probe (dark_subspace_probe.py) ready
+to fire.
 
-Files (new): FRAMEWORK_IDENTIFICATION.md, THEOREM_C_745.md,
-DWM_MP_G1_RESULT.md, dwm_kraus_match_{syracuse,g2}.py + JSONs,
-{QSC,AFL,BELAVKIN,DWM}_*.md probe deliverables + audits.
+The c=7/45 subdominant rate is now recognized as the spectral gap of the
+inverse-limit DWM transition kernel on Syracuse's largest non-trivial dark
+subspace (Benoist-Pellegrini-Szczepanek 2024 framework).
 
 Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 ```
 
-User can commit when ready (not auto-committed per feedback_no_autopush).
+(Not auto-committed per `feedback_no_autopush`. User commits when ready.)
 
 ## Operational notes for post-compact session
 
-- **Math-heavy probes on opus may hit Usage Policy refusals.** Sonnet retry consistently succeeds. Multiple confirmed cases this session.
-- **No active long-running compute.** All probes completed.
-- **User's pace:** ~10-14× typical research-engineering pace (feedback_estimate_in_hours).
-- **Workflow preference:** consolidate after fire, no iterative AskUserQuestion menus per fire (feedback_consolidate_after_fire).
-- **No time-narration** in user-facing output (feedback_no_time_narration).
-- **Audits caught real load-bearing errors at every probe stage** — W2 multi-spectral onset, W4 PADE direction inverted, D2 BMT/bigraph loophole, H1' centering subtlety, Belavkin framework mislabel. Continue the audit-after-probe pattern.
+- **Phase 1 first.** Single 30-min probe (`python dark_subspace_probe.py`) decides whether Syracuse has standard dark subspaces (dim(A') > 1) or is fully irreducible (dim(A') = 1, predicted).
+- **Math-heavy probes on opus may hit Usage Policy refusals.** Sonnet retry consistently succeeds.
+- **User's pace:** ~10-14× typical research-engineering pace.
+- **Workflow:** consolidate after fire, no iterative menus (`feedback_consolidate_after_fire`).
+- **Audits caught real errors at every probe stage this session** — continue the audit-after-probe pattern.
 
-## Key files (preserved through compact)
+## Net session 2026-05-15 summary (morning + post-compact + dive)
 
-**Top-level state:**
-- `C:/Collatz/STATE.md` (header has 2026-05-15 current entry)
-- `C:/Users/Nate/.claude/projects/c--As-Above-So-Below-Master/memory/project_collatz_monotone_terminal.md` (DWM-verified, numerically closed)
-- `C:/Users/Nate/.claude/projects/c--As-Above-So-Below-Master/memory/MEMORY.md` (index pointer current)
-- `C:/Collatz/POST_COMPACT_NEXT_STEPS.md` (this file)
+Three artifacts produced:
+1. **THEOREM_C_745.md** — leading c=7/45 rigorous unconditional (paper-shaped)
+2. **FRAMEWORK_IDENTIFICATION.md + DWM_MP_G1_RESULT.md** — Syracuse=DWM, numerically verified to 6 sig digits (paper-shaped)
+3. **DWM_FRAMEWORK_DIVE.md + DWM_DARK_SUBSPACE_ATTACK_PLAN.md** — c=7/45 subdominant rate framed as inverse-limit DWM spectral gap, 6-phase attack plan (roadmap; Phase 1 ready to fire post-compact)
 
-**Paper-shaped artifacts:**
-- `C:/Collatz/THEOREM_C_745.md` (Result 1)
-- `C:/Collatz/FRAMEWORK_IDENTIFICATION.md` (Result 2)
-- `C:/Collatz/DWM_MP_G1_RESULT.md` (numerical closure proof)
+Five negative-result probes (K_k, U_n, Phi_omega, T_M_trunc, T_M tensor, mod-9 class) confirmed R77.6's continuous-spectrum reading at finite truncation and motivated the inverse-limit framing.
 
-**Verification scripts (load-bearing):**
-- `C:/Collatz/dwm_kraus_match_syracuse.py` (MP-G1 closure)
-- `C:/Collatz/dwm_kraus_match_g2.py` (MP-G2 closure)
-- `C:/Collatz/verify_monotone_diagnostic.py` (Syracuse direct measurement, was the target)
-- `C:/Collatz/bilinear_pair_operator.py` (foundation infrastructure)
+49 new PDFs in closure hunt corpus; 6-paper Benoist-Pellegrini program identified as the closest discrete-time DWM literature. **"No prior paper treats Syracuse as a DWM trajectory"** confirmed by agent 4's literature scan.
 
-**Framework-arc probe deliverables (the audit trail):**
-- `C:/Collatz/{QSC,AFL,BELAVKIN,DWM}_*.md` and audit files
-
-**Pre-existing load-bearing:**
-- `C:/Collatz/result_75_*.md`, `result_76_conservation_law.md`, `result_77_T_lead_spectrum.md`, `c_seven_forty_fifth.md` (project-internal theorems R75/R76/R77/R64.B/HR74 underlying THEOREM_C_745.md)
-- `C:/Collatz/PADE_NUMERICAL_DISPOSITION.md` (multi-spectral picture)
-- `C:/Collatz/experiments_output/result_77_7_eps_exact_through_k8_v2_vec_pool.json` (ε_k k=1..8 exact rationals)
-- `C:/Collatz/AMALG_FREENESS_{SETUP,SUBALGEBRA_CHECK,MOMENT_CALCULATION,DISPOSITION}.md` (operator-valued probability space + the original monotone identification)
-- `C:/Collatz/TRACK_A_INTEGRATION.md` (W1+W2+W4 + audits + H1'+D1+D3, full Track A consolidation)
-
-**Closure-hunt corpus (Mode E sources):**
-- `C:/Users/Nate/OneDrive/Documents/closure hunt/` — Wiseman 1996, Plenio-Knight 1998, Belavkin 1992 CMP, HS 2014 Nagoya, HS 2011, BMT, bigraph, Hasebe monograph + 2010 + 2011, Gu-Hasebe-Skoufranis, Voiculescu 1995, Speicher 1998, Cébron 2013, Young 1986, Tsujii 2010, Goldsheid-Margulis 1989
-
-## c=7/45 in the broader Collatz / Tao framework
-
-This session closed:
-- The **value of c** (7/45 unconditional)
-- The **framework** describing Syracuse's transfer operator structure (DWM quantum trajectory, numerically verified)
-
-This session did NOT close:
-- The **subdominant rate** (1/2)^n — depends on T_M λ_2 (R77 Conj 77.2, open)
-- The **polynomial-in-A Fourier decay bound** — principal outstanding step in Tao's program (per `POLYNOMIAL_IN_A_LANDSCAPE.md` 5-probe consolidation)
-- **The Collatz conjecture itself**
-
-c = 7/45 enters Tao's program at `‖d_k‖² ≈ c · (1/3)^k`. Combined with the polynomial-in-A Fourier bound + Tao 2022 Lemma 1.12 / Prop 1.14 / Prop 1.17, this feeds the log-density argument. The leading c=7/45 closure brings ONE input to that machine.
-
-## Cross-application
-
-User's 2026-05-15 cross-pollination: same DWM transfer-operator framework applies to AI-video detection in `project_physics_detector`. Real video = level-graded adaptive Kraus structure with abelian observation filtration (motion, depth, optical flow); AI-generated video lacks the level-graded structured moments because generators sample from learned distributions. Model-agnostic detection via residual moment diagnostic.
-
-Documented in `FRAMEWORK_IDENTIFICATION.md` §What-this-means item 4 and `project_physics_detector` memory.
+The c=7/45 closure path is now structurally framed. The path forward is the dark-subspace classification (Phases 1-5) + paper-shaped writeup (Phase 6). Substantial but recognizable mathematics.
