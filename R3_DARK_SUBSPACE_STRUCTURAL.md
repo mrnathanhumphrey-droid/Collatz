@@ -10,7 +10,7 @@ We classify the dark-subspace structure of Syracuse's adaptive Kraus family `M_v
 
 2. **D_W = 3-fiber-zero-mean subspace is EXACTLY dark under the j ≥ 2 sub-family** (Phase 2). Leakage ratio `α_{D_W}(M) = ‖P_{D_W} M P_{D_W^⊥}‖ / ‖M‖`: structurally 0 for j ≥ 2 (machine-epsilon at finite truncation), structurally 1 for j = 1. Mechanism: `x_j(b_prior) = 3^{2j-2} · 2^{-b_prior}` is `≡ ±1 mod 3` only at j = 1, and `≡ 0 mod 9` for all j ≥ 2; cube-root-of-unity phase twist within 3-fibers occurs only at j = 1.
 
-3. **Closed-form spectrum of `L|_{D_W}` under j ≥ 2** (Phase 4). The per-step DWM channel `L(ρ) = Σ_v M_v^{(j, b_prior)} · ρ · (M_v^{(j, b_prior)})†` restricted to D_W has a large commutant (dim 4 at n=2, dim 8 at n=3 for j=2, dim 16 = d_W at n=3 for j=3). The first below-commutant eigenvalue is `λ_below(n) = 0.5/|1 − 0.5 · e^{iπ/3^{n-1}}|` — verified at n=2 (1/√3 = 0.577) and n=3 (0.898). As n → ∞, λ_below(n) → 1: the inverse-limit channel restricted to D_W is degenerate.
+3. **Closed-form spectrum of `L|_{D_W}` under j ≥ 2** (Phase 4). The per-step DWM channel `L(ρ) = Σ_v M_v^{(j, b_prior)} · ρ · (M_v^{(j, b_prior)})†` restricted to D_W has a large commutant (dim 4 at n=2, dim 6 at n=3 for j=2, dim 12 = d_W at n=3 for j=3, dim 6 at n=4 for j=2, dim 36 = d_W at n=4 for j=3). The first below-commutant eigenvalue is `λ_below(n) = 0.5/|1 − 0.5 · e^{iπ/3^{n-1}}|` — verified at n=2 (1/√3 = 0.577), n=3 (0.898), and n=4 (0.987). As n → ∞, λ_below(n) → 1: the inverse-limit channel restricted to D_W is degenerate.
 
 **Interpretation:** D_W is the natural "asymptotic dark subspace" of Syracuse — exactly preserved by j ≥ 2 trajectory steps, mixed only at the first step. The first below-commutant eigenvalue identifies the per-step rate of cyclic-group mixing under `σ_{-1}`'s fundamental Fourier mode on (Z/3^n)*.
 
@@ -26,6 +26,19 @@ where `A_v^{(j)}(ξ, b_prior) = e^{-2πi ξ · x_j(b_prior) · 2^{-v}/3^n}` and 
 
 The natural question for the Benoist-Pellegrini-Szczepanek 2024 framework: classify the **dark subspaces** `D ⊂ H_n` invariant under every Kraus operator in the support of µ, equivalently the joint commutant `A' = {X : [X, M] = 0 ∀ M}`.
 
+## §1.5. Subspace correction (2026-05-16)
+
+Original Phase 2 and Phase 4 probes (`phase2_approx_dark_probe.py`, `phase4_dark_spectral_gap_probe.py`) used **class^⊥** (orthogonal complement of mod-3 class-resolved 2-dim D_class) as a proxy for D_W. This is correct at n=2 (where class^⊥ and 3-fiber-zero-mean coincide) but DIVERGES at n ≥ 3: class^⊥ has dim 2·3^{n-1} − 2 (only 2 conditions), whereas TRUE D_W = 3-fiber-zero-mean has dim 2·3^{n-1} − 2·3^{n-2} = (4/3)·3^{n-1} (2·3^{n-2} conditions).
+
+**Verification on TRUE D_W** (`phase4_n4_true_DW_verification.py`, 2026-05-16):
+- At n=3 (TRUE d_W = 12): j=2 W-leak = 3.6e-15 (machine epsilon) ✓
+- At n=4 (TRUE d_W = 36): j=2 W-leak = 1.3e-14 (machine epsilon) ✓; class^⊥ leak at j=2 = 0.71 (NOT preserved)
+- λ_below at n=4: predicted 0.9867, observed 0.9867 (rel err 4.4e-6) ✓
+
+The structural Phase 2 claim (D_W exactly dark under j ≥ 2 at all n) survives. The class^⊥ probe coincided with TRUE D_W at n ≤ 3 by accident — at n=3 the phase factor depends only on ξ mod 3, so class^⊥ is preserved too; at n=4, the phase depends on ξ mod 9, and class^⊥ leaks (only TRUE D_W remains preserved).
+
+Numerical dimensions in §3, §4 tables updated to TRUE D_W.
+
 ## §2. Result 1: full irreducibility at finite n
 
 **Theorem 2.1.** *Let `F = {M_v^{(j, b_prior)} : v ≥ 1, j ≥ 1, b_prior ≥ 0}` be the full adaptive Kraus family at level n. Then `dim(A') = 1` (= C·I) at n = 2 and n = 3.*
@@ -38,7 +51,7 @@ The natural question for the Benoist-Pellegrini-Szczepanek 2024 framework: class
 
 ## §3. Result 2: D_W is exactly dark under the j ≥ 2 sub-family
 
-**Definition 3.1.** D_W ⊂ H_n is the **3-fiber-zero-mean subspace**: `D_W = {f : Σ_{a=0}^{2} f(ξ_0 + a · 3^{n-1}) = 0 for all ξ_0 ∈ (Z/3^{n-1})*}`, with `dim D_W = 2 · 3^{n-1} − 2`. Equivalently, D_W is the orthogonal complement of the class-resolved subspace `D_class = span(𝟙_{ξ ≡ 1 mod 3}, 𝟙_{ξ ≡ 2 mod 3})` of dim 2.
+**Definition 3.1.** D_W ⊂ H_n is the **3-fiber-zero-mean subspace**: `D_W = {f : Σ_{a=0}^{2} f(ξ_0 + a · 3^{n-1}) = 0 for all ξ_0 in the 3-fiber base}`, with `dim D_W = (2 · 3^{n-1}) − (2 · 3^{n-2}) = (4/3) · 3^{n-1}` for n ≥ 2. Concretely: dim D_W = 4 at n=2, 12 at n=3, 36 at n=4, 108 at n=5. **Note: D_W is strictly contained in class^⊥** (the orthogonal complement of mod-3 class-resolved 2-dim D_class) for n ≥ 3; they coincide only at n=2.
 
 **Theorem 3.2.** *Let F_{≥2} = {M_v^{(j, b_prior)} : v ≥ 1, j ≥ 2, b_prior ≥ 0} be the j ≥ 2 sub-family. Then every `M ∈ F_{≥2}` exactly preserves D_W: M(D_W) ⊆ D_W and M(D_class) ⊆ D_class.*
 
@@ -58,14 +71,15 @@ For j ≥ 2: `x_j = 3^{2j-2} · 2^{-b_prior}`. Since `2j - 2 ≥ 2`, we have `3^
 
 **Corollary 3.3.** *For j = 1: x_1(b_prior) = 2^{-b_prior} is a unit mod 3, so `x_1 ≡ ±1 mod 3`. The phase factor at `ξ_0 + a · 3^{n-1}` cycles through the three cube roots of unity ω_3^{a · x_1 · 2^{-v}}, which sum to zero. Hence the j = 1 Kraus operators map D_W maximally onto its complement: α_{D_W}(M) = 1 exactly for every M ∈ F_1.*
 
-**Numerical verification (Phase 2 probe).** Leakage ratios `α_{D_W}(M) := ‖P_{D_W} M P_{D_W^⊥}‖_op / ‖M‖_op` across the full family:
+**Numerical verification.** Leakage ratios `α_{D_W}(M) := ‖P_{D_W} M P_{D_W^⊥}‖_op / ‖M‖_op` across the family, using the TRUE D_W = 3-fiber-zero-mean (NOT the class^⊥ proxy):
 
-| n | j = 1 (216, 72 ops) | j ≥ 2 (12, 36 ops) |
-|---|---|---|
-| 2 | α = 1.000000 (max=min) | α < 3.4 × 10^{-16} |
-| 3 | α = 1.000000 (max=min) | α < 4.2 × 10^{-15} |
+| n | dim D_W | j = 1 | j ≥ 2 |
+|---|---|---|---|
+| 2 | 4 | α = 1.000000 (max=min) | α < 3.4 × 10^{-16} |
+| 3 | 12 | α = 1.000000 (max=min) | α < 3.6 × 10^{-15} |
+| 4 | 36 | (not measured) | α < 1.3 × 10^{-14} at j=2 |
 
-The exactness (j = 1: identically 1, j ≥ 2: identically 0 mod machine epsilon) reflects the structural-level argument in the proof. **Probe:** `phase2_approx_dark_probe.py`. **Result file:** `PHASE2_APPROX_DARK_RESULT.md`. **JSON:** `experiments_output/phase2_approx_dark_probe.json`.
+The exactness (j ≥ 2: identically 0 mod machine epsilon) reflects the structural-level argument in the proof. At n=4 j=2, class^⊥ (the LARGER 52-dim subspace) is NOT preserved (leakage 0.7); only the TRUE 3-fiber-zero-mean D_W is preserved. **Probe:** `phase2_approx_dark_probe.py`. **Result file:** `PHASE2_APPROX_DARK_RESULT.md`. **JSON:** `experiments_output/phase2_approx_dark_probe.json`.
 
 **Corollary 3.4.** *The full-family irreducibility (Result 1) reflects the j = 1 mixing event. Restricting to F_{≥2} (= excluding the first step), the algebra `A'_{≥2}` has dimension > 1 (= 6 at n=2, = 9 at n=3), reflecting the (D_W, D_class) block decomposition + cyclic-2 symmetry of σ_{-v}.*
 
