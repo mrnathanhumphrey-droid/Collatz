@@ -239,7 +239,31 @@ Full falsification disposition: `C:/Collatz/W4_FALSIFICATION_FINAL.md`.
 
 ---
 
-## 6. Where the project sits (2026-05-15 update post H1'+D1+D3)
+## 5.5 Framework identification — DWM (2026-05-15 update)
+
+After Track A landed, the framework-identification arc (Gap D2 from H1' work) ran across 6 probes and closed with **Davies-Wiseman-Milburn quantum trajectory** as the named published framework Syracuse fits. Full writeup at `FRAMEWORK_IDENTIFICATION.md`.
+
+**Arc summary:**
+
+| Probe | Verdict | Score |
+|---|---|---|
+| H1' strict HS 2014 monotone | FAILED | — |
+| D2 Tier 1 (anti/bi-mono, α-free) | Outcome B | — |
+| BMT + bigraph | NO FIT | — |
+| HP/QSC | Outcome C | 1/7 |
+| AFL 1982 | Outcome B | 3/7 |
+| Belavkin claimed Outcome A → AUDITED DOWN | Outcome B (misbranded) | — |
+| **Davies-Wiseman-Milburn** | **Outcome B** | **4-5/7** |
+
+DWM is the **named published framework** that matches Syracuse. The adaptive Kraus operator `M_v^{(j, b_{[1,j-1]})}` Stinespring-dilates from T_j; countably-infinite POVM outcomes admit natively (Wiseman 1996 eq.7 `Σ F_r = 1` unrestricted cardinality; Plenio-Knight 1998 eq.51 sums n=0..∞). Non-demolition `[T_j, M_{b_{[1,k]}}] = 0` for k<j verified.
+
+**Two residual quantitative gaps:**
+- DWM-MP-G1, G2: numerical Kraus-channel trace verification of `ϕ(X̃_{j_1}·X̃_{j_2}·X̃_{j_1}) = 0.108` and `ϕ(X̃_{j_1}·X̃_{j_2}·X̃_{j_1}·X̃_{j_2}) = 0.609` in R77 (1,4) basis (4-8h numpy each)
+- T_M λ_2 spectral closure (R77 Conj 77.2, inter-level operator) — closes subdominant rate with W2's 1/(2·15) amplitude
+
+**Cross-application:** the same DWM transfer-operator structure applies to physics_detector AI-video detection. Real video has the level-graded adaptive Kraus + abelian observation filtration that DWM models physically; AI generators lack the structured non-zero higher moments because they sample from learned distributions rather than evolving under physical Kraus channels. Model-agnostic detection via the structural diagnostic.
+
+## 6. Where the project sits (2026-05-15 update post H1'+D1+D3 + DWM)
 
 The "11-arc obstruction map terminal finding" (2026-05-14 morning) named the framework. Track A (2026-05-14 evening) took the four wrinkles surfaced by the monotone closure writeup and delivered:
 

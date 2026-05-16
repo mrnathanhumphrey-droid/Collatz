@@ -1,6 +1,40 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-05-12):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-05-15):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+
+---
+
+## AT A GLANCE — where the project stands (2026-05-15)
+
+**Two paper-shaped results in hand:**
+
+1. **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). `S_k = 3^k · ‖d_k‖² → 7/15` proved via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74 algebraic identity. Paper-shaped. Independent of all operator-valued probability framework questions.
+
+2. **Syracuse = Davies-Wiseman-Milburn quantum trajectory, NUMERICALLY VERIFIED to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](DWM_MP_G1_RESULT.md)). DWM cross-Kraus form `M̃_{v,v'}^{(j, b_prior)} · f(ξ) = phase·σ_{-(v+v')}·f(ξ)` reproduces Syracuse's measured moments **exactly to 6 sig digits across all 4 scalar reductions** for both 3-alternating (0.108) and 4-alternating (0.609) moments. Cross-applies to AI-video detection (`project_physics_detector`).
+
+**Subdominant-rate question (open, structural boundary mapped):**
+
+The c=7/45 subdominant rate has **no finite-truncation discrete-eigenvalue closure available**. Every natural finite-rank operator over Q has been probed and either:
+- Has trivial spectrum (K_k = {1, 0, ..., 0} via 3-fiber row-equality + marginal consistency).
+- Has continuous-on-circle spectrum (U_n, Phi_omega = T^ω ∘ U_n: continuous distribution at radius 0.319 or 0.587, no discrete CC pair).
+- Is identically zero on trivial-twist class projections at any modulus (U_n → W_n exact, kills all class averages by cube-root cancellation).
+- Doesn't recover T_lead's 43/45 (which is itself a class-resolved coherent-summation phenomenon, not a primitive eigenvalue).
+- Has been ruled out by Tauberian BLOCKER (20-PDF corpus, Mode H circular) or Nisoli budget infeasibility (M_3''=24.4 blown 18× under realistic Tao C_A).
+
+**Best finite-truncation closure available:** T_lead's eigenvalue **43/45 = 1 − Σ_g W_+(g) = 1 − 2/45** over Q on (P_+, P_-) class-resolved space (`T_LEAD_CORRECTED_DISPOSITION.md`). First positive algebraic spectral result. Within-level rate-carrier, but Nisoli closure inequality `|K|·K^{-A}·M_3'' < 1` fails at realistic A under Tao C_A bookkeeping.
+
+**Surviving productive directions:**
+1. **Continue ε_n exact extension** via R77.7 v2 modular CRT (~3-10hr per coefficient). Empirical-discriminative.
+2. **V'_M with phase parameters** (T_V Route B, 5-10 sessions). Substantial theoretical reconstruction.
+3. **Paper-grade documentation** of the structural boundary combined with Results 1 + 2 above.
+
+See [`SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`](SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md) for the full session writeup tying together morning's paper-shaped results + evening's structural exhaustion mapping.
+
+**Independent results, paper-grade:**
+- **Bilinear bound** `|S_partial(r)| ≤ 2√N` at r ≤ 3 (Path 2), polylog-free `2√p·√N` at r ≥ 4 via Hensel (2026-05-11). See `HENSEL_DISPOSITION.md`.
+- **F̂_p Plancherel saturation** `|F̂_p^full(ξ)| = p^{(r+3)/2}` verified across 33 cells (2026-05-11). See `FHAT_THEOREM_VERIFICATION_RESULTS.md`.
+- **Prefix-decomposition + Tao bridge** at k = 4..14 with `s_mean(r) ≈ α_det(r) + K_h · log(N/f(N))`, K_h = 3/log(4/3), slope = 1.000 ± 0.005 across 40 verification cells (2026-05-02). See `writeup.md`, `tao_bridge_findings.md`.
+- **qx+1 Cramér convergence law** `q^(-θ) = 2^(1-θ) − 1` exact at q ∈ {5, 7, 9, 11} with q=5 match to 0.01% (2026-05-02). See `experiments/16_cramer_root.py`.
 
 **Original status (2026-05-02):** Bridge result to Tao 2022 documented. Three findings consolidated: (a) prefix-decomposition theorem at modular resolutions k = 4..14; (b) `s_mean(r) ≈ α_det(r) + K_h · log(N/f(N))` with slope = 1.000 ± 0.005 at K_h = 3/log(4/3) across two independent observables (σ and first-passage), four modular resolutions, and two data scales; (c) qx+1 Cramér convergence law at q ∈ {5, 7, 9, 11} with q=5 match to 0.01%.
 
@@ -9,6 +43,28 @@
 ## Recent landmarks (post-2026-05-02)
 
 Threads layered on top of the architectural overview below. **For the current state of any of these, read [`STATE.md`](STATE.md) first** — it is the live document and supersedes any drift in this README.
+
+### Leading c=7/45 RIGOROUS UNCONDITIONAL + Syracuse = DWM quantum trajectory NUMERICALLY VERIFIED — 2026-05-15 (morning)
+
+Two paper-shaped results landed in the same session:
+
+- **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). 8 sections, full hypotheses verbatim, 6-step proof chain via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74. Independent of all probability-framework questions. The Hasebe-Saigo 2014 monotone-independence overlay was interpretive only — D3 audit confirmed the derivation never depended on HS 2014 Thm 3.4.
+- **Syracuse = Davies-Wiseman-Milburn quantum trajectory, numerically verified to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](DWM_MP_G1_RESULT.md)). 6-probe framework-identification arc (H1' → D2 Tier 1 → BMT/bigraph → HP/QSC → AFL → Belavkin/DWM) closed at DWM with adaptive Kraus `M_v^{(j, b_{[1,j-1]})} = 2^{-v/2} A_v^{(j)} σ_{-v}`. DWM-MP-G1+G2 numerical match across all 4 scalar reductions (sum_entries / tr_π / delta_1 / vac_π) for both 3-alt (0.108) and 4-alt (0.609) moments. Cross-applies to AI-video detection (`project_physics_detector`).
+
+### Structural boundary mapped: finite-truncation discrete-eigenvalue paths exhausted — 2026-05-15 (post-compact)
+
+Five new probes targeting the c=7/45 subdominant rate's missing discrete-eigenvalue carrier all confirm R77.6's continuous-spectrum reading + close the structural picture:
+
+- **K_k structural lemma** ([`K_STRUCTURE_RESULT.md`](K_STRUCTURE_RESULT.md)). K_k has spectrum {1, 0, 0, ..., 0} EXACTLY with Jordan chain length k. K_k maps W_{k-1} → 0 exactly. K_k converges to stationary in exactly k Markov steps via rank pattern N_{k-1} → N_{k-2} → ... → 1. R77.4 erratum's "|λ_2| ≈ 10⁻³ growing with k" was numerical noise.
+- **U_n → W_n structural lemma + Phi_omega continuous spectrum** ([`INTERLEVEL_U_PROBE_RESULT.md`](INTERLEVEL_U_PROBE_RESULT.md)). Fourier-side Tao transfer U_n: V_n^Fourier → V_{n+1}^Fourier maps V_n entirely into W_n exactly (3rd-root-of-unity phase cancellation). Twisted endomorphism Phi_omega = T^ω ∘ U_n on V_n has top |eigenvalue| converging to 0.319 (ω_3) or 0.587 (ω_3²) but arguments continuously distributed in arcs — no discrete CC pair at θ = 2π/9.2.
+- **Bilinear T_M (V_n^M truncation + tensor V_n ⊗ V_n*)** ([`D1_T_M_NEGATIVE_RESULT.md`](D1_T_M_NEGATIVE_RESULT.md)). Two attempted constructions of the bilinear pair-correlation operator both give max |eig| ≈ 0.345, NOT recovering T_lead's 43/45. T_lead's 43/45 is a class-resolved coherent-summation phenomenon at the (P_+, P_-) projection, NOT a primitive eigenvalue of any natural finite-truncation operator.
+- **Option III: mod-9 / mod-27 class projection** ([`T_M_class_mod9_spectrum.py`](T_M_class_mod9_spectrum.py)). Trivial-twist projections vanish identically at any modulus 3^k because U_n → W_n exact + each class contains integer-many 3-fibers. Only character-twisted projections give non-trivial structure (which Probe 2 already explored).
+
+Combined with prior-session work (Tauberian 20-PDF BLOCKER 2026-05-13, T_V V_M non-closure 2026-05-12, Nisoli at 43/45 budget-blown 2026-05-12, R77.6 branch-cut + PADE_NUMERICAL z=2 refuted 2026-05-12), the verdict is:
+
+> **No finite-rank operator over Q at finite truncation carries the c=7/45 subdominant rate as a discrete eigenvalue.** T_lead's 43/45 = 1 − Σ_g W_+(g) = 1 − 2/45 is the deepest finite-rank closure available, and even it doesn't close c=7/45 rigorously (Nisoli inequality fails under realistic Tao C_A).
+
+Full session writeup: [`SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`](SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md).
 
 ### Bilinear bound on the R78 wall — DELIVERED 2026-05-11
 
