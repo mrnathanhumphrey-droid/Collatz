@@ -1,10 +1,10 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-05-15):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-05-17):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
 
 ---
 
-## AT A GLANCE — where the project stands (2026-05-15)
+## AT A GLANCE — where the project stands (2026-05-17)
 
 **Three paper-shaped results in hand:**
 
@@ -12,7 +12,9 @@
 
 2. **Syracuse = Davies-Wiseman-Milburn quantum trajectory, NUMERICALLY VERIFIED to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](DWM_MP_G1_RESULT.md)). DWM cross-Kraus form `M̃_{v,v'}^{(j, b_prior)} · f(ξ) = phase·σ_{-(v+v')}·f(ξ)` reproduces Syracuse's measured moments **exactly to 6 sig digits across all 4 scalar reductions** for both 3-alternating (0.108) and 4-alternating (0.609) moments. Cross-applies to AI-video detection (`project_physics_detector`).
 
-3. **Dark-subspace classification of Syracuse's adaptive Kraus family** ([`R3_DARK_SUBSPACE_STRUCTURAL.md`](R3_DARK_SUBSPACE_STRUCTURAL.md), integrates Phases 1+2+4). Three sub-results: (a) the full adaptive Kraus family at level n is irreducible at finite n (dim(A') = 1 at n=2, 3, via SVD of commutator-stack); (b) the **3-fiber-zero-mean subspace D_W is EXACTLY dark under the j ≥ 2 sub-family** (machine-epsilon leakage), with j = 1 the unique mixing event — structurally forced by `x_{j≥2} ≡ 0 mod 9` vs `x_1 ≡ ±1 mod 3`; (c) the per-step channel `L|_{D_W}` for j ≥ 2 has **closed-form below-commutant spectrum** `λ_below(n) = 0.5/|1 − 0.5·e^{iπ/3^{n−1}}|` (verified at n=2, 3) which → 1 as n → ∞. **Route B partial closure (2026-05-16)** ([`ROUTEB_PERIOD9_IDENTIFICATION.md`](ROUTEB_PERIOD9_IDENTIFICATION.md)): the (class, b_prior mod M) Markov chain at M=18 reproduces the same eigenvalue, with period 9.5 ≈ empirical PADE 9.2 — **the empirical period-9 CC pair IS Phase 4's L|_{D_W} below-commutant eigenvalue.** Magnitude residual 9% (0.898 vs 0.984) closes structurally at effective level n ≈ 3.91; full magnitude closure via mixed-level chain / Tao C_A corrections / bilinear lift remains open.
+3. **Dark-subspace classification of Syracuse's adaptive Kraus family** ([`R3_DARK_SUBSPACE_STRUCTURAL.md`](R3_DARK_SUBSPACE_STRUCTURAL.md), integrates Phases 1+2+4). Three sub-results: (a) the full adaptive Kraus family at level n is irreducible at finite n (dim(A') = 1 at n=2, 3, via SVD of commutator-stack); (b) the **TRUE D_W = 3-fiber-zero-mean subspace is EXACTLY dark under the j ≥ 2 sub-family** (machine-epsilon leakage at n=2, 3, 4 verified directly), with j = 1 the unique mixing event — structurally forced by `x_{j≥2} ≡ 0 mod 9` vs `x_1 ≡ ±1 mod 3`; (c) the per-step channel `L|_{D_W}` for j ≥ 2 has **closed-form below-commutant spectrum** `λ_below(n) = 0.5/|1 − 0.5·e^{iπ/3^{n−1}}|`, **j-independent for j ≥ 2**, **verified across 8-point grid (n, j) ∈ {(3,2), (3,3), (4,2), (4,3), (4,4), (5,2), (5,3), (5,4)} via matrix-free ARPACK** + full-eigvals cross-check at n=5 (rel err < 1.3e-5 throughout). λ_below(n) → 1 as n → ∞. **Route B partial closure (2026-05-16)** ([`ROUTEB_PERIOD9_IDENTIFICATION.md`](ROUTEB_PERIOD9_IDENTIFICATION.md)): the (class, b_prior mod M) Markov chain at M=18 reproduces the same eigenvalue, with period 9.5 ≈ empirical PADE 9.2 — **the empirical period-9 CC pair IS Phase 4's L|_{D_W} below-commutant eigenvalue.** Magnitude residual 9% (0.898 vs 0.984) closes structurally at effective level n ≈ 3.91; full magnitude closure via direct ε_k fitting is data-limited at k=13 ([`ROUTEB_PRIME_EPS_FIT_RESULT.md`](ROUTEB_PRIME_EPS_FIT_RESULT.md)).
+
+**ε_14 computed (2026-05-17):** ε_14 = +3.588e-03, Hadamard radius |ε_k|^{-1/k} = 1.495 (down from 1.566 at k=13, inward by 0.071). Sign pattern still + + − − − − − − − + + + + +. Predicted asymptote 1.016 (rate 0.984); k=14 still in transient regime.
 
 **Subdominant-rate question (open, structural boundary mapped — R3 does NOT close the 2.9% gap):**
 

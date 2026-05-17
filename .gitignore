@@ -85,3 +85,18 @@ result_framework_to_hateley_lift.md
 result_framework_to_hateley_lift.log
 result_framework_to_hateley_lift_block_profiles.csv
 result_framework_to_hateley_lift_residuals.csv
+
+# Correspondence / literature corpus — extracted paper pages, downloaded
+# monographs, intermediate research material. Reference, not artifacts.
+_cebron_pages/
+_d2_pdfs/
+_goldsheid_pages/
+_hasebe_mono.pdf
+_speicher_pages/
+_tao_rmt_pages/
+_tsujii_pages/
+_voiculescu_pages/
+_young_pages/
+archemedian_eigenvalues/
+tauberian_extract/
+watson_phase2_output.txt
