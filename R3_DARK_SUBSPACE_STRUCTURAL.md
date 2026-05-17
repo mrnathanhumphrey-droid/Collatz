@@ -10,7 +10,13 @@ We classify the dark-subspace structure of Syracuse's adaptive Kraus family `M_v
 
 2. **D_W = 3-fiber-zero-mean subspace is EXACTLY dark under the j ≥ 2 sub-family** (Phase 2). Leakage ratio `α_{D_W}(M) = ‖P_{D_W} M P_{D_W^⊥}‖ / ‖M‖`: structurally 0 for j ≥ 2 (machine-epsilon at finite truncation), structurally 1 for j = 1. Mechanism: `x_j(b_prior) = 3^{2j-2} · 2^{-b_prior}` is `≡ ±1 mod 3` only at j = 1, and `≡ 0 mod 9` for all j ≥ 2; cube-root-of-unity phase twist within 3-fibers occurs only at j = 1.
 
-3. **Closed-form spectrum of `L|_{D_W}` under j ≥ 2** (Phase 4). The per-step DWM channel `L(ρ) = Σ_v M_v^{(j, b_prior)} · ρ · (M_v^{(j, b_prior)})†` restricted to D_W has a large commutant (dim 4 at n=2, dim 6 at n=3 for j=2, dim 12 = d_W at n=3 for j=3, dim 6 at n=4 for j=2, dim 36 = d_W at n=4 for j=3). The first below-commutant eigenvalue is `λ_below(n) = 0.5/|1 − 0.5 · e^{iπ/3^{n-1}}|` — verified at n=2 (1/√3 = 0.577), n=3 (0.898), and n=4 (0.987). As n → ∞, λ_below(n) → 1: the inverse-limit channel restricted to D_W is degenerate.
+3. **Closed-form spectrum of `L|_{D_W}` under j ≥ 2** (Phase 4, with 2026-05-17 refinement). The per-step DWM channel `L(ρ) = Σ_v M_v^{(j, b_prior)} · ρ · (M_v^{(j, b_prior)})†` restricted to D_W has a large commutant + first below-commutant eigenvalue
+  
+  `λ_below(n, j) = 0.5 / |1 − 0.5 · e^{iπ / 3^{min(n−1, 2j−1)}}|`
+  
+  This is the **j-saturated** form. The unsaturated regime (n ≤ 2j) coincides with the simpler formula `0.5/|1 − 0.5·e^{iπ/3^{n−1}}|`; the saturated regime (n > 2j) caps at `λ_sat(j) = 0.5/|1 − 0.5·e^{iπ/3^{2j−1}}|`. Verified across (n, j) ∈ {(2,2), (3,2), (4,2), (5,2)} with the n=5 j=2 case at λ_sat(2) = 0.987 (matching n=4 j=2, not the unsaturated value 0.9985 that the original formula predicted).
+  
+  **Crucial implication:** at fixed j, as n → ∞, λ_below(n, j) → λ_sat(j) < 1. Only as **j → ∞** does λ_sat(j) → 1. The "inverse-limit n → ∞ channel is degenerate" reading from the original R3 writeup was incomplete: degeneracy requires j → ∞ as well, not just n → ∞.
 
 **Interpretation:** D_W is the natural "asymptotic dark subspace" of Syracuse — exactly preserved by j ≥ 2 trajectory steps, mixed only at the first step. The first below-commutant eigenvalue identifies the per-step rate of cyclic-group mixing under `σ_{-1}`'s fundamental Fourier mode on (Z/3^n)*.
 
@@ -25,6 +31,29 @@ At level n, the Hilbert space is `H_n = L²((Z/3^n)*)` with basis `{|ξ⟩ : ξ 
 where `A_v^{(j)}(ξ, b_prior) = e^{-2πi ξ · x_j(b_prior) · 2^{-v}/3^n}` and `x_j(b_prior) = 3^{2j-2} · 2^{-b_prior} mod 3^n`. The POVM resolution `Σ_v M_v^{(j, b_prior)}† · M_v^{(j, b_prior)} = I` holds (Geom(1/2) outcome distribution), and the trajectory satisfies the DWM non-demolition condition w.r.t. the classical observation filtration `B_j = vN(M_{b_{[1,k]}}: k ≤ j)`. See `FRAMEWORK_IDENTIFICATION.md` for the full DWM identification.
 
 The natural question for the Benoist-Pellegrini-Szczepanek 2024 framework: classify the **dark subspaces** `D ⊂ H_n` invariant under every Kraus operator in the support of µ, equivalently the joint commutant `A' = {X : [X, M] = 0 ∀ M}`.
+
+## §1.6. j-saturation refinement (2026-05-17)
+
+After §1.5 (subspace correction), n=5 j=2 verification on TRUE D_W produced an unexpected result: observed λ_below = 0.987 (matching n=4 j=2's value), NOT the originally-predicted 0.9985.
+
+**Corrected closed-form** (verified at (n, j) ∈ {(2,2), (3,2), (4,2), (5,2)}):
+
+`λ_below(n, j) = 0.5 / |1 − 0.5 · e^{iπ / 3^{min(n−1, 2j−1)}}|`
+
+The exponent caps at 2j−1 once n exceeds 2j. Implication: at fixed j, λ_below(n, j) saturates at `λ_sat(j) = 0.5/|1 − 0.5·e^{iπ/3^{2j−1}}|`:
+
+| j | λ_sat(j) | 1 − λ_sat(j) | Period at saturation |
+|---|---|---|---|
+| 2 | 0.98675 | 1.33e−02 | 54 |
+| 3 | 0.99850 | 1.50e−03 | 486 |
+| 4 | 0.99998 | 1.85e−05 | 4374 |
+| 5 | ~0.999998 | 2.29e−07 | 39366 |
+
+**Structural intuition.** At fixed j, the phase factor `x_j·2^{-v}/3^n = 3^{2j-2}·2^{-(b+v)}/3^n = 2^{-(b+v)}/3^{n-(2j-2)}` has 3-adic scale `3^{n-2j+2}`. The cyclic-Z_{2·3^{n-1}} structure of σ_{-1} on (Z/3^n)* couples with this phase scale; the channel's effective "frequency" becomes the SMALLER of the two periods (σ_{-1}-fundamental at 2·3^{n-1} vs phase-fundamental at 2·3^{2j-1}). For n > 2j, σ_{-1}-fundamental is larger, so the cap kicks in at the phase scale.
+
+**Implication for c=7/45 closure framework.** The original R3 §5 reading "the inverse-limit n → ∞ channel is degenerate (λ → 1)" was incomplete: this holds at FIXED finite j only in the unsaturated regime. At fixed j ≥ 2 with n → ∞, λ saturates BELOW 1. Degeneracy requires j → ∞ (asymptotic trajectory depth), which is the Tao recursion's natural large-j limit.
+
+This is consistent with: typical Tao recursion depth at trajectory time t grows linearly with t. So the "effective j" of the trajectory grows over time, eventually pushing λ → 1. The c=7/45 asymptotic rate is therefore a property of the **trajectory's j-growth dynamics**, not a simple n-only spectral limit.
 
 ## §1.5. Subspace correction (2026-05-16)
 
