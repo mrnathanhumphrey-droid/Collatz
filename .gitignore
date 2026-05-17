@@ -86,6 +86,12 @@ result_framework_to_hateley_lift.log
 result_framework_to_hateley_lift_block_profiles.csv
 result_framework_to_hateley_lift_residuals.csv
 
+# Large stationary distribution cache files (>100MB; regeneratable from
+# probe_self_similarity/extend_to_k13_k14.py or probe_epsilon_*/compute_*.py)
+probe_self_similarity/pi_16_truncated.npz
+probe_self_similarity/pi_17_truncated.npz
+probe_self_similarity/pi_18_truncated.npz
+
 # Correspondence / literature corpus — extracted paper pages, downloaded
 # monographs, intermediate research material. Reference, not artifacts.
 _cebron_pages/
