@@ -10,13 +10,13 @@ We classify the dark-subspace structure of Syracuse's adaptive Kraus family `M_v
 
 2. **D_W = 3-fiber-zero-mean subspace is EXACTLY dark under the j ≥ 2 sub-family** (Phase 2). Leakage ratio `α_{D_W}(M) = ‖P_{D_W} M P_{D_W^⊥}‖ / ‖M‖`: structurally 0 for j ≥ 2 (machine-epsilon at finite truncation), structurally 1 for j = 1. Mechanism: `x_j(b_prior) = 3^{2j-2} · 2^{-b_prior}` is `≡ ±1 mod 3` only at j = 1, and `≡ 0 mod 9` for all j ≥ 2; cube-root-of-unity phase twist within 3-fibers occurs only at j = 1.
 
-3. **Closed-form spectrum of `L|_{D_W}` under j ≥ 2** (Phase 4, with 2026-05-17 refinement). The per-step DWM channel `L(ρ) = Σ_v M_v^{(j, b_prior)} · ρ · (M_v^{(j, b_prior)})†` restricted to D_W has a large commutant + first below-commutant eigenvalue
+3. **Closed-form spectrum of `L|_{D_W}` under j ≥ 2** (Phase 4). The per-step DWM channel `L(ρ) = Σ_v M_v^{(j, b_prior)} · ρ · (M_v^{(j, b_prior)})†` restricted to D_W has a large commutant + first below-commutant eigenvalue
   
-  `λ_below(n, j) = 0.5 / |1 − 0.5 · e^{iπ / 3^{min(n−1, 2j−1)}}|`
+  `λ_below(n) = 0.5 / |1 − 0.5 · e^{iπ/3^{n−1}}|`
   
-  This is the **j-saturated** form. The unsaturated regime (n ≤ 2j) coincides with the simpler formula `0.5/|1 − 0.5·e^{iπ/3^{n−1}}|`; the saturated regime (n > 2j) caps at `λ_sat(j) = 0.5/|1 − 0.5·e^{iπ/3^{2j−1}}|`. Verified across (n, j) ∈ {(2,2), (3,2), (4,2), (5,2)} with the n=5 j=2 case at λ_sat(2) = 0.987 (matching n=4 j=2, not the unsaturated value 0.9985 that the original formula predicted).
-  
-  **Crucial implication:** at fixed j, as n → ∞, λ_below(n, j) → λ_sat(j) < 1. Only as **j → ∞** does λ_sat(j) → 1. The "inverse-limit n → ∞ channel is degenerate" reading from the original R3 writeup was incomplete: degeneracy requires j → ∞ as well, not just n → ∞.
+  This formula is **j-independent for j ≥ 2** (verified across grid (n, j) ∈ {(3,2), (3,3), (4,2), (4,3), (4,4), (5,2), (5,3), (5,4)}). The full eigenvalue cluster structure on D_W consists of Fourier modes k = 0 (commutant at 1.0), k = 1 (first below at λ_below ≈ predicted), k = 2 (at `0.5/|1 − 0.5·e^{2πi·2/(2·3^{n−1})}|`), etc. As n → ∞, λ_below(n) → 1: the inverse-limit channel restricted to D_W is degenerate.
+
+Verified values: n=2 (0.5774 = 1/√3), n=3 (0.8976), n=4 (0.9867), **n=5 (0.9985)** — all match the formula to relative error < 1.2e-5.
 
 **Interpretation:** D_W is the natural "asymptotic dark subspace" of Syracuse — exactly preserved by j ≥ 2 trajectory steps, mixed only at the first step. The first below-commutant eigenvalue identifies the per-step rate of cyclic-group mixing under `σ_{-1}`'s fundamental Fourier mode on (Z/3^n)*.
 
@@ -32,28 +32,24 @@ where `A_v^{(j)}(ξ, b_prior) = e^{-2πi ξ · x_j(b_prior) · 2^{-v}/3^n}` and 
 
 The natural question for the Benoist-Pellegrini-Szczepanek 2024 framework: classify the **dark subspaces** `D ⊂ H_n` invariant under every Kraus operator in the support of µ, equivalently the joint commutant `A' = {X : [X, M] = 0 ∀ M}`.
 
-## §1.6. j-saturation refinement (2026-05-17)
+## §1.7. j-saturation refinement RETRACTED (2026-05-17, late evening)
 
-After §1.5 (subspace correction), n=5 j=2 verification on TRUE D_W produced an unexpected result: observed λ_below = 0.987 (matching n=4 j=2's value), NOT the originally-predicted 0.9985.
+Earlier today §1.6 proposed a "j-saturation" refinement: that `λ_below(n, j)` caps at `λ_sat(j) = 0.5/|1 − 0.5·e^{iπ/3^{2j−1}}|` once n > 2j. This was based on a probe at n=5 j=2 that reported observed λ_below = 0.987 (matching the j=2 cap, not the n-1=4 value 0.9985).
 
-**Corrected closed-form** (verified at (n, j) ∈ {(2,2), (3,2), (4,2), (5,2)}):
+**On full verification today, the saturation refinement is RETRACTED.** The n=5 j=2 observation was a probe bug: the inline-python code applied a `< 0.99` threshold filter to identify the "first below-commutant" eigenvalue, which excluded the true first below-commutant value 0.9985 (this lives above 0.99). The 0.987 that was extracted is the THIRD below-commutant Fourier-mode cluster (k=3), not the first.
 
-`λ_below(n, j) = 0.5 / |1 − 0.5 · e^{iπ / 3^{min(n−1, 2j−1)}}|`
+**Full eigvals verification** (`np.linalg.eigvals` on the 11664-dim super-op, NO threshold filter):
 
-The exponent caps at 2j−1 once n exceeds 2j. Implication: at fixed j, λ_below(n, j) saturates at `λ_sat(j) = 0.5/|1 − 0.5·e^{iπ/3^{2j−1}}|`:
+| Position | \|λ\| | arg | Period | Identification |
+|---|---|---|---|---|
+| 0..5 | 0.99998 | 0 | ∞ | Commutant (size 6) |
+| 6..11 | **0.99849** | ±0.0775 | **81.07** | k=1: matches formula 0.9985 ✓ |
+| 12..17 | 0.99403 | ±0.1547 | 40.63 | k=2 |
+| 18..23 | 0.98675 | ±0.2310 | 27.20 | k=3 (= what bug returned) |
 
-| j | λ_sat(j) | 1 − λ_sat(j) | Period at saturation |
-|---|---|---|---|
-| 2 | 0.98675 | 1.33e−02 | 54 |
-| 3 | 0.99850 | 1.50e−03 | 486 |
-| 4 | 0.99998 | 1.85e−05 | 4374 |
-| 5 | ~0.999998 | 2.29e−07 | 39366 |
+So the formula `λ_below(n) = 0.5/|1 − 0.5·e^{iπ/3^{n−1}}|` holds at n=5 j=2 with the proper "first below-commutant" being 0.9985 (k=1 Fourier mode), not 0.987 (k=3 cluster).
 
-**Structural intuition.** At fixed j, the phase factor `x_j·2^{-v}/3^n = 3^{2j-2}·2^{-(b+v)}/3^n = 2^{-(b+v)}/3^{n-(2j-2)}` has 3-adic scale `3^{n-2j+2}`. The cyclic-Z_{2·3^{n-1}} structure of σ_{-1} on (Z/3^n)* couples with this phase scale; the channel's effective "frequency" becomes the SMALLER of the two periods (σ_{-1}-fundamental at 2·3^{n-1} vs phase-fundamental at 2·3^{2j-1}). For n > 2j, σ_{-1}-fundamental is larger, so the cap kicks in at the phase scale.
-
-**Implication for c=7/45 closure framework.** The original R3 §5 reading "the inverse-limit n → ∞ channel is degenerate (λ → 1)" was incomplete: this holds at FIXED finite j only in the unsaturated regime. At fixed j ≥ 2 with n → ∞, λ saturates BELOW 1. Degeneracy requires j → ∞ (asymptotic trajectory depth), which is the Tao recursion's natural large-j limit.
-
-This is consistent with: typical Tao recursion depth at trajectory time t grows linearly with t. So the "effective j" of the trajectory grows over time, eventually pushing λ → 1. The c=7/45 asymptotic rate is therefore a property of the **trajectory's j-growth dynamics**, not a simple n-only spectral limit.
+**Net:** original R3 formula correct, j-independent for j ≥ 2, no saturation. The bug was probe-only and didn't survive full verification. §1.6 is retracted.
 
 ## §1.5. Subspace correction (2026-05-16)
 
