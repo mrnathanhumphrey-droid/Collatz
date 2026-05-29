@@ -177,6 +177,35 @@ coincidences. **This unifies §7 (q=7: 1 level), §8 (q=17: 2 levels), §9 (q=31
 powers-of-2 resonance always tops a graded ladder whose length is fixed by how −1 sits relative to ⟨2⟩.
 File: `probe_qx1_multicoset_2026_05_29.py` (+ inline q=3..47 law sweep).
 
+## 10. Closed forms for the converged coset-mass constants: leading-order rational + non-elementary exact
+
+Pursued closed forms for the limiting per-coset masses (q=17: 0.5450561…; q=31: 0.2284611/0.1510842/0.1204547).
+
+**(a) Not elementary.** Geometric-truncation-independent (A_MAX 100=300); converged to ~7 digits (q=17
+oscillates n=5/6 ⇒ Richardson limit of the asymmetry A_χ/A_triv → 0.0901126). Continued fractions don't
+terminate, mpmath `identify`=None, and PSLQ rejects low-degree algebraic: `pslq[1,x,x²]`=`pslq[1,x,x²,x³]`
+=None (height ≤1e5–1e6). So: not rational, not low-degree algebraic at available precision.
+
+**(b) Leading-order rational mechanism (the structure that IS clean).** The masses are set by
+A_χ = Σ_ξ χ(ξ)|μ̂(ξ)|² for the `index` Dirichlet characters χ trivial on ⟨2⟩ (E_c = (1/index)Σ_χ χ̄(c)·
+A_χ/A_triv). The self-similar recursion X = 2^{−a}(1+qX') with χ(2)=1 forces the χ-value of the difference's
+unit part to χ(1−2^Δ), Δ=b−a (iid Geom gaps), giving the leading-order closed form
+  **V_χ = Σ_{Δ≠0} (2^{−|Δ|}/3) χ(1−2^Δ)**  (rational; periodic in Δ mod ord₂(q) ⇒ finite geometric sum).
+- q=17 (χ=Legendre mod 17): **V = 76/765** = 0.0993464.
+- q=31 (Z/6 characters): only the order-3 characters j=2,4 survive at leading order (V_1=V_3=V_5=0 — the
+  conjugation character j=3 vanishes, consistent with −1∉⟨2⟩); leading levels 0.2527/0.1882/0.0591.
+V_χ reproduces the QUALITATIVE structure (⟨2⟩-coset heaviest, correct #levels and ordering) for every q.
+
+**(c) The gap = non-elementary corrections.** V misses the true value (q=17: 0.0993 vs 0.0901, ~9%;
+q=31 low level 0.059 vs 0.120) because the deepening collisions (a=b, and a≠b with ord₂(q)∣Δ) carry shift
+terms t=(2^{−Δ}−1)/q that the leading sum drops. The exact A_χ obeys a transfer recursion whose phase
+e(−ζ(1−2^Δ)/q^n) does NOT close into a finite character system — it is the SAME boundary-layer object as
+the char-fn peak (Arc A). Conclusion: the exact coset constants are **non-elementary**, with V_χ their
+explicit leading-order rational shadow — directly parallel to Arc A's c_∞ (clean leading structure,
+non-elementary exact amplitude).
+Files: `probe_coset_closedform_2026_05_29.py`, `probe_coset_mechanism_2026_05_29.py`,
+`probe_coset_precision_2026_05_29.py`, `probe_coset_q31_leading_2026_05_29.py`.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new

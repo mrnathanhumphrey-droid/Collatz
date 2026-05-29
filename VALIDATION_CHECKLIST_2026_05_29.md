@@ -66,8 +66,12 @@ No hidden phase-only signal. See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §8.
 LAW (confirmed all primes q=3..47): #distinct coset-mass levels = #orbits of (×−1) on (Z/q^n)*/⟨2⟩ = index
 if −1∈⟨2⟩ else index/2. Unifies §7/§8/§9. See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §9.
 
-## NEW open (if pursued)
-Closed form for the converged coset-mass levels (q=17: 0.5451; q=31: 0.228461/0.151084/0.120455).
+## FOLLOW-UP RUN 2026-05-29: closed-form hunt for coset masses (§10) — leading rational + non-elementary
+`probe_coset_closedform/_mechanism/_precision/_q31_leading_2026_05_29.py`. Coset masses NOT rational
+(CF/identify) and NOT low-degree algebraic (PSLQ[1,x,x^2,x^3]=None) at ~7 digits. LEADING-ORDER rational
+shadow V_chi=Σ_{Δ≠0}(2^-|Δ|/3)chi(1-2^Δ): q=17 ⇒ 76/765; reproduces qualitative structure but ~9% off
+(deepening-shift corrections). Exact value = same boundary-layer object as char-fn ⇒ NON-ELEMENTARY,
+parallel to Arc A c_inf. See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §10.
 
 ## Provenance
 Docs: SYRAC_CHARFN_PEAK_DERIVATION.md (Arc A), CYCLE_EQ_QX1_FINDINGS_2026_05_29.md (Arc B).
