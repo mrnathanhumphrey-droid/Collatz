@@ -73,6 +73,13 @@ shadow V_chi=Σ_{Δ≠0}(2^-|Δ|/3)chi(1-2^Δ): q=17 ⇒ 76/765; reproduces qual
 (deepening-shift corrections). Exact value = same boundary-layer object as char-fn ⇒ NON-ELEMENTARY,
 parallel to Arc A c_inf. See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §10.
 
+## FOLLOW-UP RUN 2026-05-29: collision-operator decomposition (§11) — λ=1/3 universal
+`probe_coset_collision_op_2026_05_29.py`. Decompose asym = g(chi)·c_∞·(1-λ)/(qλ-1). Empirical λ at q=17,
+n=3→4→5→6 = 0.33335, 0.33333, 0.33333 (each step ~17× closer to 1/3). MECHANISM: λ=P(a=b for Geom(2))
+=1/3 = universal qx+1 collision rate. Plugging ⇒ (1-λ)/(qλ-1) = 2/(q-3) closed-form rational. So
+**asym = (2·g(chi)/(q-3))·c_∞** — entire non-elementary content concentrated in single c_∞ per character
+(c_∞≈0.15298899 for q=17 Legendre, still PSLQ-None). Sharpens §10. See §11.
+
 ## Provenance
 Docs: SYRAC_CHARFN_PEAK_DERIVATION.md (Arc A), CYCLE_EQ_QX1_FINDINGS_2026_05_29.md (Arc B).
 Inline validator: _validate_arcB_inline_2026_05_29.py (B3-B6, X1, X2, A5 constant).

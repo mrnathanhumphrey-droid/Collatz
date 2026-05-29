@@ -206,6 +206,40 @@ non-elementary exact amplitude).
 Files: `probe_coset_closedform_2026_05_29.py`, `probe_coset_mechanism_2026_05_29.py`,
 `probe_coset_precision_2026_05_29.py`, `probe_coset_q31_leading_2026_05_29.py`.
 
+## 11. Collision-operator decomposition: λ = 1/3 universal, asym = (2 g(χ)/(q−3))·c_∞
+
+Refining §10. The asymmetry decomposes into intrinsic objects via the collision transfer:
+
+  A_χ / A_triv  →  g(χ) · c_∞ · (1 − λ) / (qλ − 1)
+
+with **λ** the limiting q-adic collision rate (lim Σ_y P(y)² ratio across levels), **c_∞** the deep-collision χ̄-moment of the leading q-digit of (X−Y), and g(χ) the Gauss sum (=√17 for Legendre mod 17, since 17≡1 mod 4).
+
+**(a) λ = 1/3 EXACTLY (universal).** From q=17 FFT at n=3,4,5,6:
+  λ(3→4)=0.3333526461, λ(4→5)=0.3333341293, λ(5→6)=0.3333334049.
+Each step ~17× closer to 1/3 (O(q⁻ⁿ) corrections vanish in the limit). Mechanism:
+λ = P(a=b for two iid Geom(2)) = Σ_a 2^{−2a} = (1/4)/(1−1/4) = **1/3** — the dominant deepening event
+at every q-adic level, with a≠b corrections (ord₂(q)|Δ) contributing only finite-n boundary terms.
+This is universal: λ_∞=1/3 for every qx+1.
+
+**(b) Clean rational factor 2/(q−3).** With λ=1/3, (1−λ)/(qλ−1) = (2/3)/((q−3)/3) = **2/(q−3)** —
+explicit closed form. Combined with the Gauss sum:
+
+  **asym(q,χ) = (2 g(χ) / (q − 3)) · c_∞.**
+
+For q=17: asym = (2·√17 / 14) · c_∞ = (√17/7) · c_∞. Consistency: g(χ)·c·(1−λ)/(qλ−1) reproduces
+the FFT asymmetry to 1e-16 at every n we checked (n=4,5,6).
+
+**(c) c_∞ ≈ 0.152988994 — the irreducible non-elementary content.** Shanks-extrapolated c sequence
+(c(n−1) at n=3,4,5,6: 0.15324792, 0.15300533, 0.15298871, 0.15298900). PSLQ on c against
+[1, c, c², c³] = None at maxcoeff 1e6; identify = None. The c_∞ piece is non-elementary — same
+boundary-layer character as the char-fn peak (Arc A's c_∞) — but **it is the ENTIRE non-elementary
+content of the asymmetry**. Everything else around it is closed-form clean.
+
+**Result.** §10 said "non-elementary." §11 says: **the non-elementary content is concentrated in a
+single intrinsic constant c_∞ per character; structurally the asymmetry is asym = (2 g(χ)/(q−3))·c_∞,
+fully clean except for c_∞.** Universal rate λ=1/3 and the clean rational factor 2/(q−3) hold for every
+qx+1; c_∞ depends on q and χ. File: `probe_coset_collision_op_2026_05_29.py`.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
@@ -218,4 +252,7 @@ empty (§7). For −1 ∈ ⟨2⟩ (q=17) the dark coset is genuinely suppressed 
 amplitude-visible (§8, correcting §7's "phase-only" overgeneralization). No hidden phase-only signal exists.
 The full multi-coset picture (§9): the number of distinct Plancherel coset-mass levels = #orbits of (×−1)
 on the quotient (Z/q^n)*/⟨2⟩ (= index if −1∈⟨2⟩, else index/2), with the ⟨2⟩-resonance always heaviest —
-a single law confirmed for all primes q=3..47 (q=31 gives a 3-level graded ladder).
+a single law confirmed for all primes q=3..47 (q=31 gives a 3-level graded ladder). §10 found a clean
+leading-order rational shadow V_χ but the exact values are non-elementary. §11 sharpens that: the
+asymmetry decomposes as asym = (2 g(χ)/(q−3))·c_∞ with **λ=1/3 universal**, isolating the
+non-elementary content in a single intrinsic c_∞ per character.
