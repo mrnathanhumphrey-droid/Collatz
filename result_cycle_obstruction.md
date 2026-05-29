@@ -2,13 +2,15 @@
 
 **Date:** 2026-05-05. Tests whether R75's algebraic identity (S_n = 3^n · ‖d_n‖²), Plancherel sign-invariance K_- = σK_+σ, and the rate-1/2 envelope on ε_n produce new obstructions to non-trivial Collatz cycles beyond existing residue-arithmetic bounds (Eliahou 1993, Steiner 1977, Simons-de Weger 2005).
 
+> **CORRECTION (2026-05-29).** The literature bound figures in the original write-up were garbled and are fixed in place below. Eliahou (1993) bounds the cycle **length** (number of terms) at ≥ 17,087,915 ≈ **1.7×10⁷** — the doc had "1.5×10⁸". Simons–de Weger (2005), extended by Hercher (2023), is an **m-cycle / circuit-count** bound — no nontrivial cycle with ≤ 91 circuits (≥ 92 required) — NOT a length bound of "1.7×10¹⁰" (a fabricated figure that had propagated through the doc). Consequence: Step 5's "1000× weaker than Eliahou" comparison is **wrong** — measured against the correct length bound (1.7×10⁷), the mis-applied envelope bound at k=10 (8.4×10⁷) is actually ~5× *larger*, and only weaker for k ≤ 9. This does NOT change the verdict: the envelope application is conceptually invalid regardless (it bounds level-convergence, not cycle length), so the framework remains silent on cycles.
+
 ## Verdict (one paragraph)
 
 > **Framework alone does NOT rule out non-trivial cycles.** All three probes return null:
 >
 > - **Sign-invariance mirror (Step 3):** the negation σ(r) = −r mod 3^k carries 3x−1 cycle residue traces into Markov-level 3x+1 cycle traces (tautological from K_- = σK_+σ proved earlier). But these correspond to NEGATIVE-integer 3x+1 cycles, not positive — the integer-level dynamics doesn't see them. **No obstruction.**
-> - **Residue-distribution gate (Step 4):** for length-L Markov-walk trajectories at k=5, S_cycle → **0.467 at L = 10⁵** (within 0.001 of 7/15 = 0.467). Cycles consistent with the chain's typical statistics produce S_cycle ≈ 7/15 by ergodic averaging — **CONSISTENT with framework, not a contradiction.** Any putative non-trivial cycle of length L >> 1 (and Eliahou forces L > 1.7×10¹⁰) would empirically match S_∞.
-> - **Rate-1/2 length bound (Step 5):** even when (mis-)applied to finite cycles, the rate-1/2 envelope gives L > 5×10⁷ at k=10 — **1000× weaker than Eliahou's L > 1.7×10¹⁰.** And conceptually misplaced: the envelope describes asymptotic stationary convergence across LEVELS k, not finite-cycle structure.
+> - **Residue-distribution gate (Step 4):** for length-L Markov-walk trajectories at k=5, S_cycle → **0.467 at L = 10⁵** (within 0.001 of 7/15 = 0.467). Cycles consistent with the chain's typical statistics produce S_cycle ≈ 7/15 by ergodic averaging — **CONSISTENT with framework, not a contradiction.** Any putative non-trivial cycle of length L >> 1 (and Eliahou forces cycle length ≥ 1.7×10⁷) would empirically match S_∞.
+> - **Rate-1/2 length bound (Step 5):** even when (mis-)applied to finite cycles, the rate-1/2 envelope gives L > 8.4×10⁷ at k=10 — comparable to (slightly exceeding) Eliahou's length bound ≥ 1.7×10⁷, and **conceptually misplaced regardless**: the envelope describes asymptotic stationary convergence across LEVELS k, not finite-cycle structure. (The original write-up claimed "1000× weaker than 1.7×10¹⁰"; both the comparison and that Eliahou figure were wrong — see correction note up top.)
 >
 > **The framework characterizes ergodic asymptotic behavior, not finite-cycle structure.** The c=7/45 closed form and its derivation chain have **no implications for cycle existence**. Eliahou-style bounds remain the binding constraints.
 
@@ -17,8 +19,8 @@
 | Bound | Source | Year | L_min |
 |---|---|---|---|
 | Steiner | first lower bound on cycle length | 1977 | varies |
-| Eliahou | residue-arithmetic + valuation pattern | 1993 | L > 1.5 × 10⁸ |
-| Simons-de Weger | Eliahou refined + machine search | 2005 | L > 17.087 × 10⁹ ≈ 1.7 × 10¹⁰ |
+| Eliahou | residue-arithmetic + valuation pattern | 1993 | length ≥ 17,087,915 ≈ 1.7 × 10⁷ |
+| Simons-de Weger (→ Hercher 2023) | m-cycle / circuit-count bound | 2005 / 2023 | no m-cycle for m ≤ 91 (≥ 92 circuits required) |
 | Modern machine search | exhaustive to ~10²⁰ | various | no second cycle found |
 
 The binding constraints are **integer-level residue dynamics**: cycle closure requires 2^V = 3^L · m for integer V and rational m, with very specific valuation-pattern constraints derivable from the cycle equation. These are independent of the Plancherel-side framework.
@@ -71,7 +73,7 @@ Compute S_cycle = Σ over coprime ξ |μ̂_cycle(ξ)|² for each trajectory. Com
 
 - **Markov-walk S_cycle CONVERGES to 7/15 as L grows.** At L=10⁵ the deviation is 0.0008 — within Monte Carlo error. This is ergodic averaging: a long trajectory of the chain's dynamics has empirical residue distribution converging to the stationary, so its Plancherel mass converges to S_∞.
 - **Uniform iid S_cycle decays as 162/L** (number of coprime characters / sample size), per the standard finite-sample Plancherel formula for iid coprime sampling. Different baseline; not the relevant model for cycle structure.
-- **For Eliahou's L > 1.7×10¹⁰**: extrapolating from the L=10⁵ Markov-walk result (deviation 0.0008 at L=10⁵, scaling roughly as 1/√L for sample-mean quantities), expected deviation at L=10¹⁰ is ~10⁻⁵. **Any putative non-trivial cycle of Eliahou-permitted length, if it follows the chain's typical residue statistics, has S_cycle ≈ 7/15 to 5+ decimal places.**
+- **For Eliahou's length ≥ 1.7×10⁷**: extrapolating from the L=10⁵ Markov-walk result (deviation 0.0008 at L=10⁵, scaling roughly as 1/√L for sample-mean quantities), expected deviation at L≈1.7×10⁷ is ~6×10⁻⁵. **Any putative non-trivial cycle of Eliahou-permitted length, if it follows the chain's typical residue statistics, has S_cycle ≈ 7/15 to 5+ decimal places.**
 
 **Step 4 verdict: NULL (consistent, not contradictory).** Long cycles' empirical S_cycle ≈ 7/15 by ergodic convergence — this is what the framework predicts. Cycle existence is fully consistent with the framework; the framework gives no test that distinguishes "cycle exists" from "cycle doesn't exist."
 
@@ -96,7 +98,7 @@ Compute S_cycle = Σ over coprime ξ |μ̂_cycle(ξ)|² for each trajectory. Com
 | 9 | 1.4 × 10⁷ |
 | 10 | 8.4 × 10⁷ |
 
-**Comparison to Eliahou:** Eliahou-Simons-de Weger gives L > 1.7 × 10¹⁰. The framework-derived bound at any k ≤ 10 is 1000× to 10⁹× weaker.
+**Comparison to Eliahou:** Eliahou (1993) gives cycle length ≥ 1.7 × 10⁷; Simons–de Weger / Hercher give ≥ 92 circuits. [CORRECTED 2026-05-29: the original "1.7×10¹⁰" was a garbled figure. Against the true length bound 1.7×10⁷, the mis-applied envelope bound below is ~5× *stronger* at k=10 (8.4×10⁷) and only weaker for k ≤ 9 — but the envelope application is conceptually invalid either way (see Step 5 verdict), so this comparison carries no weight.]
 
 **Why the framework bound is misplaced:**
 
@@ -111,11 +113,11 @@ Both involve "Plancherel mass on coprime characters mod 3^k of an empirical meas
 
 ## Overall verdict
 
-> **Framework alone does NOT rule out non-trivial cycles.** All three probes return null. The R75 / sign-invariance / rate-1/2 identities characterize **ergodic asymptotic behavior** (long-run averages of Markov chains, asymptotic Fourier structure) — they do not constrain finite-cycle structure. Putative cycles of Eliahou-permitted length (L > 1.7 × 10¹⁰) would have empirical residue statistics matching the chain's stationary by ergodic convergence; this is consistent with the framework, not a contradiction.
+> **Framework alone does NOT rule out non-trivial cycles.** All three probes return null. The R75 / sign-invariance / rate-1/2 identities characterize **ergodic asymptotic behavior** (long-run averages of Markov chains, asymptotic Fourier structure) — they do not constrain finite-cycle structure. Putative cycles of Eliahou-permitted length (length ≥ 1.7 × 10⁷) would have empirical residue statistics matching the chain's stationary by ergodic convergence; this is consistent with the framework, not a contradiction.
 
 > The c = 7/45 closed form and its derivation chain (R75/R76/R77.x/R78/R79) have **no implications for cycle existence.** The Collatz cycle problem and the rate-1/2 / 7/45 closure problem are structurally independent questions, despite both involving the same underlying dynamics.
 
-> **Existing length bounds (Eliahou 1993, refined by Simons-de Weger 2005 to L > 17 × 10⁹, plus exhaustive machine search to ~10²⁰ with no non-trivial cycle found) remain the binding obstructions.** The framework adds nothing.
+> **Existing bounds (Eliahou 1993: cycle length ≥ 1.7×10⁷; Simons–de Weger 2005 → Hercher 2023: no m-cycle with ≤ 91 circuits; plus exhaustive machine search to ~10²⁰ with no non-trivial cycle found) remain the binding obstructions.** The framework adds nothing.
 
 ## What the framework IS silent on (honest scoping)
 
