@@ -44,9 +44,17 @@ Run top to bottom; each line is independently checkable. Status column: [ ] unch
 2. **B2 is a literature pointer, not re-run this session.** Eliahou >=1.7e7 elements + m-cycle >=92 + transcendence-binding were web-verified in the prior (pre-compact) session and recorded; this validation run did NOT re-hit the web. Re-verify with a fresh search if a citation goes to paper.
 3. **X4 correction is a pending edit.** The old doc's wrong numbers are confirmed; fixing them mutates a 2026-05-05 results doc, so it awaits an explicit go.
 
-## NEXT probe (teed up, not yet run)
-F̂_p / qx+1 char-fn Plancherel: does qx+1 char-fn mass reflect ord2(q) mixing degree (q=3 full vs q=7 half-coset)?
-Same transfer operator (probe_transfer_op machinery) in q=5,7 moduli.
+## NEXT probe — RUN 2026-05-29: RESOLVED-NULL with mechanism
+qx+1 char-fn Plancherel mass vs ord2(q) mixing (q=3 full vs q=7 half-coset).
+`python probe_qx1_coset_plancherel_2026_05_29.py`. Result: NULL — q=7 mass splits EXACTLY 50/50
+between the <2>-coset and the dark coset, maxH/maxOut=1. Mechanism (verified 1e-16): mu_hat(-xi)=conj(mu_hat(xi))
+(P real) and -1 not in <2> mod 7, so negation is a magnitude-preserving bijection <2> <-> complement,
+forcing 50/50 independent of Syracuse structure. => Plancherel MASS is symmetry-protected and cannot see
+ord2(q); ord2(q) is a PHASE phenomenon. Refines B6: powers-of-2 transfer op stays magnitude-complete at q=7
+(dark coset is a pure conjugate replica). See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §7.
+
+## NEW open (if pursued)
+A phase-sensitive observable that DOES expose ord2(q) half-mixing (Plancherel mass provably can't).
 
 ## Provenance
 Docs: SYRAC_CHARFN_PEAK_DERIVATION.md (Arc A), CYCLE_EQ_QX1_FINDINGS_2026_05_29.md (Arc B).

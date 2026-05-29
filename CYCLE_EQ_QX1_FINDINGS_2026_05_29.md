@@ -83,10 +83,47 @@ The qx+1 Syracuse map n → (qn+1)/2^v:
   root mod 3ⁿ). For q=7 the qx+1 transfer operator carries a 2-fold coset structure.
 - File: `probe_3adic_cycle_2026_05_29.py` + inline.
 
+## 7. qx+1 char-fn Plancherel mass does NOT see ord₂(q) — symmetry-protected null (RESOLVED)
+
+The teed-up open question. Built the qx+1 Syracuse offset char-fn over Z/q^n
+(X_n^(q) = Σ_{j} q^{j-1} 2^{-S_j} mod q^n — the 3→q generalization of the validated q=3 offset
+builder), partitioned the units (Z/q^n)* by cosets of the cyclic subgroup H = ⟨2⟩, and measured the
+Plancherel mass Σ|μ̂(ξ)|² per coset. Prediction: q=7's half-mixing (index-2 ⟨2⟩) would SUPPRESS the
+dark (non-⟨2⟩) coset. **Falsified — exact null:**
+
+| q | mixing | idx | mass in ⟨2⟩ | mass in dark coset | maxH/maxOut |
+|---|---|---|---|---|---|
+| 3 | full | 1 | 1.000000 | 0 | (no dark coset) |
+| 5 | full | 1 | 1.000000 | 0 | (no dark coset) |
+| 7 | half | 2 | **0.500000** | **0.500000** | **1.0000** |
+
+For q=7 the split is EXACTLY 50/50 with identical per-coset maxima.
+
+**Mechanism (verified to 1e-16).** The offset distribution is real ⇒ μ̂(−ξ) = conj(μ̂(ξ)) ⇒
+|μ̂(−ξ)| = |μ̂(ξ)|. And −1 ∉ ⟨2⟩ mod 7 (6 ∉ {1,2,4}), so negation ξ→−ξ is a magnitude-preserving
+BIJECTION between ⟨2⟩ and the complementary coset (verified: complement == −1·⟨2⟩ exactly). This forces
+the 50/50 split independent of any Syracuse-specific structure. For q=3,5, −1 ∈ ⟨2⟩ (2≡−1 mod 3;
+4=2² mod 5), so conjugate pairs stay inside the single full coset.
+
+**Consequences.**
+- The dark coset at q=7 is a PURE CONJUGATE REPLICA — zero independent magnitude information.
+  Plancherel mass (a magnitude / 2nd-moment observable) is symmetry-protected and structurally cannot
+  see ord₂(q). **ord₂(q) is a PHASE phenomenon, not an amplitude one.**
+- Refines §6 / B6: the powers-of-2 transfer operator at q=7 reaches only ⟨2⟩, but since the complement
+  is its conjugate mirror, every |μ̂| value also appears in ⟨2⟩ ⇒ the 1-D reduction stays
+  **magnitude-complete** at q=7. So the q=3 transfer-op cleanliness (A2's exact 2.78e-17 FFT match) was
+  NOT actually contingent on full mixing — it survives half mixing.
+- The only amplitude-level trace of ord₂(q): the global argmax bounces between cosets for q=7 (its
+  equal-magnitude conjugate twin lives in the other coset), vs trivially always in ⟨2⟩ for q=3,5.
+- File: `probe_qx1_coset_plancherel_2026_05_29.py` (+ inline conjugation-symmetry check).
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
 cycle bound. The productive yield is the **α_det closed-form family + its qx+1 generalization** (pole at
 q=4=2^{E[v]}, q=3 unique converging odd q), the **clean θ form y^x=2y−1**, and the **universal
-2-adic/q-adic asymmetry with ord₂(q) fine structure**. Open/next: does the qx+1 char-fn Plancherel mass
-reflect the ord₂(q) mixing degree (q=3 full vs q=7 half-coset)? — the F̂_p-saturation probe.
+2-adic/q-adic asymmetry with ord₂(q) fine structure**. The teed-up open question — does the qx+1 char-fn
+Plancherel mass reflect ord₂(q) mixing? — is now **RESOLVED-NULL with mechanism (§7)**: Plancherel mass
+is symmetry-protected to an exact 50/50 coset split (conjugation + −1 ∉ ⟨2⟩), so ord₂(q) is a PHASE,
+not an amplitude, phenomenon; the powers-of-2 transfer operator stays magnitude-complete even at half
+mixing. Next (if pursued): a phase-sensitive observable to expose ord₂(q) directly.
