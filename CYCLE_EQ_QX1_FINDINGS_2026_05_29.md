@@ -148,6 +148,35 @@ replica that is mass-locked by reality of P. So there is **no hidden phase-only 
 chase**: for −1∉⟨2⟩ the dark coset is informationally empty; for −1∈⟨2⟩ it is already amplitude-visible.
 File: `probe_qx1_neg1_coset_2026_05_29.py`.
 
+## 9. Multi-coset generalization (q=31, index 6) + the general level-count LAW
+
+q=31: ord₂ mod 31 = 5 ⇒ ⟨2⟩={1,2,4,8,16}, index 6 ⇒ 6 cosets; −1 ∉ ⟨2⟩ (ord₂ odd). Quotient
+Q=(Z/31^n)*/⟨2⟩ ≅ Z/6, conjugation (×−1) = its order-2 element ⇒ the 6 cosets fall into 3 conjugate-equal
+pairs. Result (`probe_qx1_multicoset_2026_05_29.py`), stable across n=2,3,4:
+
+| pair | per-coset mass | pair total | reading |
+|---|---|---|---|
+| ⟨2⟩-pair (resonant, contains powers of 2) | 0.228461 | 0.456922 | heaviest |
+| middle | 0.151084 | 0.302168 | |
+| low | 0.120455 | 0.240910 | most suppressed |
+
+Within each pair the two cosets are equal to 1e-17 (reality of P). THREE DISTINCT levels — a graded
+hierarchy, ⟨2⟩-pair on top. (Per-coset masses are converged constants in n — intrinsic limiting coset
+masses; no closed form yet, cf. q=17's 0.5451.)
+
+**GENERAL LAW (derived + confirmed for every prime q=3..47).** The number of distinct Plancherel
+coset-mass levels = the number of ORBITS of the conjugation involution (×−1) acting on the cyclic
+quotient Q = (Z/q^n)*/⟨2⟩ (|Q| = index):
+
+  #levels = index       if −1 ∈ ⟨2⟩   (conjugation trivial on Q ⇒ index fixed points)
+          = index / 2   if −1 ∉ ⟨2⟩   (conjugation = order-2 element ⇒ index/2 swapped pairs)
+
+Confirmed 14/14 primes: q=7→1, q=17→2, q=23→1, q=31→3, q=41→2, q=43→3, q=47→1, … The Syracuse dynamics
+ACHIEVES the maximum allowed by symmetry — every conjugation-orbit class comes out distinct, no accidental
+coincidences. **This unifies §7 (q=7: 1 level), §8 (q=17: 2 levels), §9 (q=31: 3 levels):** the ⟨2⟩
+powers-of-2 resonance always tops a graded ladder whose length is fixed by how −1 sits relative to ⟨2⟩.
+File: `probe_qx1_multicoset_2026_05_29.py` (+ inline q=3..47 law sweep).
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
@@ -158,3 +187,6 @@ Plancherel mass reflect ord₂(q) mixing? — is **RESOLVED (§7 + §8)**: it de
 For −1 ∉ ⟨2⟩ (q=7,23) the dark coset is the conjugate mirror, mass-locked to 50/50 and informationally
 empty (§7). For −1 ∈ ⟨2⟩ (q=17) the dark coset is genuinely suppressed (54.5/45.5) — half-mixing IS
 amplitude-visible (§8, correcting §7's "phase-only" overgeneralization). No hidden phase-only signal exists.
+The full multi-coset picture (§9): the number of distinct Plancherel coset-mass levels = #orbits of (×−1)
+on the quotient (Z/q^n)*/⟨2⟩ (= index if −1∈⟨2⟩, else index/2), with the ⟨2⟩-resonance always heaviest —
+a single law confirmed for all primes q=3..47 (q=31 gives a 3-level graded ladder).

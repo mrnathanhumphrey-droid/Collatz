@@ -60,8 +60,14 @@ Pursued the "phase observable" — it was a phantom. `python probe_qx1_neg1_cose
 genuinely SUPPRESSED, mass split 0.5451/0.4549 (stable n=2,3,4) — half-mixing IS amplitude-visible.
 No hidden phase-only signal. See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §8.
 
+## FOLLOW-UP RUN 2026-05-29: multi-coset q=31 + general law (§9)
+`python probe_qx1_multicoset_2026_05_29.py`. q=31 (⟨2⟩ index 6, −1∉⟨2⟩): 6 cosets → 3 conjugate-equal pairs
+→ 3 DISTINCT mass levels (per-coset 0.228461/0.151084/0.120455, stable n=2,3,4), ⟨2⟩-pair heaviest. GENERAL
+LAW (confirmed all primes q=3..47): #distinct coset-mass levels = #orbits of (×−1) on (Z/q^n)*/⟨2⟩ = index
+if −1∈⟨2⟩ else index/2. Unifies §7/§8/§9. See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §9.
+
 ## NEW open (if pursued)
-Closed form for the q=17 stable coset split ≈0.5451; richer index>2 cases (q=31, idx 6).
+Closed form for the converged coset-mass levels (q=17: 0.5451; q=31: 0.228461/0.151084/0.120455).
 
 ## Provenance
 Docs: SYRAC_CHARFN_PEAK_DERIVATION.md (Arc A), CYCLE_EQ_QX1_FINDINGS_2026_05_29.md (Arc B).
