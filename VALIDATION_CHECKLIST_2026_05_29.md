@@ -53,8 +53,15 @@ forcing 50/50 independent of Syracuse structure. => Plancherel MASS is symmetry-
 ord2(q); ord2(q) is a PHASE phenomenon. Refines B6: powers-of-2 transfer op stays magnitude-complete at q=7
 (dark coset is a pure conjugate replica). See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §7.
 
+## FOLLOW-UP RUN 2026-05-29: §7 CORRECTED by §8
+Pursued the "phase observable" — it was a phantom. `python probe_qx1_neg1_coset_2026_05_29.py`. The §7
+"ord2(q) is phase-only / mass can't see it" was a q=7 ARTIFACT. True switch = −1∈⟨2⟩: −1∉⟨2⟩ (q=7,23)
+⇒ dark coset = conjugate mirror, mass locked 50/50, informationally empty; −1∈⟨2⟩ (q=17) ⇒ dark coset
+genuinely SUPPRESSED, mass split 0.5451/0.4549 (stable n=2,3,4) — half-mixing IS amplitude-visible.
+No hidden phase-only signal. See CYCLE_EQ_QX1_FINDINGS_2026_05_29.md §8.
+
 ## NEW open (if pursued)
-A phase-sensitive observable that DOES expose ord2(q) half-mixing (Plancherel mass provably can't).
+Closed form for the q=17 stable coset split ≈0.5451; richer index>2 cases (q=31, idx 6).
 
 ## Provenance
 Docs: SYRAC_CHARFN_PEAK_DERIVATION.md (Arc A), CYCLE_EQ_QX1_FINDINGS_2026_05_29.md (Arc B).

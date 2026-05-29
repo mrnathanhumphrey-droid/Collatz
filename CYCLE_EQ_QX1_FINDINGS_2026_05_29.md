@@ -108,7 +108,9 @@ the 50/50 split independent of any Syracuse-specific structure. For q=3,5, −1 
 **Consequences.**
 - The dark coset at q=7 is a PURE CONJUGATE REPLICA — zero independent magnitude information.
   Plancherel mass (a magnitude / 2nd-moment observable) is symmetry-protected and structurally cannot
-  see ord₂(q). **ord₂(q) is a PHASE phenomenon, not an amplitude one.**
+  see ord₂(q). ~~**ord₂(q) is a PHASE phenomenon, not an amplitude one.**~~
+  **[OVERGENERALIZED — REFINED IN §8: this holds only when −1 ∉ ⟨2⟩ (q=7,23). When −1 ∈ ⟨2⟩ (q=17),
+  half-mixing IS amplitude-visible in Plancherel mass. ord₂(q) is NOT purely phase.]**
 - Refines §6 / B6: the powers-of-2 transfer operator at q=7 reaches only ⟨2⟩, but since the complement
   is its conjugate mirror, every |μ̂| value also appears in ⟨2⟩ ⇒ the 1-D reduction stays
   **magnitude-complete** at q=7. So the q=3 transfer-op cleanliness (A2's exact 2.78e-17 FFT match) was
@@ -117,13 +119,42 @@ the 50/50 split independent of any Syracuse-specific structure. For q=3,5, −1 
   equal-magnitude conjugate twin lives in the other coset), vs trivially always in ⟨2⟩ for q=3,5.
 - File: `probe_qx1_coset_plancherel_2026_05_29.py` (+ inline conjugation-symmetry check).
 
+## 8. Refinement of §7: half-mixing IS amplitude-visible — q=7 was symmetry-protected (the −1∈⟨2⟩ switch)
+
+§7's "ord₂(q) is a PHASE phenomenon, Plancherel mass can't see it" was **overgeneralized from q=7.**
+The true control is whether **−1 ∈ ⟨2⟩** (verified `probe_qx1_neg1_coset_2026_05_29.py`):
+
+| q | mixing | −1∈⟨2⟩ | mass ⟨2⟩ / dark | maxH/maxDark | reading |
+|---|---|---|---|---|---|
+| 11 | full (idx 1) | yes | 1.000 / — | — | no dark coset |
+| 7  | half | NO (ord₂=3 odd) | 0.50000 / 0.50000 | 1.000 | symmetry-locked |
+| 23 | half | NO (ord₂=11 odd) | 0.50000 / 0.50000 | 1.000 | symmetry-locked |
+| 17 | half | YES (2⁴=−1 mod 17) | **0.5451 / 0.4549** | 1.16–1.20 | GENUINE asymmetry, mass-visible |
+
+(q=17 split is stable across n=2,3,4 at ≈0.54506.)
+
+**Mechanism.** Conjugation μ̂(−ξ)=conj(μ̂(ξ)) acts on the ⟨2⟩-cosets via multiplication by −1:
+- **−1 ∉ ⟨2⟩** (q=7,23; ord₂ odd): −1 sends ⟨2⟩ to the *other* coset ⇒ dark coset = conjugate MIRROR of
+  ⟨2⟩ ⇒ equal mass FORCED (50/50), and the dark coset carries **zero independent information** (pure
+  replica). Half-mixing is invisible to mass AND there is no hidden phase signal — the effective frequency
+  space is just ⟨2⟩ with conjugate-symmetric extension.
+- **−1 ∈ ⟨2⟩** (q=17; ord₂ even, 2^{ord₂/2}=−1): −1 fixes EACH coset ⇒ no symmetry relates ⟨2⟩ to the
+  dark coset ⇒ masses unconstrained ⇒ the powers-of-2 resonance genuinely concentrates in ⟨2⟩ and the
+  dark coset is **suppressed (54.5 vs 45.5)** — half-mixing shows up directly in Plancherel mass.
+
+**Corrected conclusion.** Half-mixing (ord₂(q)<φ) generically DOES register in amplitude/Plancherel mass
+(q=17). The phantom "phase-only" reading came from q=7, where −1∉⟨2⟩ makes the dark coset a conjugate
+replica that is mass-locked by reality of P. So there is **no hidden phase-only half-mixing signal to
+chase**: for −1∉⟨2⟩ the dark coset is informationally empty; for −1∈⟨2⟩ it is already amplitude-visible.
+File: `probe_qx1_neg1_coset_2026_05_29.py`.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
 cycle bound. The productive yield is the **α_det closed-form family + its qx+1 generalization** (pole at
 q=4=2^{E[v]}, q=3 unique converging odd q), the **clean θ form y^x=2y−1**, and the **universal
 2-adic/q-adic asymmetry with ord₂(q) fine structure**. The teed-up open question — does the qx+1 char-fn
-Plancherel mass reflect ord₂(q) mixing? — is now **RESOLVED-NULL with mechanism (§7)**: Plancherel mass
-is symmetry-protected to an exact 50/50 coset split (conjugation + −1 ∉ ⟨2⟩), so ord₂(q) is a PHASE,
-not an amplitude, phenomenon; the powers-of-2 transfer operator stays magnitude-complete even at half
-mixing. Next (if pursued): a phase-sensitive observable to expose ord₂(q) directly.
+Plancherel mass reflect ord₂(q) mixing? — is **RESOLVED (§7 + §8)**: it depends on whether −1 ∈ ⟨2⟩.
+For −1 ∉ ⟨2⟩ (q=7,23) the dark coset is the conjugate mirror, mass-locked to 50/50 and informationally
+empty (§7). For −1 ∈ ⟨2⟩ (q=17) the dark coset is genuinely suppressed (54.5/45.5) — half-mixing IS
+amplitude-visible (§8, correcting §7's "phase-only" overgeneralization). No hidden phase-only signal exists.
