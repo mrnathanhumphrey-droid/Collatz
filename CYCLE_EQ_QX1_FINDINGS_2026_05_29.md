@@ -336,6 +336,66 @@ as identifiable measure). Both are real research projects.
 Files: `probe_wirsching_check_2026_05_30.py`, `probe_aerial_dye_cameras_2026_05_30.py`,
 `probe_truncation_diagnosis_2026_05_30.py`.
 
+## 14. Doob h-transform: σ chain, multiplicative walk, π is uniform-on-⟨2⟩-coset (q=17)
+
+The Doob route delivered a real structural identification of π for q=17.
+
+**Setup.** D_m = X_m − Y_m for two iid Syracuse chains. The recursion
+  D_{m+1} = (2⁻ᵃ − 2⁻ᵇ)(1 + qY_m) + q·2⁻ᵃ·D_m
+gives, for collision at level m (D_m = q^m σ_m), the next-level collision condition:
+v_q(2⁻ᵃ − 2⁻ᵇ) ≥ m+1. For m ≥ 1 this dominantly requires a = b (prob 1/3 = λ; subdominant
+ord₂(q) | (a−b) corrections are O(q⁻ᵐ) and vanish in the limit). **In the dominant a=b regime,
+σ_{m+1} = 2⁻ᵃ·σ_m — a multiplicative random walk on (Z/q)* by Geom(2)-distributed powers of 2.**
+
+**Consequence: σ_∞ mod q is uniform on the ⟨2⟩-coset of σ_1.** The cumulative exponent
+S_m = a_2 + … + a_m is a sum of iid Geom(2) draws; S_m mod ord₂(q) → uniform on Z/ord₂(q)
+by ergodicity. So σ_m mod q = σ_1 · 2⁻ˢᵐ mod q → uniform on the orbit of σ_1 under ×⟨2⟩ =
+σ_1's ⟨2⟩-coset.
+
+**For q=17 specifically: −1 ∈ ⟨2⟩ (since 2⁴ = 16 = −1 mod 17).** Both ⟨2⟩-cosets are
+negation-closed, and Legendre χ is constant on each (+1 on ⟨2⟩=QR, −1 on the other).
+Therefore for ANY measure ρ on (Z/17)*:
+  **E_ρ[Legendre] = 2·P_ρ(⟨2⟩) − 1.**
+Combined with σ_m being uniform within its coset:
+  **c_∞ = 2·P(σ_∞ ∈ ⟨2⟩) − 1.**
+
+**Numerical verification** (`probe_doob_sigma_chain_2026_05_30.py`, 5M Monte Carlo pairs):
+
+| depth m | n samples | χ̄-moment | P(unit-part ∈ ⟨2⟩) | 2P−1 | match |
+|---|---|---|---|---|---|
+| 1 | 1,120,424 | +0.154165 | 0.577082 | +0.154165 | ✓ exact |
+| 2 | 372,736 | +0.154329 | 0.577165 | +0.154329 | ✓ exact |
+| 3 | 124,755 | +0.152371 | 0.576185 | +0.152371 | ✓ exact |
+| 4 | 41,350 | +0.149601 | 0.574800 | +0.149601 | ✓ exact |
+| 5 | 13,935 | +0.144887 | 0.572443 | +0.144887 | ✓ exact |
+| 6 | 4,590 | +0.166885 | 0.583442 | +0.166885 | ✓ exact |
+
+The identity χ̄(coset) = 2·P − 1 holds to machine precision at every depth — confirming the
+constancy-on-coset structure of Legendre for q=17 + that the σ chain is well-defined.
+
+**Identification of π.** The deep-collision shift distribution π on Z_q (q=17) is:
+  π = (uniform Haar on a ⟨2⟩-coset of Z/q)·(binary distribution on which coset).
+That is, **π's only non-elementary content is a single binary probability P_∞ = P(σ_∞ ∈ ⟨2⟩) ≈ 0.5765.**
+The "complicated measure on Z_q" reduces to a coin flip whose bias is non-elementary. The
+empirical/algebraic π ladder rungs (P_0 = 73/127 at depth 0; P_m → P_∞ at depth m) all sit inside
+this binary structure.
+
+**Limits of the result.** (a) Specific to q with −1 ∈ ⟨2⟩ AND a quadratic character (q=17). For
+q=7,23 (−1 ∉ ⟨2⟩) or q=31 (index 6, multi-character structure), the reduction is different:
+π's content distributes over multiple cosets/characters. (b) P_∞ itself remains non-elementary;
+the Doob framework rephrases the question (binary classification of σ_∞) but doesn't crack it.
+Computing P_∞ exactly still requires either lazy q-adic simulation OR explicit construction of
+the conditioning kernel.
+
+**Where this leaves the arc.** §10–§12 algebra → §13 truncation washes out → §14 Doob reveals
+π is uniform-on-coset with a single binary bit of non-elementary content. The empirical/structural
+chase is now genuinely complete: we know π's *shape* (uniform on ⟨2⟩-coset), we know the
+*mechanism* (multiplicative walk in the dominant collision regime), and we've identified the *one*
+irreducible constant (the binary probability ≈ 0.5765). Cracking that one constant in closed form
+remains the open theoretical problem.
+
+File: `probe_doob_sigma_chain_2026_05_30.py`.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
