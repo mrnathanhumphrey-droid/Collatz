@@ -240,6 +240,44 @@ single intrinsic constant c_∞ per character; structurally the asymmetry is asy
 fully clean except for c_∞.** Universal rate λ=1/3 and the clean rational factor 2/(q−3) hold for every
 qx+1; c_∞ depends on q and χ. File: `probe_coset_collision_op_2026_05_29.py`.
 
+## 12. Depth-resolved c(m): a rational ladder toward c_∞, with c(0) = 19/127 EXACT
+
+Refining §11. From a single level-n FFT, c(m) at every depth m=0..n−1 is extractable via the
+autocorrelation P_D = IFFT(|μ̂|²). Each c(m) is a finite weighted character sum ⇒ **rational at every
+finite m** (computable in exact fraction arithmetic). Empirical extraction at q=17, n=6, plus exact
+fraction computation:
+
+| m | c(m) | denominator |
+|---|---|---|
+| 0 | **19/127** (exact) | 127 (= 2⁷−1, Mersenne) |
+| 1 | 0.153178230055 | ~10³⁴ (rational, ladder explodes) |
+| 2 | 0.153247920779 | rational |
+| 3 | 0.153005331692 | rational |
+| 4 | 0.152988709047 | rational |
+| 5 | 0.152988999414 | rational |
+| ∞ | ≈ 0.152988994 (Shanks) | limit of rationals with diverging denominators |
+
+**c(0) = 19/127 closed form** (verified exact via probe_c_exact_rationals_2026_05_29.py): from §11
+notation, c(0) = N(0)/T(0) with N(0) = V_χ = 76/765 (the leading-order sum from §10's V_χ mechanism!)
+and T(0) = 508/765 (the depth-0 termination probability), giving c(0) = 76/508 = 19/127. So **V_χ from §10
+is literally the numerator of the depth-0 rung**; the 9% gap between V_χ-prediction and the true asym is
+exactly the gap c(0) ≠ c_∞ — the depth-correction that ripples through deeper rungs.
+
+**c(1) is rational** with ~10³⁴-digit numerator and denominator (verified to 1e-13 vs FFT); subsequent
+c(m) explode further. So the entire **rational ladder c(0), c(1), c(2), ..., c_∞** lives in Q with each
+rung exactly computable, but denominators grow super-exponentially ⇒ the limit c_∞ is generically
+non-elementary (matches PSLQ failures up to degree 4 / height 1e7 on the Shanks-extrapolated value).
+
+**Final picture.** asym = (2 g(χ)/(q−3))·c_∞ with:
+- **2/(q−3)** rational (from λ=1/3, §11)
+- **g(χ)** Gauss sum (√q for q≡1 mod 4 + Legendre)
+- **c_∞** = limit of an explicit rational ladder with anchor c(0) = 19/127 (= V_χ/T_χ from §10's V_χ)
+  and depth-corrections that compound super-exponentially — the irreducible boundary-layer residual,
+  same flavor as Arc A's c_∞.
+
+For q=17 Legendre: asym = (√17/7)·c_∞, c(0) = 19/127, c_∞ ≈ 0.152988994.
+File: `probe_c_inf_depth_extrap_2026_05_29.py`, `probe_c_exact_rationals_2026_05_29.py`.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new

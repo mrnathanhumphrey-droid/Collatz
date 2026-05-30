@@ -80,6 +80,14 @@ n=3→4→5→6 = 0.33335, 0.33333, 0.33333 (each step ~17× closer to 1/3). MEC
 **asym = (2·g(chi)/(q-3))·c_∞** — entire non-elementary content concentrated in single c_∞ per character
 (c_∞≈0.15298899 for q=17 Legendre, still PSLQ-None). Sharpens §10. See §11.
 
+## FOLLOW-UP RUN 2026-05-29: depth-resolved c(m) ladder, c(0)=19/127 exact (§12)
+`probe_c_inf_depth_extrap_2026_05_29.py` + `probe_c_exact_rationals_2026_05_29.py`. From n=6 FFT P_D,
+extract c(m) at every depth m=0..5. **c(0) = 19/127 EXACTLY** (verified via Python fractions), with
+structure c(0) = V_χ/T_χ = (76/765)/(508/765) where V_χ=76/765 is the §10 leading-order sum and T_χ is
+the depth-0 termination prob. c(1) IS rational with ~10^34-digit num/den (matches FFT to 1e-13);
+c(m) denominators explode. c_∞ = limit of an explicit rational ladder anchored at 19/127, generically
+non-elementary. Final structure: asym = (2 g(chi)/(q-3))·c_∞, fully clean except for c_∞.
+
 ## Provenance
 Docs: SYRAC_CHARFN_PEAK_DERIVATION.md (Arc A), CYCLE_EQ_QX1_FINDINGS_2026_05_29.md (Arc B).
 Inline validator: _validate_arcB_inline_2026_05_29.py (B3-B6, X1, X2, A5 constant).
