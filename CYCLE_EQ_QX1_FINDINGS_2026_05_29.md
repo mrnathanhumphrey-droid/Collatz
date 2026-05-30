@@ -396,6 +396,55 @@ remains the open theoretical problem.
 
 File: `probe_doob_sigma_chain_2026_05_30.py`.
 
+## 15. CORRECTION to §14 + spectral decomposition of σ chain
+
+The structural claim in §14 — "in dominant a=b regime σ_{m+1} = 2⁻ᵃσ_m preserves coset ⇒ P_m = P_1
+for m ≥ 1 modulo O(2⁻¹³⁶) corrections" — is **incomplete**. Direct test (`probe_metaphor_
+experiments_2026_05_30.py`, experiment D): c(2) at FFT n=3 boundary vs n=6 interior gives
+**identical** value 0.153247920779. So c(m) variation across m is **real structure, not
+finite-n artifact**. Empirically:
+
+| m | c(m) | c(m) − c(1) | comment |
+|---|---|---|---|
+| 0 | 19/127 = 0.149606 | −0.00357 | exact rational, boundary jump |
+| 1 | 0.153178 | 0 | exact rational, 10³⁴ denom |
+| 2 | 0.153248 | +7e-5 | ≠ c(1), real variation |
+| 3 | 0.153005 | −2e-4 | |
+| 4 | 0.152989 | −2e-4 | |
+| 5 | 0.152989 | −2e-4 | converged toward c_∞ |
+
+**What went wrong in §14:** the chain interior (X_m, Y_m) at depth m is fresh iid Syracuse from
+new Geom sequences (a_{m+1}, a_{m+2}, …) — *independent* of σ_1's history. So σ_m's coset isn't
+inherited from σ_1; it's set by the fresh interior pair's depth-conditional structure. P_m is a
+*stationary* limit of independent depth-conditional shifts, not a propagation of a depth-1 boundary.
+The closed-form Doob shortcut collapses; the actual picture is closer to "iid Syracuse difference
+coset distribution at depth m, conditioned on collision-then-decollision pattern."
+
+**Spectral decomposition (experiment A) IS clean and real.** The within-coset multiplicative
+transfer operator T f(σ) = E_{a~Geom(1/2)}[f(2⁻ᵃσ)] on ⟨2⟩ ≅ Z/8 diagonalizes via characters
+χ_k(σ) = ω^(k·log₂σ), ω = e^(2πi/8). Eigenvalues are closed-form:
+
+  λ_k = E[χ_k(2⁻ᵃ)] = ω⁻ᵏ / (2 − ω⁻ᵏ).
+
+Explicit values: λ_0 = 1 (Haar invariant); **λ_4 = −1/3 EXACTLY** (sign character on Z/8);
+λ_{1,7} = ±i·conjugate pair with |λ| = 1/√(5 − 2√2) ≈ 0.679; λ_{2,6} with |λ| = 1/√5; λ_{3,5}
+with |λ| = 1/√(5 + 2√2). **Coincidence note:** |λ_4| = 1/3 matches the empirical cross-depth
+collision rate. These are formally different objects (within-coset mixing vs cross-depth survival)
+but the same number — possibly a structural relationship worth investigating.
+
+**Other experiments confirmed:** (B) temperature sweep p = 0.1, 0.3, 0.5, 0.7, 0.9 gives smooth
+c(0)(p) curve from −0.13 to +0.80 through 19/127 at p=1/2. (C) chain is **irreversible**:
+K(1,9)/K(9,1) = 64, detailed balance fails ⇒ P_∞ requires full transfer-op spectral structure.
+
+**Where this leaves the π chase.** The §14 Doob framework gave a useful framing (the χ̄ = 2P−1
+identity is a tautology of Legendre's coset-constancy) and identified λ_4 = −1/3 as the within-coset
+spectral signature. But the simple "P_m constant for m ≥ 1" prediction failed empirically. The
+actual mechanism for cross-coset transitions at depth m ≥ 1 is not the rare subdominant ord₂(q^m)|Δ
+events I posited — it's the **fresh independence of (X_m, Y_m) from σ_1 at every depth**, which I
+missed. P_∞ is genuinely a *limiting* stationary, not a depth-1 rational.
+
+File: `probe_metaphor_experiments_2026_05_30.py`.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
