@@ -288,6 +288,54 @@ small rational. ⇒ **c(0)=19/127 cleanliness is depth-0-specific** — at depth
 N(0)/T(0) directly with no k-sum to integrate, and a coincidental gcd of 4 produces the small denominator.
 At depth ≥ 1 the rational ladder is genuinely giant.
 
+## 13. Wirsching ✗ + K=2 truncation washes out π; 17 closed-form mod-q deepening rates as byproduct
+
+Tested two routes toward c_∞ via the deep-collision shift distribution π.
+
+**(a) Wirsching's φ doesn't match π** (`probe_wirsching_check_2026_05_30.py`). Built φ_17 numerically as
+the fixed point of W_17 f(x) = (17/16) ∫_{17x−16}^{17x} f (the qx+1 analog of Wirsching's predecessor
+density operator). φ_17 is near-uniform on [0,1] (max 1.0625), giving near-Haar 17-digit distribution and
+Legendre χ̄-moment **−0.0323**, vs c_∞ ≈ 0.1530 and c(0) = 0.1496. Self-convolution φ_17 * φ_17^rev also
+fails (moment 0.0022). Wirsching's predecessor-density framework is structurally too smooth — it doesn't
+crack π.
+
+**(b) K=2 truncated kernel under Haar prior washes out π's structure** (`probe_aerial_dye_cameras_
+2026_05_30.py` + `probe_truncation_diagnosis_2026_05_30.py`). Built the 289×289 deepening kernel
+K(s, s′) on Z/q² with Haar marginal on higher digits. Leading eigenvalue came out to **1/q = 0.0588**, not
+the true 1/3. Diagnostic confirms: row sums of K depend **only on s mod q** (std=0 within each mod-q
+class). Under Haar prior the chain mixes to Haar in one step ⇒ leading eigenvalue = avg row sum = 1/q.
+The true 1/3 survival rate requires the non-Haar higher-digit marginal — which is itself a property of π,
+i.e. self-referential. Resolution requires (i) lazy q-adic simulation (state as digits-on-demand) or
+(ii) self-consistent power iteration with on-demand higher-digit sampling.
+
+**(c) Byproduct: 17 closed-form mod-q deepening rates.** The row sums by mod-q class are:
+
+| r | rate | r | rate | r | rate |
+|---|---|---|---|---|---|
+| 0 | **0.193637** | 6 | 0.042361 | 12 | 0.056131 |
+| 1 | 0.051782 | 7 | 0.039468 | 13 | 0.026117 |
+| 2 | 0.074965 | 8 | 0.044920 | 14 | 0.067438 |
+| 3 | 0.067438 | 9 | 0.044920 | 15 | 0.074965 |
+| 4 | 0.026117 | 10 | 0.039468 | 16 | 0.051782 |
+| 5 | 0.056131 | 11 | 0.042361 |   |   |
+
+Each rate is **rate(r) = Σ_{δ ≡ −r mod q} P_D(δ)** for the explicit Δ = 2⁻ᵃX* − 2⁻ᵇY* distribution — a
+finite weighted character sum, closed-form rational like c(0). The χ(−1)=+1 symmetry is directly visible
+(rate(r) = rate(17−r) for all r∈[1,16]; rate(0) standalone). Mean = 1/q exactly. These 17 rates are
+**conserved scalars of the chain** — water-test diagnostics that survive any finite truncation. They
+don't determine π, but they constrain it. (For comparison: π's mod-q marginal is NOT equal to these rates
+normalized — that would be the Haar π, which gives χ̄-moment 0, not 0.153.)
+
+**Cumulative status of the deep-π chase:** §10 leading rational V_χ → §11 universal λ=1/3 + clean rational
+2/(q−3) → §12 c(m) rational ladder, c(0)=19/127, no V/T miracle at depth ≥1 → §13 Wirsching ✗ + K=2-with-
+Haar washes out π. The empirical/algebraic route is genuinely exhausted; cracking c_∞ requires either
+(a) lazy q-adic Markov simulation (computational, gives arbitrary precision but no closed form), or
+(b) genuinely new theory (Doob h-transform with explicit collision probability ψ, characterization of π
+as identifiable measure). Both are real research projects.
+
+Files: `probe_wirsching_check_2026_05_30.py`, `probe_aerial_dye_cameras_2026_05_30.py`,
+`probe_truncation_diagnosis_2026_05_30.py`.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
