@@ -278,6 +278,16 @@ non-elementary (matches PSLQ failures up to degree 4 / height 1e7 on the Shanks-
 For q=17 Legendre: asym = (√17/7)·c_∞, c(0) = 19/127, c_∞ ≈ 0.152988994.
 File: `probe_c_inf_depth_extrap_2026_05_29.py`, `probe_c_exact_rationals_2026_05_29.py`.
 
+**Negative result: no V/T-style miracle at c(1) (`probe_c1_structure_2026_05_30.py`).** Hunted for a
+depth-1 analog of c(0)=19/127. Decomposing c(1) = (2¹³⁶X + Y)/(2¹³⁶X′ + Y′), the leading-order ratio
+X/X′ matches FFT c(1) to 3e-13 with structure 1466497186566969389 / 9573796394196615981 — factorization
+7·17·67·(15-digit) / 3⁶·(17-digit). The 17 (=q) and 3⁶ (deepening rate to power 6) are recognizable, but
+there is **no analog of c(0)'s factor-of-4 reduction** that took 76/508 → 19/127. The 17-term weighted
+sum at depth 1 (collapsed to 9 via the χ(−1)=+1 symmetry N(−s)=N(s)) does not telescope into a clean
+small rational. ⇒ **c(0)=19/127 cleanliness is depth-0-specific** — at depth 0 the formula reduces to
+N(0)/T(0) directly with no k-sum to integrate, and a coincidental gcd of 4 produces the small denominator.
+At depth ≥ 1 the rational ladder is genuinely giant.
+
 ## Net
 
 The desktop translation is faithful and (after the off-by-one fix) correct, but canonical — no new
