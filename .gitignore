@@ -92,6 +92,9 @@ probe_self_similarity/pi_16_truncated.npz
 probe_self_similarity/pi_17_truncated.npz
 probe_self_similarity/pi_18_truncated.npz
 
+# Author's rough drafts for review — local only, not for repo.
+_Author_Papers/
+
 # Correspondence / literature corpus — extracted paper pages, downloaded
 # monographs, intermediate research material. Reference, not artifacts.
 _cebron_pages/
