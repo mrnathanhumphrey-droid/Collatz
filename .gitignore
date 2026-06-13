@@ -109,3 +109,8 @@ _young_pages/
 archemedian_eigenvalues/
 tauberian_extract/
 watson_phase2_output.txt
+
+# third-party literature PDFs - retained locally, not redistributed
+*.pdf
+pdfs/
+
