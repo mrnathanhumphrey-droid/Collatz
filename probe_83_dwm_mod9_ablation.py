@@ -277,6 +277,24 @@ def task_B():
             log(f"   (ell={ell},eps={eps}) c0..2 mod27={ck_mod27[:3]} v3={[v3(c,q_src) for c in ck[:3]]}"
                 f"  tail_zero={tail_zero}  pred={pred} cert={cert}  {tag}")
     shape_match = all(r[7] for r in rows)  # const_off for every family
+    # cheap discriminator: is (ell,eps) -> offset/9 in Z/3 a character / artifact?
+    fmap = {(r[0], r[1]): (r[8] // 9) % 3 for r in rows if r[7] and r[8] is not None}
+    is_hom = (fmap.get((0, 0)) == 0) and any(
+        all((fmap[(l, e)] - (a * l + b * e)) % 3 == 0 for (l, e) in fmap)
+        for a in range(3) for b in range(3))
+    # affine per eps? and factor through c mod 9?
+    affine = {}
+    for e in (0, 1):
+        vals = [fmap[(l, e)] for l in (0, 1, 2)]
+        s = (vals[1] - vals[0]) % 3
+        affine[e] = (vals[0], s, all((vals[l] - (vals[0] + s * l)) % 3 == 0 for l in (0, 1, 2)))
+    cmod9 = {(l, e): (pow(2, e, 27) * pow(10, l, 27)) % 9 for l in (0, 1, 2) for e in (0, 1)}
+    factors_c9 = all(fmap[k1] == fmap[k2] for k1 in fmap for k2 in fmap if cmod9[k1] == cmod9[k2])
+    offset_check = dict(fmap=fmap, is_hom=is_hom, affine=affine, factors_c9=factors_c9)
+    log(f"   offset/9 map (ell,eps)->Z/3: {fmap}")
+    log(f"   is character/hom: {is_hom};  factors through c mod 9: {factors_c9};  "
+        f"affine-in-ell per eps: eps0(const={affine[0][0]},slope={affine[0][1]}) "
+        f"eps1(const={affine[1][0]},slope={affine[1][1]})")
     log("")
     if shape_match:
         log("   Mahler r=2: SHAPE predicted exactly; only a family-dependent GLOBAL PHASE "
@@ -285,7 +303,7 @@ def task_B():
     else:
         log("   Mahler r=2: SHAPE-MISMATCH for some family — profile does not extend to r=2.")
     log("")
-    return rows, shape_match
+    return rows, shape_match, offset_check
 
 
 # ---------------------------------------------------------------------------
