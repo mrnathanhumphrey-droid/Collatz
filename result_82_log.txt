@@ -1,0 +1,64 @@
+# PROBE 82 — DWM chirp bridge
+
+## STEP 1 — common-form table + explicit map verifications
+
+F_hat  (Probe 81):  chi(u) = e_{3^{r+1}}( c_{l,e} * 2^{2u} )       [c a unit; orbit <4>=<2^2>, INDEX 2]
+DWM    (line 45):   chi(xi)= e_{3^n}( -xi * 3^{2j-2} * 2^{-b} * (2^{-v}-2^{-v'}) )
+
+(1a) Modulus reduction  e_{3^n}(3^{2j-2} xi w) = e_{3^{n-2j+2}}(xi w):
+     n=3 j=1: effective mod 3^3 (pred 3^3) -> r=n-2j+1=2 : OK
+     n=3 j=2: effective mod 3^1 (pred 3^1) -> r=n-2j+1=0 : OK
+     n=4 j=1: effective mod 3^4 (pred 3^4) -> r=n-2j+1=3 : OK
+     n=4 j=2: effective mod 3^2 (pred 3^2) -> r=n-2j+1=1 : OK
+     n=5 j=1: effective mod 3^5 (pred 3^5) -> r=n-2j+1=4 : OK
+     n=5 j=2: effective mod 3^3 (pred 3^3) -> r=n-2j+1=2 : OK
+     n=5 j=3: effective mod 3^1 (pred 3^1) -> r=n-2j+1=0 : OK
+     n=6 j=1: effective mod 3^6 (pred 3^6) -> r=n-2j+1=5 : OK
+     n=6 j=2: effective mod 3^4 (pred 3^4) -> r=n-2j+1=3 : OK
+     n=6 j=3: effective mod 3^2 (pred 3^2) -> r=n-2j+1=1 : OK
+
+(1b) mod 3^3: |<2>|=18 |<4>|=9 index[<2>:<4>]=2 (F_hat on <4> flat-measure; DWM on <2> Geom-weight) -> OK
+(1b) mod 3^4: |<2>|=54 |<4>|=27 index[<2>:<4>]=2 (F_hat on <4> flat-measure; DWM on <2> Geom-weight) -> OK
+(1b) mod 3^5: |<2>|=162 |<4>|=81 index[<2>:<4>]=2 (F_hat on <4> flat-measure; DWM on <2> Geom-weight) -> OK
+     Sign: F_hat exponent +2u, DWM exponent -(...). Inversion 2^{-1} is an orbit
+     automorphism of <2>; the exponent sign is xi -> -xi (additive-character negation).
+     => absorbable; recorded, not assumed.
+
+COMMON-FORM TABLE
+| field    | char modulus D | multiplier kappa      | orbit variable        | sign | measure        |
+|----------|----------------|-----------------------|-----------------------|------|----------------|
+| F_hat    | 3^{r+1}        | c_{l,e}  (a unit)     | 2^{2u} in <4> (idx 2) |  +   | flat counting  |
+| DWM (j)  | 3^{n-2j+2} eff | 3^{2j-2} -> unit 2^-b | 2^{-v} in <2>         |  -   | Geom(1/2) 2^-v |
+Same character species e_{3^k}(unit * 2^{power}) on <2>; F_hat = index-2 sub-orbit + flat,
+DWM = full orbit + Geom weight. n<->r is j-graded: r = n-2j+1.
+
+## STEP 2' (amendment) — j-graded n<->r map  r = n - 2j + 1
+
+   n \ j   j=1        j=2        j=3      (cell = r; * = evidential r>=3)
+   n=3    r=2         r=0 (r=0/neg) r=-2 (r=0/neg)
+   n=4    r=3*        r=1         r=-1 (r=0/neg)
+   n=5    r=4*        r=2         r=0 (r=0/neg)
+   n=6    r=5*        r=3*        r=1        
+
+   DWM data exists ONLY at n=3 -> cells (j=1: r=2), (j=2: r=0). BOTH below the
+   R81 evidential floor r>=3. => bridge UNTESTABLE on existing data.
+   First evidential cell: n=4,j=1 -> r=3 (but j=1 is the EXCEPTIONAL step).
+   Both legs evidential: n>=6 (n=6: j=1->r=5, j=2->r=3).
+
+## NON-EVIDENTIAL — FORMULA-LEVEL DIAGNOSTIC ONLY
+   (verifies the DWM operator IS a weighted chirp orbit sum; the verdict does NOT cite this)
+
+   chirp-character transcription check: OK
+
+   V_MAX=12 (0.4s): G1/sum_entries=+1.08427e-01(r=1.0055)  G2/sum_entries=+6.08142e-01(r=0.9988)  G2/tr_pi=+5.35700e-02(r=1.0000)  G2/delta_1=+5.74167e-02(r=0.9999)  G2/vac_pi=+4.77296e-03(r=0.9996)
+   V_MAX=16 (1.2s): G1/sum_entries=+1.07831e-01(r=1.0000)  G2/sum_entries=+6.08879e-01(r=1.0000)  G2/tr_pi=+5.35722e-02(r=1.0000)  G2/delta_1=+5.74203e-02(r=1.0000)  G2/vac_pi=+4.77548e-03(r=1.0001)
+   V_MAX=20 (2.9s): G1/sum_entries=+1.07820e-01(r=0.9999)  G2/sum_entries=+6.08922e-01(r=1.0000)  G2/tr_pi=+5.35746e-02(r=1.0001)  G2/delta_1=+5.74226e-02(r=1.0000)  G2/vac_pi=+4.77574e-03(r=1.0002)
+
+   Residual vs V_MAX: POVM deficit ~ 2^{-V_MAX}; ratios -> 1 confirms the DWM
+   operator = the weighted chirp orbit sum (correct transcription). NON-EVIDENTIAL.
+
+[wrote] C:\Collatz\result_82_data.csv
+[wrote] C:\Collatz\result_82_dwm_bridge.md
+[appended] STATE.md
+
+==== VERDICT: H_BRIDGE_PARTIAL — structural common-form established; the EVIDENTIAL bridge is UNTESTABLE ON EXISTING DATA (DWM only at n=3 ↔ r≤2; R81 evidential floor is r≥3). ====

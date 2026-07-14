@@ -1,0 +1,23 @@
+Computing Mahler coeffs at r=15 (q=3^16) ...
+
+ k v3(c_k) s3(k) v3(k!) k-v3(k!) 2k-v3(k!) (3k+s3)/2  v3-k
+ 0       0     0      0        0         0         0     0
+ 1       2     1      0        1         2         2     1
+ 2       2     2      0        2         4         4     0
+ 3       3     1      1        2         5         5     0
+ 4       4     2      1        3         7         7     0
+ 5       6     3      1        4         9         9     1
+ 6       7     2      2        4        10        10     1
+ 7       8     3      2        5        12        12     1
+ 8      10     4      2        6        14        14     2
+ 9      11     1      4        5        14        14     2
+10      12     2      4        6        16        16     2
+11      15     3      4        7        18        18     4
+12      16     2      5        7        19        19     4  (NOT STABLE, >=cap)
+
+Least-squares  v3 = A*k + B*s3(k) + C*v3(k!) + D  over stable k=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  coef [A,B,C,D] = [ 1.066  0.19   0.438 -0.342]   max|resid| = 1.295
+  (exact integer closed form requires max|resid|=0 with integer/half-integer coef)
+
+User formula k*v3(log3 4=1) - v3(k!) residuals (obs-pred): [0, 1, 0, 1, 1, 2, 3, 3, 4, 6, 6, 8]
+  -> DOES NOT MATCH

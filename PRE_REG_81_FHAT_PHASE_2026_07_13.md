@@ -13,6 +13,13 @@
 
 ---
 
+> **▓▓ OUTCOME — FIRED 2026-07-13 (parallel agent). VERDICT: H_GROWING_DEGREE.**
+> `arg F̂(3a)` is certified exactly (F̂(3a)²/(9q) a root of unity in ℤ[ζ_q]; σ=−1 for r even = the √−3 twist you predicted) and is **NOT a fixed-degree polynomial** — its degree in b GROWS with r (r=3→3, 4→4, 5→4, 6→5, ≈⌊r/2⌋+2), 3-adic-analytic. **H_QUAD, H_LIN, H_POLY_HIGHER(fixed), and H_PSEUDO(random) are ALL excluded** — the obstruction is growing degree, not randomness. Derived+verified identity: `F̂(3a) = 3·Σ_j e_q(c·4^j)·e_d(−aj) = 3·ĝ(a)`, the DFT of the **exponential chirp** e_q(c·4^j) (flat magnitude, non-quadratic phase — why the Gauss-sum picture can't hold). Closes the smooth-completion / stationary-phase route as a *uniform* √-saving mechanism (Weyl completion would need Θ(r) differencing). Thms 78.1–78.3 untouched. Full disposition: `result_81_fhat_phase.md`; STATE.md 2026-07-13 R81 entry.
+>
+> **⚠ RETRACTION (2026-07-13):** the two "H_PSEUDO ⇒ the DWM match is a coincidence" claims below (§3 H_PSEUDO bullet, §7) are **WRONG and retracted.** Probe 81 tested the phase in the *frequency* variable `a` (the R78 bilinear pairing `Σ 1̂(3a)F̂(3a)`). The DWM bridge is a **different pairing** — the Geom(½)-weighted sum over the *orbit step* `v`, `Σ_v 2^{−v} χ(2^{−v})`. H_GROWING_DEGREE does NOT settle it; it **sharpens** it: the chirp e_q(c·4^j) is now explicit, so Phase 2a is concrete — flat DFT (F̂) vs Geom-weighted sum (DWM) of the SAME explicit chirp. **1B (weighted PGF at z=−1, ω) is now the live central test.**
+
+---
+
 ## 0. Why this probe matters more than "which of three routes" (2026-07-13)
 
 R78's F̂ and the DWM adaptive Kraus operator are the **same character on the same 2-adic orbit, against two different measures.** This is the corrected bridge (2026-07-13) — the earlier "same object, phase = phase" framing was WRONG and would have read a true bridge as a refutation. See the CAUTION box below.
@@ -94,7 +101,7 @@ with χ supplied by F̂. Record φ_r(a) as a function of **the 2-adic orbit vari
   F̂ is a genuine Gauss sum on the principal-unit group. **Two payoffs:** (i) opens a stationary-phase / Weyl-differencing route on `Σ 1̂(3a)F̂(3a)` not in the paper's current route list; (ii) a quadratic `arg F̂` fixes **the character** χ on the orbit — the DWM proof is then whether the Geom(½)-weighted sum `Σ_v 2^{−v} χ(2^{−v})` lands on the four DWM reductions (§2d, §2a), NOT coefficient equality with Φ_DWM.
 - **H_LIN** — same with α ≡ 0 mod 3, β ≢ 0. The product sum collapses to a shifted short sum; direct evaluation possible. Prior: low.
 - **H_POLY_HIGHER** — best fit needs degree ≥ 3 in a. Routes to Weyl-differencing at higher order.
-- **H_PSEUDO** — no low-degree polynomial fit at ANY denominator in §3′; residuals consistent with equidistribution on Z/D. **The Burgess wall is genuine.** Certifying negative — retires the smooth-completion route cleanly and is publishable as such. (Also implies the DWM match is a numerical coincidence, not a phase identity — itself worth banking.)
+- **H_PSEUDO** — no low-degree polynomial fit at ANY denominator in §3′; residuals consistent with equidistribution on Z/D. **The Burgess wall is genuine.** Certifying negative — retires the smooth-completion route cleanly and is publishable as such. ~~(Also implies the DWM match is a numerical coincidence, not a phase identity.)~~ **[RETRACTED post-fire — see OUTCOME banner: the DWM bridge is a different pairing (weighted sum over v), not settled by this probe. Actual verdict was H_GROWING_DEGREE, not H_PSEUDO.]**
 
 **Most-likely outcome (state it, then test it honestly):** H_QUAD, on the grounds that constant magnitude on a coset of the principal units is the fingerprint of a Gauss sum, AND the DWM Kraus phase is manifestly quadratic-shaped in the orbit exponent. Do not let this prior bias the fit acceptance thresholds in §4.
 
@@ -170,4 +177,4 @@ Append the disposition to `STATE.md` under a new dated entry. **Do not rewrite e
 
 ## 7. Reporting discipline
 
-Report the outcome that fired, including a null. A clean H_PSEUDO is a *result*, not a failure — it certifies the Burgess wall, retires a route, AND settles the DWM match as coincidence-not-identity. Do not soften a refutation into a "partial." If the fit verifies on 97% of points at every denominator, that is a refutation of the polynomial model, not a near-miss. Do not let the H_QUAD prior (§3) relax the 100%-verification bar.
+Report the outcome that fired, including a null. A clean H_PSEUDO is a *result*, not a failure — it certifies the Burgess wall and retires a route. ~~AND settles the DWM match as coincidence-not-identity.~~ **[RETRACTED — see OUTCOME banner; the DWM bridge is a separate weighted-sum pairing.]** Do not soften a refutation into a "partial." If the fit verifies on 97% of points at every denominator, that is a refutation of the polynomial model, not a near-miss. Do not let the H_QUAD prior (§3) relax the 100%-verification bar.

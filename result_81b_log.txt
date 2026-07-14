@@ -1,0 +1,24 @@
+R81b: Mahler / 3-adic-analytic certification of arg F-hat phase
+============================================================================
+ r  q=3^(r+1)  deg floor(r/2)+2 v3_lead  max_resid  smoke  agent(deg,v3)  match
+ 3         81    3            3       3   8.47e-16   True         (3, 3)    YES
+ 4        243    4            4       4   1.29e-15   True         (4, 4)    YES
+ 5        729    4            4       4   1.84e-15   True         (4, 4)    YES
+ 6       2187    5            5       6   1.89e-15   True         (5, 6)    YES
+ 7       6561    6            5       7   2.54e-15   True           None       
+ 8      19683    7            6       8   3.33e-15   True           None       
+ 9      59049    7            6       8   3.07e-15   True           None       
+
+Per-family v3(c_k) profiles (Amice signature — should grow with k):
+  r=3: deg= 3  is_poly=True  v3(c_k) k=0..: [0, 2, 2, 3, 4, 4]
+  r=4: deg= 4  is_poly=True  v3(c_k) k=0..: [0, 2, 2, 3, 4, 5, 5]
+  r=5: deg= 4  is_poly=True  v3(c_k) k=0..: [0, 2, 2, 3, 4, 6, 6]
+  r=6: deg= 5  is_poly=True  v3(c_k) k=0..: [0, 2, 2, 3, 4, 6, 7, 7]
+  r=7: deg= 6  is_poly=True  v3(c_k) k=0..: [0, 2, 2, 3, 4, 6, 7, 8, 8]
+  r=8: deg= 7  is_poly=True  v3(c_k) k=0..: [0, 2, 2, 3, 4, 6, 7, 8, 9, 9]
+  r=9: deg= 7  is_poly=True  v3(c_k) k=0..: [0, 2, 2, 3, 4, 6, 7, 8, 10, 10]
+
+VERDICT INPUTS:
+  degree r=3..9      : [3, 4, 4, 5, 6, 7, 7]   (predicted floor(r/2)+2: [3, 4, 4, 5, 5, 6, 6])
+  v3_leading r=3..9  : [3, 4, 4, 6, 7, 8, 8]
+  v3_leading monotone non-decreasing after r=3? True
