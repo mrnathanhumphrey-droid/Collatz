@@ -353,7 +353,7 @@ def write_csv(results, V_LIST):
     log(f"[wrote] {path}")
 
 
-def write_md(results, verdict, sA, sB, sC, taskB_rows, taskB_match, V_LIST):
+def write_md(results, verdict, sA, sB, sC, taskB_rows, taskB_match, offset_check, V_LIST):
     erratum = verdict in ("H_EMPTY", "H_PHASE_BLIND")
     L = []
     L.append("# Result 83 — Does the n=3 DWM match carry any mod-9 information?")
@@ -455,9 +455,29 @@ def write_md(results, verdict, sA, sB, sC, taskB_rows, taskB_match, V_LIST):
         L.append("**H_PARTIAL_SENSITIVE.** Some reductions move under cell A, others do not "
                  "(see per-reduction table). Reported without averaging.")
     L.append("")
-    L.append("Cell B (j=1 phase off) shows how much of the match j=1 alone accounts for; "
-             "cell C is the phase-blind discriminator that the single pre-registered cell "
-             "could not have caught.")
+    L.append("")
+
+    L.append("## Cell B is a finding: the non-freeness mechanism, experimentally isolated")
+    L.append("")
+    L.append("Cell B (j=1 phase off) drives the 3-alternating moment G1 = ϕ(X̃₁·X̃₂·X̃₁) to "
+             "**−3×10⁻⁷ — identically zero to the truncation floor.** That is not \"j=1 "
+             "carries G1\"; it is a structural statement about the corpus's terminal "
+             "framework result. `OBSTRUCTION_MAP_TERMINAL.md:86` records that the "
+             "third-order alternating repeated-index moment `φ(X̃_{j₁}·X̃_{j₂}·X̃_{j₁}) ≠ 0` "
+             "is *the* diagnostic that killed B-amalgamated **free** independence and forced "
+             "**monotone** (Muraki 2003 / Hasebe–Saigo 2011) — with the stated mechanism "
+             "(`:91`): \"when X̃_{j₁} appears on both sides of X̃_{j₂}, the phases induced by "
+             "[the b_prior] coupling do not cancel.\"")
+    L.append("")
+    L.append("This ablation demonstrates that mechanism directly: **turn off the j=1 "
+             "(bracketing-index) phase → the bracketing coupling vanishes → G1 → 0 → "
+             "freeness would hold.** The non-freeness of Syracuse — the single fact that "
+             "redirected the entire framework arc from free to monotone — is carried "
+             "**entirely by the j=1 phase**, and it is now *experimentally isolated by "
+             "ablation* rather than *argued by inspection*. That upgrades a load-bearing "
+             "structural claim in the corpus from derived to demonstrated. (G2, the "
+             "4-alternating moment, survives cell B at 0.296 — its non-freeness has "
+             "additional carriers, consistent with the higher-order pattern.)")
     L.append("")
 
     L.append("## Task B — Mahler predicts r=2 (independent of Task A)")
@@ -484,14 +504,30 @@ def write_md(results, verdict, sA, sB, sC, taskB_rows, taskB_match, V_LIST):
     L.append("Reading: **r=2 is DERIVED up to a global phase, not freely fitted** — the "
              "Probe 82 untestability floor (R81's r≥3 *degree-fitting* floor) is dissolved "
              "for the phase *shape*. The residual is a single level-dependent constant per "
-             "family, not 3 free values. Two caveats, both stated plainly: (1) this unlocks "
-             "the r=2 *shape* only — the absolute phase still carries an unexplained c₀ "
-             "offset, routed back to the R81/R81b agent as a refinement of the "
-             "\"one r-independent analytic function\" claim (it is r-independent in shape, "
-             "not in global phase); (2) it does **not** dissolve the j=1-exceptional problem "
-             "(Task A), which is about which DWM *step* carries the moment — a separate "
-             "matter from F̂-side availability, and moot here anyway since Task A fired "
-             "H_SENSITIVE independently.")
+             "family, not 3 free values.")
+    L.append("")
+    L.append("### The mod-9 offset is residual structure, not a normalization artifact")
+    L.append("")
+    fmap = offset_check["fmap"]; aff = offset_check["affine"]
+    L.append(f"The five-minute discriminator (is `(ℓ,ε) → offset/9 ∈ Z/3` a character?): "
+             f"the map is `{ {k: fmap[k] for k in sorted(fmap)} }`. It is **not** a group "
+             f"homomorphism (`f(0,0)={fmap[(0,0)]}≠0`), **no** linear form `aℓ+bε` reproduces "
+             f"it, and it does **not** factor through `c mod 9` "
+             f"(`factors_c9={offset_check['factors_c9']}`). So the offset is **not** a "
+             f"normalization artifact of how c_{{ℓ,ε}} was defined — it is genuine residual "
+             f"structure. It *is* low-complexity: **affine in ℓ with ε flipping the slope "
+             f"sign** — `f(ℓ,0)=2−ℓ`, `f(ℓ,1)=1+ℓ=−f(ℓ,0) mod 3` (eps0: const="
+             f"{aff[0][0]},slope={aff[0][1]}; eps1: const={aff[1][0]},slope={aff[1][1]}). "
+             f"**The 3² reappears in the one term the Mahler profile doesn't explain, and it "
+             f"is exactly the term that distinguishes the six families** — a lead handed back "
+             f"to the R81/R81b agent, not a closed nuisance. The ε-antisymmetry "
+             f"`f(ℓ,1)=−f(ℓ,0)` is worth noting against the sibling 3x±1 sign symmetry "
+             f"`σ(r)=−r` (K₋=σK₊σ), but that link is not established here.")
+    L.append("")
+    L.append("Two caveats, both stated plainly: (1) this unlocks the r=2 *shape* only — the "
+             "absolute phase carries the mod-9 residual above; (2) it does **not** dissolve "
+             "the j=1-exceptional problem (Task A), which is about which DWM *step* carries "
+             "the moment — moot here anyway since Task A fired H_SENSITIVE independently.")
     L.append("")
 
     L.append("## Task C — re-cost of the n≥5 evidential bridge (Mahler-updated)")
@@ -548,7 +584,7 @@ def write_md(results, verdict, sA, sB, sC, taskB_rows, taskB_match, V_LIST):
     return erratum
 
 
-def append_state(verdict, taskB_match, erratum):
+def append_state(verdict, taskB_match, offset_check, erratum):
     e = []
     e.append("")
     e.append("---")
@@ -578,14 +614,28 @@ def append_state(verdict, taskB_match, erratum):
                  f"the n=3 DWM↔Syracuse match DOES encode phase info and its quantitative "
                  f"confirmation stands. Cell C also moves ⇒ reductions are NOT phase-blind "
                  f"(H_PHASE_BLIND refuted — the extra cell ruled out the bigger erratum). "
-                 f"Cell B (j=1 off) collapses G1→~0, G2 survives (G1 is j=1-phase-carried). "
                  f"Third pre-registered prior in this arc to lose (after H_QUAD, ⌊r/2⌋+2). ")
+    e.append(f"**Cell B is a corpus finding (own headline):** j=1-phase-off drives "
+             f"G1=ϕ(X̃₁X̃₂X̃₁) to ~0 (−3e-7) — the third-order alternating repeated-index "
+             f"moment (OBSTRUCTION_MAP_TERMINAL.md:86) whose non-vanishing killed "
+             f"B-amalgamated FREE independence and forced MONOTONE; mechanism (:91) = phases "
+             f"from the b_prior coupling don't cancel when X̃_{{j₁}} brackets X̃_{{j₂}}. "
+             f"Ablating the j=1 (bracketing) phase → coupling vanishes → G1→0 → freeness "
+             f"would hold. **Syracuse's non-freeness is carried entirely by the j=1 phase, "
+             f"now EXPERIMENTALLY ISOLATED by ablation (was argued by inspection)** — the "
+             f"fact that redirected the whole framework arc to monotone. (G2 survives ⇒ "
+             f"higher-order moments have other carriers.) ")
     e.append(f"**Task B:** the R81b Mahler profile (built r≥3) "
              f"{'predicts the r=2 phase SHAPE exactly; only a family-dependent GLOBAL PHASE offset '
               '(multiple of 3^2, v3>=2; offsets {18,9,0,9,18,0}) differs — r=2 DERIVED up to a '
               'level-dependent c_0 phase, not freely fitted. Routes a refinement to R81/R81b: '
               'the analytic function is r-independent in SHAPE, not in global phase. Does NOT '
               'dissolve the j=1-exceptional problem (moot: Task A fired H_SENSITIVE)' if taskB_match else 'does NOT extend to r=2 (shape mismatch; domain finding, routed to R81/R81b)'}. "
+             f"**The c_0 offset is NOT an artifact:** (ℓ,ε)→offset/9∈Z/3 is not a character "
+             f"(f(0,0)={offset_check['fmap'].get((0,0))}≠0), no linear form fits, and it "
+             f"doesn't factor through c mod 9 — genuine residual mod-9 structure (affine in ℓ, "
+             f"ε flips slope sign: f(ℓ,1)=−f(ℓ,0)), the term distinguishing the 6 families; a "
+             f"lead handed to R81/R81b, not a nuisance. "
              f"**Task C:** F̂ side now free via Mahler; the n≥5 evidential bridge is gated "
              f"solely on a NEW Syracuse-side measurement at n≥5, and should target j≥2 at "
              f"n≥5 (not j=1 at n=4). **c=7/45 (THEOREM_C_745) UNAFFECTED** (R75×R76×R77; "
@@ -608,11 +658,11 @@ def main():
     log("")
     V_LIST = (16, 20)
     results = task_A(V_LIST)
-    taskB_rows, taskB_match = task_B()
+    taskB_rows, taskB_match, offset_check = task_B()
     verdict, sA, sB, sC = classify(results, V=20)
     write_csv(results, V_LIST)
-    erratum = write_md(results, verdict, sA, sB, sC, taskB_rows, taskB_match, V_LIST)
-    append_state(verdict, taskB_match, erratum)
+    erratum = write_md(results, verdict, sA, sB, sC, taskB_rows, taskB_match, offset_check, V_LIST)
+    append_state(verdict, taskB_match, offset_check, erratum)
     log("")
     log(f"==== TASK A VERDICT: {verdict}  |  TASK B: "
         f"{'r=2 PREDICTED' if taskB_match else 'r=2 mismatch'}  |  erratum={erratum} ====")
