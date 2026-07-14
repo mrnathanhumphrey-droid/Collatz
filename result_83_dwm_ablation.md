@@ -78,6 +78,18 @@ Reading: **r=2 is DERIVED up to a global phase, not freely fitted** — the Prob
 
 ### The mod-9 offset is residual structure, not a normalization artifact
 
+> **⚠ CORRECTION (superseded by R84, 2026-07-14).** This section's conclusion is
+> **overturned.** Probe 84 predicted the offset at r=2..7 (not just r=2) and found
+> **v₃(offset) = r at every level** — the offset is a multiple of `3^r` (the top
+> modulus layer), *not* a fixed `3²`. It is the global phase induced by the
+> family-defining twist `(1+3^r)^ℓ` (which collapses to `ω₃^ℓ` because `4 ≡ 1 mod 3`),
+> i.e. a **normalization artifact**, not independent residual structure. The character
+> check below is correct as far as it goes but ran at a *single* level (r=2) and was too
+> coarse to catch the r-scaling — exactly the failure mode Probe 84's pre-reg flagged.
+> The "lead handed to R81/R81b" is **withdrawn**; see `result_84_mod9_offset.md`. The
+> shape-transfer result (c₁,c₂,… predict r=2 exactly) is unaffected and stands. Text
+> preserved below for the record.
+
 The five-minute discriminator (is `(ℓ,ε) → offset/9 ∈ Z/3` a character?): the map is `{(0, 0): 2, (0, 1): 1, (1, 0): 1, (1, 1): 2, (2, 0): 0, (2, 1): 0}`. It is **not** a group homomorphism (`f(0,0)=2≠0`), **no** linear form `aℓ+bε` reproduces it, and it does **not** factor through `c mod 9` (`factors_c9=False`). So the offset is **not** a normalization artifact of how c_{ℓ,ε} was defined — it is genuine residual structure. It *is* low-complexity: **affine in ℓ with ε flipping the slope sign** — `f(ℓ,0)=2−ℓ`, `f(ℓ,1)=1+ℓ=−f(ℓ,0) mod 3` (eps0: const=2,slope=2; eps1: const=1,slope=1). **The 3² reappears in the one term the Mahler profile doesn't explain, and it is exactly the term that distinguishes the six families** — a lead handed back to the R81/R81b agent, not a closed nuisance. The ε-antisymmetry `f(ℓ,1)=−f(ℓ,0)` is worth noting against the sibling 3x±1 sign symmetry `σ(r)=−r` (K₋=σK₊σ), but that link is not established here.
 
 Two caveats, both stated plainly: (1) this unlocks the r=2 *shape* only — the absolute phase carries the mod-9 residual above; (2) it does **not** dissolve the j=1-exceptional problem (Task A), which is about which DWM *step* carries the moment — moot here anyway since Task A fired H_SENSITIVE independently.

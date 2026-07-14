@@ -1,0 +1,13 @@
+Probe 85 Phase 0 — measured dim-scaling (G1, 3-alternating)
+============================================================
+  n=3 dim=  18 V_MAX=8:    0.06s  (3136 iters, G1_se=1.1530e-01)
+  n=4 dim=  54 V_MAX=8:    0.30s  (3136 iters, G1_se=8.3466e-02)
+  n=5 dim= 162 V_MAX=8:    1.47s  (3136 iters, G1_se=-3.2182e-01)
+
+  fit: time ~ dim^1.49  (dim^3 = compute-bound matmul; dim<3 = overhead-bound)
+  V_MAX check n=3: t(8)=0.057s t(16)=1.038s ratio=18.16 (V_MAX^4 -> 16.0)
+  EXTRAPOLATED n=5 (dim=162) V_MAX=16:     24.0s = 0.01 h  (G1, 2 reductions)
+  EXTRAPOLATED n=6 (dim=486) V_MAX=16:    123.0s = 0.03 h  (G1, 2 reductions)
+
+  full bridge = ~2x (G1+G2) x 2 (extra reductions delta_1/vac_pi) ~ 4x the above.
+  memory: matrices are dim^2*16B -> 3.8 MB at n=6. COMPUTE-bound, not memory-bound.
