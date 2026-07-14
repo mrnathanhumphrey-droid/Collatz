@@ -1,0 +1,82 @@
+# Result 83 — Does the n=3 DWM match carry any mod-9 information?
+
+**Date:** 2026-07-14. **Verdict (Task A): H_SENSITIVE.**
+
+Probe `probe_83_dwm_mod9_ablation.py`; data `result_83_data.csv`; log `result_83_log.txt`.
+
+## Why this ablation IS evidential (where Probe 82's reproduction was not)
+
+Probe 82's walled n=3 diagnostic was a *reproduction* — it confirmed the DWM operator was transcribed correctly, and was explicitly barred from counting as evidence *for* the bridge. This is an **ablation**: it perturbs a **named structural element** (the step-j phase factor) on an exactly-specified operator and measures the response, holding the σ shift and the Geom(½) weights fixed. That is a controlled experiment on the match's *sensitivity* to a component — a different instrument from a fit, and it does count. The 4-cell grid (below) is designed so a single cell outside the pre-registered one can catch the failure mode where the reductions resolve no phase at all.
+
+## n=3 modulus table (what phase actually exists at each step)
+
+| j | r=n−2j+1 | effective modulus 3^{n−2j+2} | phase at n=3 |
+|---|---|---|---|
+| 1 | 2 | 3³ | nontrivial |
+| 2 | 0 | 3¹ | **mod-3 shadow** of the mod-9 twist |
+| ≥3 | <0 | 3⁰=1 | trivial (and absent from the 3-/4-alt moments) |
+
+So the moments involve only j=1,2, and "ablate j≥2" = ablate the **j=2 mod-3 phase** — the n=3 shadow of the mod-9 twist, not the twist itself. There is barely any mod-9 structure present at n=3 to be sensitive to.
+
+## Task A — 4-cell ablation grid
+
+**V_MAX = 16** (shift = |cell − baseline|, same V_MAX):
+
+| cell | j1 | j2 | G1 sum | G2 sum | G2 tr_π | G2 δ₁ | G2 vac_π | max rel-shift |
+|---|---|---|---|---|---|---|---|---|
+| baseline | on | on | +1.07831e-01 | +6.08879e-01 | +5.35722e-02 | +5.74203e-02 | +4.77548e-03 | 0.00e+00 |
+| A | on | off | +2.33320e-01 | +7.77803e-02 | +4.57432e-02 | +4.69986e-02 | +2.44955e-03 | 1.16e+00 |
+| B | off | on | -4.52209e-06 | +2.96305e-01 | +3.60617e-02 | +3.60617e-02 | +1.29666e-03 | 1.00e+00 |
+| C | off | off | +2.96351e-01 | +9.87926e-02 | +2.67418e-02 | +2.67418e-02 | +2.85203e-03 | 1.75e+00 |
+
+**V_MAX = 20** (shift = |cell − baseline|, same V_MAX):
+
+| cell | j1 | j2 | G1 sum | G2 sum | G2 tr_π | G2 δ₁ | G2 vac_π | max rel-shift |
+|---|---|---|---|---|---|---|---|---|
+| baseline | on | on | +1.07820e-01 | +6.08922e-01 | +5.35746e-02 | +5.74226e-02 | +4.77574e-03 | 0.00e+00 |
+| A | on | off | +2.33316e-01 | +7.77723e-02 | +4.57453e-02 | +4.70007e-02 | +2.44964e-03 | 1.16e+00 |
+| B | off | on | -2.82574e-07 | +2.96297e-01 | +3.60623e-02 | +3.60623e-02 | +1.29664e-03 | 1.00e+00 |
+| C | off | off | +2.96300e-01 | +9.87671e-02 | +2.67435e-02 | +2.67435e-02 | +2.85221e-03 | 1.75e+00 |
+
+Per-reduction relative shift vs baseline (V_MAX=20):
+
+| reduction | cell A (j2 off) | cell B (j1 off) | cell C (both off) |
+|---|---|---|---|
+| G1/sum_entries | 1.16e+00 | 1.00e+00 | 1.75e+00 |
+| G2/sum_entries | 8.72e-01 | 5.13e-01 | 8.38e-01 |
+| G2/tr_pi | 1.46e-01 | 3.27e-01 | 5.01e-01 |
+| G2/delta_1 | 1.81e-01 | 3.72e-01 | 5.34e-01 |
+| G2/vac_pi | 4.87e-01 | 7.28e-01 | 4.03e-01 |
+
+## Task A verdict + interpretation
+
+**H_SENSITIVE — the pre-registered H_EMPTY prior LOST, and the banked result survives the audit.** Cell A (j=2 phase off) moves every reduction materially (G1 sum_entries 0.108→0.233, G2 sum_entries 0.609→0.078 at V_MAX=20 — shifts of 30–100%, orders of magnitude above the ~10⁻⁴ truncation floor). The j=2 phase — even as a mere mod-3 shadow of the mod-9 twist at n=3 — genuinely carries the match. The n=3 DWM↔Syracuse match therefore **does** encode phase information, and the DWM identification's quantitative confirmation stands. **No erratum.** (This is the outcome that costs the least and was assigned the lowest prior; per the repo's discipline the prior is recorded as having lost — the third pre-registered prior in this arc to do so, after H_QUAD and ⌊r/2⌋+2.) Cell C (both phases off) also moves materially, so the reductions are **not** phase-blind — H_PHASE_BLIND is refuted, and the extra cell earned its place by ruling out the bigger erratum. Cell B (j=1 phase off) collapses the 3-alternating moment G1 to ~0 (−3×10⁻⁷) while G2 survives, showing G1 is carried entirely by j=1's phase (j=1 appears twice in ϕ(X̃₁X̃₂X̃₁)) whereas the 4-alternating moment retains structure without it.
+
+Cell B (j=1 phase off) shows how much of the match j=1 alone accounts for; cell C is the phase-blind discriminator that the single pre-registered cell could not have caught.
+
+## Task B — Mahler predicts r=2 (independent of Task A)
+
+Fixed profile from r=6 (r≥3 only, never saw r=2); c_k reduced mod 27. Since v₃(c_k)≥3 for k≥3, the tail vanishes mod 27, so the r=2 prediction is s₂(b)=Σ_{k≤2} c_k·C(b,k) mod 27 — a **prediction**, not a 3-point fit.
+
+| ℓ | ε | c₀,c₁,c₂ mod 27 | predicted s₂(0,1,2) | certified | pred−cert |
+|---|---|---|---|---|---|
+| 0 | 0 | [4, 18, 18] | [4, 22, 4] | [13, 4, 13] | +18 (const) |
+| 1 | 0 | [4, 18, 18] | [4, 22, 4] | [22, 13, 22] | +9 (const) |
+| 2 | 0 | [4, 18, 18] | [4, 22, 4] | [4, 22, 4] | +0 (const) |
+| 0 | 1 | [8, 0, 9] | [8, 8, 17] | [26, 26, 8] | +9 (const) |
+| 1 | 1 | [8, 0, 9] | [8, 8, 17] | [17, 17, 26] | +18 (const) |
+| 2 | 1 | [8, 0, 9] | [8, 8, 17] | [8, 8, 17] | +0 (const) |
+
+**The r≥3 Mahler SHAPE predicts r=2 exactly; only a global phase offset differs.** For every family, `pred − cert` is *constant in b* — a pure global phase — and always a multiple of 9 = 3² (v₃ ≥ 2), varying with (ℓ,ε): offsets {18,9,0,9,18,0}. So the b-dependence (the coefficients c₁,c₂) transfers from r≥3 to r=2 exactly; only the constant term c₀ carries a **level-dependent global phase** of 3-adic depth ≥2 that the r≥3 profile does not fix.
+
+Reading: **r=2 is DERIVED up to a global phase, not freely fitted** — the Probe 82 untestability floor (R81's r≥3 *degree-fitting* floor) is dissolved for the phase *shape*. The residual is a single level-dependent constant per family, not 3 free values. Two caveats, both stated plainly: (1) this unlocks the r=2 *shape* only — the absolute phase still carries an unexplained c₀ offset, routed back to the R81/R81b agent as a refinement of the "one r-independent analytic function" claim (it is r-independent in shape, not in global phase); (2) it does **not** dissolve the j=1-exceptional problem (Task A), which is about which DWM *step* carries the moment — a separate matter from F̂-side availability, and moot here anyway since Task A fired H_SENSITIVE independently.
+
+## Task C — re-cost of the n≥5 evidential bridge (Mahler-updated)
+
+The F̂ side no longer requires computing F̂ at high r: the phase is the fixed Mahler profile, available at any r essentially for free (Task B shows it even predicts *downward* to r=2). So the remaining cost of an n≥5 evidential bridge is entirely the **Syracuse-side directly-measured moments at n≥5**, which do not exist and must be produced (their own probe, own pre-reg, own falsifier). The DWM-prediction side scales as state_count(n)³·V_MAX⁴ (state_count = 2·3^{n−1}: 162 at n=5, 486 at n=6) → ~6 h (n=5) to ~160 h (n=6) as before, but that is now the *only* heavy item and it is one-sided. Net: the bridge is no longer gated on the F̂ side at all — it is gated on standing up a new Syracuse measurement at n≥5, and (per Task A's amendment) it should target **j≥2 at n≥5**, not j=1 at n=4.
+
+## Scope — what is untouched
+
+**c = 7/45 (`THEOREM_C_745.md`) is UNAFFECTED by every outcome here.** It is derived from R75 Plancherel × R76 conservation × R77 T_diag, and `D3_DERIVATION_AUDIT.md` established it never depended on the DWM framework-identification overlay. Whatever this probe does to DWM's *evidential* status, 7/45 stands. Theorems 78.1–78.3 are likewise untouched.
+
+_Reporting discipline: the fired outcome is reported with per-reduction shift magnitudes, not a binary. The ablation is named once (phase factor → 1; shift and weights kept). Cells B and C were added as a pre-fire §3′ amendment with H_PHASE_BLIND pre-registered. Task A and Task B are independent; neither licenses a claim in the other._

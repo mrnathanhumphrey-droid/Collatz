@@ -1,0 +1,32 @@
+# PROBE 83 — n=3 DWM mod-9 ablation audit
+
+## TASK A — 4-cell phase ablation (EVIDENTIAL)
+
+   effective modulus at n=3: 3^{n-2j+2}; j=1 -> 3^3 (nontrivial), j=2 -> 3^1 (mod-3 shadow of the mod-9 twist), j>=3 -> 3^0 (trivial, absent from moments)
+
+   V=16 cell baseline phase_on=[1, 2]   ( 1.1s): G1/sum_=+1.07831e-01  G2/sum_=+6.08879e-01  G2/tr_p=+5.35722e-02  G2/delt=+5.74203e-02  G2/vac_=+4.77548e-03
+   V=16 cell A        phase_on=[1]      ( 0.9s): G1/sum_=+2.33320e-01  G2/sum_=+7.77803e-02  G2/tr_p=+4.57432e-02  G2/delt=+4.69986e-02  G2/vac_=+2.44955e-03
+   V=16 cell B        phase_on=[2]      ( 1.1s): G1/sum_=-4.52209e-06  G2/sum_=+2.96305e-01  G2/tr_p=+3.60617e-02  G2/delt=+3.60617e-02  G2/vac_=+1.29666e-03
+   V=16 cell C        phase_on={}       ( 0.9s): G1/sum_=+2.96351e-01  G2/sum_=+9.87926e-02  G2/tr_p=+2.67418e-02  G2/delt=+2.67418e-02  G2/vac_=+2.85203e-03
+
+   V=20 cell baseline phase_on=[1, 2]   ( 2.8s): G1/sum_=+1.07820e-01  G2/sum_=+6.08922e-01  G2/tr_p=+5.35746e-02  G2/delt=+5.74226e-02  G2/vac_=+4.77574e-03
+   V=20 cell A        phase_on=[1]      ( 2.3s): G1/sum_=+2.33316e-01  G2/sum_=+7.77723e-02  G2/tr_p=+4.57453e-02  G2/delt=+4.70007e-02  G2/vac_=+2.44964e-03
+   V=20 cell B        phase_on=[2]      ( 2.8s): G1/sum_=-2.82574e-07  G2/sum_=+2.96297e-01  G2/tr_p=+3.60623e-02  G2/delt=+3.60623e-02  G2/vac_=+1.29664e-03
+   V=20 cell C        phase_on={}       ( 2.3s): G1/sum_=+2.96300e-01  G2/sum_=+9.87671e-02  G2/tr_p=+2.67435e-02  G2/delt=+2.67435e-02  G2/vac_=+2.85221e-03
+
+## TASK B — does the Mahler profile (r>=3) predict certified r=2?
+
+   (ell=0,eps=0) c0..2 mod27=[4, 18, 18] v3=[0, 2, 2]  tail_zero=True  pred=[4, 22, 4] cert=[13, 4, 13]  SHAPE-MATCH, global phase +18 (v3=2)
+   (ell=1,eps=0) c0..2 mod27=[4, 18, 18] v3=[0, 2, 2]  tail_zero=True  pred=[4, 22, 4] cert=[22, 13, 22]  SHAPE-MATCH, global phase +9 (v3=2)
+   (ell=2,eps=0) c0..2 mod27=[4, 18, 18] v3=[0, 2, 2]  tail_zero=True  pred=[4, 22, 4] cert=[4, 22, 4]  EXACT
+   (ell=0,eps=1) c0..2 mod27=[8, 0, 9] v3=[0, 4, 2]  tail_zero=True  pred=[8, 8, 17] cert=[26, 26, 8]  SHAPE-MATCH, global phase +9 (v3=2)
+   (ell=1,eps=1) c0..2 mod27=[8, 0, 9] v3=[0, 4, 2]  tail_zero=True  pred=[8, 8, 17] cert=[17, 17, 26]  SHAPE-MATCH, global phase +18 (v3=2)
+   (ell=2,eps=1) c0..2 mod27=[8, 0, 9] v3=[0, 4, 2]  tail_zero=True  pred=[8, 8, 17] cert=[8, 8, 17]  EXACT
+
+   Mahler r=2: SHAPE predicted exactly; only a family-dependent GLOBAL PHASE offset (a multiple of 9 = 3^2, v3>=2) differs. r=2 is DERIVED up to a level-dependent global phase (the c_0 term), NOT a free fit.
+
+[wrote] C:\Collatz\result_83_data.csv
+[wrote] C:\Collatz\result_83_dwm_ablation.md
+[appended] STATE.md
+
+==== TASK A VERDICT: H_SENSITIVE  |  TASK B: r=2 PREDICTED  |  erratum=False ====
