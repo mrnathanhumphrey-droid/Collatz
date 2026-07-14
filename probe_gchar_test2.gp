@@ -1,0 +1,24 @@
+\p 60
+default(parisize, "2G");
+bnf = bnfinit(x^2 + 1);
+p17a = idealprimedec(bnf, 17)[1];
+gc = gcharinit(bnf, p17a);
+print("gc.cyc = ", gc.cyc);
+print("typ(gc) = ", type(gc));
+print("");
+print("Try gcharalgebraic with no type arg:");
+algs_all = gcharalgebraic(gc);
+print("type(algs_all) = ", type(algs_all));
+print("matsize(algs_all) = ", matsize(algs_all));
+print("algs_all = ", algs_all);
+print("");
+print("Try with type [[1,0]]:");
+algs10 = gcharalgebraic(gc, [[1, 0]]);
+print("type(algs10) = ", type(algs10));
+print("algs10 = ", algs10);
+print("");
+print("Try with type [1, 1] (single inf place, real par):");
+algs2 = gcharalgebraic(gc, [1, 1]);
+print("type(algs2) = ", type(algs2));
+print("algs2 = ", algs2);
+quit;

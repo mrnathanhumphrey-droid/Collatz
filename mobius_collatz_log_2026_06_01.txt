@@ -1,0 +1,36 @@
+[1/4] Computing stopping times for k=1..100000000...
+      done in 1.7s
+      S_max=949, mean=179.2, std=66.6, distinct=720
+[2/4] Sieving Mobius up to 949...
+[3/4] Building Y(m)...
+      Y(N) = 2034224
+      |Y|_max = 2110369 at m = 97271567
+[4/4] Extracting exponents...
+      Envelope alpha (full):  0.9208 +/- 0.0039  r^2=0.9947
+      Envelope alpha (tail):  0.9308 +/- 0.0113  r^2=0.9787
+      Running DFA...
+      DFA H:                  0.9256 +/- 0.0033  r^2=0.9997
+
+Top-15 stopping times by frequency (k<=100000000):
+      S        count       %  mu(S)
+    174      1031401   1.03%     -1
+    161      1021710   1.02%     +1
+    187      1007833   1.01%     +1
+    143      1002577   1.00%     +1
+    192       993131   0.99%     +0
+    148       982339   0.98%     +0
+    179       964625   0.96%     -1
+    205       960388   0.96%     +1
+    130       932656   0.93%     -1
+    135       929762   0.93%     +0
+    166       918077   0.92%     +1
+    218       917972   0.92%     +1
+    117       912215   0.91%     +0
+    153       873972   0.87%     +0
+    197       864750   0.86%     -1
+Traceback (most recent call last):
+  File "C:\Collatz\probe_mobius_collatz_stopping_2026_06_01.py", line 155, in <module>
+    ax[0,1].axline((10**3, 10**(1.5)), slope=0.5, color="gray", linestyle=":", linewidth=1, label="rand walk 1/2")
+  File "C:\Users\Nate\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\axes\_axes.py", line 958, in axline
+    raise TypeError("'slope' cannot be used with non-linear scales")
+TypeError: 'slope' cannot be used with non-linear scales

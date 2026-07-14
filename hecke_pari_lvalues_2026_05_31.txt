@@ -1,0 +1,3 @@
+# Hecke L-values for grossencharacters of Q(i), 60-digit precision
+# Each block: [cond_label] [chi_vec] [k_infty] [Re L1] [Im L1] [Re L2] [Im L2]
+# c_inf target = 0.15298912060588517527891674877413229926086222622334

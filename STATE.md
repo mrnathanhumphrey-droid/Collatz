@@ -377,3 +377,15 @@ When adding a new result:
 4. **Append don't rewrite** the index at top of `closed_form_findings.md` when adding new results — keep existing entries even if the result is later revised; mark status with ↻ or ✗.
 5. **Independence is rare.** Almost every cross-result agreement traces back to the single Collatz-map root. Frame "consistent characterization" not "independent confirmation" unless cross-validating against external input (Tao K_h, Chang's exact formulas, classical Cramér-Lundberg, etc.). See `independence_audit.md`.
 6. **Honesty over polish.** This archive includes lots of walk-backs (R57 H-dim, R71 1/2 conjecture, Lagarias-Sinai marginal exactness). Documenting walk-backs is part of the rigor signal — don't quietly omit them from new writeups.
+
+---
+
+**R81 — F̂ phase profile on the R78 support (2026-07-13).** Verdict: **H_PSEUDO**. 
+Mapped arg F̂(3a) on supp={3a: a≡1 mod 3} (where |F̂|=3√q is constant, Th 78.3, smoke FAIL) for r∈{2,3,4,5,6} and all 6 c_{ℓ,ε}=2^ε·(1+3^r)^ℓ. Phase index certified EXACTLY: F̂(3a)²/(9q) is a root of unity ζ_q^{s_a} in Z[ζ_q] (integer cyclotomic reduction mod Φ_q=x^{2·3^r}+x^{3^r}+1), giving exact J_a∈Z/2q. Congruence quadratic fit in a (via a=1+3b, since the support's a≡1 mod 3 makes any 3-point Vandermonde singular mod 3) at D∈{3^r, 3^{r+1}, 2·3^r, 2q}. 
+No low-degree polynomial phase (pass-set empty at every r≥3); phase index equidistributed on Z/3^r. **Certifying negative — retires the smooth-completion/Gauss-sum route; the Burgess wall is real.** Theorems 78.1–78.3 unaffected. Files: result_81_*.
+
+---
+
+**R81 — F̂ phase profile on the R78 support (2026-07-13).** Verdict: **H_PSEUDO**. 
+Mapped arg F̂(3a) on supp={3a: a≡1 mod 3} (where |F̂|=3√q is constant, Th 78.3, smoke PASS) for r∈{2,3,4,5,6} and all 6 c_{ℓ,ε}=2^ε·(1+3^r)^ℓ. Phase index certified EXACTLY: F̂(3a)²/(9q) is a root of unity ζ_q^{s_a} in Z[ζ_q] (integer cyclotomic reduction mod Φ_q=x^{2·3^r}+x^{3^r}+1), giving exact J_a∈Z/2q. Congruence quadratic fit in a (via a=1+3b, since the support's a≡1 mod 3 makes any 3-point Vandermonde singular mod 3) at D∈{3^r, 3^{r+1}, 2·3^r, 2q}. 
+No low-degree polynomial phase (pass-set empty at every r≥3); phase index equidistributed on Z/3^r. **Certifying negative — retires the smooth-completion/Gauss-sum route; the Burgess wall is real.** Theorems 78.1–78.3 unaffected. Files: result_81_*.

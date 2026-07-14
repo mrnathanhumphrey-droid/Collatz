@@ -1,0 +1,2 @@
+Computing c(6) at n=7, N=410338673, A_MAX=130, dps=25
+    |u_sup| = 130

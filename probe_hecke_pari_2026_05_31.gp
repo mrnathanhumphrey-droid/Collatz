@@ -1,0 +1,21 @@
+\p 60
+default(parisize, "2G");
+print("=== PARI ", version()[1], ".", version()[2], ".", version()[3], " ===");
+K = nfinit(x^2 + 1);
+bnf = bnfinit(x^2 + 1);
+print("Q(i): disc=", K.disc, " classnum=", bnf.no);
+p2_dec = idealprimedec(K, 2);
+p5_dec = idealprimedec(K, 5);
+p13_dec = idealprimedec(K, 13);
+p17_dec = idealprimedec(K, 17);
+p2 = p2_dec[1]; p5a = p5_dec[1]; p5b = p5_dec[2]; p13a = p13_dec[1]; p13b = p13_dec[2]; p17a = p17_dec[1]; p17b = p17_dec[2];
+conds_id = [p5a, p5b, p13a, p13b, p17a, p17b, idealmul(K,p5a,p5b), idealmul(K,p17a,p17b), idealmul(K,p5a,p17a), idealmul(K,p5a,p17b), idealmul(K,p5b,p17a), idealmul(K,p5b,p17b), idealmul(K,p2,p17a), idealmul(K,p2,p17b)];
+conds_lab = ["p5a", "p5b", "p13a", "p13b", "p17a", "p17b", "(5)", "(17)", "p5a*p17a", "p5a*p17b", "p5b*p17a", "p5b*p17b", "p2*p17a", "p2*p17b"];
+outf = "C:/Collatz/hecke_pari_lvalues_2026_05_31.csv";
+write(outf, "label;chi;L1_re;L1_im;L2_re;L2_im");
+nlvals = 0;
+for(i=1, #conds_id, myid = conds_id[i]; lab = conds_lab[i]; bnr = bnrinit(bnf, myid, 1); cyc = bnr.cyc; if(#cyc == 0, print("  ", lab, ": cyc=[], skip"); next); ntotal = prod(j=1, #cyc, cyc[j]); print("  ", lab, ": cyc=", cyc, " -> ", ntotal, " chars"); forvec(v = vector(#cyc, k, [0, cyc[k]-1]), if(vecsum(v)==0, next); chi = v; Lobj = lfuncreate([bnr, chi]); L1 = lfun(Lobj, 1); L2 = lfun(Lobj, 2); write(outf, Strprintf("%s;%s;%.55f;%.55f;%.55f;%.55f", lab, chi, real(L1), imag(L1), real(L2), imag(L2))); nlvals = nlvals + 1));
+print("Total L-values written: ", nlvals);
+print("Output: ", outf);
+print("=== Done ===");
+quit;
