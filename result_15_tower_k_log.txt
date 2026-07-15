@@ -32,7 +32,9 @@
   7         3.46582134         0.71958984      2.74623150     0.46549
   8         3.93174246         0.71958984      3.21215262     0.46592
 
-   cross increments k=5..8: mean 0.46577, spread 0.15%, vs 7/15=0.46667 (off 0.06%)
+   cross increments k=5..8: mean 0.46577, spread 0.15%
+      vs my pre-committed prediction 0.4655 : off 0.06%
+      vs 7/15 = 0.466667                    : off 0.19%
    H_CROSS_GROWS: CONFIRMED -- ALL k-growth is CROSS-cell
 
 ## H_CROSS_SMALL -- at q>=5, does cross/within stay small and NOT grow with k?
