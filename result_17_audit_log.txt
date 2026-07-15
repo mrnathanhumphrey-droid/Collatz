@@ -1,0 +1,71 @@
+# PROBE 17 -- ADVERSARIAL AUDIT of R6-R16. A PASS is boring; a FAIL retracts.
+
+## A1 -- DID THE POWER ITERATION ACTUALLY CONVERGE? (never checked all session)
+   resid = ||K^T pi - pi||_1 ; simplex = |sum(pi) - 1| ; rowsum = max|K.rowsum - 1|
+   KILLS IF FAILS: R6, R7, R8, R9, R10, R11, R13, R15, R16 -- i.e. everything.
+
+   q   k       n  iters     residual  simplex err   rowsum err       
+   3   2       6      3    0.000e+00    0.000e+00    1.110e-16     OK
+   3   4      54      5    2.166e-16    2.220e-16    1.110e-16     OK
+   3   6     486      7    1.327e-16    0.000e+00    1.110e-16     OK
+   3   8    4374      9    1.754e-16    0.000e+00    2.220e-16     OK
+   5   2      20      3    5.204e-17    2.220e-16    0.000e+00     OK
+   5   4     500      5    1.341e-16    0.000e+00    2.220e-16     OK
+   7   2      42      3    1.579e-16    0.000e+00    0.000e+00     OK
+   7   3     294      4    1.916e-16    0.000e+00    1.110e-16     OK
+  11   2     110      3    5.567e-17    0.000e+00    1.110e-16     OK
+  11   3    1210      4    7.768e-17    0.000e+00    1.110e-16     OK
+  13   2     156      3    5.593e-17    2.220e-16    1.110e-16     OK
+  17   2     272      3    0.000e+00    0.000e+00    0.000e+00     OK
+  31   2     930      3    6.896e-17    0.000e+00    0.000e+00     OK
+  41   2    1640      3    1.805e-16    0.000e+00    1.110e-16     OK
+  47   2    2162      3    1.072e-17    2.220e-16    1.110e-16     OK
+  59   2    3422      3    8.270e-18    0.000e+00    1.110e-16     OK
+
+   worst residual over all audited cases: 2.166e-16
+   A1: PASS -- the iteration converged everywhere
+
+## A2 -- R14's GRADING AT k=4 (R14 tested only k=3; R15 USES it at k=4..8)
+   predict: v1 mod d | v2 mod d*q | v3 mod d*q^2 | v4 free
+   KILLS IF FAILS: R15's within/cross SPLIT (the 7/15 SLOPE is tested separately in A5)
+
+   q=  3 d=  2 M=ord_{q^4}(2)=    54 (want d*q^3=    54, OK)
+      v1 mod d      :    26624 checks,   0 bad -> EXACT
+      v2 mod d*q    :    24576 checks,   0 bad -> EXACT
+      v3 mod d*q^2  :    18432 checks,   0 bad -> EXACT
+   q=  5 d=  4 M=ord_{q^4}(2)=   500 (want d*q^3=   500, OK)
+      v1 mod d      :   253952 checks,   0 bad -> EXACT
+      v2 mod d*q    :   245760 checks,   0 bad -> EXACT
+      v3 mod d*q^2  :   204800 checks,   0 bad -> EXACT
+   q=  7 d=  3 M=ord_{q^4}(2)=  1029 (want d*q^3=  1029, OK)
+      v1 mod d      :   351918 checks,   0 bad -> EXACT
+      v2 mod d*q    :   345744 checks,   0 bad -> EXACT
+      v3 mod d*q^2  :   302526 checks,   0 bad -> EXACT
+
+## A3 -- R16's NEW DENSE PATH vs the SPARSE path it replaced
+   KILLS IF FAILS: R16 (the dichotomy + the Aitken limits)
+
+   q   k       sparse ratio        dense ratio   |rel diff|
+   3   4     2.068646231616     2.068646231616     2.15e-16
+   3   6     3.000329912369     3.000329912369     5.92e-16
+   5   3     0.192959270120     0.192959270120     0.00e+00
+   5   4     0.203493057296     0.203493057296     0.00e+00
+   7   3     0.353757593538     0.353757593538     0.00e+00
+  11   3     0.002089330614     0.002089330614     1.06e-13
+
+   A3: PASS -- dense == sparse  (worst 1.06e-13)
+
+## A4 -- EXACT RATIONAL ||pi_k||^2 vs float (exact ran at ONE point all session)
+   KILLS IF FAILS: everything float-derived
+
+   q=  5 k=2: exact ||pi||^2 = 0.1302456508436052   float = 0.1302456508436053   |rel| = 4.26e-16  PASS
+   q=  7 k=2: exact ||pi||^2 = 0.1480823269282946   float = 0.1480823269282946   |rel| = 1.87e-16  PASS
+   q=  3 k=3: exact ||pi||^2 = 0.0964604378962191   float = 0.0964604378962192   |rel| = 1.44e-16  PASS
+
+## A5 -- IS THE 7/15 HEADLINE IMMUNE TO A2? Recompute the slope from RAW TOTALS,
+   never touching ratio_within. (within is constant in k, so it should cancel.)
+
+   raw total ratios k=2..8: ['1.01301775', '1.60437221', '2.06864623', '2.53416115', '3.00032991', '3.46582134', '3.93174246']
+   differences            : ['0.591354', '0.464274', '0.465515', '0.466169', '0.465491', '0.465921']
+   mean of last 4 diffs   : 0.465774   vs 7/15 = 0.466667   off 0.19%
+   A5: PASS -- the 7/15 slope uses NO within formula and survives

@@ -1,6 +1,6 @@
 # Result 15 (qx+1 paper) — ★★★ The within-cell overlap is BOUNDED and k-independent; ALL of the q=3 domination failure is CROSS-cell, growing at exactly 7/15 per level. Result 1 reduces to one character sum.
 
-**Date:** 2026-07-15. **Verdicts: H_GATE ✓ / H_FLAT ✓ (⚠️ my rule failed at q=3 — 5th mis-specified) / ★ H_CROSS_GROWS ✓ CONFIRMED (slope 0.46577 vs 7/15, off 0.06%) / H_CROSS_SMALL — my prior LOST.**
+**Date:** 2026-07-15. **Verdicts: H_GATE ✓ / H_FLAT ✓ (⚠️ my rule failed at q=3 — 5th mis-specified) / ★ H_CROSS_GROWS ✓ CONFIRMED (slope 0.46577 vs 7/15, off 0.19% — ⚠️header originally said 0.06%, corrected by R17) / H_CROSS_SMALL — my prior LOST.**
 
 **Headline: `ratio_within(k) = ∏_{j=1}^{k−1}(1+x_j)/(1−x_j) − 1` with `x_j = 2^{−d·q^{j−1}}` — closed form, bounded, k-independent. At q=3 it freezes at 0.71958983896 from k=4 while the total grows linearly ⇒ every bit of the domination failure is the CROSS-cell term. Result 1's open step is now ONE character sum.**
 
@@ -41,9 +41,11 @@ Because the tower ratios `2^{−d}, 2^{−dq}, 2^{−dq²}, …` are **doubly** 
 | 7 | 3.46582134 | **0.71958984** | 2.74623150 | 0.46549 |
 | 8 | 3.93174246 | **0.71958984** | 3.21215262 | 0.46592 |
 
-> **cross increments, k=5..8: mean 0.46577, spread 0.15%, versus 7/15 = 0.46667 — off by 0.06%.**
+> **cross increments, k=5..8: mean 0.46577, spread 0.15%, versus 7/15 = 0.466667 — off by 0.19%.**
+>
+> ⚠️ **CORRECTED 2026-07-15 by the R17 audit.** This line originally read "off by 0.06%". That was WRONG: the probe computed `off = |av − 0.4655|/0.4655` — the deviation from my own pre-committed PREDICTION — while the printed label said `7/15`. The true deviation from 7/15 is **0.19%**. The verdict is unaffected (0.19% still passes the 2% rule) and R17-A5 re-derived the slope from RAW TOTALS with no `within` formula, getting 0.465774 (off 0.19%). But the published number was wrong, and wrong in the flattering direction.
 
-**The tower part is frozen forever at 0.71958983896. Every bit of the q=3 domination failure is cross-cell, and its slope is `S_∞ = 7/15` itself.** Pre-committed prediction was 0.4655; measured 0.46577. Consistent with R7's independent `X_k ≈ 1 + (7/15)·k`.
+**The tower part is frozen forever at 0.71958983896. Every bit of the q=3 domination failure is cross-cell, and its slope is `S_∞ = 7/15` itself.** Pre-committed prediction was 0.4655; measured 0.46577 (0.06% from the prediction, **0.19% from 7/15** — see the correction above). Consistent with R7's independent `X_k ≈ 1 + (7/15)·k`.
 
 ## ⚠️ H_CROSS_SMALL — my prior LOST
 

@@ -152,9 +152,15 @@ def main():
     if diffs:
         mn, mx, av = min(diffs), max(diffs), sum(diffs) / len(diffs)
         spread = (mx - mn) / av
-        off = abs(av - 0.4655) / 0.4655
-        log(f"   cross increments k=5..8: mean {av:.5f}, spread {spread:.2%}, vs 7/15={7/15:.5f} "
-            f"(off {off:.2%})")
+        # BUGFIX (R17 audit): this previously computed off vs my PREDICTION 0.4655 while
+        # the label said 7/15, publishing 0.06% when the true deviation from 7/15 is 0.19%.
+        # Report BOTH, each labelled with what it is actually compared against.
+        off_pred = abs(av - 0.4655) / 0.4655
+        off_715 = abs(av - 7 / 15) / (7 / 15)
+        log(f"   cross increments k=5..8: mean {av:.5f}, spread {spread:.2%}")
+        log(f"      vs my pre-committed prediction 0.4655 : off {off_pred:.2%}")
+        log(f"      vs 7/15 = {7/15:.6f}                    : off {off_715:.2%}")
+        off = off_715
         v = (spread < 0.02) and (off < 0.02)
         log(f"   H_CROSS_GROWS: {'CONFIRMED -- ALL k-growth is CROSS-cell' if v else 'NOT confirmed by the rule'}")
     log("")
