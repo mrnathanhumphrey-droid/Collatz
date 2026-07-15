@@ -1,0 +1,31 @@
+# PROBE 85 Phase 1 — evidential DWM bridge (design A: j=2 F-hat substitution)
+
+## VALIDATION GATE — n=3 native vs archived Syracuse targets
+   G1     : got +1.07831e-01  target 1.0783e-01  ratio 1.0000  OK
+   G2_sum : got +6.08879e-01  target 6.0890e-01  ratio 1.0000  OK
+   G2_tr  : got +5.35722e-02  target 5.3570e-02  ratio 1.0000  OK
+   G2_d1  : got +5.74203e-02  target 5.7420e-02  ratio 1.0000  OK
+   G2_vac : got +4.77548e-03  target 4.7750e-03  ratio 1.0001  OK
+   GATE: PASS
+
+## EVIDENTIAL — does the DWM j=2 chirp == R81 F-hat chirp at r=n-3?
+
+ n=5 (r=2, modulus 3^3=27):
+   (l=0,e=0) c=1: phase-diff spread=0.00e+00 rad, global-offset=+0.0000 (CONSTANT->same chirp)
+   (l=0,e=1) c=2: phase-diff spread=1.80e+00 rad, global-offset=-0.4654 (STRUCTURED->differs)
+   (l=1,e=0) c=10: phase-diff spread=2.96e-16 rad, global-offset=+0.0000 (CONSTANT->same chirp)
+   (l=1,e=1) c=20: phase-diff spread=1.80e+00 rad, global-offset=-0.4654 (STRUCTURED->differs)
+   (l=2,e=0) c=19: phase-diff spread=2.96e-16 rad, global-offset=+0.0000 (CONSTANT->same chirp)
+   (l=2,e=1) c=11: phase-diff spread=1.80e+00 rad, global-offset=-0.4654 (STRUCTURED->differs)
+
+ n=6 (r=3, modulus 3^4=81):
+   (l=0,e=0) c=1: phase-diff spread=0.00e+00 rad, global-offset=+0.0000 (CONSTANT->same chirp)
+   (l=0,e=1) c=2: phase-diff spread=1.81e+00 rad, global-offset=-0.1551 (STRUCTURED->differs)
+   (l=1,e=0) c=28: phase-diff spread=3.92e-16 rad, global-offset=-0.0000 (CONSTANT->same chirp)
+   (l=1,e=1) c=56: phase-diff spread=1.81e+00 rad, global-offset=-0.1551 (STRUCTURED->differs)
+   (l=2,e=0) c=55: phase-diff spread=3.92e-16 rad, global-offset=-0.0000 (CONSTANT->same chirp)
+   (l=2,e=1) c=29: phase-diff spread=1.81e+00 rad, global-offset=-0.1551 (STRUCTURED->differs)
+
+(Interpretation: spread~0 across a family => DWM j=2 chirp = F-hat chirp up to a
+ global phase [the Probe-84 omega_3^l at r=2, ~0 at r=3]. Nonzero spread => not the
+ same chirp -> the identification is species-level only, not this-object-level.)

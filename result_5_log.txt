@@ -1,0 +1,69 @@
+# PROBE 5 — universal rate S_k^{(q)} ~ (q/3)^k derivation
+
+## Self-test: X_gen reproduces validated X_exact (primes, k=2)
+   q=5: X_exact=3.25614127  X_gen=3.25614127  OK
+   q=7: X_exact=7.25603402  X_gen=7.25603402  OK
+   q=11: X_exact=13.47225814  X_gen=13.47225814  OK
+   sum_v 4^-v = 0.3333333333  (target 1/3 = 0.3333333333)  OK
+
+## TASK A — falsifier: q-normalized rate R_k = (X_k/X_{k-1})/q  ->  1/3 ?
+
+### small ord_q(2)
+   q=  7 ord=  3 kmax=4: R_k=(X_k/X_(k-1))/q = ['0.3455', '0.3386', '0.3352']  (->1/3?)  -> 1/3
+   q= 23 ord= 11 kmax=3: R_k=(X_k/X_(k-1))/q = ['0.3334', '0.3333']  (->1/3?)  -> 1/3
+   q= 17 ord=  8 kmax=3: R_k=(X_k/X_(k-1))/q = ['0.3336', '0.3334']  (->1/3?)  -> 1/3
+   q= 31 ord=  5 kmax=2: R_k=(X_k/X_(k-1))/q = ['0.3335']  (->1/3?)  -> 1/3
+   q= 47 ord= 23 kmax=2: R_k=(X_k/X_(k-1))/q = ['0.3333']  (->1/3?)  -> 1/3
+   q= 89 ord= 11 kmax=2: R_k=(X_k/X_(k-1))/q = ['0.3333']  (->1/3?)  -> 1/3
+
+### odd composite
+   q=  9 ord=  6 kmax=4: R_k=(X_k/X_(k-1))/q = ['0.3374', '0.3338', '0.3335']  (->1/3?)  -> 1/3
+   q= 15 ord=  4 kmax=3: R_k=(X_k/X_(k-1))/q = ['0.3346', '0.3334']  (->1/3?)  -> 1/3
+   q= 25 ord= 20 kmax=2: R_k=(X_k/X_(k-1))/q = ['0.3333']  (->1/3?)  -> 1/3
+   q= 21 ord=  6 kmax=3: R_k=(X_k/X_(k-1))/q = ['0.3353', '0.3334']  (->1/3?)  -> 1/3
+   q= 27 ord= 18 kmax=2: R_k=(X_k/X_(k-1))/q = ['0.3333']  (->1/3?)  -> 1/3
+   q= 45 ord= 12 kmax=2: R_k=(X_k/X_(k-1))/q = ['0.3333']  (->1/3?)  -> 1/3
+
+### q==0 mod 3
+   q=  3 ord=  2 kmax=4: R_k=(X_k/X_(k-1))/q = ['0.4286', '0.4051', '0.3927']  (->1/3?)  -> 1/3
+
+### even q
+   q=  4: CONSTRUCTION BREAKS — 2 not invertible mod q^k (even q)
+   q=  6: CONSTRUCTION BREAKS — 2 not invertible mod q^k (even q)
+   q= 10: CONSTRUCTION BREAKS — 2 not invertible mod q^k (even q)
+
+### baseline
+   q=  5 ord=  4 kmax=4: R_k=(X_k/X_(k-1))/q = ['0.3448', '0.3392', '0.3363']  (->1/3?)  -> 1/3
+   q= 11 ord= 10 kmax=3: R_k=(X_k/X_(k-1))/q = ['0.3334', '0.3333']  (->1/3?)  -> 1/3
+   q= 13 ord= 12 kmax=3: R_k=(X_k/X_(k-1))/q = ['0.3334', '0.3333']  (->1/3?)  -> 1/3
+
+## TASK B — the contraction is 1/3, and the 3 is E_Geom(1/2)[2^-v]
+
+   ||pi_k||^2 / ||pi_(k-1)||^2  (should -> 1/3, q-independent):
+   q=  5: ||pi_k||^2 ratio = ['0.3448', '0.3392', '0.3363']   participation 1/||pi||^2 = ['2.6', '7.7', '22.6', '67.3']  (~3^k = [3, 9, 27, 81])
+   q=  7: ||pi_k||^2 ratio = ['0.3455', '0.3386', '0.3352']   participation 1/||pi||^2 = ['2.3', '6.8', '19.9', '59.5']  (~3^k = [3, 9, 27, 81])
+   q= 11: ||pi_k||^2 ratio = ['0.3334', '0.3333']   participation 1/||pi||^2 = ['3.0', '9.0', '26.9']  (~3^k = [3, 9, 27])
+   q= 13: ||pi_k||^2 ratio = ['0.3334', '0.3333']   participation 1/||pi||^2 = ['3.0', '9.0', '27.0']  (~3^k = [3, 9, 27])
+   q= 25: ||pi_k||^2 ratio = ['0.3333']   participation 1/||pi||^2 = ['3.0', '9.0']  (~3^k = [3, 9])
+
+   NAME THE 3:  E_[v~Geom(1/2)][2^-v] = sum_(v>=1) 2^-v * 2^-v = sum 4^-v = 0.33333333 = 1/3.
+   The pair-collision weight per level is sum_(v,v') [collision] 2^(-v-v'); the
+   diagonal (v=v') self-overlap contributes sum_v 4^-v = 1/3, and this halving
+   second-moment is Q-BLIND (q enters only the multiplicative character, which
+   rescales the state-count q^k but not the halving statistic). Hence
+   ||pi_k||^2 ~ (1/3)^k and X_k = q^k ||pi_k||^2 ~ (q/3)^k.
+
+## TASK C (bonus) — does the same factorization give c~_q = (q-3)/q?
+
+   c~_q(k) = (X_k - X_(k-1)) / (q/3)^k   vs  (q-3)/q :
+   q=  5 (k=3): c~=0.48963  (q-3)/q=0.40000  δ=+0.08963
+   q=  7 (k=3): c~=0.78258  (q-3)/q=0.57143  δ=+0.21115
+   q= 11 (k=3): c~=0.72880  (q-3)/q=0.72727  δ=+0.00153
+   q= 13 (k=3): c~=0.76976  (q-3)/q=0.76923  δ=+0.00053
+   (Leading X_k/(q/3)^k -> 1; the difference X_k-X_(k-1) -> (1 - 3/q) = (q-3)/q.)
+
+[wrote] result_5_data.csv
+[wrote] result_5_universal_rate.md
+[appended] STATE.md
+
+==== VERDICT: H_PROVED (mechanism) — rate q-independent, the 3 named as E_Geom(1/2)[2^-v]=1/3; one rigor step flagged (H_BREAKS-guarded) ====

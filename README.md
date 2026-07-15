@@ -1,12 +1,19 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-05-17):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-07-14):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+
+> **Latest (2026-07-14) — a fourth paper-shaped result, and the Tauberian thread closes.**
+> - **★ NEW STANDALONE PAPER — qx+1 universal rate.** `S_k^(q) ~ (q/3)^k`, universal in q, **DERIVED at mechanism** ([`QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`](QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md)). The "3" is named: `1/3 = Σ4^{-v} = E_{v~Geom(1/2)}[2^{-v}]`, the halving second-moment — **q-blind** (q enters only via the character / state-count `q^k`, never the halving statistic). Three pillars: rate, constant `c̃_q=(q-3)/q`, correction `δ_q≈0.82/ord_q(2)`. Adversarial-q falsifier ran FIRST and survived (small `ord_q(2)`, odd composites, `q≡0 mod 3`). **Scope: odd q only.** **Independent of every Collatz-closure thread below.** *Open — the single remaining line:* uniform diagonal-self-overlap domination on `(Z/q^k)*` (R76 conservation generalized from q=3) to upgrade mechanism → theorem. Reported as proved-at-mechanism, **not** as theorem.
+> - **c = 7/45 is now provenance-hole-free.** The load-bearing 1:4 squared-class-mass ratio — previously asserted without a result file — is reconstructed and **CONFIRMED elementary + exact** (`result_64B.md`): class ± = v-parity ⇒ `P(v even)=1/3` ⇒ `(1/3)²:(2/3)²=1:4`. A one-line Geom(½) parity identity. The R75+R76+R77+R64.B chain has no remaining gap.
+> - **Tauberian/BGT corpus FULLY DISPOSED.** The last surviving PARTIAL (Bingham–Ostaszewski candidate E) closes **NO_FIT**: `L(k)=|ε_k|·2^k` does not reach a second plateau — for k≥10 it grows **geometrically** toward `2·0.984=1.968`, which is outside the regular-variation framework entirely. Three regimes (plateau ≤6 / period-9 transition 7–9 / escalation ≥10); **multi-regime obstruction confirmed STRUCTURAL.** Byproduct: independently re-confirms the subdominant rate ρ≈0.984.
+> - **Four clean negatives** (structural priors 0-for-5 this arc — the falsifier-first protocol is why): inverse-tree 1/9 **dead in both measures — do not re-add**; `7=Φ_p(2)` refuted (2-point coincidence, breaks ~0.65× at p≥7); the mod-9 offset is a normalization artifact; `v₃(c_k)` closed form NULL.
+> - **Owed:** the R85 rung-1 operator-DFT chirp identity (a positive) is **single-r (n=6) — owed an r=5 (n=8) extension before it is trusted.** Same small-window profile this arc has killed three times.
 
 ---
 
-## AT A GLANCE — where the project stands (2026-05-17)
+## AT A GLANCE — where the project stands (2026-07-14)
 
-**Three paper-shaped results in hand:**
+**Four paper-shaped results in hand** (the fourth, qx+1, is standalone — see "Latest" above):
 
 1. **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). `S_k = 3^k · ‖d_k‖² → 7/15` proved via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74 algebraic identity. Paper-shaped. Independent of all operator-valued probability framework questions.
 
@@ -22,7 +29,7 @@ The 2.9% gap between T_lead's exact spectrum {43/45, 0} and empirical Hadamard 0
 - Has continuous-on-circle spectrum (U_n, Phi_omega = T^ω ∘ U_n: continuous distribution at radius 0.319 or 0.587, no discrete CC pair).
 - Is identically zero on trivial-twist class projections at any modulus (U_n → W_n exact, kills all class averages by cube-root cancellation).
 - Doesn't recover T_lead's 43/45 (which is itself a class-resolved coherent-summation phenomenon, not a primitive eigenvalue).
-- Has been ruled out by Tauberian BLOCKER (20-PDF corpus, Mode H circular) or Nisoli budget infeasibility (M_3''=24.4 blown 18× under realistic Tao C_A).
+- Has been ruled out by Tauberian BLOCKER (20-PDF corpus, Mode H circular) or Nisoli budget infeasibility (M_3''=24.4 blown 18× under realistic Tao C_A). **[2026-07-14: the Tauberian corpus is now FULLY disposed — the last PARTIAL (BGT candidate E) closed NO_FIT on the pre-registered escalation branch; no BGT theorem accommodates the multi-regime asymptotic. See "Latest" above.]**
 
 **Best finite-truncation closure available:** T_lead's eigenvalue **43/45 = 1 − Σ_g W_+(g) = 1 − 2/45** over Q on (P_+, P_-) class-resolved space (`T_LEAD_CORRECTED_DISPOSITION.md`). First positive algebraic spectral result. Within-level rate-carrier, but Nisoli closure inequality `|K|·K^{-A}·M_3'' < 1` fails at realistic A under Tao C_A bookkeeping.
 

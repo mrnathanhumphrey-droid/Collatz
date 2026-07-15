@@ -1,0 +1,32 @@
+# R64.B verification -- the 1:4 class-mass ratio, reconstructed
+# class + = v even, class - = v odd (R77 l.14); v ~ Geom(1/2), P(v=k)=2^{-k}, k>=1
+
+## (a) class probabilities = parity split of Geom(1/2)  (Sum 2^{-v})
+   P(v even) = 1/3 = 0.333333   (target 1/3)
+   P(v odd)  = 2/3 = 0.666667   (target 2/3)
+   ratio P(even):P(odd) = 1/3:2/3 = 1:2
+   SQUARED-class-mass ratio (1/3)^2:(2/3)^2 = 1:4  <- the (1,4) eigenvector
+   exact check: P(even)=1/3? True   P(odd)=2/3? True   squared ratio=4? True
+
+## (b) Plancherel |mu_hat|^2 weight = parity split of Sum 4^{-v}  (R77 l.19-23)
+   Sum_{v even} 4^{-v} = 1/15   (target 1/15)
+   Sum_{v odd}  4^{-v} = 4/15   (target 4/15)
+   ratio = 1/15:4/15 = 1:4
+   exact check: 1/15? True   4/15? True   ratio=4? True
+   T_diag prefactors: P^++ coeff = 3*(1/15)=1/5=1/5, P^-- coeff = 3*(4/15)=4/5=4/5
+
+## T_diag = (1/5)[[1,1],[4,4]] eigenstructure
+   eigenvalues = [np.float64(1.0), np.float64(0.0)]  (target {1, 0})
+   lambda=1 eigenvector (normalized) = (1.0000, 4.0000)  (target (1, 4))
+   check: eigenvalue 1? True  eigenvector (1,4)? True
+
+## (c) numeric confirmation on real Collatz v = v2(3n+1), n uniform odd 3-nmid
+   N=40,000,000  empirical P(v even)=0.33333 (1/3=0.33333), P(v odd)=0.66667 (2/3)
+   empirical SQUARED-class-mass ratio (p_odd)^2:(p_even)^2 = 4.0000:1  (target 4:1)
+
+## VERDICT
+   CONFIRMED. R64.B's 1:4 class-mass ratio is ELEMENTARY and EXACT: the parity
+   split of Geom(1/2) — P(v even)=1/3, P(v odd)=2/3 (squared -> 1:4), equivalently
+   Sum_{even}4^{-v}:Sum_{odd}4^{-v}=1/15:4/15=1:4 (the T_diag prefactors). The value
+   is correct; the provenance gap (no result_64*.md) was write-up only, now closed.
+   c=7/45's dependence on R64.B is on an elementary Geom(1/2) parity identity.

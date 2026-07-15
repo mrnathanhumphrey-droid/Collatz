@@ -1,0 +1,26 @@
+# PROBE 85 rung 1 — operator-DFT bridge test (REAL DWM phase vs R81 certified F-hat)
+
+n=6, j=2 -> r=3, N=3^6=729, reduced modulus q=3^4=81, d=3^3=27
+
+## (1) DWM j=2 chirp multipliers c' = (-xi*2^{-b}) mod q, occurring (xi,b)
+   distinct unit multipliers c' occurring: 54  (<4>: 27, 2<4>: 27)
+   R81 family cosets: (l=0,e=0)-><4>, (l=1,e=0)-><4>, (l=2,e=0)-><4>, (l=0,e=1)->2<4>, (l=1,e=1)->2<4>, (l=2,e=1)->2<4>
+   DWM operator populates BOTH R81 cosets: YES  (R81 has eps=0 in <4>, eps=1 in 2<4>)
+
+## (2) DFT of the REAL DWM chirp, certified by R81's exact machinery
+   (magnitude 3sqrt(q) flat = Th 78.3; phase index J4; finite-diff degree)
+
+   |F|=3sqrt(q) target = 27.000000;  R81 degree at r=3 was 3 (growing-degree law)
+
+   R81 ref  eps=0 c=  1: mag_flat=True  |supp|=9  deg=3  cert_fail=0
+   R81 ref  eps=1 c=  2: mag_flat=True  |supp|=9  deg=3  cert_fail=0
+
+   DWM  coset 0 c'=  1: mag_flat=True  |supp|=9  deg=3  cert_fail=0  | vs R81: deg_match=True  1stdiff_multiset_match=True
+   DWM  coset 1 c'=  2: mag_flat=True  |supp|=9  deg=3  cert_fail=0  | vs R81: deg_match=True  1stdiff_multiset_match=True
+
+## VERDICT
+   PASS(part-A): the REAL DWM j=2 operator chirp, DFT'd, reproduces R81's
+   certified F-hat structure (|F|=3sqrt(q) flat, growing-degree J4 phase) on
+   BOTH cosets R81 uses. The DWM operator's chirp IS R81's certified object;
+   R81's Mahler/cyclotomic certification (independent of the DWM operator) is
+   the oracle. Rung 2 (Geom-measure assembly -> 7/45) is the remaining piece.

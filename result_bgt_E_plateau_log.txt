@@ -1,0 +1,39 @@
+# BGT candidate E -- second-plateau test on ε_2..ε_16 (existing data, no new compute)
+# L(k) = |ε_k|·2^k ; slow variation (plateau) <=> L(k+1)/L(k) -> 1
+
+     k           ε_k sign   L=|ε|·2^k L(k)/L(k-1) |ε|^(1/k)
+     1 +2.000000e-01    +      0.4000         nan    0.2000
+     2 +9.523810e-03    +      0.0381      0.0952    0.0976
+     3 -5.091986e-03    -      0.0407      1.0693    0.1720
+     4 -2.452258e-03    -      0.0392      0.9632    0.2225
+     5 -1.151747e-03    -      0.0369      0.9393    0.2584
+     6 -4.979057e-04    -      0.0319      0.8646    0.2815
+     7 -1.175237e-03    -      0.1504      4.7207    0.3815
+     8 -7.455464e-04    -      0.1909      1.2688    0.4065
+     9 -7.520257e-06    -      0.0039      0.0202    0.2696
+    10 +7.207509e-04    +      0.7380    191.6825    0.4850
+    11 +1.501967e-03    +      3.0760      4.1678    0.5538
+    12 +2.274714e-03    +      9.3172      3.0290    0.6022
+    13 +2.948247e-03    +     24.1520      2.5922    0.6388
+    14 +3.587667e-03    +     58.7803      2.4338    0.6689
+    15 +4.161114e-03    +    136.3514      2.3197    0.6939
+    16 +4.684977e-03    +    307.0346      2.2518    0.7152
+
+## regime 1 (k=2..6): L ∈ [0.0319, 0.0407], mean 0.0374 (≈|−1/30|=0.0333) -- PLATEAU
+## k=7 jump: L(7)/L(6) = 4.72  (the load-bearing obstruction)
+## k=9 sign flip: ε_9=-7.52e-06 (near zero; + for k≥10, period-9 pattern)
+## regime 3 (k=10..16): L(k+1)/L(k) = [4.168, 3.029, 2.592, 2.434, 2.32, 2.252]
+     -> decreasing toward 2.252; asymptote 2·0.984 = 1.968 (=2·subdominant-rate)
+## |ε_k|^(1/k) k=13..16: [0.6388, 0.6689, 0.6939, 0.7152] -> asymptote ρ≈0.984 (>1/2)
+
+## VERDICT: candidate E -> NO_FIT
+   L(k) does NOT stabilize to a second plateau. For k≥10 it grows GEOMETRICALLY:
+   L(k+1)/L(k) → 1.968 (not → 1), i.e. L(k) ~ (2·0.984)^k = 1.968^k, because
+   |ε_k| ~ 0.984^k (subdominant rate 0.984 > 1/2). Exponential growth is OUTSIDE the
+   entire regular-variation framework (RV = power-law/slowly-varying tails), so BGT
+   candidate E closes PARTIAL → NO_FIT exactly as BGT_DISPOSITION l.60 pre-registered
+   for the escalation branch. The k=7 jump is regime-1→regime-3 onset (transient (1/2)^k
+   giving way to the true 0.984^k rate), NOT a plateau-to-plateau step. Three regimes
+   (plateau k≤6 / period-9 transition k=7-9 / geometric escalation k≥10); no single-
+   regime BGT theorem fits — the multi-regime obstruction is confirmed STRUCTURAL.
+   Cross-check: L(k)~1.968^k independently re-confirms subdominant rate ≈0.984.

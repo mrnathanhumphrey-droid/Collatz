@@ -1,0 +1,47 @@
+# PROBE 86 — Mahler valuation profile v3(c_k) closed form (LOW priority)
+
+## Self-test: streaming ghat reproduces the banked profile (r=12)
+   r=12 v3(c_k) k=0..10 = [0, 2, 2, 3, 4, 6, 7, 8, 10, 11, 12]  (cert resid 9.6e-15)
+   expected [0, 2, 2, 3, 4, 6, 7, 8, 10, 11, 12] -> OK
+
+## TASK A — extend v3(c_k) with per-k r-stability
+
+   r=14 (q=3^15,   0.7s, resid 3.5e-14): 0 2 2 3 4 6 7 8 10 11 12 X X X X X X
+   r=16 (q=3^17,   5.5s, resid 4.1e-14): 0 2 2 3 4 6 7 8 10 11 12 15 16 X X X X
+   r=17 (q=3^18,  16.4s, resid 2.7e-14): 0 2 2 3 4 6 7 8 10 11 12 15 16 17 X X X
+   r=18 (q=3^19,  47.2s, resid 2.9e-14): 0 2 2 3 4 6 7 8 10 11 12 15 16 17 X X X
+   r=19 (q=3^20, 158.8s, resid 3.5e-14): 0 2 2 3 4 6 7 8 10 11 12 15 16 17 19 X X
+
+   k :  v3   status      (resolving r:v3)
+    0:     0  confirmed   [14:0,16:0,17:0,18:0,19:0]
+    1:     2  confirmed   [14:2,16:2,17:2,18:2,19:2]
+    2:     2  confirmed   [14:2,16:2,17:2,18:2,19:2]
+    3:     3  confirmed   [14:3,16:3,17:3,18:3,19:3]
+    4:     4  confirmed   [14:4,16:4,17:4,18:4,19:4]
+    5:     6  confirmed   [14:6,16:6,17:6,18:6,19:6]
+    6:     7  confirmed   [14:7,16:7,17:7,18:7,19:7]
+    7:     8  confirmed   [14:8,16:8,17:8,18:8,19:8]
+    8:    10  confirmed   [14:10,16:10,17:10,18:10,19:10]
+    9:    11  confirmed   [14:11,16:11,17:11,18:11,19:11]
+   10:    12  confirmed   [14:12,16:12,17:12,18:12,19:12]
+   11:    15  confirmed   [16:15,17:15,18:15,19:15]
+   12:    16  confirmed   [16:16,17:16,18:16,19:16]
+   13:    17  confirmed   [17:17,18:17,19:17]
+   14:    19  single-r    [19:19]
+   15:  None  unresolved  []
+   16:  None  unresolved  []
+
+## TASK B — kill/confirm floor(4k/3) + digit/carry correction (OUT OF SAMPLE)
+
+   fit window k<=11: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];  out-of-sample k>=12: [12, 13, 14]
+
+   floor(4k/3) alone: residual v3-floor = [0, 1, 0, -1, -1, 0, -1, -1, 0, -1, -1, 1, 0, 0, 1]  -> refuted
+   + a*s3(k): no single integer coeff fits window -> refuted
+   + a*carries(k+k): no single integer coeff fits window -> refuted
+   + a*v3(k!): no single integer coeff fits window -> refuted
+
+[wrote] C:\Collatz\result_86_data.csv
+[wrote] C:\Collatz\result_86_mahler_valuation.md
+[appended] STATE.md
+
+==== VERDICT: NULL  confirmed to k=13 ====

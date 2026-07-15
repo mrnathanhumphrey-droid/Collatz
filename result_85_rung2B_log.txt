@@ -1,0 +1,27 @@
+# PROBE 85 rung 2 AXIS B — vary multiplier p (p*x+1), base-2 halving fixed
+# cyclotomic numerator N_p = Phi_p(2) = 2^p - 1  (=7 at p=3, the '7' in 7/45)
+
+## p=3   N_p=Phi_p(2)=2^3-1=7
+   S_k: S_4=0.46421441  S_5=0.46551492  S_6=0.46616876
+   S_inf (Aitken) = 0.46682985
+   back-out D(p) = N_p / S_inf = 14.994757
+      compare: p*(p+2)=15, p^2+? , 3*(...)  |  p=3 gives D=15=3*5
+
+## p=5   N_p=Phi_p(2)=2^5-1=31
+   S_k: S_3=2.26681831  S_4=3.76325228  S_5=6.27539111
+   S_inf (Aitken) = 0.06212807
+   back-out D(p) = N_p / S_inf = 498.969337
+      compare: p*(p+2)=35, p^2+? , 3*(...)  |  p=3 gives D=15=3*5
+
+## p=7   N_p=Phi_p(2)=2^7-1=127
+   S_k: S_2=4.25603402  S_3=9.94170134  S_4=23.15289786
+   S_inf (Aitken) = -0.03958585
+   back-out D(p) = N_p / S_inf = -3208.216695
+      compare: p*(p+2)=63, p^2+? , 3*(...)  |  p=3 gives D=15=3*5
+
+ANCHOR p=3: S_inf=0.46682985 vs 7/15=0.46666667 (resid +1.63e-04); c=S_inf/3=0.15560995 vs 7/45=0.15555556
+
+## READOUT
+   Does S_inf(p) converge (base-2 halving preserved)?  Does N_p=2^p-1 sit cleanly
+   in the numerator (D(p) structural)?  p=3 -> 7/15 is the anchor; p=5,7 decide
+   whether the '7' is the cyclotomic Phi_p(2) or a p=3 coincidence.

@@ -4,11 +4,11 @@
 
 Files: `result_85_phase0_timing.py` + `result_85_phase0_timing_log.txt` + `result_85_phase0_n6_log.txt`.
 
-## 1. Gate: Probe 84 has NOT landed — but it no longer matters for cost
+## 1. Gate: Probe 84 LANDED (parallel, 2026-07-14) → offset RESOLVED → n=5 unlocked
 
-No `PRE_REG_84` / `result_84` / `probe_84`; no R84 in STATE. **Strictly, the pre-reg's Phase-1 gate is unmet.** However, R83 Task B (§75–83) already characterized the mod-9 offset: it is **genuine residual structure** (not a normalization artifact — the (ℓ,ε)→offset/9 map is not a character, does not factor through c mod 9), **level-dependent**, low-complexity (affine in ℓ, ε-antisymmetric), and **NOT dissolved** ("a lead handed back, not a closed nuisance"). Per the pre-reg gate — "offset open or level-dependent → n=6." So the offset points to n=6.
+R84 verdict **H_ARTIFACT**: the mod-9 offset is a **normalization artifact** — a top-layer `3^r` global phase from the family-defining `(1+3^r)^ℓ` twist (since 4≡1 mod 3, `e_q(ℓ·3^r·4^u)=e_3(ℓ)=ω₃^ℓ`, constant in u → a global cube-root phase). v₃(offset)=r at r=2..7 (not a fixed 3²; the "9" R83 saw was just 3^{r=2}). R83's "genuine residual structure" is **overturned**. Per the pre-reg gate — "offset resolved (normalization artifact / derived source) → **n=5**." The r=2 phase-value comparison is now clean: divide out the *derived* per-family `ω₃^ℓ`.
 
-**But the whole reason to prefer n=5 was cost (avoid the 27×). §2 below shows there is no meaningful cost to avoid.** The offset is an **r=2** phenomenon; **n=6 lands at r=3**, inside the certified R81/R81b Mahler regime, where the F̂ phase is computed directly (one FFT) with no offset. So n=6 is the *clean* target on both axes — and it's cheap.
+Given cost is trivial at both (§2), the strongest move is **both**: n=5/r=2 (divide out the known ω₃^ℓ) AND n=6/r=3 (directly in the certified R81b Mahler regime, no offset). Agreement across the two is the real robustness check; disagreement flags the offset-division or the `r=n−2j+1` mapping (my A3 triage) rather than a true null.
 
 ## 2. Cost — MEASURED, not estimated (this is the correction)
 
