@@ -1,0 +1,56 @@
+# PROBE 13 -- the FAMILY (b) count. Last open piece of pillar 3.
+# Pre-reg: H_SPLIT(gate) / H_COND(*** derivation ***) / H_J1 / H_EPS(EXPLORATORY, no verdict)
+
+## H_SPLIT (gate) -- does family(a) + family(b) == offdiag_total exactly?
+
+   q   d   offdiag_total       family(a)       family(b)  |split err|   eps_q=b/a
+  11  10  2.29865227e-04  2.17226024e-04  1.26392030e-05     0.00e+00    0.058185
+  13  12  7.50071879e-05  5.42667209e-05  2.07404670e-05     0.00e+00    0.382195
+  17   8  9.55739847e-04  8.71459695e-04  8.42801519e-05     0.00e+00    0.096711
+  31   5  7.21734196e-03  7.16845878e-03  4.88831794e-05     0.00e+00    0.006819
+  41  20  2.13325589e-07  2.11927828e-07  1.39776060e-09     0.00e+00    0.006595
+  47  23  2.66792363e-08  2.64909564e-08  1.88279929e-10     0.00e+00    0.007107
+
+   cross-term identity check (family(b) == sum_v tot^2 - sum_cells mass^2):
+      q= 11: |rel err| = 1.55e-12
+      q= 13: |rel err| = 3.16e-13
+      q= 17: |rel err| = 1.09e-13
+      q= 31: |rel err| = 2.66e-13
+      q= 41: |rel err| = 7.58e-09
+      q= 47: |rel err| = 9.83e-08
+   H_SPLIT: CONFIRMED (exact algebra; family(b) IS the cross-cell term)
+
+## H_COND (*** THE DERIVATION ***) -- is 2^{-A'} = 2^{-A} + j*s*2^{-v_2} mod q
+   an EXACT iff for cross-cell collisions? (zero false pos AND zero false neg)
+
+   q= 11 d= 10 s=(2^d-1)/q mod q=   5: cross pairs=   4950  condition violations=    0  non-multiple-of-d shifts=   0  EXACT
+   q= 13 d= 12 s=(2^d-1)/q mod q=   3: cross pairs=  10296  condition violations=    0  non-multiple-of-d shifts=   0  EXACT
+   q= 17 d=  8 s=(2^d-1)/q mod q=  15: cross pairs=   3808  condition violations=    0  non-multiple-of-d shifts=   0  EXACT
+   q= 31 d=  5 s=(2^d-1)/q mod q=   1: cross pairs=   1550  condition violations=    0  non-multiple-of-d shifts=   0  EXACT
+   q= 41 d= 20 s=(2^d-1)/q mod q=  32: cross pairs= 155800  condition violations=    0  non-multiple-of-d shifts=   0  EXACT
+   q= 47 d= 23 s=(2^d-1)/q mod q=  22: cross pairs= 273493  condition violations=    0  non-multiple-of-d shifts=   0  EXACT
+
+## H_J1 -- do |j|=1 terms dominate family (b)?
+
+   q   d  |j|=1 share      |j|=2     |j|>=3
+  11  10     0.996204   0.003793   0.000003
+  13  12     0.999985   0.000015   0.000000
+  17   8     0.984584   0.015384   0.000032
+  31   5     0.886964   0.110870   0.002166
+  41  20     0.999996   0.000004   0.000000
+  47  23     1.000000   0.000000   0.000000
+
+## H_EPS -- EXPLORATORY. Reporting the count, NOT fitting a law to 6 points.
+
+   q   d   eps_q=b/a       d/q    1/(q-1)    d/(q-1)   (q-1)/d
+  11  10    0.058185   0.90909   0.100000    1.00000     1.000
+  13  12    0.382195   0.92308   0.083333    1.00000     1.000
+  17   8    0.096711   0.47059   0.062500    0.50000     2.000
+  31   5    0.006819   0.16129   0.033333    0.16667     6.000
+  41  20    0.006595   0.48780   0.025000    0.50000     2.000
+  47  23    0.007107   0.48936   0.021739    0.50000     2.000
+
+   NOTE: index of <2> in (Z/q)* is (q-1)/d -- the number of cosets. If eps_q
+   tracks the SOLVABILITY fraction (RHS lands in <2>), expect ~ d/(q-1).
+   Any law read off these 6 points is a HYPOTHESIS needing a pre-committed OOS
+   test at unseen ord (per feedback_r2_cannot_discriminate_monotone_fits).
