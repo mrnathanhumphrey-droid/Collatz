@@ -1,0 +1,50 @@
+# PROBE 14 -- does R11's cell collapse GRADE to k=3?  (the route to Result 1)
+# Pre-reg: H_M(gate) / H_G1(k=2 fact must survive) / H_G2(*** NEW ***) / H_SHARP / H_CELLS
+# Exact integer equality only. No tolerances.
+
+## H_M (gate) -- is ord_{q^j}(2) = d*q^{j-1} (non-Wieferich)?
+   q=  5: d=ord_q(2)=  4  ord_{q^2}=   20 (want    20)  ord_{q^3}=   100 (want    100)  OK
+   q=  7: d=ord_q(2)=  3  ord_{q^2}=   21 (want    21)  ord_{q^3}=   147 (want    147)  OK
+   q= 11: d=ord_q(2)= 10  ord_{q^2}=  110 (want   110)  ord_{q^3}=  1210 (want   1210)  OK
+   q= 13: d=ord_q(2)= 12  ord_{q^2}=  156 (want   156)  ord_{q^3}=  2028 (want   2028)  OK
+
+## H_G1 (v1 mod d, must survive from k=2) / H_G2 (v2 mod d*q, THE NEW CLAIM)
+   exhaustive where affordable; else full sweeps of the shifted coord over 1..M
+
+   q=  5 d=  4 M=ord_{q^3}(2)=   100  [EXHAUSTIVE (1000000 triples)]
+      H_G1  value(v1+d,  v2, v3) == value:    960000 checks,    0 mismatches -> EXACT
+      H_G2  value(v1, v2+d*q, v3) == value:    800000 checks,    0 mismatches -> EXACT
+   q=  7 d=  3 M=ord_{q^3}(2)=   147  [EXHAUSTIVE (3176523 triples)]
+      H_G1  value(v1+d,  v2, v3) == value:   3111696 checks,    0 mismatches -> EXACT
+      H_G2  value(v1, v2+d*q, v3) == value:   2722734 checks,    0 mismatches -> EXACT
+   q= 11 d= 10 M=ord_{q^3}(2)=  1210  [SWEEPS (169 slices x full range)]
+      H_G1  value(v1+d,  v2, v3) == value:    202800 checks,    0 mismatches -> EXACT
+      H_G2  value(v1, v2+d*q, v3) == value:    185900 checks,    0 mismatches -> EXACT
+   q= 13 d= 12 M=ord_{q^3}(2)=  2028  [SWEEPS (144 slices x full range)]
+      H_G1  value(v1+d,  v2, v3) == value:    290304 checks,    0 mismatches -> EXACT
+      H_G2  value(v1, v2+d*q, v3) == value:    269568 checks,    0 mismatches -> EXACT
+
+   H_G1: CONFIRMED -- the k=2 fact survives at k=3
+   H_G2: CONFIRMED -- THE COLLAPSE GRADES
+
+## H_SHARP -- is the grading TIGHT? (d must NOT suffice for v2; d*q must NOT suffice for v3)
+   q=  5: (a) v2+d changes value in 216/216 cases -> TIGHT (d insufficient for v2)
+          (b) v3+d*q changes value in 216/216 cases -> TIGHT (d*q insufficient for v3)
+   q=  7: (a) v2+d changes value in 216/216 cases -> TIGHT (d insufficient for v2)
+          (b) v3+d*q changes value in 216/216 cases -> TIGHT (d*q insufficient for v3)
+   q= 11: (a) v2+d changes value in 216/216 cases -> TIGHT (d insufficient for v2)
+          (b) v3+d*q changes value in 216/216 cases -> TIGHT (d*q insufficient for v3)
+   q= 13: (a) v2+d changes value in 216/216 cases -> TIGHT (d insufficient for v2)
+          (b) v3+d*q changes value in 216/216 cases -> TIGHT (d*q insufficient for v3)
+
+## H_CELLS -- distinct cells == d * (d*q) * M = d^3*q^3 ?
+   (stated up front: d^3*q^3 EXCEEDS the ~q^3 state count by ~d^3, so the collapse
+    ALONE gives no injectivity. The weights must do the work. This tests STRUCTURE.)
+
+   q   d       M   cells d*(dq)*M      d^3*q^3  states ~q^2(q-1)  cells/states
+   5   4     100             8000         8000               100          80.0
+   7   3     147             9261         9261               294          31.5
+  11  10    1210          1331000      1331000              1210        1100.0
+  13  12    2028          3796416      3796416              2028        1872.0
+
+   (cells == d^3*q^3 iff M == d*q^2, i.e. the H_M gate.)
