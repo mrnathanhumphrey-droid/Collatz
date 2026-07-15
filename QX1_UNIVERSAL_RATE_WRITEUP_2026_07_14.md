@@ -1,6 +1,12 @@
 # The universal rate of qx+1 stationary L² mass — standalone writeup
 
-**Date:** 2026-07-14. **Status:** paper-shaped; three results, one identity short of a full theorem on Result 1. Independent of every Collatz-closure thread (ε_k / c=7/45 / THEOREM_C_745 / R81b all untouched). Collatz need not be in the title.
+**Date:** 2026-07-14, **substantially revised 2026-07-15 (R6–R10).** **Status:** paper-shaped; three results, **now all flowing from one mechanism**. One genuinely open input (Result 1's overlap bound). Independent of every Collatz-closure thread (ε_k / c=7/45 / THEOREM_C_745 / R81b all untouched). Collatz need not be in the title.
+
+> **2026-07-15 revision summary.** Three things changed and one died:
+> - **R7 — the object was misidentified.** The primitive is `M_k = q^k‖d_k‖²`, **not** `q^k‖π_k‖²`. See Object below. The q-sweep and the q=3 thread (R74/R75/R76) have been computing **one object by two routes** since 2026-05-03.
+> - **R8 — the mechanism is named.** `π_k` **is** a q-adic self-similar measure; the "3" is `1/Σ_v p_v²`, its correlation dimension. Domination = an **overlap bound**, not a character estimate.
+> - **R9/R10 — Result 3 was WRONG and is rewritten.** `δ_q ≈ 0.82/ord_q(2)` is refuted by **2.55×10¹³**. The law is **`δ_q = 2^{1−ord_q(2)}·(q−3)/q`**.
+> - **R6 — the previously-advertised "one line to a theorem" (generalize R76's conservation) is DEAD.** Conservation ports for free *and is insufficient*; q=3 is structurally unique. See Result 1.
 
 ---
 
@@ -10,7 +16,20 @@ For odd `q`, the **qx+1 Syracuse chain** on residues coprime to `q` mod `q^k`:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`r ↦ (q·r + 1)·2^{−v} mod q^k`, &nbsp; `v ~ Geom(1/2)` (P(v)=2^{−v}, v≥1).
 
-Let `π_k` be its stationary distribution and define `S_k^{(q)} = q^k · ‖π_k‖² = q^k Σ_r π_k(r)²` (the state-count-normalized L² / collision mass). For `q=3` this is the R75 object with `S_k^{(3)} → 7/15`.
+Let `π_k` be its stationary distribution. **The primitive object is the level-incremental deviation** (R74's, generalized):
+
+&nbsp;&nbsp;&nbsp;&nbsp;`‖d_k‖² := Σ_{r'} (π_k(r') − π_{k−1}(parent(r'))/q)²`, &nbsp; **`M_k := q^k‖d_k‖² = Σ_{gcd(ξ,q)=1}|μ̂_k(ξ)|²`**
+
+For `q=3` this is exactly R75/R76's `S_k`, with `M_k^{(3)} → 7/15` (verified: its deviations reproduce R76 §10's ε_2, ε_3, ε_4 exactly).
+
+**⚠️ Naming correction (R7).** Earlier drafts used `X_k := q^k‖π_k‖²` and called it `S_k^{(q)}`. **`X_k` is a different object** — it is the *cumulative sum* of `M_k`:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**`X_k − X_{k−1} = M_k`, exactly, at every q** — one line from the projection property, since each parent has exactly `q` coprime children whose masses sum to the parent's:
+&nbsp;&nbsp;&nbsp;&nbsp;`‖d_k‖² = ‖π_k‖² − (1/q)‖π_{k−1}‖²` &nbsp;⇒&nbsp; `q^k‖d_k‖² = X_k − X_{k−1}`. ∎
+
+This is **Pythagoras**: the lifted parent is the orthogonal projection of `π_k` onto the level-(k−1) σ-algebra and `d_k` is its complement, so `‖π_k‖² = (1/q)‖π_{k−1}‖² + ‖d_k‖²` — *(what level k−1 already knew) + (new information at level k)*. `X_k` is the accumulated energy of that decomposition.
+
+**Use `M_k`, not `X_k`.** `M_k` carries the clean `(q/3)^k` rate at **every** odd q **including the critical q=3**; `X_k` carries it only for `q ≥ 5` (inherited by geometric summation) and **degenerates at q=3**, where the series diverges linearly and `X_k ≈ (7/15)·k`. The object that degenerates at the case of interest must not carry the headline.
 
 ---
 
@@ -29,7 +48,27 @@ Equivalently `‖π_k‖² ~ C_q · 3^{−k}` with the exponential rate **`3^{�
 - Direct contraction `‖π_k‖²`-ratio `→ 1/3` (q=5,7,11,13,25); exact identity `Σ4^{−v}=1/3`.
 - **Scope: odd q only.** Even q breaks the construction (2 not invertible mod `q^k`).
 
-**Open (the one line to a full theorem).** That the *sub-leading* character contributions to `‖π_k‖²` do not perturb the leading `(1/3)^k` rate — i.e. **uniform diagonal-self-overlap domination on `(Z/q^k)*`**, an R76-style conservation identity generalized from q=3. Numerics show zero q-dependence in the rate to tested k; the clean algebraic proof of uniform domination is the remaining step. Reported as **H_PROVED-at-mechanism**, not a finished theorem.
+**Mechanism, properly named (R8 — supersedes the hand-wave above).** `π_k` **is a q-adic self-similar measure.** Iterating from any `r_0`, `r_k = q^k·r_0·2^{−A_k} + Σ_{m=1}^k q^{m−1}2^{−S_m}` — **mod `q^k` the `r_0` term vanishes identically**, so `π_k` is exactly the law of `Σ_m q^{m−1}2^{−S_m}`. That is an IFS `T_v(x)=(qx+1)/2^v` with weights `p_v = 2^{−v}/Z`, and **q-adically every map contracts by exactly `1/q`** (`2^v` is a unit). Writing the L² mass by address `a=(v_1..v_k)`, `p_a = ∏_i p_{v_i}`:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**`‖π_k‖² = Σ_a p_a²` [DIAGONAL] `+ Σ_{a≠a', val(a)=val(a')} p_a p_{a'}` [OVERLAPS]**, &nbsp; `DIAGONAL = (Σ_v p_v²)^k → (1/3)^k`
+
+**So the "3" is `1/Σ_v p_v²` — the address measure's own participation ratio — and `D₂ = log3/log q` is the measure's correlation dimension.** This makes the constant a *known species* of object (cf. Bernoulli convolutions) rather than a bespoke identity. Gated at machine zero: address enumeration vs power iteration agree to **0.000e+00** (q=3,k=2) and ≤1.1e−16 at (3,3), (5,2), (7,2).
+
+**Open (restated correctly) — an OVERLAP bound, not a character estimate.** `‖π_k‖² = (1/3)^k` exactly iff distinct addresses land on distinct residues. Overlaps can only *increase* the sum (Cauchy–Schwarz per fiber), so **`C_q ≥ 1` is forced** — which is why every measured `δ_q > 0`; that is a theorem, not an observation. The open step is therefore:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**off-diagonal collision mass = `O(3^{−k})`** — a counting problem in `(Z/q^k)*`, not a Fourier estimate.
+
+Measured status: **confirmed for q ≥ 5** (`offdiag/diag` converges: 0.210 / 0.361 / 0.00209 / 0.00068 at q=5/7/11/13). **At q=3 it fails by exactly a factor of k** (`ratio_k ≈ 0.4655·k`, and 0.4655 ≈ 7/15) — which is not a defect but *the critical behaviour itself* (`‖π_k‖² ~ (7/15)·k·3^{−k}`).
+
+**Why this should be tractable** (unlike the archimedean Bernoulli-convolution analogue, open since Erdős): the metric is **non-archimedean** — q-adic balls are nested or disjoint, never partially overlapping; all maps contract by *exactly* `1/q` with no distortion; collisions are **exact algebraic coincidences** (`2^{−S}` matching mod `q^k`), not near-misses, so no transversality is needed; and the coding is **triangular** (digit m depends only on `2^{−S_m}`), so it can be analysed digit by digit.
+
+**⛔ DEAD ROUTE — do not retry (R6).** Earlier drafts advertised "one line to a theorem: generalize R76's conservation identity to `(Z/q^k)*`." **That framing is wrong twice over.** (i) Conservation **ports verbatim and for free** — R76 Thm 76.1 is a complete-character-sum vanishing (`Σ_j e^{2πi rξj/q} = 0` unless `q|rξ`; `gcd(r,q)=1` ⇒ `q∤ξ`) that **never uses q=3**; confirmed to ≤2.9e−15 including composite q=9, 15. If it were the missing step the paper would already be done. (ii) It is **insufficient** — R76 Thm 76.3's leading-mode collapse `S_{n+1} = −2M_{n+1}(1+3^n)` needs Lemma 76.2's pairing to leave *one* unknown, and the pairing ports fine (M is palindromic on inverse pairs at every q≥5) but the **count** does not: conservation is 1 equation in `(q−1)/2` unknowns, and
+
+&nbsp;&nbsp;&nbsp;&nbsp;**`(q−1)/2 = 1 ⟺ q = 3`.**
+
+**Machinery triage (complete): R74 ✓ ports · R75 (Plancherel) ✓ ports · R76 Thm 76.1 ✓ ports · R76 Thm 76.3 ✗ (q=3 only).**
+
+**★ Byproduct — a second, structural sense in which q=3 is critical.** It is the unique odd q for which conservation determines the leading mode, with a one-line proof. Combined with the geometric-series divergence at `(q/3)=1` (Object, above), the paper now has a **phase-boundary** justification for "q=3 is critical" — precisely the register the Bernoulli-convolution template (Erdős/Solomyak/Hochman) uses — rather than only the observation `M_k^{(3)} → 7/15`.
 
 ---
 
@@ -39,9 +78,37 @@ Leading `S_k/(q/3)^k → 1`, so the difference `D_k = S_k − S_{k−1}` gives `
 
 ---
 
-## Result 3 (CORRECTION) — `δ_q = c̃_q − (q−3)/q ≈ 0.82/ord_q(2)` (empirical)
+## Result 3 (CORRECTION) — `δ_q = 2^{1−ord_q(2)}·(q−3)/q`
 
-The finite-order correction: `c̃_q = (q−3)/q + O(1/ord_q(2))`, deviation `≈ 0.82/ord_q(2)`, monotone across 8 primes, R²=0.94, **out-of-sample validated at q=31,127,73** (`result_4_ctilde_ord2.md`, Probe 4). Mechanism: small multiplicative order of 2 mod q shortens the 2-orbit in the chain, inflating the finite-order correction. The constant 0.82 is empirical (open whether it is a clean rational); c̃ measured at k=2, matches all prior established δ.
+> **⚠️ This result was REWRITTEN 2026-07-15 (R9/R10). The previous claim — `δ_q ≈ 0.82/ord_q(2)`, "R²=0.94, OOS-validated at q=31,127,73" — is REFUTED by a factor of 2.55×10¹³. It must not be cited.**
+
+**The law.** `δ_q := c̃_q − (q−3)/q` and
+
+&nbsp;&nbsp;&nbsp;&nbsp;**`δ_q = 2^{1−ord_q(2)} · (q−3)/q · (1 + O(1/q))`**, &nbsp; equivalently &nbsp; `ratio_2 := offdiag_2/diag_2 = 2^{1−ord_q(2)}`
+
+**Derived, not fitted (R8/R10).** At k=1 the coding `v_1 ↦ 2^{−v_1} mod q` runs over `v_1 ∈ {1..ord_q(2)}` = exactly one full period, so it is a **bijection onto `⟨2⟩`** — **zero collisions**, `ratio_1 = 0` exactly (measured at machine zero on 12 primes). Hence the *first* collision at k=2 requires `2^{−v_2} ≡ 2^{−v'_2} (mod q)`, i.e. `v'_2 = v_2 + j·ord_q(2)`, `j ≥ 1`:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**the cheapest collision costs a full period shift ⇒ `2^{−ord_q(2)}`**; `offdiag` sums **ordered** pairs ⇒ each collision counted twice ⇒ **prefactor 2**.
+
+`1/ord_q(2)` has **no mechanism** — nothing in the structure produces a reciprocal.
+
+**Evidence — predictions pre-committed before the run, on primes far outside the fitted range (ord 3–12):**
+
+| q | ord_q(2) | measured `ratio_2` | `2^{1−ord}` predicts | miss |
+|---|---|---|---|---|
+| 41 | 20 | 1.9199e−06 | 1.9073e−06 | **0.7%** |
+| 47 | 23 | 2.4011e−07 | 2.3842e−07 | **0.7%** |
+| 59 | 58 | **0** (−2.5e−16, sub-eps) | 6.9e−18 | consistent |
+
+Free 2-parameter fit `ratio_2 = a·c^{−ord}` on the *old* primes recovers **`c = 2.01704`** against a mechanism that named **2** before fitting; the large-q primes pin the prefactor at **2.0132, 2.0142**.
+
+`δ_q = 2^{1−ord_q(2)}·(q−3)/q` checked against the old primes, which never informed it: **q=73 → 0.1% · q=41 → 0.7% · q=47 → 0.8% · q=127 → 0.8% · q=31 → 4% · q=11 → 8% · q=17 → 12% · q=7 → 47% · q=13 → 49% · q=5 → 84%** — sub-1% at large q, degrading at small q exactly as an `O(1/q)` correction should.
+
+**★ Result 3 carries Result 2's `(q−3)/q` factor — Results 2 and 3 are not independent.** With `X_k − X_{k−1} = M_k` linking Results 1↔2 (Object) and the `3 = 1/Σ_v p_v²` naming (Result 1), **all three results now flow from the single self-similar-overlap mechanism.**
+
+**Still owed (flagged, not claimed):** the prefactor 2 is *matched* and has a plausible ordered-pair explanation, but only the **cheapest** collision was derived — the full collision count is not done. The `O(1/q)` correction is unexplained. Both are **counts, not fits**, and are therefore gettable.
+
+**Why the old claim survived as long as it did — a methodological note worth keeping.** Recomputing the old fit gives `δ = −0.08903 + 0.81886/ord` with **linear R² = 0.94045**, reproducing the published slope 0.82 and R² 0.94 to three digits — **while being off by 121.5× at q=13, 53.4× at q=11, 24.3× at q=73.** δ is convex and spans 350×, so a linear fit is dominated by its two largest points while the rest cluster near the origin where `1/ord` is also small. **Linear R² cannot discriminate monotone candidates across that range.** Worse, the fitted law has intercept `−0.089`, so it predicts **δ < 0 for ord > 9.2** — contradicting the *proved* positivity `δ_q > 0`. And the original "OOS validation" used q=31, 127, 73 with ord **5, 7, 9** — **interpolation inside the fitted range 3–12.** It tested the fit; it never tested the functional form.
 
 ---
 
@@ -58,4 +125,14 @@ The number `3` recurs as `1/E_{Geom(1/2)}[2^{−v}]` — a purely 2-adic halving
 - `result_4_ctilde_ord2.md` + `.py` + `PRE_REG_4_CTILDE_ORD2` — Result 3.
 - `c_seven_forty_fifth.md` (R75), `result_76_conservation_law.md` (R76) — the q=3 Plancherel/conservation machinery the domination identity must generalize.
 
-**Next step to finish the paper:** prove uniform diagonal-self-overlap domination on `(Z/q^k)*` (generalize R76's `Σ_j M(η_0 + j·3^n)=0` conservation), upgrading Result 1 from mechanism to theorem. That is the single remaining line.
+**Next step to finish the paper (revised 2026-07-15).** ~~Generalize R76's conservation~~ — **DEAD, see Result 1's ⛔ DEAD ROUTE.** The remaining input is a **collision-counting bound**, not a conservation collapse:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**bound the off-diagonal collision mass by `O(3^{−k})` on `(Z/q^k)*`**, upgrading Result 1 from mechanism to theorem.
+
+Concretely tractable next moves, in order:
+1. **The full collision count at k=2.** The cheapest-collision argument already delivers Result 3's `2^{1−ord_q(2)}` to 0.7%; completing the count would derive the prefactor 2 and the `O(1/q)` correction, turning Result 3 into a theorem outright. This is the cheapest real win on the board.
+2. **Read Tao 2019** (*Almost all orbits of the Collatz map attain almost bounded values*) before deriving anything — it proves Fourier decay for `Syrac(Z/3^n)` and may already contain most of the k-fold overlap estimate. Re-deriving it would be this arc's characteristic mistake.
+3. **p-adic Bernoulli convolution literature** — a direct sibling never covered by the 2026-05-04 lit dive (which looked at archimedean BCs and Siegel). Non-archimedean self-similar measures are exactly this object.
+4. **Does R77/`T_lead` port?** Mod q the chain gives `r_out ≡ 2^{−v}`, valued in `⟨2⟩` of size `ord_q(2)`. At q=3, `⟨2⟩={±1}` and `2^{−v} ≡ (−1)^v` — **R64.B/R66's v-parity class rule is the q=3 shadow of an `ord_q(2)`-class structure.** Porting R77 would complete the machinery triage.
+
+**Read Siegel before publishing** ((p,q)-adic Analysis and Collatz, USC 2022 / Springer 2024–25) — closest sibling, not a duplicate.
