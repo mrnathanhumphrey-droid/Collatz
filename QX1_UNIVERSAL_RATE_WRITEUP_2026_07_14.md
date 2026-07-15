@@ -111,7 +111,7 @@ with `ε_q ≈ 0.007` for `q ≥ 31` (erratic below). **The bracketed leading te
 
 Free 2-parameter fit `ratio_2 = a·c^{−ord}` on the *old* primes recovers **`c = 2.01704`** against a mechanism that named **2** before fitting; the large-q primes pin the prefactor at **2.0132, 2.0142**.
 
-`δ_q = 2^{1−ord_q(2)}·(q−3)/q` checked against the old primes, which never informed it: **q=73 → 0.1% · q=41 → 0.7% · q=47 → 0.8% · q=127 → 0.8% · q=31 → 4% · q=11 → 8% · q=17 → 12% · q=7 → 47% · q=13 → 49% · q=5 → 84%** — sub-1% at large q, degrading at small q exactly as an `O(1/q)` correction should.
+`δ_q = 2^{1−ord_q(2)}·(q−3)/q` checked against the old primes, which never informed it: **q=73 → 0.1% · q=41 → 0.7% · q=47 → 0.8% · q=127 → 0.8% · q=31 → 4% · q=11 → 8% · q=17 → 12% · q=7 → 47% · q=13 → 49% · q=5 → 84%** — sub-1% at large q, degrading at small q. **The small-q degradation is `ε_q` (family b), whose solvability condition is genuinely arithmetic — see "Still owed" below. It is NOT an `O(1/q)` decay** (R11): it plateaus at ~0.7% across q=31→47 rather than continuing to shrink.
 
 **★ Result 3 carries Result 2's `(q−3)/q` factor — Results 2 and 3 are not independent.** With `X_k − X_{k−1} = M_k` linking Results 1↔2 (Object) and the `3 = 1/Σ_v p_v²` naming (Result 1), **all three results now flow from the single self-similar-overlap mechanism.**
 
@@ -145,7 +145,7 @@ The number `3` recurs as `1/E_{Geom(1/2)}[2^{−v}]` — a purely 2-adic halving
 &nbsp;&nbsp;&nbsp;&nbsp;**bound the off-diagonal collision mass by `O(3^{−k})` on `(Z/q^k)*`**, upgrading Result 1 from mechanism to theorem.
 
 Concretely tractable next moves, in order:
-1. **The full collision count at k=2.** The cheapest-collision argument already delivers Result 3's `2^{1−ord_q(2)}` to 0.7%; completing the count would derive the prefactor 2 and the `O(1/q)` correction, turning Result 3 into a theorem outright. This is the cheapest real win on the board.
+1. ~~**The full collision count at k=2.**~~ **DONE (R11).** Family (a) is counted: the leading term is an exact identity and the prefactor 2 is derived (the geometric tower's cross-term). **What remains is the family-(b) count** — the compensating-`v_1` solvability condition `2^{−A'} ≡ 2^{−A} + j·t·2^{−v_2} (mod q)`, solvable iff the RHS lands in `⟨2⟩`. Counting that would deliver `ε_q` and turn Result 3 into a theorem outright. Still the cheapest real win on the board (family (a) took 0.18 s).
 2. **Read Tao 2019** (*Almost all orbits of the Collatz map attain almost bounded values*) before deriving anything — it proves Fourier decay for `Syrac(Z/3^n)` and may already contain most of the k-fold overlap estimate. Re-deriving it would be this arc's characteristic mistake.
 3. **p-adic Bernoulli convolution literature** — a direct sibling never covered by the 2026-05-04 lit dive (which looked at archimedean BCs and Siegel). Non-archimedean self-similar measures are exactly this object.
 4. **Does R77/`T_lead` port?** Mod q the chain gives `r_out ≡ 2^{−v}`, valued in `⟨2⟩` of size `ord_q(2)`. At q=3, `⟨2⟩={±1}` and `2^{−v} ≡ (−1)^v` — **R64.B/R66's v-parity class rule is the q=3 shadow of an `ord_q(2)`-class structure.** Porting R77 would complete the machinery triage.
