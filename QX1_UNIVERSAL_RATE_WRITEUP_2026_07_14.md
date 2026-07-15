@@ -7,6 +7,22 @@
 > - **R8 — the mechanism is named.** `π_k` **is** a q-adic self-similar measure; the "3" is `1/Σ_v p_v²`, its correlation dimension. Domination = an **overlap bound**, not a character estimate.
 > - **R9/R10 — Result 3 was WRONG and is rewritten.** `δ_q ≈ 0.82/ord_q(2)` is refuted by **2.55×10¹³**. The law is **`δ_q = 2^{1−ord_q(2)}·(q−3)/q`**.
 > - **R6 — the previously-advertised "one line to a theorem" (generalize R76's conservation) is DEAD.** Conservation ports for free *and is insufficient*; q=3 is structurally unique. See Result 1.
+> - **R11 — the collision count.** Result 3's leading term is now an **exact identity**; the prefactor 2 is derived (and the earlier ordered-pair explanation was wrong).
+> - **R12 — Tao 2019 read.** His Prop 1.17 does **not** apply to our object; but the contrast names our criticality. See the abstract line below.
+
+---
+
+## ★ The one-line statement (abstract material)
+
+> **`H₂(Geom(1/2)) = −log Σ_{v≥1} 4^{−v} = log 3 = log q` — exactly, at q = 3.**
+> The stationary measure's **correlation dimension** is `D₂ = H₂/log q = log 3 / log q`, so
+> ### **`D₂ = 1 ⟺ q = 3` — the Collatz multiplier sits exactly at the critical point of its own family.**
+
+The `3` is `1/Σ_v p_v² = 1/E[2^{−v}] = 2²−1`: a property of the **halving law alone**, carrying no information about the multiplier. The Collatz multiplier merely *happens* to equal it. This is the entire content of "3 is special," in standard vocabulary — and it makes the Bernoulli-convolution template (Erdős/Solomyak/Hochman: a one-parameter family with a phase transition located by L² methods) **the same kind of statement**, not an analogy.
+
+**Positioning against Tao 2019** (arXiv:1909.03562): same object, adjacent question, **different Rényi order.** Tao's Remark 1.15 counts the same addresses by **Shannon** entropy — `H₁ = log 4` ⇒ `4^{n+o(n)}` tuples into `3ⁿ` slots, a *comfortable surplus*, which is why fine-scale mixing holds for him. Our L² mass is governed by **collision** entropy — `H₂ = log 3` ⇒ `3ⁿ` effective addresses into `3ⁿ` slots, **exactly saturated**. ⚠️ **Tao's Prop 1.17 (`|μ̂_n(ξ)| ≪_A n^{−A}`, pointwise, uniform) does NOT give our result** — summed over the ~3ⁿ admissible frequencies it yields `≪ 3ⁿ·n^{−2A}`, which *grows*. Cite him for the architecture; state the non-applicability explicitly, or a reader will assume otherwise.
+
+**Five independent derivations of the same phase boundary:** R6 (`(q−1)/2 = 1 ⟺ q=3`) · R7 (`Σ(q/3)^j` diverges iff q≤3) · R7 (`X_k` grows linearly at q=3) · R8 (domination fails by a factor of k at q=3) · **R12 (`D₂ = 1 ⟺ q=3`)**.
 
 ---
 
