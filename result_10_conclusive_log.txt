@@ -1,0 +1,38 @@
+# PROBE 10 -- pillar 3 CONCLUSIVE. Predictions pre-committed before the run.
+# Laws fit on OLD primes (ord 3..12) ONLY. New primes: ord 20, 23, 58.
+
+## PRE-COMMITTED PREDICTIONS (from the docstring, written before running)
+   q= 41 ord=20:  A(0.82/ord) delta~0.04100   B(2.450*2^-ord) ratio_2=2.336e-06   P(73.87*ord^-4.4985) ratio_2=1.039e-04
+   q= 47 ord=23:  A(0.82/ord) delta~0.03565   B(2.450*2^-ord) ratio_2=2.921e-07   P(73.87*ord^-4.4985) ratio_2=5.530e-05
+   q= 59 ord=58:  A(0.82/ord) delta~0.01414   B(2.450*2^-ord) ratio_2=8.500e-18   P(73.87*ord^-4.4985) ratio_2=8.600e-07
+
+## SELF-CHECK 1 -- independent implementation (address enumeration vs power iteration)
+   q=41,k=2: rebuild pi by R8's combinatorial address sum. Different route entirely.
+   672400 addresses; max|pi_addr - pi_iter| = 2.776e-17   PASS
+
+## SELF-CHECK 2 -- exact rational vs float at q=41
+   X_1 exact = 13.66669273378951   float = 13.66669273378951   |diff| = 0.000e+00   PASS
+
+## THE TEST -- measured vs pre-committed. NO FITTING ON THESE PRIMES.
+
+   q  ord   measured ratio_2  measured delta(2)       B pred     B off       P pred     P off
+  41   20       1.919930e-06      +1.780368e-06    2.336e-06     1.22x    1.039e-04    54.12x
+  47   23       2.401131e-07      +2.248949e-07    2.921e-07     1.22x    5.530e-05   230.31x
+  59   58      -2.498002e-16      -5.551115e-16    8.500e-18      infx    8.600e-07      infx
+
+   (off = predicted/actual. 1.00 = perfect.)
+
+## H_A_DEAD -- law A (0.82/ord) predicts delta=0.01414 at q=59. Measured:
+   measured delta(2) at q=59 = -5.551115e-16   A predicted 0.01414   off by -2.55e+13x
+   H_A_DEAD: CONFIRMED -- law A REFUTED
+
+## H_CONCLUSIVE -- B vs P on all three new primes (|log10 miss|)
+   q= 41 ord=20: |log10 B miss| = 0.085   |log10 P miss| = 1.733
+   q= 47 ord=23: |log10 B miss| = 0.085   |log10 P miss| = 2.362
+   q= 59 ord=58: |log10 B miss| = inf   |log10 P miss| = inf
+
+   B: max |log10 miss| = 0.085  (= 1.22x)
+   P: max |log10 miss| = 2.362  (= 230.31x)
+   P: min |log10 miss| = 1.733  (= 54.12x)
+   H_CONCLUSIVE: B WINS OUTRIGHT (B within 3x on resolvable primes; P off >10x somewhere)
+   (q=41,47 carry the two-sided verdict; q=59's B prediction is sub-machine-epsilon.)

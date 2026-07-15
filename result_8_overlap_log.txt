@@ -1,0 +1,61 @@
+# PROBE 8 -- is domination a q-adic self-similar OVERLAP estimate?
+# Pre-reg: H_ADDR(gate) / H_DIAG / H_LB / H_DOM(*** the test ***) / H_ORD
+
+## H_ADDR (GATE) -- does the address representation reproduce pi_k?
+   q=3 k=2 (M=   6,        36 addr): max|pi_addr - pi_iter| = 0.000e+00   |diag_enum - (sum p^2)^k| = 4.163e-17
+   q=3 k=3 (M=  18,      5832 addr): max|pi_addr - pi_iter| = 5.551e-17   |diag_enum - (sum p^2)^k| = 7.008e-16
+   q=5 k=2 (M=  20,       400 addr): max|pi_addr - pi_iter| = 1.110e-16   |diag_enum - (sum p^2)^k| = 1.804e-16
+   q=7 k=2 (M=  21,       441 addr): max|pi_addr - pi_iter| = 2.776e-17   |diag_enum - (sum p^2)^k| = 1.388e-17
+   H_ADDR: CONFIRMED -- reframing is valid
+   H_DIAG: CONFIRMED (diag_enum == (sum_v p_v^2)^k above)
+
+## H_LB + H_DOM -- offdiag = ||pi_k||^2 - (sum_v p_v^2)^k ;  ratio = offdiag/diag
+   (enumeration NOT needed: diag is analytic, ||pi||^2 from power iteration)
+
+  q  k   M=ord     ||pi_k||^2           diag       offdiag      ratio ratio step
+  3  1       2 5.55555556e-01 5.55555556e-01  -1.11022e-16   -0.00000        nan
+  3  2       6 2.38095238e-01 1.18277764e-01   1.19817e-01    1.01302        nan
+  3  3      18 9.64604379e-02 3.70378848e-02   5.94226e-02    1.60437     1.5838
+  3  4      54 3.78845214e-02 1.23456790e-02   2.55388e-02    2.06865     1.2894
+  3  5     162 1.45438731e-02 4.11522634e-03   1.04286e-02    2.53416     1.2250
+  3  6     486 5.48742100e-03 1.37174211e-03   4.11568e-03    3.00033     1.1840
+  3  7    1458 2.04198507e-03 4.57247371e-04   1.58474e-03    3.46582     1.1551
+  3  8    4374 7.51675425e-04 1.52415790e-04   5.99260e-04    3.93174     1.1344
+
+  5  1       4 3.77777778e-01 3.77777778e-01   0.00000e+00    0.00000        nan
+  5  2      20 1.30245651e-01 1.11111535e-01   1.91341e-02    0.17221        nan
+  5  3     100 4.41836767e-02 3.70370370e-02   7.14664e-03    0.19296     1.1205
+  5  4     500 1.48579390e-02 1.23456790e-02   2.51226e-03    0.20349     1.0546
+  5  5    2500 4.97971295e-03 4.11522634e-03   8.64487e-04    0.21007     1.0323
+
+  7  1       3 4.28571429e-01 4.28571429e-01   0.00000e+00    0.00000        nan
+  7  2      21 1.48082327e-01 1.11111323e-01   3.69710e-02    0.33274        nan
+  7  3     147 5.01391701e-02 3.70370370e-02   1.31021e-02    0.35376     1.0632
+  7  4    1029 1.68057614e-02 1.23456790e-02   4.46008e-03    0.36127     1.0212
+
+ 11  1      10 3.33985011e-01 3.33985011e-01   0.00000e+00    0.00000        nan
+ 11  2     110 1.11340976e-01 1.11111111e-01   2.29865e-04    0.00207        nan
+ 11  3    1210 3.71144197e-02 3.70370370e-02   7.73826e-05    0.00209     1.0099
+
+ 13  1      12 3.33496133e-01 3.33496133e-01  -5.55112e-17   -0.00000        nan
+ 13  2     156 1.11186118e-01 1.11111111e-01   7.50072e-05    0.00068        nan
+ 13  3    2028 3.70623899e-02 3.70370370e-02   2.53529e-05    0.00068     1.0140
+
+## H_LB -- is offdiag >= 0 always (Cauchy-Schwarz)?  CONFIRMED
+   (If CONFIRMED: C_q >= 1 is FORCED => explains why all 8 measured delta_q > 0.)
+
+## H_DOM (*** THE TEST ***) -- does ratio_k stay bounded as k grows?
+   q= 3: ratio at k=[6, 7, 8] -> ['3.00033', '3.46582', '3.93174']   max step 1.1551   BOUNDED
+   q= 5: ratio at k=[3, 4, 5] -> ['0.19296', '0.20349', '0.21007']   max step 1.0546   BOUNDED
+   q= 7: ratio at k=[2, 3, 4] -> ['0.33274', '0.35376', '0.36127']   max step 1.0632   BOUNDED
+   q=11: ratio at k=[1, 2, 3] -> ['0.00000', '0.00207', '0.00209']   max step 1.0099   BOUNDED
+   q=13: ratio at k=[1, 2, 3] -> ['-0.00000', '0.00068', '0.00068']   max step 1.0140   BOUNDED
+
+## H_ORD -- does lim ratio decrease with ord_q(2)?
+     q  ord_q(2)  ratio at max k  measured delta_q (result_4)
+     7         3         0.36127                       0.2100
+     5         4         0.21007                       0.0920
+    11        10         0.00209                       0.0015
+    13        12         0.00068                       0.0006
+     3         2         3.93174               n/a (critical)
+   (Predicted: ratio decreasing in ord_q(2). q=7 has ord 3 -> should be WORST.)

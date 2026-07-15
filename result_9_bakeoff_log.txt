@@ -1,0 +1,77 @@
+# PROBE 9 -- pillar 3 bake-off: a/ord  vs  a*2^{-ord}
+# Pre-reg: H_GATE / H_EXP(*** the test ***) / H_BASE / H_R2TRAP. Prior: exponential wins.
+
+## H_GATE -- recompute result_4's delta_q(2) from scratch
+   method: c~_q(2)=S_2/(q/3)^2, S_2=X_2-X_1, X_k=q^k*sum(pi^2); delta=c~-(q-3)/q
+
+   q  ord          X_1          X_2    c~_q(2)   (q-3)/q  delta_mine  published    |diff|
+   5    4     1.888889     3.256141    0.49221   0.40000    +0.09221    +0.0920  2.11e-04
+   7    3     3.000000     7.256034    0.78172   0.57143    +0.21029    +0.2100  2.92e-04
+  11   10     3.673835    13.472258    0.72881   0.72727    +0.00154    +0.0015  3.56e-05
+  13   12     4.335450    18.790454    0.76979   0.76923    +0.00056    +0.0006  3.76e-05
+  17    8     5.711111    32.387320    0.83075   0.82353    +0.00722    +0.0070  2.18e-04
+  31    5    11.000000   113.713643    0.96194   0.90323    +0.05871    +0.0590  2.87e-04
+  73    9    24.428571   594.428786    0.96266   0.95890    +0.00375    +0.0040  2.47e-04
+ 127    7    43.000000  1820.344077    0.99176   0.97638    +0.01538    +0.0150  3.82e-04
+
+   H_GATE: CONFIRMED -- reproduces result_4
+
+   NOTE: ratio_1 = 0 exactly at k=1 (bijection onto <2>) -- verify:
+      q=  5: ratio_1 = +0.000e+00
+      q=  7: ratio_1 = +0.000e+00
+      q= 11: ratio_1 = +0.000e+00
+      q= 13: ratio_1 = -1.665e-16
+      q= 17: ratio_1 = +1.652e-16
+      q= 31: ratio_1 = -1.564e-16
+      q= 73: ratio_1 = +3.318e-16
+      q=127: ratio_1 = -1.640e-16
+
+## Targets: ratio_2 (first collision), delta_q(2), vs ord
+
+   q  ord       ratio_2       2^-ord  ratio_2/2^-ord   ratio_2*ord    delta(2)
+   5    4  1.722064e-01   6.2500e-02          2.7553       0.68883    +0.09221
+   7    3  3.327384e-01   1.2500e-01          2.6619       0.99822    +0.21029
+  11   10  2.068787e-03   9.7656e-04          2.1184       0.02069    +0.00154
+  13   12  6.750647e-04   2.4414e-04          2.7651       0.00810    +0.00056
+  17    8  8.601659e-03   3.9062e-03          2.2020       0.06881    +0.00722
+  31    5  6.495608e-02   3.1250e-02          2.0786       0.32478    +0.05871
+  73    9  3.914257e-03   1.9531e-03          2.0041       0.03523    +0.00375
+ 127    7  1.575403e-02   7.8125e-03          2.0165       0.11028    +0.01538
+
+   (If ratio_2/2^-ord is ~constant and ratio_2*ord is not => exponential.)
+
+## H_EXP (*** THE TEST ***) -- log-space head-to-head, target = ratio_2
+   EXPONENTIAL  log(ratio_2) = +0.8962 -0.7016*ord        log-space R^2 = 0.99586
+   POWER LAW    log(ratio_2) = +4.3029 -4.4985*log(ord)   log-space R^2 = 0.98022
+   R^2 difference = +0.01563  =>  INCONCLUSIVE
+
+## H_BASE -- fit ratio_2 = a*c^{-ord} freely; does the base c come out ~2?
+   recovered base c = exp(-slope) = 2.01704    (mechanism predicts 2)
+   recovered prefactor a = 2.45036
+   power-law exponent b = -4.4985   (the 1/ord law needs b = -1)
+   H_BASE: CONFIRMED
+
+## H_R2TRAP -- does LINEAR R^2 of delta vs 1/ord reproduce result_4's 0.94?
+   LINEAR fit  delta = -0.08903 +0.81886*(1/ord)   linear R^2 = 0.94045
+   (result_4 reported ~0.94 and slope ~0.82)
+   Worst absolute miss of the pure 0.82/ord law:
+      q=  5 ord= 4: 0.82/ord = 0.20500   actual = 0.09221   ratio =      2.2x
+      q=  7 ord= 3: 0.82/ord = 0.27333   actual = 0.21029   ratio =      1.3x
+      q= 11 ord=10: 0.82/ord = 0.08200   actual = 0.00154   ratio =     53.4x
+      q= 13 ord=12: 0.82/ord = 0.06833   actual = 0.00056   ratio =    121.5x
+      q= 17 ord= 8: 0.82/ord = 0.10250   actual = 0.00722   ratio =     14.2x
+      q= 31 ord= 5: 0.82/ord = 0.16400   actual = 0.05871   ratio =      2.8x
+      q= 73 ord= 9: 0.82/ord = 0.09111   actual = 0.00375   ratio =     24.3x
+      q=127 ord= 7: 0.82/ord = 0.11714   actual = 0.01538   ratio =      7.6x
+   H_R2TRAP: not confirmed
+
+## REAL OOS -- fit on MID ord (5..10), predict the EXTREMES ord=3 (q=7), ord=12 (q=13)
+   (result_4's 'OOS' q=31,127,73 have ord 5,7,9 = INTERPOLATION. This is the test it never ran.)
+   train q=[11, 17, 31, 73, 127] (ord [10, 8, 5, 9, 7])
+   test  q=[7, 13] (ord [3, 12])
+
+      q  ord        actual      EXP pred    x off    POWER pred    x off
+      7    3   3.32738e-01   2.57501e-01     0.77   8.99855e-01     2.70
+     13   12   6.75065e-04   5.13367e-04     0.76   9.81700e-04     1.45
+
+   (x off = predicted/actual; 1.00 is perfect. This extrapolates BOTH directions.)
