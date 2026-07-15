@@ -1,0 +1,59 @@
+# PROBE 15 -- the k-fold TOWER count. Is within-cell overlap k-INDEPENDENT?
+# Pre-reg: H_GATE / H_FLAT(*** the claim ***) / H_CROSS_GROWS(*** the consequence ***) / H_CROSS_SMALL
+
+## H_GATE -- does ratio_within(k=2) reproduce R11's MEASURED family(a)?
+   q= 11: ratio_within(2) = 1.955034213098950e-03   R11 measured family(a) = 1.955034213098729e-03   |rel| = 1.13e-13  OK
+   q= 13: ratio_within(2) = 4.884004884004867e-04   R11 measured family(a) = 4.884004884004884e-04   |rel| = 3.55e-15  OK
+   q= 17: ratio_within(2) = 7.843137254902155e-03   R11 measured family(a) = 7.843137254901961e-03   |rel| = 2.48e-14  OK
+   q= 31: ratio_within(2) = 6.451612903225823e-02   R11 measured family(a) = 6.451612903225806e-02   |rel| = 2.58e-15  OK
+   H_GATE: CONFIRMED
+
+## H_FLAT (*** THE CLAIM ***) -- is ratio_within(k) k-INDEPENDENT for k>=3?
+
+   q   d               k=2              k=3              k=4              k=5              k=6              k=7  max dev k>=3
+   3   2  6.1538461538e-01 7.1955048112e-01 7.1958983896e-01 7.1958983896e-01 7.1958983896e-01 7.1958983896e-01      5.47e-05
+   5   4  1.3333117167e-01 1.3333549500e-01 1.3333549500e-01 1.3333549500e-01 1.3333549500e-01 1.3333549500e-01      1.55e-15
+   7   3  2.8571305956e-01 2.8571551187e-01 2.8571551187e-01 2.8571551187e-01 2.8571551187e-01 2.8571551187e-01      6.66e-16
+  11  10  1.9550342131e-03 1.9550342131e-03 1.9550342131e-03 1.9550342131e-03 1.9550342131e-03 1.9550342131e-03      1.14e-13
+  13  12  4.8840048840e-04 4.8840048840e-04 4.8840048840e-04 4.8840048840e-04 4.8840048840e-04 4.8840048840e-04      4.55e-13
+
+   (k=2 differs from k>=3 by the x_2 = 2^-dq term; k>=3 should be flat because
+    x_3 = 2^-dq^2 is nonexistent at any available precision.)
+
+## H_CROSS_GROWS (*** THE CONSEQUENCE ***) -- at q=3, does cross = total - within
+   carry ALL the k-growth, linearly, slope ~0.4655 (~7/15)?
+
+  k   total (measured)   within (derived)   cross = t - w    d(cross)
+  2         1.01301775         0.61538462      0.39763314         nan
+  3         1.60437221         0.71955048      0.88482173     0.48719
+  4         2.06864623         0.71958984      1.34905639     0.46423
+  5         2.53416115         0.71958984      1.81457131     0.46551
+  6         3.00032991         0.71958984      2.28074007     0.46617
+  7         3.46582134         0.71958984      2.74623150     0.46549
+  8         3.93174246         0.71958984      3.21215262     0.46592
+
+   cross increments k=5..8: mean 0.46577, spread 0.15%, vs 7/15=0.46667 (off 0.06%)
+   H_CROSS_GROWS: CONFIRMED -- ALL k-growth is CROSS-cell
+
+## H_CROSS_SMALL -- at q>=5, does cross/within stay small and NOT grow with k?
+   (EXPLORATORY at q=5,7 per pre-reg: report, no verdict, no fit)
+
+   q   k            total           within          cross   cross/within
+   5   2   1.72206386e-01   1.33331172e-01   3.887521e-02       0.291569
+   5   3   1.92959270e-01   1.33335495e-01   5.962378e-02       0.447171
+   5   4   2.03493057e-01   1.33335495e-01   7.015756e-02       0.526173
+   5   5   2.10070247e-01   1.33335495e-01   7.673475e-02       0.575501
+
+   7   2   3.32738400e-01   2.85713060e-01   4.702534e-02       0.164589
+   7   3   3.53757594e-01   2.85715512e-01   6.804208e-02       0.238146
+   7   4   3.61266677e-01   2.85715512e-01   7.555116e-02       0.264428
+   7   5  skip (n*M=1.0e+08 > budget)
+
+  11   2   2.06878704e-03   1.95503421e-03   1.137528e-04       0.058185
+  11   3   2.08933061e-03   1.95503421e-03   1.342964e-04       0.068693
+  11   4  skip (n*M=1.8e+08 > budget)
+
+  13   2   6.75064691e-04   4.88400488e-04   1.866642e-04       0.382195
+  13   3   6.84527628e-04   4.88400488e-04   1.961271e-04       0.401570
+  13   4  skip (n*M=7.0e+08 > budget)
+
