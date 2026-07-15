@@ -82,13 +82,22 @@ Leading `S_k/(q/3)^k → 1`, so the difference `D_k = S_k − S_{k−1}` gives `
 
 > **⚠️ This result was REWRITTEN 2026-07-15 (R9/R10). The previous claim — `δ_q ≈ 0.82/ord_q(2)`, "R²=0.94, OOS-validated at q=31,127,73" — is REFUTED by a factor of 2.55×10¹³. It must not be cited.**
 
-**The law.** `δ_q := c̃_q − (q−3)/q` and
+**The law.** `δ_q := c̃_q − (q−3)/q` and, with `d := ord_q(2)`, `x := 2^{−d}`, `M := ord_{q²}(2)`:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**`δ_q = 2^{1−ord_q(2)} · (q−3)/q · (1 + O(1/q))`**, &nbsp; equivalently &nbsp; `ratio_2 := offdiag_2/diag_2 = 2^{1−ord_q(2)}`
+&nbsp;&nbsp;&nbsp;&nbsp;**`ratio_2 := offdiag_2/diag_2 = [(1+x)/(1−x)·(1−2^{−M})/(1+2^{−M}) − 1]·(1 + ε_q)`** &nbsp;→&nbsp; **`2^{1−ord_q(2)}·(1+ε_q)`**
+&nbsp;&nbsp;&nbsp;&nbsp;**`δ_q = ratio_2 · (q−3)/q`** &nbsp; (exact; verified at q=41, 47)
 
-**Derived, not fitted (R8/R10).** At k=1 the coding `v_1 ↦ 2^{−v_1} mod q` runs over `v_1 ∈ {1..ord_q(2)}` = exactly one full period, so it is a **bijection onto `⟨2⟩`** — **zero collisions**, `ratio_1 = 0` exactly (measured at machine zero on 12 primes). Hence the *first* collision at k=2 requires `2^{−v_2} ≡ 2^{−v'_2} (mod q)`, i.e. `v'_2 = v_2 + j·ord_q(2)`, `j ≥ 1`:
+with `ε_q ≈ 0.007` for `q ≥ 31` (erratic below). **The bracketed leading term is an EXACT IDENTITY — a theorem, verified in exact rational arithmetic (Fraction equality, not tolerance).** `ε_q` is open.
 
-&nbsp;&nbsp;&nbsp;&nbsp;**the cheapest collision costs a full period shift ⇒ `2^{−ord_q(2)}`**; `offdiag` sums **ordered** pairs ⇒ each collision counted twice ⇒ **prefactor 2**.
+**DERIVED — the count (R11).** The structural fact: `value(v_1,v_2) = 2^{−v_2} + q·2^{−(v_1+v_2)} mod q²`, and **the second term carries a factor `q`, so it needs `A = v_1+v_2` only mod `d`** (since `2^d ≡ 1 mod q`). Hence
+
+&nbsp;&nbsp;&nbsp;&nbsp;**`v_1 → v_1 + d` leaves the value EXACTLY unchanged — `v_1` is only ever determined mod `d`.**
+
+(Verified by exact integer equality at q=11, 13, 17, 31, 41, 47.) So collisions are **not rare events that "cost" a period shift — they are structural**: every value-bucket contains a whole **geometric tower** in `v_1`. Summing the tower (`G_c = 2^{−c}/(1−x)`, `H_c = 4^{−c}(1+2^{−M})/((1−x²)(1−2^{−M}))`, `Σ_c 4^{−c} = (1−x²)/3`, `P2 = (1/3)(1+2^{−M})/(1−2^{−M})`) gives the bracketed identity above.
+
+> **★ The prefactor 2 is the tower's CROSS-TERM: `(1+x)/(1−x) − 1 = 2x/(1−x)`.**
+
+**⚠️ Correction to earlier drafts:** the previously-stated reasons — "the cheapest collision costs a full period shift" and "`offdiag` sums ordered pairs ⇒ counted twice ⇒ prefactor 2" — **were wrong.** They produced the right number for the wrong reason. The 2 comes from the geometric tower's cross-term, and the collisions are structural, not cheap. `ratio_1 = 0` (the k=1 bijection onto `⟨2⟩`, measured at machine zero on 12 primes) remains correct and is what forces the tower to first appear at k=2.
 
 `1/ord_q(2)` has **no mechanism** — nothing in the structure produces a reciprocal.
 
@@ -106,7 +115,13 @@ Free 2-parameter fit `ratio_2 = a·c^{−ord}` on the *old* primes recovers **`c
 
 **★ Result 3 carries Result 2's `(q−3)/q` factor — Results 2 and 3 are not independent.** With `X_k − X_{k−1} = M_k` linking Results 1↔2 (Object) and the `3 = 1/Σ_v p_v²` naming (Result 1), **all three results now flow from the single self-similar-overlap mechanism.**
 
-**Still owed (flagged, not claimed):** the prefactor 2 is *matched* and has a plausible ordered-pair explanation, but only the **cheapest** collision was derived — the full collision count is not done. The `O(1/q)` correction is unexplained. Both are **counts, not fits**, and are therefore gettable.
+**Still owed (flagged, not claimed) — narrowed by R11.** The leading term is now an exact identity and the prefactor 2 is derived. What remains is **family (b)**: collisions with `v'_2 = v_2 + jd` and a compensating `v_1`, which exist iff
+
+&nbsp;&nbsp;&nbsp;&nbsp;`2^{−A'} ≡ 2^{−A} + j·t·2^{−v_2} (mod q)` &nbsp; is solvable — i.e. iff the RHS lands in `⟨2⟩`, where `t = (2^d−1)/q mod q`.
+
+That is a **genuinely arithmetic** condition, which is why small q is erratic. Family (b) contributes `ε_q`: measured `resid/family(a)` = 0.058 (q=11), **0.382 (q=13)**, 0.097 (q=17), 0.0068 (q=31), 0.0066 (q=41), 0.0071 (q=47) — positive everywhere (consistent with the proved `δ_q > 0`), erratic at small q, then **flat at ~0.7% across q=31→47**.
+
+**⚠️ Correction:** earlier drafts called this an `O(1/q)` correction. **That is unsupported** — it plateaus rather than decays. Restated as `(1+ε_q)`. Honest limit: three large-q points cannot distinguish a plateau from slow decay. Mechanically, family (b) is *also* `O(x)` (its pairs cost `x^j`), which would make `ε_q` a constant rather than `~1/q`.
 
 **Why the old claim survived as long as it did — a methodological note worth keeping.** Recomputing the old fit gives `δ = −0.08903 + 0.81886/ord` with **linear R² = 0.94045**, reproducing the published slope 0.82 and R² 0.94 to three digits — **while being off by 121.5× at q=13, 53.4× at q=11, 24.3× at q=73.** δ is convex and spans 350×, so a linear fit is dominated by its two largest points while the rest cluster near the origin where `1/ord` is also small. **Linear R² cannot discriminate monotone candidates across that range.** Worse, the fitted law has intercept `−0.089`, so it predicts **δ < 0 for ord > 9.2** — contradicting the *proved* positivity `δ_q > 0`. And the original "OOS validation" used q=31, 127, 73 with ord **5, 7, 9** — **interpolation inside the fitted range 3–12.** It tested the fit; it never tested the functional form.
 

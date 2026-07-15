@@ -1,0 +1,43 @@
+# PROBE 11 -- the FULL COLLISION COUNT at k=2. Derives pillar 3's prefactor 2.
+# Pre-reg: H_V1MOD (structural) / H_FAMA (*** the count ***) / H_DOM_A / H_RESID
+
+## H_V1MOD -- does v_1 -> v_1 + d leave the value EXACTLY unchanged?
+   (derived: the q*2^{-(v1+v2)} term needs A only mod d, since 2^d = 1 mod q)
+   q= 11 d=ord_q(2)= 10 M=ord_{q^2}(2)=  110: value[v1] == value[v1+d] for all 100 rows -> EXACT
+   q= 13 d=ord_q(2)= 12 M=ord_{q^2}(2)=  156: value[v1] == value[v1+d] for all 144 rows -> EXACT
+   q= 17 d=ord_q(2)=  8 M=ord_{q^2}(2)=  136: value[v1] == value[v1+d] for all 128 rows -> EXACT
+   q= 31 d=ord_q(2)=  5 M=ord_{q^2}(2)=  155: value[v1] == value[v1+d] for all 150 rows -> EXACT
+   q= 41 d=ord_q(2)= 20 M=ord_{q^2}(2)=  820: value[v1] == value[v1+d] for all 800 rows -> EXACT
+   q= 47 d=ord_q(2)= 23 M=ord_{q^2}(2)= 1081: value[v1] == value[v1+d] for all 1058 rows -> EXACT
+   H_V1MOD: CONFIRMED -- v_1 is only determined mod d
+
+## H_FAMA / H_DOM_A / H_RESID -- decompose offdiag into family (a) and the rest
+
+   family (a) = same v_2, v_1 = v'_1 mod d  (the geometric tower in v_1)
+   closed form: ratio_(a) = 2x(1-2^-M)/[(1-x)(1+2^-M)],  x = 2^-d
+
+   q    d   ratio_2 total  family(a) meas  family(a) pred   |rel err|   a/total    resid/a
+  11   10  2.06878704e-03  1.95503421e-03  1.95503421e-03    3.46e-14   0.94501    0.05818
+  13   12  6.75064691e-04  4.88400488e-04  4.88400488e-04    3.66e-13   0.72349    0.38219
+  17    8  8.60165862e-03  7.84313725e-03  7.84313725e-03    2.48e-14   0.91182    0.09671
+  31    5  6.49560776e-02  6.45161290e-02  6.45161290e-02    2.15e-16   0.99323    0.00682
+  41   20  1.91993030e-06  1.90735045e-06  1.90735045e-06    1.36e-11   0.99345    0.00660
+  47   23  2.40113127e-07  2.38418607e-07  2.38418608e-07    1.22e-09   0.99294    0.00711
+
+## H_FAMA (*** THE COUNT ***) -- worst |rel err| vs closed form = 1.222e-09
+   H_FAMA: REFUTED
+   (the 2 = cross-term of the geometric tower: 1/(1-x)^2 - 1/(1-x^2) = 2x/[(1-x)(1-x^2)])
+
+## H_DOM_A -- family (a) share of total offdiag at q>=41: min = 0.99294
+   H_DOM_A: CONFIRMED (>=99%)
+
+## H_RESID -- is the residual (family b) positive and shrinking with q?
+   q= 11 d= 10: resid/family(a) = +0.058185
+   q= 13 d= 12: resid/family(a) = +0.382195
+   q= 17 d=  8: resid/family(a) = +0.096711
+   q= 31 d=  5: resid/family(a) = +0.006819
+   q= 41 d= 20: resid/family(a) = +0.006595
+   q= 47 d= 23: resid/family(a) = +0.007107
+   all positive: True
+   (H_RESID predicts this is the O(1/q) correction -> should shrink as q grows,
+    at COMPARABLE d. Note d and q both vary here -- read with care, do not overfit.)
