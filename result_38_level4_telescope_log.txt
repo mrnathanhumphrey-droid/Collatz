@@ -1,0 +1,57 @@
+# PROBE 38 -- level-4 gate: does sigma_2 enter, and do the digit corrections TELESCOPE?
+
+## H_SIGMA2_INDEP -- (s, sigma_1, sigma_2) over primes (digits of (2^d-1)/q)
+       q    d    s  sig1  sig2  note
+       3    2    1     0     0  
+       5    4    3     0     0  
+       7    3    1     0     0  
+      11   10    5     8     0  
+      13   12    3    11     1  <- sigma_2 != 0 (3rd digit live)
+      17    8   15     0     0  
+      19   18    3     4     0  
+      23   11   20     3     0  
+      29   28    1    12    15  <- sigma_2 != 0 (3rd digit live)
+      31    5    1     0     0  
+      37   36    1    15    29  <- sigma_2 != 0 (3rd digit live)
+      41   20   32     8    15  <- sigma_2 != 0 (3rd digit live)
+      43   14   37     8     0  
+      47   23   22    37    33  <- sigma_2 != 0 (3rd digit live)
+      53   52   36    30    13  <- sigma_2 != 0 (3rd digit live)
+      59   58    8    10    58  <- sigma_2 != 0 (3rd digit live)
+      61   60   36    14    31  <- sigma_2 != 0 (3rd digit live)
+      67   66   10    28    45  <- sigma_2 != 0 (3rd digit live)
+      71   35    1    56     8  <- sigma_2 != 0 (3rd digit live)
+      79   39   49    11    29  <- sigma_2 != 0 (3rd digit live)
+      83   82   48    16    32  <- sigma_2 != 0 (3rd digit live)
+      97   48   77    25    25  <- sigma_2 != 0 (3rd digit live)
+     101  100   92    68    85  <- sigma_2 != 0 (3rd digit live)
+     103   51   81     2    71  <- sigma_2 != 0 (3rd digit live)
+     107  106   13    95    66  <- sigma_2 != 0 (3rd digit live)
+     109   36   95     4    90  <- sigma_2 != 0 (3rd digit live)
+     113   28   49     4    73  <- sigma_2 != 0 (3rd digit live)
+
+   (q=5,7 have s1=s2=...=0: single-digit (2^d-1)/q, and both GAP -> sigma_2=0 benign,
+    same witness as sigma_1. R38 tests only ENTERS + TELESCOPES.)
+
+## H_GATE4_SANITY + H_SIGMA2_ENTERS + H_TELESCOPE (exact-iff vs big-int W_3)
+   order-2 model = sigma_2 DROPPED from 2^{-j1 d}; order-3 = full (== true)
+
+      q   d   s  sig1  sig2    pairs  ord3 bad  ord2 bad  pred ord2  tele bad  telescope?
+     11  10   5     8     0   120000         0         0          0         0        True
+     13  12   3    11     1   120000         0    120000     120000         0        True
+     23  11  20     3     0   120000         0         0          0         0        True
+     41  20  32     8    15   120000         0    120000     120000         0        True
+
+   H_GATE4_SANITY: CONFIRMED (order-3 model = exact W_3, 0 mismatch)
+   H_SIGMA2_ENTERS: CONFIRMED -- order-2 (sigma_2-dropped) fails at sigma_2!=0 primes.
+   H_TELESCOPE: *** CONFIRMED *** -- the failure == y1*j1*sigma_2, the SAME coefficient
+      sigma_1 carried at level 3. => digits of (2^d-1)/q enter linearly with the common
+      coefficient y1*j1 => they REASSEMBLE into y1*j1*(2^d-1)/q. A GENERATING FUNCTION
+      for omega's digit-dependence: the whole correction tower is ONE term in the exact
+      tower constant (2^d-1)/q. This is the closed form the L3 bound wants.
+
+## READ
+   If telescoping holds: omega's dependence on the (2^d-1)/q tower is LINEAR with a single
+   coefficient -> write it as y1*j1*(2^d-1)/q inside the character sum, and the level-3
+   truncation (R37) is the k=2 shadow of a closed generating function. The L3 bound then
+   targets a clean object -- no infinite tower of digit corrections to track.
