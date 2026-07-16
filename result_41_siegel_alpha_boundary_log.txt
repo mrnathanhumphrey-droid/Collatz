@@ -1,0 +1,38 @@
+# PROBE 41 -- our r_q=1 boundary in Siegel's (p,q)-adic framework
+# H_NONSING (my guess, stated to lose): non-singularity = boundary?  H_DEGEN: alpha_H(0)=1 = boundary?
+
+      q alpha_H(0)=(1+q)/4  alpha_H(1/2)   sigma_H  gamma_H(1/2)    r_q 2^(1-sigma)
+      3                  1          -1/2   1.00000           1/2   1.00     1.00000
+      5                3/2            -1   1.58496           1/4   0.62     0.66667
+      7                  2          -3/2   2.00000           1/6   0.39     0.50000
+     11                  3          -5/2   2.58496          1/10      -     0.33333
+     13                7/2            -3   2.80735          1/12      -     0.28571
+     17                9/2            -4   3.16993          1/16      -     0.22222
+     19                  5          -9/2   3.32193          1/18      -     0.20000
+
+## H_NONSING (my ORIGINAL guess) -- is the boundary Siegel non-singularity alpha_H(j/2)=0?
+   q with alpha_H(0)=0 or alpha_H(1/2)=0 (non-singularity FAILS): NONE
+   => alpha_H(0)=(1+q)/4 and alpha_H(1/2)=(1-q)/4 are NEVER 0 for odd q.
+   => H_NONSING REFUTED (as I pre-committed it would be): non-singularity holds for ALL q,
+      it does NOT single out q=3. My initial 'non-singularity = boundary' framing was WRONG.
+
+## H_DEGEN (*** corrected ***) -- is the boundary Siegel's alpha_H(0)=1 (sigma_H=1) DEGENERACY?
+   {q : alpha_H(0)=1} = [3]   (Siegel's degenerate-measure case, eq 4.144-4.145)
+   {q : r_q=1 (gap closed)} = [3]   (r_3=1, R25/R32)
+   => H_DEGEN CONFIRMED: our r_q=1 boundary IS Siegel's alpha_H(0)=1 (sigma_H=1) case.
+      alpha_H(0) = (1+q)/4 = 1  <=>  q=3  <=>  sigma_H = log_2((q+1)/2) = 1  <=>  r_3=1.
+      Siegel EXPLICITLY flags alpha_H(0)=1 at p=2 as a 'degenerate measure' -- that is
+      exactly our critical point / exceptional point (R39). For q>=5, alpha_H(0)>1
+      (sigma_H>1, 'marginally expanding') and the gap opens (r_q<1).
+
+## H_QUANT (measurement, NO verdict) -- r_q vs 2^{1-sigma_H} = 1/alpha_H(0):
+   q=5: r_q=0.620  vs  1/alpha_H(0)=0.667  (2^(1-sigma)=0.667)  -> close but NOT equal (R28: no elementary closed form)
+   q=7: r_q=0.390  vs  1/alpha_H(0)=0.500  (2^(1-sigma)=0.500)  -> close but NOT equal (R28: no elementary closed form)
+
+## READ -- the boundary now has a NAME in Siegel:
+   r_q=1 (gap closed, EP) <=> sigma_H=1 (MARGINAL growth exponent) <=> alpha_H(0)=1
+   (Siegel's degenerate measure). q>=5: sigma_H>1 (expanding), gap opens. This is a
+   DYNAMICAL reading of the boundary (marginal vs expanding) + a citable home. It does
+   NOT close L3 (the DECAY RATE / gap SIZE is still Siegel's open q-adic problem), but it
+   identifies WHERE the transition sits in his framework. (Non-singularity was the wrong
+   object; the marginal-exponent degeneracy is the right one.)
