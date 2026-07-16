@@ -1,0 +1,18 @@
+# PROBE 40 -- universality: gap absent IFF w = -1 mod q (ord_q(w)=2), independent of q?
+# (w=2 = Collatz. NEW critical point predicted at (q=5,w=4).)
+
+      q   w  ord_q(w)   w=-1?    V     Delta_2     Delta_3     Delta_4     D4/D3    class  predict
+      3   2         2    True   44   4.762e-01   4.616e-01   4.642e-01    1.0057   NO-GAP   NO-GAP
+      5   2         4   False   44   3.888e-02   2.075e-02   1.053e-02    0.5077      GAP      GAP
+      5   3         4   False   30   4.265e-03   8.707e-04   2.365e-04    0.2717      GAP      GAP
+      5   4         2    True   24   3.334e-02   3.125e-02   2.930e-02    0.9375    AMBIG   NO-GAP  <-- MISMATCH
+      7   2         3   False   44   4.703e-02   2.102e-02   7.509e-03    0.3573      GAP      GAP
+      7   3         6   False   30   1.099e-03   1.406e-04   8.641e-05    0.6144      GAP      GAP
+      7   6         2    True   19   9.524e-03   9.259e-03   9.002e-03    0.9722   NO-GAP   NO-GAP
+     11   2        10   False   44   1.138e-04   2.054e-05   1.082e-05    0.5268      GAP      GAP
+     11  10         2    True   16   2.020e-03   2.000e-03   1.980e-03    0.9900   NO-GAP   NO-GAP
+
+## H_UNIV REFUTED (or ambiguous) -- the boundary does NOT track w = -1 mod q cleanly.
+   Inspect mismatches: w may be RELEVANT, or the diagnostic needs higher k. Honest
+   negative -- no clean universality class (the arc's cross-domain analogies have a
+   body count; this would join them).

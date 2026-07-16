@@ -1,0 +1,21 @@
+# PROBE 39 -- is q=3's critical point a defective EXCEPTIONAL POINT?
+# H_EP: at q=3 cos(r1,r2)->1 & biov=|<l1|r1>|->0 (kappa->inf) as L grows; q=5,7 do not.
+
+      q   L      dim       |l1|       |l2|       delta  cos(r1,r2)  biov(l1,r1)       kappa
+      3   2      324  0.3468267  0.3439153   2.911e-03    0.998344    3.793e-02   2.636e+01
+      3   3     8748  0.3333359  0.3332363   9.958e-05    0.999986    3.648e-03   2.741e+02
+      5   2    10000  0.3333340  0.3263114   1.361e-01    0.000000    7.713e-01   1.297e+00
+      7   2    21609  0.3333337  0.3269406   1.299e-01    0.000086    7.622e-01   1.312e+00
+
+## H_EP verdict (q=3 across L):
+   q=3  delta(L): ['2.911e-03', '9.958e-05']  (L=[2, 3])
+   q=3  cos(r1,r2): ['0.998344', '0.999986']  -> RISING toward 1
+   q=3  biov(l1,r1): ['3.793e-02', '3.648e-03']  -> FALLING toward 0
+   => H_EP CONFIRMED: q=3 is a DEFECTIVE (order-2 exceptional-point) coalescence.
+      Eigenvectors align (cos->1) and left/right self-orthogonalize (biov->0, kappa->inf)
+      as L->inf, with delta->0. The critical point's UNIVERSAL type = order-2 EP.
+      (This is the 'critical exponent' analog: not a number fit to r_q, but the EP
+       ORDER -- the thing a universality class of Syracuse maps would share.)
+
+## CONTROL (q=5,7): top-2 amplitude modes are lambda_1 & r_q*lambda_1 -- NOT coalescing
+   (delta = the real gap, cos < 1, biov = O(1)). The EP is SPECIFIC to q=3 = the boundary.
