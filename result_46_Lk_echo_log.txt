@@ -1,0 +1,50 @@
+# PROBE 46 v3 (G1b) -- L_k deviation operator. H_ECHO(2/3) REFUTED (injection=0); H_GAP(r_q<1) CONFIRMED from same operator.
+#   targets: 2/3=0.666667  7/15=0.466667  1/sqrt3(Perron)=0.577350  r5~.62 r7~.39
+
+## GATE -- exact cB_k(q=3): cB_2=0.476190  cB_3=0.461575  cB_4=0.464214  cB_5=0.465515
+
+## q=3  (K_max=7, v<=64)
+   GATE eig(K_7)=1.0000000000
+   (LEM-FORGET) ||dK||/||d|| for random d in W_4 = 8.98e-17  (=> self-block T'=0)
+   (ONE-STEP)   max ||pi_(k+1)-lift(pi_k)K||/||pi|| = 3.49e-16
+   (REFINE)     min cos(P_W[lift d_k K], d_(k+1)) = 1.00000000 ; max rel-resid = 1.10e-15   => injection == 0 (drip empty)
+
+   GATE cB vs exact: k2:0.476190/0.476190 k3:0.461575/0.461575 k4:0.464214/0.464214 k5:0.465515/0.465515
+     k       cB_k rate=cB_k/cB_(k-1)   g=rate/3 sigma_max(L_k)  vs Perron .5774
+     3    0.46157            0.96931    0.32310        0.56842      GAP (below)
+     4    0.46421            1.00572    0.33524        0.57900         marginal
+     5    0.46551            1.00280    0.33427        0.57816         marginal
+     6    0.46617            1.00140    0.33380        0.57776         marginal
+     7    0.46549            0.99855    0.33285        0.57693      GAP (below)
+     => q=3: r_3=1 marginal (Perron, no gap)
+
+## q=5  (K_max=5, v<=64)
+   GATE eig(K_5)=1.0000000000
+   (LEM-FORGET) ||dK||/||d|| for random d in W_4 = 1.03e-16  (=> self-block T'=0)
+   (ONE-STEP)   max ||pi_(k+1)-lift(pi_k)K||/||pi|| = 4.76e-16
+   (REFINE)     min cos(P_W[lift d_k K], d_(k+1)) = 1.00000000 ; max rel-resid = 5.08e-16   => injection == 0 (drip empty)
+
+     k       cB_k rate=cB_k/cB_(k-1)   g=rate/3 sigma_max(L_k)  vs Perron .5774
+     3    0.02075            0.53369    0.17790        0.42178      GAP (below)
+     4    0.01053            0.50769    0.16923        0.41138      GAP (below)
+     5    0.00658            0.62439    0.20813        0.45621      GAP (below)
+     => q=5: -> r_5~0.62 = GAP (sigma below 1/sqrt3)
+
+## q=7  (K_max=4, v<=64)
+   GATE eig(K_4)=1.0000000000
+   (LEM-FORGET) ||dK||/||d|| for random d in W_4 = 1.50e-16  (=> self-block T'=0)
+   (ONE-STEP)   max ||pi_(k+1)-lift(pi_k)K||/||pi|| = 4.39e-16
+   (REFINE)     min cos(P_W[lift d_k K], d_(k+1)) = 1.00000000 ; max rel-resid = 5.20e-16   => injection == 0 (drip empty)
+
+     k       cB_k rate=cB_k/cB_(k-1)   g=rate/3 sigma_max(L_k)  vs Perron .5774
+     3    0.02102            0.44691    0.14897        0.38597      GAP (below)
+     4    0.00751            0.35729    0.11910        0.34510      GAP (below)
+     => q=7: -> r_7~0.39 = GAP (sigma below 1/sqrt3)
+
+## VERDICT
+   H_ECHO (2/3): REFUTED. Injection == 0 (REFINE cos=1 @1e-16) => no echo/drip partition;
+      propagated fraction is 100%, not 2/3. The 2/3 (and 7/45-as-injection) die, as pre-registered.
+   H_GAP: CONFIRMED. L_k=P_W.lift.K is one deterministic refinement operator; its gain = r_q
+      (q=3->1 marginal, q=5->.62, q=7->.39). sigma_max(L_k)=sqrt(r_q/3) < 1/sqrt3 for d>=3 = the
+      tractable half of L3, from the same instrument that adjudicated q=3. r_q now REALIZED as
+      the singular value of an explicit, injection-free operator (cleaner target than build_M).
