@@ -1,0 +1,29 @@
+# PROBE 36 -- re-collision conditioning rho(q) = r_2/r_1, + gamma distribution
+
+    q   d    r_1(L1)   P_coll(d)  r_2(L2|L1)      r_3  rho=r2/r1
+    3   2   0.538040    0.222222    0.387924  0.29423    0.72099   (V=8,k=3)
+    5   4   0.353844    0.044444    0.273548  0.07666    0.77307   (V=16,k=3)
+    7   3   0.406560    0.095238    0.283653  0.11786    0.69769   (V=12,k=3)
+   11  10   0.308369    0.000652    0.250225  0.00104    0.81145   (V=40,k=3)
+   13  12   0.307861    0.000163    0.250116  0.00034    0.81243   (V=40,k=3)
+
+## GAMMA distribution | level-1 collision (flat => equidistributed => contraction)
+   q=3: gamma dist = ['0.0000', '0.5000', '0.5000']  (uniform=0.3333; max/min=inf)
+   q=5: gamma dist = ['0.0000', '0.2032', '0.2968', '0.2968', '0.2032']  (uniform=0.2000; max/min=inf)
+   q=7: gamma dist = ['0.0000', '0.2024', '0.1425', '0.1551', '0.1551', '0.1425', '0.2024']  (uniform=0.1429; max/min=inf)
+   q=11: gamma dist = ['0.0000', '0.0509', '0.1122', '0.0465', '0.1929', '0.0975', '0.0975', '0.1929', '0.0465', '0.1122', '0.0509']  (uniform=0.0909; max/min=inf)
+   q=13: gamma dist = ['0.0000', '0.1261', '0.0516', '0.0250', '0.0823', '0.1496', '0.0654', '0.0654', '0.1496', '0.0823', '0.0250', '0.0516', '0.1261']  (uniform=0.0769; max/min=inf)
+
+## rho(q) vs pre-registration (q=3 ~1 no-penalty; d>=3 <1):
+   q=3 (d=2): rho = 0.7210  -> <1 (penalty)
+   q=5 (d=4): rho = 0.7731  -> <1 (penalty)
+   q=7 (d=3): rho = 0.6977  -> <1 (penalty)
+   q=11 (d=10): rho = 0.8114  -> <1 (penalty)
+   q=13 (d=12): rho = 0.8124  -> <1 (penalty)
+
+## SECONDARY -- q=1093 (s=2): level-2 conditional should mimic level-1 (R35 onset shift)
+   q=1093 d=364 (s=2): r_1(L1)=2.500e-01  P_coll(d)=1.774e-110  r_2(L2|L1)=0.000e+00  rho=0.0000  (V=800,k=2)
+   offmass: L1=2.222e-01  L2=0.000e+00  (L2<<L1 or L2=0 => onset shifted past depth 2, per R35 cross(2)=0)
+
+## READ: rho<1 for d>=3 with ~flat gamma => carry equidistributes => re-collision
+   pays a fresh penalty => contraction. rho~1 at q=3 => no penalty => divergence.
