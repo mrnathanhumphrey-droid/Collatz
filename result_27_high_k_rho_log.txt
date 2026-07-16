@@ -1,0 +1,40 @@
+# PROBE 27 -- high-k rho_k via v-truncated stationary. Settle r_q (q=5,7).
+# Pre-reg: GATE (trunc==exact k<=5) / discriminate rho->0.60 vs ->1
+
+## q=5
+   cross(2) = 0.038875214298   (n=20)  gate vs exact: |rel|=4.83e-12 OK
+   cross(3) = 0.059623775122   (n=100)  gate vs exact: |rel|=7.00e-12 OK
+   cross(4) = 0.070157562299   (n=500)  gate vs exact: |rel|=4.45e-13 OK
+   cross(5) = 0.076734752048   (n=2500)  gate vs exact: |rel|=6.30e-10 OK
+   cross(6) = 0.080878910171   (n=12500)
+   cross(7) = 0.083481580867   (n=62500)
+   cross(8) = 0.085066923007   (n=312500)
+
+     k              c_k    rho_k=c_{k+1}/c_k
+     2     3.887521e-02           0.53372210
+     3     2.074856e-02           0.50768761
+     4     1.053379e-02           0.62438985
+     5     6.577190e-03           0.63008037
+     6     4.144158e-03           0.62803364
+     7     2.602671e-03           0.60912129
+     8     1.585342e-03                   --
+
+## q=7
+   cross(2) = 0.047025340793   (n=42)  gate vs exact: |rel|=6.03e-12 OK
+   cross(3) = 0.068042081671   (n=294)  gate vs exact: |rel|=2.54e-12 OK
+   cross(4) = 0.075551164655   (n=2058)
+   cross(5) = 0.078492767804   (n=14406)
+   cross(6) = 0.079612540267   (n=100842)
+   cross(7) = 0.080050743086   (n=705894)
+
+     k              c_k    rho_k=c_{k+1}/c_k
+     2     4.702534e-02           0.44692373
+     3     2.101674e-02           0.35729055
+     4     7.509083e-03           0.39173933
+     5     2.941603e-03           0.38066741
+     6     1.119772e-03           0.39133202
+     7     4.382028e-04                   --
+
+## READ: if rho_k(q=5) settles near 0.60 -> R26 modal confirmed, 3/5 vindicated.
+   if rho_k climbs toward 1 -> R25 (r near 1) and R26 modal was wrong.
+   oscillation around 0.60 is EXPECTED (R26: mu=+0.603 with a mu=-0.60 partner).
