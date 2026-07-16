@@ -1,0 +1,61 @@
+# PROBE 19 -- PHASE 1b: the general-k cross decomposition. Where is the k-dependence?
+# EXPLORATORY. Only the GATE has a threshold (an exact identity). No fits.
+
+## H_GATE -- do the classified pair masses sum to R18's exact cross(k)?
+
+   q   k    cells        pairs       classified      cross (R18)      |rel|
+   3   2       12            6     0.3976331361     0.3976331361   5.58e-16
+   3   3      216         1188     0.8848217320     0.8848217320   3.76e-16
+   3   4    11664      1253880     1.3490563927     1.3490563927   8.71e-13
+   5   2       80          120     0.0388752143     0.0388752143   5.35e-16
+   5   3     8000       316000     0.0596237751     0.0596237751   6.06e-14
+   7   2       63           63     0.0470253408     0.0470253408   3.39e-15
+   7   3     9261       287091     0.0680420817     0.0680420817   2.35e-14
+
+   H_GATE: CONFIRMED -- classifier is exact
+
+## H_SHALLOW -- mass share by NUMBER of differing coordinates (|DIFFSET|)
+   (coordinate 0 = v_1, the coarsest/deepest; coordinate k-1 = v_k, the finest)
+
+   q=3 k=2:  |D|=2: 1.0000
+   q=3 k=3:  |D|=2: 0.8951 |D|=3: 0.1049
+   q=3 k=4:  |D|=2: 0.7517 |D|=3: 0.1838 |D|=4: 0.0645
+   q=5 k=2:  |D|=2: 1.0000
+   q=5 k=3:  |D|=2: 0.7434 |D|=3: 0.2566
+   q=7 k=2:  |D|=2: 1.0000
+   q=7 k=3:  |D|=2: 0.8297 |D|=3: 0.1703
+
+## MASS SHARE by LOWEST differing coordinate (which coordinate 'causes' the collision)
+
+   q=3 k=2:  v_1: 1.0000
+   q=3 k=3:  v_1: 0.6080 v_2: 0.3920
+   q=3 k=4:  v_1: 0.5073 v_2: 0.3355 v_3: 0.1572
+   q=5 k=2:  v_1: 1.0000
+   q=5 k=3:  v_1: 0.9086 v_2: 0.0914
+   q=7 k=2:  v_1: 1.0000
+   q=7 k=3:  v_1: 0.8614 v_2: 0.1386
+
+## H_NEWLEVEL -- does mass NOT involving the new finest coordinate reproduce cross(k-1)?
+   split: pairs whose DIFFSET includes coordinate k-1 (the new one) vs those that don't
+
+   q   k       cross(k)   no-new-coord   has-new-coord     cross(k-1)
+   3   3     0.88482173     0.42327396      0.46154777     0.39763314
+   3   4     1.34905639     0.88484198      0.46421441     0.88482173
+   5   3     0.05962378     0.03887536      0.02074841     0.03887521
+   7   3     0.06804208     0.04702543      0.02101665     0.04702534
+
+   (H_NEWLEVEL would predict no-new-coord ~ cross(k-1). REPORTED, no verdict.)
+
+## MASS SHARE by j = |v'_k - v_k|/d  (R13's shift index at k=2)
+
+   q=3 k=2:  j=1: 0.8095 j=2: 0.1905
+   q=3 k=3:  j=0: 0.4784 j=1: 0.3921 j=2: 0.0692 j=3: 0.0505 j=4: 0.0072
+   q=3 k=4:  j=0: 0.6559 j=1: 0.2606 j=2: 0.0459 j=3: 0.0309 j=4: 0.0051
+   q=5 k=2:  j=1: 0.8574 j=2: 0.1340 j=3: 0.0084 j=4: 0.0002
+   q=5 k=3:  j=0: 0.6520 j=1: 0.3017 j=2: 0.0428 j=3: 0.0034 j=4: 0.0001
+   q=7 k=2:  j=1: 0.6510 j=2: 0.3255 j=3: 0.0203 j=4: 0.0025 j=5: 0.0006
+   q=7 k=3:  j=0: 0.6911 j=1: 0.1380 j=2: 0.1678 j=3: 0.0023 j=4: 0.0007
+
+## H_Q3 -- q=3 (linear, no decay) vs q=5 (converging). Compare the class structure.
+   REPORTED as measurement. Any structure here is a HYPOTHESIS for a separate
+   pre-committed test -- NOT a result. (feedback_r2_cannot_discriminate_monotone_fits)
