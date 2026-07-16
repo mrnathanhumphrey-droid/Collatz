@@ -1,0 +1,89 @@
+# PROBE 22 -- PHASE 3: weighted increment ratio rho_k = c_{k+1}/c_k
+# Pre-reg: G1 (*** rho_k stabilizes ***) / G2 (phase boundary) / PRED committed: rho_q -> 3/q
+
+## q=3  (d=2,  k = 1..8,  n*M budget 25e6)
+   cross(1) = -0.0000000000   (expect ~0: no cross-cell at k=1)
+
+     k         cross(k)    c_k = cross(k)-cross(k-1)
+     2     0.3976331361                 0.3976331361
+     3     0.8848217320                 0.4871885960
+     4     1.3490563927                 0.4642346606
+     5     1.8145713124                 0.4655149198
+     6     2.2807400734                 0.4661687610
+     7     2.7462315032                 0.4654914298
+     8     3.2121526235                 0.4659211203
+
+     k    rho_k = c_{k+1}/c_k  |reliable?
+     2             1.22522132         yes
+     3             0.95288491         yes
+     4             1.00275778         yes
+     5             1.00140455         yes
+     6             0.99854703         yes
+     7             1.00092309         yes
+   PRED 3/q = 1.000000   (committed limit for rho_q)
+
+## q=5  (d=4,  k = 1..5,  n*M budget 25e6)
+   cross(1) = +0.0000000000   (expect ~0: no cross-cell at k=1)
+
+     k         cross(k)    c_k = cross(k)-cross(k-1)
+     2     0.0388752143                 0.0388752143
+     3     0.0596237751                 0.0207485608
+     4     0.0701575623                 0.0105337872
+     5     0.0767347520                 0.0065771897
+
+     k    rho_k = c_{k+1}/c_k  |reliable?
+     2             0.53372210         yes
+     3             0.50768761         yes
+     4             0.62438985         yes
+   PRED 3/q = 0.600000   (committed limit for rho_q)
+
+## q=7  (d=3,  k = 1..4,  n*M budget 25e6)
+   cross(1) = +0.0000000000   (expect ~0: no cross-cell at k=1)
+
+     k         cross(k)    c_k = cross(k)-cross(k-1)
+     2     0.0470253408                 0.0470253408
+     3     0.0680420817                 0.0210167409
+     4     0.0755511647                 0.0075090830
+
+     k    rho_k = c_{k+1}/c_k  |reliable?
+     2             0.44692373         yes
+     3             0.35729055         yes
+   PRED 3/q = 0.428571   (committed limit for rho_q)
+
+## q=11  (d=10,  k = 1..3,  n*M budget 25e6)
+   cross(1) = +0.0000000000   (expect ~0: no cross-cell at k=1)
+
+     k         cross(k)    c_k = cross(k)-cross(k-1)
+     2     0.0001137528                 0.0001137528
+     3     0.0001342964                 0.0000205436
+
+     k    rho_k = c_{k+1}/c_k  |reliable?
+     2             0.18059836         yes
+   PRED 3/q = 0.272727   (committed limit for rho_q)
+
+## G1 (*** THE REAL CLAIM ***) -- does rho_k stabilize in k?
+   (real test only where >=3 ratios exist: q=3. q=5 has 2; q=7,11 have 1 -- SAID.)
+
+   q=3: rho = ['1.22522', '0.95288', '1.00276', '1.00140', '0.99855', '1.00092']
+          |delta rho| = ['0.27234', '0.04987', '0.00135', '0.00286', '0.00238']  -> NOT monotone-shrinking
+   q=5: rho = ['0.53372', '0.50769', '0.62439']
+          |delta rho| = ['0.02603', '0.11670']  -> NOT monotone-shrinking
+   q=7: rho = ['0.44692', '0.35729']  (too few to judge stabilization -- SAID)
+   q=11: rho = ['0.18060']  (too few to judge stabilization -- SAID)
+
+## G2 (phase boundary) + PRED (rho_q -> 3/q?)
+   last reliable rho_k = best available estimate of the limit r_q
+
+      q     last rho_k   3/q (pred)     |miss|   r_q<1?
+      3       1.000923     1.000000     0.0009 ~1 (q=3 divergence)
+      5       0.624390     0.600000     0.0244      YES
+      7       0.357291     0.428571     0.0713      YES
+     11       0.180598     0.272727     0.0921      YES
+
+   READING:
+   - G2 CONFIRMED iff rho -> 1 at q=3 and rho < 1 at q=5,7,11.
+   - PRED (3/q) is hit iff |miss| is small AND rho has settled; if rho is still
+     climbing (q=5 R16 trend), the last value UNDER-reads the limit and 3/q is a
+     lower bound at best. Reported honestly, no verdict rides on the number.
+   - If G1 holds but PRED misses: r_q<1 EXISTS (Phase-3 target stands), value TBD.
+   - If G1 FAILS at q=3 (rho not settling toward 1): the target statement is wrong.
