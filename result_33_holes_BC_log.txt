@@ -1,0 +1,51 @@
+# PROBE 33 -- Hole 3 (M primitivity) + Hole 4 (within exactly k-flat?)
+
+## B / HOLE 3 -- is M irreducible + aperiodic (=> Perron simple, strictly dominant)?
+
+   q=3 L=3: dim=8748, reachable from v0=1458, SCCs(reachable)=146, largest SCC=1296
+      |lambda_1|=0.333336  |lambda_2|=0.333236  ratio=0.9997  #eigs at |lambda_1|=1
+      => PRIMITIVE (aperiodic; lambda_1 strictly dominant)
+
+   q=5 L=2: dim=10000, reachable from v0=500, SCCs(reachable)=82, largest SCC=400
+      |lambda_1|=0.333334  |lambda_2|=0.326311  ratio=0.9789  #eigs at |lambda_1|=1
+      => PRIMITIVE (aperiodic; lambda_1 strictly dominant)
+
+   q=7 L=2: dim=21609, reachable from v0=588, SCCs(reachable)=128, largest SCC=441
+      |lambda_1|=0.333334  |lambda_2|=0.326941  ratio=0.9808  #eigs at |lambda_1|=1
+      => PRIMITIVE (aperiodic; lambda_1 strictly dominant)
+
+## C / HOLE 4 -- within(k) exact: is it k-flat, or a doubly-exp tower correction?
+
+   q=3 (d=2, tower scale 2^-dq = 2^-6 = 1.56e-02)
+      within(2) = 0.6153846153846154   delta = +nan
+      within(3) = 0.7195504811184626   delta = +1.042e-01
+      within(4) = 0.7195898389559858   delta = +3.936e-05  |delta|/2^-dq = 0.00
+      within(5) = 0.7195898389559866   delta = +7.637e-16  |delta|/2^-dq = 0.00
+      within(6) = 0.7195898389559866   delta = +2.941e-48  |delta|/2^-dq = 0.00
+
+   q=5 (d=4, tower scale 2^-dq = 2^-20 = 9.54e-07)
+      within(2) = 0.1333311716736110   delta = +nan
+      within(3) = 0.1333354949971787   delta = +4.323e-06
+      within(4) = 0.1333354949971787   delta = +5.364e-30  |delta|/2^-dq = 0.00
+      within(5) = 0.1333354949971787   delta = +2.770e-150  |delta|/2^-dq = 0.00
+      within(6) = 0.1333354949971787   delta = +0.000e+00  |delta|/2^-dq = 0.00
+
+   q=7 (d=3, tower scale 2^-dq = 2^-21 = 4.77e-07)
+      within(2) = 0.2857130595621779   delta = +nan
+      within(3) = 0.2857155118675629   delta = +2.452e-06
+      within(4) = 0.2857155118675629   delta = +4.324e-44  |delta|/2^-dq = 0.00
+      within(5) = 0.2857155118675629   delta = +1.788e-309  |delta|/2^-dq = 0.00
+      within(6) = 0.2857155118675629   delta = +0.000e+00  |delta|/2^-dq = 0.00
+
+   q=11 (d=10, tower scale 2^-dq = 2^-110 = 7.70e-34)
+      within(2) = 0.0019550342130987   delta = +nan
+      within(3) = 0.0019550342130987   delta = +3.088e-33
+      within(4) = 0.0019550342130987   delta = +0.000e+00  |delta|/2^-dq = 0.00
+      within(5) = 0.0019550342130987   delta = +0.000e+00  |delta|/2^-dq = 0.00
+      within(6) = 0.0019550342130987   delta = +0.000e+00  |delta|/2^-dq = 0.00
+
+## READ:
+   B: single recurrent SCC + unique max-modulus lambda_1 (q>=5) => M primitive =>
+      L2's 'lambda_1 simple, strictly dominant' is GUARANTEED, not just observed.
+   C: if within(k)-within(k-1) ~ 2^-dq (doubly-exp) for k>=4, within is k-flat to
+      doubly-exp precision; residual << r_q scale => 'cross incr = total incr' is safe.
