@@ -1,0 +1,46 @@
+# PROBE 18 -- PHASE 0 + PHASE 1: cross in weighted-SUBGROUP form; does it CONCENTRATE?
+# Pre-reg: H_P0(gate) / H_P1FORM(gate) / H_CONC(*** falsifier ***) / H_JDOM
+
+## PHASE 0 / H_P0 -- cross_from_cells(k) == measured total(k) - within(k) ?
+
+   q   k      cells    cross (cells)   total - within      |rel|
+   3   2         12     0.3976331361     0.3976331361   1.40e-16
+   3   3        216     0.8848217320     0.8848217320   3.76e-16
+   3   4      11664     1.3490563927     1.3490563927   1.48e-15
+   5   2         80     0.0388752143     0.0388752143   1.30e-14
+   5   3       8000     0.0596237751     0.0596237751   2.91e-15
+   7   2         63     0.0470253408     0.0470253408   1.62e-15
+   7   3       9261     0.0680420817     0.0680420817   1.02e-15
+  11   2       1100     0.0001137528     0.0001137528   6.10e-13
+
+   H_P0: CONFIRMED -- the cell decomposition is exact
+
+## PHASE 1 / H_P1FORM -- rebuild cross(2) from R13's SUBGROUP condition alone
+   H = <2> in F_q^*, |H| = d;  a = 2^{-A}, b = 2^{-v_2} in H;  condition: a + j*s*b in H
+
+   q   d    s   cross (subgroup)    cross (cells)      |rel|
+   5   4    3     0.038875214298   0.038875214298   5.35e-16
+   7   3    1     0.047025340793   0.047025340793   3.39e-15
+  11  10    5     0.000113752827   0.000113752827   2.41e-13
+  13  12    3     0.000186664203   0.000186664203   8.39e-13
+  17   8   15     0.000758521367   0.000758521367   8.06e-14
+  31   5    1     0.000439948615   0.000439948615   1.20e-13
+
+   H_P1FORM: CONFIRMED -- cross IS a weighted subgroup sum
+
+## H_CONC (*** THE FALSIFIER ***) -- does truncating v_2 <= T concentrate?
+   err(T) = |cross_T - cross_full| / cross_full
+   [!] STATED BEFORE THE RUN: p_v ~ 2^-v is geometric BY CONSTRUCTION, so a pass
+      proves only the TAIL is geometric. It does NOT prove the HEAD is boundable,
+      which is the actual math. NECESSARY, NOT SUFFICIENT.
+
+   q   d          T=5        T=10        T=15        T=20        T=25        T=30        T=40
+   5   4     3.57e-01    1.72e-02    3.48e-04    0.00e+00    0.00e+00    0.00e+00    0.00e+00
+   7   3     3.90e-01    9.59e-03    7.01e-04    1.43e-06    0.00e+00    0.00e+00    0.00e+00
+  11  10     1.00e+00    1.00e+00    4.77e-03    3.80e-03    6.50e-06    2.80e-06    9.74e-10
+  13  12     1.00e+00    1.00e+00    1.56e-02    2.99e-05    3.68e-06    1.65e-08    5.38e-11
+  17   8     1.00e+00    7.70e-02    1.55e-02    9.18e-05    7.99e-06    2.26e-08    2.85e-10
+  31   5     1.00e+00    1.14e-01    2.27e-03    4.35e-04    6.41e-07    2.17e-07    1.66e-09
+
+   H_CONC: NOT confirmed
+   Reminder: this is the NECESSARY half. Phase 3a still needs the HEAD bounded.
