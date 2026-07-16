@@ -1,0 +1,32 @@
+# G0b+G0c v2 -- (M) Arnoldi/Krylov (tower-free), (c) /q c_k high-k (3/q-cancelled). v<=64.
+#   PRE-REG r_q: q3->1, q5->0.62, q7->0.39.  3/q ref: 3/5=0.600 3/7=0.4286
+
+## q=3  (d=2, 3/q=1.0000)
+   (M) Arnoldi L=1 (dim=12): #ritz=2 |l1|=0.55556 |l2|=0.33333 r_M=0.6000   next|l|=-
+   (M) Arnoldi L=2 (dim=324): #ritz=37 |l1|=0.34683 |l2|=0.34392 r_M=0.9916   next|l|=0.2862
+   (c) c_k: 0.476190 0.461575 0.464214 0.465515 0.466169 0.465491 0.465921
+   (c) diff-ratios dc_{k+1}/dc_k: k3:-0.1806 k4:+0.4927 k5:+0.5028 k6:-1.0359 k7:-0.6344
+   (c) approach rate (last ratio, k=7): -0.6344
+
+## q=5  (d=4, 3/q=0.6000)
+   (M) Arnoldi L=1 (dim=80): #ritz=4 |l1|=0.37778 |l2|=0.27487 r_M=0.7276   next|l|=0.2749
+   (M) Arnoldi L=2 (dim=10000): #ritz=60 |l1|=0.33333 |l2|=0.32631 r_M=0.9789   next|l|=0.3263
+   (c) c_k: 0.492211 0.489633 0.487717 0.487974 0.488172 0.488288 0.488312
+   (c) diff-ratios dc_{k+1}/dc_k: k3:+0.7429 k4:-0.1341 k5:+0.7701 k6:+0.5872 k7:+0.2043
+   (c) approach rate (last ratio, k=7): +0.2043
+
+## q=7  (d=3, 3/q=0.4286)
+   (M) Arnoldi L=1 (dim=63): #ritz=3 |l1|=0.42857 |l2|=0.28057 r_M=0.6547   next|l|=0.2806
+   (M) Arnoldi L=2 (dim=21609): #ritz=60 |l1|=0.33333 |l2|=0.32694 r_M=0.9808   next|l|=0.3269
+   (c) c_k: 0.781721 0.782583 0.781085 0.780808 0.780667
+   (c) diff-ratios dc_{k+1}/dc_k: k3:-1.7371 k4:+0.1846 k5:+0.5095
+   (c) approach rate (last ratio, k=5): +0.5095
+
+## G0c EQUIVALENCE (measured, not declared) -- (M) Arnoldi vs (c) approach, q=5 AND 7:
+      q  (M) Arnoldi  (c) approach  3/q ref   |M-c|  weld?
+      3       0.9916       -0.6344   1.0000  1.6260     NO
+      5       0.9789        0.2043   0.6000  0.7746     NO
+      7       0.9808        0.5095   0.4286  0.4713     NO
+
+## G0b (c) vs pre-reg 0.62/0.39: q5=0.204 q7=0.509
+## G0c weld at q=5 AND 7: NOT YET -- (c) needs higher k

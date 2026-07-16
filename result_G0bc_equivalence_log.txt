@@ -1,0 +1,35 @@
+# GATES G0b + G0c -- weld r_q across coordinates (M),(c). v<=64.
+#   PRE-REG (c) approach rate -> 0.62 (q=5), 0.39 (q=7), 1.0 (q=3).
+
+## q=3  (d=ord_q(2)=2)
+   dictionary c_k==(3/q)^k S_0(k): OK
+   c_k: 0.47619 0.46157 0.46421 0.46551 0.46617 0.46549 0.46592
+   approach rho_c(k)=(dc_{k+1})/(dc_k): k3:-0.1806 k4:+0.4927 k5:+0.5028 k6:-1.0359 k7:-0.6344
+   => (c) approach rate settled ~ -0.8352  (last -0.6344)
+   (M) build_M L=1 (dim=12): |l1|=0.55556 |l2|=0.33333  r_M=0.6000
+   (M) build_M L=2 (dim=324): |l1|=0.34683 |l2|=0.34392  r_M=0.9916
+
+## q=5  (d=ord_q(2)=4)
+   dictionary c_k==(3/q)^k S_0(k): OK
+   c_k: 0.49221 0.48963 0.48772 0.48797 0.48817 0.48829
+   approach rho_c(k)=(dc_{k+1})/(dc_k): k3:+0.7429 k4:-0.1341 k5:+0.7701 k6:+0.5872
+   => (c) approach rate settled ~ +0.6786  (last +0.5872)
+   (M) build_M L=1 (dim=80): |l1|=0.37778 |l2|=0.27487  r_M=0.7276
+   (M) build_M L=2 (dim=10000): |l1|=0.33333 |l2|=0.32631  r_M=0.9789
+
+## q=7  (d=ord_q(2)=3)
+   dictionary c_k==(3/q)^k S_0(k): OK
+   c_k: 0.78172 0.78258 0.78108 0.78081 0.78067
+   approach rho_c(k)=(dc_{k+1})/(dc_k): k3:-1.7371 k4:+0.1846 k5:+0.5095
+   => (c) approach rate settled ~ +0.3471  (last +0.5095)
+   (M) build_M L=1 (dim=63): |l1|=0.42857 |l2|=0.28057  r_M=0.6547
+   (M) build_M L=2 (dim=21609): |l1|=0.33333 |l2|=0.32694  r_M=0.9808
+
+## G0c EQUIVALENCE -- (M) modal vs (c) approach rate, q=5 AND 7 (q=3 = boundary, blind-trap):
+      q    (M) r_M  (c) approach   |diff|   agree?
+      3     0.9916       -0.8352   1.8268       NO
+      5     0.9789        0.6786   0.3003       NO
+      7     0.9808        0.3471   0.6338       NO
+
+## G0b: (c) approach rate vs pre-reg 0.62(q5)/0.39(q7): q5=0.679 q7=0.347
+## G0c: (M) vs (c) measured-same at q=5 AND 7: NEEDS MORE k / walk-back
