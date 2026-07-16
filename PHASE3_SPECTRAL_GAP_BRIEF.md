@@ -59,7 +59,13 @@ So the gap should reduce to a **finite linear-algebra + one uniform subgroup-sum
 
 ## 5. The phase boundary — why q = 3 is exactly the non-gap
 
-`d := ord_q(2)`, `H = ⟨2⟩ ⊆ F_q^*`, `|H| = d`. At `q = 3`: `d = 2`, `H = {1,2} = F_3^*` is the **whole** multiplicative group, and `(q−1)/2 = 1` (R6). The off-diagonal operator then **resonates**: its leading mode is not strictly contracted, `λ_2 = λ_1 = 1/3`, Perron degenerate (Jordan block) → `cross(k)` linear. For `q ≥ 5`, `H` is a **proper** subgroup (`d ≤ q−1` with genuine dispersion), the off-diagonal modes disperse, and `λ_2 < λ_1` strictly. **The theorem is: `H ⊊ F_q^*` (equivalently `q ≥ 5`) ⟹ strict contraction of `L` off the diagonal.** This is the register in which the Konyagin subgroup sums live (R21).
+`d := ord_q(2)`, `H = ⟨2⟩ ⊆ F_q^*`, `|H| = d`. **The gap closes exactly when `d = 2`, and `d = ord_q(2) = 2 ⟺ q | 3 ⟺ q = 3 ⟺ 2 ≡ −1 (mod q)`** (among odd primes). This is the correct characterization — NOT "H is a proper subgroup." Counterexample to the naive guess: at **q = 5, 2 is a primitive root** (`ord₅(2) = 4 = q−1`), so `H = F_5^*` is the *whole* group, yet `r₅ ≈ 0.62 < 1` **[NUM]** — a gap. So `H` being full does not close the gap; `d = 2` does.
+
+**Mechanism at `d = 2` (q = 3):** `H = ⟨2⟩ = ⟨−1⟩ = {1, −1}`, and `2^{-v} ≡ (−1)^v (mod q)` is a mere sign — the transfer phases cannot disperse, the leading off-diagonal mode stays aligned with the diagonal, `λ_2 = λ_1 = 1/3`, Perron degenerate (Jordan block) → `cross(k)` linear. Equivalently, in R6's register, `(q−1)/2 = 1` (⟺ q=3) makes conservation *determine* the leading mode instead of underdetermining it — same boundary, dual description. For `q ≥ 5` (`d ≥ 3`), `2` has richer order, the phases `2^{-v} mod q` disperse across ≥ 3 values, and `λ_2 < λ_1` strictly.
+
+> **The theorem (L3) is: `d = ord_q(2) ≥ 3` (equivalently `q ≥ 5`, equivalently `2 ≢ −1 mod q`) ⟹ strict contraction of `L` off the diagonal.**
+
+This is a **very weak** condition (just `d ≥ 3`), which is *good*: L3 does NOT need `|H|` large — it needs only that `H` is not the two-element sign group `{±1}`. That is exactly the small-subgroup regime, and it is the register in which the Konyagin subgroup sums live (R21) — but note we need strictness for **all `d ≥ 3`**, including small `d` (`d = 3` at q=7), where asymptotic subgroup-sum bounds are vacuous. So L3 needs a **qualitative non-degeneracy for `d ≥ 3`**, not the sharp asymptotic bound.
 
 ## 6. Lemma skeleton (the pen-and-paper program)
 
@@ -67,7 +73,10 @@ So the gap should reduce to a **finite linear-algebra + one uniform subgroup-sum
 
 - **L2 (Perron) [TP, ~R8 + Perron–Frobenius].** `λ_1 = 1/3` is a simple, strictly dominant eigenvalue of `L` on the **diagonal** subspace, with the explicit diagonal eigenvector. `C_q ≥ 1` is forced (Cauchy–Schwarz, R8). *(Already essentially in hand.)*
 
-- **L3 (THE GAP) [TP, the crux].** On the **off-diagonal** (`a ≠ b`) subspace, `spec-radius(L_off) < 1/3` for `q ≥ 5`. Route: bound `‖L_off^n‖` by the collision / subgroup-incidence sum (R18/R20: condition `2^{-A'} ≡ 2^{-A} + j·s·2^{-A''} mod q`, `a,b ∈ H`) = a **Konyagin subgroup exponential sum**; show it is **strictly** `< 1` when `H ⊊ F_q^*`. *Note:* we need **strictness**, not the sharp value — so even the "vacuous-at-small-d" Konyagin bounds (R21's worry) may suffice, because strictness is a fixed-q qualitative statement.
+- **L3 (THE GAP) [TP, the crux — and NO literature route; see `PHASE3_LITERATURE_GATHER.md`].** On the **off-diagonal** (`a ≠ b`) subspace, `spec-radius(L_off) < 1/3` for `d = ord_q(2) ≥ 3` (i.e. `q ≥ 5`), **uniform in k**.
+  - **Boundary side (why it CLOSES at d=2) is anchored:** Konyagin's small-subgroup non-cancellation (Lectures Thm 1.8; the `|G|=2` example `S(1,{1,−1}) = 2cos(2π/q) = |H| + O(q^{-2})`) — the leading mode is preserved at `d=2`, reproducing `λ₂ = λ₁`. Second, independent: Siegel's non-archimedean transform has a pole at `q ∈ {1,3}` (diss. eq. 4.191). Two literature sightings that `d=2 ⟹` no gap.
+  - **Positive side (the gap OPENS for d ≥ 3) has NO literature route.** The subgroup-exponential-sum bounds (`|S(a,H)| < |H|`) are **vacuous for small d** — they need `|H| > √q` or `q^δ` (Konyagin Thm 1.7, 3.3; Garcia–Voloch energy Thm 2.1), and Thm 1.8 proves the *opposite* for `|H| ≪ log q`. And the tempting qualitative argument "`H` proper ⟹ not additively closed ⟹ contraction" **is FALSE**: at `q=5`, `2` is a primitive root so `H = F_5^*` is *full*, yet `r_5 ≈ 0.62` has a gap **[NUM]**. So the gap is **not** a generic subgroup property; the distinguisher is `d=2` vs `d≥3` *specifically*.
+  - **⇒ L3 must be proved by DIRECT spectral analysis of the concrete cascade operator `M` (probe_25, gate-validated)** — showing `λ₂(M_{off}) < 1/3` for `d ≥ 3` — not by importing a subgroup theorem. This is the genuine, novel mathematical content of Result 1. Siegel flags exactly this (`‖π_k‖²` decay / a spectral bound) as the **open** problem (diss. p.92–93).
 
 - **L4 (assembly) [TP, routine once L2+L3].** `cross(k) = ⟨𝟙, L^k v_0⟩`-type `= A_1 + O(r_q^k)` with `r_q = 3·spec-radius(L_off) < 1` for `q ≥ 5` → `cross` bounded → Result 1. At `q = 3`, L3 fails (`H` full) → `r_3 = 1` → linear. **k-uniformity is automatic** (operator powers).
 
@@ -77,14 +86,13 @@ So the gap should reduce to a **finite linear-algebra + one uniform subgroup-sum
 
 `r_q = 3·λ_2(L_off)` is an **algebraic number** (root of a fixed characteristic polynomial per `q`). `r_3 = 1`, `r_5 ≈ 0.62`, `r_7 ≈ 0.38` **[NUM]**. **No elementary closed form** (R28: `3/q` refuted — `r_5 > 3/5` but `r_7 < 3/7`). The closed form is a *separate, compute-limited* question (pin `r_11, r_13` via Lambda-scale high-k or higher-`L` modal); it is **not needed for Result 1**, which only asserts `r_q < 1`.
 
-## 8. Literature to plug in (→ the "gather" task, option a)
+## 8. Literature (GATHERED — full detail in `PHASE3_LITERATURE_GATHER.md`)
 
-For **L3** specifically:
-- Konyagin, *Exponential sums over multiplicative groups in fields of prime order* (`Bourgain-Konyagin/Konyagin_Lectures.pdf`, on disk) — our object is his §1.2 verbatim (R21). Need the **strict-positivity / non-degeneracy** form, not the asymptotic bound.
-- Bourgain–Chang, `Bourgain-Konyagin/122 NewExp.pdf` (on disk) — composite moduli `q^k` + Heilbronn sums (Stepanov method), if the `F_q` reduction needs lifting.
-For the **RPF framework** (L1, L2, L4) in the ultrametric setting:
-- p-adic / non-archimedean self-similar (Hutchinson) measures and their transfer operators — **flagged as never covered** in project memory; the target of the gather.
-- Siegel 2024 p,q-adic Collatz (`references/Q-sweep/Siegel2024_pq_adic_Collatz_consolidated.pdf`, on disk) — read before publication.
+- **L2 (Perron):** Ruelle, *The Method of Transfer Operators*, Notices AMS 49 (2002), p.891–892 — plugs in directly (finite matrix; verify primitivity). `references/Q-sweep/Ruelle_dynamical_zeta_transfer_operators.pdf`.
+- **L4 (diagonal geometric decay):** Solomyak, *Notes on Bernoulli convolutions*, Def. 4.4 + Thm. 4.5 — product-measure correlation sum `(Σp_v²)^k`, k-uniform. `references/Q-sweep/Solomyak_Bernoulli_notes.pdf`. Plus **Siegel diss. eq. 2.180** = our Parseval `‖π_k‖²` identity, and **Prop. 2.18 (eq. 2.173–2.174)** = our `μ̂` recursion, both already proven — CITE, don't re-derive. `references/Q-sweep/Siegel2024_pq_adic_Collatz_consolidated.pdf`.
+- **L3 boundary (d=2 ⟹ no gap):** Konyagin, `Bourgain-Konyagin/Konyagin_Lectures.pdf`, Thm 1.8 + `|G|=2` example; Siegel eq. 4.191 pole at q∈{1,3}.
+- **L3 positive side (d≥3 ⟹ gap): NO literature route** — subgroup-sum bounds vacuous for small d, additive-closure argument false at q=5. **Direct spectral analysis of `M` (probe_25). This is the novel core.**
+- For later, if the `F_q` reduction needs lifting to `q^k`: Bourgain–Chang, `Bourgain-Konyagin/122 NewExp.pdf` (Heilbronn/Stepanov). p-adic Brownian/Donsker (Weisbart, Pierce–Weisbart, `varju_followups/`) for the non-archimedean analytic toolbox if needed.
 
 ---
 
