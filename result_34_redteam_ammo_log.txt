@@ -1,0 +1,44 @@
+# PROBE 34 -- L3 red-team ammo (3 falsifiable checks)
+
+## CHECK 1 (Attack 2) -- does r_5 drift toward 1? extend direct rho_k to k=9
+   cross(4) = 0.070157562299  (n=500)
+   cross(5) = 0.076734752048  (n=2500)
+   cross(6) = 0.080878910171  (n=12500)
+   cross(7) = 0.083481580867  (n=62500)
+   cross(8) = 0.085066923007  (n=312500)
+   cross(9) = 0.086010196304  (n=1562500)
+   rho_k (=c_(k+1)/c_k): ['k4:0.0937', 'k5:0.6301', 'k6:0.6280', 'k7:0.6091', 'k8:0.5950']
+   last 3 rho: ['0.6280', '0.6091', '0.5950']  -> r_5 settling ~0.611
+   VERDICT: STABLE (no drift toward 1) -> gap robust
+
+## CHECK 2 (Attack 3) -- tower mode |A| vs L for q=5,7 (should stay ~0)
+   q=5:
+      L=1 (dim=80): tower max|A|=0.00e+00   r_q mode |mu|=nan |A|=0.000e+00
+      L=2 (dim=10000): tower max|A|=0.00e+00   r_q mode |mu|=0.6028 |A|=1.636e-01
+
+   q=7:
+      L=1 (dim=63): tower max|A|=0.00e+00   r_q mode |mu|=nan |A|=0.000e+00
+      L=2 (dim=21609): tower max|A|=0.00e+00   r_q mode |mu|=0.4752 |A|=8.479e-02
+
+   VERDICT: tower |A| ~0 at every L (not growing) => tower outside Krylov(v0),
+            r_q clean. If tower |A| grows with L, Attack 3 has teeth.
+
+## CHECK 3 (Attack 1/6) -- s=v_q(2^d-1) spectrum: where does s>=2 first occur?
+       q  d=ord  s=v_q(2^d-1)  2 prim?  tested?
+       3      2             1        Y  *tested
+       5      4             1        Y  *tested
+       7      3             1        n  *tested
+      11     10             1        Y  *tested
+      13     12             1        Y  *tested
+      17      8             1        n         
+      19     18             1        Y  *tested
+      29     28             1        Y  *tested
+
+   ALL tested primes [3, 5, 7, 11, 13, 19, 29] have s=1 (confirmed above).
+   First prime with s>=2 in [3,260): NONE
+   (s>=2 <=> q^2 | 2^d-1 <=> Wieferich; smallest = 1093, then 3511 -- both far beyond
+    compute reach: q=1093 needs phi(1093^k) states, k=2 already ~1.2M, k>=3 ~1e9.)
+   => VERDICT: the s>=2 regime is ENTIRELY UNTESTED. Attack 1/6 lives at Wieferich
+      primes we cannot reach; L3's behavior there must be settled by the MECHANISM,
+      not computation. This is a genuine hole flagged, not closed.
+
