@@ -1,0 +1,95 @@
+# PROBE 24 -- ROUTE 1A: fixed transfer operator via no-tower folded model
+# Pre-reg: G_TOWER(gate) / G_FINITE(*** claim ***) / R_Q read out (r_3=1, r_q<1 q>=5)
+
+## q=3  (d=2, folded k=2..21, 2^21 cells)
+     k         total_LO           c_k^LO   rho_k^LO=c_{k+1}/c_k
+     2    -0.0000000000       -2.220e-16             0.50000000
+     3    -0.0000000000       -1.110e-16            -0.00000000
+     4    -0.0000000000        0.000e+00                    nan
+     5    -0.0000000000       -2.220e-16            -0.00000000
+     6    -0.0000000000        0.000e+00                    nan
+     7    -0.0000000000       -3.331e-16             0.33333333
+     8    -0.0000000000       -1.110e-16             2.00000000
+     9    -0.0000000000       -2.220e-16             1.00000000
+    10    -0.0000000000       -2.220e-16            -0.00000000
+    11    -0.0000000000        0.000e+00                    nan
+    12    -0.0000000000       -2.220e-16             0.50000000
+    13    -0.0000000000       -1.110e-16            -0.00000000
+    14    -0.0000000000        0.000e+00                    nan
+    15    -0.0000000000       -5.551e-16            -0.40000000
+    16    -0.0000000000        2.220e-16            -1.00000000
+    17    -0.0000000000       -2.220e-16             1.00000000
+    18    -0.0000000000       -2.220e-16             0.50000000
+    19    -0.0000000000       -1.110e-16             1.00000000
+    20    -0.0000000000       -1.110e-16            -0.00000000
+    21    -0.0000000000        0.000e+00                    nan
+
+## q=5  (d=4, folded k=2..10, 4^10 cells)
+     k         total_LO           c_k^LO   rho_k^LO=c_{k+1}/c_k
+     2     0.0000000000        0.000e+00                    nan
+     3     0.0000000000        2.220e-16            -1.00000000
+     4     0.0000000000       -2.220e-16            -1.00000000
+     5     0.0000000000        2.220e-16             0.00000000
+     6     0.0000000000        0.000e+00                    nan
+     7     0.0000000000        2.220e-16             0.00000000
+     8     0.0000000000        0.000e+00                    nan
+     9     0.0000000000        0.000e+00                    nan
+    10     0.0000000000       -2.220e-16                    nan
+
+## q=7  (d=3, folded k=2..13, 3^13 cells)
+     k         total_LO           c_k^LO   rho_k^LO=c_{k+1}/c_k
+     2    -0.0000000000       -1.110e-16             2.00000000
+     3    -0.0000000000       -2.220e-16            -0.50000000
+     4    -0.0000000000        1.110e-16             0.00000000
+     5    -0.0000000000        0.000e+00                    nan
+     6    -0.0000000000       -2.220e-16            -0.00000000
+     7    -0.0000000000        0.000e+00                    nan
+     8    -0.0000000000        1.110e-16            -2.00000000
+     9    -0.0000000000       -2.220e-16             1.00000000
+    10    -0.0000000000       -2.220e-16            -1.00000000
+    11    -0.0000000000        2.220e-16             0.00000000
+    12    -0.0000000000        0.000e+00                    nan
+    13    -0.0000000000       -1.110e-16                    nan
+
+## q=11  (d=10, folded k=2..6, 10^6 cells)
+     k         total_LO           c_k^LO   rho_k^LO=c_{k+1}/c_k
+     2    -0.0000000000       -1.110e-16             1.00000000
+     3    -0.0000000000       -1.110e-16             1.00000000
+     4    -0.0000000000       -1.110e-16             3.00000000
+     5    -0.0000000000       -3.331e-16            -0.00000000
+     6    -0.0000000000        0.000e+00                    nan
+
+## G_TOWER -- gap |c_k^LO - c_k^real| (this gap IS the tower; must be small+shrinking)
+      q   k           c_k^LO   c_k^real (exact)        |gap|
+      3   3    -0.0000000000       0.4871885960    4.872e-01
+      3   4     0.0000000000       0.4642346606    4.642e-01
+      3   5    -0.0000000000       0.4655149198    4.655e-01  <- GROWING
+      5   3     0.0000000000       0.0207485608    2.075e-02
+      5   4    -0.0000000000       0.0105337872    1.053e-02
+      7   3    -0.0000000000       0.0210167409    2.102e-02
+   G_TOWER: GROWING -> folding changed rate -> use Option B
+
+## G_FINITE (*** claim ***) -- does c_k^LO obey a FINITE linear recurrence?
+   Hankel rank = recurrence order = transfer-operator dimension; roots = eigenvalues.
+
+   q=3: rho_k^LO tail -> ['1.000000', '0.500000', '1.000000', '-0.000000']
+          Hankel order: not resolved within available terms
+          => r_q (= lim rho_k^LO) ~ -0.000000
+
+   q=5: rho_k^LO tail -> ['-1.000000', '-1.000000', '0.000000', '0.000000']
+          Hankel order = 1  (operator dim)
+          roots |lambda|: ['0.500000']
+          => r_q (= lim rho_k^LO) ~ 0.000000
+
+   q=7: rho_k^LO tail -> ['-2.000000', '1.000000', '-1.000000', '0.000000']
+          Hankel order: not resolved within available terms
+          => r_q (= lim rho_k^LO) ~ 0.000000
+
+   q=11: rho_k^LO tail -> ['1.000000', '1.000000', '3.000000', '-0.000000']
+          Hankel order = 1  (operator dim)
+          roots |lambda|: ['0.416667']
+          => r_q (= lim rho_k^LO) ~ -0.000000
+
+## READ: r_3 should be ~1 (divergence eigenvalue), r_q<1 for q>=5 (spectral gap).
+   G_TOWER small+shrinking validates the folded operator carries the real rate.
+   Next: Option B (Fourier transfer operator) as an INDEPENDENT check of r_q.
