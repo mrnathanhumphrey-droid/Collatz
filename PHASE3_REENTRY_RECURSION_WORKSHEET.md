@@ -163,10 +163,16 @@ Applied to gate 2's condition `y = 2^{−S_2} + j_1·s_R13·2^{−S_1}`, the fam
 - Level rates `1/d` (L1), `1/q` (L≥2, stabilized) [R20]; `ρ ≈ 0.75` q-uniform [R36].
 - Both fixed points as measured: FP1 `r_3=1` phase collapse [R32]; FP2 `cross(2)|_{1093}=0` index shift [R35].
 
+**[DONE, R37] — the level-`≥3` explicit gate** (was open item 1). The 2nd-order expansion is done: `2^d = 1 + q·s_R13 + q²·σ₁ (mod q³)` gives the exact level-3 gate
+```
+    W_2 ≡ Q_1 − y_1·(P² − Q) (mod q),   P = j_1·s_R13,   Q = j_1·σ₁ + C(j_1,2)·s_R13²,
+```
+`σ₁` = 2nd q-adic digit of `(2^d−1)/q`, `y_1 = 2^{−S_1} mod q`. Verified exact-iff on 1.2M pairs, 6 primes. **`σ₁` genuinely enters** (coefficient `y_1·j_1`) — so the clean k=2 chain **is a truncation**; the L3 bound must target the σ₁-inclusive `ω`, not the k=2 form. **BUT σ₁ is NOT a new boundary:** q=5,7 have `σ₁=0` and healthy gaps (`r_5≈0.62, r_7≈0.38`, full-cascade), so `σ₁=0` does not close the gap. `d=2` remains the sole fixed point; σ₁ modifies `ω`'s value, not its boundary structure. And σ₁ sits in the **phase/weight** (which residue passes gate 3), not the rate (still `≈1/q`) — consistent with §3's `κ`/`ω` split. **⇒ the worksheet's two fixed points stand; no third at σ₁=0.** [R37]
+
 **[OPEN] — the pen-and-paper work (yours):**
-1. **The level-`≥3` explicit gate** — expand `W_2 = (U_1+T_2)/q` via `2^{−jd} mod q³`. Expect the next-digit analog of `s_R13` to surface. Without this the recursion is exact only for the `k=1→2` step and *structurally extrapolated* (rates stabilize) beyond.
-2. **The functional form of `ω(d, s_R13)`** — the character sum of §7, bounded for `d ≥ 3`. This is L3 proper. Strategy menu (from the brief): **S1** direct off-diagonal norm bound `< 1/3` via the `d∤m` fraction; **S2** renormalization `g(k) ≤ ρ_q·(1/3)·g(k−1)`, `ρ_q < 3`; **S3** finite-dimensional descent on the amplitude-carrying (Krylov) subspace. The recursion here is the raw material for all three.
-3. **Confirm FP2 is truly removable** — the index-shift `cross(k)|_{s=2} = cross(k−1)|_{s=1}` is depth-2 evidence only. A symbolic argument (not compute) that the shifted cascade reproduces the same `r_q` would retire the side condition for good.
+1. **The functional form of `ω(d, s_R13, σ₁, …)`** — the character sum of §7, now with the R37 2nd-order correction, bounded for `d ≥ 3`. This is L3 proper. Strategy menu (from the brief): **S1** direct off-diagonal norm bound `< 1/3` via the `d∤m` fraction; **S2** renormalization `g(k) ≤ ρ_q·(1/3)·g(k−1)`, `ρ_q < 3`; **S3** finite-dimensional descent on the amplitude-carrying (Krylov) subspace. The recursion + the R37 level-3 gate are the raw material for all three.
+2. **Confirm FP2 is truly removable** — the index-shift `cross(k)|_{s=2} = cross(k−1)|_{s=1}` is depth-2 evidence only. A symbolic argument (not compute) that the shifted cascade reproduces the same `r_q` would retire the side condition for good.
+3. **(optional) Level-4 gate** — does a 3rd digit `σ₂` enter with the same "enters-but-benign" character, and do the correction terms telescope into a clean generating function for `ω`? R37 suggests the pattern; the k=3 gate may already suffice to write the bound. Not yet fired.
 
 ---
 

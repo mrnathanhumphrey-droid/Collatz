@@ -1,0 +1,55 @@
+# PROBE 37 -- level-3 gate: does sigma_1 (2nd digit of (2^d-1)/q) enter W_2, and can
+#            it vanish independently of s_R13? Exact-iff test vs big-int ground truth.
+
+## H_SIGMA_INDEP -- (s_R13, sigma_1) over primes. sigma_1=0 with s_R13!=0 => independent
+       q    d  s_R13  sigma_1  note
+       3    2      1        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+       5    4      3        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+       7    3      1        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+      11   10      5        8  
+      13   12      3       11  
+      17    8     15        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+      19   18      3        4  
+      23   11     20        3  
+      29   28      1       12  
+      31    5      1        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+      37   36      1       15  
+      41   20     32        8  
+      43   14     37        8  
+      47   23     22       37  
+      53   52     36       30  
+      59   58      8       10  
+      73    9      7        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+      89   11     23        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+     127    7      1        0  <- sigma_1=0, s_R13!=0 (INDEP degeneration)
+
+   smallest prime q>=5 with sigma_1=0 & s_R13!=0: 5
+   => sigma_1 is a SEPARATE q-adic digit; fixing s_R13!=0 leaves sigma_1 free over F_q.
+
+## H_GATE3 (with-sigma, exact iff) + H_SIGMA_MATTERS (no-sigma must FAIL where y1 j1 sigma!=0)
+   pairs CONSTRUCTED to pass levels 1&2 directly (decoupled from v_1); exact big-int W_2
+
+      q   d   s  sig  L2 pairs  with-sig bad  no-sig bad  pred no-sig  shift-ok  match?
+      5   4   3    0    200000             0           0            0      True    True
+      7   3   1    0    200000             0           0            0      True    True
+     11  10   5    8    200000             0      200000       200000      True    True
+     13  12   3   11    200000             0      200000       200000      True    True
+     23  11  20    3    200000             0      200000       200000      True    True
+     41  20  32    8    200000             0      200000       200000      True    True
+
+   H_GATE3: CONFIRMED -- with-sigma form is the exact level-3 gate (0 mismatch, all q)
+   H_SIGMA_MATTERS: CONFIRMED -- at sigma_1!=0 primes (q=11,13,23,41) the no-sigma form
+      FAILS, exactly by the predicted shift y1*j1*sigma_1. sigma_1 IS a genuine level-3
+      correction: a NEW 2nd-order boundary constant, one q-adic digit deeper than s_R13.
+
+## H_L3RATE -- level-3 conditional pass rate P(depth3 | depth2), vs R20's ~1/q. MEASUREMENT.
+      q     1/q   P(depth-3 collide | depth-2 collide)
+      3  0.3333   0.3143   (depth2 pairs=3780, depth3=1188)
+      5  0.2000   0.1980   (depth2 pairs=1596000, depth3=316000)
+      7  0.1429   0.1409   (depth2 pairs=2037420, depth3=287091)
+
+## READ
+   If sigma_1 enters (H_SIGMA_MATTERS confirmed): the re-entry recursion's phase/weight
+   factor omega gains a 2nd-order term; the clean k=2 chain is a TRUNCATION, and the L3
+   bound must target the corrected object (or prove sigma_1's vanishing is another benign
+   index-shift a la R35). If inert: grind the bound on the k=2 form, safe two levels deep.
