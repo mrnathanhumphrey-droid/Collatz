@@ -1,0 +1,55 @@
+# PROBE 28 -- extend r_q table (q=11,13) + hunt closed form
+# H_RAT: r_q=3/q  vs  H_EXP: r_q=a^{q-3} (fit {5,7}, predict {11,13} OOS)
+
+## q=5
+   cross(2)=0.038875214298 (n=20)  gate |rel|=4.8e-12 OK
+   cross(3)=0.059623775122 (n=100)  gate |rel|=7.0e-12 OK
+   cross(4)=0.070157562299 (n=500)
+   cross(5)=0.076734752048 (n=2500)
+   cross(6)=0.080878910171 (n=12500)
+   cross(7)=0.083481580867 (n=62500)
+   cross(8)=0.085066923007 (n=312500)
+   rho_k: ['0.53372', '0.50769', '0.62439', '0.63008', '0.62803', '0.60912']
+   => r_5 ~ 0.6224  (tail spread +/-0.0105)
+
+## q=7
+   cross(2)=0.047025340793 (n=42)  gate |rel|=6.0e-12 OK
+   cross(3)=0.068042081671 (n=294)  gate |rel|=2.5e-12 OK
+   cross(4)=0.075551164655 (n=2058)
+   cross(5)=0.078492767804 (n=14406)
+   cross(6)=0.079612540267 (n=100842)
+   q=7 k=7: n*vmax=4.5e+07 > cap -- STOP (SAID)
+   rho_k: ['0.44692', '0.35729', '0.39174', '0.38067']
+   => r_7 ~ 0.3766  (tail spread +/-0.0172)
+
+## q=11
+   cross(2)=0.000113752827 (n=110)  gate |rel|=2.2e-09 OK
+   cross(3)=0.000134296401 (n=1210)  gate |rel|=1.4e-09 OK
+   cross(4)=0.000145118019 (n=13310)
+   cross(5)=0.000146567952 (n=146410)
+   rho_k: ['0.18060', '0.52676', '0.13398']
+   => r_11 ~ 0.2804  (tail spread +/-0.1964)
+
+## q=13
+   cross(2)=0.000186664203 (n=156)
+   cross(3)=0.000196127139 (n=2028)
+   cross(4)=0.000197575241 (n=26364)
+   cross(5)=0.000197867699 (n=342732)
+   rho_k: ['0.05069', '0.15303', '0.20196']
+   => r_13 ~ 0.1352  (tail spread +/-0.0756)
+
+## r_q TABLE
+      q   r_q (measured)        3/q    a^(q-3) OOS
+   (H_EXP fit on q=5,7: r_q = exp(0.7821 + -0.2513 q); a=exp(b)=0.7778)
+      3           1.0000     1.0000         1.0288
+      5           0.6224     0.6000         0.6224
+      7           0.3766     0.4286         0.3766
+     11           0.2804     0.2727         0.1378 <-OOS
+     13           0.1352     0.2308         0.0834 <-OOS
+
+## VERDICT
+   q=11: |r-3/q|=0.0077   |r-a^(q-3)|=0.1426   -> 3/q closer
+   q=13: |r-3/q|=0.0955   |r-a^(q-3)|=0.0518   -> exp closer
+
+   READ: whichever form matches the OOS points q=11,13 within the oscillation band
+   wins; if neither, r_q has no elementary closed form (= operator eigenvalue ratio).
