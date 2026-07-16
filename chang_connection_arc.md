@@ -156,3 +156,17 @@ flow, two complementary questions.**
    tracks Chang's bound or refines it.
 3. **Cross-reference Conjecture 12.2.** Their R_r(n_0) — measure it on our
    data at large t and compare to their reported empirical R_r ≤ 0.70.
+
+---
+
+## 2026-07-16 UPDATE — Chang vs the qx+1 self-similar-measure / r_q / Siegel arc (R37–R42)
+
+Result 47 (above, May) connected Chang to the OLD trajectory-flow work (mod-64 Markov kernel P, QSD flow — orthogonal probes). This update places Chang against the CURRENT arc: the q-adic self-similar measure π, its L² Fourier-decay rate r_q (L3), the σ_H=1 boundary (R41), and the Siegel (p,q)-adic framework (R42).
+
+**Precise object comparison (from 2603.11066v6):**
+- Chang result (i): **Syracuse transfer operator on (Z/2^M)_odd has a UNIFORM spectral gap for all M** → orbit equidistribution mod 2^M. This is the **2-adic (halving) side**; ours (r_q) is the **q-adic (multiplier) side** — self-similar-measure pair-correlation, ‖π_k‖²~3^{-k}. Same TYPE of theorem (uniform-in-level Syracuse transfer-operator gap), COMPLEMENTARY prime in Siegel's (p,q) split (Chang=p=2, us=q).
+- **Chang PROVED the 2-adic analog of our OPEN L3.** His uniform-in-M gap is an existence proof that uniform Syracuse transfer-operator gaps are provable; his METHOD is a candidate to port to the q-adic pair-correlation operator (L3). ⚠️Caveat: different operator (his = forward Markov/equidistribution; ours = self-similar-measure pair-correlation) — porting not automatic.
+- **Chang's ord_D(2) (D=2^E−3^L) = our d=ord_q(2).** Same multiplicative-order-of-2 arithmetic. He: ord_D(2)>F, {2^0..2^F} "exponentially small relative to D" ⇒ cycle exclusion (discrete-log obstruction). Us: d=ord_q(2)=2 ⟺ q=3 = the spectral boundary. His "⟨2⟩ thin subgroup mod D" = the Konyagin small-subgroup register that underlies r_q's collision-rarity.
+- **NOT our object:** self-similar/q-adic/μ̂/characteristic-function = 0 hits in Chang. He does NOT do the self-similar-measure Fourier decay. He does 2-adic transfer operators, Walsh-Fourier, cycle equations, Hausdorff dim 0.68 in Z_2.
+
+**Verdict:** Chang studies the COMPLEMENTARY (2-adic/halving) side of the same (p,q)-adic Syracuse spectral picture Siegel formalizes and we work on the q side. He is not looking at our exact measure, but at its MIRROR across the (p,q) divide. His proved 2-adic uniform gap (result i) is the single most relevant external result to L3 — a template that uniform Syracuse transfer-operator gaps are provable, with a possibly-portable method. Shared arithmetic spine: ⟨2⟩ and ord(2). **ACTIONABLE LEAD: read HOW Chang proves result (i) and assess whether the technique ports to the q-adic pair-correlation operator = L3.**
