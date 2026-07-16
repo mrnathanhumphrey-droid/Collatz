@@ -1,0 +1,52 @@
+# PROBE 31 -- primitive-root law: r_q vs 3/q for primes where 2 is primitive
+
+## q=11  (primitive)
+   cross(2)=0.000113752827 (n=110)
+   cross(3)=0.000134296401 (n=1210)
+   cross(4)=0.000145118019 (n=13310)
+   cross(5)=0.000146567952 (n=146410)
+   cross(6)=0.000147228887 (n=1610510)
+   rho_k: ['0.1806', '0.5268', '0.1340', '0.4558']
+   pencil dom |z|: order-2=0.3612  order-3=0.2580   (range = fuzz)
+   => r_11 ~ 0.310  (median of estimators; FUZZY for q>=11)
+
+## q=13  (primitive)
+   cross(2)=0.000186664203 (n=156)
+   cross(3)=0.000196127140 (n=2028)
+   cross(4)=0.000197575241 (n=26364)
+   cross(5)=0.000197867700 (n=342732)
+   k=6: n*vmax=2.0e+08 > cap -- STOP (SAID)
+   rho_k: ['0.0507', '0.1530', '0.2020']
+   pencil dom |z|: order-2=0.2084  order-3=0.1163   (range = fuzz)
+   => r_13 ~ 0.177  (median of estimators; FUZZY for q>=11)
+
+## q=19  (primitive)
+   cross(2)=0.000000076236 (n=342)
+   cross(3)=0.000000078196 (n=6498)
+   cross(4)=0.000000078373 (n=123462)
+   cross(5)=0.000000078394 (n=2345778)
+   rho_k: ['0.0257', '0.0900', '0.1219']
+   pencil dom |z|: order-2=0.1255  order-3=0.0656   (range = fuzz)
+   => r_19 ~ 0.106  (median of estimators; FUZZY for q>=11)
+
+## q=29  (primitive)
+   cross(2)=0.000000000113 (n=812)
+   cross(3)=0.000000000149 (n=23548)
+   cross(4)=0.000000000150 (n=682892)
+   rho_k: ['0.3142', '0.0434']
+   pencil dom |z|: order-2=0.1133  order-3=nan   (range = fuzz)
+   => r_29 ~ 0.113  (median of estimators; FUZZY for q>=11)
+
+## PRIMITIVE-ROOT TABLE: r_q vs 3/q  (* = solid; others fuzzy)
+      q  2 prim?      r_q      3/q   r_q*q/3  solid?
+      3        Y    1.000    1.000     1.000       *
+      5        Y    0.620    0.600     1.033       *
+      7        n    0.390    0.429     0.910       *
+     11        Y    0.310    0.273     1.135        
+     13        Y    0.177    0.231     0.769        
+     19        Y    0.106    0.158     0.671        
+     29        Y    0.113    0.103     1.095        
+
+## READ: among PRIMITIVE q (Y), does r_q*q/3 stay near 1 (with a wobble)?
+   The non-primitive q=7 (n) is the control -- it should sit off the line.
+   FUZZY q>=11: treat r_q*q/3 as +/-0.1. Pattern only suggestive until pinned.
