@@ -1,7 +1,36 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-07-14):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-07-16):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
 
+## Table of Contents
+
+- [Latest (2026-07-16) — the qx+1 L3 spectral-gap campaign](#latest-2026-07-16)
+- [Latest (2026-07-14) — fourth paper-shaped result](#latest-2026-07-14)
+- [At a glance — where the project stands](#at-a-glance)
+- [Recent landmarks](#recent-landmarks-post-2026-05-02)
+- [Index by mathematical field](#index-by-mathematical-field)
+- [TL;DR — what's here](#tldr--whats-here)
+- [How to navigate this repo](#how-to-navigate-this-repo)
+- [Documents](#documents)
+- [Experiment index](#experiment-index-organized-by-theme)
+- [Data files](#data-files)
+- [Reproduction smoke check](#reproduction-smoke-check)
+- [Open follow-ups](#open-follow-ups)
+- [Outreach packages on Desktop](#outreach-packages-on-desktop)
+
+---
+
+<a id="latest-2026-07-16"></a>
+> **Latest (2026-07-16) — the qx+1 paper's Result 1 enters its final step: a structured campaign on the spectral gap L3.**
+> The standalone **qx+1 universal-rate paper** (`‖π_k‖² ~ C_q·3^{−k}`) has one open step — **L3: the spectral gap `r_q < 1` for `d = ord_q(2) ≥ 3`, with `r_q = 1` at the critical `d = 2` (⟺ q=3)**. It is now under a **6-phase, falsifier-first campaign** ([`STATE.md`](STATE.md), [`L3_DEFINITIONS.md`](L3_DEFINITIONS.md), [`PHASE1_WORKSHEET.md`](PHASE1_WORKSHEET.md)).
+> - **Object frozen (Phase 0).** One `r_q`, three welded coordinates: **(M)** `build_M` pair operator (`r_q = |λ₂|/λ₁`), **(A)** renewal `A(z) = Σ S₀(i) zⁱ`, **(c)** `c_k = 3^k‖π_k − lift(π_{k−1})‖²`. Dictionary `c_k = (3/q)^k S₀(k)` and mass identity `Σ_k M^k v₀ = ‖π_k‖²` are exact; **`r_q` gate-validated `0.62` (q=5) / `0.39` (q=7)** against exact references (≤6e-10). The `3/q` confound (3/7 = 0.4286 vs r₇ = 0.39) raised and killed.
+> - **Substrate proved (Phase 1).** Five lemmas — **FORGET / ONE-STEP / INTERTWINE / REFINE / PYTHAGORAS** — proved and machine-verified to ≤8e-16 (FORGET exact at **q = 1093**, the Wieferich prime: the substrate is s-blind). Pythagoras `X_k = (3/q)X_{k−1} + c_k` (R7/R42) is now *derived*, not measured.
+> - **Boundary asset.** `build_M` is **genuinely defective at q = 3** (`cond(R) = ∞`, top-eigenvector overlap 0.998) — a real Jordan block, the exceptional point the d = 2 clause must break against.
+> - **Platform placed (R41–R44).** Our `r_q = 1` boundary = Siegel's `σ_H = 1` degenerate map; the object is Tao's Syracuse random variable / Siegel's self-similar measure, read as a pipeline (Chang 2-adic input → Siegel transform → Tao 1st-moment / Nathan 2nd-moment `r_q`). The order-reciprocity "rig" refuted (a power-of-2 / Catalan coincidence).
+> - **Honest walk-backs banked:** the single-address refinement operator was retired as the L3 object (first-moment ⇒ gapless — Gate G0 caught the drift); the 2/3-echo / 7/45-drip recursion died (no injection term).
+> - **Open:** Phase 2 (the d = 2 entrance exam) and Phase 4 (the bound). The theorem — `r_q < 1` for `d ≥ 3` — is USER-written, on the frozen object.
+
+<a id="latest-2026-07-14"></a>
 > **Latest (2026-07-14) — a fourth paper-shaped result, and the Tauberian thread closes.**
 > - **★ NEW STANDALONE PAPER — qx+1 universal rate.** `S_k^(q) ~ (q/3)^k`, universal in q, **DERIVED at mechanism** ([`QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`](QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md)). The "3" is named: `1/3 = Σ4^{-v} = E_{v~Geom(1/2)}[2^{-v}]`, the halving second-moment — **q-blind** (q enters only via the character / state-count `q^k`, never the halving statistic). Three pillars: rate, constant `c̃_q=(q-3)/q`, correction `δ_q≈0.82/ord_q(2)`. Adversarial-q falsifier ran FIRST and survived (small `ord_q(2)`, odd composites, `q≡0 mod 3`). **Scope: odd q only.** **Independent of every Collatz-closure thread below.** *Open — the single remaining line:* uniform diagonal-self-overlap domination on `(Z/q^k)*` (R76 conservation generalized from q=3) to upgrade mechanism → theorem. Reported as proved-at-mechanism, **not** as theorem.
 > - **c = 7/45 is now provenance-hole-free.** The load-bearing 1:4 squared-class-mass ratio — previously asserted without a result file — is reconstructed and **CONFIRMED elementary + exact** (`result_64B.md`): class ± = v-parity ⇒ `P(v even)=1/3` ⇒ `(1/3)²:(2/3)²=1:4`. A one-line Geom(½) parity identity. The R75+R76+R77+R64.B chain has no remaining gap.
@@ -11,7 +40,10 @@
 
 ---
 
-## AT A GLANCE — where the project stands (2026-07-14)
+<a id="at-a-glance"></a>
+## AT A GLANCE — where the project stands (2026-07-16)
+
+> **qx+1 paper (Result 4), final step in progress:** its universal rate `‖π_k‖² ~ C_q·3^{−k}` is proved at mechanism; the last open step is the **spectral gap L3** (`r_q < 1` for `d ≥ 3`), now a 6-phase campaign with **Phases 0–1 closed** (object frozen + welded, `r_q` gate-validated 0.62/0.39, five substrate lemmas proved). See the 2026-07-16 "Latest" block above, [`STATE.md`](STATE.md), [`L3_DEFINITIONS.md`](L3_DEFINITIONS.md), [`PHASE1_WORKSHEET.md`](PHASE1_WORKSHEET.md).
 
 **Four paper-shaped results in hand** (the fourth, qx+1, is standalone — see "Latest" above):
 
@@ -252,6 +284,18 @@ The bridge to Tao 2022 is structurally `s_mean(r; f) ≈ α_det(r) + K_h · log(
 ---
 
 ## Documents
+
+**qx+1 paper — Result 1 / L3 spectral-gap campaign (2026-07-16):**
+
+| File | Contents |
+|---|---|
+| [`STATE.md`](STATE.md) | **Live research log** — supersedes any drift here. Per-result entries (R1–R46) + the L3 campaign gates (G0/G0b/G0c/G0c′/G1) with pre-registrations, verdicts, and walk-backs. |
+| [`L3_DEFINITIONS.md`](L3_DEFINITIONS.md) | The frozen L3 object (Phase 0): one `r_q`, three welded coordinates (build_M / renewal `A(z)` / `c_k`); dictionary + mass identity; the L3 statement and boundary clause. |
+| [`PHASE1_WORKSHEET.md`](PHASE1_WORKSHEET.md) | The five substrate lemmas (Phase 1): FORGET / ONE-STEP / INTERTWINE / REFINE / PYTHAGORAS, proved and machine-verified (incl. q=1093). |
+| [`QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`](QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md) | Standalone qx+1 universal-rate paper draft: `S_k^(q) ~ (q/3)^k`, derived at mechanism; three pillars (rate, constant, correction). |
+| [`THEOREM_C_745.md`](THEOREM_C_745.md) | The `c = 7/45` rigorous unconditional result (`S_k = 3^k‖d_k‖² → 7/15`) — the q=3 marginal fixed point. |
+
+**Original 3x+1 prefix-decomposition / Tao-bridge work:**
 
 | File | Contents |
 |---|---|
