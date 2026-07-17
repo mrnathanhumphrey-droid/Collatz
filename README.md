@@ -49,8 +49,8 @@
 
 1. **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). `S_k = 3^k · ‖d_k‖² → 7/15` proved via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74 algebraic identity. Paper-shaped. Independent of all operator-valued probability framework questions.
 
-2. **Syracuse = Davies-Wiseman-Milburn quantum trajectory, NUMERICALLY VERIFIED to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](DWM_MP_G1_RESULT.md)). DWM cross-Kraus form `M̃_{v,v'}^{(j, b_prior)} · f(ξ) = phase·σ_{-(v+v')}·f(ξ)` reproduces Syracuse's measured moments **exactly to 6 sig digits across all 4 scalar reductions** for both 3-alternating (0.108) and 4-alternating (0.609) moments.
-3. **Dark-subspace classification of Syracuse's adaptive Kraus family** ([`R3_DARK_SUBSPACE_STRUCTURAL.md`](R3_DARK_SUBSPACE_STRUCTURAL.md), integrates Phases 1+2+4). Three sub-results: (a) the full adaptive Kraus family at level n is irreducible at finite n (dim(A') = 1 at n=2, 3, via SVD of commutator-stack); (b) the **TRUE D_W = 3-fiber-zero-mean subspace is EXACTLY dark under the j ≥ 2 sub-family** (machine-epsilon leakage at n=2, 3, 4 verified directly), with j = 1 the unique mixing event — structurally forced by `x_{j≥2} ≡ 0 mod 9` vs `x_1 ≡ ±1 mod 3`; (c) the per-step channel `L|_{D_W}` for j ≥ 2 has **closed-form below-commutant spectrum** `λ_below(n) = 0.5/|1 − 0.5·e^{iπ/3^{n−1}}|`, **j-independent for j ≥ 2**, **verified across 8-point grid (n, j) ∈ {(3,2), (3,3), (4,2), (4,3), (4,4), (5,2), (5,3), (5,4)} via matrix-free ARPACK** + full-eigvals cross-check at n=5 (rel err < 1.3e-5 throughout). λ_below(n) → 1 as n → ∞. **Route B partial closure (2026-05-16)** ([`ROUTEB_PERIOD9_IDENTIFICATION.md`](ROUTEB_PERIOD9_IDENTIFICATION.md)): the (class, b_prior mod M) Markov chain at M=18 reproduces the same eigenvalue, with period 9.5 ≈ empirical PADE 9.2 — **the empirical period-9 CC pair IS Phase 4's L|_{D_W} below-commutant eigenvalue.** Magnitude residual 9% (0.898 vs 0.984) closes structurally at effective level n ≈ 3.91; full magnitude closure via direct ε_k fitting is data-limited at k=13 ([`ROUTEB_PRIME_EPS_FIT_RESULT.md`](ROUTEB_PRIME_EPS_FIT_RESULT.md)).
+2. **Syracuse = Davies-Wiseman-Milburn quantum trajectory, NUMERICALLY VERIFIED to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](notes/FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](notes/DWM_MP_G1_RESULT.md)). DWM cross-Kraus form `M̃_{v,v'}^{(j, b_prior)} · f(ξ) = phase·σ_{-(v+v')}·f(ξ)` reproduces Syracuse's measured moments **exactly to 6 sig digits across all 4 scalar reductions** for both 3-alternating (0.108) and 4-alternating (0.609) moments.
+3. **Dark-subspace classification of Syracuse's adaptive Kraus family** ([`R3_DARK_SUBSPACE_STRUCTURAL.md`](notes/R3_DARK_SUBSPACE_STRUCTURAL.md), integrates Phases 1+2+4). Three sub-results: (a) the full adaptive Kraus family at level n is irreducible at finite n (dim(A') = 1 at n=2, 3, via SVD of commutator-stack); (b) the **TRUE D_W = 3-fiber-zero-mean subspace is EXACTLY dark under the j ≥ 2 sub-family** (machine-epsilon leakage at n=2, 3, 4 verified directly), with j = 1 the unique mixing event — structurally forced by `x_{j≥2} ≡ 0 mod 9` vs `x_1 ≡ ±1 mod 3`; (c) the per-step channel `L|_{D_W}` for j ≥ 2 has **closed-form below-commutant spectrum** `λ_below(n) = 0.5/|1 − 0.5·e^{iπ/3^{n−1}}|`, **j-independent for j ≥ 2**, **verified across 8-point grid (n, j) ∈ {(3,2), (3,3), (4,2), (4,3), (4,4), (5,2), (5,3), (5,4)} via matrix-free ARPACK** + full-eigvals cross-check at n=5 (rel err < 1.3e-5 throughout). λ_below(n) → 1 as n → ∞. **Route B partial closure (2026-05-16)** ([`ROUTEB_PERIOD9_IDENTIFICATION.md`](notes/ROUTEB_PERIOD9_IDENTIFICATION.md)): the (class, b_prior mod M) Markov chain at M=18 reproduces the same eigenvalue, with period 9.5 ≈ empirical PADE 9.2 — **the empirical period-9 CC pair IS Phase 4's L|_{D_W} below-commutant eigenvalue.** Magnitude residual 9% (0.898 vs 0.984) closes structurally at effective level n ≈ 3.91; full magnitude closure via direct ε_k fitting is data-limited at k=13 ([`ROUTEB_PRIME_EPS_FIT_RESULT.md`](notes/ROUTEB_PRIME_EPS_FIT_RESULT.md)).
 
 **ε_14, ε_15, ε_16 computed (2026-05-17):** ε_14 = +3.588e-03, ε_15 = +4.161e-03, ε_16 = +4.685e-03. Hadamard radius |ε_k|^{-1/k}: 1.5655 (k=13) → 1.4951 (k=14) → 1.4412 (k=15) → 1.3982 (k=16), inward by 0.043-0.071/step (geometrically decelerating). Envelope ratios: 1.217 → 1.160 → 1.126 (decelerating ~4 pct/step). Empirical growth rate |ε_k|^{1/k}: 0.639 → 0.669 → 0.694 → 0.715 (approaching predicted asymptote 0.984 from below; linear extrapolation reaches asymptote around k≈27). Sign pattern still + + − − − − − − − + + + + + + +. Period-9 oscillation predicts next sign flip around k=19 (3 more ε_k away).
 
@@ -70,7 +70,7 @@ The 2.9% gap between T_lead's exact spectrum {43/45, 0} and empirical Hadamard 0
 2. **V'_M with phase parameters** (T_V Route B, 5-10 sessions). Substantial theoretical reconstruction.
 3. **Paper-grade documentation** of the structural boundary combined with Results 1 + 2 above.
 
-See [`SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`](SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md) for the full session writeup tying together morning's paper-shaped results + evening's structural exhaustion mapping.
+See [`SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`](notes/SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md) for the full session writeup tying together morning's paper-shaped results + evening's structural exhaustion mapping.
 
 **Independent results, paper-grade:**
 - **Bilinear bound** `|S_partial(r)| ≤ 2√N` at r ≤ 3 (Path 2), polylog-free `2√p·√N` at r ≥ 4 via Hensel (2026-05-11). See `HENSEL_DISPOSITION.md`.
@@ -91,21 +91,21 @@ Threads layered on top of the architectural overview below. **For the current st
 Two paper-shaped results landed in the same session:
 
 - **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). 8 sections, full hypotheses verbatim, 6-step proof chain via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74. Independent of all probability-framework questions. The Hasebe-Saigo 2014 monotone-independence overlay was interpretive only — D3 audit confirmed the derivation never depended on HS 2014 Thm 3.4.
-- **Syracuse = Davies-Wiseman-Milburn quantum trajectory, numerically verified to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](DWM_MP_G1_RESULT.md)). 6-probe framework-identification arc (H1' → D2 Tier 1 → BMT/bigraph → HP/QSC → AFL → Belavkin/DWM) closed at DWM with adaptive Kraus `M_v^{(j, b_{[1,j-1]})} = 2^{-v/2} A_v^{(j)} σ_{-v}`. DWM-MP-G1+G2 numerical match across all 4 scalar reductions (sum_entries / tr_π / delta_1 / vac_π) for both 3-alt (0.108) and 4-alt (0.609) moments.
+- **Syracuse = Davies-Wiseman-Milburn quantum trajectory, numerically verified to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](notes/FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](notes/DWM_MP_G1_RESULT.md)). 6-probe framework-identification arc (H1' → D2 Tier 1 → BMT/bigraph → HP/QSC → AFL → Belavkin/DWM) closed at DWM with adaptive Kraus `M_v^{(j, b_{[1,j-1]})} = 2^{-v/2} A_v^{(j)} σ_{-v}`. DWM-MP-G1+G2 numerical match across all 4 scalar reductions (sum_entries / tr_π / delta_1 / vac_π) for both 3-alt (0.108) and 4-alt (0.609) moments.
 ### Structural boundary mapped: finite-truncation discrete-eigenvalue paths exhausted — 2026-05-15 (post-compact)
 
 Five new probes targeting the c=7/45 subdominant rate's missing discrete-eigenvalue carrier all confirm R77.6's continuous-spectrum reading + close the structural picture:
 
-- **K_k structural lemma** ([`K_STRUCTURE_RESULT.md`](K_STRUCTURE_RESULT.md)). K_k has spectrum {1, 0, 0, ..., 0} EXACTLY with Jordan chain length k. K_k maps W_{k-1} → 0 exactly. K_k converges to stationary in exactly k Markov steps via rank pattern N_{k-1} → N_{k-2} → ... → 1. R77.4 erratum's "|λ_2| ≈ 10⁻³ growing with k" was numerical noise.
-- **U_n → W_n structural lemma + Phi_omega continuous spectrum** ([`INTERLEVEL_U_PROBE_RESULT.md`](INTERLEVEL_U_PROBE_RESULT.md)). Fourier-side Tao transfer U_n: V_n^Fourier → V_{n+1}^Fourier maps V_n entirely into W_n exactly (3rd-root-of-unity phase cancellation). Twisted endomorphism Phi_omega = T^ω ∘ U_n on V_n has top |eigenvalue| converging to 0.319 (ω_3) or 0.587 (ω_3²) but arguments continuously distributed in arcs — no discrete CC pair at θ = 2π/9.2.
-- **Bilinear T_M (V_n^M truncation + tensor V_n ⊗ V_n*)** ([`D1_T_M_NEGATIVE_RESULT.md`](D1_T_M_NEGATIVE_RESULT.md)). Two attempted constructions of the bilinear pair-correlation operator both give max |eig| ≈ 0.345, NOT recovering T_lead's 43/45. T_lead's 43/45 is a class-resolved coherent-summation phenomenon at the (P_+, P_-) projection, NOT a primitive eigenvalue of any natural finite-truncation operator.
-- **Option III: mod-9 / mod-27 class projection** ([`T_M_class_mod9_spectrum.py`](T_M_class_mod9_spectrum.py)). Trivial-twist projections vanish identically at any modulus 3^k because U_n → W_n exact + each class contains integer-many 3-fibers. Only character-twisted projections give non-trivial structure (which Probe 2 already explored).
+- **K_k structural lemma** ([`K_STRUCTURE_RESULT.md`](notes/K_STRUCTURE_RESULT.md)). K_k has spectrum {1, 0, 0, ..., 0} EXACTLY with Jordan chain length k. K_k maps W_{k-1} → 0 exactly. K_k converges to stationary in exactly k Markov steps via rank pattern N_{k-1} → N_{k-2} → ... → 1. R77.4 erratum's "|λ_2| ≈ 10⁻³ growing with k" was numerical noise.
+- **U_n → W_n structural lemma + Phi_omega continuous spectrum** ([`INTERLEVEL_U_PROBE_RESULT.md`](notes/INTERLEVEL_U_PROBE_RESULT.md)). Fourier-side Tao transfer U_n: V_n^Fourier → V_{n+1}^Fourier maps V_n entirely into W_n exactly (3rd-root-of-unity phase cancellation). Twisted endomorphism Phi_omega = T^ω ∘ U_n on V_n has top |eigenvalue| converging to 0.319 (ω_3) or 0.587 (ω_3²) but arguments continuously distributed in arcs — no discrete CC pair at θ = 2π/9.2.
+- **Bilinear T_M (V_n^M truncation + tensor V_n ⊗ V_n*)** ([`D1_T_M_NEGATIVE_RESULT.md`](notes/D1_T_M_NEGATIVE_RESULT.md)). Two attempted constructions of the bilinear pair-correlation operator both give max |eig| ≈ 0.345, NOT recovering T_lead's 43/45. T_lead's 43/45 is a class-resolved coherent-summation phenomenon at the (P_+, P_-) projection, NOT a primitive eigenvalue of any natural finite-truncation operator.
+- **Option III: mod-9 / mod-27 class projection** ([`T_M_class_mod9_spectrum.py`](probes/T_M_class_mod9_spectrum.py)). Trivial-twist projections vanish identically at any modulus 3^k because U_n → W_n exact + each class contains integer-many 3-fibers. Only character-twisted projections give non-trivial structure (which Probe 2 already explored).
 
 Combined with prior-session work (Tauberian 20-PDF BLOCKER 2026-05-13, T_V V_M non-closure 2026-05-12, Nisoli at 43/45 budget-blown 2026-05-12, R77.6 branch-cut + PADE_NUMERICAL z=2 refuted 2026-05-12), the verdict is:
 
 > **No finite-rank operator over Q at finite truncation carries the c=7/45 subdominant rate as a discrete eigenvalue.** T_lead's 43/45 = 1 − Σ_g W_+(g) = 1 − 2/45 is the deepest finite-rank closure available, and even it doesn't close c=7/45 rigorously (Nisoli inequality fails under realistic Tao C_A).
 
-Full session writeup: [`SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`](SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md).
+Full session writeup: [`SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`](notes/SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md).
 
 ### Bilinear bound on the R78 wall — DELIVERED 2026-05-11
 
@@ -250,6 +250,14 @@ The c̃_q = (q − 3)/q observation is a publishable theorem candidate independe
 
 ## TL;DR — what's here
 
+**Current focus (2026-07-16).** The standalone **qx+1 universal-rate paper** — `‖π_k‖² ~ C_q·3^{−k}`, derived at mechanism — is in its final step: the spectral-gap **L3** (`r_q < 1` for `d = ord_q(2) ≥ 3`, `= 1` at the critical `d = 2 ⟺ q = 3`), under a 6-phase falsifier-first campaign. Phases 0–1 closed (object frozen + welded, five substrate lemmas proved); Phase 2a named the theorem as an **L→∞ coalescence** at the marginal 3x+1 map. **First hand-derived gap committed:** the toy `r(λ) = (1−λ²)/(1+λ²)` ([`BRIEF_D1_TOY_GAP.md`](BRIEF_D1_TOY_GAP.md)), the template for the real q=3 operator. Live log: [`STATE.md`](STATE.md).
+
+**Repo layout:** artifacts are foldered by type — `probes/` (scripts), `results/` (`result_*.md`), `notes/` (worksheets/briefs), `logs/`, `outputs/` (numeric data); the repo root holds only this README, `STATE.md`, and the active L3 campaign docs. See [How to navigate this repo](#how-to-navigate-this-repo).
+
+---
+
+The rest of this section describes the project's founding result — the **3x+1 prefix decomposition**:
+
 For odd integers n, the total stopping time σ(n) under the Collatz map has structure indexed by the residue r = n mod 2^k via a *deterministic prefix*. Tracking the symbolic state (a, c) such that orbit value = a·m + c (where m is the integer tail of n) under the Collatz iteration until a becomes odd terminates at a_final ∈ {3^j : 1 ≤ j ≤ k}. The 2^(k−1) odd residue classes therefore collapse onto exactly k distinct conditional distributions of σ.
 
 α_det(r) := prefix_steps(r) + K_h · log(a_final(r) / 2^k), where K_h = 3/log(4/3) ≈ 10.4282, predicts:
@@ -263,20 +271,35 @@ The bridge to Tao 2022 is structurally `s_mean(r; f) ≈ α_det(r) + K_h · log(
 
 ## How to navigate this repo
 
+### Repository layout (foldered by artifact type, 2026-07-16)
+The repo root now holds only the live campaign docs — everything else is filed by type:
+
+| Folder | Contents |
+|---|---|
+| **`probes/`** | All analysis scripts (`probe_*.py`, `c_seven_*`, …). **Run from the repo root:** `python probes/<name>.py` — sibling-module imports resolve via the script's own directory, and `references/` / `data/` reads resolve from the root CWD. |
+| **`results/`** | `result_*.md` write-ups (one per probe / gate). |
+| **`notes/`** | Worksheets, briefs, pre-registrations, and investigation notes (all non-`result_` markdown). |
+| **`logs/`** | `.txt` / `.log` run logs. |
+| **`outputs/`** | Generated numeric artifacts (`.csv`, `.json`, `.npz`, `.npy`, `.pkl`). |
+| **`references/`, `data/`, `figures/`, `__lean_check/`** | Literature PDFs, input data, plots, and the Lean verification project (unchanged). |
+| **Root** | `README.md`, `STATE.md`, and the active L3 campaign docs: `L3_DEFINITIONS.md`, `PHASE1_WORKSHEET.md`, `PHASE3_*.md`, `BRIEF_D1_TOY_GAP.md`, `THEOREM_C_745.md`, `QX1_*.md`. |
+
+Three archival folders (`A_Symbolic_Prefix_Decomposition…`, `JNT Submission`, `_paper3_zip`) are kept on disk but **untracked** (see `.gitignore`).
+
 ### If you want the headline result
-1. Read [`writeup.md`](writeup.md) — Result 1, Result 3, and the subsection "α_det predicts mean first-passage time and matches Tao (5.15) at the per-class level" within Result 3.
-2. Then [`tao_bridge_findings.md`](tao_bridge_findings.md) for the TA.1/TA.2/TA.3 tightening of ε(N).
+1. Read [`writeup.md`](notes/writeup.md) — Result 1, Result 3, and the subsection "α_det predicts mean first-passage time and matches Tao (5.15) at the per-class level" within Result 3.
+2. Then [`tao_bridge_findings.md`](notes/tao_bridge_findings.md) for the TA.1/TA.2/TA.3 tightening of ε(N).
 
 ### If you want to verify a specific claim
 - Each substantive claim in `writeup.md` traces to a `findings.md` entry and one or more numbered experiments. Use the experiment index below to locate the script. Run it; CSV outputs land in `experiments_output/`.
 
 ### If you want to check the prior-art positioning
-- [`literature_check.md`](literature_check.md) — audit identifying Terras 1976 Lemma 4 as the asymptotic predecessor of the prefix decomposition, plus connections to Sinai 2003, Tao 2022, Bonacorsi & Bordoni 2026.
+- [`literature_check.md`](notes/literature_check.md) — audit identifying Terras 1976 Lemma 4 as the asymptotic predecessor of the prefix decomposition, plus connections to Sinai 2003, Tao 2022, Bonacorsi & Bordoni 2026.
 
 ### If you want to see the audit trail with sanity-check protocol applied per finding
-- [`findings.md`](findings.md) — chronological log, append-only.
-- [`agent2_findings.md`](agent2_findings.md) — trajectory-measure deep dive (v=4/v=10 spike mechanism, q=5 trajectory v, MGF preservation across q).
-- [`compute_threads_findings.md`](compute_threads_findings.md) — σ-record extension to OEIS A006877 b-file, prefix-tail mechanism analysis, q=5 cycle search.
+- [`findings.md`](notes/findings.md) — chronological log, append-only.
+- [`agent2_findings.md`](notes/agent2_findings.md) — trajectory-measure deep dive (v=4/v=10 spike mechanism, q=5 trajectory v, MGF preservation across q).
+- [`compute_threads_findings.md`](notes/compute_threads_findings.md) — σ-record extension to OEIS A006877 b-file, prefix-tail mechanism analysis, q=5 cycle search.
 
 ### If you want the qx+1 generalization (companion to the 3x+1 work)
 - The qx+1 Cramér convergence-rate result lives separately. Code is mixed in among the experiments below (10–22 range and 28/29 range). For prior consolidations see `findings.md` entries dated 2026-05-01 onward and the auto-memory file `project_collatz_qx1.md` (in the user's external memory).
@@ -292,10 +315,10 @@ The bridge to Tao 2022 is structurally `s_mean(r; f) ≈ α_det(r) + K_h · log(
 | [`STATE.md`](STATE.md) | **Live research log** — supersedes any drift here. Per-result entries (R1–R46) + the L3 campaign gates (G0/G0b/G0c/G0c′/G1) with pre-registrations, verdicts, and walk-backs. |
 | [`L3_DEFINITIONS.md`](L3_DEFINITIONS.md) | The frozen L3 object (Phase 0): one `r_q`, three welded coordinates (build_M / renewal `A(z)` / `c_k`); dictionary + mass identity; the L3 statement and boundary clause. |
 | [`PHASE1_WORKSHEET.md`](PHASE1_WORKSHEET.md) | The five substrate lemmas (Phase 1): FORGET / ONE-STEP / INTERTWINE / REFINE / PYTHAGORAS, proved and machine-verified (incl. q=1093). |
-| [`result_phase2a_recon.md`](result_phase2a_recon.md) | Phase 2a boundary recon (Q1–Q6): names the theorem = **L→∞ coalescence**; both 2's (phase ⟨2⟩ + weight ½) load-bearing = marginality of the actual 3x+1 map. |
-| [`result_phase2b_s1.md`](result_phase2b_s1.md) | Phase 2b Session 1 (instruments A–E, C): the toy `M(q,−1,λ)` frozen + hand-solvable; diagonal-ray localization; L=4 walls out. |
+| [`result_phase2a_recon.md`](results/result_phase2a_recon.md) | Phase 2a boundary recon (Q1–Q6): names the theorem = **L→∞ coalescence**; both 2's (phase ⟨2⟩ + weight ½) load-bearing = marginality of the actual 3x+1 map. |
+| [`result_phase2b_s1.md`](results/result_phase2b_s1.md) | Phase 2b Session 1 (instruments A–E, C): the toy `M(q,−1,λ)` frozen + hand-solvable; diagonal-ray localization; L=4 walls out. |
 | [`BRIEF_D1_TOY_GAP.md`](BRIEF_D1_TOY_GAP.md) | **THEOREM D1** — the first hand-derived spectral gap of the program: `r(λ) = (1−λ²)/(1+λ²)`, derived then met the pre-published sweep five-for-five. Maximality owed (Request F). |
-| [`result_phase2b_s2.md`](result_phase2b_s2.md) | Phase 2b Session 2: D1 committed + the **D3 lead** (real q=3 invariant ray `Σw_r² ≈ 1/3 + (2/3)·2^{−D}`, six-digit match; eigenvalue braid toward the EP); requests F/G. |
+| [`result_phase2b_s2.md`](results/result_phase2b_s2.md) | Phase 2b Session 2: D1 committed + the **D3 lead** (real q=3 invariant ray `Σw_r² ≈ 1/3 + (2/3)·2^{−D}`, six-digit match; eigenvalue braid toward the EP); requests F/G. |
 | [`QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`](QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md) | Standalone qx+1 universal-rate paper draft: `S_k^(q) ~ (q/3)^k`, derived at mechanism; three pillars (rate, constant, correction). |
 | [`THEOREM_C_745.md`](THEOREM_C_745.md) | The `c = 7/45` rigorous unconditional result (`S_k = 3^k‖d_k‖² → 7/15`) — the q=3 marginal fixed point. |
 
@@ -303,14 +326,14 @@ The bridge to Tao 2022 is structurally `s_mean(r; f) ≈ α_det(r) + K_h · log(
 
 | File | Contents |
 |---|---|
-| [`writeup.md`](writeup.md) | Canonical result document. Result 1 (slope universality + non-monotone β oscillation), Result 2 (tail shape), Result 3 (prefix decomposition + Tao bridge subsection), Related Work (B&B comparison + Pathfinder caveat), Limitations. |
-| [`findings.md`](findings.md) | Append-only chronological audit trail. Every empirical finding gets sanity-check protocol entries (sampling bias / definition / finite-N / parity / numerical precision). ~600 lines. |
-| [`agent2_findings.md`](agent2_findings.md) | Trajectory-measure characterization: q=3 trajectory v moments, MGF preservation across q, m mod 32/2048/131072 pushforward (mechanism for v=4/v=10 spikes), q=5 unconditional trajectory v. |
-| [`compute_threads_findings.md`](compute_threads_findings.md) | σ-record class-fraction analysis (T1.1/T1.2/T1.5/T1.6/TB.2). Gaussian-tail Gumbel mechanism for prefix-class σ-record fractions, replacing earlier exponential-θ guess. |
-| [`tao_bridge_findings.md`](tao_bridge_findings.md) | TA.1 N-stability of σ structural offset (constant ≈ −2.45 across N = 2²⁵..2³²), TA.2 trim-quantile sweep (q* = 1.18% drives gap to 0 at √N), TA.3 parametric fit (gap ≈ −2.35 + 0.486·log(threshold)). |
-| [`closed_form_findings.md`](closed_form_findings.md) | Closed-form derivations for the bridge structural constants. ⟨α_det⟩ = log(6)/log(4/3) DERIVED exactly. ε(σ) and slope-on-log(threshold) ruled out as having clean closed forms; trace back to either Lagarias trajectory measure (open) or finite-N μ_β characterization (TA.1 follow-up). |
-| [`literature_check.md`](literature_check.md) | Prior-art audit. Terras 1976 Lemma 4, Sinai 2003, Lagarias 1985, Tao 2022, B&B 2026. |
-| [`one_sheet_lin.py`](one_sheet_lin.py) / [`one_sheet_yosef.py`](one_sheet_yosef.py) | PDF generators for one-sheet summaries (Lin: 3x+1; Yosef: qx+1). |
+| [`writeup.md`](notes/writeup.md) | Canonical result document. Result 1 (slope universality + non-monotone β oscillation), Result 2 (tail shape), Result 3 (prefix decomposition + Tao bridge subsection), Related Work (B&B comparison + Pathfinder caveat), Limitations. |
+| [`findings.md`](notes/findings.md) | Append-only chronological audit trail. Every empirical finding gets sanity-check protocol entries (sampling bias / definition / finite-N / parity / numerical precision). ~600 lines. |
+| [`agent2_findings.md`](notes/agent2_findings.md) | Trajectory-measure characterization: q=3 trajectory v moments, MGF preservation across q, m mod 32/2048/131072 pushforward (mechanism for v=4/v=10 spikes), q=5 unconditional trajectory v. |
+| [`compute_threads_findings.md`](notes/compute_threads_findings.md) | σ-record class-fraction analysis (T1.1/T1.2/T1.5/T1.6/TB.2). Gaussian-tail Gumbel mechanism for prefix-class σ-record fractions, replacing earlier exponential-θ guess. |
+| [`tao_bridge_findings.md`](notes/tao_bridge_findings.md) | TA.1 N-stability of σ structural offset (constant ≈ −2.45 across N = 2²⁵..2³²), TA.2 trim-quantile sweep (q* = 1.18% drives gap to 0 at √N), TA.3 parametric fit (gap ≈ −2.35 + 0.486·log(threshold)). |
+| [`closed_form_findings.md`](notes/closed_form_findings.md) | Closed-form derivations for the bridge structural constants. ⟨α_det⟩ = log(6)/log(4/3) DERIVED exactly. ε(σ) and slope-on-log(threshold) ruled out as having clean closed forms; trace back to either Lagarias trajectory measure (open) or finite-N μ_β characterization (TA.1 follow-up). |
+| [`literature_check.md`](notes/literature_check.md) | Prior-art audit. Terras 1976 Lemma 4, Sinai 2003, Lagarias 1985, Tao 2022, B&B 2026. |
+| [`one_sheet_lin.py`](probes/one_sheet_lin.py) / [`one_sheet_yosef.py`](probes/one_sheet_yosef.py) | PDF generators for one-sheet summaries (Lin: 3x+1; Yosef: qx+1). |
 
 ---
 
@@ -321,12 +344,12 @@ Numbered by creation order; some numbers collide because the project ran two par
 ### Stage 1–4 pipeline (original Bayesian fit)
 | Script | Purpose |
 |---|---|
-| [`generate.py`](generate.py) | Numba memoized σ / syracuse / max_excursion / residues for n ∈ [1, N]. Outputs `data/main_N{N}.parquet`. |
-| [`generate_q.py`](generate_q.py) | qx+1 generalization: writes `data/q_main_q{q}_N{N}.parquet`. |
-| [`analyze.py`](analyze.py) | Stage 2 EDA: σ vs log n by mod-16 class, v-distribution, residual tails. |
-| [`stage3_prep.py`](stage3_prep.py) | Stage 3 input: odd-only filter, class index, uniform stratified subsample. |
-| [`fit.py`](fit.py) | Stage 3 hierarchical Stan fit (k=6, k=10). Outputs to `fits/{tag}/`. |
-| [`diagnose.py`](diagnose.py) | Stage 4 posterior summary, GPD on tails, posterior tail probabilities. Outputs to `stage4_results/{tag}/`. |
+| [`generate.py`](probes/generate.py) | Numba memoized σ / syracuse / max_excursion / residues for n ∈ [1, N]. Outputs `data/main_N{N}.parquet`. |
+| [`generate_q.py`](probes/generate_q.py) | qx+1 generalization: writes `data/q_main_q{q}_N{N}.parquet`. |
+| [`analyze.py`](probes/analyze.py) | Stage 2 EDA: σ vs log n by mod-16 class, v-distribution, residual tails. |
+| [`stage3_prep.py`](probes/stage3_prep.py) | Stage 3 input: odd-only filter, class index, uniform stratified subsample. |
+| [`fit.py`](probes/fit.py) | Stage 3 hierarchical Stan fit (k=6, k=10). Outputs to `fits/{tag}/`. |
+| [`diagnose.py`](probes/diagnose.py) | Stage 4 posterior summary, GPD on tails, posterior tail probabilities. Outputs to `stage4_results/{tag}/`. |
 
 ### Per-class structure (3x+1)
 | # | Script | Purpose |

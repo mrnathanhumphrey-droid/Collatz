@@ -114,3 +114,8 @@ watson_phase2_output.txt
 *.pdf
 pdfs/
 
+
+# Untracked archival/submission folders (kept on disk, out of git)
+/A_Symbolic_Prefix_Decomposition_of_the_Collatz_Map_and_Its_Empirical_Determination_of_Per_Class_Statistics (2)/
+/JNT Submission/
+/_paper3_zip/
