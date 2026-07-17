@@ -31,6 +31,9 @@ Gauge = simultaneous diagonal phase shift `g_s: (a,b,γ) → (sa, sb, γ)`, s∈
 - **L-A:** Nathan-reported → **CLAUDE-VERIFIED** (one-step + transitive BFS, L=2 and L=3).
 - **L-B:** Nathan-reported → **CLAUDE-VERIFIED** for its concrete core (k=0 co-invariant eigenvector gauge-factorizes exactly; 54-orbit count matches). The full skeleton (three lemmas, keystone) now rests on two Claude-verified lemmas + the circulant-family completeness (already Claude-verified).
 
+## ⚠️ SUPERSEDED by PROBE R (result_phase2b_R.md, 2026-07-16)
+The loose inference below ("126 ≈ 21 classes") was never verified for cleanness. **PROBE R shows the diag-carry closure is NOT a clean union under the modular (e,γ) gauge — 29 classes / 16 partial (gauge-split) at L=2, not 21 clean.** L-A (no-return to Δ) and L-B (k=0 eigvec gauge-invariance) are UNAFFECTED; only the "21 clean classes" reduced-chain premise falls (needs the integer-carry gauge, per Nathan's own constraint). See `result_phase2b_R.md`.
+
 ## Flag — the "21 closed classes"
 Nathan's next-session object is "the 21 closed classes of the reduced (ρ,γ)-chain." This probe measured **17 reachable-from-Δ orbits at L=2** (of 54 total). 17 ≠ 21: these are different counts (reachable-from-Δ at L=2 vs. Nathan's "closed" classes, likely a communicating-class notion and/or a different level). **Not a contradiction — different quantities; the 21-closed-class enumeration is the next-session hand target and was not reproduced here.** The 54-total-orbit count (the reduction object) IS reproduced.
 

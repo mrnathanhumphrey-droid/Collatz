@@ -1,0 +1,10 @@
+# PROBE R1 -- (e,gamma) class digraph; generator convention 2^e = b*a^{-1} mod 3^L
+
+## L=2: 54 classes (D=6, gamma in Z/9). CLOSURE=29 / SUPPORT=25  (expected 21/33) [MISMATCH]
+   *** STOP: closure is NOT a clean union of classes -- 16 partial classes (gauge broken). Skeleton pauses. ***
+   handoff table -> outputs/class_table_L2.tsv
+
+## L=3: 486 classes (D=18, gamma in Z/27). CLOSURE=291 / SUPPORT=195  (expected 171/315) [MISMATCH]
+   *** STOP: closure is NOT a clean union of classes -- 240 partial classes (gauge broken). Skeleton pauses. ***
+   handoff table -> outputs/class_table_L3.tsv
+
