@@ -1,0 +1,43 @@
+# MICRO-PROBE G0 -- partner-char gate. Dense/direct at q=3.
+
+## G0-1  q=3 L=2   dim(full)=324  dim(tower)=288
+   c0=0.3439153439   true partner (full op, subspace) = 0.3468266586+0.00e+00j
+   Perron(M_tower) rho = 0.3468266586+0.00e+00j   |rho - partner| = 8.327e-16
+   tower top-3 |ev|: 0.34682666+0.0e+00j  0.02232065+2.4e-01j  0.02232065-2.4e-01j
+   partner IS the Perron of M_tower: True   (nearest-tower-eig diff to partner = 8.327e-16)
+   >> PRE-REG (partner == Perron(M_tower) to machine precision): CONFIRMED
+
+## G0-1  q=3 L=3   dim(full)=8748  dim(tower)=8424
+   c0=0.3333358765   true partner (full op, subspace) = 0.3332363004+0.00e+00j
+   Perron(M_tower) rho = 0.3332363004+0.00e+00j   |rho - partner| = 2.309e-14
+   tower top-3 |ev|: 0.33323630+0.0e+00j  0.23763996+1.8e-01j  0.23763996-1.8e-01j
+   partner IS the Perron of M_tower: True   (nearest-tower-eig diff to partner = 2.309e-14)
+   >> PRE-REG (partner == Perron(M_tower) to machine precision): CONFIRMED
+
+   >> G0-1 VERDICT: L=2 CONFIRMED, L=3 CONFIRMED  => PARTNER-CHAR CONFIRMED (partner = Perron(M_tower))
+
+## G0-2  uniform compressed tower survival row-sums by (e_rho parity, v3(gamma)), q=3 L=3
+   group (e parity, v3 gamma) :  mean    [min, max]   spread    EXACT rational (limit_denominator)
+   even,  v3=0 : 0.222222  [0.222222, 0.222222]  5.55e-17   = 2/9 = 0.222222  (residual 0.0e+00)
+   even, v3>=1 : 0.555556  [0.555556, 0.555556]  4.44e-16   = 5/9 = 0.555556  (residual 0.0e+00)
+    odd,  v3=0 : 0.277778  [0.277778, 0.277778]  5.55e-17   = 5/18 = 0.277778  (residual 5.6e-17)
+    odd, v3>=1 : 0.444444  [0.444444, 0.444444]  3.89e-16   = 4/9 = 0.444444  (residual 0.0e+00)
+   PRE-REG set {4/27,5/27,4/9,5/9} vs OBSERVED {2/9,5/18,4/9,5/9}
+   >> spread ~0 => values are EXACT rationals (NOT approximate/O(2^-D)). Pre-reg SET: REFUTED (see below)
+      REFUTED: {4/27,5/27} NOT present; true low-cell values are 2/9 and 5/18. {4/9,5/9} ARE
+      present but at v3>=1 (not v3=0). The v3-dependence is REVERSED: v3(gamma)>=1 states
+      survive MORE (4/9,5/9), v3=0 survive LESS (2/9,5/18) -- because at 3|gamma the gate
+      selects T==0 mod 3 (same-parity moves, the heavy-weight channel). The alternation
+      derivation's cell assignment/direction is the error, NOT bookkeeping. (real error flagged.)
+
+   C2 RECONCILIATION: C2 grouped by (theta=e mod 3, gamma) and reported per-class survival 0.25-0.50.
+   C2 tower (gamma!=0) survival by (e mod3, gamma): min=0.2500 max=0.5000  (matches C2's 0.25-0.50 range)
+   => (e mod 3) lumps 3 EVEN + 3 ODD e_rho per class (e_rho in {r,r+3,r+6,...}): the even/odd
+      survival alternation AVERAGES OUT within each C2 class, EXACTLY:
+      C2 classes with v3(gamma)=0: mean=0.250000  [0.250000,0.250000]  = fine parity-average {2/9,5/18} -> (2/9+5/18)/2 = 1/4
+      C2 classes with v3(gamma)>=1: mean=0.500000  [0.500000,0.500000]  = fine parity-average {5/9,4/9} -> (5/9+4/9)/2 = 1/2
+   NORMALIZATION NAMED: C2's survival is the SAME row-sum object (per-state avg out-weight) --
+      NO normalization difference. C2's 0.25 and 0.50 are EXACTLY the (e mod 3) parity-averages
+      of the fine survivals: 0.25=(2/9+5/18)/2 (v3=0), 0.50=(5/9+4/9)/2 (v3>=1). The 0.25-0.50
+      range is fully a GROUPING (parity-washing) effect; the fine (parity, v3) split RESOLVES
+      the alternation C2 averaged away. [C2 reconciliation: CLEAN. Pre-reg VALUES: REFUTED above.]
