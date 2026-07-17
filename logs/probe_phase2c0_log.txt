@@ -1,0 +1,39 @@
+# PROBE 2c0 -- GATE THE DEFECT FREEZE (D-FORM + D-DEPTH). Pure entry algebra, no eigensolves.
+
+============================================================================
+## L=2
+
+   G1 RECONSTRUCTION L=2: D-FORM build vs build_M_gen  max|diff| = 0.000e+00  (nnz form 3240 vs true 3240)  (EXACT)
+
+   G2 SECTOR FORM L=2: B_hat[kout,kin] vs R_{kin}(s)*N_{kin-kout}  max residual over 13824 sector entries = 2.682e-15   (CLOSES (twist: R_{kin}, N_{kin-kout}))
+
+   G3 D-DEPTH SELECTION RULE L=2  (gamma' resolved mod 3^j, j=0..L-1)
+       Wilson stated 3^(L-j)|k; GATE PINS the index -> 3^(L-1-j)|k (carry's /3 drops gamma' one 3-adic level)
+       j=0 (gamma' mod 3^0): PINNED excited k (3^1|k) = [0, 3]
+                observed nonzero k = [0, 3]   max|N_k| on FORBIDDEN(pinned) k = 4.71e-15  (HOLDS (=pinned set exactly))   [Wilson-stated 3^2|k was [0]]
+       j=1 (gamma' mod 3^1): PINNED excited k (3^0|k) = [0, 1, 2, 3, 4, 5]
+                observed nonzero k = [0, 1, 2, 3, 4, 5]   max|N_k| on FORBIDDEN(pinned) k = 0.00e+00  (HOLDS (=pinned set exactly))   [Wilson-stated 3^1|k was [0, 3]]
+     => D-DEPTH SELECTION RULE CONFIRMED with pinned index 3^(L-1-j)|k (mechanism = coset char-sum on principal-unit tower; off-by-one from stated = carry level-drop)
+
+   G4 SCOPE (per-state survival spread): statistical cells [(1, 0)]; max within-cell spread 0.3333 (half 0.1667 ~ Wilson 0.17); 3/4 cells ALGEBRAIC (spread 0)
+   >> L=2: G1 PASS, G2 PASS
+
+============================================================================
+## L=3
+
+   G1 RECONSTRUCTION L=3: D-FORM build vs build_M_gen  max|diff| = 0.000e+00  (nnz form 892296 vs true 892296)  (EXACT)
+
+   G2 SECTOR FORM L=3: B_hat[kout,kin] vs R_{kin}(s)*N_{kin-kout}  max residual over 10415952 sector entries = 6.259e-14   (CLOSES (twist: R_{kin}, N_{kin-kout}))
+
+   G3 D-DEPTH SELECTION RULE L=3  (gamma' resolved mod 3^j, j=0..L-1)
+       Wilson stated 3^(L-j)|k; GATE PINS the index -> 3^(L-1-j)|k (carry's /3 drops gamma' one 3-adic level)
+       j=0 (gamma' mod 3^0): PINNED excited k (3^2|k) = [0, 9]
+                observed nonzero k = [0, 9]   max|N_k| on FORBIDDEN(pinned) k = 2.32e-14  (HOLDS (=pinned set exactly))   [Wilson-stated 3^3|k was [0]]
+       j=1 (gamma' mod 3^1): PINNED excited k (3^1|k) = [0, 3, 6, 9, 12, 15]
+                observed nonzero k = [0, 3, 6, 9, 12, 15]   max|N_k| on FORBIDDEN(pinned) k = 2.32e-14  (HOLDS (=pinned set exactly))   [Wilson-stated 3^2|k was [0, 9]]
+       j=2 (gamma' mod 3^2): PINNED excited k (3^0|k) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+                observed nonzero k = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]   max|N_k| on FORBIDDEN(pinned) k = 0.00e+00  (HOLDS (=pinned set exactly))   [Wilson-stated 3^1|k was [0, 3, 6, 9, 12, 15]]
+     => D-DEPTH SELECTION RULE CONFIRMED with pinned index 3^(L-1-j)|k (mechanism = coset char-sum on principal-unit tower; off-by-one from stated = carry level-drop)
+
+   G4 SCOPE (per-state survival spread): statistical cells [(1, 0)]; max within-cell spread 0.3333 (half 0.1667 ~ Wilson 0.17); 3/4 cells ALGEBRAIC (spread 0)
+   >> L=3: G1 PASS, G2 PASS
