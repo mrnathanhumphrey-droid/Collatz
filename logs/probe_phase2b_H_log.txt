@@ -1,0 +1,54 @@
+# Real q=3 Delta-channel operator -- validation + H1 + H2
+
+## L=1  D=2  dim=12   c0=sum w^2=0.555556 (closed 0.555556, diff 0.0e+00)
+   top|eig| = 0.555556, 2nd = 0.333333, gap = 2.222e-01
+   c_k in spectrum? max_k min|eig-c_k| = 2.72e-17  (family: 0.5556, -0.3333)
+   H1 -- amplitudes A_i (|A|>1e-9 shown; others=zero-amplitude cluster):
+      mu=+0.555556+0.000000j  |A|=1.0000e+00  = c_0
+   H1 -- amplitude carried by each circulant member c_k:
+      c_0=+0.555556+0.000000j : matched mu, |A|=1.000e+00   <-- carries amplitude
+      c_1=-0.333333+0.000000j : matched mu, |A|=0.000e+00   <-- ZERO-amplitude
+
+## L=2  D=6  dim=324   c0=sum w^2=0.343915 (closed 0.343915, diff 5.6e-17)
+   top|eig| = 0.346827, 2nd = 0.343915, gap = 2.911e-03
+   c_k in spectrum? max_k min|eig-c_k| = 1.94e-15  (family: 0.3439, 0.0794, -0.1474, -0.2063, -0.1474, 0.0794)
+   H1 -- amplitudes A_i (|A|>1e-9 shown; others=zero-amplitude cluster):
+      mu=+0.346827+0.000000j  |A|=4.4007e+01  (non-family / dynamical)
+      mu=+0.343915+0.000000j  |A|=4.2723e+01  = c_0
+      mu=+0.015381+0.000000j  |A|=1.0718e+01  (non-family / dynamical)
+      mu=+0.126576+0.000000j  |A|=1.3085e+00  (non-family / dynamical)
+      mu=+0.066112+0.064497j  |A|=8.0057e-01  (non-family / dynamical)
+      mu=+0.066112-0.064497j  |A|=8.0057e-01  (non-family / dynamical)
+      mu=-0.061616+0.000000j  |A|=4.6467e-01  (non-family / dynamical)
+      mu=+0.104269+0.000000j  |A|=4.0527e-01  (non-family / dynamical)
+      mu=+0.008612+0.092642j  |A|=2.7167e-01  (non-family / dynamical)
+      mu=+0.008612-0.092642j  |A|=2.7167e-01  (non-family / dynamical)
+      mu=-0.147392+0.170194j  |A|=3.9014e-02  = c_2
+      mu=-0.147392-0.170194j  |A|=3.9014e-02  = c_4
+      mu=-0.151927+0.025786j  |A|=3.6709e-02  (non-family / dynamical)
+      mu=-0.151927-0.025786j  |A|=3.6709e-02  (non-family / dynamical)
+      mu=-0.015909+0.000000j  |A|=3.5828e-02  (non-family / dynamical)
+      mu=-0.161689+0.124497j  |A|=3.1160e-02  (non-family / dynamical)
+      mu=-0.161689-0.124497j  |A|=3.1160e-02  (non-family / dynamical)
+      mu=+0.022321+0.235129j  |A|=4.9259e-03  (non-family / dynamical)
+      mu=+0.022321-0.235129j  |A|=4.9259e-03  (non-family / dynamical)
+   H1 -- amplitude carried by each circulant member c_k:
+      c_0=+0.343915+0.000000j : matched mu, |A|=4.272e+01   <-- carries amplitude
+      c_1=+0.079365+0.274929j : matched mu, |A|=4.796e-16   <-- ZERO-amplitude
+      c_2=-0.147392+0.170194j : matched mu, |A|=3.901e-02   <-- carries amplitude
+      c_3=-0.206349+0.000000j : matched mu, |A|=1.929e-16   <-- ZERO-amplitude
+      c_4=-0.147392-0.170194j : matched mu, |A|=3.901e-02   <-- carries amplitude
+      c_5=+0.079365-0.274929j : matched mu, |A|=4.796e-16   <-- ZERO-amplitude
+
+## L=3  D=18  dim=8748   c0=sum w^2=0.333336 (closed 0.333336, diff 0.0e+00)
+   top|eig| (LM) = 0.333336, 2nd = 0.333236, gap = 9.958e-05
+   H2 -- family completeness via LU-pivot singularity (control = c_k+0.05):
+      c_0 =+0.333336+0.000000j  minpiv=1.7e-16  control=3.4e-01  [EIG] PARITY
+      c_1 =+0.290936+0.144276j  minpiv=8.3e-14  control=3.4e-01  [EIG]
+      c_2 =+0.189869+0.236502j  minpiv=6.3e-14  control=3.4e-01  [EIG]
+      c_3 =+0.076924+0.266471j  minpiv=5.8e-14  control=2.9e-01  [EIG]
+      c_4 =-0.019564+0.252342j  minpiv=5.5e-14  control=2.4e-01  [EIG]
+      c_5 =-0.092152+0.214216j  minpiv=1.0e-13  control=1.4e-01  [EIG]
+      c_9 =-0.200002+0.000000j  minpiv=3.7e-13  control=1.7e-02  [EIG] PARITY
+   H2 verdict: 18/18 circulant members are exact eigenvalues of the L=3 operator.
+
