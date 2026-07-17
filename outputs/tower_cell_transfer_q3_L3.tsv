@@ -1,0 +1,13 @@
+# G1 tower cell transfer q=3 L=3. Cells (e_rho parity, v3(gamma):0 vs >=1). Source-uniform, EXACT.
+# (1) 4x4 transfer T[src->dst]
+src\dst	even,v3=0	even,v3>=1	odd,v3=0	odd,v3>=1
+even,v3=0	0	0	4/27	2/27
+even,v3>=1	10/27	5/27	0	0
+odd,v3=0	0	0	5/27	5/54
+odd,v3>=1	8/27	4/27	0	0
+# (2) cascade split: source cell -> dest v3(gamma') flow {0,1,>=2} (exact)
+src_cell	v'=0	v'=1	v'=2
+even,v3=0	4/27	4/81	2/81
+even,v3>=1	10/27	10/81	5/81
+odd,v3=0	5/27	5/81	5/162
+odd,v3>=1	8/27	8/81	4/81

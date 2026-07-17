@@ -1,0 +1,51 @@
+# MICRO-PROBE G1 -- coarse tower transfer dump (raw; Wilson derives blind, judged entry-by-entry).
+
+==============================================================================
+## G1  q=3 L=2  tower cell transfer (source-uniform, exact)   rho(M_tower)=0.346827
+
+   (1) 4x4 CELL TRANSFER  T[src -> dst]  (exact rationals)
+       src \ dst        even,v3=0    even,v3>=1      odd,v3=0     odd,v3>=1   row-sum
+       even,v3=0                0             0          4/27          2/27   2/9 OK
+       even,v3>=1           10/27          5/27             0             0   5/9 OK
+       odd,v3=0                 0             0          5/27          5/54   5/18 OK
+       odd,v3>=1             8/27          4/27             0             0   4/9 OK
+   row-sums vs pre-reg {2/9,5/9,5/18,4/9}: ALL MATCH
+
+   (2) CASCADE SPLIT per source cell: destination v3(gamma') flow {0, 1, >=2} (exact; sums to survival)
+       even,v3=0    flow: v'=0:4/27=0.14815  v'=1:2/27=0.07407   | as frac of survival: v'=0:0.6667  v'=1:0.3333
+       even,v3>=1   flow: v'=0:10/27=0.37037  v'=1:5/27=0.18519   | as frac of survival: v'=0:0.6667  v'=1:0.3333
+       odd,v3=0     flow: v'=0:5/27=0.18519  v'=1:5/54=0.09259   | as frac of survival: v'=0:0.6667  v'=1:0.3333
+       odd,v3>=1    flow: v'=0:8/27=0.29630  v'=1:4/27=0.14815   | as frac of survival: v'=0:0.6667  v'=1:0.3333
+
+   (3) JUDGE (reported, not in the raw dump):
+       within-cell spread of per-state dest-cell flow: max = 3.515e-01  (approximate (uniform-averaged))
+       Perron(4x4) = 0.33333333+0.00e+00j   rho(M_tower) = 0.346827   |Perron - rho| = 1.349e-02
+       4x4 eigenvalues: +0.333333+0.0000j  +0.037037+0.0000j  -0.000000+0.0000j  -0.000000+0.0000j
+   dumped outputs/tower_cell_transfer_q3_L2.tsv
+
+==============================================================================
+## G1  q=3 L=3  tower cell transfer (source-uniform, exact)   rho(M_tower)=0.333236
+
+   (1) 4x4 CELL TRANSFER  T[src -> dst]  (exact rationals)
+       src \ dst        even,v3=0    even,v3>=1      odd,v3=0     odd,v3>=1   row-sum
+       even,v3=0                0             0          4/27          2/27   2/9 OK
+       even,v3>=1           10/27          5/27             0             0   5/9 OK
+       odd,v3=0                 0             0          5/27          5/54   5/18 OK
+       odd,v3>=1             8/27          4/27             0             0   4/9 OK
+   row-sums vs pre-reg {2/9,5/9,5/18,4/9}: ALL MATCH
+
+   (2) CASCADE SPLIT per source cell: destination v3(gamma') flow {0, 1, >=2} (exact; sums to survival)
+       even,v3=0    flow: v'=0:4/27=0.14815  v'=1:4/81=0.04938  v'=2:2/81=0.02469   | as frac of survival: v'=0:0.6667  v'=1:0.2222  v'=2:0.1111
+       even,v3>=1   flow: v'=0:10/27=0.37037  v'=1:10/81=0.12346  v'=2:5/81=0.06173   | as frac of survival: v'=0:0.6667  v'=1:0.2222  v'=2:0.1111
+       odd,v3=0     flow: v'=0:5/27=0.18519  v'=1:5/81=0.06173  v'=2:5/162=0.03086   | as frac of survival: v'=0:0.6667  v'=1:0.2222  v'=2:0.1111
+       odd,v3>=1    flow: v'=0:8/27=0.29630  v'=1:8/81=0.09877  v'=2:4/81=0.04938   | as frac of survival: v'=0:0.6667  v'=1:0.2222  v'=2:0.1111
+
+   (3) JUDGE (reported, not in the raw dump):
+       within-cell spread of per-state dest-cell flow: max = 3.515e-01  (approximate (uniform-averaged))
+       Perron(4x4) = 0.33333333+0.00e+00j   rho(M_tower) = 0.333236   |Perron - rho| = 9.733e-05
+       4x4 eigenvalues: +0.333333+0.0000j  +0.037037+0.0000j  -0.000000+0.0000j  -0.000000+0.0000j
+   dumped outputs/tower_cell_transfer_q3_L3.tsv
+
+==============================================================================
+## SUMMARY: row-sums MATCH both L; lumping approximate.
+   Perron L-trend: L=2 0.333333 (rho 0.346827, d 1.3e-02), L=3 0.333333 (rho 0.333236, d 9.7e-05).
