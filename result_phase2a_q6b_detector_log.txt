@@ -1,0 +1,20 @@
+# Q6-B RELIABLE COLLISION DETECTOR (Jordan-aware, no ESPRIT). b_k=a_k/lam1^k: linear=collision.
+
+## VALIDATION on knowns (detector must reproduce banked collision/gap):
+   M(3,2,1/2) [banked r=1] dim=324    lam1=0.34683  B(slope)=  0.2905  db_tail_ratio= 0.959  -> COLLISION (r=1, Jordan)
+   M(7,2,1/2) [banked gap] dim=21609  lam1=0.33333  B(slope)= -0.0005  db_tail_ratio=78.139  -> AMBIGUOUS (B=-0.0005, tail_ratio=78.139)
+   M(7,-1,1/2) [Test A gap] dim=196    lam1=0.55556  B(slope)= -0.0000  db_tail_ratio= 1.000  -> AMBIGUOUS (B=-0.0000, tail_ratio=1.000)
+   M(3,2,1/2) L=3 [r=1]   dim=8748   lam1=0.33334  B(slope)=  0.4402  db_tail_ratio= 1.007  -> COLLISION (r=1, Jordan)
+
+## Q6-B -- is the q=3 cross-Perron collision WEIGHT(lam)-BLIND? M(3,2,lam), gen=2 fixed (LIFTS)
+                                                 slope B (=k-prefactor; 0=>unglued)
+   M(3,2,0.250)           dim=324    lam1=0.60029  B(slope)=  0.0000  db_tail_ratio= 0.829  -> AMBIGUOUS (B=0.0000, tail_ratio=0.829)
+   M(3,2,0.333)           dim=324    lam1=0.50137  B(slope)=  0.0001  db_tail_ratio= 0.891  -> AMBIGUOUS (B=0.0001, tail_ratio=0.891)
+   M(3,2,0.400)           dim=324    lam1=0.43210  B(slope)=  0.0022  db_tail_ratio= 0.422  -> GAPPED (r<1)
+   M(3,2,0.500)           dim=324    lam1=0.34683  B(slope)=  0.2905  db_tail_ratio= 0.959  -> COLLISION (r=1, Jordan)
+   M(3,2,0.600)           dim=324    lam1=0.33754  B(slope)=  0.0017  db_tail_ratio= 0.356  -> GAPPED (r<1)
+   M(3,2,0.700)           dim=324    lam1=0.33360  B(slope)=  0.0000  db_tail_ratio= 0.135  -> GAPPED (r<1)
+
+## VERDICT Q6-B: 1/6 lam values COLLIDE.
+   => collision UNGLUES at some lam => WEIGHT is load-bearing too; Phase 2b must keep the
+      weight base (2^-v) in the statement, not just the phase group.
