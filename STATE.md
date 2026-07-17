@@ -1,6 +1,6 @@
 # Live State — Collatz framework synthesis
 
-**Last updated:** 2026-07-15 (cascade bridge: FALSIFIED as predicted, two Collatz-side positives banked). Earlier 2026-07-14 (qx+1 rate derivation + spine audit + Tauberian closure); **STATE re-audited 2026-07-15** — all 2026-07-14 probes cross-checked against result files; two gaps found and filled (BGT-E entry, R85 Phase 1 entry) and one false label corrected (Phase 0's "NOT fired"); everything else verified logged.
+**Last updated:** 2026-07-16 (L3 Phase-2b campaign — **TWO PROVEN RESULTS**: THEOREM D1 complete [toy gap `r(λ)=(1−λ²)/(1+λ²)`, maximality via nilpotence] + **THEOREM Real-T1** [real q=3 eigenvalues = twisted autocorrelations of the halving weights, closed-form eigenvectors gate-verified 18/18 @L=3] = program's 2nd result / 1st on the real operator; kinematic half of q=3 boundary CLOSED. Repo reorganized into type folders [probes/ results/ notes/ logs/ outputs/], root 1274→25. One object left in Phase 2 = the dynamical partner. Entries appended below in order: Phase 2a → 2b Sessions 1/2 → F → D1-MAX → H → J → L-A/L-B → R(STOP) → Real-T1). Earlier 2026-07-15 (cascade bridge FALSIFIED, two Collatz-side positives banked); 2026-07-14 (qx+1 rate derivation + spine audit + Tauberian closure); re-audited 2026-07-15.
 
 ## 2026-07-15 — Collatz ↔ turbulent-cascade bridge: **FALSIFIED** (prior held, mechanism wrong). $0 local, zero JHU.
 

@@ -28,7 +28,8 @@
 > - **Boundary asset.** `build_M` is **genuinely defective at q = 3** (`cond(R) = ∞`, top-eigenvector overlap 0.998) — a real Jordan block, the exceptional point the d = 2 clause must break against.
 > - **Platform placed (R41–R44).** Our `r_q = 1` boundary = Siegel's `σ_H = 1` degenerate map; the object is Tao's Syracuse random variable / Siegel's self-similar measure, read as a pipeline (Chang 2-adic input → Siegel transform → Tao 1st-moment / Nathan 2nd-moment `r_q`). The order-reciprocity "rig" refuted (a power-of-2 / Catalan coincidence).
 > - **Honest walk-backs banked:** the single-address refinement operator was retired as the L3 object (first-moment ⇒ gapless — Gate G0 caught the drift); the 2/3-echo / 7/45-drip recursion died (no injection term).
-> - **Open:** Phase 2 (the d = 2 entrance exam) and Phase 4 (the bound). The theorem — `r_q < 1` for `d ≥ 3` — is USER-written, on the frozen object.
+> - **★ Phase 2 — two proven results (the entrance exam's kinematic half is closed).** **THEOREM D1** (the toy): `r(λ) = (1−λ²)/(1+λ²)`, maximality via nilpotence of the e=−1 block ([`BRIEF_D1_TOY_GAP.md`](BRIEF_D1_TOY_GAP.md), [`result_phase2b_Dmax.md`](results/result_phase2b_Dmax.md)). **THEOREM Real-T1** (the real q=3 operator — the program's *second proven result, first on the real operator*): the exact eigenvalues are the **twisted autocorrelations of the halving weights**, `c_k = R_k(0) = Σ_δ w_δ² ω^δ`, with closed-form left eigenvectors on zero-carry — gate-verified 18/18 at L=3 ([`result_phase2b_T1.md`](results/result_phase2b_T1.md)). The planned "invariant hunt" was **superseded** — the R1 STOP (no fishing) is what surfaced the closed form.
+> - **Open — one object left in the entrance exam:** the **dynamical partner** (the braiding mode; rate law `2.9e-3, 1.0e-4, ?`; coalescence with `c₀ = R(0)` as L→∞) — *the one thing near 1/3 that is not an autocorrelation.* Then Phase 4 (the bound). USER-written, on the frozen object.
 
 <a id="latest-2026-07-14"></a>
 > **Latest (2026-07-14) — a fourth paper-shaped result, and the Tauberian thread closes.**
@@ -317,8 +318,15 @@ Three archival folders (`A_Symbolic_Prefix_Decomposition…`, `JNT Submission`, 
 | [`PHASE1_WORKSHEET.md`](PHASE1_WORKSHEET.md) | The five substrate lemmas (Phase 1): FORGET / ONE-STEP / INTERTWINE / REFINE / PYTHAGORAS, proved and machine-verified (incl. q=1093). |
 | [`result_phase2a_recon.md`](results/result_phase2a_recon.md) | Phase 2a boundary recon (Q1–Q6): names the theorem = **L→∞ coalescence**; both 2's (phase ⟨2⟩ + weight ½) load-bearing = marginality of the actual 3x+1 map. |
 | [`result_phase2b_s1.md`](results/result_phase2b_s1.md) | Phase 2b Session 1 (instruments A–E, C): the toy `M(q,−1,λ)` frozen + hand-solvable; diagonal-ray localization; L=4 walls out. |
-| [`BRIEF_D1_TOY_GAP.md`](BRIEF_D1_TOY_GAP.md) | **THEOREM D1** — the first hand-derived spectral gap of the program: `r(λ) = (1−λ²)/(1+λ²)`, derived then met the pre-published sweep five-for-five. Maximality owed (Request F). |
+| [`BRIEF_D1_TOY_GAP.md`](BRIEF_D1_TOY_GAP.md) | **THEOREM D1** (complete) — the first hand-derived spectral gap of the program: `r(λ) = (1−λ²)/(1+λ²)`, derived then met the pre-published sweep five-for-five; maximality proven via nilpotence. |
 | [`result_phase2b_s2.md`](results/result_phase2b_s2.md) | Phase 2b Session 2: D1 committed + the **D3 lead** (real q=3 invariant ray `Σw_r² ≈ 1/3 + (2/3)·2^{−D}`, six-digit match; eigenvalue braid toward the EP); requests F/G. |
+| [`result_phase2b_F.md`](results/result_phase2b_F.md) | Request F: the e=−1 sub-block is **nilpotent** (ρ₋=0) — D1's maximality closes with maximal margin. |
+| [`result_phase2b_Dmax.md`](results/result_phase2b_Dmax.md) | **LEMMA D1-MAX** (acyclicity/nilpotence proof) + gates ⇒ **THEOREM D1 COMPLETE**; q=3 corollary exact (crossover at λ=1/√2). |
+| [`result_phase2b_H.md`](results/result_phase2b_H.md) | Real q=3 Δ-channel operator: **H_EXACT + H_CIRC** confirmed (circulant family complete to L=3, 18/18); the toy is the **parity quotient**. |
+| [`result_phase2b_LALB.md`](results/result_phase2b_LALB.md) | Skeleton lemmas verified: **L-A** (no-return C↛Δ) and **L-B** (k=0 co-invariant eigenvector gauge-factorizes exactly). |
+| [`result_phase2b_R.md`](results/result_phase2b_R.md) | Probe R: R1 hit the **STOP** (modular (e,γ) closure not clean — gauge broken); R2/L=4 deferred (local wall). Superseded by Real-T1. |
+| [`result_phase2b_J.md`](results/result_phase2b_J.md) | Swap-involution J refuted (walk-back #14); the extracted constraint (invariance must act on the carry as an **integer map**); board consolidation. |
+| [`result_phase2b_T1.md`](results/result_phase2b_T1.md) | **★ THEOREM Real-T1** (proven; program's 2nd result, 1st on the real operator): the exact eigenvalues are the **twisted autocorrelations of the halving weights** `c_k = Σ_δ w_δ² ω^δ`; closed-form eigenvectors gate-verified 18/18 at L=3. |
 | [`QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`](QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md) | Standalone qx+1 universal-rate paper draft: `S_k^(q) ~ (q/3)^k`, derived at mechanism; three pillars (rate, constant, correction). |
 | [`THEOREM_C_745.md`](THEOREM_C_745.md) | The `c = 7/45` rigorous unconditional result (`S_k = 3^k‖d_k‖² → 7/15`) — the q=3 marginal fixed point. |
 
