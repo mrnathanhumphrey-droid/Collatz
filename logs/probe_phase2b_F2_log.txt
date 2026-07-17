@@ -1,0 +1,69 @@
+# PROBE F2 -- E-FORM judge + LTE cascade + QSD braid + 2x2 effective-pair. Dense/direct at q=3.
+
+## F2-1 -- GATE LEMMA E-FORM (q=3 L=2): entry = R(e'-e) * N / D
+   dim=54  nonzeros=414  max|entry_true - entry_form| = 2.776e-16  (PASS <=1e-12)
+   support identical (zero pattern): True   min R(s)=8.4656e-02 (>0 => every zero is N==0)
+   dumped outputs/eform_gate_q3_L2.tsv (every nonzero entry, actual vs formula, with s,R,N)
+
+## F2-1 -- GATE LEMMA E-FORM (q=3 L=3): entry = R(e'-e) * N / D
+   dim=486  nonzeros=32886  max|entry_true - entry_form| = 2.776e-16  (PASS <=1e-12)
+   support identical (zero pattern): True   min R(s)=1.3021e-03 (>0 => every zero is N==0)
+
+   >> F2-1 VERDICT: L=2 PASS, L=3 PASS  => LEMMA E-FORM GATE-CONFIRMED
+
+## F2-2 -- LTE ladder  t(e')=v3(2^{e'}-1)=1+v3(e'/2) (q=3 L=2)
+   e'=0 -> T=0 (self-phase, no shift).  valuation-2 targets e' = []
+   valuation-1 (even) e' = [2, 4]
+   valuation-0 (odd, die from g=0) e' = [1, 3, 5]
+   from g=0: carry valuation into target e' is DETERMINISTIC = t(e')-1 :  CONFIRMED (all even targets)
+      e'= 1: odd: no g=0 transition
+      e'= 2: t=1 -> carry v3=0 (pred 0), uniform=True
+      e'= 3: odd: no g=0 transition
+      e'= 4: t=1 -> carry v3=0 (pred 0), uniform=True
+      e'= 5: odd: no g=0 transition
+   C2 reproduction: per-class max deviation from uniform cascade  min=1.11e-01 med=1.11e-01 max=3.17e-01  (class-DEPENDENT; the target-side driver is the LTE ladder)
+
+## F2-2 -- LTE ladder  t(e')=v3(2^{e'}-1)=1+v3(e'/2) (q=3 L=3)
+   e'=0 -> T=0 (self-phase, no shift).  valuation-2 targets e' = [6, 12]
+   valuation-1 (even) e' = [2, 4, 8, 10, 14, 16]
+   valuation-0 (odd, die from g=0) e' = [1, 3, 5, 7, 9, 11, 13, 15, 17]
+   PRE-REG (L=3): valuation-2 == {6,12} AND even->1 AND odd->0 :  CONFIRMED
+   from g=0: carry valuation into target e' is DETERMINISTIC = t(e')-1 :  CONFIRMED (all even targets)
+      e'= 1: odd: no g=0 transition
+      e'= 2: t=1 -> carry v3=0 (pred 0), uniform=True
+      e'= 3: odd: no g=0 transition
+      e'= 4: t=1 -> carry v3=0 (pred 0), uniform=True
+      e'= 5: odd: no g=0 transition
+      e'= 6: t=2 -> carry v3=1 (pred 1), uniform=True
+      e'= 7: odd: no g=0 transition
+      e'= 8: t=1 -> carry v3=0 (pred 0), uniform=True
+   C2 reproduction: per-class max deviation from uniform cascade  min=3.70e-02 med=3.70e-02 max=1.06e-01  (class-DEPENDENT; the target-side driver is the LTE ladder)
+
+## F2-3 -- QSD ADMISSIBILITY (the braid): QSD partner ABOVE c0 @L=2, BELOW @L=3?
+   L=2: c0=0.343915  QSD partner=0.346827 (above)   [true partner 0.346827 above]
+   L=3: c0=0.333336  QSD partner=0.333231 (below)   [true partner 0.333236 below]
+   BRAID (above@L2, below@L3): CONFIRMED   matches TRUE partner's braid: True
+   => QSD carries proof weight (reproduces the crossing uniform missed).
+
+## F2-4 -- 2x2 EFFECTIVE-PAIR (basis: kinematic=gamma0-aligned, tower); direct/EP-robust
+
+   L=2: c0(kinematic anchor)=0.34391534  partner=0.34682666  gap(c0-partner)=-2.911e-03
+      B[kin,kin]=+0.34391534+0.00e+00j   B[kin,tow]=-0.00000000+0.00e+00j
+      B[tow,kin]=+0.05053138+0.00e+00j   B[tow,tow]=+0.34682666+0.00e+00j
+      basis-invariants: tr=+0.69074200  det=+0.11927901  discriminant=(l0-lp)^2=8.475753e-06  sqrt(disc)=2.911315e-03
+      gamma=0 weight of basis vecs: kinematic=0.7898  tower=0.0000 (kinematic localizes on gamma=0; tower off it -- P-consistent)
+
+   L=3: c0(kinematic anchor)=0.33333588  partner=0.33323630  gap(c0-partner)=9.958e-05
+      B[kin,kin]=+0.33333588+0.00e+00j   B[kin,tow]=+0.00000000+0.00e+00j
+      B[tow,kin]=+0.01882012+0.00e+00j   B[tow,tow]=+0.33323630+0.00e+00j
+      basis-invariants: tr=+0.66657218  det=+0.11107961  discriminant=(l0-lp)^2=9.915390e-09  sqrt(disc)=9.957605e-05
+      gamma=0 weight of basis vecs: kinematic=0.7926  tower=0.0000 (kinematic localizes on gamma=0; tower off it -- P-consistent)
+
+   dumped outputs/effective_2x2_q3.tsv (L=2,3).  L=4 SIZED+DEFERRED (see below).
+   L=4 note: the QSD-weighted L=4 2x2 needs mu=|dominant right eigvec| of the 236,196-state
+             operator (nnz ~2.3e8, ~5.5GB CSR). mu = LARGEST mode -> power iteration (pure sparse
+             matvec, GPU-friendly, NOT the banned interior LU), BUT near-degenerate top (gap<1e-4)
+             => slow subspace separation; heavy compute -> Lambda/greenlight. CONFIRMATORY only
+             (rate-fit banned); L=2,3 are the load-bearing points for Wilson's L-trend derivation.
+
+## SUMMARY: E-FORM confirmed; QSD braid PASS; 2x2 dumped (L=2,3), L=4 deferred.
