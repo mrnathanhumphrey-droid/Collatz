@@ -1,0 +1,47 @@
+# REQUEST F -- e=-1 sub-block spectral radius rho_minus
+# principal submatrix on b==-a (exits DROPPED, not renormalized); dense exact eig
+
+## lambda=0.30   |lam2|=0.5385   us=0.1775   u^2=0.5917
+   q=5  L=1  dim=10   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=7  L=1  dim=14   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=13 L=1  dim=26   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=5  L=2  dim=50   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=7  L=2  dim=98   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=13 L=2  dim=338  rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+
+## lambda=0.50   |lam2|=0.3333   us=0.2222   u^2=0.4444
+   q=5  L=1  dim=10   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=7  L=1  dim=14   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=13 L=1  dim=26   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=5  L=2  dim=50   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=7  L=2  dim=98   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=13 L=2  dim=338  rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+
+## lambda=0.70   |lam2|=0.1765   us=0.2422   u^2=0.3460
+   q=5  L=1  dim=10   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=7  L=1  dim=14   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=13 L=1  dim=26   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=5  L=2  dim=50   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=7  L=2  dim=98   rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+   q=13 L=2  dim=338  rho_-=0.000000  (rho/|lam2|=0.000, rho/us=0.000)  P1=PASS  [us-class-or-below]
+
+## P3 -- q-flatness (max-min rho over q) and L-stability
+   lam=0.30 L=1: rho over q[5, 7, 13] = [0.000000, 0.000000, 0.000000]  spread=0.00e+00
+   lam=0.30 L=2: rho over q[5, 7, 13] = [0.000000, 0.000000, 0.000000]  spread=0.00e+00
+   lam=0.50 L=1: rho over q[5, 7, 13] = [0.000000, 0.000000, 0.000000]  spread=0.00e+00
+   lam=0.50 L=2: rho over q[5, 7, 13] = [0.000000, 0.000000, 0.000000]  spread=0.00e+00
+   lam=0.70 L=1: rho over q[5, 7, 13] = [0.000000, 0.000000, 0.000000]  spread=0.00e+00
+   lam=0.70 L=2: rho over q[5, 7, 13] = [0.000000, 0.000000, 0.000000]  spread=0.00e+00
+   lam=0.30 q=5: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.30 q=7: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.30 q=13: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.50 q=5: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.50 q=7: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.50 q=13: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.70 q=5: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.70 q=7: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+   lam=0.70 q=13: L1=0.000000 L2=0.000000  |L2-L1|=0.00e+00
+
+## VERDICT
+   P1: 18/18 grid points PASS (rho_- < |lam2| strict).
+   -> maximality confirmed numerically; D1's diagonal-ray subdominant is the true max.
