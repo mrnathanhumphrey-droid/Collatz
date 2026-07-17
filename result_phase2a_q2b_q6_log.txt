@@ -1,0 +1,26 @@
+# PHASE 2a -- Q2b (EP Puiseux) + Q6 (Mr. Potato Head). Recon, no proofs.
+
+## Q2b -- EP splitting |l1-l2|(eps), weight deform p_v->p_v(1+eps*v). PRE-REG q=3 slope~1/2, q=7 slope~1
+   q=3 L=3: gaps=['4.204e-03', '1.215e-03', '3.411e-04', '3.286e-05', '5.541e-05', '8.632e-05', '9.516e-05']
+        log-log slope = 0.575   (~1/2 EP)
+   q=7 L=2: gaps=['1.290e-01', '1.297e-01', '1.298e-01', '1.299e-01', '1.299e-01', '1.299e-01', '1.299e-01']
+        log-log slope = -0.001   (other)
+
+## Q6 GATE G6 -- M(q,2,1/2) reproduces banked (r_3=1 collision, r_7~0.38)
+   M(3,2,1/2) L=2: r(ESPRIT) = 1.0000  (collision r~1)
+   M(7,2,1/2) L=2: r(ESPRIT) = 0.7433  (gapped r=0.74)
+
+## Q6 TEST A -- swap phase gen, keep weight lam=1/2. PRE-REG: collision FOLLOWS ord(gen)=2
+   M(7,-1,1/2) L=2 [ord2 at q=7]: |<gen> mod q|=2, dim=196, r=0.8310  (GAPPED r=0.831)
+   M(5,-1,1/2) L=2 [ord2 at q=5]: |<gen> mod q|=2, dim=100, r=0.8310  (GAPPED r=0.831)
+   M(13,-1,1/2) L=2 [ord2 at q=13]: |<gen> mod q|=2, dim=676, r=0.8310  (GAPPED r=0.831)
+   M(13,3,1/2) L=1 [ord3 at q=13 (control)]: |<gen> mod q|=3, dim=117, r=0.5734  (GAPPED r=0.573)
+
+## Q6 TEST B -- swap weight lam, keep gen=2 at q=3. PRE-REG: cross-Perron degeneracy lam-BLIND
+      lam    dim  r(cross/Perron)  lam1(Perron) Sum p_v^2 (dilution)
+    0.333    324           1.0000       0.50204              0.50137  CROSS GLUED (r~1)
+    0.400    324           1.0000       0.43601              0.43210  CROSS GLUED (r~1)
+    0.600    324           0.8648       0.34047              0.27447  unglued r=0.86
+    0.500    324           1.0000       0.36762              0.34392  CROSS GLUED (r~1)
+
+## ADJUD: A&B pass => d=2 ALONE is the theorem; proof = pure phase combinatorics (weights/2 quotient out).
