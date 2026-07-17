@@ -1,0 +1,23 @@
+# GATES on LEMMA D1-MAX
+
+## P-F4 -- nilpotency index at L=3 (predict 2L=6), rho_-=0, T-alphabet={2,q^L-2}
+   q=5 L=1  dim=  10  rho_-=0.00e+00  nil_index=2 (2L=2)  T-alphabet=[2, 3] pred{2,3} [OK]
+   q=5 L=2  dim=  50  rho_-=0.00e+00  nil_index=4 (2L=4)  T-alphabet=[2, 23] pred{2,23} [OK]
+   q=5 L=3  dim= 250  rho_-=0.00e+00  nil_index=5 (2L=6)  T-alphabet=[2, 123] pred{2,123} [OK]
+   q=7 L=1  dim=  14  rho_-=0.00e+00  nil_index=2 (2L=2)  T-alphabet=[2, 5] pred{2,5} [OK]
+   q=7 L=2  dim=  98  rho_-=0.00e+00  nil_index=4 (2L=4)  T-alphabet=[2, 47] pred{2,47} [OK]
+   q=7 L=3  dim= 686  rho_-=0.00e+00  nil_index=5 (2L=6)  T-alphabet=[2, 341] pred{2,341} [OK]
+
+## P-F5 -- q=3 toy corollary: rho_- = s^2 ? and maximality crossover at l=1/sqrt2
+   1/sqrt2 = 0.707107
+   l=0.3000: rho_-=0.053254  s^2=0.053254[=]  u^2=0.591716  |lam2|=0.538462  maximality HOLDS (pred holds) [OK]   | L=3 rho_-=0.053254[=s^2]
+   l=0.5000: rho_-=0.111111  s^2=0.111111[=]  u^2=0.444444  |lam2|=0.333333  maximality HOLDS (pred holds) [OK]   | L=3 rho_-=0.111111[=s^2]
+   l=0.6000: rho_-=0.140625  s^2=0.140625[=]  u^2=0.390625  |lam2|=0.250000  maximality HOLDS (pred holds) [OK]   | L=3 rho_-=0.140625[=s^2]
+   l=0.7000: rho_-=0.169550  s^2=0.169550[=]  u^2=0.346021  |lam2|=0.176471  maximality HOLDS (pred holds) [OK]   | L=3 rho_-=0.169550[=s^2]
+   l=0.7071: rho_-=0.171571  s^2=0.171571[=]  u^2=0.343148  |lam2|=0.171578  maximality HOLDS (pred holds) [OK]   | L=3 rho_-=0.171571[=s^2]
+   l=0.7200: rho_-=0.175230  s^2=0.175230[=]  u^2=0.338021  |lam2|=0.162791  maximality FAILS (pred fails) [OK]   | L=3 rho_-=0.175230[=s^2]
+   l=0.8000: rho_-=0.197531  s^2=0.197531[=]  u^2=0.308642  |lam2|=0.111111  maximality FAILS (pred fails) [OK]   | L=3 rho_-=0.197531[=s^2]
+
+## VERDICT
+   P-F4 pass  <=> L=3 index is 6, rho_-=0, T-alphabet subset {2,q^L-2}.
+   P-F5 pass  <=> rho_-(q=3)=s^2 and the maximality flip lands exactly at l=1/sqrt2.
