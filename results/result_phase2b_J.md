@@ -20,8 +20,8 @@ For whoever hunts the true symmetry later: modular actions on γ are ruled out; 
 
 **MACHINE-VERIFIED, awaiting proof:**
 - **Full circulant family {c_k} exact at every level** — 2/6/**18** complete, LU-confirmed (`result_phase2b_H.md`). *[Claude-verified.]*
-- **L-A no-return** (BFS at two levels). *[Nathan-reported.]*
-- **L-B gauge factorization** (k=0 exact). *[Nathan-reported.]*
+- **L-A no-return** (C ↛ Δ; one-step M[Δ,C]=0 + BFS at L=2,3). *[**Claude-verified 2026-07-16**, `result_phase2b_LALB.md`.]*
+- **L-B gauge factorization** (k=0 co-invariant ℓ₀ factors through (ρ,γ) exactly, dev 9e-16; 54 orbits = ≤54). *[**Claude-verified 2026-07-16**, `result_phase2b_LALB.md`.]*
 
 **REAL-T1 SKELETON stands** *[Nathan-reported]* — three lemmas, keystone verified, object reduced to **≤ 54 gauge classes**, D1's digit-automaton technology ready to redeploy. (Posed in `result_phase2b_H.md`: construct ℓ_k as the c_k-discounted Δ-return functional, verify Mᵀℓ_k = c_k ℓ_k by the gate algebra.)
 

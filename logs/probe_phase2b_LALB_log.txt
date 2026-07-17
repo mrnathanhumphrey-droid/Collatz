@@ -1,0 +1,13 @@
+# Verify L-A (no-return) and L-B (gauge factorization k=0) -- real q=3 operator
+
+## L-A -- no path from carried-diagonal C back to Delta
+   L=2 dim=324 (|D|=6 |C|=48 |O|=270): one-step w[Delta<-C]=0.0e+00 [0], w[Delta<-O]=3.9e+00, w[Delta<-any-ext]=3.9e+00 [has ext in-edges]
+        BFS from C (48 states, reached 126 total): Delta states reached = 0  -> L-A HOLDS (no return)
+   L=3 dim=8748 (|D|=18 |C|=468 |O|=8262): one-step w[Delta<-C]=0.0e+00 [0], w[Delta<-O]=1.2e+01, w[Delta<-any-ext]=1.2e+01 [has ext in-edges]
+        BFS from C (468 states, reached 3078 total): Delta states reached = 0  -> L-A HOLDS (no return)
+
+## L-B -- k=0 LEFT (co-invariant) eigenvector factors through gauge quotient (rho,g); k!=0 does not
+   L=2 dim=324  gauge orbits (rho,g): total=54, reachable-from-Delta=17  (Nathan: object reduced to <=54)
+      c0=0.343915: max within-orbit dev of LEFT eigvec = 9.35e-16  [GAUGE-INVARIANT (k=0 factors EXACTLY)]
+      ell_0 co-invariance: |val| on Delta in [1.000,1.000] (chi_0 constant), max|val| on carried-diagonal C = 1.3e-15 (zero)
+      c_1=+0.0794+0.2749j: max within-orbit dev = 1.00e+00  [NOT gauge-invariant (k=0 is special)]
