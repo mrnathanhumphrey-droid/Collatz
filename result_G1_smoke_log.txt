@@ -1,0 +1,28 @@
+# G1 SMOKE -- five substrate lemmas, machine precision. vmax=64.
+
+## L1 FORGET: T_v(x) mod q^{k+1} indep of x's q^k-digit
+   q=    5: max |T_v(x)-T_v(x')| over x=x' mod q^k = 0  OK
+   q=    7: max |T_v(x)-T_v(x')| over x=x' mod q^k = 0  OK
+   q=   11: max |T_v(x)-T_v(x')| over x=x' mod q^k = 0  OK
+   q=   13: max |T_v(x)-T_v(x')| over x=x' mod q^k = 0  OK
+   q= 1093: max |T_v(x)-T_v(x')| over x=x' mod q^k = 0  OK
+
+## q=5
+   L2 ONE-STEP  max err = 1.34e-16
+   L3 INTERTWINE max err = 2.79e-16
+   L4 REFINE    max err = 6.17e-17
+   L5 PYTHAG    <d,lift pi> max = 1.81e-17 ; X_k recursion max err = 4.44e-16
+
+## q=7
+   L2 ONE-STEP  max err = 9.83e-17
+   L3 INTERTWINE max err = 8.43e-16
+   L4 REFINE    max err = 5.62e-17
+   L5 PYTHAG    <d,lift pi> max = 1.43e-18 ; X_k recursion max err = 0.00e+00
+
+## q=11
+   L2 ONE-STEP  max err = 1.46e-16
+   L3 INTERTWINE max err = 8.29e-16
+   L4 REFINE    max err = 4.42e-17
+   L5 PYTHAG    <d,lift pi> max = 2.54e-18 ; X_k recursion max err = 2.22e-16
+
+## VERDICT: all five lemmas hold to machine precision (L1 incl q=1093). Substrate confirmed.
