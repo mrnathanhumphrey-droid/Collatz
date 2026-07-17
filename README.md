@@ -292,6 +292,10 @@ The bridge to Tao 2022 is structurally `s_mean(r; f) ≈ α_det(r) + K_h · log(
 | [`STATE.md`](STATE.md) | **Live research log** — supersedes any drift here. Per-result entries (R1–R46) + the L3 campaign gates (G0/G0b/G0c/G0c′/G1) with pre-registrations, verdicts, and walk-backs. |
 | [`L3_DEFINITIONS.md`](L3_DEFINITIONS.md) | The frozen L3 object (Phase 0): one `r_q`, three welded coordinates (build_M / renewal `A(z)` / `c_k`); dictionary + mass identity; the L3 statement and boundary clause. |
 | [`PHASE1_WORKSHEET.md`](PHASE1_WORKSHEET.md) | The five substrate lemmas (Phase 1): FORGET / ONE-STEP / INTERTWINE / REFINE / PYTHAGORAS, proved and machine-verified (incl. q=1093). |
+| [`result_phase2a_recon.md`](result_phase2a_recon.md) | Phase 2a boundary recon (Q1–Q6): names the theorem = **L→∞ coalescence**; both 2's (phase ⟨2⟩ + weight ½) load-bearing = marginality of the actual 3x+1 map. |
+| [`result_phase2b_s1.md`](result_phase2b_s1.md) | Phase 2b Session 1 (instruments A–E, C): the toy `M(q,−1,λ)` frozen + hand-solvable; diagonal-ray localization; L=4 walls out. |
+| [`BRIEF_D1_TOY_GAP.md`](BRIEF_D1_TOY_GAP.md) | **THEOREM D1** — the first hand-derived spectral gap of the program: `r(λ) = (1−λ²)/(1+λ²)`, derived then met the pre-published sweep five-for-five. Maximality owed (Request F). |
+| [`result_phase2b_s2.md`](result_phase2b_s2.md) | Phase 2b Session 2: D1 committed + the **D3 lead** (real q=3 invariant ray `Σw_r² ≈ 1/3 + (2/3)·2^{−D}`, six-digit match; eigenvalue braid toward the EP); requests F/G. |
 | [`QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`](QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md) | Standalone qx+1 universal-rate paper draft: `S_k^(q) ~ (q/3)^k`, derived at mechanism; three pillars (rate, constant, correction). |
 | [`THEOREM_C_745.md`](THEOREM_C_745.md) | The `c = 7/45` rigorous unconditional result (`S_k = 3^k‖d_k‖² → 7/15`) — the q=3 marginal fixed point. |
 
