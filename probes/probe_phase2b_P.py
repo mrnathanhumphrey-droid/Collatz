@@ -70,8 +70,11 @@ def dlog_table(qL, D):
 
 
 def gauge_resid(vec, states, qL, D, dl, k):
+    # CORRECTED 2026-07-16 (was `om**(dl[a]*k)` = k^2 twist bug; Probe C caught it): detwist by
+    # omega^{+k e_a} with omega=exp(2i pi/D) -> exp(2i pi k e_a / D). P2's "Z/3 sub-family" was the
+    # k^2 artifact; the real signal is k=0 (partner ~ gauge-invariant). C1 supersedes this test.
     om = np.exp(2j * np.pi * k / D)
-    g = np.array([vec[i] * om ** (dl[a] * k) for i, (a, b, gam) in enumerate(states)])  # detwist by omega^{+k e_a}
+    g = np.array([vec[i] * om ** dl[a] for i, (a, b, gam) in enumerate(states)])  # omega^{k e_a}
     g = g / (np.abs(g).max() + 1e-300)
     orb = {}
     for i, (a, b, gam) in enumerate(states):

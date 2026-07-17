@@ -16,7 +16,10 @@ Partner confirmed distinct from all family c_k (L=2: 2.9e-3 from nearest c_k; L=
 - **The LEFT eigenvector localizes on γ=0** (98.85% → 99.98% as L grows) — the pre-registered **left/right split**. This is the coalescence signature: the partner's *co-observable* concentrates toward c₀'s γ=0 support as the EP is approached, with an **essential, shrinking non-zero tower tail** (0.56%+0.60% at L=2) that keeps it a distinct non-family mode. **Robustly confirmed via subspace restriction — not an extraction artifact.**
 - **Pre-registered "pure-γ=0 ⟹ stop, extraction suspect": addressed.** The pure-γ=0 is LEFT-only and robust; the RIGHT home is γ≠0, so Real-T1 is *upheld*, not contradicted. (A mode is characterized by its right home here; the near-γ=0 left is non-normality/EP localization, and it is not exactly γ=0-supported.)
 
-## P2 — gauge structure: FORK (b), coupled, but sub-structured
+## ⚠️ P2 CORRECTION (from Probe C, 2026-07-16)
+`gauge_resid` had a **k² bug** (`ω^{k·e_a}` coded as `ω^{k²·e_a}`), making k∈{0,6,12} spuriously coincide. **The "coupling concentrated in k≡0 mod D/3 / ℤ/3 sub-family" claim below is RETRACTED** — it was the artifact. The real signal is k=0 (partner ≈ gauge-invariant, no twist). **FORK(b) still stands** (k=0 residual 9.6e-4 ≠ 0). Probe C then showed the (θ=e mod 3, γ) compression is refuted; the partner needs the full (e_ρ, γ) subspace. P1/P3/P4 unaffected. Code fixed.
+
+## P2 — gauge structure: FORK (b), coupled, but sub-structured [ℤ/3 sub-claim retracted — see banner]
 Does ℓ_partner factor as ω^{−e_a}·f(e_ρ, γ)? **No exact factorization at any twist k** (best residual 1.9e-2 at L=2, 9.6e-4 at L=3 — both ≫ 1e-9). **FORK (b): the partner mixes twist sectors ⇒ D3 is intrinsically a coupled-tower object.** But the coupling is *not* uniform: the near-factorization sits at **k ≡ 0 mod D/3** (L=3: k∈{0,6,12} all at 9.6e-4; the subgroup 6ℤ/18 ≅ ℤ/3). So the partner lives in a **ℤ/3 twist sub-family**, mixing those three sectors — a sharper target than "all D sectors."
 
 ## P3 — carry-tower transfer (THE HANDOFF)

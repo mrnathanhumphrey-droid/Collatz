@@ -1,0 +1,47 @@
+# PROBE C -- coupled carry-phase compression (build the derivation target; no proof, no fit)
+# NOTE: Probe P's gauge test had a k^2 bug -> P2's 'Z/3 sub-family' was partly artifact;
+#       C1 tests the compression DIRECTLY via a reduction ladder, settling it empirically.
+
+## C1 q=3 L=2  partner=0.346827
+   S=(e mod 3, gamma): dim=27   c0_img@0.334841(d9e-03) partner_img@0.214286+0.0000j (d1.3e-01, rel 4e-01) distinct=True  [no]
+   S=(e mod 6, gamma): dim=54   c0_img@0.343915(d6e-17) partner_img@0.341016+0.0000j (d5.8e-03, rel 2e-02) distinct=True  [no]
+   S=(e mod D(full), gamma): dim=54   c0_img@0.343915(d6e-17) partner_img@0.341016+0.0000j (d5.8e-03, rel 2e-02) distinct=True  [no]
+   *** partner does NOT survive the (theta=e mod 3,gamma) reduction NOR full (e,gamma) at this L ***
+   dumped FULL (e_rho,gamma) -> outputs/compressed_q3_L2.tsv  (rel 1.7e-02)
+   exact-rational dump -> outputs/compressed_q3_L2_exact.tsv
+
+## C1 q=3 L=3  partner=0.333236
+   S=(e mod 3, gamma): dim=81   c0_img@0.333333(d3e-06) partner_img@0.111614+0.0000j (d2.2e-01, rel 7e-01) distinct=True  [no]
+   S=(e mod 6, gamma): dim=162  c0_img@0.333333(d3e-06) partner_img@0.114638+0.0000j (d2.2e-01, rel 7e-01) distinct=True  [no]
+   S=(e mod 9, gamma): dim=243  c0_img@0.333410(d7e-05) partner_img@0.172914+0.0000j (d1.6e-01, rel 5e-01) distinct=True  [no]
+   S=(e mod D(full), gamma): dim=486  c0_img@0.333336(d6e-17) partner_img@0.334312+0.0000j (d1.1e-03, rel 3e-03) distinct=True  [SURVIVES(distinct)]
+   -> coarsest working subspace: (e mod D(full), gamma), dim 486
+   dumped FULL (e_rho,gamma) -> outputs/compressed_q3_L3.tsv  (rel 3.2e-03)
+
+## C2 cascade law per (theta,gamma) class, q=3 L=2
+   cascade law P(v_q(gamma')=j) = 2*3^-(j+1), tail at top = [0.6667 0.2222 0.1111]
+   per-class max deviation: min=1.11e-01 med=1.11e-01 max=3.17e-01 over 27 classes
+   -> class-DEPENDENT cascade (coupling partly here)
+   survival weight per class (avg out-weight): min=0.250 max=0.500 spread=0.250  (CLASS-DEPENDENT -> coupling lives here)
+
+## C2 cascade law per (theta,gamma) class, q=3 L=3
+   cascade law P(v_q(gamma')=j) = 2*3^-(j+1), tail at top = [0.6667 0.2222 0.0741 0.037 ]
+   per-class max deviation: min=3.70e-02 med=3.70e-02 max=1.06e-01 over 81 classes
+   -> class-DEPENDENT cascade (coupling partly here)
+   survival weight per class (avg out-weight): min=0.250 max=0.500 spread=0.250  (CLASS-DEPENDENT -> coupling lives here)
+
+## C3 lumpability diagnostic on (theta,gamma), q=3 L=2
+   within-class spread of outgoing weights: min=2.33e-01 med=2.58e-01 max=2.59e-01  (NOT globally lumpable (expected))
+   on tower classes (gamma!=0, partner home): max spread=2.59e-01
+
+## C3 lumpability diagnostic on (theta,gamma), q=3 L=3
+   within-class spread of outgoing weights: min=2.50e-01 med=2.50e-01 max=3.32e-01  (NOT globally lumpable (expected))
+   on tower classes (gamma!=0, partner home): max spread=3.32e-01
+
+## C1 q=7 L=2  partner=0.158414
+   S=(e mod 3, gamma): dim=147  c0_img@0.142857(d2e-01) partner_img@0.061224+0.0000j (d9.7e-02, rel 6e-01) distinct=False  [no]
+   S=(e mod 6, gamma): dim=294  c0_img@0.142958(d2e-01) partner_img@0.095238+0.0000j (d6.3e-02, rel 4e-01) distinct=False  [no]
+   S=(e mod 9, gamma): dim=441  c0_img@0.151845(d2e-01) partner_img@0.125245+0.0000j (d3.3e-02, rel 2e-01) distinct=False  [no]
+   S=(e mod D(full), gamma): dim=1029 c0_img@0.333334(d2e-16) partner_img@0.158897+0.0000j (d4.8e-04, rel 3e-03) distinct=True  [SURVIVES(distinct)]
+   -> coarsest working subspace: (e mod D(full), gamma), dim 1029
+   dumped FULL (e_rho,gamma) -> outputs/compressed_q7_L2.tsv  (rel 3.1e-03)
