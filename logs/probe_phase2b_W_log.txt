@@ -1,0 +1,13 @@
+# PROBE W -- reweighted compression: get the partner on the correct side of c0
+
+## q=3 L=2  true partner=0.346827, c0=sum w^2
+   c0=0.343915; true partner above c0 by 2.91e-03
+   U(uniform): compressed-partner=+0.341016+0.0000j  (below c0)  rel err to true=1.68e-02  side_correct=False
+   Q(quasi-stat): compressed-partner=+0.346827+0.0000j  (above c0)  rel err to true=9.84e-07  side_correct=True
+   D(c0-deflate): compressed-partner=+0.133111+0.0000j  (below c0)  rel err to true=6.16e-01  side_correct=False
+
+## q=3 L=3  true partner=0.333236, c0=sum w^2
+   c0=0.333336; true partner below c0 by 9.99e-05
+   U(uniform): compressed-partner=+0.334312+0.0000j  (above c0)  rel err to true=3.23e-03  side_correct=False
+   Q(quasi-stat): compressed-partner=+0.333231+0.0000j  (below c0)  rel err to true=1.43e-05  side_correct=True
+   D(c0-deflate): compressed-partner=+0.272192+0.0000j  (below c0)  rel err to true=1.83e-01  side_correct=True
