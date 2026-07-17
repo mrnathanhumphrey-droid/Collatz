@@ -1,0 +1,36 @@
+# PROBE P -- the partner's home in the carry coordinate (recon; no proof, no rate fit)
+
+## q=3 L=2  (partner near 0.346827)
+   dim=324 D=6. dense eig; partner via 2D invariant-subspace restriction (EP-robust) ...
+   PARTNER eigenvalue = 0.346827+0.000000j  (dist to nearest c_k = 2.91e-03; nearest c_k EXCLUDING c0 = 3.84e-01) -> distinct
+   P1 LEFT  (subspace) gamma-profile m(v), v=0..2: 0.0056 0.0060 0.9885
+        tower-graded? YES (mass on gamma!=0 as Real-T1 requires)
+   P1 RIGHT (subspace) gamma-profile m(v), v=0..2: 0.6505 0.3495 0.0000   <- the partner's HOME
+   P2 gauge: best twist k=0, within-(e_rho,gamma)-orbit residual=1.92e-02  [FORK(b): NO exact factorization -> mixes sectors]
+        residual by k (min group): k0:1.9e-02
+   P3 raw v->v' transfer (rows=src level 0..2, cols=dest):
+        v=0: 0.667 0.333 0.000   (rowmass 5.400e+01)
+        v=1: 0.667 0.333 0.000   (rowmass 3.600e+01)
+        v=2: 0.667 0.000 0.333   (rowmass 1.800e+01)
+
+## q=3 L=3  (partner near 0.333236)
+   dim=8748 D=18. dense eig; partner via 2D invariant-subspace restriction (EP-robust) ...
+   PARTNER eigenvalue = 0.333236+0.000000j  (dist to nearest c_k = 9.96e-05; nearest c_k EXCLUDING c0 = 1.50e-01) -> distinct
+   P1 LEFT  (subspace) gamma-profile m(v), v=0..3: 0.0001 0.0001 0.0000 0.9998
+        tower-graded? NO -- PURE gamma=0 (would contradict Real-T1)
+   P1 RIGHT (subspace) gamma-profile m(v), v=0..3: 0.6724 0.2210 0.1066 0.0000   <- the partner's HOME
+   P2 gauge: best twist k=6, within-(e_rho,gamma)-orbit residual=9.61e-04  [FORK(b): NO exact factorization -> mixes sectors]
+        residual by k (min group): k0:9.6e-04 k6:9.6e-04 k12:9.6e-04
+   P3 raw v->v' transfer (rows=src level 0..3, cols=dest):
+        v=0: 0.667 0.222 0.111 0.000   (rowmass 1.458e+03)
+        v=1: 0.667 0.222 0.111 0.000   (rowmass 9.720e+02)
+        v=2: 0.667 0.222 0.111 0.000   (rowmass 3.240e+02)
+        v=3: 0.667 0.222 0.000 0.111   (rowmass 1.620e+02)
+
+## P4 CONTROL q=7 L=2 (GAPPED r7~0.38, far from EP -> iterative safe; justified)
+   dim=21609 D=21. top-30 eigenpairs via ARPACK (gapped, not near EP) ...
+   family subdominant ratio max|c_k,k!=0|/c0 = 0.9808  (r7 lit ~0.38)
+   ACTUAL subdominant eigenvalue = 0.301675-0.126026j  |.|/c0=0.9808  dist to nearest c_k = 3.43e-16  -> FAMILY member
+   top NON-family mode: eig=0.158414+0.000000j  |.|/c0=0.4752 (rank 22 by modulus)
+   P4 gamma-profile m(v), v=0..2: 0.6476 0.3190 0.0334
+        tower-graded? YES -- tower home like q=3 (but it is NOT near-top: see rank)
