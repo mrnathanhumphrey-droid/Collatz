@@ -1,0 +1,33 @@
+# GATE -- Wilson's Real-T1: ell_k = omega^{-e_a} R_k(e_rho)/R_k(0) [gamma=0]  exact left eigvec
+
+## L=2  D=6  dim=324
+   k=0  c_k=R_k(0)=+0.343915+0.000000j  ||M^T l - c l||/||l|| = 5.55e-17  [PASS]
+   k=1  c_k=R_k(0)=+0.079365+0.274929j  ||M^T l - c l||/||l|| = 2.64e-16  [PASS]
+   k=2  c_k=R_k(0)=-0.147392+0.170194j  ||M^T l - c l||/||l|| = 2.86e-16  [PASS]
+   k=3  c_k=R_k(0)=-0.206349+0.000000j  ||M^T l - c l||/||l|| = 1.52e-16  [PASS]
+   k=4  c_k=R_k(0)=-0.147392-0.170194j  ||M^T l - c l||/||l|| = 7.08e-16  [PASS]
+   k=5  c_k=R_k(0)=+0.079365-0.274929j  ||M^T l - c l||/||l|| = 2.64e-16  [PASS]
+   => worst residual over all 6 members: 7.08e-16  [ALL PASS (<=1e-12)]
+
+## L=3  D=18  dim=8748   (18-member gate)
+   k=0  c_k=R_k(0)=+0.333336+0.000000j  ||M^T l - c l||/||l|| = 0.00e+00  [PASS]
+   k=1  c_k=R_k(0)=+0.290936+0.144276j  ||M^T l - c l||/||l|| = 3.43e-16  [PASS]
+   k=2  c_k=R_k(0)=+0.189869+0.236502j  ||M^T l - c l||/||l|| = 4.45e-16  [PASS]
+   k=3  c_k=R_k(0)=+0.076924+0.266471j  ||M^T l - c l||/||l|| = 7.63e-16  [PASS]
+   k=4  c_k=R_k(0)=-0.019564+0.252342j  ||M^T l - c l||/||l|| = 3.15e-16  [PASS]
+   k=5  c_k=R_k(0)=-0.092152+0.214216j  ||M^T l - c l||/||l|| = 2.06e-16  [PASS]
+   k=6  c_k=R_k(0)=-0.142858+0.164958j  ||M^T l - c l||/||l|| = 8.24e-16  [PASS]
+   k=7  c_k=R_k(0)=-0.175724+0.111170j  ||M^T l - c l||/||l|| = 8.16e-16  [PASS]
+   k=8  c_k=R_k(0)=-0.194098+0.055800j  ||M^T l - c l||/||l|| = 6.27e-16  [PASS]
+   k=9  c_k=R_k(0)=-0.200002+0.000000j  ||M^T l - c l||/||l|| = 4.41e-16  [PASS]
+   k=10 c_k=R_k(0)=-0.194098-0.055800j  ||M^T l - c l||/||l|| = 1.76e-16  [PASS]
+   k=11 c_k=R_k(0)=-0.175724-0.111170j  ||M^T l - c l||/||l|| = 2.06e-15  [PASS]
+   k=12 c_k=R_k(0)=-0.142858-0.164958j  ||M^T l - c l||/||l|| = 1.89e-15  [PASS]
+   k=13 c_k=R_k(0)=-0.092152-0.214216j  ||M^T l - c l||/||l|| = 2.06e-16  [PASS]
+   k=14 c_k=R_k(0)=-0.019564-0.252342j  ||M^T l - c l||/||l|| = 1.79e-15  [PASS]
+   k=15 c_k=R_k(0)=+0.076924-0.266471j  ||M^T l - c l||/||l|| = 3.77e-15  [PASS]
+   k=16 c_k=R_k(0)=+0.189869-0.236502j  ||M^T l - c l||/||l|| = 1.92e-15  [PASS]
+   k=17 c_k=R_k(0)=+0.290936-0.144276j  ||M^T l - c l||/||l|| = 5.98e-16  [PASS]
+   => worst residual over all 18 members: 3.77e-15  [ALL PASS (<=1e-12)]
+
+# VERDICT: L=2 6/6 PASS (convention locked); L=3 18/18 PASS (worst 3.8e-15).
