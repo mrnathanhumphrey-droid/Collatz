@@ -1,0 +1,35 @@
+# PROBE 2c2 -- first corrector (parity dressing of the bad cell). Direct, no eigensolves.
+
+## GATES
+
+   G1 (odd,v3=0) L=2: survival in {1/9,4/9} exactly: True  [values [np.float64(0.111111), np.float64(0.444444)]]; 4/9 <=> a+gamma==0 mod3: True  (PASS)   (frac at 4/9 = 0.5000)
+   G2 (even,v3=0) L=2: survival == 2/9 exactly: True  [max|surv-2/9| = 5.55e-17]  (PASS)
+
+   G1 (odd,v3=0) L=3: survival in {1/9,4/9} exactly: True  [values [np.float64(0.111111), np.float64(0.444444)]]; 4/9 <=> a+gamma==0 mod3: True  (PASS)   (frac at 4/9 = 0.5000)
+   G2 (even,v3=0) L=3: survival == 2/9 exactly: True  [max|surv-2/9| = 8.33e-17]  (PASS)
+
+## CORRECTOR (line search)
+
+   CORRECTOR L=2:  baseline (beta=0) [0.118367,0.604082] width 0.485714
+      line search: beta* = +0.6000 (~3/5)  bracket [0.244898,0.428571]  width 0.183673   shrink 2.644x   1/3 inside: True  partner inside: True
+      width(beta): -0.50:1.1950  -0.25:0.6903  +0.00:0.4857  +0.25:0.3436  +0.60:0.1837  +0.50:0.2231
+      residual carrier at beta* (per-cell ratio spread, and is (odd,v0) dichotomy gone?):
+        cell (0, 0): [0.244898, 0.408163]  spread 0.163265  distinct ratios ['12/49', '17/49', '20/49']
+        cell (0, 1): [0.285714, 0.400000]  spread 0.114286  distinct ratios ['2/7', '11/35', '2/5']
+        cell (1, 0): [0.244898, 0.408163]  spread 0.163265  distinct ratios ['12/49', '17/49', '20/49']
+        cell (1, 1): [0.285714, 0.428571]  spread 0.142857  distinct ratios ['2/7', '5/14', '3/7']
+        (odd,v0) by sigma: sigma=-1 -> [0.244898,0.408163], sigma=+1 -> [0.244898,0.408163]  (dichotomy GONE (overlap))
+        => residual max-spread carrier = cell (1, 0) (spread 0.163265)
+
+   CORRECTOR L=3:  baseline (beta=0) [0.118367,0.604082] width 0.485714
+      line search: beta* = +0.6000 (~3/5)  bracket [0.244898,0.428571]  width 0.183673   shrink 2.644x   1/3 inside: True  partner inside: True
+      width(beta): -0.50:1.1950  -0.25:0.6903  +0.00:0.4857  +0.25:0.3436  +0.60:0.1837  +0.50:0.2231
+      residual carrier at beta* (per-cell ratio spread, and is (odd,v0) dichotomy gone?):
+        cell (0, 0): [0.244898, 0.408163]  spread 0.163265  distinct ratios ['12/49', '17/49', '20/49']
+        cell (0, 1): [0.285714, 0.428571]  spread 0.142857  distinct ratios ['2/7', '11/35', '2/5', '3/7']
+        cell (1, 0): [0.244898, 0.408163]  spread 0.163265  distinct ratios ['12/49', '17/49', '20/49']
+        cell (1, 1): [0.285714, 0.428571]  spread 0.142857  distinct ratios ['2/7', '5/14', '3/7']
+        (odd,v0) by sigma: sigma=-1 -> [0.244898,0.408163], sigma=+1 -> [0.244898,0.408163]  (dichotomy GONE (overlap))
+        => residual max-spread carrier = cell (1, 0) (spread 0.163265)
+
+## SUMMARY: width 0.4857->0.1837 (L2, beta*=+0.600, carrier (1, 0)); 0.4857->0.1837 (L3, beta*=+0.600, carrier (1, 0))
