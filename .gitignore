@@ -113,6 +113,8 @@ watson_phase2_output.txt
 # third-party literature PDFs - retained locally, not redistributed
 *.pdf
 pdfs/
+# EXCEPTION: the project's own papers (author's work) ARE tracked
+!papers/*.pdf
 
 
 # Untracked archival/submission folders (kept on disk, out of git)
