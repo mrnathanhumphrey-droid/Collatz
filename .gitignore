@@ -88,9 +88,8 @@ result_framework_to_hateley_lift_residuals.csv
 
 # Large stationary distribution cache files (>100MB; regeneratable from
 # probe_self_similarity/extend_to_k13_k14.py or probe_epsilon_*/compute_*.py)
-probe_self_similarity/pi_16_truncated.npz
-probe_self_similarity/pi_17_truncated.npz
-probe_self_similarity/pi_18_truncated.npz
+# heavy regeneratable stationary caches (regen via probe_self_similarity/extend_to_k13_k14.py etc.)
+probe_self_similarity/pi_*_truncated.npz
 
 # Author's rough drafts for review — local only, not for repo.
 _Author_Papers/

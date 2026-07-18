@@ -1,0 +1,15 @@
+# Python dependencies for the C:/Collatz research code.
+# Core numeric stack used across probes/ and experiments/.
+numpy>=1.26
+scipy>=1.11          # sparse ops, dense/direct eig (INSTRUMENT LAW: no iterative solvers at q=3)
+sympy>=1.12          # exact symbolic checks
+mpmath>=1.3          # high-precision (50-digit) numerics
+numba>=0.59          # JIT for the trajectory generators
+polars>=1.0          # fast dataframe I/O for the experiments/ pipeline
+matplotlib>=3.8      # figures
+
+# Notes:
+#  - The L3 spectral-gap campaign (probes/probe_phase2*.py) uses only numpy + scipy.sparse,
+#    and is exact-rational (fractions.Fraction) — run from the probes/ directory.
+#  - The Bayesian GLM (model.stan, experiments/) additionally needs a Stan toolchain (cmdstanpy).
+#  - The formal-verification layer (__lean_check/) is a separate Lean 4 + mathlib project.
