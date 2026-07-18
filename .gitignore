@@ -120,3 +120,9 @@ pdfs/
 /A_Symbolic_Prefix_Decomposition_of_the_Collatz_Map_and_Its_Empirical_Determination_of_Per_Class_Statistics (2)/
 /JNT Submission/
 /_paper3_zip/
+
+# regeneratable local artifacts that moved into archive/ with their dirs (2026-07-17 cleanup)
+archive/**/*.log
+archive/**/*.npz
+archive/**/*.csv
+archive/explorations/visualization/viz_outputs/
