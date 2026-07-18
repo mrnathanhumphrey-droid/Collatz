@@ -1,0 +1,41 @@
+# PROBE 2c3-GATE -- judge Wilson's blind rung-2 derivation (P1-P4). Direct/exact.
+
+========================================================================
+## L=2
+   P3 [W-(odd channels)]: max|r + kappa*W- - 4/9| over v0 = 1.110e-16  (PASS (common intercept 4/9))
+   P3 [W-(all channels)]: max|r + kappa*W- - 4/9| over v0 = 1.110e-16  (PASS (common intercept 4/9))
+   -> using W-(odd channels) for P1/P2/P4
+   P1/P4 per population (r = 4/9 - kappa*W-):
+      pop O+: kappa=3/4  #distinct W- = 3  #distinct r = 3  r-values ['12/49', '17/49', '20/49']
+          W-=64/1323 -> r=20/49 (pred 4/9-kappa*W- = 20/49, ok)
+          W-=172/1323 -> r=17/49 (pred 4/9-kappa*W- = 17/49, ok)
+          W-=352/1323 -> r=12/49 (pred 4/9-kappa*W- = 12/49, ok)
+      pop O-: kappa=3  #distinct W- = 3  #distinct r = 3  r-values ['12/49', '17/49', '20/49']
+          W-=16/1323 -> r=20/49 (pred 4/9-kappa*W- = 20/49, ok)
+          W-=43/1323 -> r=17/49 (pred 4/9-kappa*W- = 17/49, ok)
+          W-=88/1323 -> r=12/49 (pred 4/9-kappa*W- = 12/49, ok)
+      pop E: kappa=3/2  #distinct W- = 3  #distinct r = 3  r-values ['12/49', '17/49', '20/49']
+          W-=32/1323 -> r=20/49 (pred 4/9-kappa*W- = 20/49, ok)
+          W-=86/1323 -> r=17/49 (pred 4/9-kappa*W- = 17/49, ok)
+          W-=176/1323 -> r=12/49 (pred 4/9-kappa*W- = 12/49, ok)
+   P2 MERGE: union of r-values across pops = ['12/49', '17/49', '20/49']  (== {12,17,20}/49 PASS)
+
+========================================================================
+## L=3
+   P3 [W-(odd channels)]: max|r + kappa*W- - 4/9| over v0 = 5.551e-16  (PASS (common intercept 4/9))
+   P3 [W-(all channels)]: max|r + kappa*W- - 4/9| over v0 = 5.551e-16  (PASS (common intercept 4/9))
+   -> using W-(odd channels) for P1/P2/P4
+   P1/P4 per population (r = 4/9 - kappa*W-):
+      pop O+: kappa=3/4  #distinct W- = 3  #distinct r = 3  r-values ['12/49', '17/49', '20/49']
+          W-=64/1323 -> r=20/49 (pred 4/9-kappa*W- = 20/49, ok)
+          W-=172/1323 -> r=17/49 (pred 4/9-kappa*W- = 17/49, ok)
+          W-=352/1323 -> r=12/49 (pred 4/9-kappa*W- = 12/49, ok)
+      pop O-: kappa=3  #distinct W- = 3  #distinct r = 3  r-values ['12/49', '17/49', '20/49']
+          W-=16/1323 -> r=20/49 (pred 4/9-kappa*W- = 20/49, ok)
+          W-=43/1323 -> r=17/49 (pred 4/9-kappa*W- = 17/49, ok)
+          W-=88/1323 -> r=12/49 (pred 4/9-kappa*W- = 12/49, ok)
+      pop E: kappa=3/2  #distinct W- = 3  #distinct r = 3  r-values ['12/49', '17/49', '20/49']
+          W-=32/1323 -> r=20/49 (pred 4/9-kappa*W- = 20/49, ok)
+          W-=86/1323 -> r=17/49 (pred 4/9-kappa*W- = 17/49, ok)
+          W-=176/1323 -> r=12/49 (pred 4/9-kappa*W- = 12/49, ok)
+   P2 MERGE: union of r-values across pops = ['12/49', '17/49', '20/49']  (== {12,17,20}/49 PASS)
