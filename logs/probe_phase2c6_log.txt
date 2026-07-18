@@ -1,0 +1,49 @@
+# PROBE 2c6 -- JOINT (g0,g1) corrector search + reveal. beta*=3/5 frozen. Direct matvec.
+
+==========================================================================
+## L=2
+   baseline (no trit, beta*=3/5 only): width = 0.183673  (= rung-1 9/49 = 0.183673)
+   v0-trit ALONE best: width = 0.160488 (shrink 1.144x)  [matches 2c4 ~1.14x]
+
+   *** JOINT (g0,g1) optimum ***
+   g0(tau)  = (-0.0431,-0.0185,+0.0615)   [v0 trit dressing]
+   g1(cls)  = (-0.1569,+0.0500,+0.1069)   [v1 trit: D9,U+,U-]
+   Q1 JOINT WIDTH = 0.151896   shrink vs rung-1 = 1.209x   vs v0-alone = 1.057x
+      [JOINT] bracket=[0.260489,0.412385] width=0.151896
+         cell E,v0: [0.26049,0.40975] width 0.14926
+         cell E,v1: [0.26049,0.41239] width 0.15190
+         cell O,v0: [0.26049,0.40975] width 0.14926
+         cell O,v1: [0.26256,0.41239] width 0.14983
+         => residual carrier (widest cell) = E,v1 (width 0.15190)
+         residual well-defined on trit key (e%6, v0:tau / v1:cls): False
+         residual well-defined on mod-9 key (a%9,g%9,e%6): True (69 vals)
+         residual well-defined on mod-27 key (a%9,g%27,e%6): True (69 vals)
+
+==========================================================================
+## L=3
+   baseline (no trit, beta*=3/5 only): width = 0.183673  (= rung-1 9/49 = 0.183673)
+   v0-trit ALONE best: width = 0.160585 (shrink 1.144x)  [matches 2c4 ~1.14x]
+
+   *** JOINT (g0,g1) optimum ***
+   g0(tau)  = (-0.1084,+0.0002,+0.1083)   [v0 trit dressing]
+   g1(cls)  = (+0.0000,-0.0000,+0.0000)   [v1 trit: D9,U+,U-]
+   Q1 JOINT WIDTH = 0.160353   shrink vs rung-1 = 1.145x   vs v0-alone = 1.001x
+      [JOINT] bracket=[0.269048,0.429401] width=0.160353
+         cell E,v0: [0.26905,0.38087] width 0.11182
+         cell E,v1: [0.27429,0.42940] width 0.15511
+         cell O,v0: [0.26905,0.38087] width 0.11182
+         cell O,v1: [0.26905,0.42940] width 0.16035
+         => residual carrier (widest cell) = O,v1 (width 0.16035)
+         residual well-defined on trit key (e%6, v0:tau / v1:cls): False
+         residual well-defined on mod-9 key (a%9,g%9,e%6): False
+         residual well-defined on mod-27 key (a%9,g%27,e%6): False
+
+==========================================================================
+## Q3 -- DOES ANYTHING MOVE WITH L?
+   baseline width:  L=2 0.183673  L=3 0.183673   (delta +2.22e-16)
+   v0-alone width:  L=2 0.160488  L=3 0.160585   (delta +9.78e-05)
+   JOINT width:     L=2 0.151896  L=3 0.160353   (delta +8.46e-03)
+   JOINT g0:        L=2 (np.float64(-0.0431), np.float64(-0.0185), np.float64(0.0615))  L=3 (np.float64(-0.1084), np.float64(0.0002), np.float64(0.1083))
+   JOINT g1:        L=2 (np.float64(-0.1569), np.float64(0.05), np.float64(0.1069))  L=3 (np.float64(0.0), np.float64(-0.0), np.float64(0.0))
+   residual carrier: L=2 E,v1  L=3 O,v1
+   => post-joint residual MOVES with L (|delta width| = 8.46e-03)
