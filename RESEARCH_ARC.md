@@ -5,7 +5,9 @@
 > **Read this first — a naming collision.** Three different "Phase N" numberings coexist and are NOT the same thing:
 > 1. **LIVE campaign** = Phase 0 → 1 → 2a → 2b → 2c (July 2026, the L3 spectral-gap proof). This is the frontier.
 > 2. **Proof scaffolds** = the `PHASE3_*.md` root docs (pen-and-paper briefs for the L3 crux — part of the live campaign).
-> 3. **SUPERSEDED (May)** = `PHASE1_DARK_SUBSPACE_RESULT.md`, `PHASE2_APPROX_DARK_RESULT.md`, `PHASE4_DARK_SPECTRAL_GAP_RESULT.md` — the May "dark-subspace / DWM" ancillary, a q=3-only prior effort. Same word "Phase," unrelated campaign.
+> 3. **SUPERSEDED (May)** = the "dark-subspace / DWM" ancillary (`PHASE1_DARK_SUBSPACE_RESULT.md` etc.), a q=3-only prior effort — **now moved to `archive/root_docs_superseded/`** so the root holds only the live campaign. Same word "Phase," unrelated campaign.
+
+> **Repo layout after the 2026-07-17 audit cleanup:** root = live-campaign docs + canonical results only; `papers/` = the 4 finished papers; `archive/` = dead-end explorations + superseded docs; `notes/` = 131 capstones (with `notes/_worksheets/` holding the 321 subordinate scaffolds); the 125 MB of regeneratable npz is untracked. Tracked repo ≈ **62 MB** (was 180 MB).
 
 ---
 
@@ -102,14 +104,14 @@ The program is genuinely cross-disciplinary. Fields, with representative artifac
 - **Weight is concentrated:** `npz` = **131 MB** of the 180 MB, in **three files** — `probe_self_similarity/pi_15_truncated.npz` (86.8 MB), `pi_14` (28.9 MB), `pi_13` (9.6 MB). All regeneratable (their own gitignore excludes pi_16/17/18 but pi_13/14/15 slipped through tracked). Then tsv 17 MB, csv 12 MB, md 6.8 MB (628 files), py 5.2 MB (565 files), wav 4.1 MB (3 audio renders), 2 DOCX.
 - **Tracked by top dir:** notes 452, probes 403, outputs 187, logs 180, results 120, experiments 112, root 25, + ~30 scattered May side-thread dirs (~340 files).
 
-### Audit flags (replication + clarity blockers)
-1. **Heavy tracked binaries** — 3 npz files ≈ 125 MB are regeneratable; the single biggest bloat.
-2. **Thin, mislocated dependency manifest** — only `logs/requirements.txt` (4 lines: numpy/numba/polars/matplotlib); no scipy/mpmath/sympy pin despite heavy use; no `pyproject.toml`/`environment.yml`.
-3. **Hardcoded absolute paths** — **301 of 565** `.py` files contain literal `C:\`/`D:\` paths; won't run off this machine.
-4. **The "Phase N" naming collision** (see top warning) — three unrelated campaigns share the word.
-5. **~300 of 452 notes/ files are subordinate worksheets** collapsible to ~40 `*_DISPOSITION.md` capstones (nothing should be *deleted* — it's the honest falsification record — but it can be collapsed for presentation).
-6. **The finished Paper-1 (`main.tex`) is untracked** — the replication surface doesn't contain the project's most publishable result.
-7. **Scattered May side-dirs** — most are dead tangents (Hecke/gchar, Ayyer-Singla, Atkinson, sonification `audio_data/`, one-off `probe_*` folders); a handful are live (`experiments/`, `data/`, `probe_profinite/`, `__lean_check/`, `probe_self_similarity/`, `inverse_tree/`).
+### Audit flags — and their disposition (2026-07-17 cleanup)
+1. ✅ **Heavy tracked binaries** — the 3 npz files (~125 MB) are now untracked (`git rm --cached`, kept local; regen via `probe_self_similarity/`). Tracked repo 180 MB → **62 MB**.
+2. ✅ **Dependency manifest** — added a real root `requirements.txt` (numpy/scipy/sympy/mpmath/numba/polars/matplotlib).
+3. ◐ **Hardcoded absolute paths** — the **live L3-campaign probes are already portable** (relative paths). ~214 *legacy* probes (superseded, off the active path) still hardcode `C:/`; a repo-root anchor `probes/paths.py` is provided for active/future code. Legacy rewrite deferred (low value).
+4. ✅ **The "Phase N" naming collision** — the superseded May `PHASE1/2/4_DARK` docs moved to `archive/root_docs_superseded/`; root now holds only the live Phase 0–2c campaign + `PHASE3_*` scaffolds.
+5. ✅ **notes/ collapse** — 131 capstones kept at `notes/` top level; 321 subordinate worksheets moved to `notes/_worksheets/` (nothing deleted; the honest record is intact, just navigable).
+6. ✅ **Finished papers** — the 4 papers (Paper 1–4) are now tracked in `papers/` (the author's own PDFs).
+7. ✅ **Scattered May side-dirs** — 12 dead tangents (Hecke/gchar, Ayyer-Singla, Atkinson, sonification, one-off `probe_*`) moved to `archive/explorations/`; the live dirs stay. (`fluid_dynamics/` remains but is a **misnomer** — a transfer-operator lit corpus, not turbulence.)
 
 ---
 

@@ -272,20 +272,22 @@ The bridge to Tao 2022 is structurally `s_mean(r; f) ≈ α_det(r) + K_h · log(
 
 ## How to navigate this repo
 
-### Repository layout (foldered by artifact type, 2026-07-16)
-The repo root now holds only the live campaign docs — everything else is filed by type:
+### Repository layout (foldered by artifact type; audited & cleaned 2026-07-17)
+
+> **New:** [`RESEARCH_ARC.md`](RESEARCH_ARC.md) is the top-level map of the *whole* program — every result (proven / open / falsified / retracted), the May→July chronology, the field-of-math taxonomy, and the replication path. Start there for orientation.
 
 | Folder | Contents |
 |---|---|
-| **`probes/`** | All analysis scripts (`probe_*.py`, `c_seven_*`, …). **Run from the repo root:** `python probes/<name>.py` — sibling-module imports resolve via the script's own directory, and `references/` / `data/` reads resolve from the root CWD. |
+| **`papers/`** | The 4 finished papers (Paper 1–4, author's own PDFs) — see [`papers/README.md`](papers/README.md). |
+| **`probes/`** | All analysis scripts. **Run from the repo root:** `python probes/<name>.py`. Live L3-campaign probes use relative paths + `probes/paths.py` (repo-root anchor); ~214 legacy probes hardcode paths (superseded). |
 | **`results/`** | `result_*.md` write-ups (one per probe / gate). |
-| **`notes/`** | Worksheets, briefs, pre-registrations, and investigation notes (all non-`result_` markdown). |
-| **`logs/`** | `.txt` / `.log` run logs. |
-| **`outputs/`** | Generated numeric artifacts (`.csv`, `.json`, `.npz`, `.npy`, `.pkl`). |
-| **`references/`, `data/`, `figures/`, `__lean_check/`** | Literature PDFs, input data, plots, and the Lean verification project (unchanged). |
-| **Root** | `README.md`, `STATE.md`, and the active L3 campaign docs: `L3_DEFINITIONS.md`, `PHASE1_WORKSHEET.md`, `PHASE3_*.md`, `BRIEF_D1_TOY_GAP.md`, `THEOREM_C_745.md`, `QX1_*.md`. |
+| **`notes/`** | The exploratory record — **131 capstones** (`*_DISPOSITION`, `*_verdict`, `*_RESULT`, canonical synthesis) at top; **`notes/_worksheets/`** holds the 321 subordinate scaffolds. See [`notes/README.md`](notes/README.md). |
+| **`logs/`, `outputs/`** | Run logs / generated numeric artifacts. |
+| **`archive/`** | Dead-end explorations + superseded root docs (incl. the May `PHASE1/2/4_DARK` ancillary) — kept for provenance, out of the live tree. See [`archive/README.md`](archive/README.md). |
+| **`references/`, `data/`, `figures/`, `__lean_check/`** | Literature (PDFs gitignored), input data, plots, and the Lean 4 verification project. |
+| **Root** | `README.md`, `RESEARCH_ARC.md`, `STATE.md`, and the live campaign docs: `L3_DEFINITIONS.md`, `PHASE1_WORKSHEET.md`, `PHASE3_*.md`, `BRIEF_D1_TOY_GAP.md`, `THEOREM_C_745.md`, `QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`. |
 
-Three archival folders (`A_Symbolic_Prefix_Decomposition…`, `JNT Submission`, `_paper3_zip`) are kept on disk but **untracked** (see `.gitignore`).
+The 125 MB of regeneratable `.npz` stationary caches and all third-party literature PDFs are **untracked** (see `.gitignore`); the tracked repo is ~62 MB. Author-draft folders (`_Author_Papers/`, `JNT Submission/`, …) are kept on disk but untracked.
 
 ### If you want the headline result
 1. Read [`writeup.md`](notes/writeup.md) — Result 1, Result 3, and the subsection "α_det predicts mean first-passage time and matches Tao (5.15) at the per-class level" within Result 3.
