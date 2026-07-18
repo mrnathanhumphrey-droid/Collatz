@@ -1,0 +1,47 @@
+# PROBE 2c3 -- rung-2 inputs (A) + judge (B). Direct/exact. C held for Wilson's tau.
+
+   A) MOD-9 GATE/CARRY TABLE (v0 sources), q=3 L=2: per e' mod6, gate (mod3) + carry gamma' mod3
+      units mod 9 = [1, 2, 4, 5, 7, 8]; e' mod6 sets c=1-2^{e'} mod9
+      e' mod6=0: c=0; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=2)
+      e' mod6=1: c=8; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=0(odd))
+      e' mod6=2: c=6; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=1)
+      e' mod6=3: c=2; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=0(odd))
+      e' mod6=4: c=3; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=1)
+      e' mod6=5: c=5; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=0(odd))
+      R_0(s) mass weights s=0..5: 0:65/189  1:34/189  2:20/189  3:16/189  4:20/189  5:34/189
+      dumped outputs/rung2_gate_mod9_q3.tsv (+ v>=1 one level up in judge dump)
+
+   A) MOD-9 GATE/CARRY TABLE (v0 sources), q=3 L=3: per e' mod6, gate (mod3) + carry gamma' mod3
+      units mod 9 = [1, 2, 4, 5, 7, 8]; e' mod6 sets c=1-2^{e'} mod9
+      e' mod6=0: c=0; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=2)
+      e' mod6=1: c=8; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=0(odd))
+      e' mod6=2: c=6; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=1)
+      e' mod6=3: c=2; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=0(odd))
+      e' mod6=4: c=3; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=1)
+      e' mod6=5: c=5; u mod9 that can pass = [1, 2, 4, 5, 7, 8] (LTE t(e')=0(odd))
+      R_0(s) mass weights s=0..5: 0:262145/786429  1:131074/786429  2:65540/786429  3:32776/786429  4:16400/786429  5:8224/786429
+      dumped outputs/rung2_gate_mod9_q3.tsv (+ v>=1 one level up in judge dump)
+
+   B) JUDGE L=2: r at beta*=3/5 on v0 states, keyed by (a mod9, gamma mod9, e mod6)
+      well-defined on (a mod9,gamma mod9,e mod6): True   distinct r-values: 3 = ['12/49', '17/49', '20/49']
+      population r=12/49 (0.244898): 72 keys
+      population r=17/49 (0.346939): 72 keys
+      population r=20/49 (0.408163): 72 keys
+      level-set factorization (judge sharpening):
+        r factors through (a+gamma mod9, e mod6): False
+        r factors through (a+gamma mod9): False
+        r factors through (a*gamma mod9, e mod6): False
+        r factors through (a mod9, gamma mod9): False
+      [v>=1 residual] keyed by (a mod9, gamma mod27, e mod6): well-defined True, 5 values ['2/7', '11/35', '5/14', '2/5', '3/7']
+
+   B) JUDGE L=3: r at beta*=3/5 on v0 states, keyed by (a mod9, gamma mod9, e mod6)
+      well-defined on (a mod9,gamma mod9,e mod6): True   distinct r-values: 3 = ['12/49', '17/49', '20/49']
+      population r=12/49 (0.244898): 72 keys
+      population r=17/49 (0.346939): 72 keys
+      population r=20/49 (0.408163): 72 keys
+      level-set factorization (judge sharpening):
+        r factors through (a+gamma mod9, e mod6): False
+        r factors through (a+gamma mod9): False
+        r factors through (a*gamma mod9, e mod6): False
+        r factors through (a mod9, gamma mod9): False
+      [v>=1 residual] keyed by (a mod9, gamma mod27, e mod6): well-defined True, 5 values ['2/7', '11/35', '5/14', '2/5', '3/7']
