@@ -1,0 +1,146 @@
+# PROBE 2c5 -- GATE the v1-trit blind derivation (P1'..P4'). beta*=3/5, no v0 trit. Direct/exact.
+
+==========================================================================
+## L=2
+
+ P1' LEVEL SETS  (baseline: well-def on (a%9,g%27,e%6)=True, 5 vals ['2/7', '11/35', '5/14', '2/5', '3/7'])
+   r well-defined on (e mod6)x{D9,U+,U-}: True   values/e-group max = 2 (<=3?)   distinct values total = 5
+   value-set matches baseline 5-set: True   => P1' PASS
+
+ P2' BIT (U+ vs U-) per e mod6  [b=+1 iff a==g mod3]:
+   e=0 (even): U+=2/7  U-=2/7  U+ - U- = +0.000000 (BLIND)
+   e=1 (odd): U+=5/14  U-=2/7  U+ - U- = +0.071429 (live)
+   e=2 (even): U+=11/35  U-=2/5  U+ - U- = -0.085714 (live)
+   e=3 (odd): U+=2/7  U-=3/7  U+ - U- = -0.142857 (live)
+   e=4 (even): U+=2/5  U-=11/35  U+ - U- = +0.085714 (live)
+   e=5 (odd): U+=5/14  U-=2/7  U+ - U- = +0.071429 (live)
+   e==0 mod6 b-BLIND: True   e==2,e==4 OPPOSITE sign: True (2:-0.0857, 4:+0.0857)   => P2' PASS
+
+ P3' D9 DEEP mass vs R0(s0), s0=-e mod6   (D=6; R0 arg tried mod6 and mod D):
+   => P3' PASS
+
+ P4' unit-g DEEP mass vs W_D = [R0(s2)+R0(s4)]/2 - eta*[Rh(s2)-Rh(s4)]/2, s2=2-e,s4=4-e:
+   e=0 eta=+1 (n=6): deep(raw)=['20/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+   e=0 eta=+1 (n=6): deep(raw)=['20/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+   e=0 eta=-1 (n=6): deep(raw)=['20/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+   e=0 eta=-1 (n=6): deep(raw)=['20/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+   e=1 eta=+1 (n=6): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=1,s4=3)=16/189=0.084656  raw?True  h?False
+   e=1 eta=+1 (n=6): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=1,s4=3)=16/189=0.084656  raw?True  h?False
+   e=1 eta=-1 (n=6): deep(raw)=['34/189']  deep(h)=['85/378']
+        W_D(s mod6: s2=1,s4=3)=34/189=0.179894  raw?True  h?False
+   e=1 eta=-1 (n=6): deep(raw)=['34/189']  deep(h)=['85/378']
+        W_D(s mod6: s2=1,s4=3)=34/189=0.179894  raw?True  h?False
+   e=2 eta=+1 (n=6): deep(raw)=['8/27']  deep(h)=['8/27']
+        W_D(s mod6: s2=0,s4=2)=8/27=0.296296  raw?True  h?True
+   e=2 eta=+1 (n=6): deep(raw)=['8/27']  deep(h)=['8/27']
+        W_D(s mod6: s2=0,s4=2)=8/27=0.296296  raw?True  h?True
+   e=2 eta=-1 (n=6): deep(raw)=['29/189']  deep(h)=['29/189']
+        W_D(s mod6: s2=0,s4=2)=29/189=0.153439  raw?True  h?True
+   e=2 eta=-1 (n=6): deep(raw)=['29/189']  deep(h)=['29/189']
+        W_D(s mod6: s2=0,s4=2)=29/189=0.153439  raw?True  h?True
+   e=3 eta=+1 (n=6): deep(raw)=['52/189']  deep(h)=['65/189']
+        W_D(s mod6: s2=5,s4=1)=52/189=0.275132  raw?True  h?False
+   e=3 eta=+1 (n=6): deep(raw)=['52/189']  deep(h)=['65/189']
+        W_D(s mod6: s2=5,s4=1)=52/189=0.275132  raw?True  h?False
+   e=3 eta=-1 (n=6): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=5,s4=1)=16/189=0.084656  raw?True  h?False
+   e=3 eta=-1 (n=6): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=5,s4=1)=16/189=0.084656  raw?True  h?False
+   e=4 eta=+1 (n=6): deep(raw)=['29/189']  deep(h)=['29/189']
+        W_D(s mod6: s2=4,s4=0)=29/189=0.153439  raw?True  h?True
+   e=4 eta=+1 (n=6): deep(raw)=['29/189']  deep(h)=['29/189']
+        W_D(s mod6: s2=4,s4=0)=29/189=0.153439  raw?True  h?True
+   e=4 eta=-1 (n=6): deep(raw)=['8/27']  deep(h)=['8/27']
+        W_D(s mod6: s2=4,s4=0)=8/27=0.296296  raw?True  h?True
+   e=4 eta=-1 (n=6): deep(raw)=['8/27']  deep(h)=['8/27']
+        W_D(s mod6: s2=4,s4=0)=8/27=0.296296  raw?True  h?True
+   e=5 eta=+1 (n=6): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=3,s4=5)=16/189=0.084656  raw?True  h?False
+   e=5 eta=+1 (n=6): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=3,s4=5)=16/189=0.084656  raw?True  h?False
+   e=5 eta=-1 (n=6): deep(raw)=['34/189']  deep(h)=['85/378']
+        W_D(s mod6: s2=3,s4=5)=34/189=0.179894  raw?True  h?False
+   e=5 eta=-1 (n=6): deep(raw)=['34/189']  deep(h)=['85/378']
+        W_D(s mod6: s2=3,s4=5)=34/189=0.179894  raw?True  h?False
+   => P4' PASS
+
+==========================================================================
+## L=3
+
+ P1' LEVEL SETS  (baseline: well-def on (a%9,g%27,e%6)=True, 5 vals ['2/7', '11/35', '5/14', '2/5', '3/7'])
+   r well-defined on (e mod6)x{D9,U+,U-}: True   values/e-group max = 3 (<=3?)   distinct values total = 5
+   value-set matches baseline 5-set: True   => P1' PASS
+
+ P2' BIT (U+ vs U-) per e mod6  [b=+1 iff a==g mod3]:
+   e=0 (even): U+=2/7  U-=2/7  U+ - U- = +0.000000 (BLIND)
+   e=1 (odd): U+=5/14  U-=2/7  U+ - U- = +0.071429 (live)
+   e=2 (even): U+=11/35  U-=2/5  U+ - U- = -0.085714 (live)
+   e=3 (odd): U+=2/7  U-=3/7  U+ - U- = -0.142857 (live)
+   e=4 (even): U+=2/5  U-=11/35  U+ - U- = +0.085714 (live)
+   e=5 (odd): U+=5/14  U-=2/7  U+ - U- = +0.071429 (live)
+   e==0 mod6 b-BLIND: True   e==2,e==4 OPPOSITE sign: True (2:-0.0857, 4:+0.0857)   => P2' PASS
+
+ P3' D9 DEEP mass vs R0(s0), s0=-e mod6   (D=18; R0 arg tried mod6 and mod D):
+   e=0: D9 count=108  deep(h-wt)=['65/189']  deep(raw)=['65/189']
+        R0(-e%6=0)=65/189  raw matches: ['R0(0)', 'R0(6)', 'R0(12)']   h-wt matches: ['R0(0)', 'R0(6)', 'R0(12)']
+   e=1: D9 count=108  deep(h-wt)=['85/378']  deep(raw)=['34/189']
+        R0(-e%6=5)=34/189  raw matches: ['R0(5)', 'R0(1)', 'R0(7)']   h-wt matches: []
+   e=2: D9 count=108  deep(h-wt)=['20/189']  deep(raw)=['20/189']
+        R0(-e%6=4)=20/189  raw matches: ['R0(4)', 'R0(2)', 'R0(8)']   h-wt matches: ['R0(4)', 'R0(2)', 'R0(8)']
+   e=3: D9 count=108  deep(h-wt)=['20/189']  deep(raw)=['16/189']
+        R0(-e%6=3)=16/189  raw matches: ['R0(3)', 'R0(9)', 'R0(15)']   h-wt matches: ['R0(2)', 'R0(4)', 'R0(8)']
+   e=4: D9 count=108  deep(h-wt)=['20/189']  deep(raw)=['20/189']
+        R0(-e%6=2)=20/189  raw matches: ['R0(2)', 'R0(4)', 'R0(8)']   h-wt matches: ['R0(2)', 'R0(4)', 'R0(8)']
+   e=5: D9 count=108  deep(h-wt)=['85/378']  deep(raw)=['34/189']
+        R0(-e%6=1)=34/189  raw matches: ['R0(1)', 'R0(5)', 'R0(7)']   h-wt matches: []
+   => P3' PASS
+
+ P4' unit-g DEEP mass vs W_D = [R0(s2)+R0(s4)]/2 - eta*[Rh(s2)-Rh(s4)]/2, s2=2-e,s4=4-e:
+   e=0 eta=+1 (n=162): deep(raw)=['20/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+        W_D(s mod18: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+   e=0 eta=-1 (n=162): deep(raw)=['20/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+        W_D(s mod18: s2=2,s4=4)=20/189=0.105820  raw?True  h?True
+   e=1 eta=+1 (n=162): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=1,s4=3)=16/189=0.084656  raw?True  h?False
+        W_D(s mod18: s2=1,s4=3)=16/189=0.084656  raw?True  h?False
+   e=1 eta=-1 (n=162): deep(raw)=['34/189']  deep(h)=['85/378']
+        W_D(s mod6: s2=1,s4=3)=34/189=0.179894  raw?True  h?False
+        W_D(s mod18: s2=1,s4=3)=34/189=0.179894  raw?True  h?False
+   e=2 eta=+1 (n=162): deep(raw)=['8/27']  deep(h)=['8/27']
+        W_D(s mod6: s2=0,s4=2)=8/27=0.296296  raw?True  h?True
+        W_D(s mod18: s2=0,s4=2)=8/27=0.296296  raw?True  h?True
+   e=2 eta=-1 (n=162): deep(raw)=['29/189']  deep(h)=['29/189']
+        W_D(s mod6: s2=0,s4=2)=29/189=0.153439  raw?True  h?True
+        W_D(s mod18: s2=0,s4=2)=29/189=0.153439  raw?True  h?True
+   e=3 eta=+1 (n=162): deep(raw)=['52/189']  deep(h)=['65/189']
+        W_D(s mod6: s2=5,s4=1)=52/189=0.275132  raw?True  h?False
+        W_D(s mod18: s2=17,s4=1)=52/189=0.275132  raw?True  h?False
+   e=3 eta=-1 (n=162): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=5,s4=1)=16/189=0.084656  raw?True  h?False
+        W_D(s mod18: s2=17,s4=1)=16/189=0.084656  raw?True  h?False
+   e=4 eta=+1 (n=162): deep(raw)=['29/189']  deep(h)=['29/189']
+        W_D(s mod6: s2=4,s4=0)=29/189=0.153439  raw?True  h?True
+        W_D(s mod18: s2=16,s4=0)=29/189=0.153439  raw?True  h?True
+   e=4 eta=-1 (n=162): deep(raw)=['8/27']  deep(h)=['8/27']
+        W_D(s mod6: s2=4,s4=0)=8/27=0.296296  raw?True  h?True
+        W_D(s mod18: s2=16,s4=0)=8/27=0.296296  raw?True  h?True
+   e=5 eta=+1 (n=162): deep(raw)=['16/189']  deep(h)=['20/189']
+        W_D(s mod6: s2=3,s4=5)=16/189=0.084656  raw?True  h?False
+        W_D(s mod18: s2=15,s4=17)=16/189=0.084656  raw?True  h?False
+   e=5 eta=-1 (n=162): deep(raw)=['34/189']  deep(h)=['85/378']
+        W_D(s mod6: s2=3,s4=5)=34/189=0.179894  raw?True  h?False
+        W_D(s mod18: s2=15,s4=17)=34/189=0.179894  raw?True  h?False
+   => P4' PASS
+
+==========================================================================
+## VERDICT
+ L=2: P1'(levelsets 5 vals, <=3/e True, valset True)=PASS  P2'(e0-blind True, opp True)=PASS  P3'=PASS  P4'=PASS
+ L=3: P1'(levelsets 5 vals, <=3/e True, valset True)=PASS  P2'(e0-blind True, opp True)=PASS  P3'=PASS  P4'=PASS
