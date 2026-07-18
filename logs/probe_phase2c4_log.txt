@@ -1,0 +1,40 @@
+# PROBE 2c4 -- rung-2 dressing (A,B) + v1 front tables (C). Direct/exact + 2-param search.
+
+========================================================================
+## L=2
+
+   A) DESTINATION-tau MATRIX (v0 sources -> v'=0 targets), q=3 L=2  (rows=src tau, cols=dst tau)
+      src tau=0 (12/49): row-norm dist over dst tau = [1/6, 1/2, 1/3]  (= [0.16666666666666666, 0.5, 0.3333333333333333])
+      src tau=1 (17/49): row-norm dist over dst tau = [1/6, 1/2, 1/3]  (= [0.16666666666666666, 0.5, 0.3333333333333333])
+      src tau=2 (20/49): row-norm dist over dst tau = [1/6, 1/2, 1/3]  (= [0.16666666666666666, 0.5, 0.3333333333333333])
+      => A tau-uniform by row (all src rows identical): True  [row dist = [1/6,1/2,1/3]]  (no source-tau -> dest-tau correlation)
+
+   B) g_diag=(-13,+2,+11)/49: v0 ratio spread = 1.195e-01  (v0 NOT flattened by g_diag (destination back-reaction + undressed DEEP dilution))
+      full bracket [0.245268,0.435235] width 0.189967; residual carrier by cell {E,v0:[0.2725,0.3920], E,v1:[0.2624,0.4071], O,v0:[0.2725,0.3920], O,v1:[0.2453,0.4352]}
+      full-bracket min g*=(-0.1000,-0.0130,+0.1130) width 0.160485 (rung-1 9/49=0.1837; shrink 1.14x)
+      v0-spread-min g=(-0.1820,+0.0367,+0.1453): DIRECTION cos vs g_diag = 0.9988 (ALIGNED — g_diag direction confirmed); but v0 floor spread = 0.0807 (trit CANNOT fully flatten v0)
+      => g_diag right DIRECTION, over-magnitude; v0 trit alone shrinks little (v1 is binding + gets
+         perturbed). PAIR-OF-TRITS (v0+v1, C) needed. Residual carrier = v1.
+
+========================================================================
+## L=3
+
+   A) DESTINATION-tau MATRIX (v0 sources -> v'=0 targets), q=3 L=3  (rows=src tau, cols=dst tau)
+      src tau=0 (12/49): row-norm dist over dst tau = [1/3, 1/3, 1/3]  (= [0.3333333333333333, 0.3333333333333333, 0.3333333333333333])
+      src tau=1 (17/49): row-norm dist over dst tau = [1/3, 1/3, 1/3]  (= [0.3333333333333333, 0.3333333333333333, 0.3333333333333333])
+      src tau=2 (20/49): row-norm dist over dst tau = [1/3, 1/3, 1/3]  (= [0.3333333333333333, 0.3333333333333333, 0.3333333333333333])
+      => A tau-uniform by row (all src rows identical): True  [row dist = [1/3,1/3,1/3] fully uniform]  (no source-tau -> dest-tau correlation)
+
+   B) g_diag=(-13,+2,+11)/49: v0 ratio spread = 1.208e-01  (v0 NOT flattened by g_diag (destination back-reaction + undressed DEEP dilution))
+      full bracket [0.244692,0.433044] width 0.188352; residual carrier by cell {E,v0:[0.2675,0.3883], E,v1:[0.2597,0.4293], O,v0:[0.2675,0.3883], O,v1:[0.2447,0.4330]}
+      full-bracket min g*=(-0.1090,+0.0000,+0.1090) width 0.160461 (rung-1 9/49=0.1837; shrink 1.14x)
+      v0-spread-min g=(-0.1840,+0.0350,+0.1490): DIRECTION cos vs g_diag = 0.9993 (ALIGNED — g_diag direction confirmed); but v0 floor spread = 0.0834 (trit CANNOT fully flatten v0)
+      => g_diag right DIRECTION, over-magnitude; v0 trit alone shrinks little (v1 is binding + gets
+         perturbed). PAIR-OF-TRITS (v0+v1, C) needed. Residual carrier = v1.
+
+   C) v1 ANALOG mod-9 GATE/CARRY (v>=1 sources, EVEN e' channels), q=3:
+      e' mod6=0 (t=2, c=0): passing u mod9 (gamma≡0 mod3) = [1, 2, 4, 5, 7, 8]
+      e' mod6=2 (t=1, c=6): passing u mod9 (gamma≡0 mod3) = [1, 2, 4, 5, 7, 8]
+      e' mod6=4 (t=1, c=3): passing u mod9 (gamma≡0 mod3) = [1, 2, 4, 5, 7, 8]
+      R0(s) weights s=0..5: ['262145/786429', '131074/786429', '65540/786429', '32776/786429', '16400/786429', '8224/786429']
+      dumped outputs/v1_gate_mod9_q3.tsv
