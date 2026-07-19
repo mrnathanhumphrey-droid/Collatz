@@ -83,11 +83,31 @@ vs seat 2.793 (within the dressing march). Three pair families present, no more 
 theorem's identification (m-index = coprime class, phases 2πk/3^{L−1}) is **vindicated**, and the doublet's
 1.009:1 phase ratio is explained as the k=±1 ladder's *two internal* top modes (not two integer rungs).
 
+## D2-d — the k=±4 seat + sector ID + census closure (`probes/probe_trackD2d.py`, dense L=3, committed)
+**T1 — seat occupied.** Nearest pair to the committed seat (mod 0.01005, phase 2.793): **−0.009554+0.002875j →
+modulus 0.00998, phase 2.849, distance 0.00057.** (The modulus band [0.003, 0.05] holds ~21 pairs; this is the
+unique one at the seat.)
+**T2 — sector identification CONFIRMED.** The nearest pair's gauge-character mass leads in **k=14 → ±4 class**
+(next k=5, also ±4), so the mode is ±4-dominant. D1-A's "k=4 tail" of the leading pair was this mode's shadow —
+identification confirmed. (Sector-broad, ~8% in the leading k, as all these modes are.)
+**T3 — census closes; NO fourth coprime family (warning shot did not fire).** Among the 354 conjugate pairs
+with modulus > 0.003, dominant gauge-k → coprime class:
+- **Unit coprime families = {±1, ±2, ±4} — exactly THREE, as predicted (MATCH).** No fourth unit class (and
+  none is possible mod 9).
+- The remaining dominant-k classes are all **divisible by 3** (r=0, 3, 6 → k ∈ {9}, {3}, {6,15}): 118 pairs =
+  the **internal ladder rungs** (frequencies 3k, 9k of the same three ladders), exactly what the ladder theorem
+  predicts as the deeper rungs — not a fourth coprime family.
+Caveat (honest): the dominant-k grouping is coarse (each class spans a wide modulus range), so this is a
+coprime-class **completeness** census, not a clean ladder-top count; the sharp confirmations are T1 (seat
+exists) and T2 (seat is ±4). **The ladder theorem's coprime indexing holds — three families + internal rungs +
+real modes, no unexplained fourth family.**
+
 ## Status
 ½-flux gate PASS (first symbol factor theorem-grade). Injection tables (factor two's raw material) delivered.
 D2-b rider: W top-scale UNIFORM ⟹ boundary-sourced (section-edge route). W mod 3 marginal exactly uniform.
 D2-c: C1 endpoint 1/54 derived; C2 m=2 seat exists (right ordering, 2:1 phases); C3 doublets dumped.
-Ladder: k=±4 pair confirmed at (0.00998, 2.849); three families. σ-vs-spectra judge SEALED until write-up.
+D2-d: k=±4 seat occupied (0.00998, 2.849), sector-ID ±4 confirmed, census closes at 3 coprime families (no 4th).
+σ-vs-spectra judge SEALED until write-up.
 **Held per protocol** — Wilson derives factor two blind from these tables; the assembled σ(θ) vs dense L=2,3
 spectra is the C-stage judge, same choreography as τ and the v₁ trit.
 
