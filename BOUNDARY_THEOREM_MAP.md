@@ -35,8 +35,9 @@ The claim is unchanged and cleaner (exact permutation similarity).
 - **J2 arm (L=4, SpMV, no dense eig):** PASS ×3 — (i) |d(1,4)|/σ(θ₁)=1.00059 ∈(1,1.0201), dressing
   +2.01%→+0.059%; (ii) phase 0.9928 ∈(0.9434,1); (iii) couplings 3.6e-5 « L3. Cross-check: reproduces banked
   block-6 L4 doublet to 1.6e-4.
-- **Rider (12-digit L=4 doublet split):** RUNNING (within-block subspace iteration; near-EP floor-limited to
-  ~10 digits). Feeds §6 block-splitting ledger (target split ratio ×0.076). *(append on landing)*
+- **Rider (12-digit L=4 doublet split):** LANDED, **12 digits** (converged it 259, Δ=7.5e-14). Members
+  0.320422712770+0.075242317692j & 0.320222549235+0.075251807019j; **split 2.00388e-4, ratio-to-L3 0.0758 ≈
+  ×0.076** (block-splitting ledger confirmed). Partner 0.333499901322 = g4 ρ₄ to 12 digits. §6 entry complete.
 
 ## Verification ethos (§8)
 Derive-blind / machine-gate / adjudicate; magnitudes pre-registered before the runs that judge them; the

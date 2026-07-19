@@ -72,6 +72,19 @@ eigenvalue = **d(1,4)**, all via SpMV (no dense eig). σ(θ₁)=(1/3)cos²(π/27
 doublet (D1-C block-6 Rayleigh-Ritz: 0.320423+0.075242j) to **1.6e-4** — the block-splitting scale. Two
 disjoint instruments (dense block subspace iteration vs SpMV gauge-Fourier collapse) agree on the L=4 doublet.
 
-### RIDER — 12-digit L=4 doublet split (block-splitting ledger)
-*(running; appended on completion — sanctioned within-block subspace iteration, precision reported as achieved)*
+### RIDER — 12-digit L=4 doublet split (block-splitting ledger) — **LANDED, 12 digits**
+Within-block subspace iteration (block-28 Rayleigh-Ritz, INSTRUMENT-LEGAL), **converged at it 259, Δtop=7.5e-14**
+— full 12-digit resolution (the projected operator diagonalizes exactly within the subspace, beating the naive
+matvec-floor estimate). Partner **0.333499901322** (= g4 ρ₄=0.333499901324 to **12 digits**).
+
+| L=4 doublet member | value |
+|---|---|
+| p₀ | 0.320422712770 + 0.075242317692j |
+| p₁ | 0.320222549235 + 0.075251807019j |
+| **splitting \|p₀−p₁\|** | **2.003883e-4** |
+
+**Block-splitting ledger:** splitting contracts L=3 → L=4 as 2.644285e-3 → 2.003883e-4 = **ratio 0.0758 ≈ ×0.076**
+— the pre-registered doublet-contraction ratio, confirmed to 3 digits. The subspace iteration also resolved the
+k=±2 family (0.290584+0.144542j, |·|=0.32455) and d(2,4)=0.284976+0.138565j (matching J2's 0.284822+0.138760j).
+Dump `outputs/judge_L4_doublet_split.json`. **§6 block-splitting entry now complete.**
 
