@@ -1,0 +1,9 @@
+# PROBE J2 RIDER -- 12-digit L=4 doublet split. Within-block subspace iteration (instrument-legal).
+  tower 233280 nnz 225330984
+    it 1: partner~0.003190010842  doublet-top 0.004638169026+0.000452084945j  (11s)
+    it 2: partner~0.011137619346  doublet-top 0.008608847911+0.005864892987j  (22s)
+    it 20: partner~0.332605287382  doublet-top 0.318699515900+0.074669245724j  (229s)
+    it 40: partner~0.333484393708  doublet-top 0.320347082387+0.075262108380j  (463s)
+    it 60: partner~0.333500873899  doublet-top 0.320408232152+0.075245737368j  (689s)
+    it 80: partner~0.333499910374  doublet-top 0.320423139317+0.075241745569j  (920s)
+    it 100: partner~0.333499899024  doublet-top 0.320422550943+0.075242568512j  (1152s)
