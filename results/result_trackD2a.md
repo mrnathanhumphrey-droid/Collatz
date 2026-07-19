@@ -35,8 +35,24 @@ Delivered to `outputs/injection_tables_q3.tsv` (q=3, L=3, exact rationals). Cont
 
 The W mod 9 tables (finite-L correction order) are in the TSV as well.
 
+## D2-b RIDER — W's top-scale histogram (fork discriminator): **UNIFORM → boundary-sourced**
+Flux-weighted along the stationary flow, exact rationals (`probes/probe_trackD2b.py`), L=2,3.
+- **W mod 3 marginal = exactly {1/3, 1/3, 1/3}** (uniform), both L — Wilson's pre-registration confirmed.
+- **Full W histogram = uniform interior with half-weight endpoints**: L=3 → W=0:1/18, W=1..8: 1/9 each, W=9:1/18;
+  L=2 → 1/6, 1/3, 1/3, 1/6. The endpoint (boundary) weight contracts 1/6 → 1/18 (ratio 1/3) from L=2→3. This is
+  the finite-section-of-uniform (Lebesgue-on-the-tape) signature.
+- **Top-scale leading trit ⌊W/3^{L−2}⌋**: L=3 → {t=0: 5/18, t=1: 1/3, t=2: 1/3, t=3(overflow): 1/18}. NOT the
+  {½,½,0} Bernoulli; it is **uniform {⅓,⅓,⅓} with vanishing boundary corrections** (the t=0 depletion and the
+  t=3 overflow are the two half-weight endpoints, → 0 as L→∞).
+
+**⟹ Fork verdict: factor two is BOUNDARY-SOURCED (uniform top scale), not a bulk top-scale Bernoulli — the
+derivation routes through the section-edge analysis.** Consistent with D-1's H2 (essential-curve finite
+sections): the injection is equidistributed on the tape, and the winding/factor-two structure lives at the
+truncation edge, not in a bulk coin flip.
+
 ## Status
 ½-flux gate PASS (first symbol factor theorem-grade). Injection tables (factor two's raw material) delivered.
+D2-b rider: W top-scale UNIFORM ⟹ boundary-sourced (section-edge route). W mod 3 marginal exactly uniform.
 **Held per protocol** — Wilson derives factor two blind from these tables; the assembled σ(θ) vs dense L=2,3
 spectra is the C-stage judge, same choreography as τ and the v₁ trit.
 
