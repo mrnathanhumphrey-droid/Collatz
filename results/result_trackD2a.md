@@ -50,9 +50,27 @@ derivation routes through the section-edge analysis.** Consistent with D-1's H2 
 sections): the injection is equidistributed on the tape, and the winding/factor-two structure lives at the
 truncation edge, not in a bulk coin flip.
 
+## D2-c — three parallel checks (judge still HELD). `probes/probe_trackD2c.py`
+**C1 — endpoint contraction: DERIVED, L=4 = 1/54.** The W=0 endpoint atom is the flux of the e′=0 channel (the
+only W=0 route: v≥1 sources, T=0), which equals `(1/3D)·Σ_e AC(e) = (1/3D)·(Σw)² = 1/(3D)`, normalized → **1/D
+= 1/(2·3^{L−1})**. Sequence 1/6 → 1/18 → **1/54** (×1/3 per level), exact. The Lebesgue-restriction law is not
+just extrapolated — it falls out of Σ_e AC(e) = (Σw)² = 1.
+
+**C2 — the m=2 seat EXISTS (claim confirmed; exact values not).** Seats σ(θ)=(1/3)((1+e^{iθ})/2)², θ_m=m·2π/3^{L−1}:
+- L=3 m=1 seat (0.2943, 0.698): occupied by the m=1 doublet 0.2979–0.3000 / 0.656–0.662 (phase 0.940 of seat, per the march).
+- **L=3 m=2 seat (0.1956, 1.396): OCCUPIED** — nearest pair 0.02024+0.18363j (|·|=0.1847, arg=1.461) and 0.00406+0.19035j (|·|=0.1904, arg=1.550). Modulus ~0.185–0.19 (below the seat 0.196, comparable-corrections as flagged), phase ~1.41–1.55 (seat 1.40).
+- **Ordering ✓**: m=2 (|·|≈0.19) is further from 1/3 than m=1 (|·|≈0.30). **Phase ratio ✓**: m=1:m=2 ≈ 0.66:1.41 ≈ **2:1**.
+- L=4 m=1 seat (0.3288, 0.2327): **nearly dead-on** — the doublet 0.32895–0.32914 / 0.2306–0.2308 (phase 0.993 of seat).
+- L=4 m=2 seat (0.3156, 0.4654): **below D1-C block-6 depth** — not resolved in existing data; needs a deeper block.
+
+**C3 — doublet precision (clean target for the ladder-solution prediction).**
+- L=3 (dense, 12 digits): 0.237639959367+0.183030417014j and 0.234998609841+0.183154982890j; **splitting 2.644285e-3**.
+- L=4 (D1-C block, ~6 digits): 0.320423+0.075242j and 0.320223+0.075252j; **splitting 2.002e-4**.
+
 ## Status
 ½-flux gate PASS (first symbol factor theorem-grade). Injection tables (factor two's raw material) delivered.
 D2-b rider: W top-scale UNIFORM ⟹ boundary-sourced (section-edge route). W mod 3 marginal exactly uniform.
+D2-c: C1 endpoint 1/54 derived; C2 m=2 seat exists (right ordering, 2:1 phases); C3 doublets dumped. Judge sealed.
 **Held per protocol** — Wilson derives factor two blind from these tables; the assembled σ(θ) vs dense L=2,3
 spectra is the C-stage judge, same choreography as τ and the v₁ trit.
 
