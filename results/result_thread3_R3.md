@@ -43,19 +43,32 @@ modes capture 86–89% of a_m (subdominant near-1/3 modes carry the rest), and t
 residual. So **the pure 2×2 secular level is a lower bound on the finite-L flat level**; the gap is subdominant
 modes, not a failure of the cancellation.
 
-## R3-D — THE L-LAW (the last owed piece)
-The secular product as an L-sequence, heading to 7/15 = 0.46667:
-- **L=2: 0.3066** · **L=3: 0.3512** · **L=4: pending** (`probe_thread3_R3_L4.py`, appended on landing).
+## R3-D — THE L-LAW (the last owed piece) — **limit NOT numerically pinned; stays owed**
+The secular product as an L-sequence: **L=2: 0.3066 · L=3: 0.3512 · L=4: 0.183 [DISCARDED]**.
+- **The L=4 point is not trustworthy.** The sanctioned block-2 subspace iteration **stalled at res = 4.2e-5**
+  after 3000 steps (25 min) — the c₀↔partner gap at L=4 is only |Δ| = 1.68e-4, so res/gap ≈ 0.24 means **~24%
+  mixing** between the two near-degenerate eigenvectors. g, φ, ψ are corrupted; the product 0.183 is an artifact
+  of underconvergence, **discarded**. (Shift-invert would resolve it but is barred by the instrument law at the
+  defective EP; the ~0.9995/step rate makes res≪gap infeasible in reasonable time.)
+- **R3-C survives at L=4** (ratio 0.9916) only because it is the algebraic ε_c/Δ consistency (ratio = 1 − ε_c/Δ,
+  = 1 − (−1.4e-6)/(−1.68e-4) = 0.9916) — robust to the mixing, confirming the cancellation *structure*, not the
+  physical values.
+- **The braid also complicates the sequence:** ρ_L alternates above/below 1/3 (Δ₄ = 1.68e-4 > Δ₃ = 9.96e-5, non-
+  monotone), so g/Δ is non-monotone (17.4, 189, ~27.5) and the plateau interpretation is clean only at odd L.
 
-Climbing toward 7/15. Note the braid: ρ_L alternates above/below 1/3 (even/odd L), so the *plateau
-interpretation* is only clean at odd L, but the *product* 3·g_L·φ_tow·ψ_kin is well-defined at every L and is the
-sequence whose L→∞ limit the crown must pin to 7/15 in closed form.
+**Verdict:** the reliable L-law points are L=2 (0.307, super-critical regime) and L=3 (0.351, clean) — **one clean
+point.** The L→∞ limit → 7/15 is **not demonstrated numerically** (finite-L near-EP precision + braid), and
+remains exactly what it was: the crown's owed **closed-form** step. The cancellation *mechanism* (R3-C) is
+verified at L=3 and L=4; the *value* 7/15 is not pinned by the L-sequence.
 
 ## Status
 **Mechanism DERIVED and gated** (renewal quarantined throughout — nothing here uses S∞ or the renewal limit):
-R3-A pins the backward shell convention (2/3, 10/21); R3-C verifies the Δ-cancellation at L=3 to 2.6%
-(g/Δ = 189 × Δ → finite g·φ·ψ), with the sign corrected to **+**. **Owed for theorem grade:** (i) done — convention
-frozen; (ii) partially — verified clean at L=3, L=2 outside the regime, L=4 pending; (iii) the L→∞ closed-form
-limit of 3·g_L·φ_tow·ψ_kin = 7/15 (the product 0.307 → 0.351 → … climbs toward it; the closed form is the pen's
-final step). Caveat kept visible: the 2×2 product is ~80% of the finite-L plateau (subdominant modes fill the
-rest), so "just the exceptional point" is the *leading* term, not the whole flat level at finite L.
+R3-A pins the backward shell convention (2/3, 10/21); R3-C verifies the Δ-cancellation *structure* at L=3 (2.6%)
+and L=4 (0.84%) — the diverging g/Δ meets the vanishing Δ — with the sign corrected to **+**. **Owed for theorem
+grade:** (i) done — convention frozen; (ii) mechanism verified (L=3 clean; L=2 out-of-regime; L=4 confirms the
+cancellation but its product is discarded — near-EP underconvergence, 24% eigenvector mixing); (iii) **still fully
+owed** — the L→∞ closed-form limit 3·g_L·φ_tow·ψ_kin = 7/15 is **not numerically demonstrated** (only L=3 is a
+clean point; the sequence 0.307, 0.351, [0.183 discarded] does not pin the limit). Two caveats kept visible: the
+2×2 product is ~80% of the finite-L plateau (subdominant near-1/3 modes fill the rest — the EP is the *leading*
+term, not the whole flat level); and the near-EP eigenvector precision caps how far the L-law can be pushed
+numerically with the sanctioned instrument. The cancellation *mechanism* is gated; the *value* 7/15 needs the pen.
