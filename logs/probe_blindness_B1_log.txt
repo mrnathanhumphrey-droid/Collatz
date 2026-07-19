@@ -1,0 +1,35 @@
+# PROBE B1 -- THE BLINDNESS THEOREM. M_minus built DIRECTLY from 3x-1; conjugacy discovered, not baked.
+
+====================================================================================
+## L=2
+   dim=324  nnz(M+)=3888 nnz(M-)=3888
+   B1-1 intertwiner discovery (entry-by-entry, exact):
+        M_minus == P M_plus P  (pair-swap)      : max|diff| = 0.000e+00  PASS -- SWAP is the intertwiner
+        M_minus == Sigma M_plus Sigma (Wilson)  : max|diff| = 2.580e-01  FAILS -- negation is NOT the intertwiner
+        Sigma M_plus Sigma == M_plus (symmetry?): max|diff| = 2.580e-01  
+   B1-2 partner (tower Perron):  M+ = 0.34682666   M- = 0.34682666   |diff| = 9.99e-16
+   B1-2 doublet-top:  M+ = 0.02232065+0.23512929j   M- = 0.02232065+0.23512929j   |diff| = 7.79e-16
+   B1-2 kinematic c_k spectrum (zero-carry): 36 modes, max sorted |diff| = 0.00e+00
+   B1-2 FULL spectrum (324 eigs, nearest-neighbor match): max |diff| = 7.21e-09  IDENTICAL -> blindness
+
+====================================================================================
+## L=3
+   dim=8748  nnz(M+)=944784 nnz(M-)=944784
+   B1-1 intertwiner discovery (entry-by-entry, exact):
+        M_minus == P M_plus P  (pair-swap)      : max|diff| = 0.000e+00  PASS -- SWAP is the intertwiner
+        M_minus == Sigma M_plus Sigma (Wilson)  : max|diff| = 2.500e-01  FAILS -- negation is NOT the intertwiner
+        Sigma M_plus Sigma == M_plus (symmetry?): max|diff| = 2.500e-01  
+   B1-2 partner (tower Perron):  M+ = 0.33323630   M- = 0.33323630   |diff| = 7.22e-16
+   B1-2 doublet-top:  M+ = 0.23763996+0.18303042j   M- = 0.23763996+0.18303042j   |diff| = 1.03e-15
+   B1-2 kinematic c_k spectrum (zero-carry): 324 modes, max sorted |diff| = 0.00e+00
+   B1-2 full spectrum: EXACT by permutation similarity (M- = P M+ P at 0.0e+00); partner/doublet/c_k above confirm numerically. (sorted-compare skipped: degenerate spectrum.)
+
+====================================================================================
+## B1-3 CONTRAST COLUMN (documented; the operator provably cannot see this)
+   3x+1 positive cycles (starts<=3000): 1  ->  {1,4,2}
+   3x-1 positive cycles (starts<=3000): 3  ->  {1,2}; {5,14,7,20,10}; {17,50,25,74,37,110,55,164,82,41,122,61,182,91,272,136,68,34}
+   => SAME operator, SAME spectrum (B1-1/B1-2) | DIFFERENT cycle census | different inverse trees.
+      inverse-tree density ratio (10^3-10^4x, banked): re-confirm via the banked tree code path.
+
+>> BLINDNESS VERDICT: CONFIRMED (Thm 7) -- spectra IDENTICAL (partner/doublet/c_k to 1e-15; full spec exact by permutation similarity).
+>> MECHANISM WALK-BACK: intertwiner = PAIR-SWAP P:(a,b,g)->(b,a,g) [EXACT, 0.0], NOT the committed negation Sigma:(a,b,g)->(-a,-b,-g) [dies on carry-floor vs modular arith, cf J-involution walk-back #14].

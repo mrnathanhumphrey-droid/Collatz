@@ -14,6 +14,13 @@ judge them. Status key: **PROVEN** (transcribe from source) · **OWED** (pen der
 | **4** | Ladder **labeling** total {±1,±2,±4}+DC (626/626 L3); triangular selection 3^{L−1−j}\|κ; **NOT a reduction** (purity 0.07–0.32) | PROVEN (totality+rule); scope from measured purity | **J1** (probe_judge_J1) + 2c0-G3 | **result_judge.md §J1** |
 | **5** | σ(θ)=(1/3)((1+e^{iθ})/2)²; bulk=½-flux, edge=Lebesgue restriction; dominant mode = d within couplings ≤3.6e-5 | PROVEN (sketch rigor); **Lemma D OWED** (closed-form d + march) | D2-a ½-flux (exact), D2-b/c edge, **D2-e** ladder matrices, **J2** couplings | result_trackD2a / result_trackD2e / result_judge.md §J2 |
 | **6** | Coalescence at (3,½): condensation 0.681→0.900→0.987, phase→2π/3^{L−1}, gap (1/3)sin²(θ/2) @2% by L4; braiding; overlap→1/defect 17→189 | NUMERICAL spine complete; **rides on Lemma D** | G4 braid, D-1 EP recon, W4 witnesses, **J2** arm + **rider** (12-digit L4 doublet) | result_phase2d_G4 / result_trackD1 / result_W4 / result_judge.md §J2 |
+| **7** | **Blindness:** spec(M₋)=spec(M₊) exactly — sign-blind; the distributional→pointwise barrier, located & proven | PROVEN (exact perm similarity); **lemma corrected** | **B1** — M₋=P M₊ P (pair-swap) EXACT 0.0; partner 0.34682666/0.33323630 reproduced | **result_blindness_B1.md** |
+
+**Thm 7 mechanism note (walk-back #25):** the intertwiner is the **pair-swap** P:(a,b,γ)↦(b,a,γ), **not** the
+committed negation Σ:(a,b,γ)↦(−a,−b,−γ). Σ fails (M₋≠ΣM₊Σ, 0.25–0.26) on carry-floor ⌊·⌋ vs modular-negation
+non-commutation — the same breakage as the J-involution (walk-back #14); the durable constraint "invariance must
+act on the carry as an INTEGER map, not modular" selects P (an integer relabel that sends T→−T = the +↔− flip).
+The claim is unchanged and cleaner (exact permutation similarity).
 
 ## OWED (Wilson's pen — the two remaining derivations)
 - **Lemma D** — closed-form d(gf, L) (exact lattice sum) with σ as its limit and the correction law reproducing
