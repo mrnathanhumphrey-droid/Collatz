@@ -67,10 +67,27 @@ just extrapolated — it falls out of Σ_e AC(e) = (Σw)² = 1.
 - L=3 (dense, 12 digits): 0.237639959367+0.183030417014j and 0.234998609841+0.183154982890j; **splitting 2.644285e-3**.
 - L=4 (D1-C block, ~6 digits): 0.320423+0.075242j and 0.320223+0.075252j; **splitting 2.002e-4**.
 
+## D-2 LADDER JUDGE ITEM — the k=±4 pair (committed before looking): **CONFIRMED**
+The ladder theorem identifies the m-index as the coprime class; coprime classes mod 9 = {±1, ±2, ±4}, so
+**three pair families at the top of the L=3 spectrum, no more**. Committed seat for k=±4: modulus
+(1/3)cos²(2.793/2) = **0.01005**, phase **2.793**. Hunt in the dense L=3 spectrum (`probes/probe_trackD2_k4hunt.py`):
+
+| family | committed seat (mod, phase) | nearest measured pair |
+|---|---|---|
+| k=±1 | (0.2943, 0.698) | 0.29995 / 0.656 & 0.29794 / 0.662 (the doublet = one ladder's top two internal modes) |
+| k=±2 | (0.1956, 1.396) | 0.18474 / 1.461 |
+| **k=±4** | **(0.01005, 2.793)** | **−0.00955+0.00287j → 0.00998 / 2.849** |
+
+**The k=±4 pair EXISTS where committed**: modulus 0.00998 vs seat 0.01005 (0.7% — nearly dead-on), phase 2.849
+vs seat 2.793 (within the dressing march). Three pair families present, no more at the top. The ladder
+theorem's identification (m-index = coprime class, phases 2πk/3^{L−1}) is **vindicated**, and the doublet's
+1.009:1 phase ratio is explained as the k=±1 ladder's *two internal* top modes (not two integer rungs).
+
 ## Status
 ½-flux gate PASS (first symbol factor theorem-grade). Injection tables (factor two's raw material) delivered.
 D2-b rider: W top-scale UNIFORM ⟹ boundary-sourced (section-edge route). W mod 3 marginal exactly uniform.
-D2-c: C1 endpoint 1/54 derived; C2 m=2 seat exists (right ordering, 2:1 phases); C3 doublets dumped. Judge sealed.
+D2-c: C1 endpoint 1/54 derived; C2 m=2 seat exists (right ordering, 2:1 phases); C3 doublets dumped.
+Ladder: k=±4 pair confirmed at (0.00998, 2.849); three families. σ-vs-spectra judge SEALED until write-up.
 **Held per protocol** — Wilson derives factor two blind from these tables; the assembled σ(θ) vs dense L=2,3
 spectra is the C-stage judge, same choreography as τ and the v₁ trit.
 
