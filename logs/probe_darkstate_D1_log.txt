@@ -1,0 +1,32 @@
+# PROBE D1 -- THE DARK STATE'S NAME. Discovery-first commutator census + parity. L=3 dense.
+
+## D1-A COMMUTATOR CENSUS (||[M,S]||_F/||M||_F, L=3 full op dim 8748):
+   P  (swap a<->b)           : 1.374e+00   anti/neither
+   G  (a,b -> a^-1,b^-1)     : 1.414e+00   anti/neither
+   PG (swap+invert)          : 1.414e+00   anti/neither
+   Gm (invert, gamma->-g)    : 1.414e+00   anti/neither
+   PGm(swap+inv, g->-g)      : 1.414e+00   anti/neither
+   Sig(-a,-b,-g) [B1]        : 1.410e+00   anti/neither
+   Z  (gamma->-gamma)        : 1.410e+00   anti/neither
+   => commuting involutions: NONE among candidates
+
+## D1-B: NO commuting involution -- Wilson's P-conjecture DIES (walk-back #29). P=1.374 (Thm7 intertwiner, [M,P]=(M-M_)P!=0), G/PG/Sig/Z ~ sqrt(2) (no relation).
+   functional <1| P-symmetric: True;  init v0 P-fixed: True  (both TRUE -- but P not a symmetry of M, so eigenvecs are not P-eigenstates)
+
+## D1 DIAGNOSIS -- the dark state = READOUT (agreement-functional) annihilation, not a symmetry:
+   mode           |lam|   phase    |<1|r>|   |<l|v0>| |A|=|prod|/..  channel
+   doublet m0    0.2979 +0.6620  2.724e-14  2.386e-02    2.460e-15  DARK: <1|r>~0 (DC-free)
+   doublet m1    0.3000 +0.6563  1.745e-01  4.654e-04    3.159e-04  visible
+   k2 m0         0.1847 +1.4610  4.539e-01  1.158e-03    1.727e-02  visible
+   k2 m1         0.1740 +1.4065  5.435e-01  1.024e-03    3.157e-02  visible
+   partner       0.3332 +0.0000  2.965e+01  1.826e-01    1.484e+03  visible
+   band0         0.3247 +0.4604  4.171e-14  1.826e-01    1.132e-14  DARK: <1|r>~0 (DC-free)
+   band1         0.3033 +0.8943  7.771e-02  1.826e-01    2.059e-02  visible
+   band2         0.3000 +0.6563  1.745e-01  4.654e-04    3.159e-04  visible
+   band3         0.2979 +0.6620  2.724e-14  2.386e-02    2.460e-15  DARK: <1|r>~0 (DC-free)
+   band4         0.2774 +1.2898  7.976e-15  1.826e-01    2.133e-15  DARK: <1|r>~0 (DC-free)
+   band5         0.2667 +1.3174  2.076e-01  7.256e-03    6.598e-03  visible
+   band6         0.2531 +1.6482  3.537e-02  1.826e-01    9.671e-03  visible
+   band7         0.2441 +1.1628  8.115e-15  2.043e-03    7.800e-17  DARK: <1|r>~0 (DC-free)
+
+   => SELECTION RULE (corrected): visibility = |<1|r_j>| (readout/DC coupling), NOT a global symmetry parity. The 'null column' = modes with <1|r_j> ~ 0 (mean-zero / DC-free). The all-ones readout is the DC projector; DC-free band modes are dark to the agreement observable.
