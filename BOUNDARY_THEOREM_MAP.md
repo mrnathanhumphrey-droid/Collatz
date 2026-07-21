@@ -55,6 +55,7 @@ Shell sequence S_k (= corpus per-scale L² cost, backward convention S_k = 3^k(a
 | **channel engine (⟨4⟩-orbit law)** | OffDiag_k = (2/3)Σ_m 4^{−m}C_k(m), C_k(m) = twisted ⟨4ᵐ⟩-orbit character sum of μ_{k−1}, period 3^{k−1} | **R7 FULL GATE PASS k=2,3,4,5** (engine = frozen); sign-flip DERIVED (C_k(1) crosses zero); odd gaps ≡0; Mersenne denoms 4^P−1 | **R7** | result_engine_R7 |
 | **uniform kill + strata** | correlation lives in μ non-uniformity (uniform μ ⟹ C_k≡0); OffDiag_k = (2/3)Σ_j W_j C̄_k(j), W_j k-independent | **R8 ALL PASS**: uniform kill C_k≡0 exact; band count m-independent (3^{k−1}, 2·3^{k−1}); ledger↔deviation weld exact; W_j closed form; overshoot = C̄_k(0) crosses zero k=3→4 | **R8** | result_strata_R8 |
 | **collision identity (γ on ℤ₃)** | S_K = 2Σ_m 4^{−m}γ_{K−1}(τ_m), γ_n(τ)=collision density, γ_n(0)=X_n; whole campaign = one stationary γ_∞ | **R9 FULL PASS**: identity exact K=2..6 (from μ tables); γ_n(0)=X_n weld (τ=0 = qx+1 corpus); DC self-similarity C_k(DC)=3S_{k−1}; off-DC bounded; P_n=S_n, ⟨γ_n⟩=3S_{n+1}/2 | **R9** | result_gamma_R9 |
+| **spectral form (character ledger)** | S = partial sum of frozen layers; OffDiag_{r+1}=2Λ_r, Λ_r=Σ_{ord χ=3^r}\|ν̂\|²/(4χ(4)−1); S_∞=7/15⟺Σ_{r≥1}Λ_r=−1/10 | **R10 FULL PASS**: 2Λ_r=OffDiag_{r+1} exact r=1..5 (char side only); layer mass=S_r weld; Mersenne trace 3^r/(4^{3^r}−1); r=2 excess 1.935×, r≥3 non-equidist. only | **R10** | result_charledger_R10 |
 
 **Thread-3 net:** the constant's derivation is reduced to **Σ_{k≥2} OffDiag_k = −1/5**, a finitely-computable
 exact-rational ledger. The **channel engine (R7)** now derives every term through k=5 from first principles:
@@ -69,8 +70,12 @@ x=4^{−3^j}) — so the limit law is entirely C̄_∞(j), and the −,−,+,+ o
 stratum) crossing zero between k=3 and k=4**. The **collision identity (R9)** completes the reduction: the whole
 campaign is **one stationary function γ_∞ on ℤ₃** — S_K = 2Σ_m 4^{−m}γ_{K−1}(τ_m) exact K=2…6, the τ=0 line welds
 to the qx+1 corpus (γ_n(0)=X_n), DC self-similarity is literal (C_k(DC)=3S_{k−1}), and off-DC columns are bounded
-(divergence confined to τ=0). **Still owed (pen):** γ_∞(τ) closed form and Σ_m 4^{−m}γ_∞(τ_m) = 7/30 (⟺ mean
-twisted-collision density 7/10 ⟺ S_∞ = 7/15) — equivalently the stationary C̄_∞(j) and Theorem S's L→∞ limit.
+(divergence confined to τ=0). The **spectral form (R10)** recasts the same content multiplicatively: S is a partial
+sum of **frozen character layers** Λ_r = Σ_{ord(χ)=3^r}|ν̂(χ)|²/(4χ(4)−1), with OffDiag_{r+1}=2Λ_r exact (r=1…5),
+the layer mass welding to S_r, and the Mersenne (4ᴺ−1) denominators exposed as the character-group trace of the
+weight 1/(4ω−1). **Still owed (pen):** Σ_{r≥1}Λ_r = −1/10 in closed form — the within-layer distribution of
+|ν̂(χ)|² over the χ(4)-angles (equivalently γ_∞(τ), the stationary C̄_∞(j), and Theorem S's L→∞ limit — one object,
+three coordinates: additive γ on ℤ₃, stratum C̄, multiplicative Λ).
 Walk-backs this arc: #25 (P not Σ), #26/#27 (shell convention — killed, backward pinned), #29 (dark = readout not
 symmetry); crown ℓ₀-route retracted; deviation candidate 1/(5·21^{k−1}) killed.
 
