@@ -1,9 +1,10 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-07-16):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-07-21):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
 
 ## Table of Contents
 
+- [Latest (2026-07-21) — the 7/15 constant campaign (Thread 3, R1–R10)](#latest-2026-07-21)
 - [Latest (2026-07-16) — the qx+1 L3 spectral-gap campaign](#latest-2026-07-16)
 - [Latest (2026-07-14) — fourth paper-shaped result](#latest-2026-07-14)
 - [At a glance — where the project stands](#at-a-glance)
@@ -19,6 +20,16 @@
 - [Outreach packages on Desktop](#outreach-packages-on-desktop)
 
 ---
+
+<a id="latest-2026-07-21"></a>
+> **Latest (2026-07-21) — the 7/15 constant campaign (Thread 3): the loss constant reduced to one stationary object, verified exact through k=6.**
+> A parallel thread derives the marginal (q=3) loss constant **7/15 = 3·(7/45)** — the flat per-scale level of the shell sequence `S_k` (`S₁=2/3`, `S₂=10/21`, `S∞=7/15`). Wilson derives (pen); agents gate (pre-registered, exact-rational, no fitting). Live log [`STATE.md`](STATE.md); theorem→gate bridge [`BOUNDARY_THEOREM_MAP.md`](BOUNDARY_THEOREM_MAP.md). The arc R1–R10 walked the constant down to a **single finitely-computable object, seen in three coordinates**:
+> - **The off-diagonal ledger (R6).** `S_k = S_{k−1} + OffDiag_k`; the diagonal channel replicates exactly (3-adic lift ×3 × 2-adic self-collision ×⅓ = 1), and `Σ_{k≥2} OffDiag_k = −1/5` is the constant's target. `OffDiag₂ = −4/21` **derived** from the v≠v′ Ramanujan sums, not read off the S-table.
+> - **The channel engine (R7) — FULL GATE PASS k=2..5.** `OffDiag_k = (2/3)Σ_m 4^{−m}C_k(m)`, `C_k(m)` the twisted ⟨4ᵐ⟩-orbit character sum of `μ_{k−1}` (period `3^{k−1}`). Engine == frozen at every level; the gap-2 sign-flip (−1/6 → +2/147) is **derived** as `C_k(1)` crossing zero; odd-gap channels ≡ 0; the Mersenne `(4^P−1)` denominators arrive.
+> - **Uniform kill + strata (R8) — ALL PASS.** Uniform `μ ⟹ C_k ≡ 0` exact (the correlation lives entirely in `μ`'s non-uniformity); the affine-band pair-count is m-independent (`3^{k−1}`, `2·3^{k−1}`); `OffDiag_k = (2/3)Σ_j W_j C̄_k(j)` with **k-independent** weights `W_j = x/(1−x)−x³/(1−x³)`, `x=4^{−3^j}` — so the whole limit law is `C̄_∞(j)`, and the −,−,+,+ overshoot is `C̄_k(0)` crossing zero between k=3 and k=4.
+> - **The collision identity (R9) — FULL PASS.** `S_K = 2·Σ_m 4^{−m}γ_{K−1}(τ_m)` exact **K=2..6** (from the μ tables), `τ_m = (4^{−m}−1)/3 ∈ ℤ₃`, `γ_n` a collision density with `γ_n(0)=X_n` welding the τ=0 line to the qx+1 corpus; DC self-similarity `C_k(DC)=3·S_{k−1}` literal; off-DC columns bounded (divergence confined to τ=0). **The whole campaign is one stationary function `γ_∞` on ℤ₃.**
+> - **The spectral form (R10) — FULL PASS.** Multiplicatively, S is a partial sum of a **frozen character series**: `OffDiag_{r+1} = 2Λ_r` exact **r=1..5**, `Λ_r = Σ_{ord(χ)=3^r}|ν̂(χ)|²/(4χ(4)−1)` (character side only), so `S_∞=7/15 ⟺ Σ_{r≥1}Λ_r = −1/10`. The order-`3^r` character mass welds to the shell mass `S_r` (a genuine cross-thread weld); the `(4ᴺ−1)` denominators are the character-group trace of the weight `3^r/(4^{3^r}−1)`; the within-layer excess is a hand-matched 1.935× at r=2, pure non-equidistribution from r=3 on.
+> - **What's owed (pen):** the one stationary object in closed form — `γ_∞(τ)` / `C̄_∞(j)` / `Σ_{r≥1}Λ_r = −1/10` — three coordinates of the same limit (Theorem S's L→∞ level). ~29 honest walk-backs logged across the program; the deviation candidate `1/(5·21^{k−1})` and the crown ℓ₀-route are both in the kill record.
 
 <a id="latest-2026-07-16"></a>
 > **Latest (2026-07-16) — the qx+1 paper's Result 1 enters its final step: a structured campaign on the spectral gap L3.**
@@ -310,6 +321,17 @@ The 125 MB of regeneratable `.npz` stationary caches and all third-party literat
 ---
 
 ## Documents
+
+**7/15 constant campaign — Thread 3 (2026-07-21):**
+
+| File | Contents |
+|---|---|
+| [`BOUNDARY_THEOREM_MAP.md`](BOUNDARY_THEOREM_MAP.md) | Theorem→gate bridge: Thm 1–7 (boundary theorem) + the Thread-3 constant arc (Theorem F, off-diagonal ledger, channel engine, strata, collision identity, spectral form) mapped to verifying probes/commits. |
+| [`results/result_offdiag_R6.md`](results/result_offdiag_R6.md) | **R6** — the interference ledger; `OffDiag₂ = −4/21` derived from v≠v′ Ramanujan sums; `Σ_{k≥2} OffDiag = −1/5`. |
+| [`results/result_engine_R7.md`](results/result_engine_R7.md) | **R7** — the ⟨4⟩-orbit channel engine; `OffDiag_k = (2/3)Σ_m 4^{−m}C_k(m)` == frozen, k=2..5; sign-flip derived. |
+| [`results/result_strata_R8.md`](results/result_strata_R8.md) | **R8** — uniform kill (`C_k≡0`), m-independent band count, ledger↔deviation weld, k-independent stratum weights `W_j`. |
+| [`results/result_gamma_R9.md`](results/result_gamma_R9.md) | **R9** — the collision identity `S_K = 2Σ_m 4^{−m}γ_{K−1}(τ_m)` exact K=2..6; `γ_n(0)=X_n` corpus weld; one stationary `γ_∞` on ℤ₃. |
+| [`results/result_charledger_R10.md`](results/result_charledger_R10.md) | **R10** — the spectral form; `OffDiag_{r+1}=2Λ_r` (frozen character layers) exact r=1..5; `S_∞=7/15 ⟺ Σ_{r≥1}Λ_r=−1/10`. |
 
 **qx+1 paper — Result 1 / L3 spectral-gap campaign (2026-07-16):**
 
