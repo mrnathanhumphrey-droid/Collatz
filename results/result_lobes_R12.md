@@ -73,11 +73,14 @@ character-side route; the certified ε-table bypasses it for r=6,7.)
 | 5 | 3.6499e−2 | 3.6172e−2 | +3.27e−4 | +3.27e−4 | 7.267e−2 |
 | 6 | 3.5606e−2 | 3.5945e−2 | −3.39e−4 | −3.39e−4 | 7.155e−2 |
 
-**Both lobe masses stabilize to a common value ≈ 0.0358** (L_r+M_r → ~0.072 for r≥3), while Λ_r = L_r−M_r is the
-tiny oscillating residue between them — exactly Wilson's prediction (both lobes → common L_∞, Λ_r the transient
-approach). **The lobe-dominance flips track the Λ sign** (r=2 M>L → Λ<0; r=3,4,5 L>M → Λ>0; r=6 M>L → Λ<0): the
-period-9 phase alignment lives in *which lobe leads*, on top of a stable common mass. L_r, M_r are a new observable
-the corpus never tracked — strong evidence a limiting angular mass ψ exists with ⟨ψ, Re w⟩ = 0.
+**The genuine new observable is that L_r + M_r converges at all** (→ ~0.072 for r≥3) — one weak-* moment of the
+profile (the |Re w|-moment) stabilizes, the first such the corpus has tracked. **Scope note (Wilson's correction):**
+that L_r and M_r *individually* tend to a common value is **not** independent evidence — since Re w has mean exactly
+zero (below), L_r−M_r=Λ_r→0 alone forces L_r,M_r→(L+M)/2. So this is the **|Re w|-moment stabilizing**, not
+ψ-existence. The sharp ψ-existence question (via R12-B: ψ exists ⟺ γ_∞(τ_m) converges for each fixed m) is R9-C's
+object, where only *boundedness* was established — that gap is the open decider (R13-C). The lobe-dominance flips
+still track the Λ sign (r=2 M>L → Λ<0; r=3,4,5 L>M → Λ>0; r=6 M>L → Λ<0): the period-9 phase alignment lives in
+*which lobe leads*, on top of the stable |Re w|-moment.
 
 ## R12-D — CLASS-RESOLVED PROFILE (forced check + measurement): mirror EXACT, classes balanced
 The conjugation mirror |θ̂(k)|² = |θ̂(−k)|² holds **exact** (≤1e-14) at every r, and the two mod-3 classes (k≡1,
@@ -89,8 +92,8 @@ chirp geometry, connecting the layer ledger to the corpus's (1,4) class machiner
 **R12: A/B gates PASS** (support law {k≡ξ mod 3} forced and exact; the reformulation loop closed — angular moments
 ARE C-table entries, no fifth coordinate), **F certified** (ε_k = d_k byte-equal, exact through k=8, S₇ cross-checked
 against the renewal build — the merger is exact for r≤7), **C/D/E delivered** (exact ledger to Λ₇, signs −,−,+,+,+,−,+;
-lobe masses L_r,M_r stabilizing to a common ≈0.0358 = a new ψ-existence observable; class mirror exact, ± pair
-balanced). The object is now irreducibly one scalar sequence + one angular profile obeying two derived constraints
+the |Re w|-moment L_r+M_r stabilizes to ~0.072 = a new weak-* observable [NOT ψ-existence — see R12-C scope note];
+class mirror exact, ± pair balanced). The object is now irreducibly one scalar sequence + one angular profile obeying two derived constraints
 (⟨ψ,Re w⟩=0 orthogonality; the half-step class-flip walk's mixing against Re w). **Still owed (pen):** Σ_{r≥1}Λ_r =
 −1/10 / the decorrelation rate ρ, now attackable as the lobe-difference limit L_∞−M_∞ = 0 with the −1/10 the
 integrated transient, or via the Tao-side quadratic form ⟨μ̂, K_rμ̂⟩. No fitting; exact gates, labeled numeric
