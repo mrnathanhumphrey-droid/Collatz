@@ -52,11 +52,16 @@ Shell sequence S_k (= corpus per-scale L² cost, backward convention S_k = 3^k(a
 | dark-state selection | some band modes unread by the agreement functional | **readout zero** ⟨1\|r⟩=0 (DC-free), NOT a symmetry (no involution commutes; P dies #29) | **D1** (walk-back #29) | result_darkstate_D1 |
 | deviation law | S_k = 7/15 + d_k | candidate 1/(5·21^{k−1}) **DEAD** at k=3 (wrong sign); true d_k signs +,+,−,−,−,− (overshoot) | **R5** (exact S₁..S₆ from Basic.lean) | result_deviation_R5 |
 | **off-diagonal ledger** | S_k = S_{k−1} + OffDiag_k (diagonal replicates via 3×⅓=1); Σ_{k≥2} OffDiag = −1/5 | **R6-A GATE PASS**: OffDiag₂ = −4/21 derived from v≠v′ Ramanujan sums; diagonal replicates exactly k=2,3 | **R6** | result_offdiag_R6 |
+| **channel engine (⟨4⟩-orbit law)** | OffDiag_k = (2/3)Σ_m 4^{−m}C_k(m), C_k(m) = twisted ⟨4ᵐ⟩-orbit character sum of μ_{k−1}, period 3^{k−1} | **R7 FULL GATE PASS k=2,3,4,5** (engine = frozen); sign-flip DERIVED (C_k(1) crosses zero); odd gaps ≡0; Mersenne denoms 4^P−1 | **R7** | result_engine_R7 |
 
 **Thread-3 net:** the constant's derivation is reduced to **Σ_{k≥2} OffDiag_k = −1/5**, a finitely-computable
-exact-rational ledger whose k=2 term (−4/21, 95.2%) is derived from first principles (R6-A). Two-sign tail
-mechanism located: |v−v′|=1 vanishes (parity), |v−v′|=2 flips sign k=2→3 (−1/6 → +2/147), |v−v′|≥3 stays
-negative. **Still owed (pen):** the closed-form tail law summing to −1/105 (equivalently Theorem S's L→∞ limit).
+exact-rational ledger. The **channel engine (R7)** now derives every term through k=5 from first principles:
+OffDiag_k = (2/3)Σ_m 4^{−m}C_k(m), with C_k the twisted ⟨4ᵐ⟩-orbit character sum of μ_{k−1} (period 3^{k−1}),
+engine == frozen for k=2,3,4,5. The two-sign tail mechanism is derived, not observed: the gap-2 sign flip
+(−1/6 → +2/147) is **C_k(1) crossing zero** (C₂(1)=−1, C₃(1)=+4/49); odd-gap channels vanish identically
+(conjugate-kill, verified); a positive DC/self-orbit class of collapsing Mersenne weight 1/(4^{3^{k−1}}−1) races
+the negative bulk to produce the −,−,+,+ overshoot. **Still owed (pen):** the stationary limit profile C_∞(m) and
+Σ_k (2/3)4^{−m}C_k(m) → −1/5 in closed form (equivalently Theorem S's L→∞ limit).
 Walk-backs this arc: #25 (P not Σ), #26/#27 (shell convention — killed, backward pinned), #29 (dark = readout not
 symmetry); crown ℓ₀-route retracted; deviation candidate 1/(5·21^{k−1}) killed.
 
