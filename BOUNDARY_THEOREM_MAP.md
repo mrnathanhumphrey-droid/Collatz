@@ -39,8 +39,30 @@ The claim is unchanged and cleaner (exact permutation similarity).
   0.320422712770+0.075242317692j & 0.320222549235+0.075251807019j; **split 2.00388e-4, ratio-to-L3 0.0758 ≈
   ×0.076** (block-splitting ledger confirmed). Partner 0.333499901322 = g4 ρ₄ to 12 digits. §6 entry complete.
 
+## THREAD 3 — the constant (7/15, 7/45) and the loss ledger (Theorem F + the off-diagonal derivation)
+The paper's constant, welded to the frozen instrument and its derivation reduced to a finitely-computable ledger.
+Shell sequence S_k (= corpus per-scale L² cost, backward convention S_k = 3^k(a_k − a_{k−1}/3) = A_k − A_{k−1}).
+
+| item | statement | status | gate / probe | result doc |
+|---|---|---|---|---|
+| **Theorem F (flat level)** | S_k → S∞ = 7/15 = 3·(7/45); three faces (spectral ρ=1/3, renewal driftless, Fourier non-decaying shells) | **welded** (S₁=2/3, S₂=10/21 exact; asymptote L-truncated at finite L) | **R1** re-weld + boundary contrast; **R2** A∞=(3/2)S∞=7/10 | result_thread3_R1 / result_thread3_R2 |
+| A∞ = 7/10 (amplitude) | c₀-mode overlap of the independent pair | value holds; **ℓ₀-route DEAD** (2531/4095≠7/10) → it's the Jordan coupling (3/2)·β, not isolated ℓ₀ | **R2-B** (walk-back on crown route) | result_thread3_R2 §R2-B |
+| **Theorem S (secular)** | S∞ = 3·g·φ_tow·ψ_kin; diverging g/Δ × vanishing Δ cancel | **mechanism gated** (Δ-cancellation L=3 ratio 0.974, L=4 0.9916); **L→∞ closed form OWED** | **R3** (L=4 product discarded: near-EP underconvergence) | result_thread3_R3 |
+| edge-density law | 7/15 = L→∞ 1/θ edge residue (Dirichlet integral) | **NOT numerically confirmable** (finite-L band discrete, EP wall) — must close symbolically (Ĝ) | **R4** (scaling laws refuted at finite L) | result_thread3_R4 |
+| dark-state selection | some band modes unread by the agreement functional | **readout zero** ⟨1\|r⟩=0 (DC-free), NOT a symmetry (no involution commutes; P dies #29) | **D1** (walk-back #29) | result_darkstate_D1 |
+| deviation law | S_k = 7/15 + d_k | candidate 1/(5·21^{k−1}) **DEAD** at k=3 (wrong sign); true d_k signs +,+,−,−,−,− (overshoot) | **R5** (exact S₁..S₆ from Basic.lean) | result_deviation_R5 |
+| **off-diagonal ledger** | S_k = S_{k−1} + OffDiag_k (diagonal replicates via 3×⅓=1); Σ_{k≥2} OffDiag = −1/5 | **R6-A GATE PASS**: OffDiag₂ = −4/21 derived from v≠v′ Ramanujan sums; diagonal replicates exactly k=2,3 | **R6** | result_offdiag_R6 |
+
+**Thread-3 net:** the constant's derivation is reduced to **Σ_{k≥2} OffDiag_k = −1/5**, a finitely-computable
+exact-rational ledger whose k=2 term (−4/21, 95.2%) is derived from first principles (R6-A). Two-sign tail
+mechanism located: |v−v′|=1 vanishes (parity), |v−v′|=2 flips sign k=2→3 (−1/6 → +2/147), |v−v′|≥3 stays
+negative. **Still owed (pen):** the closed-form tail law summing to −1/105 (equivalently Theorem S's L→∞ limit).
+Walk-backs this arc: #25 (P not Σ), #26/#27 (shell convention — killed, backward pinned), #29 (dark = readout not
+symmetry); crown ℓ₀-route retracted; deviation candidate 1/(5·21^{k−1}) killed.
+
 ## Verification ethos (§8)
 Derive-blind / machine-gate / adjudicate; magnitudes pre-registered before the runs that judge them; the
-walk-back ledger (24 logged retractions, public); instrument law near the EP (dense/direct or within-block
+walk-back ledger (~29 logged retractions, public); instrument law near the EP (dense/direct or within-block
 power iteration; NO ARPACK/shift-invert; exact-rational; no rate-fitting). Honest negatives ARE the win —
-the 27^{−L} law (44× miss), the ±4-seat withdrawal, and J1's strong form are all in the record.
+the 27^{−L} law (44× miss), the ±4-seat withdrawal, J1's strong form, the crown ℓ₀-route (2531/4095), the
+deviation candidate 1/(5·21^{k−1}), and R4's finite-L edge-density scalings are all in the record.
