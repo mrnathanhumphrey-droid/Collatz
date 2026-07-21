@@ -53,6 +53,7 @@ Shell sequence S_k (= corpus per-scale L² cost, backward convention S_k = 3^k(a
 | deviation law | S_k = 7/15 + d_k | candidate 1/(5·21^{k−1}) **DEAD** at k=3 (wrong sign); true d_k signs +,+,−,−,−,− (overshoot) | **R5** (exact S₁..S₆ from Basic.lean) | result_deviation_R5 |
 | **off-diagonal ledger** | S_k = S_{k−1} + OffDiag_k (diagonal replicates via 3×⅓=1); Σ_{k≥2} OffDiag = −1/5 | **R6-A GATE PASS**: OffDiag₂ = −4/21 derived from v≠v′ Ramanujan sums; diagonal replicates exactly k=2,3 | **R6** | result_offdiag_R6 |
 | **channel engine (⟨4⟩-orbit law)** | OffDiag_k = (2/3)Σ_m 4^{−m}C_k(m), C_k(m) = twisted ⟨4ᵐ⟩-orbit character sum of μ_{k−1}, period 3^{k−1} | **R7 FULL GATE PASS k=2,3,4,5** (engine = frozen); sign-flip DERIVED (C_k(1) crosses zero); odd gaps ≡0; Mersenne denoms 4^P−1 | **R7** | result_engine_R7 |
+| **uniform kill + strata** | correlation lives in μ non-uniformity (uniform μ ⟹ C_k≡0); OffDiag_k = (2/3)Σ_j W_j C̄_k(j), W_j k-independent | **R8 ALL PASS**: uniform kill C_k≡0 exact; band count m-independent (3^{k−1}, 2·3^{k−1}); ledger↔deviation weld exact; W_j closed form; overshoot = C̄_k(0) crosses zero k=3→4 | **R8** | result_strata_R8 |
 
 **Thread-3 net:** the constant's derivation is reduced to **Σ_{k≥2} OffDiag_k = −1/5**, a finitely-computable
 exact-rational ledger. The **channel engine (R7)** now derives every term through k=5 from first principles:
@@ -60,8 +61,12 @@ OffDiag_k = (2/3)Σ_m 4^{−m}C_k(m), with C_k the twisted ⟨4ᵐ⟩-orbit char
 engine == frozen for k=2,3,4,5. The two-sign tail mechanism is derived, not observed: the gap-2 sign flip
 (−1/6 → +2/147) is **C_k(1) crossing zero** (C₂(1)=−1, C₃(1)=+4/49); odd-gap channels vanish identically
 (conjugate-kill, verified); a positive DC/self-orbit class of collapsing Mersenne weight 1/(4^{3^{k−1}}−1) races
-the negative bulk to produce the −,−,+,+ overshoot. **Still owed (pen):** the stationary limit profile C_∞(m) and
-Σ_k (2/3)4^{−m}C_k(m) → −1/5 in closed form (equivalently Theorem S's L→∞ limit).
+the negative bulk to produce the −,−,+,+ overshoot. The **uniform kill + strata (R8)** sharpen this: the whole
+correlation lives in μ's non-uniformity (uniform μ ⟹ C_k ≡ 0 exact), the affine-band pair-count is m-independent
+(3^{k−1}, 2·3^{k−1}), and OffDiag_k = (2/3)Σ_j W_j C̄_k(j) with **W_j k-independent** (closed form x/(1−x)−x³/(1−x³),
+x=4^{−3^j}) — so the limit law is entirely C̄_∞(j), and the −,−,+,+ overshoot is **C̄_k(0) (the dominant W₀=20/63
+stratum) crossing zero between k=3 and k=4**. **Still owed (pen):** the stationary profile C̄_∞(j) and
+Σ_k (2/3)Σ_j W_j C̄_k(j) → −1/5 in closed form (equivalently Theorem S's L→∞ limit).
 Walk-backs this arc: #25 (P not Σ), #26/#27 (shell convention — killed, backward pinned), #29 (dark = readout not
 symmetry); crown ℓ₀-route retracted; deviation candidate 1/(5·21^{k−1}) killed.
 
