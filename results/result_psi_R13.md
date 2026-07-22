@@ -78,6 +78,11 @@ transport**. With the β/U tables now built (R11/R12) and the support law (R12-A
 (O(N log N) per block) — **cheaper than July but not free.** Deferred, as instructed.
 
 ## Status
+**[UPDATE 2026-07-21: R13-C RESOLVED in R14.** Wilson's follow-up argument — γ_n(τ_m) is a partial sum of the
+frozen A-series (A_r=C_{r+1}(m)/3), bounded ⟹ no nonzero A_r-limit ⟹ **no non-uniform ψ exists** (limiting-shape
+reading dead; the object is the deviation field δ_r). The "open decider" below is closed in the *ruled-out*
+direction. See result_deviation_field_R14.md.]**
+
 **R13: D gate PASS** (the chirp β *is* the renewal — X_{n+1}=1+3·2^{−v}X_n and t′=β(2^{−v}4^t) both exact, n=1…5;
 #32 not incurred), **A/B measured** (ψ is not uniform — an oscillating ~0.2–4.6% deficit — with the depletion
 concentrated near the trivial character x≈0, a candidate mixing signal), **C decider OPEN** (γ_r(τ_m) convergence is
