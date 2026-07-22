@@ -39,12 +39,21 @@ Layer 1 is entirely uniform: Λ₁^unif = −2/21 = Λ₁, so **bulk₁ = 0**. T
 | 6 | (exact) | −3.387e−4 | −0.00157208 |
 | 7 | (exact) | +2.148e−4 | −0.00135723 |
 
-**Target: Σ_{r≥2} S_r·b_r = −1/10 − Σ_{r≥1}Λ_r^unif ≈ −9.845e−4** (exact). The key structural fact: **Σ Λ_r^unif ≈
-−0.09902, i.e. the entire −1/10 is ~99% the uniform baseline** — dominated by Λ₁^unif = −2/21 = −0.0952 (layer-1,
-all-uniform) plus Λ₂^unif = −110/29127 = −0.00378; r≥3 is doubly-exp negligible. **The genuine deviation-field
-content — the hard, oscillating part — is only the ~−0.001 bulk sum.** Signs of S_r·b_r: −,+,+,+,−,+ (r=2…7), the
-same oscillation as Λ_r (bulk ≈ Λ for r≥3 where Λ^unif is dead). The bulk sequence b_r, not Λ_r, is now the clean
-object whose sum is the (small) theorem.
+**Target: Σ_{r≥2} S_r·b_r = −1/10 − Σ_{r≥1}Λ_r^unif ≈ −9.845e−4** (exact; ΣΛ_r^unif = −2/21 − 110/29127 + ~−8.8e−7
+= −0.0990155). Signs of S_r·b_r: −,+,+,+,−,+ (r=2…7), the same oscillation as Λ_r (bulk ≈ Λ for r≥3 where Λ^unif is
+dead). The bulk sequence b_r, not Λ_r, is the clean object whose sum is the theorem.
+
+**⚠️ CORRECTION (Wilson, post-R15) — the "99% uniform baseline" is NOT progress; it localizes the difficulty, it
+does not reduce it.** The Σ Λ_r^unif ≈ −0.099 that makes up 99% of −1/10 is precisely the part the corpus **already
+has derivations for** — S₁ = 2/3 (four routes) and S₂ = 10/21 — so nothing new is explained by it. And the residual
+deviation-field sum is *worse* conditioned, not better:
+- r=2 bulk alone: S₂·b₂ = −240/67963 = **−3.531e−3**
+- total bulk: **−9.845e−4**  ⟹  **Σ_{r≥3} bulk = +2.547e−3**
+
+The tail (r≥3) is **2.59× the answer in magnitude and opposite in sign, cancelling 72% of the r=2 term.** A small
+sum from a large sign-alternating series is the **hardest** convergence to establish, not the easiest — no
+truncation argument can work. The reframe **relocates the entire difficulty into 1% of the target**; it is not
+"99% solved." This is the operative fact, not the baseline size.
 
 ## R15-D — TWO-BAND DECOMPOSITION (measurement, NO fit): **the clean 5/3 story does NOT hold**
 Split b_r at the Re w zeros (cos2πx=1/4, x=arccos(1/4)/2π=0.2088): a_r = Re w>0 band (near x≈0/1), c_r = Re w<0

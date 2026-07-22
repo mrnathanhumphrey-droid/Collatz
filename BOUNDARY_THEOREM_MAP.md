@@ -60,7 +60,8 @@ Shell sequence S_k (= corpus per-scale L² cost, backward convention S_k = 3^k(a
 | **support law + closed loop + lobes** | U(k,ξ)=0 unless k≡ξ mod 3; angular moments = C-table entries (loop closed); Λ_r=L_r−M_r lobe difference | **R12 A/B PASS + F certified**: support law {k≡ξ mod3} exact; Σ\|θ̂\|²e(km)=C_{r+1}(m)/3 exact (no 5th coordinate); ε_k=d_k byte-equal (exact k≤8); Λ₁..Λ₇ exact; \|Re w\|-moment L_r+M_r stabilizes; classes balanced c₁=c₂ | **R12** | result_lobes_R12 |
 | **lobe constant + ψ-existence + transport** | Re w=15/(2D)−½ (mean 0, ‖w‖²=1/15); chirp β = renewal (t′=β(2⁻ᵛ4ᵗ)); ψ = transport fixed point | **R13 D PASS, C→resolved by R14**: renewal-in-orbit gate exact n=1..5 (β IS the dynamics); ψ NOT uniform (osc ~2.5% deficit, depletion near trivial char); ψ-existence decider was open at r≤7, **RESOLVED in R14** | **R13** | result_psi_R13 |
 | **deviation-field retarget (ψ-resolution)** | γ_n=1+Σ_{r≤n}A_r (A_r=C_{r+1}/3); bounded ⟹ no non-uniform ψ; Λ_r=S_r⟨δ_r,Re w⟩+Λ_r^unif | **R14 R13-C RESOLVED**: no non-uniform ψ (limiting-shape dead), object=deviation field δ_r; retarget identity exact; ⚠️Flag A (Λ^unif≠0 at r=2, 52%), Flag B (sign=two-band not near-0 lobe), ± reframe gated (odd lattice, no self-conj primitives) | **R14** | result_deviation_field_R14 |
-| **endpoint split + bulk correlation** | Λ_r=S_r·b_r+Λ_r^unif; Λ^unif=R10-C trace (measure-free); bulk b_r = clean object | **R15 A PASS, B forced**: endpoint identity exact r=2..7 (anchors byte-exact); no self-conj primitive angle (odd) ⟹ Λ^unif=sampling residual; ⭐−1/10 is ~99% uniform baseline (−2/21@r=1), deviation-field bulk sum ≈−9.845e−4; ⚠️D: 5/3 two-band story does NOT hold | **R15** | result_endpoint_R15 |
+| **endpoint split + bulk correlation** | Λ_r=S_r·b_r+Λ_r^unif; Λ^unif=R10-C trace (measure-free); bulk b_r = clean object | **R15 A PASS, B forced**: endpoint identity exact r=2..7 (anchors byte-exact); no self-conj primitive angle (odd) ⟹ Λ^unif=sampling residual; −1/10 is ~99% uniform baseline BUT this LOCALIZES difficulty into 1% not reduces (tail 2.59× answer, opp sign, 72% cancel); ⚠️#34 (5/3), #35 (trapezoid) killed | **R15** | result_endpoint_R15 |
+| **transport recursion (the operator)** | θ_r = one step from μ_{r−1}+Geom; b_r = output of PASS-gated chain; crux = tower contraction | **R16 A PASS**: transport step exact r=2..6 (b_r not unexplained; b₁=0, no initial condition); dim δ_r=3^{r−1}−1; q-sign oscillation is q=3-critical; **CRUX = uniform tower contraction = SAME as R5 qx+1 open step (two campaigns, one obstruction)** | **R16** | result_transport_R16 |
 
 **Thread-3 net:** the constant's derivation is reduced to **Σ_{k≥2} OffDiag_k = −1/5**, a finitely-computable
 exact-rational ledger. The **channel engine (R7)** now derives every term through k=5 from first principles:
@@ -86,7 +87,8 @@ symmetry); crown ℓ₀-route retracted; deviation candidate 1/(5·21^{k−1}) k
 
 ## Verification ethos (§8)
 Derive-blind / machine-gate / adjudicate; magnitudes pre-registered before the runs that judge them; the
-walk-back ledger (~29 logged retractions, public); instrument law near the EP (dense/direct or within-block
+walk-back ledger (~32 logged retractions, public; Thread-3 adds #31 dense-flat kernel, #34 5/3 end-lobe, #35
+endpoint-atom/trapezoid — #32/#33/#36 pre-registered but NOT incurred); instrument law near the EP (dense/direct or within-block
 power iteration; NO ARPACK/shift-invert; exact-rational; no rate-fitting). Honest negatives ARE the win —
 the 27^{−L} law (44× miss), the ±4-seat withdrawal, J1's strong form, the crown ℓ₀-route (2531/4095), the
 deviation candidate 1/(5·21^{k−1}), and R4's finite-L edge-density scalings are all in the record.
