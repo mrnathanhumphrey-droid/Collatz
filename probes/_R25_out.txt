@@ -1,0 +1,46 @@
+# PROBE R25 -- THE SPECTRAL GAP (subcritical), deep build r->14.
+
+## R25-A  DEFINITION AUDIT: 1-rho = 8eps/(3+2eps); amplitude/(eps*X_inf) must = 8/(3+2eps)
+      eps rho=3(1-l)/(1+l)      1-rho  8eps/(3+2eps)   match
+      0.1       0.75000000   0.250000       0.250000      OK
+     0.05       0.87096774   0.129032       0.129032      OK
+     0.02       0.94736842   0.052632       0.052632      OK
+     0.01       0.97350993   0.026490       0.026490      OK
+    0.005       0.98671096   0.013289       0.013289      OK
+    0.002       0.99467377   0.005326       0.005326      OK
+   (R24 discrepancy CAUSE: amplitude used Y_inf=1+Sum S_r, eps*X_inf used X_inf=Sum S_r; the X0=1 term.
+    Fix: amplitude := (1-rho)*X_inf; then amplitude/(eps*X_inf)=(1-rho)/eps=8/(3+2eps) exactly. But NOTE
+    (1-rho)X_inf = C*rho + subdominant corrections, NOT clean C -- which is why we DROP X_inf for (B).)
+
+## R25-B  THE PLATEAU  C(lam)=lim_r S_r/rho^r  (per-r, NO tail; theorem = C(1/2)=7/15)
+   eps=0.1   rho=0.75000: p_r (r=9..14) = 0.28331  0.28022  0.27824  0.27685  0.27579  0.27506   Aitken C=0.273479
+   eps=0.05  rho=0.87097: p_r (r=9..14) = 0.37775  0.37610  0.37515  0.37461  0.37424  0.37409   Aitken C=0.373983
+   eps=0.02  rho=0.94737: p_r (r=9..14) = 0.43250  0.43216  0.43215  0.43233  0.43253  0.43281   Aitken C=0.431792
+   eps=0.01  rho=0.97351: p_r (r=9..14) = 0.44987  0.45005  0.45042  0.45088  0.45131  0.45176   Aitken C=0.443105
+   eps=0.005 rho=0.98671: p_r (r=9..14) = 0.45834  0.45879  0.45936  0.45998  0.46052  0.46107   Aitken C=0.522120
+   eps=0.002 rho=0.99467: p_r (r=9..14) = 0.46335  0.46397  0.46466  0.46537  0.46599  0.46659   Aitken C=0.482757
+   [does p_r flatten (plateau exists = gap survives) and C(lam) -> 7/15=0.466667 as eps->0?]
+
+## R25-C  THE GATEKEEPER: |lam2|/rho vs eps  (subdominant/dominant eigenvalue ratio)
+   from d_r = p_{r+1}-p_r ~ C2(lam2/rho)^r*(lam2/rho-1): ratio |d_{r+1}/d_r| -> |lam2|/rho
+      eps      rho                          d_r ratios (last 6)  |lam2|/rho (geom, last 5)  osc?
+      0.1  0.75000 +0.652  +0.662  +0.645  +0.696  +0.770  +0.684                    0.69013    no
+     0.05  0.87097 +0.614  +0.650  +0.579  +0.564  +0.669  +0.420                    0.56903    no
+     0.02  0.94737 +0.453  +0.484  +0.026  -20.017  +1.161  +1.379                    0.83421   YES
+     0.01  0.97351 -0.010  +33.096  +2.071  +1.244  +0.928  +1.055                    2.42279   YES
+    0.005  0.98671 -5.144  +1.222  +1.273  +1.073  +0.893  +0.991                    1.08094   YES
+    0.002  0.99467 +2.578  +1.045  +1.131  +1.017  +0.879  +0.964                    1.00375    no
+   [GATEKEEPER: |lam2|/rho bounded < 1 as eps->0 => gap survives, C continuous at 1/2, ROUTE CLOSES.
+    -> 1 => gap shuts at the point of interest; osc (sign flips) => complex pair = the period-9 risk.]
+
+## R25-D  RICHARDSON IN eps on the PLATEAU C(lam) (not on X_inf)
+      eps  C(lam)=plateau
+      0.1        0.273479
+     0.05        0.373983
+     0.02        0.431792
+     0.01        0.443105
+    0.005        0.522120
+    0.002        0.482757
+   linear-in-eps extrap (eps=0.002,0.005) -> C(1/2) = 0.456514
+   Aitken on C(eps) sequence        -> C(1/2) = 0.495846   [target 7/15 = 0.466667]
+   [CAVEAT: valid ONLY if (C) shows the gap survives; if |lam2|/rho->1 the plateau C(lam) is ill-defined near 1/2.]
