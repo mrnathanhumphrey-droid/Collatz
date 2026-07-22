@@ -63,6 +63,7 @@ Shell sequence S_k (= corpus per-scale L² cost, backward convention S_k = 3^k(a
 | **endpoint split + bulk correlation** | Λ_r=S_r·b_r+Λ_r^unif; Λ^unif=R10-C trace (measure-free); bulk b_r = clean object | **R15 A PASS, B forced**: endpoint identity exact r=2..7 (anchors byte-exact); no self-conj primitive angle (odd) ⟹ Λ^unif=sampling residual; −1/10 is ~99% uniform baseline BUT this LOCALIZES difficulty into 1% not reduces (tail 2.59× answer, opp sign, 72% cancel); ⚠️#34 (5/3), #35 (trapezoid) killed | **R15** | result_endpoint_R15 |
 | **transport recursion (the operator)** | θ_r = one step from μ_{r−1}+Geom; b_r = output of PASS-gated chain; crux = tower contraction | **R16 A PASS**: transport step exact r=2..6 (b_r not unexplained; b₁=0, no initial condition); dim δ_r=3^{r−1}−1; q-sign oscillation is q=3-critical; **CRUX = uniform tower contraction = SAME as R5 qx+1 open step (two campaigns, one obstruction)** | **R16** | result_transport_R16 |
 | **slow mode (transport symbol + QSD)** | \|D\|²=1/(5−4cos(πξ/3^r)) linearized symbol; δ = quasi-stationary field | **R17 A/D**: closed form = linearized slow-mode symbol ((i)(ii)(iii) hold; exact transport non-diagonal, flagged); self-map+invariance PASS; ⟨\|D\|²⟩_δ≈1/3 flat (δ contracts at mean, QSD balance vs source); angular width holds (broad, not localized) | **R17** | result_slowmode_R17 |
+| **regimes + roughness + branch + max-coeff** | settle ρ↔√(1/3) conflation; δ roughness; branch factorization; the Prop-1.17 quantity | **R18 A/C/D + B/E**: exact ratio ≈**1/2** not √(1/3), not geometric (osc @r=6); ρ≈0.988=signed-**envelope** decay = different object (my 0.984-as-√⅓ **corrected**); δ **equipartitioned across orders, NOT high-frequency** (adjective corrected, broad/non-decaying holds); **branch T=U₊D₊+U₋D₋ PASS** (DC 1/3,2/3; wts 1/15,4/15; #39 not incurred); **max/typical GROWS 1.34→4.25 ⟹ triangle/max bound DEAD** (Prop-1.17 gap concrete); R85 rung-1 exact-dead/float-cheap. **Crux refined: not norm contraction but summable fixed-m C-table decay (R12-B), max route confirmed dead** | **R18** | result_regimes_R18 |
 
 **Thread-3 net:** the constant's derivation is reduced to **Σ_{k≥2} OffDiag_k = −1/5**, a finitely-computable
 exact-rational ledger. The **channel engine (R7)** now derives every term through k=5 from first principles:
@@ -89,7 +90,8 @@ symmetry); crown ℓ₀-route retracted; deviation candidate 1/(5·21^{k−1}) k
 ## Verification ethos (§8)
 Derive-blind / machine-gate / adjudicate; magnitudes pre-registered before the runs that judge them; the
 walk-back ledger (~32 logged retractions, public; Thread-3 adds #31 dense-flat kernel, #34 5/3 end-lobe, #35
-endpoint-atom/trapezoid — #32/#33/#36 pre-registered but NOT incurred); instrument law near the EP (dense/direct or within-block
+endpoint-atom/trapezoid, plus two self-corrections in R18 — ρ≈0.984-as-√(1/3) conflation and the "high-frequency"
+adjective (δ is broad/equipartitioned) — #32/#33/#36/#37/#39 pre-registered but NOT incurred); instrument law near the EP (dense/direct or within-block
 power iteration; NO ARPACK/shift-invert; exact-rational; no rate-fitting). Honest negatives ARE the win —
 the 27^{−L} law (44× miss), the ±4-seat withdrawal, J1's strong form, the crown ℓ₀-route (2531/4095), the
 deviation candidate 1/(5·21^{k−1}), and R4's finite-L edge-density scalings are all in the record.
