@@ -1,5 +1,13 @@
 # Probe R19 — typical or exceptional — **the decider: the equipartition/regularity route SURVIVES R18-D**
 
+> **⚠️ CORRECTIONS (R20, Wilson).** Two framings below are retracted — the **result (R19-B: the fixed low-harmonic
+> coefficients are typical) stands**, but: (1) **R19-A's "pinned to ⟨2⟩ / 2-adic resonance" is VACUOUS** — 2 is a
+> primitive root mod 3^r, so ⟨2⟩ is the *entire* unit group and "the argmax is a power of 2" is content-free. The
+> real content is R20-C: the additive max migrates to the **trivial character** at dist (2/3)^r. (2) **R19-D's
+> "A-side dominant spike m*=3^{r−1}, ≈0.233, not 7/30" is VACATED** — R20-D proves A_r(3^{r−1}) = −S_r/2 exactly
+> (→ −7/30), a definitional DC-split artifact, not a spike. R19-D's *conclusion* (the additive spike doesn't touch
+> the b_r route) survives on R19-B + R20-A/C, not on the A-side argmax.
+
 **Date:** 2026-07-21  Reuses R7/R9/R10; exact rationals on the A-side. Probe `probes/probe_exceptional_R19.py`.
 Per-r shape statistics only (no cross-r rates, no periods). Disambiguates the **additive** spike (R18-D) from the
 **A-side** coefficients A_r(m) = γ_r(τ_m) − γ_{r−1}(τ_m) = C_{r+1}(m)/3 (real, exact; the dlog-angular moments,

@@ -1,0 +1,91 @@
+# PROBE R20 -- THE THIN WINDOW.
+
+(building full A-spectra for the stratum norms, r=3..7 ...)
+
+## R20-A  THE m<=r WINDOW (measurement, NO fit): all m=1..r, ratio to stratum-typical, weighted running sum
+   r=3  (Lambda_r=+1.319864e-03, b_r=+2.861388e-03, ||delta||^2_A=0.2352)
+       m  v3        A_r(m)  |A|^2/typ    4^-m A_r(m)    running sum
+       1   0     +0.009152      0.019  +2.288036e-03  +2.288036e-03
+       2   0     +0.005324      0.007  +3.327598e-04  +2.620796e-03
+       3   1     -0.093963      0.676  -1.468170e-03  +1.152626e-03
+     [running sum at m=r vs Lambda_r=+1.319864e-03: gap=-1.67e-04]
+   r=4  (Lambda_r=+6.502557e-04, b_r=+1.400766e-03, ||delta||^2_A=0.2299)
+       m  v3        A_r(m)  |A|^2/typ    4^-m A_r(m)    running sum
+       1   0     +0.004012      0.015  +1.003090e-03  +1.003090e-03
+       2   0     -0.001588      0.002  -9.923775e-05  +9.038518e-04
+       3   1     -0.009875      0.031  -1.542966e-04  +7.495552e-04
+       4   0     -0.016494      0.256  -6.442945e-05  +6.851257e-04
+     [running sum at m=r vs Lambda_r=+6.502557e-04: gap=+3.49e-05]
+   r=5  (Lambda_r=+3.269206e-04, b_r=+7.022774e-04, ||delta||^2_A=0.2947)
+       m  v3        A_r(m)  |A|^2/typ    4^-m A_r(m)    running sum
+       1   0     +0.003742      0.038  +9.355831e-04  +9.355831e-04
+       2   0     +0.000877      0.002  +5.482893e-05  +9.904120e-04
+       3   1     -0.044117      1.783  -6.893330e-04  +3.010791e-04
+       4   0     -0.001400      0.005  -5.470678e-06  +2.956084e-04
+       5   0     +0.026328      1.905  +2.571138e-05  +3.213198e-04
+     [running sum at m=r vs Lambda_r=+3.269206e-04: gap=-5.60e-06]
+   r=6  (Lambda_r=-3.386656e-04, b_r=-7.264871e-04, ||delta||^2_A=0.3610)
+       m  v3        A_r(m)  |A|^2/typ    4^-m A_r(m)    running sum
+       1   0     +0.003609      0.105  +9.023013e-04  +9.023013e-04
+       2   0     -0.011889      1.142  -7.430786e-04  +1.592226e-04
+       3   1     -0.034964      3.291  -5.463158e-04  -3.870932e-04
+       4   0     +0.008984      0.652  +3.509506e-05  -3.519981e-04
+       5   0     +0.012247      1.211  +1.195986e-05  -3.400382e-04
+       6   1     +0.006778      0.124  +1.654871e-06  -3.383834e-04
+     [running sum at m=r vs Lambda_r=-3.386656e-04: gap=+2.82e-07]
+   r=7  (Lambda_r=+2.148452e-04, b_r=+4.615450e-04, ||delta||^2_A=0.4051)
+       m  v3        A_r(m)  |A|^2/typ    4^-m A_r(m)    running sum
+       1   0     +0.002694      0.183  +6.734061e-04  +6.734061e-04
+       2   0     -0.006472      1.055  -4.045186e-04  +2.688875e-04
+       3   1     -0.003269      0.090  -5.107339e-05  +2.178142e-04
+       4   0     -0.002283      0.131  -8.916522e-06  +2.088976e-04
+       5   0     +0.005941      0.889  +5.802025e-06  +2.146997e-04
+       6   1     -0.001032      0.009  -2.518748e-07  +2.144478e-04
+       7   0     +0.002883      0.209  +1.759622e-07  +2.146237e-04
+     [running sum at m=r vs Lambda_r=+2.148452e-04: gap=-2.21e-07]
+   [Q: ratio O(1) across the whole window? running sum saturated by m~5?]
+
+## R20-B  m=9 and m=27, SETTLED (measurement): is j>=2 exceptional or was R13-C reading an oscillation?
+   --- m=9 (v3=2) ---
+      r   gamma_r(tau_m)   A_r(m)=succ.diff        |A|^2  |A|^2/typ  sign
+      2         2.142857                 --           --         --    --
+      3         1.912070          -0.230787    5.326e-02      1.359     - (=-S_r/2 DEF)
+      4         1.943495          +0.031425    9.876e-04      0.103     +
+      5         1.970348          +0.026853    7.211e-04      0.220     +
+      6         2.043477          +0.073129    5.348e-03      4.799     +
+      7         2.089328          +0.045850    2.102e-03      5.885     +
+   --- m=27 (v3=3) ---
+      r   gamma_r(tau_m)   A_r(m)=succ.diff        |A|^2  |A|^2/typ  sign
+      2         2.142857                 --           --         --    --
+      3         2.604432          +0.461575    2.131e-01        nan     +
+      4         2.372325          -0.232107    5.387e-02      1.874     - (=-S_r/2 DEF)
+      5         2.368295          -0.004029    1.624e-05      0.002     -
+      6         2.425376          +0.057081    3.258e-03      0.975     +
+      7         2.377147          -0.048229    2.326e-03      2.170     -
+   [R13-C reported m=9 diffs +0.027,+0.073,+0.046 (r=5,6,7). Monotone growth => exceptional; turnover/sign => oscillation.]
+
+## R20-C  ADDITIVE ARGMAX TRAJECTORY (measurement, NO fit; 'power of 2' is VACUOUS -- 2 is a primitive root)
+    r  argmax xi    x=xi/N  dist-to-0 xi_r/xi_{r-1}   (2/3)^r
+    2          4   0.44444    0.44444            --   0.44444
+    3         19   0.70370    0.29630        4.7500   0.29630
+    4         16   0.19753    0.19753        0.8421   0.19753
+    5         32   0.13169    0.13169        2.0000   0.13169
+    6         64   0.08779    0.08779        2.0000   0.08779
+    7        256   0.11706    0.11706        4.0000   0.05853
+   [Q: x->0 (near-trivial additive slow mode)? at what rate? is r=3 (19) a non-monotone excursion?]
+
+## R20-D  THE 0.233 CHECK (ALGEBRAIC, forced): is A_r(3^{r-1}) == -S_r/2 exactly?  (R9-D precedent: vacate)
+   r=2: A_r(3^{r-1})=-0.238095  == -S_r/2=-0.238095? True
+   r=3: A_r(3^{r-1})=-0.230787  == -S_r/2=-0.230787? True
+   r=4: A_r(3^{r-1})=-0.232107  == -S_r/2=-0.232107? True
+   r=5: A_r(3^{r-1})=-0.232757  == -S_r/2=-0.232757? True
+   r=6: A_r(3^{r-1})=-0.233084  == -S_r/2=-0.233084? True
+   r=7: A_r(3^{r-1})=-0.232746  == -S_r/2=-0.232746? True
+   => VACATE: the coarsest non-DC mode is -S_r/2 (two conjugate members, DC-split) -- true and vacuous, NOT a second constant (=-S_inf/2=-7/30). R19-D A-side argmax was this artifact.
+
+## R20-E  WEIGHT IDENTITY (ALGEBRAIC, forced): Lambda_r = Sum_{m=1..3^r} 4^-m A_r(m) == OffDiag_{r+1}/2
+   r=2: Sum 4^-m A_r(m) == Lambda_r(R10) == OffDiag/2 ? True & True  [OK]
+   r=3: Sum 4^-m A_r(m) == Lambda_r(R10) == OffDiag/2 ? True & True  [OK]
+   r=4: Sum 4^-m A_r(m) == Lambda_r(R10) == OffDiag/2 ? True & True  [OK]
+   r=5: Sum 4^-m A_r(m) == Lambda_r(R10) == OffDiag/2 ? True & True  [OK]
+   => R20-E PASS -- deviation-field route == R7 channel engine (one computation, not two)
