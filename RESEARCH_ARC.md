@@ -1,6 +1,6 @@
 # RESEARCH_ARC.md — the whole C:/Collatz arc, scoped
 
-**Audit date:** 2026-07-17. Purpose: a single top-level map of the *entire* research program — every result (proven / open / killed / superseded), the chronology, the mathematical fields, the canonical spine, and the repo mechanics. Indexed three ways: **by finding · by month · by field of math**. Built from a full read-only audit of all 1,749 tracked files.
+**Audit date:** 2026-07-17 (full audit); **frontier refreshed 2026-07-22** (Thread-3 arc R18–R30, see the 2026-07 row and §Frontier note). Purpose: a single top-level map of the *entire* research program — every result (proven / open / killed / superseded), the chronology, the mathematical fields, the canonical spine, and the repo mechanics. Indexed three ways: **by finding · by month · by field of math**. Built from a full read-only audit of all 1,749 tracked files.
 
 > **Read this first — a naming collision.** Three different "Phase N" numberings coexist and are NOT the same thing:
 > 1. **LIVE campaign** = Phase 0 → 1 → 2a → 2b → 2c (July 2026, the L3 spectral-gap proof). This is the frontier.
@@ -51,13 +51,13 @@ cascade/bridge Φ: F̂_p→μ̂_n (**NO_BRIDGE_FOUND**) · T_3 3×3 companion ma
 
 ---
 
-## 2. BY MONTH — the chronology (164 commits, 2026-05-01 → 2026-07-17)
+## 2. BY MONTH — the chronology (2026-05-01 → 2026-07-22)
 
 | Month | Commits | What happened |
 |---|---|---|
 | **2026-05** | 71 | **Founding + broad exploration burst.** Prefix decomposition + Tao bridge (the founding result); c=7/45 thread (R74–R79, Plancherel/Hensel/bilinear); qx+1 generalization + Cramér law; ε_6…ε_16; DWM dark-subspace identification (verified 05-15); Tauberian/Padé arc opened (05-12); late-May Hecke/gchar PARI tangents (05-30/31). |
 | **2026-06** | 3 | **Packaging interlude — no new math.** JNT submission bundle; remove copyright PDFs from tracking; add the Lean 4 `__lean_check/` verification project. |
-| **2026-07** | 90 | **The L3 spectral-gap campaign + the big reorg.** R6–R44 (object-fixing, pillar-3 rewrite, collision-count identity, Konyagin/Chang/Siegel edges); `r_q` pinned as subdominant eigenvalue; q=3 recast as an **order-2 exceptional point**; the 6-phase falsifier-first campaign (Phase 0→2c) delivering THEOREM D1 + Real-T1, then the Phase-2c limit-theorem / corrector chain (through 07-17, Probe 2c4). The 07-16 "Reorganize into type folders" commit re-committed everything (this is why git mtimes are all July — use commit *subjects*, not mtimes, to date work). |
+| **2026-07** | 90+ | **The L3 spectral-gap campaign + the big reorg + the Thread-3 7/15 arc.** R6–R44 (object-fixing, pillar-3 rewrite, collision-count identity, Konyagin/Chang/Siegel edges); `r_q` pinned as subdominant eigenvalue; q=3 recast as an **order-2 exceptional point**; the 6-phase falsifier-first campaign (Phase 0→2c) delivering THEOREM D1 + Real-T1, then the Phase-2c limit-theorem / corrector chain (through 07-17, Probe 2c4). The 07-16 "Reorganize into type folders" commit re-committed everything (this is why git mtimes are all July — use commit *subjects*, not mtimes, to date work). **07-18→07-22: the Thread-3 arc on `S_∞ = 7/15` (probes R18–R30)** — reduced the constant to a single stationary object seen in three coordinates (γ on ℤ₃ / strata / character layers), certified Wilson's gap-correlation operator (R28), and recast the theorem as **conditional-digit equidistribution `q_r(m)→1/3`** (R30, gate PASS) ⟺ 3-adic second-moment Fourier decay in the non-resonant regime (2 a primitive root mod 3^r). Open crux: gap survival `|λ₂|≈½ < 1` (four numerical lines; no finite transfer operator, proven). |
 
 **The 5 pivots:** (1) ~05-12 empirical → operator-spectral + Tauberian; (2) 05-15 DWM quantum-trajectory reframing + "structural boundary" mapped; (3) June research → publication/Lean; (4) early-July → the standalone qx+1 paper as primary deliverable (old 0.82/ord route killed); (5) mid-late July → the L3 6-phase campaign, q=3 as an exceptional point (the current governing picture).
 
@@ -115,4 +115,6 @@ The program is genuinely cross-disciplinary. Fields, with representative artifac
 
 ---
 
-_This file is a navigational map, not a result. All statements are sourced from a 2026-07-17 read-only audit of the tracked tree; findings' authoritative statements live in the files cited. For the live frontier see `STATE.md`; for the founding result see `notes/writeup.md`; for the current paper see `QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`._
+**Frontier note (2026-07-22).** The live frontier is the **Thread-3 `S_∞ = 7/15` arc** (probes R18–R30, banked in `STATE.md` + `BOUNDARY_THEOREM_MAP.md` + `results/result_*_R{18..30}.md`). The reformulation program is complete and provably so — every coordinate (γ-collision, strata, character layers, gap operator, ratio density, digit probability) closes on one object. What remains is a single analytic step: **3-adic second-moment Fourier decay / conditional-digit equidistribution at geometric rate**, equivalently spectral-gap survival `|λ₂| < 1` at criticality (numerically `|λ₂| ≈ ½` on four independent lines). Literature hunt on that step in progress. See `STATE.md` for the per-probe log.
+
+_This file is a navigational map, not a result. Structural statements are sourced from a 2026-07-17 read-only audit of the tracked tree, frontier refreshed 2026-07-22; findings' authoritative statements live in the files cited. For the live frontier see `STATE.md`; for the founding result see `notes/writeup.md`; for the current paper see `QX1_UNIVERSAL_RATE_WRITEUP_2026_07_14.md`._
