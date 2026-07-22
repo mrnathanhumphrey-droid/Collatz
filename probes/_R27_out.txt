@@ -1,0 +1,38 @@
+# PROBE R27 -- THE RECURRENCE FIT (on Lambda_r, exact).
+
+## Lambda_r (exact, = (eps_{r+1}-eps_r)/2), signs should be -,-,+,+,+,-,+
+   Lambda_1 =                              -2/21 = -9.523810e-02  (-)
+   Lambda_2 =                       -1490/203889 = -7.307898e-03  (-)
+   Lambda_3 = 2849957897648150/21592814213402539 = +1.319864e-03  (+)
+   Lambda_4 = 3479140091422424520483627362376573 = +6.502557e-04  (+)
+   Lambda_5 = 3079269276257507075043486925804174 = +3.269206e-04  (+)
+   Lambda_6 = -338459199112797091029390623038344 = -3.386656e-04  (-)
+   Lambda_7 = 6056777370744123180413060371399781 = +2.148452e-04  (+)
+
+## R27-A  TWO-TERM RECURRENCE, EXACT: Lambda_{r+1}=a Lambda_r + b Lambda_{r-1}
+   solve{2,3}: a=+0.291914 b=-0.036258  |lam2|=sqrt|b|=0.19042 root|.|=0.19042  arg=+39.96deg period=9.010
+   solve{3,4}: a=+0.500051 b=+0.001333  |lam2|=sqrt|b|=0.03651 root|.|=0.50270  arg=+0.00deg period=inf
+   solve{4,5}: a=-76.177901 b=+37.778158  |lam2|=sqrt|b|=6.14639 root|.|=0.49273  arg=+0.00deg period=inf
+   solve{5,6}: a=-0.765588 b=-0.135914  |lam2|=sqrt|b|=0.36867 root|.|=0.27975  arg=+0.00deg period=inf
+   spread: a in [-76.17790,0.50005] (dev 7.67e+01); b in [-0.13591,37.77816] (dev 3.79e+01)
+   ALL FOUR SOLVES EXACTLY EQUAL? False  (no: 2-term approximate, spread = 3rd-mode leakage)
+   [PRE-REG: |lam2|~0.475-0.5; period ~9 EXPECTED TO FAIL vs R26>16 -- a miss kills period-9 corpus-wide]
+
+## R27-B  ORDER TEST: three-term Lambda_{r+1}=a Lambda_r+b Lambda_{r-1}+c Lambda_{r-2}
+   3-term (a,b,c) from r=3,4,5: a=-2.21954 b=+0.79522 c=-0.09861
+   residual predicting Lambda_7: -7.327e-04  (exact nonzero -> >=3 modes)
+   2-term (solve{2,3}) predict Lambda_5: resid=+1.850e-04
+   2-term (solve{2,3}) predict Lambda_6: resid=-4.105e-04
+   2-term (solve{2,3}) predict Lambda_7: resid=+3.256e-04
+
+## R27-D  SIGN-PATTERN CROSS-CHECK: propagate recurrence from Lambda_1,Lambda_2 vs banked -,-,+,+,+,-,+
+   solve{2,3}: propagated signs --+++++  vs actual --+++-+  [MISMATCH -> 3rd mode matters]
+   solve{4,5}: propagated signs ---+-+-  vs actual --+++-+  [MISMATCH -> 3rd mode matters]
+
+## R27-C  kappa=(|lam2|/rho)/(2lam^2) at eps=0.05,0.075,0.08,0.1  (2-term fit on subcritical Lambda_r)
+      eps    lam  rho_pred  rho(fit)   |lam2| |lam2|/rho   2lam^2    kappa
+     0.05  0.550   0.87097   0.87618  0.66846    0.76292  0.60500  1.26102
+    0.075  0.575   0.80952   0.81137  0.56571    0.69723  0.66125  1.05441
+     0.08  0.580   0.79747   0.79913  0.55089    0.68936  0.67280  1.02461
+      0.1  0.600   0.75000   0.75141  0.50064    0.66626  0.72000  0.92536
+   [Q: is kappa monotone toward 1? three points beat two.]
