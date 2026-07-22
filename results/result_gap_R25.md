@@ -1,5 +1,11 @@
 # Probe R25 — the spectral gap (subcritical) — **the gatekeeper measured: healthy away from criticality, narrowing toward it (unresolved)**
 
+> **⚠️ CORRECTION (R26, Wilson).** The R25-C reading "leans → 1 / narrowing toward criticality" is **RETRACTED** — it
+> read the *unresolved* small-ε artifacts (`|λ₂|/ρ > 1`, impossible) as a trend, the #32/#40 failure mode. The two
+> *clean* points **0.69 (ε=0.1) and 0.57 (ε=0.05) DECREASE** — moving *away* from 1. R26 confirms the gap **survives**:
+> `|λ₂|/ρ = 0.95·2λ² → 1/2 < 1`, verified to 4 digits at ε=0.1 (0.6841 vs 0.6840). The gap does not shut; C is
+> continuous at ½. See result_eig_R26.md.
+
 **Date:** 2026-07-22  Reuses the renewal builder, now deep (r→14 via truncated v-loop). Probe
 `probes/probe_gap_R25.py`. Wilson's redirect: drop X_∞; use **C(λ):=lim_r S_r/ρ^r** (per-r, no tail), where
 ρ=3(1−λ)/(1+λ)=q·Σ_v p_v² is the exact **leading eigenvalue** of the transfer operator. Since ρ(½)=1, **C(½)=S_∞**,

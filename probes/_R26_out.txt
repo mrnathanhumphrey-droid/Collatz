@@ -1,0 +1,20 @@
+# PROBE R26 -- THE DIRECT EIGENVALUE (lam2 via Prony/companion matrix).
+
+## E3/E4  CRITICAL lam=1/2 (rho=1): read |lam2| and arg(lam2) directly from eps_r = S_r - 7/15
+   float eps_r vs exact ledger (k<=8): max dev = 2.07e-15  [OK]
+   eps_r (r=1..16): +2.000e-01  +9.524e-03  -5.092e-03  -2.452e-03  -1.152e-03  -4.979e-04  -1.175e-03  -7.455e-04  -7.520e-06  +7.208e-04  +1.502e-03  +2.275e-03  +2.948e-03  +3.588e-03  +4.161e-03  +4.685e-03
+   M=2: dominant lam2 = +1.11842+0.00000i  |lam2|=1.11842  arg=+0.00 deg -> period=inf
+   M=3: dominant lam2 = +1.12312+0.00000i  |lam2|=1.12312  arg=+0.00 deg -> period=inf
+        (all roots: +1.123+0.000i, +0.426+0.000i, +0.058+0.000i)
+   M=4: dominant lam2 = +1.13332+0.00000i  |lam2|=1.13332  arg=+0.00 deg -> period=inf
+   [PRE-REG: |lam2| vs R18-A exact ratio 0.493/0.503 and 1/2; period vs 9.  gap survives iff |lam2|<1.]
+
+## E1/E2  SUBCRITICAL: leading root = rho (gate), subdominant = lam2; |lam2|/rho vs 0.95*2lam^2, R25-C
+      eps    lam  rho_pred  rho(Prony)   |lam2| |lam2|/rho 0.95*2lam^2   2lam^2   R25-C
+      0.1  0.600   0.75000     0.74529  0.72039    0.96660     0.68400  0.72000    0.69
+     0.05  0.550   0.87097     0.87585  0.70101    0.80038     0.57475  0.60500    0.57
+     0.02  0.520   0.94737     0.95214  0.84399    0.88642     0.51376  0.54080       -
+     0.01  0.510   0.97351     0.97361  0.67142    0.68962     0.49419  0.52020       -
+    0.005  0.505   0.98671     0.98710  0.45496    0.46090     0.48455  0.51005       -
+   [E1 gate: |lam2|/rho ~ 0.69, 0.57 at eps=.1,.05. E2: -> ~1/2 as eps->0 (via 0.95*2lam^2).
+    Prony rho(leading) must also match rho_pred=3(1-lam)/(1+lam).]
