@@ -1,0 +1,42 @@
+# PROBE R23 -- THE CRITICAL FAMILY + f(tau) EXTRAPOLATION.
+
+## R23-A  CRITICAL FAMILY (forced): S_inf(q)=(3q^2+1)/(2q(q^2+1)); lam_c(q)=(q-1)/(q+1)
+   SANITY GATE q=3,lam=1/2 EXACT: S_k==banked k=1..5? True  (pred 28/60=7/15=0.466667)
+   float builder q=3: S_5(float)=0.465515 vs exact 0.465515  [float-builder OK]
+
+     q  lam_c ord_q(2)       S_1    S_kmax  target S_inf  Aitken S_inf   hit?
+     5 0.6667        4   0.49231   0.35147      0.292308      0.345048     no
+       S1-tgt=+2.00e-01  S2-tgt=+8.03e-02  S3-tgt=+7.09e-02  S4-tgt=+5.68e-02  S5-tgt=+5.78e-02  S6-tgt=+5.92e-02
+     7 0.7500        3   1.45946   1.04800      0.211429      1.013285     no
+       S1-tgt=+1.25e+00  S2-tgt=+8.08e-01  S3-tgt=+8.68e-01  S4-tgt=+8.50e-01  S5-tgt=+8.37e-01
+    11 0.8333       10   0.38523   0.32261      0.135618      0.313877     no
+       S1-tgt=+2.50e-01  S2-tgt=+1.84e-01  S3-tgt=+1.85e-01  S4-tgt=+1.87e-01
+    13 0.8571       12   0.37323   0.34291      0.114932      0.342889     no
+       S1-tgt=+2.58e-01  S2-tgt=+2.35e-01  S3-tgt=+2.28e-01  S4-tgt=+2.28e-01
+   [DECISION: S_k tracks SMOOTH prediction (eps shrinks, Aitken->target) despite ord swinging 3..12 = Conj-2 alive;
+    S_k tracks ord_q(2) (S_1 non-monotone persists) = Conj-2 DEAD. q=3 byte-gate makes the 4 numbers meaningful.]
+
+## R23-B  f(tau_1),f(tau_2): exact r<=7 + FLOAT push + Aitken (skeptic's convergence check)
+   [built r=8 float, supp=4374]
+   [built r=9 float, supp=13122]
+   [built r=10 float, supp=39366]
+    r   gamma_r(tau_1)   gamma_r(tau_2)
+    1       0.66666667       0.66666667
+    2       0.69387755       0.48979592
+    3       0.70302970       0.49512008
+    4       0.70704205       0.49353227
+    5       0.71078439       0.49440953
+    6       0.71439359       0.48252028
+    7       0.71708722       0.47604798
+    8       0.71926119       0.47448197  (float)
+    9       0.72107874       0.47335831  (float)
+   10       0.72276167       0.47312470  (float)
+   f(tau_1): raw r=10=0.722762; Aitken L (r>=3): [0.76265, 0.81224, 0.72501, 0.72836, 0.73035, 0.7438]
+        extrapolated ~ 0.743801 (last), spread across orders = 8.72e-02  [NOT locked (limits may not be limits)]
+   f(tau_2): raw r=10=0.473125; Aitken L (r>=3): [0.4941, 0.49359, 0.46831, 0.47398, 0.4705, 0.47306]
+        extrapolated ~ 0.473063 (last), spread across orders = 2.58e-02  [NOT locked (limits may not be limits)]
+
+## R23-C  RATIONAL HUNT (GATED on B locking; denom<200; must survive extension)
+   f(tau_1): extrapolation spread 8.7e-02 >= 1e-3 -> NOT locked -> rational hunt PREMATURE (per pre-reg).
+   f(tau_2): extrapolation spread 2.6e-02 >= 1e-3 -> NOT locked -> rational hunt PREMATURE (per pre-reg).
+        NOTE (Wilson): f(tau_2)=10/21 is SUSPECT -- level-2 quantity as a limit (R9-D/R20-D vacated this shape); test not believe.
