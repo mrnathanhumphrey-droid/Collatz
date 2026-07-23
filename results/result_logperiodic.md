@@ -19,17 +19,22 @@ Interpolated zero-crossings:
 crossing #3 at **r ≈ 28**, matching the independent `|Λ_r|` extrapolation (r≈22–28).
 
 ## The reframe: log-periodic, not periodic — the period was never fixed
-**Half-periods are lengthening** (≈2, 6.36, ≥7→~19) — geometric, ratio ≈3. **A fixed period cannot produce
-lengthening half-cycles.** This single fact **explains the entire campaign's period confusion:** every estimate
-disagreed (9, 9.06, 9.5, 17.6, 22, 26, 37) and the MOON joint fit railed identically across all channels **because
-they were all fitting a fixed frequency to a signal that doesn't have one.** The failures of Probe D, SAT, and MOON
-were **misspecification, not resolution.** The correct model is **log-periodicity in log₃(r)** — oscillation
-periodic in the *3-adic level's logarithm*, with zero-crossings near powers of 3.
+**Half-periods are lengthening — CONFIRMED FROM MEASUREMENT ALONE, no model assumed:** half-period #1 (crossing
+#1→#2) = **6.36**; the current lobe age at r=16 (crossing #2→now, un-crossed) = **6.99 > 6.36.** That single
+inequality is model-free and **kills every fixed-period model.** It **explains the entire campaign's period
+confusion:** every estimate disagreed (9, 9.06, 9.5, 17.6, 22, 26, 37) and the MOON joint fit railed identically
+across all channels **because they were all fitting a fixed frequency to a signal that doesn't have one.** The
+failures of Probe D, SAT, and MOON were **misspecification, not resolution.**
 
-**This is exactly the Lapidus p-adic prediction (F1-E).** A p-adic self-similar string is lattice (Lapidus–Hùng),
-and its complex dimensions are periodic in `log(scale)`; the scale here is `3⁻ʳ`, so the geometric oscillation is
-periodic in `log₃(r)`, with features near `r = 3^k`. The `9.01 ≈ 3²` crossing is the signature. F1-E located the
-oscillation's origin in the p-adic level structure; this locates its *form*.
+**⚠️ NOT the Lapidus lattice theorem (corrected — the earlier F1-E attribution pointed the wrong way).** For a
+p-adic self-similar string with scaling `3⁻ᵏ`, the complex dimensions sit at `s = D + 2πin/log(3^a)` and the
+oscillation is periodic in `log(scale)`. At level r the modulus is `3^r`, so `log(scale) = r·log 3` — **Lapidus
+therefore predicts a FIXED period in r, the opposite of what is observed.** Citing it for log-periodicity in log(r)
+would be caught. **The defensible mechanism uses the corpus's own accumulation object:** `X_r = 3^r‖ν_r‖² ~
+(7/15)·r` grows **linearly** in r. If the discrete self-similar structure lives in the accumulation `X` rather than
+the level index, then log-periodicity in `log(X_r) ~ log(r)` produces **geometrically-spaced crossings in r** —
+exactly the observed lengthening. That is a real mechanism, and it is `X` (the qx+1 corpus object), **not** the
+Lapidus fixed-period theorem, doing the work.
 
 ## 7/15 is now CONDITIONAL on an unobserved turnover (walk-back #45)
 **Corrected:** decay ≠ crossing. No-turnover extrapolation (Λ>0 decaying 0.91 from r=17):
@@ -40,13 +45,29 @@ r=16, ε still rising). **So 7/15 hinges on the crossing #3 turnover near r≈27
 oscillation — but it is **unobserved and past the compute wall** (build_nu walls at r≈16–17 on `3^{r+1}` dense
 arrays). This is the first time a straightforward extrapolation of the deepest data does not land on 7/15.
 
-## ⚠️ Danger-class caveat (#30): two crossings are two points
-The log₃/powers-of-3 structure rests on **two** crossings (#1 partly transient-contaminated; only #2 at 9.01 is a
-clean post-transient bore crossing). Two points fit a geometric law trivially — **the literal #30 abundance-trap
-shape.** The prediction (crossing #3 at r≈27, half-period ~19) is falsifiable but **requires a third crossing to
-confirm**, and r≈27 is ~10 levels past the build_nu wall. So log-periodicity is a **strong, theoretically-motivated
-hypothesis, not an established fact.** No fixed-period model is viable (lengthening half-cycles rule them out); a
-log-periodic model is consistent with everything and predicted by Lapidus, but under-determined by two crossings.
+## ⚠️ The ×3 ratio is IMPOSED, not measured (and the waveform is a weak discriminator)
+The **lengthening** is measured (above). The **ratio-3** is not:
+- Crossing #1 (r=2.65) does **not** sit on 3¹=3 — it is 11.7% off (`log₃(2.65)=0.888`, not 1). Only crossing #2 lands
+  on an integer (`log₃(9.01)=2.001`).
+- Measured log₃-spacing = 1.113 (not 1.0); measured ratio `r₂/r₁ = 3.40` (not 3.00).
+
+So the law rests on **one** clean point (`9.01`) plus a ratio taken from theory. The readings give **materially
+different crossing #3**:
+
+| reading | crossing #3 |
+|---|---|
+| crossings at exact 3^k | r = 27.0 |
+| ×3 half-period (6.36→19) | r = 28.1 |
+| geometric ratio r₂/r₁ = 3.40 | r = 30.6 |
+
+**Honest interval: [27, 31]** — the data cannot separate them. **Waveform self-similarity test** (overlap the
+available third lobe r∈[9,16] onto the rescaled second lobe, sign-flipped): best `ρ = 3.00` with a strong **shape
+correlation −0.99**, but a poor amplitude match (A=0.49, 75% residual), and lobe-2's early part is
+transient-contaminated (`ε₁=0.2, ε₃=−5e−3`). So the waveform **weakly supports** ρ≈3 self-similarity but **cannot
+confirm it or discriminate the [27,31] predictions** — consistent with there being only **one** clean bore crossing.
+This is the literal **#30 two-points shape**: log-periodicity is a strong, mechanism-anchored hypothesis
+(via log(X_r)~log(r), above), **not** an established fact; confirming it needs the third crossing (r≈27–31, ~10
+levels past the build_nu wall).
 
 ## Status
 **LOG-PERIODIC: the bore is log-periodic in log₃(r) (crossings geometric near powers of 3), which explains why every
