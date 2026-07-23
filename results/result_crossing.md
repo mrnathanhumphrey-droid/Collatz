@@ -41,12 +41,16 @@ been **no completed bore oscillation anywhere in the data** (the first bore cros
 is the real reason Probe D, SAT, and MOON all failed to pin a period: **you cannot fit a frequency to data that
 hasn't completed even a half-cycle.** The wall is not just "window < 1 period" — it is "window < ½ period."
 
-## Is 7/15 threatened? No.
-For `S_∞ = 7/15`, ε must turn over (Λ crosses negative ~r≈22–28) and return to 0 — a large, slow excursion (peak
-ε ~ +5×10⁻³ near k≈21). The amplitude **is** decaying (`|Λ_r|/0.984^r` declining, local rate ~0.91 < 1), so the
-excursion will turn over — **consistent with 7/15**, just via a big slow oscillation whose rising half is all we've
-seen. No alarm on the constant; the convergence is simply much slower and longer-period than the low-r transient
-suggested.
+## Is 7/15 threatened? **CONDITIONAL — corrected (walk-back #45).**
+**The earlier "decay ⟹ turnover" argument here was WRONG: a positive signal decaying geometrically never crosses
+zero — it just gets small while staying positive.** Straightforward no-turnover extrapolation (Λ positive, decaying
+0.91 from r=17) gives `Σ_{r≥17}Λ ≈ +2.4×10⁻³ ⟹ ε_∞ ≈ +9.9×10⁻³ ⟹ S_∞ ≈ 0.4766, NOT 0.4667.` For `S_∞ = 7/15` one
+needs `Σ_{r≥17}Λ = −2.6×10⁻³` — a substantial **negative excursion that has not been observed.** So **7/15 is now
+conditional on an unobserved turnover** near r≈27. The *real* argument for the turnover (better than decay) is that
+**ε has already crossed zero twice** (r≈2.65, 9.01) — oscillation is established behaviour, not a hope — and the
+turnover location is predicted by the log₃-periodic structure (see `result_logperiodic.md`). But it is unobserved,
+past the compute wall. This is the first time a straightforward extrapolation of the deepest data does not land on
+7/15; it belongs in the record that way.
 
 ## Status
 **CROSSING: two-monotone-difference model killed; bore is a single long (period ≳ 26) positive lobe; the
