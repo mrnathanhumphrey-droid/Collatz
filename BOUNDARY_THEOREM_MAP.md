@@ -117,3 +117,9 @@ plus two self-corrections in R18 —
 power iteration; NO ARPACK/shift-invert; exact-rational; no rate-fitting). Honest negatives ARE the win —
 the 27^{−L} law (44× miss), the ±4-seat withdrawal, J1's strong form, the crown ℓ₀-route (2531/4095), the
 deviation candidate 1/(5·21^{k−1}), and R4's finite-L edge-density scalings are all in the record.
+**Walk-back #45 (2026-07-23):** the "amplitude decays ⟹ turnover" argument for `S_∞=7/15` was wrong (decay ≠
+crossing); a no-turnover extrapolation of the deepest data (ν-Λ directly to r=16) gives `S_∞≈0.4766`, so **7/15 is
+now conditional on an unobserved log₃-periodic turnover near r≈27** (`result_logperiodic.md`). The bore is
+log-periodic in `log₃(r)` (crossings near powers of 3: `9.01≈3²`; half-cycles lengthen ×3), not periodic in r — so
+every fixed-period estimate (9…37) and the MOON railing were misspecification; the exact identities (R1–R30, R80)
+stand while the asymptotic *value* 7/15 is now the conditional item pending the turnover.
