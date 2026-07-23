@@ -50,7 +50,7 @@ The factor **7** arises from `7/15 = 1 − 8/15`, where `8/15` is the squared-cl
 
 > "For every n ≥ 1, `S_{n+1} = −2 · M_{n+1}(1 + 3^n) = −2 · M_{n+1}(1 + 2·3^n)`, where `M_n(η) := Σ_{ξ ∈ Z/3^n, 3 ∤ ξ} μ̂_n(ξ) · μ̂_n*(ξ·η)`."
 
-[Source: `result_76_conservation_law.md` Theorem 76.3; proved without Geom assumption; algebraically verified through k=4.]
+[Source: `result_76_conservation_law.md` Theorem 76.3; proved without Geom assumption; algebraically verified through k=4. **Update 2026-07-22: the one gap in the original 76.3 proof — M-reality `Im M = 0`, previously "verified numerically + class-symmetry hand-wave" — is now closed unconditionally by Lemma 76.0 (elementary, from π real alone; gate to k=7). H76 is rigorous end-to-end. And the *value* never depended on it: conservation + Hermitian symmetry give `S_{n+1} = −2·Re M(1+3^n)` unconditionally, so 7/15 sees only Re M.**]
 
 ### H76' — Conservation law (Result 76, Theorem 76.1, supporting)
 

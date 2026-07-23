@@ -16,7 +16,7 @@ Two new RIGOROUS structural identities for the bilinear pair-form moments
 > **Theorem 76.3 (Leading-mode Identity):** For every n ≥ 1,
 >   **S_{n+1} = −2 · M_{n+1}(1 + 3^n) = −2 · M_{n+1}(1 + 2·3^n).**
 
-Both proved without Geom assumption. Verified algebraically to machine precision through k=4.
+Both proved without Geom assumption; verified algebraically through k=4. **M-reality — the one hand-wave the original 76.3 proof rested on (`Im M = 0`) — is now closed unconditionally by Lemma 76.0 below (elementary, from π real alone; numerical gate to k=7, `probes/gate_M_reality_760.py`), so Theorem 76.3 is rigorous end-to-end. And even without it, the value was never at risk: conservation + Hermitian symmetry give `S_{n+1} = −2·Re M_{n+1}(1+3^n)` unconditionally (Remark after 76.3).**
 
 This rigorously expresses S_{n+1} in terms of a single level-(n+1) "fine-frequency" moment. Since M_{n+1}(1+3^n) → −7/30 as n → ∞ (the negative half of S_∞), studying its rate of convergence is equivalent to studying S_n → 7/15.
 
@@ -42,7 +42,18 @@ Define the **bilinear pair-form moment**:
 Properties:
 1. M_n(1) = Σ |μ̂_n(ξ)|² = S_n
 2. M_n(η) = M_n(η^{−1})\* (Hermitian symmetry under inversion of η)
-3. For real-valued M_n (which holds because π_n is supported with class-symmetric statistics): M_n(η) = M_n(η^{−1})
+3. M_n(η) ∈ ℝ (**Lemma 76.0** below — from π real alone, *not* from class-symmetry), hence M_n(η) = M_n(η^{−1}).
+
+## 1a. Lemma 76.0 (M-reality) — unconditional, elementary
+
+**Lemma 76.0.** For every n ≥ 1 and every η ∈ (Z/3^n)\*, **M_n(η) ∈ ℝ**.
+
+**Proof.** The index set A = {ξ ∈ Z/3^n : 3∤ξ} is closed under ξ ↦ −ξ and the involution is **fixed-point-free** (−ξ = ξ ⟹ 2ξ ≡ 0 ⟹ ξ ≡ 0, excluded since 2 is a unit mod 3^n). Since π_n is a **real** measure, μ̂_n(−ξ) = μ̂_n(ξ)\*. Then
+> M_n(η)\* = Σ_{ξ∈A} μ̂_n(ξ)\* · μ̂_n(ξη).
+
+Reindex ξ ↦ −ξ (a bijection of A): = Σ_{ξ∈A} μ̂_n(−ξ)\* · μ̂_n(−ξη) = Σ_{ξ∈A} μ̂_n(ξ) · μ̂_n(ξη)\* = M_n(η). Hence M_n(η) = M_n(η)\*, i.e. real. ∎
+
+The two facts doing the work are (i) A is −1-closed and fixed-point-free (the clean part — no self-conjugate ξ), and (ii) π real ⟹ μ̂(−ξ) = μ̂(ξ)\*. **Neither needs the R66 class-symmetry of π_n** — the original "class-symmetric statistics" justification was a red herring; realness of π is free by definition. Numerical gate (`probes/gate_M_reality_760.py`): `max_η |Im M_n(η)| ≤ 2.3×10⁻¹⁷` (machine zero) over **all** η through k=7, extending the corpus's prior k=4 spot-check.
 
 ## 2. Conservation Law (Theorem 76.1)
 
@@ -79,8 +90,12 @@ Since π_{n+1} is supported on r ∈ (Z/3^{n+1})\* (i.e., 3 ∤ r), and ξ has 3
 Since M_{n+1}(η) = M_{n+1}(η^{−1})\*, with η = 1 + 3^n and η^{−1} = 1 + 2·3^n (Lemma 76.2's Corollary):
   M_{n+1}(1 + 3^n) = M_{n+1}(1 + 2·3^n)\*.
 
-Numerical verification (from `bilinear_pair_operator.py`) shows M_{n+1}(η) is real-valued for all η. (Theoretical reason: the inversion symmetry combined with class-symmetry of π_n makes M real.) Hence M_{n+1}(1 + 3^n) = M_{n+1}(1 + 2·3^n), and conservation gives:
+By **Lemma 76.0**, M_{n+1}(η) is real (unconditionally, from π real), so M_{n+1}(1 + 3^n) = M_{n+1}(1 + 2·3^n)\* = M_{n+1}(1 + 2·3^n). Conservation then gives:
   S_{n+1} = −2 · M_{n+1}(1 + 3^n). ∎
+
+**Remark (the value never depended on M-reality).** Even with zero knowledge of Lemma 76.0: conservation (76.1) plus the *definitional* Hermitian symmetry M(η) = M(η⁻¹)\* give, at η₀ = 1 (so η⁻¹ = 1 + 2·3^n is the inverse of η = 1 + 3^n),
+> M(1) + M(1+3^n) + M(1+3^n)\* = 0 ⟹ S_{n+1} + 2·Re M(1+3^n) = 0 ⟹ **S_{n+1} = −2·Re M_{n+1}(1+3^n), unconditionally**,
+since M(1) = S_{n+1} is manifestly real (Σ|μ̂|²). So the constant 7/15 sees only Re M and was never at risk; Lemma 76.0 is purely the extra Im M = 0 that upgrades Re M → M and makes the identity literally clean.
 
 **Numerical verification:**
 
