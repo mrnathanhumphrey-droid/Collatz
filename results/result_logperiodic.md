@@ -60,11 +60,14 @@ different crossing #3**:
 | ×3 half-period (6.36→19) | r = 28.1 |
 | geometric ratio r₂/r₁ = 3.40 | r = 30.6 |
 
-**Honest interval: [27, 31]** — the data cannot separate them. **Waveform self-similarity test** (overlap the
-available third lobe r∈[9,16] onto the rescaled second lobe, sign-flipped): best `ρ = 3.00` with a strong **shape
-correlation −0.99**, but a poor amplitude match (A=0.49, 75% residual), and lobe-2's early part is
-transient-contaminated (`ε₁=0.2, ε₃=−5e−3`). So the waveform **weakly supports** ρ≈3 self-similarity but **cannot
-confirm it or discriminate the [27,31] predictions** — consistent with there being only **one** clean bore crossing.
+**Honest interval: [27, 31]** — the data cannot separate them. **⚠️ RETRACTION (2026-07-23):** the earlier
+"**waveform self-similarity test weakly supports** ρ≈3 (best ρ=3.00, corr −0.99)" was a **grid/normalization
+artifact and does not survive a clean recompute** (`probes/probe_wave_sharpness.py`). Scanning ρ∈[2.4,3.7], `|corr|`
+is **flat-to-monotone** (0.980→0.985 across ρ∈[2.7,3.3]) with **no maximum at 3.00** — the drift is an artifact
+(larger ρ ⟹ less of the predicted lobe is observed ⟹ shorter, smoother segments correlate trivially better), and
+the −0.98 anti-correlation is generic to two opposite-sign smooth arcs. **The waveform cannot measure ρ at all;
+ρ=3 stays IMPOSED and the two-point criticism stands unanswered** — consistent with there being only **one** clean
+bore crossing.
 This is the literal **#30 two-points shape**: log-periodicity is a strong, mechanism-anchored hypothesis
 (via log(X_r)~log(r), above), **not** an established fact; confirming it needs the third crossing (r≈27–31, ~10
 levels past the build_nu wall).

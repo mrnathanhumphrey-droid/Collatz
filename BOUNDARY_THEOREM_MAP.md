@@ -123,3 +123,18 @@ now conditional on an unobserved log₃-periodic turnover near r≈27** (`result
 log-periodic in `log₃(r)` (crossings near powers of 3: `9.01≈3²`; half-cycles lengthen ×3), not periodic in r — so
 every fixed-period estimate (9…37) and the MOON railing were misspecification; the exact identities (R1–R30, R80)
 stand while the asymptotic *value* 7/15 is now the conditional item pending the turnover.
+
+**Gate SPLITTING (S1) — the turnover is OBSERVABLE (2026-07-23, `result_splitting_gate.md`).** A fixed-N
+multilevel-splitting estimator computes the collision probability `p_r(m)` level-by-level on the perpetuity
+(matches `build_nu` exactly), so it is **not bounded by the build_nu wall** (r≈16–18). Gate validated at r≤16:
+**γ reproduced to 0.1%, unbiased** (all 9 z-scores in [−0.30,+0.40]; rare event `p_16≈7×10⁻⁸` hit to 0.6% at
+N=40k, no `|ν̂|²` squaring bias). Individual `Λ_r` is a ~0.03% differential of two 0.1%-agreeing γ's ⟹ rel-SE
+~150% (**clean negative — confirms the design decision never to test `sign(Λ_r)`**). ⭐ The cumulative-ε test
+**telescopes**: `Σ_{r=17}^R Λ_r = Σ_m 4⁻ᵐ(γ_R(τ_m)−γ_16(τ_m))` — a **difference of two γ measurements**, ratio
+`γ_R/γ_16=∏_{s=17}^R(3q_s)` at rel err `δ√19≈0.16%`; the turnover signal `Δγ≈−0.0103` on base `0.73` gives
+**SNR≈8–9** at N≈3–5×10⁵/channel (minutes; splitting is 2×10⁷ extensions/s). Pre-committed rule: **turnover
+CONFIRMED if ε̂_R<ε̂_16 by ≥3σ; NO-turnover if ε̂ still rising at r=35 by ≥3σ; else INCONCLUSIVE** (σ from
+replica/ESS, never binomial). Two deep-run builds pending: int64 walls at r≈18 (need bigint accumulator), and
+**ESS/level must be monitored** (resampling degeneracy over 35 levels is untested by the r≤16 gate). Epistemic
+guard: the splitting output is a **statistical object**, never welded to the exact ε ladder. **Waveform ρ-measurement
+RETRACTED** (`|corr|` flat in ρ ⟹ ×3 imposed, not measured).
