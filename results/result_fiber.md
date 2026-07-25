@@ -1,4 +1,14 @@
-# Probe FIBER — the fiber-mean / fiber-fluctuation split (replaces the retracted interference ledger) — **GATE 1 ✓ (M Re w = Re w with 4→64, machine-clean); Λ^unif closed form ✓ (its doubly-exp death IS the 4→4^{3^k} ladder); and the sign reduces to ONE dominant channel — the fiber-fluctuation coupling, which is POSITIVE for all r=3..12 at rate ~0.9 → S_∞≈0.477 (single clean channel, no competitor, no crossing in 10 levels).**
+# Probe FIBER — the fiber-mean / fiber-fluctuation split (replaces the retracted interference ledger) — **GATE 1 ✓ (M Re w = Re w with 4→64, machine-clean); Λ^unif closed form ✓ (its doubly-exp death IS the 4→4^{3^k} ladder). ⚠️ The GATE-3 sign claim below is CORRECTED by `result_modes.md`: the fiber-mean is NOT always subdominant (it DOMINATES at r=6, driving the g₆ crossing), so "no crossing in 10 levels / single channel / 0.477" was WRONG — g_r crosses at r=2 and r=6. See the correction note.**
+
+> **⚠️ CORRECTION (2026-07-25, `result_modes.md`).** The GATE-3 table below started at r=7 and **omitted r=6**, where
+> `⟨dbar,Re w⟩=−1.17e−3` DOMINATES `⟨dfluct,Re w⟩=+4.4e−4`, so **g₆ is negative — a real crossing** (matching the
+> corrected TSW-A `0 − + + + − +`). The fiber-mean is subdominant only for r≥7; at r=6 it overpowers the fluctuation
+> precisely because the fluctuation is near its minimum there. So "fluctuation positive ⟹ no crossing ⟹ 0.477" is
+> retracted: the fluctuation coupling IS positive, but g_r crosses. The mode decomposition (`result_modes.md`) shows
+> the real structure — the dominant mode Re δ̂(1) is single-signed positive, and the crossings are n=2 / n=3
+> excursions (the lengthening-period mechanism). Also: the fiber ladder and the S2 splitting are **one method
+> extended** (S2 continues this exact g_r ladder past r=16), not two independent methods — the honest gain here is
+> that the exact side now reaches r=12.
 
 **Date:** 2026-07-25. Probe `probes/probe_fiber.py`. The interference-ledger split (ILEDGER/2) is retracted: in the
 dlog domain the branch `(−2)^{−v}` acts by translation (⟨−2⟩=⟨4⟩=G_r cyclic odd order 3^r; β(−2)=(3^r+1)/2
