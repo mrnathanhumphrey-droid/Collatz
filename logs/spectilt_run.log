@@ -1,0 +1,52 @@
+# PROBE SPECTILT -- placement of the 3-nmid power spectrum (Wilson's identity)
+
+## ITEM 1  Den = C(0)-C(N/3), Num = 2C(1)-C(N/3-1)-C(N/3+1), d1 = Num/(2 Den)  [all /C0]
+    r     Den/C0  DenRate       Num/C0  NumRate           d1   d1Rate  d1*2Den vs Num
+    2   0.333333      nan   3.8097e-02      nan   5.7146e-02      nan 3.8097e-02=OK
+    3   0.265840   0.7975   1.0542e-02   0.2767   1.9828e-02   0.3470 1.0542e-02=OK
+    4   0.226915   0.8536   3.9220e-03   0.3720   8.6420e-03   0.4359 3.9220e-03=OK
+    5   0.197578   0.8707   3.1760e-03   0.8098   8.0373e-03   0.9300 3.1760e-03=OK
+    6   0.174799   0.8847   2.7080e-03   0.8526   7.7460e-03   0.9638 2.7080e-03=OK
+    7   0.156351   0.8945   1.8080e-03   0.6677   5.7819e-03   0.7464 1.8080e-03=OK
+    8   0.141711   0.9064   1.3220e-03   0.7312   4.6644e-03   0.8067 1.3220e-03=OK
+    9   0.129666   0.9150   1.0100e-03   0.7640   3.8946e-03   0.8350 1.0100e-03=OK
+   10   0.119520   0.9218   8.6000e-04   0.8515   3.5977e-03   0.9238 8.6000e-04=OK
+   11   0.110871   0.9276   7.1200e-04   0.8279   3.2109e-03   0.8925 7.1200e-04=OK
+   12   0.103399   0.9326   6.1100e-04   0.8581   2.9546e-03   0.9202 6.1100e-04=OK
+   13   0.096861   0.9368   5.2300e-04   0.8560   2.6997e-03   0.9138 5.2300e-04=OK
+   14   0.091102   0.9405   4.4500e-04   0.8509   2.4423e-03   0.9046 4.4500e-04=OK
+   15   0.085984   0.9438   3.7600e-04   0.8449   2.1865e-03   0.8952 3.7600e-04=OK
+   16   0.081408   0.9468   3.1600e-04   0.8404   1.9408e-03   0.8877 3.1600e-04=OK
+
+   full-span (r2->16) geo rates: Den=0.9042  Num=0.7101  d1=0.7854
+   late (r12->16)     geo rates: Den=0.9420  Num=0.8480  d1=0.9003
+   identity says NumRate = d1Rate * DenRate; late: 0.9003*0.9420 = 0.8480  vs measured Num 0.8480
+   [Den rate SLOWS (forced-uniformity easing); the margin/Num rate is what it must be by the identity.]
+
+## ITEMS 2,3  the nonnegative fluctuation spectrum Chat(m)=|rho_hat(m)|^2, 3 nmid m
+
+   r=12 (N=531441):  d1_spec=+2.963565e-03  (vs banked +2.954574e-03, rel 3.0e-03)
+      MASS: frac(|m|<N/4)=0.5022  frac(|m|>N/4)=0.4978   <cos>=Num/S=+2.96357e-03
+      BANDS(Num): pos(|m|<N/4)=+3.19725e-01  neg(|m|>N/4)=-3.16761e-01  sum=+2.96357e-03  |residue|/|pos| = 0.0093
+      DECILES |m|/N (N/4=0.25): 10%=0.050 25%=0.125 50%=0.249 75%=0.374 90%=0.450   (0.0s)
+   r=13 (N=1594323):  d1_spec=+2.696227e-03  (vs banked +2.699745e-03, rel 1.3e-03)
+      MASS: frac(|m|<N/4)=0.5019  frac(|m|>N/4)=0.4981   <cos>=Num/S=+2.69623e-03
+      BANDS(Num): pos(|m|<N/4)=+3.19657e-01  neg(|m|>N/4)=-3.16961e-01  sum=+2.69623e-03  |residue|/|pos| = 0.0084
+      DECILES |m|/N (N/4=0.25): 10%=0.050 25%=0.124 50%=0.249 75%=0.375 90%=0.450   (0.1s)
+   r=14 (N=4782969):  d1_spec=+2.440865e-03  (vs banked +2.442317e-03, rel 5.9e-04)
+      MASS: frac(|m|<N/4)=0.5016  frac(|m|>N/4)=0.4984   <cos>=Num/S=+2.44086e-03
+      BANDS(Num): pos(|m|<N/4)=+3.19505e-01  neg(|m|>N/4)=-3.17065e-01  sum=+2.44086e-03  |residue|/|pos| = 0.0076
+      DECILES |m|/N (N/4=0.25): 10%=0.050 25%=0.124 50%=0.249 75%=0.374 90%=0.450   (0.4s)
+   r=15 (N=14348907):  d1_spec=+2.187133e-03  (vs banked +2.186453e-03, rel 3.1e-04)
+      MASS: frac(|m|<N/4)=0.5014  frac(|m|>N/4)=0.4986   <cos>=Num/S=+2.18713e-03
+      BANDS(Num): pos(|m|<N/4)=+3.19432e-01  neg(|m|>N/4)=-3.17245e-01  sum=+2.18713e-03  |residue|/|pos| = 0.0068
+      DECILES |m|/N (N/4=0.25): 10%=0.050 25%=0.124 50%=0.249 75%=0.374 90%=0.450   (1.3s)
+   r=16 (N=43046721):  d1_spec=+1.939225e-03  (vs banked +1.940841e-03, rel 8.3e-04)
+      MASS: frac(|m|<N/4)=0.5013  frac(|m|>N/4)=0.4987   <cos>=Num/S=+1.93922e-03
+      BANDS(Num): pos(|m|<N/4)=+3.19306e-01  neg(|m|>N/4)=-3.17366e-01  sum=+1.93922e-03  |residue|/|pos| = 0.0061
+      DECILES |m|/N (N/4=0.25): 10%=0.050 25%=0.124 50%=0.249 75%=0.374 90%=0.450   (4.0s)
+
+   [item2 read: are deciles (|m|/N) MIGRATING outward r12->16 or stable-with-mass-shrinking?]
+   [item3 read: |residue|/|pos| ~1 => genuine small tilt of spread measure; <<1 => small residue of large opposing bands.]
+
+# (4.0s)
