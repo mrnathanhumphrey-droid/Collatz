@@ -1,0 +1,66 @@
+# PROBE ILEDGER2 -- un-normalized (mass-contracting) diagonal, j to 12.
+
+building nu (float) ...
+  nu built (3.2s); computing delta_j ...
+  delta_j done (3.7s)
+
+## G0  cross-check <delta_j, Re w> (FFT path) vs known g_j = (Lambda_j - Lambda^unif)/S_j, j<=7
+   j=2: <delta,Rew>=-7.415800e-03  known g_j=-7.415800e-03  [OK]
+   j=3: <delta,Rew>=+2.861388e-03  known g_j=+2.861388e-03  [OK]
+   j=4: <delta,Rew>=+1.400766e-03  known g_j=+1.400766e-03  [OK]
+   j=5: <delta,Rew>=+7.022774e-04  known g_j=+7.022774e-04  [OK]
+   j=6: <delta,Rew>=-7.264871e-04  known g_j=-7.264871e-04  [OK]
+   j=7: <delta,Rew>=+4.615450e-04  known g_j=+4.615450e-04  [OK]
+   => G0 PASS -- profile path correct
+
+## P4  gate sum_j A[j,r-j] = g_r=<delta_r,Rew>  &  fresh source <s_j,Rew>=A[j,0] sign
+   r= 2: sum=-7.415800e-03  g_r=-7.415800e-03  [OK]  fresh<s_r,Rew>=-7.416e-03 (-)
+   r= 3: sum=+2.861388e-03  g_r=+2.861388e-03  [OK]  fresh<s_r,Rew>=+1.920e-03 (+)
+   r= 4: sum=+1.400766e-03  g_r=+1.400766e-03  [OK]  fresh<s_r,Rew>=-9.481e-04 (-)
+   r= 5: sum=+7.022774e-04  g_r=+7.022774e-04  [OK]  fresh<s_r,Rew>=-2.970e-04 (-)
+   r= 6: sum=-7.264871e-04  g_r=-7.264871e-04  [OK]  fresh<s_r,Rew>=-1.591e-03 (-)
+   r= 7: sum=+4.615450e-04  g_r=+4.615450e-04  [OK]  fresh<s_r,Rew>=+7.012e-05 (+)
+   r= 8: sum=+7.920076e-04  g_r=+7.920076e-04  [OK]  fresh<s_r,Rew>=+3.048e-04 (+)
+   r= 9: sum=+7.803031e-04  g_r=+7.803031e-04  [OK]  fresh<s_r,Rew>=+2.541e-04 (+)
+   r=10: sum=+8.357265e-04  g_r=+8.357265e-04  [OK]  fresh<s_r,Rew>=+3.793e-04 (+)
+   r=11: sum=+8.252867e-04  g_r=+8.252867e-04  [OK]  fresh<s_r,Rew>=+3.719e-04 (+)
+   r=12: sum=+7.181426e-04  g_r=+7.181426e-04  [OK]  fresh<s_r,Rew>=+2.956e-04 (+)
+
+## G4  rho_prop = row rate A[j,k+1]/A[j,k] (should be stable in j = eigenvalue of fixed kernel)
+   j= 2: +1.037 +1.010 +1.135 +1.165 +1.171
+   j= 3: +0.454 +0.786 +1.061 +1.148 +1.167
+   j= 4: +1.514 +1.232 +1.183 +1.174 +1.172
+   j= 5: -0.492 +2.037 +1.268 +1.189 +1.175
+   j= 6: +1.449 +1.263 +1.188 +1.175 +1.173
+   j= 7: +0.239 +0.116 -0.873 +1.699
+   j= 8: +0.091 -1.781 +1.546
+   j= 9: -0.518 +1.982
+   j=10: -0.028
+   j=11: 
+   j=12: 
+
+## G1  rho_src = column rate A[j+1,k]/A[j,k] vs j (does it climb 0.66 -> ~0.9 on late window?)
+   k=0: j2:-0.259 j3:-0.494 j4:+0.313 j5:+5.356 j6:-0.044 j7:+4.347 j8:+0.834 j9:+1.492 j10:+0.981 j11:+0.795
+   k=1: j2:+1.458 j3:-0.445 j4:-0.292 j5:-1.155 j6:-0.913 j7:+0.963 j8:+0.523 j9:+1.484 j10:+0.809 j11:+nan
+   k=2: j2:+0.639 j3:-1.482 j4:+0.095 j5:+3.401 j6:-0.151 j7:+0.367 j8:-2.966 j9:+0.081 j10:+nan
+
+## G2  closure: g_r ratio g_r/g_{r-1} (ledger, =Lambda_r ratio up to S) vs exact Lambda_r/Lambda_{r-1}
+   r= 4: g_r/g_(r-1)=+0.4895   Lambda_r/Lambda_(r-1)=+0.4927
+   r= 5: g_r/g_(r-1)=+0.5014   Lambda_r/Lambda_(r-1)=+0.5028
+   r= 6: g_r/g_(r-1)=-1.0345   Lambda_r/Lambda_(r-1)=-1.0359
+   r= 7: g_r/g_(r-1)=-0.6353   Lambda_r/Lambda_(r-1)=-0.6344
+   r= 8: g_r/g_(r-1)=+1.7160   Lambda_r/Lambda_(r-1)=+1.7176
+   r= 9: g_r/g_(r-1)=+0.9852   Lambda_r/Lambda_(r-1)=+0.9868
+   r=10: g_r/g_(r-1)=+1.0710   Lambda_r/Lambda_(r-1)=+1.0727
+   r=11: g_r/g_(r-1)=+0.9875   Lambda_r/Lambda_(r-1)=+0.9892
+   r=12: g_r/g_(r-1)=+0.8702   Lambda_r/Lambda_(r-1)=+0.8716
+   [ledger overall rate = max(rho_src,rho_prop); must match Lambda's ~0.89-0.91 at large r.]
+
+## G3  margin constant  sign(c0 + c1 * rho_prop/(rho_src - rho_prop))
+Traceback (most recent call last):
+  File "C:\Collatz\probes\probe_ILEDGER2.py", line 157, in <module>
+    main()
+  File "C:\Collatz\probes\probe_ILEDGER2.py", line 143, in main
+    rp = A[jl][2] / A[jl][1] if abs(A[jl].get(1, 0)) > 1e-15 else float('nan')       # rho_prop late
+         ~~~~~^^^
+KeyError: 2
