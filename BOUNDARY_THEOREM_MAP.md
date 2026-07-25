@@ -138,3 +138,17 @@ replica/ESS, never binomial). Two deep-run builds pending: int64 walls at r≈18
 **ESS/level must be monitored** (resampling degeneracy over 35 levels is untested by the r≤16 gate). Epistemic
 guard: the splitting output is a **statistical object**, never welded to the exact ε ladder. **Waveform ρ-measurement
 RETRACTED** (`|corr|` flat in ρ ⟹ ×3 imposed, not measured).
+
+**Gate SPLITTING (S2) deep — the log₃ crossing REFUTED, 7/15 under pressure (2026-07-25, `result_splitting_deep_S2.md`;
+STATISTICAL estimate, not proof).** Bigint accumulator + ESS monitor, curve to r=40 (N=4×10⁵, 20 replicas, m∈{1,2}).
+The telescoped ε̂ curve **rises monotonically at z≈5 straight through the predicted [27,31] window** (r28=8.4, r31=9.0
+×10⁻³) — **the log₃ ×3-crossing is refuted** (Wilson's own prediction; clean, tail-independent). ε̂ tops out at
+**~9.2×10⁻³ = the no-turnover level ⟹ S_∞≈0.477, not 0.467** (+3.4σ above anchor): **for the first time the deepest
+data does not point at 7/15.** Only a **sub-3σ (2.3σ) late rollover at r≈36** — partly leaning on r=40, the one level
+where ESS dips — keeps the constant alive, and if real relocates the turnover past 36 (itself killing log₃). ESS holds
+(uniq-frac ~0.223 plateau to r≈38). **Deeper compute is NOT the next step** — if the deviation field δ is pinned near
+x≈0 (Wilson's lengthening-transient seam, which predicts this exact shape and is therefore flagged *suspect*), the
+rollover recedes as it is chased (the lengthening wall's third hat). **The decider is the scalar positivity claim —
+does `⟨δ_r, Re w⟩` become eventually single-signed?** — which settles 7/15, the late rollover, and the depth question
+at once, dodges the growing-state wall, and is on a knife's edge (so worth a proof attempt). **USER to derive, Claude
+to gate.** Not at stake: R1–R30, R80–R82; under empirical pressure: the value 7/15.

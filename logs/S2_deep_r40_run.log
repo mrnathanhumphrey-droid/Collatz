@@ -1,0 +1,61 @@
+# GATE SPLITTING (S2) deep  R_DEEP=40 N=400000 R_REP=20 MLIST=[1, 2]
+
+## STAGE A -- bigint-vs-int64 identical-seed validation (r<=16)
+   max|gamma_int64 - gamma_bigint| over r<=16, m=[1, 2]: 0.00e+00
+   => bigint path CERTIFIED (bit-identical to validated int64)
+
+## STAGE B -- deep run to r=40, ESS monitored
+   replica 1/20  (78.1s)
+   replica 2/20  (152.0s)
+   replica 3/20  (229.8s)
+   replica 4/20  (308.5s)
+   replica 5/20  (404.5s)
+   replica 6/20  (496.7s)
+   replica 7/20  (578.0s)
+   replica 8/20  (670.8s)
+   replica 9/20  (761.6s)
+   replica 10/20  (851.5s)
+   replica 11/20  (941.4s)
+   replica 12/20  (1031.7s)
+   replica 13/20  (1121.5s)
+   replica 14/20  (1211.9s)
+   replica 15/20  (1302.2s)
+   replica 16/20  (1392.9s)
+   replica 17/20  (1481.9s)
+   replica 18/20  (1571.4s)
+   replica 19/20  (1661.6s)
+   replica 20/20  (1751.5s)
+
+## ESS / DEGENERACY -- full per-level curve (m=1; uniq-frac after resample; baseline ceiling q(1-e^-3)~0.317)
+     r      q_s     uniq     r      q_s     uniq
+    17   0.3337   0.2153    18   0.3336   0.2179
+    19   0.3339   0.2200    20   0.3336   0.2210
+    21   0.3338   0.2219    22   0.3337   0.2226
+    23   0.3337   0.2229    24   0.3335   0.2229
+    25   0.3335   0.2234    26   0.3336   0.2235
+    27   0.3334   0.2236    28   0.3335   0.2237
+    29   0.3336   0.2238    30   0.3335   0.2237
+    31   0.3334   0.2235    32   0.3333   0.2236
+    33   0.3331   0.2234    34   0.3335   0.2237
+    35   0.3336   0.2239    36   0.3333   0.2235
+    37   0.3332   0.2233    38   0.3332   0.2224
+    39   0.3333   0.2165    40   0.3329   0.1672
+   uniq-frac: r17=0.215 -> r30=0.224 -> r40=0.167  [holds]
+
+## TELESCOPED CUMULATIVE eps_hat_r = eps16 + 2 sum_m 4^-m (gamma_r(m)-gamma_16(m))  [STATISTICAL, not the exact ladder]
+   anchor eps_16 = 4.6850e-03 (exact/nu-validated); everything below is a splitting ESTIMATE
+     r      eps_hat          SE  (hat-eps16)/SE
+    20   6.3688e-03   4.205e-04            4.00  <-- curve point
+    25   7.8599e-03   6.058e-04            5.24  <-- curve point
+    28   8.4096e-03   7.672e-04            4.85  <-- curve point
+    31   8.9875e-03   8.368e-04            5.14  <-- curve point
+    35   9.1831e-03   1.028e-03            4.37  <-- curve point
+    40   8.3671e-03   1.096e-03            3.36  <-- curve point
+
+## DECISION (pre-committed, revised for the curve)
+   peak of eps_hat at r=36 (eps=9.2006e-03); drop peak->40 = 8.336e-04 +/- 3.659e-04 (+2.3sigma)
+   rise anchor->40 = 3.682e-03 +/- 1.096e-03 (+3.4sigma)
+   => INCONCLUSIVE (drop 2.3s, rise 3.4s; neither >=3sigma).
+   NB: whatever this says, it is a SPLITTING ESTIMATE with an error budget -- NOT a proof; the exact ladder still stops at r=16.
+
+# total extensions ~ 640,000,000  (1751.5s)
