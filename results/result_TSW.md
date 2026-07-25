@@ -5,6 +5,46 @@ its output may touch the exact ladder. Certified operators only: freq-domain ide
 g_r); the linear transport operator is the **R28/R29 gap matrix** `M` (the one certified operator advancing the
 renewal r−1→r linearly on the fixed lattice {R(2m)}). No fresh construction.
 
+---
+## ⚠️ CORRECTIONS (2026-07-25, Wilson's three checkpoints — `probes/probe_TSW_ckpt.py`)
+**The headline "the slow mode is REAL" is RETRACTED as a transport statement.** Read the corrections below over the
+original body. **The one reduction that SURVIVES and supersedes the prior framing:** *the decider was never
+real-vs-complex — it is the SIGN of the slowest contributing mode's coupling.* Everything else is walked back or
+re-scoped:
+
+- **(a) TSW-A is fixed: the gate is `g_r = ⟨δ_r,Re w⟩ = (Λ_r − Λ_r^unif)/S_r`, NOT `Λ_r/S_r`.** Confirmed exact
+  r≤7. **`g₁ = 0`** (δ₁=0 forced, dim δ₁ = 3⁰−1 = 0) — the earlier `Λ₁/S₁ = −1/7` was **entirely** `Λ₁^unif/S₁`
+  (Λ₁ = Λ₁^unif = −2/21), i.e. the pairing was carrying the uniform baseline. `g₂ = b₂ = −7.42×10⁻³` vs
+  `Λ₂/S₂ = −1.53×10⁻²` — a factor **2.07×**, *not* doubly-exp (the uniform baseline is O(1) at r=2). Only for r≥3 is
+  `Λ^unif` doubly-exp and sign(g_r)=sign(Λ_r). **Corrected sign(g_r), r=1..16: `0 − + + + − + + …+`** (g₁=0; last
+  sign change at r=7). The sign sequence and the r=7 last-change **survive**; the "identity" framing off Λ_r/S_r did
+  not.
+- **(b) The M-matrix is R29's CORPSE — B/C carry no transport spectral information.** The truncation's **leading
+  eigenvalue is 1.083, not 1**, at every D (6,8,10,12); and `|λ₂|` is **non-convergent** in D
+  (0.972→0.980→1.005→1.001; R29-B: D-steps not shrinking). R29's theorem says why: `{R(d)}` is not a state (the
+  ⟨2⟩-orbit shift fixes every R(d) while changing the twist character), so **no finite transfer operator of this
+  type exists** — the non-convergence is the non-existence theorem, not a continuous-spectrum edge. **So "the slow
+  mode is real" is a property of a non-convergent truncation, not of the transport — RETRACTED.** (Dominant-
+  subdominant reality was already banked at R27-A, |λ₂|≈½; the post-deflation *slow* object is what TSW owed, and
+  R28-D says deflation annihilates the data it needs, so TSW-C is void here too.) The `0.905` "consistency" was an
+  artifact (1.083) over an artifact — a two-point coincidence of the class the corpus refuses.
+- **(c) The source `s_r = P₀T(uniform_{r−1})` via the LINEAR MEASURE transport is ZERO in the primitive shell**
+  (raw projection ≈ machine-0, r=2..7: 10⁻¹⁷→10⁻¹³). This is an exact additive-Fourier fact: uniform μ̂ is a pure
+  DC delta, and one measure-transport step evaluates μ̂ at nonzero arguments for every primitive ξ, so T(uniform)
+  has **no primitive content**. **Consequence:** the deviation is *not* sourced by the measure transport — the
+  source must be a **second-moment (profile/|D|²) object**, the non-flat `|D|²` kernel (R17) transporting the
+  uniform *profile*, which my probe did not build (it used the measure operator). The computable coupling question
+  is therefore the **profile-domain** source, not the measure-domain one — Wilson's reformulation. (The normalized
+  ⟨s_r,W⟩ column is 0/0 noise — ignore.)
+
+**Net after checkpoints:** g₁=0 and the corrected deviation-sign sequence stand (a); the real-mode transport claim
+is gone (b); the computable coupling is the second-moment source, and the measure-source is exactly zero (c). The
+surviving reduction — **decider = sign of the slowest contributing mode's coupling** — is unaffected and is the
+thing to carry forward.
+
+---
+### (original body below, superseded where the corrections above conflict)
+
 ## TSW-A — ground-truth gate: PASS
 `g_r = ⟨δ_r, Re w⟩ = Λ_r/S_r` (up to `Λ^unif/S_r`, doubly-exp small) confirmed exact r=1..7 (all OK; `Re w(x) =
 15/(2(17−8cos2πx)) − ½` verbatim R14). Sign sequence:
