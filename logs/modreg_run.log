@@ -1,0 +1,10 @@
+# PROBE MODREG -- regress Chat(m) vs w(2^{-1}m mod N) over 3 nmid m
+
+    r       slope b   intercept a       R^2     corr b*Var(w)^.5/mean  <cos>_check
+   12  +9.78001e-08  +1.29099e-06    0.0003  +0.0170       2.0110e-02 +2.96357e-03
+   16  +4.65872e-10  +1.62694e-08    0.0000  +0.0059       7.7198e-03 +1.93922e-03
+
+   [b>0 & R^2 decent => sign(d1)=sign(modulation amplitude)=structural(transport), provable.
+    R^2 poor => ripple not modulation-shaped, 1/4 is a null coincidence. <cos>_check = banked d1.]
+
+# (3.2s)
