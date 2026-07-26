@@ -1,0 +1,52 @@
+# PROBE FKG -- is the positivity a correlation inequality? (shelf test)
+
+### line 1: FKG-A passing is NOT a result -- without FKG-B's x4-monotone bridge it says nothing about d1.
+
+## r=4  N=81  support=54/81  (0.0s)
+   FKG-C w-triple  C/C0:  C(4)=0.230408  C(4w)=0.255679  C(4w^2)=0.201215  => Pr[R=4]-avg = +0.001961  (>0)
+   FKG-C S-multipliers C/C0: min=0.1608 med=0.2893 max=0.5096  |  generic-lag median=0.2646  floor=0.045  => S not distinguishable
+   FKG-A group: viol 57/216 (26.39%)  worst-ratio 48.558  => SHELF CLOSED here
+   FKG-A  dlog: viol 46/216 (21.30%)  worst-ratio 15.815  => SHELF CLOSED here
+   [digit order: componentwise max/min is coordinate-symmetric -> MSB-first and LSB-first give
+    identical elementary-square sets and identical violation stats. verified: same squares.]
+   FKG-B x4 monotone group: 115/216 covers preserved (53.2%)  => SCRAMBLES order (no bridge)
+   FKG-B x4 monotone  dlog: 176/216 covers preserved (81.5%)  => SCRAMBLES order (no bridge)
+
+## r=5  N=243  support=162/243  (0.0s)
+   FKG-C w-triple  C/C0:  C(4)=0.201118  C(4w)=0.180818  C(4w^2)=0.218242  => Pr[R=4]-avg = +0.001588  (>0)
+   FKG-C S-multipliers C/C0: min=0.1399 med=0.2557 max=0.4596  |  generic-lag median=0.2265  floor=0.045  => S not distinguishable
+   FKG-A group: viol 303/1080 (28.06%)  worst-ratio 67.816  => SHELF CLOSED here
+   FKG-A  dlog: viol 279/1080 (25.83%)  worst-ratio 61.301  => SHELF CLOSED here
+   FKG-B x4 monotone group: 425/810 covers preserved (52.5%)  => SCRAMBLES order (no bridge)
+   FKG-B x4 monotone  dlog: 689/810 covers preserved (85.1%)  => SCRAMBLES order (no bridge)
+
+## r=6  N=729  support=486/729  (0.2s)
+   FKG-C w-triple  C/C0:  C(4)=0.178584  C(4w)=0.189408  C(4w^2)=0.165052  => Pr[R=4]-avg = +0.001353  (>0)
+   FKG-C S-multipliers C/C0: min=0.1206 med=0.2337 max=0.4106  |  generic-lag median=0.1711  floor=0.045  => S not distinguishable
+   FKG-A group: viol 1448/4860 (29.79%)  worst-ratio 116.225  => SHELF CLOSED here
+   FKG-A  dlog: viol 1376/4860 (28.31%)  worst-ratio 95.960  => SHELF CLOSED here
+   FKG-B x4 monotone group: 1519/2916 covers preserved (52.1%)  => SCRAMBLES order (no bridge)
+   FKG-B x4 monotone  dlog: 2552/2916 covers preserved (87.5%)  => SCRAMBLES order (no bridge)
+
+## r=7  N=2187  support=1458/2187  (0.6s)
+   FKG-C w-triple  C/C0:  C(4)=0.160572  C(4w)=0.151454  C(4w^2)=0.167882  => Pr[R=4]-avg = +0.000905  (>0)
+   FKG-C S-multipliers C/C0: min=0.1066 med=0.2124 max=0.3742  |  generic-lag median=0.1802  floor=0.045  => S not distinguishable
+   FKG-A group: viol 6225/20412 (30.50%)  worst-ratio 210.824  => SHELF CLOSED here
+   FKG-A  dlog: viol 6050/20412 (29.64%)  worst-ratio 136.768  => SHELF CLOSED here
+   FKG-B x4 monotone group: 5285/10206 covers preserved (51.8%)  => SCRAMBLES order (no bridge)
+   FKG-B x4 monotone  dlog: 9113/10206 covers preserved (89.3%)  => SCRAMBLES order (no bridge)
+
+## r=8  N=6561  support=4374/6561  (2.2s)
+   FKG-C w-triple  C/C0:  C(4)=0.145843  C(4w)=0.150739  C(4w^2)=0.139625  => Pr[R=4]-avg = +0.000661  (>0)
+   FKG-C S-multipliers C/C0: min=0.0962 med=0.1958 max=0.3428  |  generic-lag median=0.1633  floor=0.045  => S not distinguishable
+   FKG-A group: viol 25255/81648 (30.93%)  worst-ratio 232.875  => SHELF CLOSED here
+   FKG-A  dlog: viol 24858/81648 (30.45%)  worst-ratio 178.063  => SHELF CLOSED here
+   FKG-B x4 monotone group: 18043/34992 covers preserved (51.6%)  => SCRAMBLES order (no bridge)
+   FKG-B x4 monotone  dlog: 31712/34992 covers preserved (90.6%)  => MONOTONE-ish (bridge)
+
+## KILL CONDITION
+   both coordinates fail FKG-A at every r: True
+   (x4 monotonicity reported per r above; if it scrambles both coords, FKG-A is a curiosity regardless.)
+   => if both coords fail FKG-A OR x4 non-monotone on both: correlation-inequality shelf CLOSED = 5th death.
+
+# (3.4s)
