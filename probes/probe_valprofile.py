@@ -51,12 +51,10 @@ def main():
         mfac = sp.factorint(Mers)                      # 2^ord - 1 factorization
         primes = sorted(set([2, 3]) | set(mfac.keys()))
         prof = {p: vp(Norm, p) for p in primes}
-        # residual unit after stripping listed primes
+        # residual unit after stripping listed primes (report SIZE, don't factor -- rogue primes are huge)
         R = sp.Rational(Norm)
         for p in primes:
             R = R / sp.Rational(p) ** prof[p]
-        Rfac = sp.factorint(R.p) if abs(R.p) > 1 else {}
-        Rden = sp.factorint(R.q) if R.q > 1 else {}
 
         lnN = math.log(abs(Norm.p)) - math.log(abs(Norm.q))
         gm = lnN / phiN                                 # ln(geometric mean)
@@ -66,8 +64,10 @@ def main():
         print(f"   v_p(N): " + "  ".join(f"v_{p}={prof[p]}" for p in primes)
               + f"   [v_3 pred {1-phiN}: {'OK' if prof[3]==1-phiN else 'NO'}; "
               f"v_3(2^ord-1)={mfac.get(3,0)} vs k={k}]")
-        resid = "±1" if abs(R.p) == 1 and R.q == 1 else f"num{dict(Rfac)}/den{dict(Rden)}"
-        print(f"   residual after stripping {{2,3,div(2^ord-1)}}: {resid}")
+        allmersminus_phi = all(prof[p] == -phiN for p in primes if p != 3)
+        resid = "±1" if abs(R.p) == 1 and R.q == 1 else f"num {len(str(abs(R.p)))}digits / den {len(str(R.q))}digits"
+        print(f"   residual after stripping {{2,3,div(2^ord-1)}}: {resid}   "
+              f"[v_p=-phi for all p|2^ord-1,p!=3: {'YES' if allmersminus_phi else 'NO'}]")
         print(f"   ln(geo mean)=ln|N|/phi = {gm:.5f}   vs typical ln(sqrt(k)3^-k/2)={typ:.5f}   "
               f"(diff {gm-typ:+.4f})")
         print()
