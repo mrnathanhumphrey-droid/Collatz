@@ -1,0 +1,66 @@
+# PROBE CHANNEL_AUDIT -- Wilson's audit, quantified
+
+  (rho ready, 4.9s)
+
+## A)  A_r(0) == S_r  (diagonal flatness weld; then d1 = A_r(1)/S_r)
+   EXACT (Fractions), r=2..5:
+     r=2: A_r(0) = 10/21  vs  S_r = 10/21   EQUAL: True
+     r=3: A_r(0) = 2664070772511315377026101542816887954011345929957268812750166499184998402/5771700411609388809972105169093533809685491157332238226892374130390973375  vs  S_r = 31370/67963   EQUAL: False
+     r=4: A_r(0) = 225424991013564768609031991231242063872700930872244959532283574299564800861624916602363059301591134200669750171725079832640248349131493278316406/485605330049154347103804013523381423877355437355277059446858711272803677320596104268918404091973147253766965381705549557398126106274601748671875  vs  S_r = 143195649659456490/308468774477179141   EQUAL: False
+     r=5: A_r(0) = 931950389712071047159048085416290444055789025932216359677013260086643210251432305788764083247112878199440412268581767138809542481977733242155489932473891100884269325273825456119439299577133944716553796793886285873698/2001977488088869463983019867882331664924740482178952411031987322143647180597130128809497641199980220539116782609395328214067157812652835807609898539374783072976519024197997204896259125248145332219344879323496240234375  vs  S_r = 2490699741144069281815149277465294323722281911695597204406570/5350418720142111510029542161258891403960563152740894082816203   EQUAL: False
+   float, r=6..16 (vs EPS chain; 13..16 chain built from 5-digit LAM_NU):
+     r= 6: A_r(0)=0.466168761  S_r=0.466168761  rel 3.6e-16
+     r= 8: A_r(0)=0.465921120  S_r=0.465921120  rel 2.4e-15
+     r=10: A_r(0)=0.467387418  S_r=0.467387418  rel 1.8e-14
+     r=12: A_r(0)=0.468941380  S_r=0.468941380  rel 9.5e-15
+     r=14: A_r(0)=0.470254334  S_r=0.470254340  rel 1.3e-08
+     r=16: A_r(0)=0.471351643  S_r=0.471351640  rel 6.4e-09
+
+## B)  Lambda identity: Lam_r = sum_{m>=1} 4^-m A_r(m)  (K=40) vs exact-eps Lambda
+   r= 2: channel-sum -7.307897924851e-03  vs  (eps_3-eps_2)/2 = -7.307897924851e-03  rel 1.0e-14  [exact-eps]
+   r= 3: channel-sum +1.319864038787e-03  vs  (eps_4-eps_3)/2 = +1.319864038787e-03  rel 1.5e-14  [exact-eps]
+   r= 4: channel-sum +6.502556665939e-04  vs  (eps_5-eps_4)/2 = +6.502556665939e-04  rel 8.8e-15  [exact-eps]
+   r= 5: channel-sum +3.269206249552e-04  vs  (eps_6-eps_5)/2 = +3.269206249553e-04  rel 1.9e-13  [exact-eps]
+   r= 6: channel-sum -3.386655825770e-04  vs  (eps_7-eps_6)/2 = -3.386655825770e-04  rel 3.1e-14  [exact-eps]
+   r= 7: channel-sum +2.148452315444e-04  vs  (eps_8-eps_7)/2 = +2.148452315444e-04  rel 2.0e-13  [exact-eps]
+   r= 8: channel-sum +3.690130550651e-04  vs  (eps_9-eps_8)/2 = +3.690130550646e-04  rel 1.3e-12  [float-eps]
+   r= 9: channel-sum +3.641355871350e-04  vs  (eps_10-eps_9)/2 = +3.641355871332e-04  rel 5.0e-12  [float-eps]
+   r=10: channel-sum +3.906080474829e-04  vs  (eps_11-eps_10)/2 = +3.906080474861e-04  rel 8.3e-12  [float-eps]
+   V4's 1.7e-5 decomposed (r=16): banked LAM_NU has 5 sig digits -> half-ulp rel ~ 2.1e-05; K=13 truncation adds ~4^-14*A(14)/Lam ~ 6.7e-10  => rounding dominates.
+
+## C)  S2's error bar ON q (N=4e5, R_REP=20, uniq-frac ~0.223)
+   SE(q) per level: naive 1.67e-04 ; ESS-discounted 3.53e-04   (needed at r=38: ~3e-5)
+   per-level at r=38: excess 3.02e-05 -> z = 0.18 (naive) / 0.09 (ESS)  [UNRESOLVABLE]
+   window-aggregate 17..38: mean excess 1.40e-04 -> z = 3.9 (naive) / 1.9 (ESS)
+   => Wilson's downgrade CONFIRMED: per-level sign at the deep end NOT resolvable; aggregate ~2-4 sigma =
+      'consistent where informative', the strong statistical statement stays the telescoped eps-hat (z~3.4).
+      And the 2.3-sigma r~36 rollover sits exactly where excess is smallest + resolution worst.
+
+## D)  gamma_inf(1): extrapolation + rational scan
+   rho=0.870: gamma_inf = 0.736130
+   rho=0.880: gamma_inf = 0.736716
+   rho=0.887: gamma_inf = 0.737188
+   rho=0.890: gamma_inf = 0.737408
+   rho=0.900: gamma_inf = 0.738239
+   band: [0.73613, 0.73824]
+   rational candidates q<=200 in band (sorted by q):
+     14/19 = 0.736842
+     31/42 = 0.738095
+     45/61 = 0.737705
+     59/80 = 0.737500
+     67/91 = 0.736264
+     73/99 = 0.737374
+     76/103 = 0.737864
+     81/110 = 0.736364
+     87/118 = 0.737288
+     95/129 = 0.736434
+     101/137 = 0.737226
+     104/141 = 0.737589
+   named:
+     (1+S_inf)/2 (S=0.4766) = 0.738300  [out]
+     11/15=(1+7/15)/2 = 0.733333  [out]
+     31/42 = 0.738095  [IN BAND]
+     S_inf+0.26? = 0.736600  [IN BAND]
+     1-(1-S_inf)*1/2 = 0.738300  [out]
+
+# (4.9s)
