@@ -15,13 +15,13 @@ stationary measure on units, Fractions, full v-period M=ord₂(3^k), untruncated
 | 3 | 18 | **−17** | −17 | (34-digit rational) | −34.778 = −34.778 ✓ |
 | 4 | 54 | **−53** | −53 | num740d/den801d | −138.494 = −138.494 ✓ |
 | 5 | 162 | **−161** | −161 | num7369d/den7591d | −512.418 = −512.418 ✓ |
+| 6 | 486 | **−485** | −485 | num69145d/den69943d | −1837.774 = −1837.774 ✓ |
 
 Float cross-check passes at every k (`ln|Norm| = Σ_{a∈U} ln|π̂(a)|`, sign-convention-free — confirms the exact norm
-matches fwd_hat). k=6 pending (φ=486, predict −485; the degree-φ resultant timed out at 540s — heavy but not needed).
+matches fwd_hat). **k=6 confirmed (v₃=−485=1−φ) after a 2350s resultant — the law now holds at k=2,3,4,5,6.**
 
 ## The finding — a one-line 3-adic law, and its λ-adic meaning (Wilson)
-**v₃(N(π̂(1))) = −(φ(3^k) − 1) = 1 − 2·3^{k−1}**, exact at k=2,3,4,5 (−5,−17,−53,−161 = −(φ−1)). k=6 (predict −485)
-computing.
+**v₃(N(π̂(1))) = −(φ(3^k) − 1) = 1 − 2·3^{k−1}**, exact at k=2,3,4,5,6 (−5,−17,−53,−161,−485 = −(φ−1)).
 
 **λ-adic reading (Wilson):** in `ℚ(ζ_{3^k})`, 3 is *totally ramified*, `(3) = (λ)^φ` with `λ = 1−ζ`, and
 `v₃(N(α)) = v_λ(α)`. So the formula says
