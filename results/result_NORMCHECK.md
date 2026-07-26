@@ -19,9 +19,17 @@ stationary measure on units, Fractions, full v-period M=ord₂(3^k), untruncated
 Float cross-check passes at every k (`ln|Norm| = Σ_{a∈U} ln|π̂(a)|`, sign-convention-free — confirms the exact norm
 matches fwd_hat). k=6 pending (φ=486, predict −485; the degree-φ resultant timed out at 540s — heavy but not needed).
 
-## The finding — a one-line 3-adic law
-**v₃(N(π̂(1))) = −(φ(3^k) − 1) = 1 − 2·3^{k−1}**, exact at k=2,3,4,5 (−5,−17,−53,−161 = −(φ−1)). The norm is rational
-with its entire 3-adic
+## The finding — a one-line 3-adic law, and its λ-adic meaning (Wilson)
+**v₃(N(π̂(1))) = −(φ(3^k) − 1) = 1 − 2·3^{k−1}**, exact at k=2,3,4,5 (−5,−17,−53,−161 = −(φ−1)). k=6 (predict −485)
+computing.
+
+**λ-adic reading (Wilson):** in `ℚ(ζ_{3^k})`, 3 is *totally ramified*, `(3) = (λ)^φ` with `λ = 1−ζ`, and
+`v₃(N(α)) = v_λ(α)`. So the formula says
+`v_λ(π̂(1)) = 1 − φ`, hence `|π̂(1)|_3 = 3^{(φ−1)/φ} → 3`. **Equivalently: `3·π̂(1)` is an algebraic integer, divisible
+by λ exactly once.** Clean, sharp — a theorem waiting to be proved (the proof will likely hand over the other
+valuations too).
+
+The norm is rational with its entire 3-adic
 content in the denominator, of size exactly `3^{φ(3^k)−1}`. Interpretation:
 - The **geometric mean of the spectrum** is `|N|^{1/φ(3^k)} = exp((Σ_a ln|π̂(a)|)/φ)` — an **aggregate-side /
   spectral-distribution functional** (not the sup, not the total), the class the channels live in. So it lands on the

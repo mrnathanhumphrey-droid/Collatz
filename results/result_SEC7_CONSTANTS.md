@@ -1,20 +1,33 @@
-# RESULT — §7 EFFECTIVE-CONSTANTS EXTRACTION (Hank): C_A = exp(O(A²)), effective for all n≥1, no n₀ barrier (2026-07-26)
+# RESULT — §7 EFFECTIVE-CONSTANTS EXTRACTION (Hank): C_A = exp(O(A/ε)^…), effective but VACUOUS to n~10^87 (2026-07-26)
 
 **Source:** Hank's full read of Tao 1909.03562 §7 (+ Lemma 2.2) from `scratchpad/tao.txt`. Wilson's T2/T3/T4 (make
 Tao's C_A explicit). Bookkeeping extraction, not a proof.
 
-## HEADLINE — the gate answer
-**|E e(−2πiξ·Syrac/3ⁿ)| ≤ C_A·n^{−A}, C_A = exp(O(A²)), EFFECTIVE for all n≥1.** Non-triviality window **n ≳ exp(cA)**.
-- **No astronomical n₀(A).** Lemma 7.4 (the disjoint-triangle geometry) is **threshold-free** — holds every n≥1,
-  triangle separation is the *absolute* constant `(1/10)log(1/ε)`, independent of A and n. The "n sufficiently large"
-  worry lives nowhere in the geometry.
-- The only "sufficiently large" is on the **induction scale m** (not n): `C_{A,ε}=exp(O(A/ε))=exp(O(A))` from **Case 2
-  of Prop 7.8**. Below it the trivial base case `Q_m≤m^A` covers the range.
-- **No Baker** (Remark 7.5: periodic structure "we will not exploit … beyond Lemma 7.4" — no linear-forms-in-logs, no
-  ineffective Diophantine input). No entropy decrement, no compactness, no unlocated-scale pigeonhole. **Fully
-  effective.**
-- Combined with T1 (useful regime A≈2, grind A=2,3,4): `C_2~exp(O(4))`, `C_3~exp(O(9))`, `C_4~exp(O(16))` — benign,
-  the tower/factorial worry is dead.
+## ⚠️⚠️ HEADLINE CORRECTED (Wilson) — effective, and VACUOUS at every computable depth
+Hank absorbed the small absolute constant **ε into c** ("n ≳ exp(cA)", "downstream budget closes") — **that is wrong
+and hid a factor of 100.** The binding threshold is `C_{A,ε} ≍ exp(cA/ε)` with **ε < 1/100**, so at A=2 it is
+**exp(~200c) ≈ 10^87**. The threshold sits on the induction scale `m ≤ n/2`, so the theorem needs `n ≳ 2·exp(cA/ε)`;
+below that it falls back on `Q_m ≤ m^A`, which is **trivial** (Q ≤ 1). **So Tao's bound says nothing at any depth we can
+compute — it stays vacuous until n ~ 10^87.** "The downstream budget closes" is FALSE: the effective grind cannot supply
+`Σ_{j>16}|e_j| ≲ 0.017`, or anything else at k ≤ 16. "exp(cA)" reads benign; "exp(200)" does not; they are the same
+expression.
+
+**But ε is the only lever, and it's a real optimization** (this is the corrected grind target):
+- Larger ε **improves** the threshold `exp(cA/ε)`, AND
+- Larger ε **shrinks** Lemma 7.4's triangle separation `(1/10)log(1/ε)` — degrading the geometry the whole argument
+  rests on — and changes Lemma 7.2's per-white gain `exp(−ε)` (or `exp(−cε²)`).
+- So the well-posed question is **NOT** "compose the chain at Tao's convenience ε," but **"how large can ε be taken
+  before Lemma 7.4 fails, traded against Lemma 7.2's gain?"** That is bounded, well-posed, and the ONLY version of this
+  that could ever reach n = 16. **Everything below (extraction tables) stands; only the "usable/benign" verdict is
+  retracted.**
+
+## What the extraction correctly establishes (unchanged)
+- **No astronomical n₀(A) in the GEOMETRY.** Lemma 7.4 is threshold-free in n (separation `(1/10)log(1/ε)`, absolute for
+  fixed ε). The whole threshold is the induction-scale `m ≥ C_{A,ε}=exp(O(A/ε))` — which is exactly the 10^87 above.
+- **No Baker** (Remark 7.5), no entropy decrement, no compactness, no unlocated-scale pigeonhole. The argument is
+  genuinely effective — the constant is just astronomically large at usable ε.
+- The value `C_A ≍ exp(O(A²))` (below) is the A-dependence with ε **already absorbed**; restoring ε it is
+  `exp(O(A²/ε…))`, i.e. the 1/ε ≈ 100 is inside every "O".
 
 ## ⚠️ OCR caveat (load-bearing for the algebra)
 `pdftotext` garbles Tao's small absolute constant **ε** ("black iff |θ|≤ε") as a bare `3` or drops it. Every
@@ -68,10 +81,12 @@ white-point count* ("does not require capturing cancellation"). This is precisel
 downgraded to `n^{−A}` — **a quantitative loss, not a barrier.** That is the localized lemma for the T6 sharpness audit:
 if the forward bound comes in orders worse than the T6-fitted truth, this `|g|≤1` step is where the slack lives.
 
-## Net
-Tao's C_A is **effective, `exp(O(A²))`, no n₀ barrier, no Baker, no ineffective step** — the "tedious extraction" is
-real and benign. Effective superpolynomial decay of sup|π̂| is now a *citable-and-computable* fact, not a folklore
-≪_A. The residual open improvement (exp(−cm), Remark 1.15) is blocked only by the one lossy `|g|≤1` step, which T1
-already shows we don't need (A≈2 suffices). **This closes the ℓ^∞ leg completely.** Not at stake: RECENTER, LAMBDA,
-CHANNEL_ID, v₃ HIERARCHY, R1–R30. Next: T6 reverse-grind (fit §7 free constants to exact sup through k≤16) + the
-aggregate/channel re-center.
+## Net (corrected)
+Tao's C_A is **effective and mechanistically clean** (no n₀ in the geometry, no Baker, no entropy decrement, no
+unlocated scale) — **but VACUOUS at every computable depth**: the binding `C_{A,ε}=exp(cA/ε)` with ε<1/100 is ~10^87 at
+A=2, so the bound is silent until n ~ 10^87 and **cannot supply the channel budget at k≤16** (Wilson's inversion of the
+headline). So the ℓ^∞ leg is **qualitatively closed but quantitatively useless as extracted.** The one lossy `|g|≤1`
+step and the exp(−cm) improvement are moot at usable depths. **The real, well-posed grind is the ε-optimization:
+maximize ε subject to Lemma 7.4 (triangle separation `(1/10)log(1/ε)`) surviving, traded against Lemma 7.2's per-white
+gain — the only route that could reach n=16.** Not at stake: RECENTER, LAMBDA, CHANNEL_ID, v₃ HIERARCHY, R1–R30.
+**Redirect:** the norm/valuation route (result_NORMCHECK) now leads, not the §7 forward grind.
