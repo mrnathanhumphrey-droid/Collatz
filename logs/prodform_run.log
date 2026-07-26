@@ -1,0 +1,24 @@
+# PROBE PRODFORM -- is Chat(m) = const * Prod_j w(2^{-j}m/N)?  (Wilson's load-bearing conjecture)
+
+## (1) product form: corr(log Chat, log Prod_{j<J} w(2^{-j}m/N)) over 3 nmid m, vs #factors J
+   r=12:  J=1:-0.006  J=2:+0.003  J=4:+0.004  J=6:+0.003  J=11:+0.002  J=12:+0.002  J=14:+0.001  J=24:-0.000   (0.3s)
+   r=16:  J=1:-0.003  J=2:+0.000  J=4:+0.001  J=8:+0.000  J=15:+0.000  J=16:+0.000  J=18:+0.000  J=32:+0.000   (37.3s)
+   [J=1 = MODREG single-w (~0). If corr climbs to ~1 near J=r, product form holds; if it stalls low, void.]
+
+## (2) A(K) = autocorr C(K) = invFFT(Chat)(K); rho>=0 => C(K)>=0 trivially. Confirm min_K C(K).
+   r=12: min_K C(K)/C(0) = +5.728e-02   (>=0 expected)   #neg = 0
+   r=16: min_K C(K)/C(0) = +4.485e-02   (>=0 expected)   #neg = 0
+   [A(K)>=0 confirmed => Wilson's Num = (2N/3)[A(1)+A(-1)] - (N/3)*partials is a nonneg-vs-nonneg race,
+    and this needs ONLY rho>=0, NOT the product form. The product form is only for the resonance labels.]
+
+## (3) aggregate fluctuation mass vs r: S=sum_{3nmid m}Chat,  C0=sum_m Chat=N||rho||^2,  frac=S/C0
+    r             S            C0         S/C0  S/C0 rate
+   12  4.689414e-01  6.802899e+00 6.893258e-02        nan
+   13  4.696149e-01  7.272514e+00 6.457394e-02     0.9368
+   14  4.702543e-01  7.742768e+00 6.073465e-02     0.9405
+   15  4.708278e-01  8.213596e+00 5.732298e-02     0.9438
+   16  4.713516e-01  8.684948e+00 5.427225e-02     0.9468
+   [if S/C0 (or S) decays geometrically (~const rate<1) => exponential aggregate, beats Tao superpoly n^-A;
+    check if it's S itself or only the RATIO S/C0 that decays (normalization artifact test).]
+
+# (43.5s)
