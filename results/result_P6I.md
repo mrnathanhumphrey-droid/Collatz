@@ -54,3 +54,11 @@ value only *within* the bracket, never across it. **Only a sign flip can reach 7
   (exact side); no turnover to r≈38–40 beyond a sub-threshold 2.3σ hint at r≈36 (splitting side); log-periodic turnover
   at r≈27–31 already refuted. **The sign is where it was when the arc started — now in the smallest terms it's had: does
   `Λ` ever go negative.** i=16,17 refine the value; they cannot bear on the sign.
+
+## i=16 landed (i=17 = memory wall) — value refinement, exactly as predicted
+`T_16 = 0.23591008`, `Λ_16 = +0.00023426` (positive, decay continues 0.320→0.287→0.262→0.234 ×10⁻³). Deparitied
+`(Λ_16/Λ_14)^{1/2} = 0.904` — the slight downdrift continues (0.929→0.923→0.905→0.904), settling toward the low end
+~0.90. New exact floor `S_17 = 2T_16 = 0.47182` (`T_16 − 7/30 = +0.0026`, still rising). Geometric tail at ρ≈0.90 →
+**S_∞ ≈ 0.476**, low end of the bracket. **No sign change; the value moved within [0.4714, 0.478] as it must.**
+`i=17` failed — `stationary_trunc` needs a 41 GiB sparse matrix at n=17; **i=16 is the depth limit for the exact
+method** (the splitting estimator is the only route deeper, to r≈38–40). Not at stake: everything above.
