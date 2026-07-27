@@ -1,9 +1,10 @@
 # Collatz residue-class structural analysis
 
-**Status (2026-07-21):** Live state in [`STATE.md`](STATE.md). The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
+**Status (2026-07-26):** Live state in [`STATE.md`](STATE.md). **Latest — the Thread-3 cascade constant reduced to one sub-measure (P6D→P6G):** the 7/15 question `Σ_{i≥2}Λ_i = −1/210` now stands over a machine-exact chain from a single object, `Λ_i = 3ⁱ[4R_e⁽ⁱ⁾(2)−R_e⁽ⁱ⁾(0)] − 3ⁱ⁻¹[…]`, no free maps, no boundary — see the [2026-07-26](#latest-2026-07-26) entry. The repo has accreted research threads on top of the original prefix-decomposition / Tao-bridge / qx+1-Cramér work — see "Recent landmarks" below.
 
 ## Table of Contents
 
+- [Latest (2026-07-26) — the cascade collapses to one sub-measure (Thread 3, P6D–P6G)](#latest-2026-07-26)
 - [Latest (2026-07-21) — the 7/15 constant campaign (Thread 3, R1–R10)](#latest-2026-07-21)
 - [Latest (2026-07-16) — the qx+1 L3 spectral-gap campaign](#latest-2026-07-16)
 - [Latest (2026-07-14) — fourth paper-shaped result](#latest-2026-07-14)
@@ -20,6 +21,17 @@
 - [Outreach packages on Desktop](#outreach-packages-on-desktop)
 
 ---
+
+<a id="latest-2026-07-26"></a>
+> **Latest (2026-07-26) — the cascade constant collapses to a single sub-measure, two lags per level (Thread 3, P6D–P6G): a machine-exact chain with no free maps and no boundary term.**
+> The 7/15 marginal question — `S_∞ = 10/21 + 2Σ_{i≥2}Λ_i`, i.e. **`7/15 ⟺ Σ_{i≥2}Λ_i = −1/210`** — is walked down from the tower of channels to a statement about **one sub-measure's autocorrelation at two lags per level**. Wilson derives (pen); agents gate (pre-registered, exact where rational, machine-precision). Every arrow verified: `ν_e` (even-branch sub-measure) → collapse → `ν` → autocorrelation → deconvolve → channel → tower. Result docs [`result_P6D.md`](results/result_P6D.md)…[`result_P6G.md`](results/result_P6G.md).
+> - **The collapse is exact (P6D).** In the certified base-2 coordinate (`2` a primitive root mod `3^{n+1}`, `dlog₂` a bijection with `×2=+1`, CRT `ℤ/2×ℤ/3^n`), the odd sub-measure is a shifted half-copy of the even one: **`ν_o = ½(×2⁻¹)ν_e + 2⁻¹(m₁)ν`**, machine-exact every level (fixed-point gate 1e-17, mass split exactly `1/3, 2/3` = the seed). The boundary `2⁻¹(m₁)ν` is *forced* by `×2⁻¹·push_a = push_{a+1}`, not fitted. P6B's earlier "inconclusive" collapse was purely the folded coordinate — resolved here.
+> - **The two seams close to a multiplier (P6E→P6F).** The numerator-profile `ρ` and the divided measure `ν` differ by a **pointwise multiplier** `ν̂ = D̃·ρ̂`, with `|D̃|² = 1/(5−4cosθ) ∈ [1/9,1]` — never vanishing, so the deconvolution is stable; equivalently `C_ν = q⋆C_ρ`, `q(d)=2⁻|d|/3` (the branch-difference law). The base-4↔base-2 lag map is **derived, not guessed**: cross-parity ⟺ branch-difference `d` odd, and `ρ` on `⟨4⟩` (even base-2 positions) turns it into a lag-parity rule. **Certified `C_ρ` reconstructs from `ν_e` + boundary alone to 1e-17, every level** — the chain is closed end to end.
+> - **The kernel is three points; the formula is exact with no boundary (P6G).** Assembling flanking `= c`, the full `Ĉ_ν = (5/4+c)R̂_e + B̂`, the deconvolution `(5−4c)`, and the channel weight collapses to a **three-point kernel** `K = {±2:2, 0:−1}`, `K̂ = 4cos2θ − 1`, so the per-level pairing is `⟨C_ρ, Re w⟩ = 4R_e(2) − R_e(0)` (boundary `1e-18` — identically zero). Telescoping across the tower:
+>   $$\Lambda_i = 3^i\big[4R_e^{(i)}(2) - R_e^{(i)}(0)\big] - 3^{i-1}\big[4R_e^{(i-1)}(2) - R_e^{(i-1)}(0)\big]$$
+>   gated against the certified `Λ_i` to **1e-16** (i=2..6), with `Λ₁=−2/21` exact and the `3ⁱ` normalization validated (`3ⁱ⟨ρ,shift₁⟩ → 0.733` = M₋ + cascade). `R_e` is the autocorrelation of `ν_e`; the two numbers per level are the **ratio-4 autocorrelation `R_e(2)` and the self-collision `R_e(0)`**.
+> - **The positivity condition is now in the m=0 proof's family.** `⟨C_ρ, Re w⟩ > 0 ⟺ R_e(2) > ¼R_e(0)` — a Chebyshev/covariance inequality, the same family as the already-proven `m=0` case (Cauchy–Schwarz). It holds at every level. This is the first time the `m=1` side has sat in the *same* family rather than adjacent to it.
+> - **What's owed (pen).** Two bounded, explicit items: (1) the factor-4 reconcile — Wilson's hand-assembled `K̂ = cos2θ − ¼` is exactly ¼ of the gated kernel; the three-point support and the positivity condition are unaffected, so the slip is a single normalization in the composition (the `Re w` weight / a base-2↔base-4 conversion); and (2) the asymptotics of `3ⁱ[4R_e⁽ⁱ⁾(2) − R_e⁽ⁱ⁾(0)]`, i.e. whether the telescoped sum equals exactly `−1/210` (`Σ_{i=2..6}Λ_i = −0.00535` partial vs target `−0.00476`; the `i>6` tail is the last question). No coordinate freedom and no fitted constant remain in the path.
 
 <a id="latest-2026-07-21"></a>
 > **Latest (2026-07-21) — the 7/15 constant campaign (Thread 3): the loss constant reduced to one stationary object, verified exact through k=6.**

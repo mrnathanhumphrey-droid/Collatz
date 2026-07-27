@@ -5,6 +5,15 @@ Thm 1–6) to this repo's verification record. Wilson's pen writes the theorems;
 judge them. Status key: **PROVEN** (transcribe from source) · **OWED** (pen derivation remaining) ·
 **NUMERICAL** (pre-registered, commit-stamped). Live chronological log: `STATE.md`.
 
+> **Thread-3 note (2026-07-26) — the 7/15 marginal constant (separate arc, tracked here for the through-line).** The
+> marginal (q=3) loss constant `S_∞ = 7/15` is the sibling problem to the boundary/spectral-gap theorems above. Arc
+> P6D–P6G reduced it to a machine-exact chain over one sub-measure: **`7/15 ⟺ Σ_{i≥2}Λ_i = −1/210`**, with the gated
+> closed form `Λ_i = 3ⁱ[4R_e⁽ⁱ⁾(2) − R_e⁽ⁱ⁾(0)] − 3ⁱ⁻¹[…]` (`R_e = autocorr(ν_e)`, three-point kernel `K̂=4cos2θ−1`,
+> Λ₁=−2/21 exact, gated to 1e-16 through i=6, no boundary). **OWED (pen):** factor-4 normalization reconcile + the
+> convergence of `3ⁱ[4R_e⁽ⁱ⁾(2)−R_e⁽ⁱ⁾(0)]` to exactly `−1/210`. Positivity `R_e(2)>¼R_e(0)` lands it in the
+> Chebyshev/covariance family (the `m=0` proof's family). Docs `results/result_P6{D,E,F,G}.md`. See `STATE.md` /
+> `README.md` (Latest 2026-07-26) for the full chain.
+
 | Thm | Statement (short) | Status | Gate / probe | Result doc |
 |---|---|---|---|---|
 | **1** | Kinematic spectrum = {c_k}, c_k = Σw²ω^{kδ}; closed-form ℓ_k; rest nilpotent | PROVEN | Real-T1, gate 18/18 (commit `1fe5a64`) | result_phase2b_H / LALB |
