@@ -62,3 +62,31 @@ optimum has no crossing — but with 7 points and a late steepening, a crossing 
 separate asymptote-at-≈0.87 (no turnover) from continued fall (turnover).** Which S-B outcome fired: **row-1 (drift
 persists, |slope/SE|=8.53), reversing the i≤16 single-mode reading** — but the two-mode date is *not* robustly
 determined (S-E prefers no-crossing). Not at stake: P6D–P6K identities, S_{i+1}=2T_i, the value floor 2·T_18=0.4726, R1–R30.
+
+## EXTENSION i=19 (Lambda, tiled matrix-free A100 40GB) — the ambiguous middle; acceleration STALLED; intermittency refuted
+`T_19 = 0.23645299645774767` (int32-index squeeze + tiled `index_add_` scatter to fit 40 GB; on-instance gate
+`T_15,T_16,T_18` **bit-identical** to bank, diff 1.7e-9/2.3e-9/3.0e-9 PASS — int32 index path proven precision-neutral).
+`Λ_19 = +1.56700e-4` — **positive; no turnover.**
+
+**Three PRE-REGISTERED bins (pinned on-disk before the run) for rate(19)=(Λ_19/Λ_17)^½:** >0.888 = intermittency turn-up
+(power-law tail i^{−β}, continuum at 1 — the only shape that saves 7/15); 0.871–0.888 = geometric asymptote at ρ₁ (no
+crossing); ≤0.871 = crossing lean. **Landed: rate(19) = 0.8708** → the **LINEAR/ambiguous** boundary (predicted linear
+continuation 0.8713; miss 0.0005).
+- **Intermittency REFUTED one level further.** A power-law tail forces the deparitied rate to *rise* toward 1 (fitted β=1.55
+  ⟹ rate rises 0.868→0.913 over i=12..18); measured rate *falls* 0.929→0.871, opposite sign. No turn-up at i=19.
+- **The odd-class acceleration STALLED.** Per-level drift: −0.00228 (i15), −0.00845 (i17), **−0.00872 (i19)** — the fall
+  stopped accelerating (Δcurv = −0.00026 ≈ 0). Wilson's "accelerating fall ⟹ crossing" indicator **did not fire**; the
+  −0.0087/level drift sits on his "fit stands / no-crossing" value (−0.0074), far from "crossing live" (−0.014).
+- **1-term tail gate:** Λ_19 / geometric-continuation(0.8882) = 0.15670/0.16304 = **0.961** — slightly below constant-rate
+  ("sustained," fall continued), not above ("decelerated"). Consistent with the linear read.
+- **Value floor rises, model-free:** `2·T_19 = 0.472906` (supersedes 2·T_18=0.47259). Model-dependent tail (rate ≈0.87,
+  UNGATED per Wilson) → `S_∞ ≈ 0.475–0.476`.
+
+**READ (honest):** the fall *continues* (intermittency dead) but its acceleration is *dead too* — landing exactly on linear
+continuation. This **weakly favors asymptote/no-crossing** (drift on the fit line, acceleration stalled, crossing-drift
+−0.014 not seen), but it is genuinely the ambiguous bin: rate(19) sits only ~0.004 above ρ₁≈0.867, and the **even class was
+still accelerating at i=18** (−0.0058,−0.0188,−0.0284) — the two classes now **disagree on curvature**, and no like-for-like
+compare exists without Λ_20. **i=21 (odd) separates flatten-at-0.867 (asymptote) from continue-below (crossing); i=20 (even)
+tests whether even also stalls.** Both are behind the base-4 dlog-table wall (q=3²¹≈84 GB to materialize; int32 index dies
+at n=20 since 3²⁰>2³¹) — a separate CPU-big-RAM or walk-without-DL build, not a bigger-card rerun. Not at stake: P6D–P6K
+identities, S_{i+1}=2T_i, the value floor 2·T_19=0.472906, R1–R30.
