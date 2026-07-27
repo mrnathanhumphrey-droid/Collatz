@@ -36,3 +36,29 @@ at 0.908, not continue to zero. That gives `S_∞ ≈ 2·(T_∞) ≈ 0.476` with
 ≈0.908 confirms single-mode/no-turnover; rate falling below 0.908 (against the S-E fit) would resurrect the two-mode date
 (~i≈30). Blocked locally by the 41 GiB wall → **running on Lambda.** Value unaffected: `S_∞ ∈ [0.4714, 0.478]` stands.
 Not at stake: P6D–P6K identities, S_{i+1}=2T_i, R1–R30.
+
+## EXTENSION i=17,18 (Lambda, matrix-free GPU) — the local single-mode reading is FALSIFIED
+`T_17 = 0.23611673, T_18 = 0.23629630` (matrix-free power iteration on A100, torch; `build_base2`/`stationary_trunc`
+refactored matrix-free, gated locally vs certified T to 3e-9; on-instance gate `T_15,T_16` diff 1.7e-9, 2.3e-9 PASS).
+`Λ_17 = +2.0665e-4, Λ_18 = +1.7957e-4` — **still positive, still decreasing.**
+- **Deparitied rate fell BELOW the local ρ=0.908 and the drift STEEPENED.** even-i: 0.9285(12), 0.9227(14), 0.9039(16),
+  **0.8755(18)** — successive diffs −0.0058, −0.0188, −0.0284 (**accelerating**); drift −0.0118/level, **|slope/SE| = 8.53**
+  (was 3.28 at i≤16); curvature −0.0096. odd-i: 0.9051(15), **0.8882(17)**.
+- **S-E single-mode fit FALSIFIED out-of-sample:** the ρ=0.908 fit on i=10..16 predicts `Λ_18 = +1.947e-4`, actual
+  `+1.796e-4` — **8.4% miss.** The "settling at 0.908" reading of the local probe is wrong; the true dominant decay is
+  lower.
+- **Best two-mode fit (i=12..18, held-out validated):** `Λ_i = A·0.867ⁱ − B·0.628ⁱ` (A=2.44e-3, B=2.72e-2, resid
+  1.9e-6); ρ₂<ρ₁ ⟹ **no crossing** (two *decaying* modes, dominant ρ₁≈0.867), held-out (fit 12..16 → predict 17,18)
+  within 1.4%. BUT the data's late acceleration is marginally steeper than this no-crossing model, so a crossing
+  (ρ₂>ρ₁) is **not excluded** — only not preferred.
+
+## REVISED VERDICT — no turnover observed; value pulled down to ≈0.475; sign still unresolved at the knife's edge
+The extension **kills the clean local reading** (rate ≠ 0.908; it is ~0.87 and still falling). But `Λ` remains **positive**
+through i=18 — **no turnover has occurred**, and 7/15 needs `Σ_{i≥19}Λ_i = −0.00296` (a sustained negative run) against a
+current `Λ_18 = +1.8e-4`. **Value revised down:** exact floor `2·T_18 = 0.47259`; geometric tail at rate ≈0.867–0.88 gives
+`S_∞ ≈ 0.4749–0.4752` (down from ≈0.476 — the faster decay shrinks the tail), landing just above the `<0.475` headline.
+**Sign:** the accelerating rate-fall is best explained by a second *decaying* mode (ρ₂≈0.63), not a growing one — the LS
+optimum has no crossing — but with 7 points and a late steepening, a crossing is not ruled out. **i=19,20 (Lambda) would
+separate asymptote-at-≈0.87 (no turnover) from continued fall (turnover).** Which S-B outcome fired: **row-1 (drift
+persists, |slope/SE|=8.53), reversing the i≤16 single-mode reading** — but the two-mode date is *not* robustly
+determined (S-E prefers no-crossing). Not at stake: P6D–P6K identities, S_{i+1}=2T_i, the value floor 2·T_18=0.4726, R1–R30.
