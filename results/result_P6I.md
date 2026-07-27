@@ -41,3 +41,16 @@ The deparity rule earned its keep: raw 0.977 → S_∞≈0.50 was a wobble artif
 S_∞≈0.476–0.478, consistent across even/odd subsequences and with the corpus. **Caveat (Wilson's "burned three times"):**
 still only 4 deparitied points (i=12..15); the rate drifts slightly down (0.929→0.905), so S_∞ could sit at the lower
 end. i=16,17 pending to firm it. Not at stake: P6D–P6H identities (all exact), the S_{i+1}=2T_i collapse, R1–R30.
+
+## The value question and the sign question SEPARATE (Wilson) — the actual progress
+`S_∞ = S_16 + 2Σ_{i≥16}Λ_i`, and **`S_16 = 2T_15 = 0.471352` is exact** (no extrapolation). So **any regime with `Λ_i ≥ 0`
+past i=16 forces `S_∞ ≥ 0.4714 > 7/15 = 0.46667`** — a falling rate makes the tail smaller but still positive, moving the
+value only *within* the bracket, never across it. **Only a sign flip can reach 7/15; no rate revision can.**
+- **VALUE:** bracketed to `[0.4714, 0.478]` (lower = `Λ≥0` past 16, conditional on exactly that positivity; upper = ρ≤0.93).
+  The i=16,17 runs (and drift-vs-settling) govern only where inside this it lands. Old 0.477 is inside.
+- **SIGN:** whether `Λ` ever goes negative — untouched by any rate estimate — is where 7/15 lives or dies. 7/15 requires
+  `Σ_{i≥16}Λ_i = −0.00234` ≈ **9 levels of full-strength (2.6e-4) sustained reversal**, a substantial late turn, not a
+  small correction. Nothing at reachable depth supports it: clean positive geometric decay to i=15 with `T_i` still rising
+  (exact side); no turnover to r≈38–40 beyond a sub-threshold 2.3σ hint at r≈36 (splitting side); log-periodic turnover
+  at r≈27–31 already refuted. **The sign is where it was when the arc started — now in the smallest terms it's had: does
+  `Λ` ever go negative.** i=16,17 refine the value; they cannot bear on the sign.
