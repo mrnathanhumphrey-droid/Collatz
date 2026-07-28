@@ -90,3 +90,28 @@ compare exists without Λ_20. **i=21 (odd) separates flatten-at-0.867 (asymptote
 tests whether even also stalls.** Both are behind the base-4 dlog-table wall (q=3²¹≈84 GB to materialize; int32 index dies
 at n=20 since 3²⁰>2³¹) — a separate CPU-big-RAM or walk-without-DL build, not a bigger-card rerun. Not at stake: P6D–P6K
 identities, S_{i+1}=2T_i, the value floor 2·T_19=0.472906, R1–R30.
+
+## EXTENSION i=20 (Lambda, CPU big-RAM parallel) — THE CROSSING IS DEAD; even class decelerates; no turnover
+`T_20 = 0.2365885345278137` (parallel matrix-free CPU on a100_sxm4 200 GB RAM: numba `parallel=True` transfer with 6
+private accumulators + closed-form coprime-to-q rank `d=idx−idx//q−1` + **uint64** index arithmetic — int64 overflows at
+n=20, `base·p→1.2e19 > 9.2e18` — + circular autocorr. Kernel gated locally to **0.00e+00** vs banked T_15; on-instance
+gate `T_15,T_16,T_18` diff ≤3e-9 PASS. n=20 ncp=2.32e9, ~20 power-iters × ~920 s; run decoupled from the launcher cap and
+monitored to completion, $12.58/6.3 h.) `Λ_20 = +1.35538e-4` — **positive; no turnover.**
+
+**The decider (even class, the one live crossing indicator).** Even 2-step rates 0.9285, 0.9227, 0.9039, 0.8755, **0.8688**;
+successive falls **−0.0058, −0.0188, −0.0284, −0.0067** — the acceleration that was steepening toward a crossing **REVERSED
+to a 4× deceleration.** Both parity classes now decelerate (odd stalled at i=19, even collapses at i=20).
+- **Pre-registered rate(20) = 0.8688** → the **decelerate / no-crossing** band (below the 0.8755 turn-up line, well above the
+  0.847 crossing line); settling onto ρ₁≈0.867 from above.
+- **Wilson falsifier:** even per-level drift(20) = **−0.00337**, *below* the "fit-stands" −0.0074 and far from "crossing-live"
+  −0.014 ⟹ **decisive no-crossing.**
+- **Model-free tail gate (gates the tail arithmetic):** geometric-from-Λ_18 predicted Λ_20 = 0.13765e-3, actual 0.13554e-3,
+  **ratio 0.985** — the tail arithmetic (and the 47–150× exclusion built on it) HOLDS.
+- **Phase-matched (oscillation-free) 8-level trend `(Λ_20/Λ_12)^(1/8)` = 0.8925.**
+
+**VERDICT — no turnover; the crossing is dead; S∞ ≈ 0.475.** New model-free floor `2·T_20 = 0.473177` (supersedes 0.472906);
+geometric tail at ≈0.87 (still falling) gives **S∞ ≈ 0.4750**. 7/15 = 0.4667 now requires an unobserved *late sign flip*
+(`Σ_{i≥19}Λ = −0.00296`) that **both** parity classes' deceleration actively argues against — the accelerating even-class
+fall was 7/15's only surviving indicator, and i=20 killed it. Consistent with the "no crossing, value decelerates to a
+non-rational limit" reading (irrational-rotation / quasi-periodic-tail hypothesis). Not at stake: P6D–P6K identities,
+S_{i+1}=2T_i, the value floor 2·T_20=0.473177, R1–R30.
