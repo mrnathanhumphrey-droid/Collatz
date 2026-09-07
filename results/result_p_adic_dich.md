@@ -62,6 +62,13 @@ exactly what was 3-specific:
 
 ## WHY p=3 is special (localization, flagged for the pen — structural observation, not a proof)
 
+> **⚠️ UPDATE (p=7, 2026-09-06): the miss-location half of this story is REFUTED — see the p=7 CONFIRMATION
+> section below.** The `q²=1+p` *coincidence* at p=3 is real, but the predicted consequence ("off p=3 the miss
+> appears at k=q²=4") is FALSE: at p=7, k=4 is **depleted** (γ_∞=0.575) and the enriched non-multiples are {2,9,12}.
+> So `q²=1+p` is **not** a predictive mechanism for where the converse-leak lands. What survives at two primes is the
+> weaker, robust dissociation (engine + forward-implication lift; converse 3-specific). Read the paragraph below as
+> the (now-corrected) first guess, kept for the record.
+
 At **p=3, q=2 the two structural axes COINCIDE**: the ×q² correlation multiplier `q²=4` equals the principal-unit
 (fiber) generator `1+p=4`. The p=3 "dichotomy" reads a single fused axis, and on that fused axis "enriched" happens
 to align with "3∣k". **At p≥5 with q=2 the axes split** (`1+p ≥ 6 > 4 = q²`), and enrichment appears on *both*:
@@ -78,8 +85,8 @@ This is consistent with the CHANNEL_ENGINE_LIFT recon's finding that the load-be
   extrapolation:** k=4 (and k=6 through r=4) is enriched at *every* exact level, so the dichotomy fails at fixed r.
 - **k=1 is marginal** (crosses 1: γ_2=0.908 < 1, γ_5=1.039 > 1) — could be extrapolation noise; excluded from the
   argument. The MISS rests on the unambiguous k=4.
-- **p=7 NOT run** — kill-first honored (spec: "if p=5 fails clean, STOP, don't burn p=7"). It is a ~0.1 s
-  confirmation if desired; the p=5 failure is decisive on its own.
+- **p=7 subsequently run** (Wilson follow-up spec) — see the p=7 CONFIRMATION section below. It confirms the
+  dichotomy-failure and the dissociation at a second prime, and **refutes** the q²=1+p miss-location mechanism.
 
 ## VERDICT and disposition
 **FAILS-CLEAN.** The dichotomy `γ_∞(k)>1 ⟺ p∣k` is **3-specific** and does **not** lift to the p-adic affine renewal
@@ -92,3 +99,62 @@ direction lifts** with its fiber-depth growth — so the general theorem to writ
 *engine* (fiber-tower telescoping under a p-divisible affine shift) plus the *forward* enrichment implication, with
 the clean p=3 biconditional exposed as the coincidence **q² = 1+p**. Not at stake: CHANNELDICH itself (p=3 stands,
 reproduced 14/14 here), the tower identity, R7–R10.
+
+---
+
+## p=7 CONFIRMATION (Wilson follow-up; `probes/probe_p_adic_dich_p7.py`) — **dissociation CONFIRMED at a 2nd prime; q²=1+p miss-location mechanism REFUTED (SURPRISE)**
+
+Same validated machinery, changed only p→7 (q=2, chain `X=q^{−v}(1+7·a) mod 7^r`, exact r=2..5). White-baseline
+gate PASS (`max|γ_white−1|`=3.33e-16).
+
+2×2 (rows 7∣k / 7∤k × cols enriched / depleted):
+
+| | enriched | depleted |
+|---|---|---|
+| **7∣k** | **2** (k=7,14) | 0 |
+| **7∤k** | **3** (k=2,9,12) | 9 |
+
+γ_r(k) table (p=7, exact r=2..5; g_inf = geometric-tail extrapolation, else deepest r):
+
+| k | 7∣k | γ_2 | γ_3 | γ_4 | γ_5 | γ_∞ | sign | pred |
+|---|---|---|---|---|---|---|---|---|
+| 1 | . | 0.20450 | 0.20841 | 0.17487 | 0.15866 | 0.15866 | depleted | depleted |
+| 2 | . | 1.98905 | 1.35134 | 1.35600 | 1.17093 | 1.17093 | ENRICHED | depleted → **MISS** |
+| 3 | . | 0.22179 | 0.18968 | 0.20538 | 0.22858 | 0.25120 | depleted | depleted |
+| 4 | . | 0.50180 | 0.61146 | 0.57466 | 0.57452 | 0.57452 | depleted | depleted |
+| 5 | . | 0.44359 | 0.32836 | 0.27972 | 0.26059 | 0.24743 | depleted | depleted |
+| 6 | . | 0.10407 | 0.10930 | 0.07952 | 0.09039 | 0.09039 | depleted | depleted |
+| 7 | YES | 2.78077 | 1.25745 | 1.36875 | 1.11349 | 1.11349 | ENRICHED | enriched ✓ |
+| 8 | . | 0.11090 | 0.09339 | 0.08206 | 0.09063 | 0.09063 | depleted | depleted |
+| 9 | . | 2.18307 | 3.61294 | 3.18816 | 2.70681 | 2.36103 | ENRICHED | depleted → **MISS** |
+| 10 | . | 0.20815 | 0.17812 | 0.19827 | 0.18728 | 0.18728 | depleted | depleted |
+| 11 | . | 0.99452 | 0.80063 | 0.65179 | 0.71499 | 0.72807 | depleted | depleted |
+| 12 | . | 1.14641 | 2.06450 | 1.52092 | 1.29476 | 1.29476 | ENRICHED | depleted → **MISS** |
+| 13 | . | 0.49726 | 0.54220 | 0.51710 | 0.65044 | 0.65044 | depleted | depleted |
+| 14 | YES | 1.95967 | 1.51728 | 1.47477 | 1.56138 | 1.56138 | ENRICHED | enriched ✓ |
+
+**What CONFIRMS (2-prime robust):**
+1. **Biconditional FAILS-CLEAN again** — 7∤k has 3 enriched (k=9 unambiguous: γ = 2.18, 3.61, 3.19, 2.71, above 2 at
+   every level). Dichotomy `γ_∞(k)>1 ⟺ p∣k` is now confirmed **3-specific at two primes**.
+2. **Engine (tower telescoping) lifts EXACTLY** — `Σ_j ρ_3(t+j·7²)==ρ_2`, `Σ_j ρ_4(t+j·7³)==ρ_3` → **True, True**.
+3. **Forward half + fiber-depth growth lift** — 7∣k → enriched 2/2 (clean); γ_∞(7)=1.11349 **<** γ_∞(14)=1.56138.
+
+**What is REFUTED (the SURPRISE — flag it loudly):** the sharp pre-registered prediction was that the cleanest miss
+lands at **k = q² = 4** (the same k as p=5), which would have shown the `q²=1+p` fusion *predicts the miss location*.
+It does **not**: at p=7, **γ_∞(4) = 0.57452 = depleted** (unambiguously — `0.502, 0.611, 0.575, 0.575` across r,
+never above 0.62), and the enriched non-multiples are **{2, 9, 12}**, which do **not** include k=4. The p=5
+enriched-non-multiple set {1,4,6,11,14} and the p=7 set {2,9,12} share **no obvious q²- or fixed-residue structure**
+at this depth (e.g. k=4 enriched at p=5 but depleted at p=7; the p=7 leaders are k=9, k=2).
+
+**Corrected reading.** The `q²=1+p` *coincidence* at p=3 (4=1+3) is real and plausibly *contributes* to why p=3
+alone gives the clean biconditional, but it is **not** a predictive mechanism for where the converse-leak lands off
+p=3. The governing structure of the leak is finer and prime-dependent — presumably the full ⟨q⟩-orbit-on-the-dual
+accounting flagged in `CHANNEL_ENGINE_LIFT_RECON.md`, not resolved here. **General-ready is the DISSOCIATION only**
+(engine + forward-implication lift; converse 3-specific), now confirmed at p=5 and p=7. The `#2` paper should claim
+the dissociation and the empirical fact that the clean biconditional is p=3-only — **not** a `q²=1+p` fusion
+mechanism that predicts the off-p=3 behavior (that specific claim is refuted).
+
+**Two-prime disposition:** write the **engine** (fiber-tower telescoping under a p-divisible affine shift) + the
+**forward** enrichment implication with fiber-depth growth, both two-prime-confirmed; state the clean p=3
+biconditional as an empirical p=3-specific fact whose full mechanism is **open** (the earlier q²=1+p miss-location
+story is retracted). Not at stake: CHANNELDICH p=3 (14/14), the tower identity, R7–R10, the engine.
