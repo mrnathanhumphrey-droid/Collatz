@@ -1,5 +1,10 @@
 # Theorem (c = 7/45 leading-order, unconditional)
 
+> ⛔ **SUPERSEDED — this theorem's claimed value is contradicted by the project's own later computation (banner added 2026-10-15).**
+> The claim `S_k → 7/15` (equivalently `c = 7/45`) does not survive. Exact computation reaches `S₂₁ = 2·T₂₀ = 0.473177`, already above `7/15 ≈ 0.4667`, and every later increment computed (`Λ₁₇…Λ₂₀`) is positive. The current estimate is `S_∞ ≈ 0.475`. See [`STATE.md`](STATE.md) (2026-07-28 entry) and [`results/result_SOLSTICE.md`](results/result_SOLSTICE.md). This is a numerical refutation, not a proof that `S_∞ ≠ 7/15`.
+> The proof below also has an unfilled step: §3 Step 5 asserts `S_∞ = 7/15` without the algebra.
+> **Unaffected:** the exact finite-k values (`S₁ = 2/3`, `S₂ = 10/21`, …, Lean-checked for k ≤ 6). The text below is kept unedited as the historical record.
+
 **Date:** 2026-05-15
 **Status:** RIGOROUS UNCONDITIONAL via R75 + R76 + R77 + R64.B project infrastructure
 **Audit:** verbatim derivation trace at [D3_DERIVATION_AUDIT.md](D3_DERIVATION_AUDIT.md); HS 2014 framework shown to be interpretive overlay, not load-bearing

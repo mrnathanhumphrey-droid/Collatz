@@ -126,3 +126,7 @@ archive/**/*.log
 archive/**/*.npz
 archive/**/*.csv
 archive/explorations/visualization/viz_outputs/
+
+# third-party paper full texts (removed 2026-10-15)
+logs/tao2022.txt
+logs/chang_2603.txt

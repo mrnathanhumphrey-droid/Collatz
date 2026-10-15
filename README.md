@@ -19,7 +19,6 @@
 - [Data files](#data-files)
 - [Reproduction smoke check](#reproduction-smoke-check)
 - [Open follow-ups](#open-follow-ups)
-- [Outreach packages on Desktop](#outreach-packages-on-desktop)
 
 ---
 
@@ -99,7 +98,7 @@
 
 **Four paper-shaped results in hand** (the fourth, qx+1, is standalone — see "Latest" above):
 
-1. **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). `S_k = 3^k · ‖d_k‖² → 7/15` proved via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74 algebraic identity. Paper-shaped. Independent of all operator-valued probability framework questions.
+1. ⛔ **SUPERSEDED: 7/15 is contradicted by later computation (`S_∞ ≈ 0.475`; see the banner in [`THEOREM_C_745.md`](THEOREM_C_745.md)).** Original claim, kept for the record: ~~Leading c = 7/45 RIGOROUS UNCONDITIONAL~~. `S_k = 3^k · ‖d_k‖² → 7/15` proved via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74 algebraic identity. Paper-shaped. Independent of all operator-valued probability framework questions.
 
 2. **Syracuse = Davies-Wiseman-Milburn quantum trajectory, NUMERICALLY VERIFIED to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](notes/FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](notes/DWM_MP_G1_RESULT.md)). DWM cross-Kraus form `M̃_{v,v'}^{(j, b_prior)} · f(ξ) = phase·σ_{-(v+v')}·f(ξ)` reproduces Syracuse's measured moments **exactly to 6 sig digits across all 4 scalar reductions** for both 3-alternating (0.108) and 4-alternating (0.609) moments.
 3. **Dark-subspace classification of Syracuse's adaptive Kraus family** ([`R3_DARK_SUBSPACE_STRUCTURAL.md`](notes/R3_DARK_SUBSPACE_STRUCTURAL.md), integrates Phases 1+2+4). Three sub-results: (a) the full adaptive Kraus family at level n is irreducible at finite n (dim(A') = 1 at n=2, 3, via SVD of commutator-stack); (b) the **TRUE D_W = 3-fiber-zero-mean subspace is EXACTLY dark under the j ≥ 2 sub-family** (machine-epsilon leakage at n=2, 3, 4 verified directly), with j = 1 the unique mixing event — structurally forced by `x_{j≥2} ≡ 0 mod 9` vs `x_1 ≡ ±1 mod 3`; (c) the per-step channel `L|_{D_W}` for j ≥ 2 has **closed-form below-commutant spectrum** `λ_below(n) = 0.5/|1 − 0.5·e^{iπ/3^{n−1}}|`, **j-independent for j ≥ 2**, **verified across 8-point grid (n, j) ∈ {(3,2), (3,3), (4,2), (4,3), (4,4), (5,2), (5,3), (5,4)} via matrix-free ARPACK** + full-eigvals cross-check at n=5 (rel err < 1.3e-5 throughout). λ_below(n) → 1 as n → ∞. **Route B partial closure (2026-05-16)** ([`ROUTEB_PERIOD9_IDENTIFICATION.md`](notes/ROUTEB_PERIOD9_IDENTIFICATION.md)): the (class, b_prior mod M) Markov chain at M=18 reproduces the same eigenvalue, with period 9.5 ≈ empirical PADE 9.2 — **the empirical period-9 CC pair IS Phase 4's L|_{D_W} below-commutant eigenvalue.** Magnitude residual 9% (0.898 vs 0.984) closes structurally at effective level n ≈ 3.91; full magnitude closure via direct ε_k fitting is data-limited at k=13 ([`ROUTEB_PRIME_EPS_FIT_RESULT.md`](notes/ROUTEB_PRIME_EPS_FIT_RESULT.md)).
@@ -138,11 +137,11 @@ See [`SESSION_2026_05_15_STRUCTURAL_BOUNDARY.md`](notes/SESSION_2026_05_15_STRUC
 
 Threads layered on top of the architectural overview below. **For the current state of any of these, read [`STATE.md`](STATE.md) first** — it is the live document and supersedes any drift in this README.
 
-### Leading c=7/45 RIGOROUS UNCONDITIONAL + Syracuse = DWM quantum trajectory NUMERICALLY VERIFIED — 2026-05-15 (morning)
+### ~~Leading c=7/45 RIGOROUS UNCONDITIONAL~~ (SUPERSEDED, see [`THEOREM_C_745.md`](THEOREM_C_745.md)) + Syracuse = DWM quantum trajectory NUMERICALLY VERIFIED — 2026-05-15 (morning)
 
 Two paper-shaped results landed in the same session:
 
-- **Leading c = 7/45 RIGOROUS UNCONDITIONAL** ([`THEOREM_C_745.md`](THEOREM_C_745.md)). 8 sections, full hypotheses verbatim, 6-step proof chain via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74. Independent of all probability-framework questions. The Hasebe-Saigo 2014 monotone-independence overlay was interpretive only — D3 audit confirmed the derivation never depended on HS 2014 Thm 3.4.
+- ⛔ **SUPERSEDED (7/15 contradicted by later computation; see the banner in [`THEOREM_C_745.md`](THEOREM_C_745.md)).** Original entry: ~~Leading c = 7/45 RIGOROUS UNCONDITIONAL~~. 8 sections, full hypotheses verbatim, 6-step proof chain via R75 Plancherel × R76 conservation × R77 T_diag × R64.B class-mass × HR74. Independent of all probability-framework questions. The Hasebe-Saigo 2014 monotone-independence overlay was interpretive only — D3 audit confirmed the derivation never depended on HS 2014 Thm 3.4.
 - **Syracuse = Davies-Wiseman-Milburn quantum trajectory, numerically verified to 6 sig digits** ([`FRAMEWORK_IDENTIFICATION.md`](notes/FRAMEWORK_IDENTIFICATION.md), [`DWM_MP_G1_RESULT.md`](notes/DWM_MP_G1_RESULT.md)). 6-probe framework-identification arc (H1' → D2 Tier 1 → BMT/bigraph → HP/QSC → AFL → Belavkin/DWM) closed at DWM with adaptive Kraus `M_v^{(j, b_{[1,j-1]})} = 2^{-v/2} A_v^{(j)} σ_{-v}`. DWM-MP-G1+G2 numerical match across all 4 scalar reductions (sum_entries / tr_π / delta_1 / vac_π) for both 3-alt (0.108) and 4-alt (0.609) moments.
 ### Structural boundary mapped: finite-truncation discrete-eigenvalue paths exhausted — 2026-05-15 (post-compact)
 
@@ -563,12 +562,3 @@ Not load-bearing for the bridge claim, but adjacent and worth pursuing:
 - **q=5 / q=7 first-passage analog.** Does the bridge `s_mean ≈ α_det^(q) + K_q · Δlog` hold for qx+1 with K_q derived from θ(q)? Generalizes the bridge across the qx+1 family.
 - **Bonacorsi-side HMC validation** at full N=10⁷ on the NB GLM replication (deferred to N. Bonacorsi at Columbia).
 
----
-
-## Outreach packages on Desktop
-
-- `collatz_for_lin_2026-05-01/` and `.zip` — Lin (Maryland) review package: writeup, findings, one-sheet PDF, data sample.
-- `collatz_for_bonacorsi_2026-05-01_v4_pathfinder/` — B&B framework replication artifacts.
-- `collatz_qx1_for_yosef_2026-05-01/` — qx+1 Cramér derivation package for the probability-theory audience.
-
-These predate the Tao bridge result. Re-zipping with the updated `writeup.md` and `tao_bridge_findings.md` would refresh them.
